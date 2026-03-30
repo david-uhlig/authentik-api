@@ -12,8 +12,6 @@ module Authentik::Api
   class UserLoginStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
     attr_accessor :session_duration
 
@@ -58,7 +56,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'session_duration' => :'session_duration',
         :'terminate_other_sessions' => :'terminate_other_sessions',
         :'remember_me_offset' => :'remember_me_offset',
@@ -82,7 +79,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'session_duration' => :'String',
         :'terminate_other_sessions' => :'Boolean',
         :'remember_me_offset' => :'String',
@@ -118,12 +114,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'session_duration')
@@ -253,7 +243,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           session_duration == o.session_duration &&
           terminate_other_sessions == o.terminate_other_sessions &&
           remember_me_offset == o.remember_me_offset &&
@@ -271,7 +260,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding, remember_device].hash
+      [name, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding, remember_device].hash
     end
 
     # Builds the object from hash

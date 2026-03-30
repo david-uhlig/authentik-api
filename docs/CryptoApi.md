@@ -244,7 +244,7 @@ end
 api_instance = Authentik::Api::CryptoApi.new
 opts = {
   has_key: true, # Boolean | Only return certificate-key pairs with keys
-  include_details: true, # Boolean | 
+  key_type: [Authentik::Api::KeyTypeEnum::DSA], # Array<KeyTypeEnum> | 
   managed: 'managed_example', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -285,7 +285,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **has_key** | **Boolean** | Only return certificate-key pairs with keys | [optional] |
-| **include_details** | **Boolean** |  | [optional][default to true] |
+| **key_type** | [**Array&lt;KeyTypeEnum&gt;**](KeyTypeEnum.md) |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |

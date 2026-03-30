@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedPromptStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :fields
 
     attr_accessor :validation_policies
@@ -22,7 +20,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'fields' => :'fields',
         :'validation_policies' => :'validation_policies'
       }
@@ -42,7 +39,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'fields' => :'Array<String>',
         :'validation_policies' => :'Array<String>'
       }
@@ -72,12 +68,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'fields')
@@ -133,7 +123,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           fields == o.fields &&
           validation_policies == o.validation_policies
     end
@@ -147,7 +136,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, fields, validation_policies].hash
+      [name, fields, validation_policies].hash
     end
 
     # Builds the object from hash

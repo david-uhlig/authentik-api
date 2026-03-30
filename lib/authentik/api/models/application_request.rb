@@ -25,6 +25,8 @@ module Authentik::Api
 
     attr_accessor :meta_launch_url
 
+    attr_accessor :meta_icon
+
     attr_accessor :meta_description
 
     attr_accessor :meta_publisher
@@ -64,6 +66,7 @@ module Authentik::Api
         :'backchannel_providers' => :'backchannel_providers',
         :'open_in_new_tab' => :'open_in_new_tab',
         :'meta_launch_url' => :'meta_launch_url',
+        :'meta_icon' => :'meta_icon',
         :'meta_description' => :'meta_description',
         :'meta_publisher' => :'meta_publisher',
         :'policy_engine_mode' => :'policy_engine_mode',
@@ -90,6 +93,7 @@ module Authentik::Api
         :'backchannel_providers' => :'Array<Integer>',
         :'open_in_new_tab' => :'Boolean',
         :'meta_launch_url' => :'String',
+        :'meta_icon' => :'String',
         :'meta_description' => :'String',
         :'meta_publisher' => :'String',
         :'policy_engine_mode' => :'PolicyEngineMode',
@@ -150,6 +154,10 @@ module Authentik::Api
         self.meta_launch_url = attributes[:'meta_launch_url']
       end
 
+      if attributes.key?(:'meta_icon')
+        self.meta_icon = attributes[:'meta_icon']
+      end
+
       if attributes.key?(:'meta_description')
         self.meta_description = attributes[:'meta_description']
       end
@@ -184,10 +192,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       if @slug.to_s.length < 1
         invalid_properties.push('invalid value for "slug", the character length must be greater than or equal to 1.')
       end
@@ -207,7 +211,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug.to_s.length < 1
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       true
@@ -234,10 +237,6 @@ module Authentik::Api
         fail ArgumentError, 'slug cannot be nil'
       end
 
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
-      end
-
       if slug.to_s.length < 1
         fail ArgumentError, 'invalid value for "slug", the character length must be greater than or equal to 1.'
       end
@@ -261,6 +260,7 @@ module Authentik::Api
           backchannel_providers == o.backchannel_providers &&
           open_in_new_tab == o.open_in_new_tab &&
           meta_launch_url == o.meta_launch_url &&
+          meta_icon == o.meta_icon &&
           meta_description == o.meta_description &&
           meta_publisher == o.meta_publisher &&
           policy_engine_mode == o.policy_engine_mode &&
@@ -276,7 +276,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, provider, backchannel_providers, open_in_new_tab, meta_launch_url, meta_description, meta_publisher, policy_engine_mode, group].hash
+      [name, slug, provider, backchannel_providers, open_in_new_tab, meta_launch_url, meta_icon, meta_description, meta_publisher, policy_engine_mode, group].hash
     end
 
     # Builds the object from hash

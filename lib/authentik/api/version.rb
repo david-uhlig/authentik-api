@@ -6,6 +6,6 @@ Any manual changes will be lost when the OpenAPI scheme changes.
 
 module Authentik
   module Api
-    VERSION = '2025.10.4'
+    VERSION = '2026.5.0-rc1'
   end
 end

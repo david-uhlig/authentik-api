@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedRedirectStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :keep_context
 
     attr_accessor :mode
@@ -48,7 +46,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'keep_context' => :'keep_context',
         :'mode' => :'mode',
         :'target_static' => :'target_static',
@@ -70,7 +67,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'keep_context' => :'Boolean',
         :'mode' => :'RedirectStageModeEnum',
         :'target_static' => :'String',
@@ -103,12 +99,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'keep_context')
@@ -168,7 +158,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           keep_context == o.keep_context &&
           mode == o.mode &&
           target_static == o.target_static &&
@@ -184,7 +173,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, keep_context, mode, target_static, target_flow].hash
+      [name, keep_context, mode, target_static, target_flow].hash
     end
 
     # Builds the object from hash

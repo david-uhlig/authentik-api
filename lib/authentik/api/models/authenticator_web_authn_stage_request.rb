@@ -12,8 +12,6 @@ module Authentik::Api
   class AuthenticatorWebAuthnStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
     attr_accessor :configure_flow
 
@@ -25,7 +23,12 @@ module Authentik::Api
 
     attr_accessor :resident_key_requirement
 
+    attr_accessor :hints
+
     attr_accessor :device_type_restrictions
+
+    # When enabled, a given device can only be registered once.
+    attr_accessor :prevent_duplicate_devices
 
     attr_accessor :max_attempts
 
@@ -55,13 +58,14 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'configure_flow' => :'configure_flow',
         :'friendly_name' => :'friendly_name',
         :'user_verification' => :'user_verification',
         :'authenticator_attachment' => :'authenticator_attachment',
         :'resident_key_requirement' => :'resident_key_requirement',
+        :'hints' => :'hints',
         :'device_type_restrictions' => :'device_type_restrictions',
+        :'prevent_duplicate_devices' => :'prevent_duplicate_devices',
         :'max_attempts' => :'max_attempts'
       }
     end
@@ -80,13 +84,14 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'configure_flow' => :'String',
         :'friendly_name' => :'String',
         :'user_verification' => :'UserVerificationEnum',
         :'authenticator_attachment' => :'AuthenticatorAttachmentEnum',
-        :'resident_key_requirement' => :'ResidentKeyRequirementEnum',
+        :'resident_key_requirement' => :'UserVerificationEnum',
+        :'hints' => :'Array<WebAuthnHintEnum>',
         :'device_type_restrictions' => :'Array<String>',
+        :'prevent_duplicate_devices' => :'Boolean',
         :'max_attempts' => :'Integer'
       }
     end
@@ -121,12 +126,6 @@ module Authentik::Api
         self.name = nil
       end
 
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
-      end
-
       if attributes.key?(:'configure_flow')
         self.configure_flow = attributes[:'configure_flow']
       end
@@ -147,10 +146,20 @@ module Authentik::Api
         self.resident_key_requirement = attributes[:'resident_key_requirement']
       end
 
+      if attributes.key?(:'hints')
+        if (value = attributes[:'hints']).is_a?(Array)
+          self.hints = value
+        end
+      end
+
       if attributes.key?(:'device_type_restrictions')
         if (value = attributes[:'device_type_restrictions']).is_a?(Array)
           self.device_type_restrictions = value
         end
+      end
+
+      if attributes.key?(:'prevent_duplicate_devices')
+        self.prevent_duplicate_devices = attributes[:'prevent_duplicate_devices']
       end
 
       if attributes.key?(:'max_attempts')
@@ -231,13 +240,14 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           configure_flow == o.configure_flow &&
           friendly_name == o.friendly_name &&
           user_verification == o.user_verification &&
           authenticator_attachment == o.authenticator_attachment &&
           resident_key_requirement == o.resident_key_requirement &&
+          hints == o.hints &&
           device_type_restrictions == o.device_type_restrictions &&
+          prevent_duplicate_devices == o.prevent_duplicate_devices &&
           max_attempts == o.max_attempts
     end
 
@@ -250,7 +260,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, device_type_restrictions, max_attempts].hash
+      [name, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, device_type_restrictions, prevent_duplicate_devices, max_attempts].hash
     end
 
     # Builds the object from hash

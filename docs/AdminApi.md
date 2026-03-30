@@ -5,6 +5,10 @@ All URIs are relative to */api/v3*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**admin_apps_list**](AdminApi.md#admin_apps_list) | **GET** /admin/apps/ |  |
+| [**admin_file_create**](AdminApi.md#admin_file_create) | **POST** /admin/file/ |  |
+| [**admin_file_destroy**](AdminApi.md#admin_file_destroy) | **DELETE** /admin/file/ |  |
+| [**admin_file_list**](AdminApi.md#admin_file_list) | **GET** /admin/file/ |  |
+| [**admin_file_used_by_list**](AdminApi.md#admin_file_used_by_list) | **GET** /admin/file/used_by/ |  |
 | [**admin_models_list**](AdminApi.md#admin_models_list) | **GET** /admin/models/ |  |
 | [**admin_settings_partial_update**](AdminApi.md#admin_settings_partial_update) | **PATCH** /admin/settings/ |  |
 | [**admin_settings_retrieve**](AdminApi.md#admin_settings_retrieve) | **GET** /admin/settings/ |  |
@@ -71,6 +75,296 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Array&lt;App&gt;**](App.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## admin_file_create
+
+> admin_file_create(file, opts)
+
+
+
+Upload file to storage backend.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+file = File.new('/path/to/some/file') # File | 
+opts = {
+  name: 'name_example', # String | 
+  usage: 'usage_example' # String | 
+}
+
+begin
+  
+  api_instance.admin_file_create(file, opts)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_create: #{e}"
+end
+```
+
+#### Using the admin_file_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> admin_file_create_with_http_info(file, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_file_create_with_http_info(file, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **file** | **File** |  |  |
+| **name** | **String** |  | [optional] |
+| **usage** | **String** |  | [optional][default to &#39;media&#39;] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
+## admin_file_destroy
+
+> admin_file_destroy(opts)
+
+
+
+Delete file from storage backend.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+opts = {
+  name: 'name_example', # String | 
+  usage: Authentik::Api::UsageEnum::MEDIA # UsageEnum | 
+}
+
+begin
+  
+  api_instance.admin_file_destroy(opts)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_destroy: #{e}"
+end
+```
+
+#### Using the admin_file_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> admin_file_destroy_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_file_destroy_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+| **usage** | [**UsageEnum**](.md) |  | [optional] |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## admin_file_list
+
+> <Array<FileList>> admin_file_list(opts)
+
+
+
+List files from storage backend.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+opts = {
+  manageable_only: true, # Boolean | 
+  search: 'search_example', # String | A search term.
+  usage: Authentik::Api::UsageEnum::MEDIA # UsageEnum | 
+}
+
+begin
+  
+  result = api_instance.admin_file_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_list: #{e}"
+end
+```
+
+#### Using the admin_file_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<FileList>>, Integer, Hash)> admin_file_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_file_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<FileList>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **manageable_only** | **Boolean** |  | [optional][default to false] |
+| **search** | **String** | A search term. | [optional] |
+| **usage** | [**UsageEnum**](.md) |  | [optional] |
+
+### Return type
+
+[**Array&lt;FileList&gt;**](FileList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## admin_file_used_by_list
+
+> <Array<UsedBy>> admin_file_used_by_list(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+opts = {
+  name: 'name_example' # String | 
+}
+
+begin
+  
+  result = api_instance.admin_file_used_by_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_used_by_list: #{e}"
+end
+```
+
+#### Using the admin_file_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> admin_file_used_by_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_file_used_by_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_file_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
 
 ### Authorization
 
@@ -305,7 +599,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AdminApi.new
-settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({policies_buffered_access_view: false, flows_refresh_others: false})}) # SettingsRequest | 
+settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({core_default_app_access: false, enterprise_audit_include_expanded_diff: false, flows_continuous_login: false, flows_refresh_others: false})}) # SettingsRequest | 
 
 begin
   

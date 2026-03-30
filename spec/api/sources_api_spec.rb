@@ -66,31 +66,6 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_all_set_icon_create
-  # Set source icon
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [Boolean] :clear 
-  # @return [nil]
-  describe 'sources_all_set_icon_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_all_set_icon_url_create
-  # Set source icon (as URL)
-  # @param slug 
-  # @param file_path_request 
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_all_set_icon_url_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_all_types_list
   # Get all creatable types
   # @param [Hash] opts the optional parameters
@@ -725,7 +700,7 @@ describe 'SourcesApi' do
   # Kerberos Source Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :enabled 
-  # @option opts [String] :kadmin_type KAdmin server type  
+  # @option opts [KadminTypeEnum] :kadmin_type 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -966,20 +941,20 @@ describe 'SourcesApi' do
   # @option opts [String] :consumer_key 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
-  # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+  # @option opts [GroupMatchingModeEnum] :group_matching_mode 
   # @option opts [Boolean] :has_jwks Only return sources with JWKS data
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :pbm_uuid 
-  # @option opts [String] :policy_engine_mode 
+  # @option opts [PolicyEngineMode] :policy_engine_mode 
   # @option opts [String] :profile_url 
   # @option opts [String] :provider_type 
   # @option opts [String] :request_token_url 
   # @option opts [String] :search A search term.
   # @option opts [String] :slug 
-  # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+  # @option opts [UserMatchingModeEnum] :user_matching_mode 
   # @return [PaginatedOAuthSourceList]
   describe 'sources_oauth_list test' do
     it 'should work' do
@@ -1074,16 +1049,16 @@ describe 'SourcesApi' do
   # @option opts [String] :client_id 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
-  # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+  # @option opts [GroupMatchingModeEnum] :group_matching_mode 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :pbm_uuid 
-  # @option opts [String] :policy_engine_mode 
+  # @option opts [PolicyEngineMode] :policy_engine_mode 
   # @option opts [String] :search A search term.
   # @option opts [String] :slug 
-  # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+  # @option opts [UserMatchingModeEnum] :user_matching_mode 
   # @return [PaginatedPlexSourceList]
   describe 'sources_plex_list test' do
     it 'should work' do
@@ -1188,22 +1163,22 @@ describe 'SourcesApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :allow_idp_initiated 
   # @option opts [String] :authentication_flow 
-  # @option opts [String] :binding_type 
-  # @option opts [String] :digest_algorithm 
+  # @option opts [BindingTypeEnum] :binding_type 
+  # @option opts [DigestAlgorithmEnum] :digest_algorithm 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
   # @option opts [String] :issuer 
   # @option opts [String] :managed 
   # @option opts [String] :name 
-  # @option opts [String] :name_id_policy NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
+  # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :pbm_uuid 
-  # @option opts [String] :policy_engine_mode 
+  # @option opts [PolicyEngineMode] :policy_engine_mode 
   # @option opts [String] :pre_authentication_flow 
   # @option opts [String] :search A search term.
-  # @option opts [String] :signature_algorithm 
+  # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
   # @option opts [Boolean] :signed_assertion 
   # @option opts [Boolean] :signed_response 
   # @option opts [String] :signing_kp 
@@ -1211,7 +1186,7 @@ describe 'SourcesApi' do
   # @option opts [String] :slug 
   # @option opts [String] :sso_url 
   # @option opts [String] :temporary_user_delete_after 
-  # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+  # @option opts [UserMatchingModeEnum] :user_matching_mode 
   # @option opts [String] :verification_kp 
   # @return [PaginatedSAMLSourceList]
   describe 'sources_saml_list test' do
@@ -1532,6 +1507,18 @@ describe 'SourcesApi' do
     end
   end
 
+  # unit tests for sources_telegram_connect_user_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param slug 
+  # @param telegram_auth_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserTelegramSourceConnection]
+  describe 'sources_telegram_connect_user_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for sources_telegram_create
   # Mixin to add a used_by endpoint to return a list of all objects using this object
   # @param telegram_source_request 
@@ -1561,17 +1548,17 @@ describe 'SourcesApi' do
   # @option opts [String] :bot_username 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
-  # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+  # @option opts [GroupMatchingModeEnum] :group_matching_mode 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :pbm_uuid 
-  # @option opts [String] :policy_engine_mode 
+  # @option opts [PolicyEngineMode] :policy_engine_mode 
   # @option opts [Boolean] :request_message_access 
   # @option opts [String] :search A search term.
   # @option opts [String] :slug 
-  # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+  # @option opts [UserMatchingModeEnum] :user_matching_mode 
   # @return [PaginatedTelegramSourceList]
   describe 'sources_telegram_list test' do
     it 'should work' do

@@ -19,9 +19,9 @@ module Authentik::Api
     # Users added to this group will be superusers.
     attr_accessor :is_superuser
 
-    attr_accessor :parent
+    attr_accessor :parents
 
-    attr_accessor :parent_name
+    attr_accessor :parents_obj
 
     attr_accessor :users
 
@@ -32,6 +32,8 @@ module Authentik::Api
     attr_accessor :roles
 
     attr_accessor :roles_obj
+
+    attr_accessor :inherited_roles_obj
 
     attr_accessor :children
 
@@ -44,13 +46,14 @@ module Authentik::Api
         :'num_pk' => :'num_pk',
         :'name' => :'name',
         :'is_superuser' => :'is_superuser',
-        :'parent' => :'parent',
-        :'parent_name' => :'parent_name',
+        :'parents' => :'parents',
+        :'parents_obj' => :'parents_obj',
         :'users' => :'users',
         :'users_obj' => :'users_obj',
         :'attributes' => :'attributes',
         :'roles' => :'roles',
         :'roles_obj' => :'roles_obj',
+        :'inherited_roles_obj' => :'inherited_roles_obj',
         :'children' => :'children',
         :'children_obj' => :'children_obj'
       }
@@ -73,24 +76,25 @@ module Authentik::Api
         :'num_pk' => :'Integer',
         :'name' => :'String',
         :'is_superuser' => :'Boolean',
-        :'parent' => :'String',
-        :'parent_name' => :'String',
+        :'parents' => :'Array<String>',
+        :'parents_obj' => :'Array<RelatedGroup>',
         :'users' => :'Array<Integer>',
         :'users_obj' => :'Array<PartialUser>',
         :'attributes' => :'Hash<String, Object>',
         :'roles' => :'Array<String>',
         :'roles_obj' => :'Array<Role>',
+        :'inherited_roles_obj' => :'Array<Role>',
         :'children' => :'Array<String>',
-        :'children_obj' => :'Array<GroupChild>'
+        :'children_obj' => :'Array<RelatedGroup>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'parent',
-        :'parent_name',
+        :'parents_obj',
         :'users_obj',
+        :'inherited_roles_obj',
         :'children_obj'
       ])
     end
@@ -133,14 +137,18 @@ module Authentik::Api
         self.is_superuser = attributes[:'is_superuser']
       end
 
-      if attributes.key?(:'parent')
-        self.parent = attributes[:'parent']
+      if attributes.key?(:'parents')
+        if (value = attributes[:'parents']).is_a?(Array)
+          self.parents = value
+        end
       end
 
-      if attributes.key?(:'parent_name')
-        self.parent_name = attributes[:'parent_name']
+      if attributes.key?(:'parents_obj')
+        if (value = attributes[:'parents_obj']).is_a?(Array)
+          self.parents_obj = value
+        end
       else
-        self.parent_name = nil
+        self.parents_obj = nil
       end
 
       if attributes.key?(:'users')
@@ -177,10 +185,20 @@ module Authentik::Api
         self.roles_obj = nil
       end
 
+      if attributes.key?(:'inherited_roles_obj')
+        if (value = attributes[:'inherited_roles_obj']).is_a?(Array)
+          self.inherited_roles_obj = value
+        end
+      else
+        self.inherited_roles_obj = nil
+      end
+
       if attributes.key?(:'children')
         if (value = attributes[:'children']).is_a?(Array)
           self.children = value
         end
+      else
+        self.children = nil
       end
 
       if attributes.key?(:'children_obj')
@@ -213,6 +231,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "roles_obj", roles_obj cannot be nil.')
       end
 
+      if @children.nil?
+        invalid_properties.push('invalid value for "children", children cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -224,6 +246,7 @@ module Authentik::Api
       return false if @num_pk.nil?
       return false if @name.nil?
       return false if @roles_obj.nil?
+      return false if @children.nil?
       true
     end
 
@@ -267,6 +290,16 @@ module Authentik::Api
       @roles_obj = roles_obj
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] children Value to be assigned
+    def children=(children)
+      if children.nil?
+        fail ArgumentError, 'children cannot be nil'
+      end
+
+      @children = children
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -276,13 +309,14 @@ module Authentik::Api
           num_pk == o.num_pk &&
           name == o.name &&
           is_superuser == o.is_superuser &&
-          parent == o.parent &&
-          parent_name == o.parent_name &&
+          parents == o.parents &&
+          parents_obj == o.parents_obj &&
           users == o.users &&
           users_obj == o.users_obj &&
           attributes == o.attributes &&
           roles == o.roles &&
           roles_obj == o.roles_obj &&
+          inherited_roles_obj == o.inherited_roles_obj &&
           children == o.children &&
           children_obj == o.children_obj
     end
@@ -296,7 +330,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, num_pk, name, is_superuser, parent, parent_name, users, users_obj, attributes, roles, roles_obj, children, children_obj].hash
+      [pk, num_pk, name, is_superuser, parents, parents_obj, users, users_obj, attributes, roles, roles_obj, inherited_roles_obj, children, children_obj].hash
     end
 
     # Builds the object from hash

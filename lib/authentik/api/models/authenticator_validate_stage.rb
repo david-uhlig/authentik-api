@@ -42,6 +42,8 @@ module Authentik::Api
     # Enforce user verification for WebAuthn devices.
     attr_accessor :webauthn_user_verification
 
+    attr_accessor :webauthn_hints
+
     attr_accessor :webauthn_allowed_device_types
 
     attr_accessor :webauthn_allowed_device_types_obj
@@ -83,6 +85,7 @@ module Authentik::Api
         :'configuration_stages' => :'configuration_stages',
         :'last_auth_threshold' => :'last_auth_threshold',
         :'webauthn_user_verification' => :'webauthn_user_verification',
+        :'webauthn_hints' => :'webauthn_hints',
         :'webauthn_allowed_device_types' => :'webauthn_allowed_device_types',
         :'webauthn_allowed_device_types_obj' => :'webauthn_allowed_device_types_obj'
       }
@@ -113,6 +116,7 @@ module Authentik::Api
         :'configuration_stages' => :'Array<String>',
         :'last_auth_threshold' => :'String',
         :'webauthn_user_verification' => :'UserVerificationEnum',
+        :'webauthn_hints' => :'Array<WebAuthnHintEnum>',
         :'webauthn_allowed_device_types' => :'Array<String>',
         :'webauthn_allowed_device_types_obj' => :'Array<WebAuthnDeviceType>'
       }
@@ -180,6 +184,8 @@ module Authentik::Api
         if (value = attributes[:'flow_set']).is_a?(Array)
           self.flow_set = value
         end
+      else
+        self.flow_set = nil
       end
 
       if attributes.key?(:'not_configured_action')
@@ -204,6 +210,12 @@ module Authentik::Api
 
       if attributes.key?(:'webauthn_user_verification')
         self.webauthn_user_verification = attributes[:'webauthn_user_verification']
+      end
+
+      if attributes.key?(:'webauthn_hints')
+        if (value = attributes[:'webauthn_hints']).is_a?(Array)
+          self.webauthn_hints = value
+        end
       end
 
       if attributes.key?(:'webauthn_allowed_device_types')
@@ -250,6 +262,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
+      if @flow_set.nil?
+        invalid_properties.push('invalid value for "flow_set", flow_set cannot be nil.')
+      end
+
       if @webauthn_allowed_device_types_obj.nil?
         invalid_properties.push('invalid value for "webauthn_allowed_device_types_obj", webauthn_allowed_device_types_obj cannot be nil.')
       end
@@ -267,6 +283,7 @@ module Authentik::Api
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
+      return false if @flow_set.nil?
       return false if @webauthn_allowed_device_types_obj.nil?
       true
     end
@@ -332,6 +349,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] flow_set Value to be assigned
+    def flow_set=(flow_set)
+      if flow_set.nil?
+        fail ArgumentError, 'flow_set cannot be nil'
+      end
+
+      @flow_set = flow_set
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] webauthn_allowed_device_types_obj Value to be assigned
     def webauthn_allowed_device_types_obj=(webauthn_allowed_device_types_obj)
       if webauthn_allowed_device_types_obj.nil?
@@ -358,6 +385,7 @@ module Authentik::Api
           configuration_stages == o.configuration_stages &&
           last_auth_threshold == o.last_auth_threshold &&
           webauthn_user_verification == o.webauthn_user_verification &&
+          webauthn_hints == o.webauthn_hints &&
           webauthn_allowed_device_types == o.webauthn_allowed_device_types &&
           webauthn_allowed_device_types_obj == o.webauthn_allowed_device_types_obj
     end
@@ -371,7 +399,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_allowed_device_types, webauthn_allowed_device_types_obj].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_allowed_device_types, webauthn_allowed_device_types_obj].hash
     end
 
     # Builds the object from hash

@@ -10,7 +10,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
 | **session_duration** | **String** | Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] |
 | **terminate_other_sessions** | **Boolean** | Terminate all other sessions of the user logging in. | [optional] |
 | **remember_me_offset** | **String** | Offset the session will be extended by when the user picks the remember me option. Default of 0 means that the remember me option will not be shown. (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] |

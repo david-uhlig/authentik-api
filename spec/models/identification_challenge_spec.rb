@@ -45,6 +45,12 @@ describe Authentik::Api::IdentificationChallenge do
     end
   end
 
+  describe 'test attribute "pending_user_identifier"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "password_fields"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -58,6 +64,12 @@ describe Authentik::Api::IdentificationChallenge do
   end
 
   describe 'test attribute "application_pre"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "application_pre_launch"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -112,6 +124,12 @@ describe Authentik::Api::IdentificationChallenge do
   end
 
   describe 'test attribute "enable_remember_me"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "passkey_challenge"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

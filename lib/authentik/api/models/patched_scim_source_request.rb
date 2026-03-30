@@ -118,10 +118,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
-      if !@slug.nil? && @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       if !@slug.nil? && @slug.to_s.length < 1
         invalid_properties.push('invalid value for "slug", the character length must be greater than or equal to 1.')
       end
@@ -143,7 +139,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@name.nil? && @name.to_s.length < 1
-      return false if !@slug.nil? && @slug.to_s.length > 50
       return false if !@slug.nil? && @slug.to_s.length < 1
       return false if !@slug.nil? && @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if !@user_path_template.nil? && @user_path_template.to_s.length < 1
@@ -169,10 +164,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       if slug.to_s.length < 1

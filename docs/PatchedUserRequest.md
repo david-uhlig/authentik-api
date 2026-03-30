@@ -9,6 +9,7 @@
 | **is_active** | **Boolean** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [optional] |
 | **last_login** | **Time** |  | [optional] |
 | **groups** | **Array&lt;String&gt;** |  | [optional] |
+| **roles** | **Array&lt;String&gt;** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **path** | **String** |  | [optional] |
@@ -25,6 +26,7 @@ instance = Authentik::Api::PatchedUserRequest.new(
   is_active: null,
   last_login: null,
   groups: null,
+  roles: null,
   email: null,
   attributes: null,
   path: null,

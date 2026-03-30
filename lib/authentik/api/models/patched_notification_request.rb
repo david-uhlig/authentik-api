@@ -10,6 +10,10 @@ require 'time'
 module Authentik::Api
   # Notification Serializer
   class PatchedNotificationRequest < ApiModelBase
+    attr_accessor :hyperlink
+
+    attr_accessor :hyperlink_label
+
     attr_accessor :event
 
     attr_accessor :seen
@@ -17,6 +21,8 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'hyperlink' => :'hyperlink',
+        :'hyperlink_label' => :'hyperlink_label',
         :'event' => :'event',
         :'seen' => :'seen'
       }
@@ -35,6 +41,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'hyperlink' => :'String',
+        :'hyperlink_label' => :'String',
         :'event' => :'EventRequest',
         :'seen' => :'Boolean'
       }
@@ -43,6 +51,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'hyperlink',
+        :'hyperlink_label',
       ])
     end
 
@@ -62,6 +72,14 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'hyperlink')
+        self.hyperlink = attributes[:'hyperlink']
+      end
+
+      if attributes.key?(:'hyperlink_label')
+        self.hyperlink_label = attributes[:'hyperlink_label']
+      end
+
       if attributes.key?(:'event')
         self.event = attributes[:'event']
       end
@@ -76,6 +94,10 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@hyperlink.nil? && @hyperlink.to_s.length > 4096
+        invalid_properties.push('invalid value for "hyperlink", the character length must be smaller than or equal to 4096.')
+      end
+
       invalid_properties
     end
 
@@ -83,7 +105,18 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@hyperlink.nil? && @hyperlink.to_s.length > 4096
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] hyperlink Value to be assigned
+    def hyperlink=(hyperlink)
+      if !hyperlink.nil? && hyperlink.to_s.length > 4096
+        fail ArgumentError, 'invalid value for "hyperlink", the character length must be smaller than or equal to 4096.'
+      end
+
+      @hyperlink = hyperlink
     end
 
     # Checks equality by comparing each attribute.
@@ -91,6 +124,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          hyperlink == o.hyperlink &&
+          hyperlink_label == o.hyperlink_label &&
           event == o.event &&
           seen == o.seen
     end
@@ -104,7 +139,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [event, seen].hash
+      [hyperlink, hyperlink_label, event, seen].hash
     end
 
     # Builds the object from hash

@@ -12,8 +12,6 @@ module Authentik::Api
   class InvitationStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # If this flag is set, this Stage will jump to the next Stage when no Invitation is given. By default this Stage will cancel the Flow when no invitation is given.
     attr_accessor :continue_flow_without_invitation
 
@@ -21,7 +19,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'continue_flow_without_invitation' => :'continue_flow_without_invitation'
       }
     end
@@ -40,7 +37,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'continue_flow_without_invitation' => :'Boolean'
       }
     end
@@ -71,12 +67,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'continue_flow_without_invitation')
@@ -129,7 +119,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           continue_flow_without_invitation == o.continue_flow_without_invitation
     end
 
@@ -142,7 +131,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, continue_flow_without_invitation].hash
+      [name, continue_flow_without_invitation].hash
     end
 
     # Builds the object from hash

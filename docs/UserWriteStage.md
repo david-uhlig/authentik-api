@@ -10,7 +10,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
 | **user_creation_mode** | [**UserCreationModeEnum**](UserCreationModeEnum.md) |  | [optional] |
 | **create_users_as_inactive** | **Boolean** | When set, newly created users are inactive and cannot login. | [optional] |
 | **create_users_group** | **String** | Optionally add newly created users to this group. | [optional] |

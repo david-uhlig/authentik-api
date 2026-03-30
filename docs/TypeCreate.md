@@ -10,6 +10,7 @@
 | **model_name** | **String** |  |  |
 | **icon_url** | **String** |  | [optional] |
 | **requires_enterprise** | **Boolean** |  | [optional][default to false] |
+| **deprecated** | **Boolean** |  | [optional][default to false] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = Authentik::Api::TypeCreate.new(
   component: null,
   model_name: null,
   icon_url: null,
-  requires_enterprise: null
+  requires_enterprise: null,
+  deprecated: null
 )
 ```
 

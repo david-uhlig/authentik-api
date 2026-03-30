@@ -1592,7 +1592,7 @@ module Authentik::Api
 
     # Event Matcher Policy Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :action Match created events with this action type. When left empty, all action types will be matched.  
+    # @option opts [EventActions] :action 
     # @option opts [String] :app 
     # @option opts [String] :client_ip 
     # @option opts [Time] :created 
@@ -1613,7 +1613,7 @@ module Authentik::Api
 
     # Event Matcher Policy Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :action Match created events with this action type. When left empty, all action types will be matched.  
+    # @option opts [EventActions] :action 
     # @option opts [String] :app 
     # @option opts [String] :client_ip 
     # @option opts [Time] :created 
@@ -1630,10 +1630,6 @@ module Authentik::Api
     def policies_event_matcher_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PoliciesApi.policies_event_matcher_list ...'
-      end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
-      if @api_client.config.client_side_validation && opts[:'action'] && !allowable_values.include?(opts[:'action'])
-        fail ArgumentError, "invalid value for \"action\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/policies/event_matcher/'

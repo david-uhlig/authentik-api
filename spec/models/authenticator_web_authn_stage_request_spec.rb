@@ -27,12 +27,6 @@ describe Authentik::Api::AuthenticatorWebAuthnStageRequest do
     end
   end
 
-  describe 'test attribute "flow_set"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "configure_flow"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -63,7 +57,19 @@ describe Authentik::Api::AuthenticatorWebAuthnStageRequest do
     end
   end
 
+  describe 'test attribute "hints"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "device_type_restrictions"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "prevent_duplicate_devices"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

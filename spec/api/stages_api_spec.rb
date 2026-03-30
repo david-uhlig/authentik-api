@@ -424,7 +424,7 @@ describe 'StagesApi' do
   # @option opts [String] :account_sid 
   # @option opts [String] :auth 
   # @option opts [String] :auth_password 
-  # @option opts [String] :auth_type 
+  # @option opts [AuthTypeEnum] :auth_type 
   # @option opts [String] :configure_flow 
   # @option opts [String] :friendly_name 
   # @option opts [String] :from_number 
@@ -433,7 +433,7 @@ describe 'StagesApi' do
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :provider 
+  # @option opts [ProviderEnum] :provider 
   # @option opts [String] :search A search term.
   # @option opts [String] :stage_uuid 
   # @option opts [Boolean] :verify_only 
@@ -604,7 +604,7 @@ describe 'StagesApi' do
   # AuthenticatorTOTPStage Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :configure_flow 
-  # @option opts [String] :digits 
+  # @option opts [DigitsEnum] :digits 
   # @option opts [String] :friendly_name 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
@@ -692,7 +692,7 @@ describe 'StagesApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Array<String>] :configuration_stages 
   # @option opts [String] :name 
-  # @option opts [String] :not_configured_action 
+  # @option opts [NotConfiguredActionEnum] :not_configured_action 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
@@ -803,19 +803,17 @@ describe 'StagesApi' do
   # unit tests for stages_authenticator_webauthn_list
   # AuthenticatorWebAuthnStage Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :authenticator_attachment 
+  # @option opts [AuthenticatorAttachmentEnum] :authenticator_attachment 
   # @option opts [String] :configure_flow 
   # @option opts [Array<String>] :device_type_restrictions 
-  # @option opts [String] :friendly_name 
   # @option opts [Integer] :max_attempts 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :resident_key_requirement 
+  # @option opts [UserVerificationEnum] :resident_key_requirement 
   # @option opts [String] :search A search term.
-  # @option opts [String] :stage_uuid 
-  # @option opts [String] :user_verification 
+  # @option opts [UserVerificationEnum] :user_verification 
   # @return [PaginatedAuthenticatorWebAuthnStageList]
   describe 'stages_authenticator_webauthn_list test' do
     it 'should work' do
@@ -979,7 +977,7 @@ describe 'StagesApi' do
   # ConsentStage Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :consent_expire_in 
-  # @option opts [String] :mode 
+  # @option opts [ConsentModeEnum] :mode 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -1314,6 +1312,89 @@ describe 'StagesApi' do
     end
   end
 
+  # unit tests for stages_endpoints_create
+  # EndpointStage Viewset
+  # @param endpoint_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_destroy
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'stages_endpoints_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_list
+  # EndpointStage Viewset
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedEndpointStageList]
+  describe 'stages_endpoints_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_partial_update
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedEndpointStageRequest] :patched_endpoint_stage_request 
+  # @return [EndpointStage]
+  describe 'stages_endpoints_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_retrieve
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_update
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param endpoint_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_used_by_list
+  # Get a list of all objects that use this object
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'stages_endpoints_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for stages_identification_create
   # IdentificationStage Viewset
   # @param identification_stage_request 
@@ -1352,6 +1433,7 @@ describe 'StagesApi' do
   # @option opts [String] :search A search term.
   # @option opts [Boolean] :show_matched_user 
   # @option opts [Boolean] :show_source_labels 
+  # @option opts [String] :webauthn_stage 
   # @return [PaginatedIdentificationStageList]
   describe 'stages_identification_list test' do
     it 'should work' do
@@ -1463,6 +1545,18 @@ describe 'StagesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Invitation]
   describe 'stages_invitation_invitations_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_invitation_invitations_send_email_create
+  # Send invitation link via email to one or more addresses
+  # @param invite_uuid A UUID string identifying this Invitation.
+  # @param invitation_send_email_request 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'stages_invitation_invitations_send_email_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -1602,16 +1696,16 @@ describe 'StagesApi' do
   # unit tests for stages_mtls_list
   # MutualTLSStage Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :cert_attribute 
+  # @option opts [CertAttributeEnum] :cert_attribute 
   # @option opts [Array<String>] :certificate_authorities 
-  # @option opts [String] :mode 
+  # @option opts [StageModeEnum] :mode 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
   # @option opts [String] :stage_uuid 
-  # @option opts [String] :user_attribute 
+  # @option opts [UserAttributeEnum] :user_attribute 
   # @return [PaginatedMutualTLSStageList]
   describe 'stages_mtls_list test' do
     it 'should work' do
@@ -1784,7 +1878,7 @@ describe 'StagesApi' do
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :placeholder 
   # @option opts [String] :search A search term.
-  # @option opts [String] :type 
+  # @option opts [PromptTypeEnum] :type 
   # @return [PaginatedPromptList]
   describe 'stages_prompt_prompts_list test' do
     it 'should work' do
@@ -2213,9 +2307,9 @@ describe 'StagesApi' do
   # unit tests for stages_user_login_list
   # UserLoginStage Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :geoip_binding Bind sessions created by this stage to the configured GeoIP location  
+  # @option opts [GeoipBindingEnum] :geoip_binding 
   # @option opts [String] :name 
-  # @option opts [String] :network_binding Bind sessions created by this stage to the configured network  
+  # @option opts [NetworkBindingEnum] :network_binding 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
@@ -2395,9 +2489,9 @@ describe 'StagesApi' do
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
   # @option opts [String] :stage_uuid 
-  # @option opts [String] :user_creation_mode 
+  # @option opts [UserCreationModeEnum] :user_creation_mode 
   # @option opts [String] :user_path_template 
-  # @option opts [String] :user_type 
+  # @option opts [UserTypeEnum] :user_type 
   # @return [PaginatedUserWriteStageList]
   describe 'stages_user_write_list test' do
     it 'should work' do

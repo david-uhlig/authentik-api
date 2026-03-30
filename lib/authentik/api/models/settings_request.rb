@@ -48,6 +48,12 @@ module Authentik::Api
     # Default token length
     attr_accessor :default_token_length
 
+    # Default page size for API responses, if no size was requested.
+    attr_accessor :pagination_default_page_size
+
+    # Maximum page size
+    attr_accessor :pagination_max_page_size
+
     attr_accessor :flags
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -66,6 +72,8 @@ module Authentik::Api
         :'impersonation_require_reason' => :'impersonation_require_reason',
         :'default_token_duration' => :'default_token_duration',
         :'default_token_length' => :'default_token_length',
+        :'pagination_default_page_size' => :'pagination_default_page_size',
+        :'pagination_max_page_size' => :'pagination_max_page_size',
         :'flags' => :'flags'
       }
     end
@@ -96,6 +104,8 @@ module Authentik::Api
         :'impersonation_require_reason' => :'Boolean',
         :'default_token_duration' => :'String',
         :'default_token_length' => :'Integer',
+        :'pagination_default_page_size' => :'Integer',
+        :'pagination_max_page_size' => :'Integer',
         :'flags' => :'PatchedSettingsRequestFlags'
       }
     end
@@ -175,6 +185,14 @@ module Authentik::Api
         self.default_token_length = attributes[:'default_token_length']
       end
 
+      if attributes.key?(:'pagination_default_page_size')
+        self.pagination_default_page_size = attributes[:'pagination_default_page_size']
+      end
+
+      if attributes.key?(:'pagination_max_page_size')
+        self.pagination_max_page_size = attributes[:'pagination_max_page_size']
+      end
+
       if attributes.key?(:'flags')
         self.flags = attributes[:'flags']
       else
@@ -223,6 +241,22 @@ module Authentik::Api
         invalid_properties.push('invalid value for "default_token_length", must be greater than or equal to 1.')
       end
 
+      if !@pagination_default_page_size.nil? && @pagination_default_page_size > 2147483647
+        invalid_properties.push('invalid value for "pagination_default_page_size", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@pagination_default_page_size.nil? && @pagination_default_page_size < 0
+        invalid_properties.push('invalid value for "pagination_default_page_size", must be greater than or equal to 0.')
+      end
+
+      if !@pagination_max_page_size.nil? && @pagination_max_page_size > 2147483647
+        invalid_properties.push('invalid value for "pagination_max_page_size", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@pagination_max_page_size.nil? && @pagination_max_page_size < 0
+        invalid_properties.push('invalid value for "pagination_max_page_size", must be greater than or equal to 0.')
+      end
+
       if @flags.nil?
         invalid_properties.push('invalid value for "flags", flags cannot be nil.')
       end
@@ -243,6 +277,10 @@ module Authentik::Api
       return false if !@default_token_duration.nil? && @default_token_duration.to_s.length < 1
       return false if !@default_token_length.nil? && @default_token_length > 2147483647
       return false if !@default_token_length.nil? && @default_token_length < 1
+      return false if !@pagination_default_page_size.nil? && @pagination_default_page_size > 2147483647
+      return false if !@pagination_default_page_size.nil? && @pagination_default_page_size < 0
+      return false if !@pagination_max_page_size.nil? && @pagination_max_page_size > 2147483647
+      return false if !@pagination_max_page_size.nil? && @pagination_max_page_size < 0
       return false if @flags.nil?
       true
     end
@@ -344,6 +382,42 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] pagination_default_page_size Value to be assigned
+    def pagination_default_page_size=(pagination_default_page_size)
+      if pagination_default_page_size.nil?
+        fail ArgumentError, 'pagination_default_page_size cannot be nil'
+      end
+
+      if pagination_default_page_size > 2147483647
+        fail ArgumentError, 'invalid value for "pagination_default_page_size", must be smaller than or equal to 2147483647.'
+      end
+
+      if pagination_default_page_size < 0
+        fail ArgumentError, 'invalid value for "pagination_default_page_size", must be greater than or equal to 0.'
+      end
+
+      @pagination_default_page_size = pagination_default_page_size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] pagination_max_page_size Value to be assigned
+    def pagination_max_page_size=(pagination_max_page_size)
+      if pagination_max_page_size.nil?
+        fail ArgumentError, 'pagination_max_page_size cannot be nil'
+      end
+
+      if pagination_max_page_size > 2147483647
+        fail ArgumentError, 'invalid value for "pagination_max_page_size", must be smaller than or equal to 2147483647.'
+      end
+
+      if pagination_max_page_size < 0
+        fail ArgumentError, 'invalid value for "pagination_max_page_size", must be greater than or equal to 0.'
+      end
+
+      @pagination_max_page_size = pagination_max_page_size
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] flags Value to be assigned
     def flags=(flags)
       if flags.nil?
@@ -371,6 +445,8 @@ module Authentik::Api
           impersonation_require_reason == o.impersonation_require_reason &&
           default_token_duration == o.default_token_duration &&
           default_token_length == o.default_token_length &&
+          pagination_default_page_size == o.pagination_default_page_size &&
+          pagination_max_page_size == o.pagination_max_page_size &&
           flags == o.flags
     end
 
@@ -383,7 +459,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avatars, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, reputation_lower_limit, reputation_upper_limit, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length, flags].hash
+      [avatars, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, reputation_lower_limit, reputation_upper_limit, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length, pagination_default_page_size, pagination_max_page_size, flags].hash
     end
 
     # Builds the object from hash

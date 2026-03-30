@@ -21,7 +21,19 @@ describe Authentik::Api::CurrentBrandFlags do
     end
   end
 
-  describe 'test attribute "policies_buffered_access_view"' do
+  describe 'test attribute "core_default_app_access"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "enterprise_audit_include_expanded_diff"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "flows_continuous_login"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

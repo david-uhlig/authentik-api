@@ -29,8 +29,8 @@ describe 'SchemaApi' do
   # unit tests for schema_retrieve
   # OpenApi3 schema for this API. Format can be selected via content negotiation.  - YAML: application/vnd.oai.openapi - JSON: application/vnd.oai.openapi+json
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :format 
-  # @option opts [String] :lang 
+  # @option opts [FormatEnum] :format 
+  # @option opts [LangEnum] :lang 
   # @return [Hash<String, Object>]
   describe 'schema_retrieve test' do
     it 'should work' do

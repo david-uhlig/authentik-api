@@ -10,6 +10,7 @@ require 'time'
 module Authentik::Api
   class CapabilitiesEnum
     CAN_SAVE_MEDIA = "can_save_media".freeze
+    CAN_SAVE_REPORTS = "can_save_reports".freeze
     CAN_GEO_IP = "can_geo_ip".freeze
     CAN_ASN = "can_asn".freeze
     CAN_IMPERSONATE = "can_impersonate".freeze
@@ -17,7 +18,7 @@ module Authentik::Api
     IS_ENTERPRISE = "is_enterprise".freeze
 
     def self.all_vars
-      @all_vars ||= [CAN_SAVE_MEDIA, CAN_GEO_IP, CAN_ASN, CAN_IMPERSONATE, CAN_DEBUG, IS_ENTERPRISE].freeze
+      @all_vars ||= [CAN_SAVE_MEDIA, CAN_SAVE_REPORTS, CAN_GEO_IP, CAN_ASN, CAN_IMPERSONATE, CAN_DEBUG, IS_ENTERPRISE].freeze
     end
 
     # Builds the enum from string

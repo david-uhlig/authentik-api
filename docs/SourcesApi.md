@@ -7,8 +7,6 @@ All URIs are relative to */api/v3*
 | [**sources_all_destroy**](SourcesApi.md#sources_all_destroy) | **DELETE** /sources/all/{slug}/ |  |
 | [**sources_all_list**](SourcesApi.md#sources_all_list) | **GET** /sources/all/ |  |
 | [**sources_all_retrieve**](SourcesApi.md#sources_all_retrieve) | **GET** /sources/all/{slug}/ |  |
-| [**sources_all_set_icon_create**](SourcesApi.md#sources_all_set_icon_create) | **POST** /sources/all/{slug}/set_icon/ |  |
-| [**sources_all_set_icon_url_create**](SourcesApi.md#sources_all_set_icon_url_create) | **POST** /sources/all/{slug}/set_icon_url/ |  |
 | [**sources_all_types_list**](SourcesApi.md#sources_all_types_list) | **GET** /sources/all/types/ |  |
 | [**sources_all_used_by_list**](SourcesApi.md#sources_all_used_by_list) | **GET** /sources/all/{slug}/used_by/ |  |
 | [**sources_all_user_settings_list**](SourcesApi.md#sources_all_user_settings_list) | **GET** /sources/all/user_settings/ |  |
@@ -123,6 +121,7 @@ All URIs are relative to */api/v3*
 | [**sources_scim_users_retrieve**](SourcesApi.md#sources_scim_users_retrieve) | **GET** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_update**](SourcesApi.md#sources_scim_users_update) | **PUT** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_used_by_list**](SourcesApi.md#sources_scim_users_used_by_list) | **GET** /sources/scim_users/{id}/used_by/ |  |
+| [**sources_telegram_connect_user_create**](SourcesApi.md#sources_telegram_connect_user_create) | **POST** /sources/telegram/{slug}/connect_user/ |  |
 | [**sources_telegram_create**](SourcesApi.md#sources_telegram_create) | **POST** /sources/telegram/ |  |
 | [**sources_telegram_destroy**](SourcesApi.md#sources_telegram_destroy) | **DELETE** /sources/telegram/{slug}/ |  |
 | [**sources_telegram_list**](SourcesApi.md#sources_telegram_list) | **GET** /sources/telegram/ |  |
@@ -399,150 +398,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_all_set_icon_create
-
-> sources_all_set_icon_create(slug, opts)
-
-
-
-Set source icon
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  clear: true # Boolean | 
-}
-
-begin
-  
-  api_instance.sources_all_set_icon_create(slug, opts)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_create: #{e}"
-end
-```
-
-#### Using the sources_all_set_icon_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_all_set_icon_create_with_http_info(slug, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_all_set_icon_create_with_http_info(slug, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file** | **File** |  | [optional] |
-| **clear** | **Boolean** |  | [optional][default to false] |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-## sources_all_set_icon_url_create
-
-> sources_all_set_icon_url_create(slug, file_path_request)
-
-
-
-Set source icon (as URL)
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-file_path_request = Authentik::Api::FilePathRequest.new({url: 'url_example'}) # FilePathRequest | 
-
-begin
-  
-  api_instance.sources_all_set_icon_url_create(slug, file_path_request)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_url_create: #{e}"
-end
-```
-
-#### Using the sources_all_set_icon_url_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_all_set_icon_url_create_with_http_info(slug, file_path_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_all_set_icon_url_create_with_http_info(slug, file_path_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_url_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file_path_request** | [**FilePathRequest**](FilePathRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -4337,7 +4192,7 @@ end
 api_instance = Authentik::Api::SourcesApi.new
 opts = {
   enabled: true, # Boolean | 
-  kadmin_type: 'Heimdal', # String | KAdmin server type  
+  kadmin_type: Authentik::Api::KadminTypeEnum::MIT, # KadminTypeEnum | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -4385,7 +4240,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **enabled** | **Boolean** |  | [optional] |
-| **kadmin_type** | **String** | KAdmin server type   | [optional] |
+| **kadmin_type** | [**KadminTypeEnum**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -5618,20 +5473,20 @@ opts = {
   consumer_key: 'consumer_key_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
+  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
   has_jwks: true, # Boolean | Only return sources with JWKS data
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: 'all', # String | 
+  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
   profile_url: 'profile_url_example', # String | 
   provider_type: 'provider_type_example', # String | 
   request_token_url: 'request_token_url_example', # String | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
+  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
 }
 
 begin
@@ -5672,20 +5527,20 @@ end
 | **consumer_key** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
+| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
 | **has_jwks** | **Boolean** | Only return sources with JWKS data | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
+| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
 | **profile_url** | **String** |  | [optional] |
 | **provider_type** | **String** |  | [optional] |
 | **request_token_url** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
+| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
 
 ### Return type
 
@@ -6217,16 +6072,16 @@ opts = {
   client_id: 'client_id_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
+  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: 'all', # String | 
+  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
+  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
 }
 
 begin
@@ -6265,16 +6120,16 @@ end
 | **client_id** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
+| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
+| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
+| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
 
 ### Return type
 
@@ -6877,22 +6732,22 @@ api_instance = Authentik::Api::SourcesApi.new
 opts = {
   allow_idp_initiated: true, # Boolean | 
   authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  binding_type: 'POST', # String | 
-  digest_algorithm: 'http://www.w3.org/2000/09/xmldsig#sha1', # String | 
+  binding_type: Authentik::Api::BindingTypeEnum::REDIRECT, # BindingTypeEnum | 
+  digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   issuer: 'issuer_example', # String | 
   managed: 'managed_example', # String | 
   name: 'name_example', # String | 
-  name_id_policy: 'urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName', # String | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
+  name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: 'all', # String | 
+  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
   pre_authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   search: 'search_example', # String | A search term.
-  signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#dsa-sha1', # String | 
+  signature_algorithm: Authentik::Api::SignatureAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGRSA_SHA1, # SignatureAlgorithmEnum | 
   signed_assertion: true, # Boolean | 
   signed_response: true, # Boolean | 
   signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -6900,7 +6755,7 @@ opts = {
   slug: 'slug_example', # String | 
   sso_url: 'sso_url_example', # String | 
   temporary_user_delete_after: 'temporary_user_delete_after_example', # String | 
-  user_matching_mode: 'email_deny', # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
+  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER, # UserMatchingModeEnum | 
   verification_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
 
@@ -6937,22 +6792,22 @@ end
 | ---- | ---- | ----------- | ----- |
 | **allow_idp_initiated** | **Boolean** |  | [optional] |
 | **authentication_flow** | **String** |  | [optional] |
-| **binding_type** | **String** |  | [optional] |
-| **digest_algorithm** | **String** |  | [optional] |
+| **binding_type** | [**BindingTypeEnum**](.md) |  | [optional] |
+| **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
 | **issuer** | **String** |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **name_id_policy** | **String** | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   | [optional] |
+| **name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
+| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
 | **pre_authentication_flow** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **signature_algorithm** | **String** |  | [optional] |
+| **signature_algorithm** | [**SignatureAlgorithmEnum**](.md) |  | [optional] |
 | **signed_assertion** | **Boolean** |  | [optional] |
 | **signed_response** | **Boolean** |  | [optional] |
 | **signing_kp** | **String** |  | [optional] |
@@ -6960,7 +6815,7 @@ end
 | **slug** | **String** |  | [optional] |
 | **sso_url** | **String** |  | [optional] |
 | **temporary_user_delete_after** | **String** |  | [optional] |
-| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
+| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
 | **verification_kp** | **String** |  | [optional] |
 
 ### Return type
@@ -8834,6 +8689,77 @@ end
 - **Accept**: application/json
 
 
+## sources_telegram_connect_user_create
+
+> <UserTelegramSourceConnection> sources_telegram_connect_user_create(slug, telegram_auth_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::SourcesApi.new
+slug = 'slug_example' # String | 
+telegram_auth_request = Authentik::Api::TelegramAuthRequest.new({id: 37, auth_date: 37, hash: 'hash_example'}) # TelegramAuthRequest | 
+
+begin
+  
+  result = api_instance.sources_telegram_connect_user_create(slug, telegram_auth_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SourcesApi->sources_telegram_connect_user_create: #{e}"
+end
+```
+
+#### Using the sources_telegram_connect_user_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserTelegramSourceConnection>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SourcesApi->sources_telegram_connect_user_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **slug** | **String** |  |  |
+| **telegram_auth_request** | [**TelegramAuthRequest**](TelegramAuthRequest.md) |  |  |
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## sources_telegram_create
 
 > <TelegramSource> sources_telegram_create(telegram_source_request)
@@ -8996,17 +8922,17 @@ opts = {
   bot_username: 'bot_username_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
+  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: 'all', # String | 
+  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
   request_message_access: true, # Boolean | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
+  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
 }
 
 begin
@@ -9044,17 +8970,17 @@ end
 | **bot_username** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
+| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
+| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
 | **request_message_access** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
+| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
 
 ### Return type
 
