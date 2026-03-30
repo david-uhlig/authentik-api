@@ -8,9 +8,11 @@
 | **component** | **String** |  | [optional][default to &#39;ak-stage-identification&#39;] |
 | **response_errors** | **Hash&lt;String, Array&lt;ErrorDetail&gt;&gt;** |  | [optional] |
 | **user_fields** | **Array&lt;String&gt;** |  |  |
+| **pending_user_identifier** | **String** |  | [optional] |
 | **password_fields** | **Boolean** |  |  |
 | **allow_show_password** | **Boolean** |  | [optional][default to false] |
 | **application_pre** | **String** |  | [optional] |
+| **application_pre_launch** | **String** |  | [optional] |
 | **flow_designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  |  |
 | **captcha_stage** | [**CaptchaChallenge**](CaptchaChallenge.md) |  | [optional] |
 | **enroll_url** | **String** |  | [optional] |
@@ -20,6 +22,7 @@
 | **sources** | [**Array&lt;LoginSource&gt;**](LoginSource.md) |  | [optional] |
 | **show_source_labels** | **Boolean** |  |  |
 | **enable_remember_me** | **Boolean** |  | [optional][default to true] |
+| **passkey_challenge** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 
@@ -31,9 +34,11 @@ instance = Authentik::Api::IdentificationChallenge.new(
   component: null,
   response_errors: null,
   user_fields: null,
+  pending_user_identifier: null,
   password_fields: null,
   allow_show_password: null,
   application_pre: null,
+  application_pre_launch: null,
   flow_designation: null,
   captcha_stage: null,
   enroll_url: null,
@@ -42,7 +47,8 @@ instance = Authentik::Api::IdentificationChallenge.new(
   primary_action: null,
   sources: null,
   show_source_labels: null,
-  enable_remember_me: null
+  enable_remember_me: null,
+  passkey_challenge: null
 )
 ```
 

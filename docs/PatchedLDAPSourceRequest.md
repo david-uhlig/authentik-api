@@ -7,6 +7,7 @@
 | **name** | **String** | Source&#39;s display Name. | [optional] |
 | **slug** | **String** | Internal source name, used in URLs. | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
+| **promoted** | **Boolean** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] |
 | **authentication_flow** | **String** | Flow to use when authenticating existing users. | [optional] |
 | **enrollment_flow** | **String** | Flow to use when enrolling new users. | [optional] |
 | **user_property_mappings** | **Array&lt;String&gt;** |  | [optional] |
@@ -14,6 +15,7 @@
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
 | **user_matching_mode** | [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] |
 | **user_path_template** | **String** |  | [optional] |
+| **icon** | **String** |  | [optional] |
 | **server_uri** | **String** |  | [optional] |
 | **peer_certificate** | **String** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] |
 | **client_certificate** | **String** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] |
@@ -36,6 +38,7 @@
 | **sync_parent_group** | **String** |  | [optional] |
 | **lookup_groups_from_user** | **Boolean** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] |
 | **delete_not_found_objects** | **Boolean** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] |
+| **sync_outgoing_trigger_mode** | [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] |
 
 ## Example
 
@@ -46,6 +49,7 @@ instance = Authentik::Api::PatchedLDAPSourceRequest.new(
   name: null,
   slug: null,
   enabled: null,
+  promoted: null,
   authentication_flow: null,
   enrollment_flow: null,
   user_property_mappings: null,
@@ -53,6 +57,7 @@ instance = Authentik::Api::PatchedLDAPSourceRequest.new(
   policy_engine_mode: null,
   user_matching_mode: null,
   user_path_template: null,
+  icon: null,
   server_uri: null,
   peer_certificate: null,
   client_certificate: null,
@@ -74,7 +79,8 @@ instance = Authentik::Api::PatchedLDAPSourceRequest.new(
   sync_groups: null,
   sync_parent_group: null,
   lookup_groups_from_user: null,
-  delete_not_found_objects: null
+  delete_not_found_objects: null,
+  sync_outgoing_trigger_mode: null
 )
 ```
 

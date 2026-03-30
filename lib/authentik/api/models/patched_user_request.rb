@@ -22,6 +22,8 @@ module Authentik::Api
 
     attr_accessor :groups
 
+    attr_accessor :roles
+
     attr_accessor :email
 
     attr_accessor :attributes
@@ -60,6 +62,7 @@ module Authentik::Api
         :'is_active' => :'is_active',
         :'last_login' => :'last_login',
         :'groups' => :'groups',
+        :'roles' => :'roles',
         :'email' => :'email',
         :'attributes' => :'attributes',
         :'path' => :'path',
@@ -85,6 +88,7 @@ module Authentik::Api
         :'is_active' => :'Boolean',
         :'last_login' => :'Time',
         :'groups' => :'Array<String>',
+        :'roles' => :'Array<String>',
         :'email' => :'String',
         :'attributes' => :'Hash<String, Object>',
         :'path' => :'String',
@@ -134,6 +138,12 @@ module Authentik::Api
       if attributes.key?(:'groups')
         if (value = attributes[:'groups']).is_a?(Array)
           self.groups = value
+        end
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
         end
       end
 
@@ -247,6 +257,7 @@ module Authentik::Api
           is_active == o.is_active &&
           last_login == o.last_login &&
           groups == o.groups &&
+          roles == o.roles &&
           email == o.email &&
           attributes == o.attributes &&
           path == o.path &&
@@ -262,7 +273,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [username, name, is_active, last_login, groups, email, attributes, path, type].hash
+      [username, name, is_active, last_login, groups, roles, email, attributes, path, type].hash
     end
 
     # Builds the object from hash

@@ -892,150 +892,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Set application icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [nil]
-    def core_applications_set_icon_create(slug, opts = {})
-      core_applications_set_icon_create_with_http_info(slug, opts)
-      nil
-    end
-
-    # Set application icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def core_applications_set_icon_create_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_set_icon_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_set_icon_create"
-      end
-      # resource path
-      local_var_path = '/core/applications/{slug}/set_icon/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['multipart/form-data'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
-      form_params['clear'] = opts[:'clear'] if !opts[:'clear'].nil?
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"CoreApi.core_applications_set_icon_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CoreApi#core_applications_set_icon_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Set application icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def core_applications_set_icon_url_create(slug, file_path_request, opts = {})
-      core_applications_set_icon_url_create_with_http_info(slug, file_path_request, opts)
-      nil
-    end
-
-    # Set application icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def core_applications_set_icon_url_create_with_http_info(slug, file_path_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_set_icon_url_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_set_icon_url_create"
-      end
-      # verify the required parameter 'file_path_request' is set
-      if @api_client.config.client_side_validation && file_path_request.nil?
-        fail ArgumentError, "Missing the required parameter 'file_path_request' when calling CoreApi.core_applications_set_icon_url_create"
-      end
-      # resource path
-      local_var_path = '/core/applications/{slug}/set_icon_url/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_path_request)
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"CoreApi.core_applications_set_icon_url_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: CoreApi#core_applications_set_icon_url_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Application Viewset
     # @param slug [String] 
     # @param application_request [ApplicationRequest] 
@@ -1165,6 +1021,68 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_applications_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Bulk revoke all sessions for multiple users
+    # @param user_pks [Array<Integer>] List of user IDs to revoke all sessions for
+    # @param [Hash] opts the optional parameters
+    # @return [BulkDeleteSessionResponse]
+    def core_authenticated_sessions_bulk_delete_destroy(user_pks, opts = {})
+      data, _status_code, _headers = core_authenticated_sessions_bulk_delete_destroy_with_http_info(user_pks, opts)
+      data
+    end
+
+    # Bulk revoke all sessions for multiple users
+    # @param user_pks [Array<Integer>] List of user IDs to revoke all sessions for
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(BulkDeleteSessionResponse, Integer, Hash)>] BulkDeleteSessionResponse data, response status code and response headers
+    def core_authenticated_sessions_bulk_delete_destroy_with_http_info(user_pks, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_authenticated_sessions_bulk_delete_destroy ...'
+      end
+      # verify the required parameter 'user_pks' is set
+      if @api_client.config.client_side_validation && user_pks.nil?
+        fail ArgumentError, "Missing the required parameter 'user_pks' when calling CoreApi.core_authenticated_sessions_bulk_delete_destroy"
+      end
+      # resource path
+      local_var_path = '/core/authenticated_sessions/bulk_delete/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'user_pks'] = @api_client.build_collection_param(user_pks, :multi)
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BulkDeleteSessionResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_authenticated_sessions_bulk_delete_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_authenticated_sessions_bulk_delete_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2187,6 +2105,8 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
+    # @option opts [Boolean] :include_inherited_roles  (default to false)
+    # @option opts [Boolean] :include_parents  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @option opts [Boolean] :is_superuser 
     # @option opts [Array<Integer>] :members_by_pk 
@@ -2206,6 +2126,8 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
+    # @option opts [Boolean] :include_inherited_roles  (default to false)
+    # @option opts [Boolean] :include_parents  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @option opts [Boolean] :is_superuser 
     # @option opts [Array<Integer>] :members_by_pk 
@@ -2227,6 +2149,8 @@ module Authentik::Api
       query_params = opts[:query_params] || {}
       query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
+      query_params[:'include_inherited_roles'] = opts[:'include_inherited_roles'] if !opts[:'include_inherited_roles'].nil?
+      query_params[:'include_parents'] = opts[:'include_parents'] if !opts[:'include_parents'].nil?
       query_params[:'include_users'] = opts[:'include_users'] if !opts[:'include_users'].nil?
       query_params[:'is_superuser'] = opts[:'is_superuser'] if !opts[:'is_superuser'].nil?
       query_params[:'members_by_pk'] = @api_client.build_collection_param(opts[:'members_by_pk'], :multi) if !opts[:'members_by_pk'].nil?
@@ -2415,6 +2339,8 @@ module Authentik::Api
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_children  (default to false)
+    # @option opts [Boolean] :include_inherited_roles  (default to false)
+    # @option opts [Boolean] :include_parents  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @return [Group]
     def core_groups_retrieve(group_uuid, opts = {})
@@ -2426,6 +2352,8 @@ module Authentik::Api
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :include_children  (default to false)
+    # @option opts [Boolean] :include_inherited_roles  (default to false)
+    # @option opts [Boolean] :include_parents  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @return [Array<(Group, Integer, Hash)>] Group data, response status code and response headers
     def core_groups_retrieve_with_http_info(group_uuid, opts = {})
@@ -2442,6 +2370,8 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
+      query_params[:'include_inherited_roles'] = opts[:'include_inherited_roles'] if !opts[:'include_inherited_roles'].nil?
+      query_params[:'include_parents'] = opts[:'include_parents'] if !opts[:'include_parents'].nil?
       query_params[:'include_users'] = opts[:'include_users'] if !opts[:'include_users'].nil?
 
       # header parameters
@@ -2744,7 +2674,7 @@ module Authentik::Api
     # @option opts [Time] :expires 
     # @option opts [Boolean] :expiring 
     # @option opts [String] :identifier 
-    # @option opts [String] :intent 
+    # @option opts [IntentEnum] :intent 
     # @option opts [String] :managed 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2763,7 +2693,7 @@ module Authentik::Api
     # @option opts [Time] :expires 
     # @option opts [Boolean] :expiring 
     # @option opts [String] :identifier 
-    # @option opts [String] :intent 
+    # @option opts [IntentEnum] :intent 
     # @option opts [String] :managed 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2774,10 +2704,6 @@ module Authentik::Api
     def core_tokens_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_tokens_list ...'
-      end
-      allowable_values = ["api", "app_password", "recovery", "verification"]
-      if @api_client.config.client_side_validation && opts[:'intent'] && !allowable_values.include?(opts[:'intent'])
-        fail ArgumentError, "invalid value for \"intent\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/core/tokens/'
@@ -3674,6 +3600,139 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :attributes Attributes
+    # @option opts [Time] :date_joined 
+    # @option opts [Time] :date_joined__gt 
+    # @option opts [Time] :date_joined__lt 
+    # @option opts [String] :email 
+    # @option opts [Array<String>] :groups_by_name 
+    # @option opts [Array<String>] :groups_by_pk 
+    # @option opts [Boolean] :is_active 
+    # @option opts [Boolean] :is_superuser 
+    # @option opts [Time] :last_login 
+    # @option opts [Time] :last_login__gt 
+    # @option opts [Boolean] :last_login__isnull 
+    # @option opts [Time] :last_login__lt 
+    # @option opts [Time] :last_updated 
+    # @option opts [Time] :last_updated__gt 
+    # @option opts [Time] :last_updated__lt 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :path 
+    # @option opts [String] :path_startswith 
+    # @option opts [Array<String>] :roles_by_name 
+    # @option opts [Array<String>] :roles_by_pk 
+    # @option opts [String] :search A search term.
+    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [String] :username 
+    # @option opts [String] :uuid 
+    # @return [DataExport]
+    def core_users_export_create(opts = {})
+      data, _status_code, _headers = core_users_export_create_with_http_info(opts)
+      data
+    end
+
+    # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :attributes Attributes
+    # @option opts [Time] :date_joined 
+    # @option opts [Time] :date_joined__gt 
+    # @option opts [Time] :date_joined__lt 
+    # @option opts [String] :email 
+    # @option opts [Array<String>] :groups_by_name 
+    # @option opts [Array<String>] :groups_by_pk 
+    # @option opts [Boolean] :is_active 
+    # @option opts [Boolean] :is_superuser 
+    # @option opts [Time] :last_login 
+    # @option opts [Time] :last_login__gt 
+    # @option opts [Boolean] :last_login__isnull 
+    # @option opts [Time] :last_login__lt 
+    # @option opts [Time] :last_updated 
+    # @option opts [Time] :last_updated__gt 
+    # @option opts [Time] :last_updated__lt 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :path 
+    # @option opts [String] :path_startswith 
+    # @option opts [Array<String>] :roles_by_name 
+    # @option opts [Array<String>] :roles_by_pk 
+    # @option opts [String] :search A search term.
+    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [String] :username 
+    # @option opts [String] :uuid 
+    # @return [Array<(DataExport, Integer, Hash)>] DataExport data, response status code and response headers
+    def core_users_export_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_export_create ...'
+      end
+      # resource path
+      local_var_path = '/core/users/export/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
+      query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
+      query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
+      query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?
+      query_params[:'email'] = opts[:'email'] if !opts[:'email'].nil?
+      query_params[:'groups_by_name'] = @api_client.build_collection_param(opts[:'groups_by_name'], :multi) if !opts[:'groups_by_name'].nil?
+      query_params[:'groups_by_pk'] = @api_client.build_collection_param(opts[:'groups_by_pk'], :multi) if !opts[:'groups_by_pk'].nil?
+      query_params[:'is_active'] = opts[:'is_active'] if !opts[:'is_active'].nil?
+      query_params[:'is_superuser'] = opts[:'is_superuser'] if !opts[:'is_superuser'].nil?
+      query_params[:'last_login'] = opts[:'last_login'] if !opts[:'last_login'].nil?
+      query_params[:'last_login__gt'] = opts[:'last_login__gt'] if !opts[:'last_login__gt'].nil?
+      query_params[:'last_login__isnull'] = opts[:'last_login__isnull'] if !opts[:'last_login__isnull'].nil?
+      query_params[:'last_login__lt'] = opts[:'last_login__lt'] if !opts[:'last_login__lt'].nil?
+      query_params[:'last_updated'] = opts[:'last_updated'] if !opts[:'last_updated'].nil?
+      query_params[:'last_updated__gt'] = opts[:'last_updated__gt'] if !opts[:'last_updated__gt'].nil?
+      query_params[:'last_updated__lt'] = opts[:'last_updated__lt'] if !opts[:'last_updated__lt'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
+      query_params[:'path_startswith'] = opts[:'path_startswith'] if !opts[:'path_startswith'].nil?
+      query_params[:'roles_by_name'] = @api_client.build_collection_param(opts[:'roles_by_name'], :multi) if !opts[:'roles_by_name'].nil?
+      query_params[:'roles_by_pk'] = @api_client.build_collection_param(opts[:'roles_by_pk'], :multi) if !opts[:'roles_by_pk'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'type'] = @api_client.build_collection_param(opts[:'type'], :multi) if !opts[:'type'].nil?
+      query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
+      query_params[:'uuid'] = opts[:'uuid'] if !opts[:'uuid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DataExport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_export_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_export_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Impersonate a user
     # @param id [Integer] A unique integer value identifying this User.
     # @param impersonation_request [ImpersonationRequest] 
@@ -3811,8 +3870,13 @@ module Authentik::Api
     # @option opts [Array<String>] :groups_by_name 
     # @option opts [Array<String>] :groups_by_pk 
     # @option opts [Boolean] :include_groups  (default to true)
+    # @option opts [Boolean] :include_roles  (default to true)
     # @option opts [Boolean] :is_active 
     # @option opts [Boolean] :is_superuser 
+    # @option opts [Time] :last_login 
+    # @option opts [Time] :last_login__gt 
+    # @option opts [Boolean] :last_login__isnull 
+    # @option opts [Time] :last_login__lt 
     # @option opts [Time] :last_updated 
     # @option opts [Time] :last_updated__gt 
     # @option opts [Time] :last_updated__lt 
@@ -3822,8 +3886,10 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :path 
     # @option opts [String] :path_startswith 
+    # @option opts [Array<String>] :roles_by_name 
+    # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<String>] :type 
+    # @option opts [Array<UserTypeEnum>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [PaginatedUserList]
@@ -3842,8 +3908,13 @@ module Authentik::Api
     # @option opts [Array<String>] :groups_by_name 
     # @option opts [Array<String>] :groups_by_pk 
     # @option opts [Boolean] :include_groups  (default to true)
+    # @option opts [Boolean] :include_roles  (default to true)
     # @option opts [Boolean] :is_active 
     # @option opts [Boolean] :is_superuser 
+    # @option opts [Time] :last_login 
+    # @option opts [Time] :last_login__gt 
+    # @option opts [Boolean] :last_login__isnull 
+    # @option opts [Time] :last_login__lt 
     # @option opts [Time] :last_updated 
     # @option opts [Time] :last_updated__gt 
     # @option opts [Time] :last_updated__lt 
@@ -3853,18 +3924,16 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :path 
     # @option opts [String] :path_startswith 
+    # @option opts [Array<String>] :roles_by_name 
+    # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<String>] :type 
+    # @option opts [Array<UserTypeEnum>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [Array<(PaginatedUserList, Integer, Hash)>] PaginatedUserList data, response status code and response headers
     def core_users_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_users_list ...'
-      end
-      allowable_values = ["external", "internal", "internal_service_account", "service_account"]
-      if @api_client.config.client_side_validation && opts[:'type'] && !opts[:'type'].all? { |item| allowable_values.include?(item) }
-        fail ArgumentError, "invalid value for \"type\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/core/users/'
@@ -3879,8 +3948,13 @@ module Authentik::Api
       query_params[:'groups_by_name'] = @api_client.build_collection_param(opts[:'groups_by_name'], :multi) if !opts[:'groups_by_name'].nil?
       query_params[:'groups_by_pk'] = @api_client.build_collection_param(opts[:'groups_by_pk'], :multi) if !opts[:'groups_by_pk'].nil?
       query_params[:'include_groups'] = opts[:'include_groups'] if !opts[:'include_groups'].nil?
+      query_params[:'include_roles'] = opts[:'include_roles'] if !opts[:'include_roles'].nil?
       query_params[:'is_active'] = opts[:'is_active'] if !opts[:'is_active'].nil?
       query_params[:'is_superuser'] = opts[:'is_superuser'] if !opts[:'is_superuser'].nil?
+      query_params[:'last_login'] = opts[:'last_login'] if !opts[:'last_login'].nil?
+      query_params[:'last_login__gt'] = opts[:'last_login__gt'] if !opts[:'last_login__gt'].nil?
+      query_params[:'last_login__isnull'] = opts[:'last_login__isnull'] if !opts[:'last_login__isnull'].nil?
+      query_params[:'last_login__lt'] = opts[:'last_login__lt'] if !opts[:'last_login__lt'].nil?
       query_params[:'last_updated'] = opts[:'last_updated'] if !opts[:'last_updated'].nil?
       query_params[:'last_updated__gt'] = opts[:'last_updated__gt'] if !opts[:'last_updated__gt'].nil?
       query_params[:'last_updated__lt'] = opts[:'last_updated__lt'] if !opts[:'last_updated__lt'].nil?
@@ -3890,6 +3964,8 @@ module Authentik::Api
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'path'] = opts[:'path'] if !opts[:'path'].nil?
       query_params[:'path_startswith'] = opts[:'path_startswith'] if !opts[:'path_startswith'].nil?
+      query_params[:'roles_by_name'] = @api_client.build_collection_param(opts[:'roles_by_name'], :multi) if !opts[:'roles_by_name'].nil?
+      query_params[:'roles_by_pk'] = @api_client.build_collection_param(opts[:'roles_by_pk'], :multi) if !opts[:'roles_by_pk'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'type'] = @api_client.build_collection_param(opts[:'type'], :multi) if !opts[:'type'].nil?
       query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
@@ -4113,6 +4189,7 @@ module Authentik::Api
     # Create a temporary link that a user can use to recover their account
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
+    # @option opts [UserRecoveryLinkRequest] :user_recovery_link_request 
     # @return [Link]
     def core_users_recovery_create(id, opts = {})
       data, _status_code, _headers = core_users_recovery_create_with_http_info(id, opts)
@@ -4122,6 +4199,7 @@ module Authentik::Api
     # Create a temporary link that a user can use to recover their account
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
+    # @option opts [UserRecoveryLinkRequest] :user_recovery_link_request 
     # @return [Array<(Link, Integer, Hash)>] Link data, response status code and response headers
     def core_users_recovery_create_with_http_info(id, opts = {})
       if @api_client.config.debugging
@@ -4141,12 +4219,17 @@ module Authentik::Api
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'user_recovery_link_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'Link'
@@ -4172,49 +4255,53 @@ module Authentik::Api
     end
 
     # Send an email with a temporary link that a user can use to recover their account
-    # @param email_stage [String] 
     # @param id [Integer] A unique integer value identifying this User.
+    # @param user_recovery_email_request [UserRecoveryEmailRequest] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def core_users_recovery_email_create(email_stage, id, opts = {})
-      core_users_recovery_email_create_with_http_info(email_stage, id, opts)
+    def core_users_recovery_email_create(id, user_recovery_email_request, opts = {})
+      core_users_recovery_email_create_with_http_info(id, user_recovery_email_request, opts)
       nil
     end
 
     # Send an email with a temporary link that a user can use to recover their account
-    # @param email_stage [String] 
     # @param id [Integer] A unique integer value identifying this User.
+    # @param user_recovery_email_request [UserRecoveryEmailRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def core_users_recovery_email_create_with_http_info(email_stage, id, opts = {})
+    def core_users_recovery_email_create_with_http_info(id, user_recovery_email_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_users_recovery_email_create ...'
-      end
-      # verify the required parameter 'email_stage' is set
-      if @api_client.config.client_side_validation && email_stage.nil?
-        fail ArgumentError, "Missing the required parameter 'email_stage' when calling CoreApi.core_users_recovery_email_create"
       end
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_recovery_email_create"
+      end
+      # verify the required parameter 'user_recovery_email_request' is set
+      if @api_client.config.client_side_validation && user_recovery_email_request.nil?
+        fail ArgumentError, "Missing the required parameter 'user_recovery_email_request' when calling CoreApi.core_users_recovery_email_create"
       end
       # resource path
       local_var_path = '/core/users/{id}/recovery_email/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'email_stage'] = email_stage
 
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_recovery_email_request)
 
       # return_type
       return_type = opts[:debug_return_type]

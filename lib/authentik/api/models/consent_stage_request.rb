@@ -12,8 +12,6 @@ module Authentik::Api
   class ConsentStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :mode
 
     # Offset after which consent expires. (Format: hours=1;minutes=2;seconds=3).
@@ -45,7 +43,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'mode' => :'mode',
         :'consent_expire_in' => :'consent_expire_in'
       }
@@ -65,8 +62,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
-        :'mode' => :'ConsentStageModeEnum',
+        :'mode' => :'ConsentModeEnum',
         :'consent_expire_in' => :'String'
       }
     end
@@ -97,12 +93,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'mode')
@@ -178,7 +168,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           mode == o.mode &&
           consent_expire_in == o.consent_expire_in
     end
@@ -192,7 +181,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, mode, consent_expire_in].hash
+      [name, mode, consent_expire_in].hash
     end
 
     # Builds the object from hash

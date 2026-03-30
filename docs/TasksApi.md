@@ -13,7 +13,7 @@ All URIs are relative to */api/v3*
 | [**tasks_tasks_retrieve**](TasksApi.md#tasks_tasks_retrieve) | **GET** /tasks/tasks/{message_id}/ |  |
 | [**tasks_tasks_retry_create**](TasksApi.md#tasks_tasks_retry_create) | **POST** /tasks/tasks/{message_id}/retry/ |  |
 | [**tasks_tasks_status_retrieve**](TasksApi.md#tasks_tasks_status_retrieve) | **GET** /tasks/tasks/status/ |  |
-| [**tasks_workers_list**](TasksApi.md#tasks_workers_list) | **GET** /tasks/workers |  |
+| [**tasks_workers_list**](TasksApi.md#tasks_workers_list) | **GET** /tasks/workers/ |  |
 
 
 ## tasks_schedules_list
@@ -398,7 +398,7 @@ end
 api_instance = Authentik::Api::TasksApi.new
 opts = {
   actor_name: 'actor_name_example', # String | 
-  aggregated_status: ['consumed'], # Array<String> | 
+  aggregated_status: [Authentik::Api::TaskAggregatedStatusEnum::QUEUED], # Array<TaskAggregatedStatusEnum> | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -408,7 +408,7 @@ opts = {
   rel_obj_id: 'rel_obj_id_example', # String | 
   rel_obj_id__isnull: true, # Boolean | 
   search: 'search_example', # String | A search term.
-  state: 'consumed' # String | Task status  
+  state: Authentik::Api::TaskStatusEnum::QUEUED # TaskStatusEnum | 
 }
 
 begin
@@ -443,7 +443,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **actor_name** | **String** |  | [optional] |
-| **aggregated_status** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **aggregated_status** | [**Array&lt;TaskAggregatedStatusEnum&gt;**](TaskAggregatedStatusEnum.md) |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -453,7 +453,7 @@ end
 | **rel_obj_id** | **String** |  | [optional] |
 | **rel_obj_id__isnull** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **state** | **String** | Task status   | [optional] |
+| **state** | [**TaskStatusEnum**](.md) |  | [optional] |
 
 ### Return type
 

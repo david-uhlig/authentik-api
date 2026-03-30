@@ -149,46 +149,6 @@ describe 'RbacApi' do
     end
   end
 
-  # unit tests for rbac_permissions_assigned_by_users_assign
-  # Assign permission(s) to user
-  # @param id A unique integer value identifying this User.
-  # @param permission_assign_request 
-  # @param [Hash] opts the optional parameters
-  # @return [Array<PermissionAssignResult>]
-  describe 'rbac_permissions_assigned_by_users_assign test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_assigned_by_users_list
-  # Get assigned object permissions for a single object
-  # @param model 
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :object_pk 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @return [PaginatedUserAssignedObjectPermissionList]
-  describe 'rbac_permissions_assigned_by_users_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_assigned_by_users_unassign_partial_update
-  # Unassign permission(s) to user. When &#x60;object_pk&#x60; is set, the permissions are only assigned to the specific object, otherwise they are assigned globally.
-  # @param id A unique integer value identifying this User.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedPermissionAssignRequest] :patched_permission_assign_request 
-  # @return [nil]
-  describe 'rbac_permissions_assigned_by_users_unassign_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for rbac_permissions_list
   # Read-only list of all permissions, filterable by model and app
   # @param [Hash] opts the optional parameters
@@ -200,7 +160,6 @@ describe 'RbacApi' do
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :role 
   # @option opts [String] :search A search term.
-  # @option opts [Integer] :user 
   # @return [PaginatedPermissionList]
   describe 'rbac_permissions_list test' do
     it 'should work' do
@@ -214,17 +173,6 @@ describe 'RbacApi' do
   # @param [Hash] opts the optional parameters
   # @return [Permission]
   describe 'rbac_permissions_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_roles_destroy
-  # Get a role&#39;s assigned object permissions
-  # @param id A unique integer value identifying this group object permission.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'rbac_permissions_roles_destroy test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -245,97 +193,13 @@ describe 'RbacApi' do
     end
   end
 
-  # unit tests for rbac_permissions_roles_partial_update
-  # Get a role&#39;s assigned object permissions
-  # @param id A unique integer value identifying this group object permission.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedExtraRoleObjectPermissionRequest] :patched_extra_role_object_permission_request 
-  # @return [ExtraRoleObjectPermission]
-  describe 'rbac_permissions_roles_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_roles_retrieve
-  # Get a role&#39;s assigned object permissions
-  # @param id A unique integer value identifying this group object permission.
-  # @param [Hash] opts the optional parameters
-  # @return [ExtraRoleObjectPermission]
-  describe 'rbac_permissions_roles_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_roles_update
-  # Get a role&#39;s assigned object permissions
-  # @param id A unique integer value identifying this group object permission.
-  # @param extra_role_object_permission_request 
-  # @param [Hash] opts the optional parameters
-  # @return [ExtraRoleObjectPermission]
-  describe 'rbac_permissions_roles_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_users_destroy
-  # Get a users&#39;s assigned object permissions
-  # @param id A unique integer value identifying this user object permission.
+  # unit tests for rbac_roles_add_user_create
+  # Add user to role
+  # @param uuid A UUID string identifying this Role.
+  # @param user_account_serializer_for_role_request 
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'rbac_permissions_users_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_users_list
-  # Get a users&#39;s assigned object permissions
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [Integer] :user_id 
-  # @return [PaginatedExtraUserObjectPermissionList]
-  describe 'rbac_permissions_users_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_users_partial_update
-  # Get a users&#39;s assigned object permissions
-  # @param id A unique integer value identifying this user object permission.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedExtraUserObjectPermissionRequest] :patched_extra_user_object_permission_request 
-  # @return [ExtraUserObjectPermission]
-  describe 'rbac_permissions_users_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_users_retrieve
-  # Get a users&#39;s assigned object permissions
-  # @param id A unique integer value identifying this user object permission.
-  # @param [Hash] opts the optional parameters
-  # @return [ExtraUserObjectPermission]
-  describe 'rbac_permissions_users_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_permissions_users_update
-  # Get a users&#39;s assigned object permissions
-  # @param id A unique integer value identifying this user object permission.
-  # @param extra_user_object_permission_request 
-  # @param [Hash] opts the optional parameters
-  # @return [ExtraUserObjectPermission]
-  describe 'rbac_permissions_users_update test' do
+  describe 'rbac_roles_add_user_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -366,11 +230,16 @@ describe 'RbacApi' do
   # unit tests for rbac_roles_list
   # Role viewset
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :groups 
+  # @option opts [Boolean] :inherited Include inherited roles (requires users or groups filter)
+  # @option opts [Array<String>] :managed 
+  # @option opts [Boolean] :managed__isnull 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
+  # @option opts [Integer] :users 
   # @return [PaginatedRoleList]
   describe 'rbac_roles_list test' do
     it 'should work' do
@@ -385,6 +254,18 @@ describe 'RbacApi' do
   # @option opts [PatchedRoleRequest] :patched_role_request 
   # @return [Role]
   describe 'rbac_roles_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_roles_remove_user_create
+  # Remove user from role
+  # @param uuid A UUID string identifying this Role.
+  # @param user_account_serializer_for_role_request 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'rbac_roles_remove_user_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

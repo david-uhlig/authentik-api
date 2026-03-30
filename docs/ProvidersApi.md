@@ -120,6 +120,15 @@ All URIs are relative to */api/v3*
 | [**providers_ssf_retrieve**](ProvidersApi.md#providers_ssf_retrieve) | **GET** /providers/ssf/{id}/ |  |
 | [**providers_ssf_update**](ProvidersApi.md#providers_ssf_update) | **PUT** /providers/ssf/{id}/ |  |
 | [**providers_ssf_used_by_list**](ProvidersApi.md#providers_ssf_used_by_list) | **GET** /providers/ssf/{id}/used_by/ |  |
+| [**providers_wsfed_create**](ProvidersApi.md#providers_wsfed_create) | **POST** /providers/wsfed/ |  |
+| [**providers_wsfed_destroy**](ProvidersApi.md#providers_wsfed_destroy) | **DELETE** /providers/wsfed/{id}/ |  |
+| [**providers_wsfed_list**](ProvidersApi.md#providers_wsfed_list) | **GET** /providers/wsfed/ |  |
+| [**providers_wsfed_metadata_retrieve**](ProvidersApi.md#providers_wsfed_metadata_retrieve) | **GET** /providers/wsfed/{id}/metadata/ |  |
+| [**providers_wsfed_partial_update**](ProvidersApi.md#providers_wsfed_partial_update) | **PATCH** /providers/wsfed/{id}/ |  |
+| [**providers_wsfed_preview_user_retrieve**](ProvidersApi.md#providers_wsfed_preview_user_retrieve) | **GET** /providers/wsfed/{id}/preview_user/ |  |
+| [**providers_wsfed_retrieve**](ProvidersApi.md#providers_wsfed_retrieve) | **GET** /providers/wsfed/{id}/ |  |
+| [**providers_wsfed_update**](ProvidersApi.md#providers_wsfed_update) | **PUT** /providers/wsfed/{id}/ |  |
+| [**providers_wsfed_used_by_list**](ProvidersApi.md#providers_wsfed_used_by_list) | **GET** /providers/wsfed/{id}/used_by/ |  |
 
 
 ## providers_all_destroy
@@ -3870,9 +3879,9 @@ opts = {
   application: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   authorization_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   client_id: 'client_id_example', # String | 
-  client_type: 'confidential', # String | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  
+  client_type: Authentik::Api::ClientTypeEnum::CONFIDENTIAL, # ClientTypeEnum | 
   include_claims_in_id_token: true, # Boolean | 
-  issuer_mode: 'global', # String | Configure how the issuer field of the ID Token should be filled.  
+  issuer_mode: Authentik::Api::IssuerModeEnum::GLOBAL, # IssuerModeEnum | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -3881,7 +3890,7 @@ opts = {
   refresh_token_validity: 'refresh_token_validity_example', # String | 
   search: 'search_example', # String | A search term.
   signing_key: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  sub_mode: 'hashed_user_id' # String | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  
+  sub_mode: Authentik::Api::SubModeEnum::HASHED_USER_ID # SubModeEnum | 
 }
 
 begin
@@ -3920,9 +3929,9 @@ end
 | **application** | **String** |  | [optional] |
 | **authorization_flow** | **String** |  | [optional] |
 | **client_id** | **String** |  | [optional] |
-| **client_type** | **String** | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable   | [optional] |
+| **client_type** | [**ClientTypeEnum**](.md) |  | [optional] |
 | **include_claims_in_id_token** | **Boolean** |  | [optional] |
-| **issuer_mode** | **String** | Configure how the issuer field of the ID Token should be filled.   | [optional] |
+| **issuer_mode** | [**IssuerModeEnum**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -3931,7 +3940,7 @@ end
 | **refresh_token_validity** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **signing_key** | **String** |  | [optional] |
-| **sub_mode** | **String** | Configure what data should be used as unique User Identifier. For most cases, the default should be fine.   | [optional] |
+| **sub_mode** | [**SubModeEnum**](.md) |  | [optional] |
 
 ### Return type
 
@@ -6040,7 +6049,7 @@ nil (empty response body)
 
 ## providers_saml_import_metadata_create
 
-> providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+> <SAMLProvider> providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
 
 
 
@@ -6065,7 +6074,8 @@ file = File.new('/path/to/some/file') # File |
 
 begin
   
-  api_instance.providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+  result = api_instance.providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+  p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling ProvidersApi->providers_saml_import_metadata_create: #{e}"
 end
@@ -6073,9 +6083,9 @@ end
 
 #### Using the providers_saml_import_metadata_create_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
+> <Array(<SAMLProvider>, Integer, Hash)> providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
 
 ```ruby
 begin
@@ -6083,7 +6093,7 @@ begin
   data, status_code, headers = api_instance.providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <SAMLProvider>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling ProvidersApi->providers_saml_import_metadata_create_with_http_info: #{e}"
 end
@@ -6100,7 +6110,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**SAMLProvider**](SAMLProvider.md)
 
 ### Authorization
 
@@ -6141,14 +6151,14 @@ opts = {
   authn_context_class_ref_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   authorization_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   backchannel_application: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  default_name_id_policy: 'urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName', # String | 
+  default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   default_relay_state: 'default_relay_state_example', # String | 
-  digest_algorithm: 'http://www.w3.org/2000/09/xmldsig#sha1', # String | 
+  digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer: 'issuer_example', # String | 
-  logout_method: 'backchannel', # String | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
+  logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -6159,12 +6169,13 @@ opts = {
   session_valid_not_on_or_after: 'session_valid_not_on_or_after_example', # String | 
   sign_assertion: true, # Boolean | 
   sign_logout_request: true, # Boolean | 
+  sign_logout_response: true, # Boolean | 
   sign_response: true, # Boolean | 
-  signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#dsa-sha1', # String | 
+  signature_algorithm: Authentik::Api::SignatureAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGRSA_SHA1, # SignatureAlgorithmEnum | 
   signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  sls_binding: 'post', # String | This determines how authentik sends the logout response back to the Service Provider.  
+  sls_binding: Authentik::Api::SAMLBindingsEnum::REDIRECT, # SAMLBindingsEnum | 
   sls_url: 'sls_url_example', # String | 
-  sp_binding: 'post', # String | This determines how authentik sends the response back to the Service Provider.  
+  sp_binding: Authentik::Api::SAMLBindingsEnum::REDIRECT, # SAMLBindingsEnum | 
   verification_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
 
@@ -6207,14 +6218,14 @@ end
 | **authn_context_class_ref_mapping** | **String** |  | [optional] |
 | **authorization_flow** | **String** |  | [optional] |
 | **backchannel_application** | **String** |  | [optional] |
-| **default_name_id_policy** | **String** |  | [optional] |
+| **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
-| **digest_algorithm** | **String** |  | [optional] |
+| **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer** | **String** |  | [optional] |
-| **logout_method** | **String** | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   | [optional] |
+| **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
@@ -6225,12 +6236,13 @@ end
 | **session_valid_not_on_or_after** | **String** |  | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
+| **sign_logout_response** | **Boolean** |  | [optional] |
 | **sign_response** | **Boolean** |  | [optional] |
-| **signature_algorithm** | **String** |  | [optional] |
+| **signature_algorithm** | [**SignatureAlgorithmEnum**](.md) |  | [optional] |
 | **signing_kp** | **String** |  | [optional] |
-| **sls_binding** | **String** | This determines how authentik sends the logout response back to the Service Provider.   | [optional] |
+| **sls_binding** | [**SAMLBindingsEnum**](.md) |  | [optional] |
 | **sls_url** | **String** |  | [optional] |
-| **sp_binding** | **String** | This determines how authentik sends the response back to the Service Provider.   | [optional] |
+| **sp_binding** | [**SAMLBindingsEnum**](.md) |  | [optional] |
 | **verification_kp** | **String** |  | [optional] |
 
 ### Return type
@@ -6270,7 +6282,7 @@ api_instance = Authentik::Api::ProvidersApi.new
 id = 56 # Integer | A unique integer value identifying this SAML Provider.
 opts = {
   download: true, # Boolean | 
-  force_binding: 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST' # String | Optionally force the metadata to only include one binding.
+  force_binding: Authentik::Api::ForceBindingEnum::URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_POST # ForceBindingEnum | 
 }
 
 begin
@@ -6306,7 +6318,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | A unique integer value identifying this SAML Provider. |  |
 | **download** | **Boolean** |  | [optional] |
-| **force_binding** | **String** | Optionally force the metadata to only include one binding. | [optional] |
+| **force_binding** | [**ForceBindingEnum**](.md) |  | [optional] |
 
 ### Return type
 
@@ -7194,7 +7206,7 @@ end
 api_instance = Authentik::Api::ProvidersApi.new
 opts = {
   exclude_users_service_account: true, # Boolean | 
-  filter_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  group_filters: ['inner_example'], # Array<String> | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -7235,7 +7247,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
-| **filter_group** | **String** |  | [optional] |
+| **group_filters** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -8522,6 +8534,710 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | A unique integer value identifying this Shared Signals Framework Provider. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_wsfed_create
+
+> <WSFederationProvider> providers_wsfed_create(ws_federation_provider_request)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+ws_federation_provider_request = Authentik::Api::WSFederationProviderRequest.new({name: 'name_example', authorization_flow: 'authorization_flow_example', invalidation_flow: 'invalidation_flow_example', reply_url: 'reply_url_example', wtrealm: 'wtrealm_example'}) # WSFederationProviderRequest | 
+
+begin
+  
+  result = api_instance.providers_wsfed_create(ws_federation_provider_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_create: #{e}"
+end
+```
+
+#### Using the providers_wsfed_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WSFederationProvider>, Integer, Hash)> providers_wsfed_create_with_http_info(ws_federation_provider_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_create_with_http_info(ws_federation_provider_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WSFederationProvider>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ws_federation_provider_request** | [**WSFederationProviderRequest**](WSFederationProviderRequest.md) |  |  |
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_wsfed_destroy
+
+> providers_wsfed_destroy(id)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+
+begin
+  
+  api_instance.providers_wsfed_destroy(id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_destroy: #{e}"
+end
+```
+
+#### Using the providers_wsfed_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> providers_wsfed_destroy_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_destroy_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_wsfed_list
+
+> <PaginatedWSFederationProviderList> providers_wsfed_list(opts)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+opts = {
+  acs_url: 'acs_url_example', # String | 
+  assertion_valid_not_before: 'assertion_valid_not_before_example', # String | 
+  assertion_valid_not_on_or_after: 'assertion_valid_not_on_or_after_example', # String | 
+  audience: 'audience_example', # String | 
+  authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  authn_context_class_ref_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  authorization_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  backchannel_application: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
+  default_relay_state: 'default_relay_state_example', # String | 
+  digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  is_backchannel: true, # Boolean | 
+  issuer: 'issuer_example', # String | 
+  logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
+  name: 'name_example', # String | 
+  name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  property_mappings: ['inner_example'], # Array<String> | 
+  search: 'search_example', # String | A search term.
+  session_valid_not_on_or_after: 'session_valid_not_on_or_after_example', # String | 
+  sign_assertion: true, # Boolean | 
+  sign_logout_request: true, # Boolean | 
+  sign_logout_response: true, # Boolean | 
+  sign_response: true, # Boolean | 
+  signature_algorithm: Authentik::Api::SignatureAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGRSA_SHA1, # SignatureAlgorithmEnum | 
+  signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  sls_binding: Authentik::Api::SAMLBindingsEnum::REDIRECT, # SAMLBindingsEnum | 
+  sls_url: 'sls_url_example', # String | 
+  sp_binding: Authentik::Api::SAMLBindingsEnum::REDIRECT, # SAMLBindingsEnum | 
+  verification_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+}
+
+begin
+  
+  result = api_instance.providers_wsfed_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_list: #{e}"
+end
+```
+
+#### Using the providers_wsfed_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedWSFederationProviderList>, Integer, Hash)> providers_wsfed_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedWSFederationProviderList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **acs_url** | **String** |  | [optional] |
+| **assertion_valid_not_before** | **String** |  | [optional] |
+| **assertion_valid_not_on_or_after** | **String** |  | [optional] |
+| **audience** | **String** |  | [optional] |
+| **authentication_flow** | **String** |  | [optional] |
+| **authn_context_class_ref_mapping** | **String** |  | [optional] |
+| **authorization_flow** | **String** |  | [optional] |
+| **backchannel_application** | **String** |  | [optional] |
+| **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
+| **default_relay_state** | **String** |  | [optional] |
+| **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **encryption_kp** | **String** |  | [optional] |
+| **invalidation_flow** | **String** |  | [optional] |
+| **is_backchannel** | **Boolean** |  | [optional] |
+| **issuer** | **String** |  | [optional] |
+| **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **name_id_mapping** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **property_mappings** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **session_valid_not_on_or_after** | **String** |  | [optional] |
+| **sign_assertion** | **Boolean** |  | [optional] |
+| **sign_logout_request** | **Boolean** |  | [optional] |
+| **sign_logout_response** | **Boolean** |  | [optional] |
+| **sign_response** | **Boolean** |  | [optional] |
+| **signature_algorithm** | [**SignatureAlgorithmEnum**](.md) |  | [optional] |
+| **signing_kp** | **String** |  | [optional] |
+| **sls_binding** | [**SAMLBindingsEnum**](.md) |  | [optional] |
+| **sls_url** | **String** |  | [optional] |
+| **sp_binding** | [**SAMLBindingsEnum**](.md) |  | [optional] |
+| **verification_kp** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedWSFederationProviderList**](PaginatedWSFederationProviderList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_wsfed_metadata_retrieve
+
+> <SAMLMetadata> providers_wsfed_metadata_retrieve(id, opts)
+
+
+
+Return metadata as XML string
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+opts = {
+  download: true, # Boolean | 
+  force_binding: Authentik::Api::ForceBindingEnum::URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_POST # ForceBindingEnum | 
+}
+
+begin
+  
+  result = api_instance.providers_wsfed_metadata_retrieve(id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_metadata_retrieve: #{e}"
+end
+```
+
+#### Using the providers_wsfed_metadata_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SAMLMetadata>, Integer, Hash)> providers_wsfed_metadata_retrieve_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_metadata_retrieve_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SAMLMetadata>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_metadata_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+| **download** | **Boolean** |  | [optional] |
+| **force_binding** | [**ForceBindingEnum**](.md) |  | [optional] |
+
+### Return type
+
+[**SAMLMetadata**](SAMLMetadata.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, application/xml
+
+
+## providers_wsfed_partial_update
+
+> <WSFederationProvider> providers_wsfed_partial_update(id, opts)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+opts = {
+  patched_ws_federation_provider_request: Authentik::Api::PatchedWSFederationProviderRequest.new # PatchedWSFederationProviderRequest | 
+}
+
+begin
+  
+  result = api_instance.providers_wsfed_partial_update(id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_partial_update: #{e}"
+end
+```
+
+#### Using the providers_wsfed_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WSFederationProvider>, Integer, Hash)> providers_wsfed_partial_update_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_partial_update_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WSFederationProvider>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+| **patched_ws_federation_provider_request** | [**PatchedWSFederationProviderRequest**](PatchedWSFederationProviderRequest.md) |  | [optional] |
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_wsfed_preview_user_retrieve
+
+> <PropertyMappingPreview> providers_wsfed_preview_user_retrieve(id, opts)
+
+
+
+Preview user data for provider
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+opts = {
+  for_user: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.providers_wsfed_preview_user_retrieve(id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_preview_user_retrieve: #{e}"
+end
+```
+
+#### Using the providers_wsfed_preview_user_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PropertyMappingPreview>, Integer, Hash)> providers_wsfed_preview_user_retrieve_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_preview_user_retrieve_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PropertyMappingPreview>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_preview_user_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+| **for_user** | **Integer** |  | [optional] |
+
+### Return type
+
+[**PropertyMappingPreview**](PropertyMappingPreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_wsfed_retrieve
+
+> <WSFederationProvider> providers_wsfed_retrieve(id)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+
+begin
+  
+  result = api_instance.providers_wsfed_retrieve(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_retrieve: #{e}"
+end
+```
+
+#### Using the providers_wsfed_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WSFederationProvider>, Integer, Hash)> providers_wsfed_retrieve_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_retrieve_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WSFederationProvider>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_wsfed_update
+
+> <WSFederationProvider> providers_wsfed_update(id, ws_federation_provider_request)
+
+
+
+WSFederationProvider Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+ws_federation_provider_request = Authentik::Api::WSFederationProviderRequest.new({name: 'name_example', authorization_flow: 'authorization_flow_example', invalidation_flow: 'invalidation_flow_example', reply_url: 'reply_url_example', wtrealm: 'wtrealm_example'}) # WSFederationProviderRequest | 
+
+begin
+  
+  result = api_instance.providers_wsfed_update(id, ws_federation_provider_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_update: #{e}"
+end
+```
+
+#### Using the providers_wsfed_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<WSFederationProvider>, Integer, Hash)> providers_wsfed_update_with_http_info(id, ws_federation_provider_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_update_with_http_info(id, ws_federation_provider_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <WSFederationProvider>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
+| **ws_federation_provider_request** | [**WSFederationProviderRequest**](WSFederationProviderRequest.md) |  |  |
+
+### Return type
+
+[**WSFederationProvider**](WSFederationProvider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_wsfed_used_by_list
+
+> <Array<UsedBy>> providers_wsfed_used_by_list(id)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+id = 56 # Integer | A unique integer value identifying this WS-Federation Provider.
+
+begin
+  
+  result = api_instance.providers_wsfed_used_by_list(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_used_by_list: #{e}"
+end
+```
+
+#### Using the providers_wsfed_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> providers_wsfed_used_by_list_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_wsfed_used_by_list_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_wsfed_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this WS-Federation Provider. |  |
 
 ### Return type
 

@@ -20,10 +20,6 @@ module Authentik::Api
     # Users added to this group will be superusers.
     attr_accessor :is_superuser
 
-    attr_accessor :parent
-
-    attr_accessor :parent_name
-
     attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,8 +29,6 @@ module Authentik::Api
         :'num_pk' => :'num_pk',
         :'name' => :'name',
         :'is_superuser' => :'is_superuser',
-        :'parent' => :'parent',
-        :'parent_name' => :'parent_name',
         :'attributes' => :'attributes'
       }
     end
@@ -56,8 +50,6 @@ module Authentik::Api
         :'num_pk' => :'Integer',
         :'name' => :'String',
         :'is_superuser' => :'Boolean',
-        :'parent' => :'String',
-        :'parent_name' => :'String',
         :'attributes' => :'Hash<String, Object>'
       }
     end
@@ -65,8 +57,6 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'parent',
-        :'parent_name',
       ])
     end
 
@@ -106,16 +96,6 @@ module Authentik::Api
 
       if attributes.key?(:'is_superuser')
         self.is_superuser = attributes[:'is_superuser']
-      end
-
-      if attributes.key?(:'parent')
-        self.parent = attributes[:'parent']
-      end
-
-      if attributes.key?(:'parent_name')
-        self.parent_name = attributes[:'parent_name']
-      else
-        self.parent_name = nil
       end
 
       if attributes.key?(:'attributes')
@@ -194,8 +174,6 @@ module Authentik::Api
           num_pk == o.num_pk &&
           name == o.name &&
           is_superuser == o.is_superuser &&
-          parent == o.parent &&
-          parent_name == o.parent_name &&
           attributes == o.attributes
     end
 
@@ -208,7 +186,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, num_pk, name, is_superuser, parent, parent_name, attributes].hash
+      [pk, num_pk, name, is_superuser, attributes].hash
     end
 
     # Builds the object from hash

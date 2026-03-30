@@ -63,7 +63,7 @@ describe 'CryptoApi' do
   # CertificateKeyPair Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
-  # @option opts [Boolean] :include_details 
+  # @option opts [Array<KeyTypeEnum>] :key_type 
   # @option opts [String] :managed 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.

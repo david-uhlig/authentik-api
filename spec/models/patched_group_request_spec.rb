@@ -33,7 +33,7 @@ describe Authentik::Api::PatchedGroupRequest do
     end
   end
 
-  describe 'test attribute "parent"' do
+  describe 'test attribute "parents"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -52,12 +52,6 @@ describe Authentik::Api::PatchedGroupRequest do
   end
 
   describe 'test attribute "roles"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "children"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

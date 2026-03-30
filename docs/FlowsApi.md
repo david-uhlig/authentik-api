@@ -25,8 +25,6 @@ All URIs are relative to */api/v3*
 | [**flows_instances_list**](FlowsApi.md#flows_instances_list) | **GET** /flows/instances/ |  |
 | [**flows_instances_partial_update**](FlowsApi.md#flows_instances_partial_update) | **PATCH** /flows/instances/{slug}/ |  |
 | [**flows_instances_retrieve**](FlowsApi.md#flows_instances_retrieve) | **GET** /flows/instances/{slug}/ |  |
-| [**flows_instances_set_background_create**](FlowsApi.md#flows_instances_set_background_create) | **POST** /flows/instances/{slug}/set_background/ |  |
-| [**flows_instances_set_background_url_create**](FlowsApi.md#flows_instances_set_background_url_create) | **POST** /flows/instances/{slug}/set_background_url/ |  |
 | [**flows_instances_update**](FlowsApi.md#flows_instances_update) | **PUT** /flows/instances/{slug}/ |  |
 | [**flows_instances_used_by_list**](FlowsApi.md#flows_instances_used_by_list) | **GET** /flows/instances/{slug}/used_by/ |  |
 
@@ -191,14 +189,14 @@ api_instance = Authentik::Api::FlowsApi.new
 opts = {
   evaluate_on_plan: true, # Boolean | 
   fsb_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  invalid_response_action: 'restart', # String | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  
+  invalid_response_action: Authentik::Api::InvalidResponseActionEnum::RETRY, # InvalidResponseActionEnum | 
   order: 56, # Integer | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   policies: ['inner_example'], # Array<String> | 
-  policy_engine_mode: 'all', # String | 
+  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
   re_evaluate_policies: true, # Boolean | 
   search: 'search_example', # String | A search term.
   stage: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -238,14 +236,14 @@ end
 | ---- | ---- | ----------- | ----- |
 | **evaluate_on_plan** | **Boolean** |  | [optional] |
 | **fsb_uuid** | **String** |  | [optional] |
-| **invalid_response_action** | **String** | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   | [optional] |
+| **invalid_response_action** | [**InvalidResponseActionEnum**](.md) |  | [optional] |
 | **order** | **Integer** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
 | **policies** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
+| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
 | **re_evaluate_policies** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **stage** | **String** |  | [optional] |
@@ -1331,8 +1329,8 @@ end
 
 api_instance = Authentik::Api::FlowsApi.new
 opts = {
-  denied_action: 'continue', # String | Configure what should happen when a flow denies access to a user.  
-  designation: 'authentication', # String | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  
+  denied_action: Authentik::Api::DeniedActionEnum::MESSAGE_CONTINUE, # DeniedActionEnum | 
+  designation: Authentik::Api::FlowDesignationEnum::AUTHENTICATION, # FlowDesignationEnum | 
   flow_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -1373,8 +1371,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **denied_action** | **String** | Configure what should happen when a flow denies access to a user.   | [optional] |
-| **designation** | **String** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   | [optional] |
+| **denied_action** | [**DeniedActionEnum**](.md) |  | [optional] |
+| **designation** | [**FlowDesignationEnum**](.md) |  | [optional] |
 | **flow_uuid** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
@@ -1536,150 +1534,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## flows_instances_set_background_create
-
-> flows_instances_set_background_create(slug, opts)
-
-
-
-Set Flow background
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::FlowsApi.new
-slug = 'slug_example' # String | 
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  clear: true # Boolean | 
-}
-
-begin
-  
-  api_instance.flows_instances_set_background_create(slug, opts)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_set_background_create: #{e}"
-end
-```
-
-#### Using the flows_instances_set_background_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> flows_instances_set_background_create_with_http_info(slug, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.flows_instances_set_background_create_with_http_info(slug, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_set_background_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file** | **File** |  | [optional] |
-| **clear** | **Boolean** |  | [optional][default to false] |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-## flows_instances_set_background_url_create
-
-> flows_instances_set_background_url_create(slug, file_path_request)
-
-
-
-Set Flow background (as URL)
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::FlowsApi.new
-slug = 'slug_example' # String | 
-file_path_request = Authentik::Api::FilePathRequest.new({url: 'url_example'}) # FilePathRequest | 
-
-begin
-  
-  api_instance.flows_instances_set_background_url_create(slug, file_path_request)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_set_background_url_create: #{e}"
-end
-```
-
-#### Using the flows_instances_set_background_url_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> flows_instances_set_background_url_create_with_http_info(slug, file_path_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.flows_instances_set_background_url_create_with_http_info(slug, file_path_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_set_background_url_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file_path_request** | [**FilePathRequest**](FilePathRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 

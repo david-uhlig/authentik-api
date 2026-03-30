@@ -28,8 +28,8 @@ end
 
 api_instance = Authentik::Api::SchemaApi.new
 opts = {
-  format: 'json', # String | 
-  lang: 'af' # String | 
+  format: Authentik::Api::FormatEnum::JSON, # FormatEnum | 
+  lang: Authentik::Api::LangEnum::AF # LangEnum | 
 }
 
 begin
@@ -63,8 +63,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **format** | **String** |  | [optional] |
-| **lang** | **String** |  | [optional] |
+| **format** | [**FormatEnum**](.md) |  | [optional] |
+| **lang** | [**LangEnum**](.md) |  | [optional] |
 
 ### Return type
 

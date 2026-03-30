@@ -29,7 +29,7 @@ end
 
 api_instance = Authentik::Api::SsfApi.new
 opts = {
-  delivery_method: 'https://schemas.openid.net/secevent/risc/delivery-method/poll', # String | 
+  delivery_method: Authentik::Api::DeliveryMethodEnum::HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_PUSH, # DeliveryMethodEnum | 
   endpoint_url: 'endpoint_url_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -69,7 +69,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **delivery_method** | **String** |  | [optional] |
+| **delivery_method** | [**DeliveryMethodEnum**](.md) |  | [optional] |
 | **endpoint_url** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |

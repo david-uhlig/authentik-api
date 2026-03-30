@@ -27,12 +27,6 @@ describe Authentik::Api::AuthenticatorValidateStageRequest do
     end
   end
 
-  describe 'test attribute "flow_set"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "not_configured_action"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -58,6 +52,12 @@ describe Authentik::Api::AuthenticatorValidateStageRequest do
   end
 
   describe 'test attribute "webauthn_user_verification"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "webauthn_hints"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

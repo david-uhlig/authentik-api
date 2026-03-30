@@ -11,9 +11,11 @@ module Authentik::Api
   class AlgEnum
     RSA = "rsa".freeze
     ECDSA = "ecdsa".freeze
+    ED25519 = "ed25519".freeze
+    ED448 = "ed448".freeze
 
     def self.all_vars
-      @all_vars ||= [RSA, ECDSA].freeze
+      @all_vars ||= [RSA, ECDSA, ED25519, ED448].freeze
     end
 
     # Builds the enum from string

@@ -195,13 +195,105 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Event Read-Only Viewset
+    # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
+    # @option opts [Array<EventActions>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :username Username
+    # @return [DataExport]
+    def events_events_export_create(opts = {})
+      data, _status_code, _headers = events_events_export_create_with_http_info(opts)
+      data
+    end
+
+    # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :username Username
+    # @return [Array<(DataExport, Integer, Hash)>] DataExport data, response status code and response headers
+    def events_events_export_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_events_export_create ...'
+      end
+      # resource path
+      local_var_path = '/events/events/export/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
+      query_params[:'actions'] = @api_client.build_collection_param(opts[:'actions'], :multi) if !opts[:'actions'].nil?
+      query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
+      query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
+      query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
+      query_params[:'context_device'] = opts[:'context_device'] if !opts[:'context_device'].nil?
+      query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
+      query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
+      query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'DataExport'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_events_export_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_events_export_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Event Read-Only Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
@@ -219,10 +311,11 @@ module Authentik::Api
     # Event Read-Only Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
+    # @option opts [Array<EventActions>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
@@ -236,10 +329,6 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_events_list ...'
       end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
-      if @api_client.config.client_side_validation && opts[:'actions'] && !opts[:'actions'].all? { |item| allowable_values.include?(item) }
-        fail ArgumentError, "invalid value for \"actions\", must include one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/events/events/'
 
@@ -250,6 +339,7 @@ module Authentik::Api
       query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
       query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
       query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
+      query_params[:'context_device'] = opts[:'context_device'] if !opts[:'context_device'].nil?
       query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
       query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
       query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
@@ -422,6 +512,104 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Get event stats for specified filters and count steps
+    # @param count_steps [Array<String>] Timedelta, format of &#39;weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2&#39;
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :username Username
+    # @return [EventStats]
+    def events_events_stats_retrieve(count_steps, opts = {})
+      data, _status_code, _headers = events_events_stats_retrieve_with_http_info(count_steps, opts)
+      data
+    end
+
+    # Get event stats for specified filters and count steps
+    # @param count_steps [Array<String>] Timedelta, format of &#39;weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2&#39;
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :username Username
+    # @return [Array<(EventStats, Integer, Hash)>] EventStats data, response status code and response headers
+    def events_events_stats_retrieve_with_http_info(count_steps, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_events_stats_retrieve ...'
+      end
+      # verify the required parameter 'count_steps' is set
+      if @api_client.config.client_side_validation && count_steps.nil?
+        fail ArgumentError, "Missing the required parameter 'count_steps' when calling EventsApi.events_events_stats_retrieve"
+      end
+      # resource path
+      local_var_path = '/events/events/stats/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'count_steps'] = @api_client.build_collection_param(count_steps, :multi)
+      query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
+      query_params[:'actions'] = @api_client.build_collection_param(opts[:'actions'], :multi) if !opts[:'actions'].nil?
+      query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
+      query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
+      query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
+      query_params[:'context_device'] = opts[:'context_device'] if !opts[:'context_device'].nil?
+      query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
+      query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
+      query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EventStats'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_events_stats_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_events_stats_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get the top_n events grouped by user count
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
@@ -558,14 +746,15 @@ module Authentik::Api
     # Get event volume for specified filters and timeframe
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
+    # @option opts [Array<EventActions>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
-    # @option opts [Float] :history_days  (default to 7)
+    # @option opts [Integer] :history_days  (default to 7)
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [String] :search A search term.
     # @option opts [String] :username Username
@@ -578,14 +767,15 @@ module Authentik::Api
     # Get event volume for specified filters and timeframe
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
+    # @option opts [Array<EventActions>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
-    # @option opts [Float] :history_days  (default to 7)
+    # @option opts [Integer] :history_days  (default to 7)
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [String] :search A search term.
     # @option opts [String] :username Username
@@ -593,10 +783,6 @@ module Authentik::Api
     def events_events_volume_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_events_volume_list ...'
-      end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
-      if @api_client.config.client_side_validation && opts[:'actions'] && !opts[:'actions'].all? { |item| allowable_values.include?(item) }
-        fail ArgumentError, "invalid value for \"actions\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/events/events/volume/'
@@ -608,6 +794,7 @@ module Authentik::Api
       query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
       query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
       query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
+      query_params[:'context_device'] = opts[:'context_device'] if !opts[:'context_device'].nil?
       query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
       query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
       query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
@@ -721,7 +908,7 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :seen 
-    # @option opts [String] :severity 
+    # @option opts [SeverityEnum] :severity 
     # @option opts [Integer] :user 
     # @return [PaginatedNotificationList]
     def events_notifications_list(opts = {})
@@ -739,16 +926,12 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :seen 
-    # @option opts [String] :severity 
+    # @option opts [SeverityEnum] :severity 
     # @option opts [Integer] :user 
     # @return [Array<(PaginatedNotificationList, Integer, Hash)>] PaginatedNotificationList data, response status code and response headers
     def events_notifications_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_notifications_list ...'
-      end
-      allowable_values = ["alert", "notice", "warning"]
-      if @api_client.config.client_side_validation && opts[:'severity'] && !allowable_values.include?(opts[:'severity'])
-        fail ArgumentError, "invalid value for \"severity\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/events/notifications/'
@@ -1248,7 +1431,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [String] :severity Controls which severity level the created notifications will have.  
+    # @option opts [SeverityEnum] :severity 
     # @return [PaginatedNotificationRuleList]
     def events_rules_list(opts = {})
       data, _status_code, _headers = events_rules_list_with_http_info(opts)
@@ -1263,15 +1446,11 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [String] :severity Controls which severity level the created notifications will have.  
+    # @option opts [SeverityEnum] :severity 
     # @return [Array<(PaginatedNotificationRuleList, Integer, Hash)>] PaginatedNotificationRuleList data, response status code and response headers
     def events_rules_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_rules_list ...'
-      end
-      allowable_values = ["alert", "notice", "warning"]
-      if @api_client.config.client_side_validation && opts[:'severity'] && !allowable_values.include?(opts[:'severity'])
-        fail ArgumentError, "invalid value for \"severity\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/events/rules/'
@@ -1711,7 +1890,7 @@ module Authentik::Api
 
     # NotificationTransport Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :mode 
+    # @option opts [TransportModeEnum] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -1727,7 +1906,7 @@ module Authentik::Api
 
     # NotificationTransport Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :mode 
+    # @option opts [TransportModeEnum] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -1739,10 +1918,6 @@ module Authentik::Api
     def events_transports_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_transports_list ...'
-      end
-      allowable_values = ["email", "local", "webhook", "webhook_slack"]
-      if @api_client.config.client_side_validation && opts[:'mode'] && !allowable_values.include?(opts[:'mode'])
-        fail ArgumentError, "invalid value for \"mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/events/transports/'

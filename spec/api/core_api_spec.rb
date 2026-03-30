@@ -191,31 +191,6 @@ describe 'CoreApi' do
     end
   end
 
-  # unit tests for core_applications_set_icon_create
-  # Set application icon
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [Boolean] :clear 
-  # @return [nil]
-  describe 'core_applications_set_icon_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for core_applications_set_icon_url_create
-  # Set application icon (as URL)
-  # @param slug 
-  # @param file_path_request 
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'core_applications_set_icon_url_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for core_applications_update
   # Application Viewset
   # @param slug 
@@ -234,6 +209,17 @@ describe 'CoreApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'core_applications_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_authenticated_sessions_bulk_delete_destroy
+  # Bulk revoke all sessions for multiple users
+  # @param user_pks List of user IDs to revoke all sessions for
+  # @param [Hash] opts the optional parameters
+  # @return [BulkDeleteSessionResponse]
+  describe 'core_authenticated_sessions_bulk_delete_destroy test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -435,6 +421,8 @@ describe 'CoreApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :attributes Attributes
   # @option opts [Boolean] :include_children 
+  # @option opts [Boolean] :include_inherited_roles 
+  # @option opts [Boolean] :include_parents 
   # @option opts [Boolean] :include_users 
   # @option opts [Boolean] :is_superuser 
   # @option opts [Array<Integer>] :members_by_pk 
@@ -480,6 +468,8 @@ describe 'CoreApi' do
   # @param group_uuid A UUID string identifying this Group.
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :include_children 
+  # @option opts [Boolean] :include_inherited_roles 
+  # @option opts [Boolean] :include_parents 
   # @option opts [Boolean] :include_users 
   # @return [Group]
   describe 'core_groups_retrieve test' do
@@ -540,7 +530,7 @@ describe 'CoreApi' do
   # @option opts [Time] :expires 
   # @option opts [Boolean] :expiring 
   # @option opts [String] :identifier 
-  # @option opts [String] :intent 
+  # @option opts [IntentEnum] :intent 
   # @option opts [String] :managed 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -705,6 +695,42 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_users_export_create
+  # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :attributes Attributes
+  # @option opts [Time] :date_joined 
+  # @option opts [Time] :date_joined__gt 
+  # @option opts [Time] :date_joined__lt 
+  # @option opts [String] :email 
+  # @option opts [Array<String>] :groups_by_name 
+  # @option opts [Array<String>] :groups_by_pk 
+  # @option opts [Boolean] :is_active 
+  # @option opts [Boolean] :is_superuser 
+  # @option opts [Time] :last_login 
+  # @option opts [Time] :last_login__gt 
+  # @option opts [Boolean] :last_login__isnull 
+  # @option opts [Time] :last_login__lt 
+  # @option opts [Time] :last_updated 
+  # @option opts [Time] :last_updated__gt 
+  # @option opts [Time] :last_updated__lt 
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [String] :path 
+  # @option opts [String] :path_startswith 
+  # @option opts [Array<String>] :roles_by_name 
+  # @option opts [Array<String>] :roles_by_pk 
+  # @option opts [String] :search A search term.
+  # @option opts [Array<UserTypeEnum>] :type 
+  # @option opts [String] :username 
+  # @option opts [String] :uuid 
+  # @return [DataExport]
+  describe 'core_users_export_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_users_impersonate_create
   # Impersonate a user
   # @param id A unique integer value identifying this User.
@@ -738,8 +764,13 @@ describe 'CoreApi' do
   # @option opts [Array<String>] :groups_by_name 
   # @option opts [Array<String>] :groups_by_pk 
   # @option opts [Boolean] :include_groups 
+  # @option opts [Boolean] :include_roles 
   # @option opts [Boolean] :is_active 
   # @option opts [Boolean] :is_superuser 
+  # @option opts [Time] :last_login 
+  # @option opts [Time] :last_login__gt 
+  # @option opts [Boolean] :last_login__isnull 
+  # @option opts [Time] :last_login__lt 
   # @option opts [Time] :last_updated 
   # @option opts [Time] :last_updated__gt 
   # @option opts [Time] :last_updated__lt 
@@ -749,8 +780,10 @@ describe 'CoreApi' do
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :path 
   # @option opts [String] :path_startswith 
+  # @option opts [Array<String>] :roles_by_name 
+  # @option opts [Array<String>] :roles_by_pk 
   # @option opts [String] :search A search term.
-  # @option opts [Array<String>] :type 
+  # @option opts [Array<UserTypeEnum>] :type 
   # @option opts [String] :username 
   # @option opts [String] :uuid 
   # @return [PaginatedUserList]
@@ -797,6 +830,7 @@ describe 'CoreApi' do
   # Create a temporary link that a user can use to recover their account
   # @param id A unique integer value identifying this User.
   # @param [Hash] opts the optional parameters
+  # @option opts [UserRecoveryLinkRequest] :user_recovery_link_request 
   # @return [Link]
   describe 'core_users_recovery_create test' do
     it 'should work' do
@@ -806,8 +840,8 @@ describe 'CoreApi' do
 
   # unit tests for core_users_recovery_email_create
   # Send an email with a temporary link that a user can use to recover their account
-  # @param email_stage 
   # @param id A unique integer value identifying this User.
+  # @param user_recovery_email_request 
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'core_users_recovery_email_create test' do

@@ -10,8 +10,8 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
-| **mode** | [**ConsentStageModeEnum**](ConsentStageModeEnum.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
+| **mode** | [**ConsentModeEnum**](ConsentModeEnum.md) |  | [optional] |
 | **consent_expire_in** | **String** | Offset after which consent expires. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
 
 ## Example

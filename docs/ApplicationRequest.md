@@ -10,6 +10,7 @@
 | **backchannel_providers** | **Array&lt;Integer&gt;** |  | [optional] |
 | **open_in_new_tab** | **Boolean** | Open launch URL in a new browser tab or window. | [optional] |
 | **meta_launch_url** | **String** |  | [optional] |
+| **meta_icon** | **String** |  | [optional] |
 | **meta_description** | **String** |  | [optional] |
 | **meta_publisher** | **String** |  | [optional] |
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
@@ -27,6 +28,7 @@ instance = Authentik::Api::ApplicationRequest.new(
   backchannel_providers: null,
   open_in_new_tab: null,
   meta_launch_url: null,
+  meta_icon: null,
   meta_description: null,
   meta_publisher: null,
   policy_engine_mode: null,

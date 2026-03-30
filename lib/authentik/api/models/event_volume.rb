@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Count of events of action created on day
+  # Count of events of action created on day for a single event action
   class EventVolume < ApiModelBase
     attr_accessor :action
 

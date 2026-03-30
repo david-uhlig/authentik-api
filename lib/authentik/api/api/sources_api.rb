@@ -214,150 +214,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Set source icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [nil]
-    def sources_all_set_icon_create(slug, opts = {})
-      sources_all_set_icon_create_with_http_info(slug, opts)
-      nil
-    end
-
-    # Set source icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_all_set_icon_create_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_all_set_icon_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_set_icon_create"
-      end
-      # resource path
-      local_var_path = '/sources/all/{slug}/set_icon/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['multipart/form-data'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
-      form_params['clear'] = opts[:'clear'] if !opts[:'clear'].nil?
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_all_set_icon_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_all_set_icon_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Set source icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_all_set_icon_url_create(slug, file_path_request, opts = {})
-      sources_all_set_icon_url_create_with_http_info(slug, file_path_request, opts)
-      nil
-    end
-
-    # Set source icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_all_set_icon_url_create_with_http_info(slug, file_path_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_all_set_icon_url_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_set_icon_url_create"
-      end
-      # verify the required parameter 'file_path_request' is set
-      if @api_client.config.client_side_validation && file_path_request.nil?
-        fail ArgumentError, "Missing the required parameter 'file_path_request' when calling SourcesApi.sources_all_set_icon_url_create"
-      end
-      # resource path
-      local_var_path = '/sources/all/{slug}/set_icon_url/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_path_request)
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_all_set_icon_url_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_all_set_icon_url_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Get all creatable types
     # @param [Hash] opts the optional parameters
     # @return [Array<TypeCreate>]
@@ -3827,7 +3683,7 @@ module Authentik::Api
     # Kerberos Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :enabled 
-    # @option opts [String] :kadmin_type KAdmin server type  
+    # @option opts [KadminTypeEnum] :kadmin_type 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3850,7 +3706,7 @@ module Authentik::Api
     # Kerberos Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :enabled 
-    # @option opts [String] :kadmin_type KAdmin server type  
+    # @option opts [KadminTypeEnum] :kadmin_type 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3868,10 +3724,6 @@ module Authentik::Api
     def sources_kerberos_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_kerberos_list ...'
-      end
-      allowable_values = ["Heimdal", "MIT", "other"]
-      if @api_client.config.client_side_validation && opts[:'kadmin_type'] && !allowable_values.include?(opts[:'kadmin_type'])
-        fail ArgumentError, "invalid value for \"kadmin_type\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/kerberos/'
@@ -5046,20 +4898,20 @@ module Authentik::Api
     # @option opts [String] :consumer_key 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [Boolean] :has_jwks Only return sources with JWKS data
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :profile_url 
     # @option opts [String] :provider_type 
     # @option opts [String] :request_token_url 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [PaginatedOAuthSourceList]
     def sources_oauth_list(opts = {})
       data, _status_code, _headers = sources_oauth_list_with_http_info(opts)
@@ -5075,36 +4927,24 @@ module Authentik::Api
     # @option opts [String] :consumer_key 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [Boolean] :has_jwks Only return sources with JWKS data
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :profile_url 
     # @option opts [String] :provider_type 
     # @option opts [String] :request_token_url 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [Array<(PaginatedOAuthSourceList, Integer, Hash)>] PaginatedOAuthSourceList data, response status code and response headers
     def sources_oauth_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_oauth_list ...'
-      end
-      allowable_values = ["identifier", "name_deny", "name_link"]
-      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
-        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["all", "any"]
-      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
-        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
-      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
-        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/oauth/'
@@ -5621,16 +5461,16 @@ module Authentik::Api
     # @option opts [String] :client_id 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [PaginatedPlexSourceList]
     def sources_plex_list(opts = {})
       data, _status_code, _headers = sources_plex_list_with_http_info(opts)
@@ -5644,32 +5484,20 @@ module Authentik::Api
     # @option opts [String] :client_id 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [Array<(PaginatedPlexSourceList, Integer, Hash)>] PaginatedPlexSourceList data, response status code and response headers
     def sources_plex_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_plex_list ...'
-      end
-      allowable_values = ["identifier", "name_deny", "name_link"]
-      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
-        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["all", "any"]
-      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
-        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
-      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
-        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/plex/'
@@ -6255,22 +6083,22 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :allow_idp_initiated 
     # @option opts [String] :authentication_flow 
-    # @option opts [String] :binding_type 
-    # @option opts [String] :digest_algorithm 
+    # @option opts [BindingTypeEnum] :binding_type 
+    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [String] :issuer 
     # @option opts [String] :managed 
     # @option opts [String] :name 
-    # @option opts [String] :name_id_policy NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
+    # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
-    # @option opts [String] :signature_algorithm 
+    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
     # @option opts [Boolean] :signed_assertion 
     # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
@@ -6278,7 +6106,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [String] :sso_url 
     # @option opts [String] :temporary_user_delete_after 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @option opts [String] :verification_kp 
     # @return [PaginatedSAMLSourceList]
     def sources_saml_list(opts = {})
@@ -6290,22 +6118,22 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :allow_idp_initiated 
     # @option opts [String] :authentication_flow 
-    # @option opts [String] :binding_type 
-    # @option opts [String] :digest_algorithm 
+    # @option opts [BindingTypeEnum] :binding_type 
+    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [String] :issuer 
     # @option opts [String] :managed 
     # @option opts [String] :name 
-    # @option opts [String] :name_id_policy NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
+    # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
-    # @option opts [String] :signature_algorithm 
+    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
     # @option opts [Boolean] :signed_assertion 
     # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
@@ -6313,36 +6141,12 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [String] :sso_url 
     # @option opts [String] :temporary_user_delete_after 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @option opts [String] :verification_kp 
     # @return [Array<(PaginatedSAMLSourceList, Integer, Hash)>] PaginatedSAMLSourceList data, response status code and response headers
     def sources_saml_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_saml_list ...'
-      end
-      allowable_values = ["POST", "POST_AUTO", "REDIRECT"]
-      if @api_client.config.client_side_validation && opts[:'binding_type'] && !allowable_values.include?(opts[:'binding_type'])
-        fail ArgumentError, "invalid value for \"binding_type\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
-      if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
-        fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
-      if @api_client.config.client_side_validation && opts[:'name_id_policy'] && !allowable_values.include?(opts[:'name_id_policy'])
-        fail ArgumentError, "invalid value for \"name_id_policy\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["all", "any"]
-      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
-        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
-      if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
-        fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
-      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
-        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/saml/'
@@ -8130,6 +7934,78 @@ module Authentik::Api
     end
 
     # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param slug [String] 
+    # @param telegram_auth_request [TelegramAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [UserTelegramSourceConnection]
+    def sources_telegram_connect_user_create(slug, telegram_auth_request, opts = {})
+      data, _status_code, _headers = sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param slug [String] 
+    # @param telegram_auth_request [TelegramAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
+    def sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_connect_user_create ...'
+      end
+      # verify the required parameter 'slug' is set
+      if @api_client.config.client_side_validation && slug.nil?
+        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_connect_user_create"
+      end
+      # verify the required parameter 'telegram_auth_request' is set
+      if @api_client.config.client_side_validation && telegram_auth_request.nil?
+        fail ArgumentError, "Missing the required parameter 'telegram_auth_request' when calling SourcesApi.sources_telegram_connect_user_create"
+      end
+      # resource path
+      local_var_path = '/sources/telegram/{slug}/connect_user/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(telegram_auth_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"SourcesApi.sources_telegram_connect_user_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_connect_user_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
     # @param telegram_source_request [TelegramSourceRequest] 
     # @param [Hash] opts the optional parameters
     # @return [TelegramSource]
@@ -8262,17 +8138,17 @@ module Authentik::Api
     # @option opts [String] :bot_username 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [Boolean] :request_message_access 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [PaginatedTelegramSourceList]
     def sources_telegram_list(opts = {})
       data, _status_code, _headers = sources_telegram_list_with_http_info(opts)
@@ -8285,33 +8161,21 @@ module Authentik::Api
     # @option opts [String] :bot_username 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
+    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
+    # @option opts [PolicyEngineMode] :policy_engine_mode 
     # @option opts [Boolean] :request_message_access 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
+    # @option opts [UserMatchingModeEnum] :user_matching_mode 
     # @return [Array<(PaginatedTelegramSourceList, Integer, Hash)>] PaginatedTelegramSourceList data, response status code and response headers
     def sources_telegram_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_list ...'
-      end
-      allowable_values = ["identifier", "name_deny", "name_link"]
-      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
-        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["all", "any"]
-      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
-        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
-      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
-        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/telegram/'

@@ -146,10 +146,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @name.to_s.length > 50
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 50.')
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if @name !~ pattern
         invalid_properties.push("invalid value for \"name\", must conform to the pattern #{pattern}.")
@@ -172,7 +168,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
       return false if @name.nil?
-      return false if @name.to_s.length > 50
       return false if @name !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @created_by.nil?
       return false if @flow_obj.nil?
@@ -194,10 +189,6 @@ module Authentik::Api
     def name=(name)
       if name.nil?
         fail ArgumentError, 'name cannot be nil'
-      end
-
-      if name.to_s.length > 50
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 50.'
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)

@@ -209,7 +209,7 @@ module Authentik::Api
     # CertificateKeyPair Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
-    # @option opts [Boolean] :include_details  (default to true)
+    # @option opts [Array<KeyTypeEnum>] :key_type 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -225,7 +225,7 @@ module Authentik::Api
     # CertificateKeyPair Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
-    # @option opts [Boolean] :include_details  (default to true)
+    # @option opts [Array<KeyTypeEnum>] :key_type 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -243,7 +243,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'has_key'] = opts[:'has_key'] if !opts[:'has_key'].nil?
-      query_params[:'include_details'] = opts[:'include_details'] if !opts[:'include_details'].nil?
+      query_params[:'key_type'] = @api_client.build_collection_param(opts[:'key_type'], :multi) if !opts[:'key_type'].nil?
       query_params[:'managed'] = opts[:'managed'] if !opts[:'managed'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?

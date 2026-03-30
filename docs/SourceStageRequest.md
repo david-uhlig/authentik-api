@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  |  |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **source** | **String** |  |  |
 | **resume_timeout** | **String** | Amount of time a user can take to return from the source to continue the flow (Format: hours&#x3D;-1;minutes&#x3D;-2;seconds&#x3D;-3) | [optional] |
 
@@ -16,7 +15,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::SourceStageRequest.new(
   name: null,
-  flow_set: null,
   source: null,
   resume_timeout: null
 )

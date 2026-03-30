@@ -8,18 +8,31 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Serializer for Endpoint authenticator devices
   class EndpointDeviceRequest < ApiModelBase
-    attr_accessor :pk
+    attr_accessor :device_uuid
 
-    # The human-readable name of this device.
     attr_accessor :name
+
+    attr_accessor :access_group
+
+    attr_accessor :access_group_obj
+
+    attr_accessor :expiring
+
+    attr_accessor :expires
+
+    attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pk' => :'pk',
-        :'name' => :'name'
+        :'device_uuid' => :'device_uuid',
+        :'name' => :'name',
+        :'access_group' => :'access_group',
+        :'access_group_obj' => :'access_group_obj',
+        :'expiring' => :'expiring',
+        :'expires' => :'expires',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -36,14 +49,21 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pk' => :'String',
-        :'name' => :'String'
+        :'device_uuid' => :'String',
+        :'name' => :'String',
+        :'access_group' => :'String',
+        :'access_group_obj' => :'DeviceAccessGroupRequest',
+        :'expiring' => :'Boolean',
+        :'expires' => :'Time',
+        :'attributes' => :'Hash<String, Object>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'access_group',
+        :'expires',
       ])
     end
 
@@ -63,14 +83,36 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'pk')
-        self.pk = attributes[:'pk']
+      if attributes.key?(:'device_uuid')
+        self.device_uuid = attributes[:'device_uuid']
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       else
         self.name = nil
+      end
+
+      if attributes.key?(:'access_group')
+        self.access_group = attributes[:'access_group']
+      end
+
+      if attributes.key?(:'access_group_obj')
+        self.access_group_obj = attributes[:'access_group_obj']
+      end
+
+      if attributes.key?(:'expiring')
+        self.expiring = attributes[:'expiring']
+      end
+
+      if attributes.key?(:'expires')
+        self.expires = attributes[:'expires']
+      end
+
+      if attributes.key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Hash)
+          self.attributes = value
+        end
       end
     end
 
@@ -81,10 +123,6 @@ module Authentik::Api
       invalid_properties = Array.new
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @name.to_s.length > 64
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 64.')
       end
 
       if @name.to_s.length < 1
@@ -99,7 +137,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @name.nil?
-      return false if @name.to_s.length > 64
       return false if @name.to_s.length < 1
       true
     end
@@ -109,10 +146,6 @@ module Authentik::Api
     def name=(name)
       if name.nil?
         fail ArgumentError, 'name cannot be nil'
-      end
-
-      if name.to_s.length > 64
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 64.'
       end
 
       if name.to_s.length < 1
@@ -127,8 +160,13 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pk == o.pk &&
-          name == o.name
+          device_uuid == o.device_uuid &&
+          name == o.name &&
+          access_group == o.access_group &&
+          access_group_obj == o.access_group_obj &&
+          expiring == o.expiring &&
+          expires == o.expires &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -140,7 +178,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name].hash
+      [device_uuid, name, access_group, access_group_obj, expiring, expires, attributes].hash
     end
 
     # Builds the object from hash

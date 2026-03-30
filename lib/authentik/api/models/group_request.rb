@@ -15,7 +15,7 @@ module Authentik::Api
     # Users added to this group will be superusers.
     attr_accessor :is_superuser
 
-    attr_accessor :parent
+    attr_accessor :parents
 
     attr_accessor :users
 
@@ -23,18 +23,15 @@ module Authentik::Api
 
     attr_accessor :roles
 
-    attr_accessor :children
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'is_superuser' => :'is_superuser',
-        :'parent' => :'parent',
+        :'parents' => :'parents',
         :'users' => :'users',
         :'attributes' => :'attributes',
-        :'roles' => :'roles',
-        :'children' => :'children'
+        :'roles' => :'roles'
       }
     end
 
@@ -53,18 +50,16 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'is_superuser' => :'Boolean',
-        :'parent' => :'String',
+        :'parents' => :'Array<String>',
         :'users' => :'Array<Integer>',
         :'attributes' => :'Hash<String, Object>',
-        :'roles' => :'Array<String>',
-        :'children' => :'Array<String>'
+        :'roles' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'parent',
       ])
     end
 
@@ -94,8 +89,10 @@ module Authentik::Api
         self.is_superuser = attributes[:'is_superuser']
       end
 
-      if attributes.key?(:'parent')
-        self.parent = attributes[:'parent']
+      if attributes.key?(:'parents')
+        if (value = attributes[:'parents']).is_a?(Array)
+          self.parents = value
+        end
       end
 
       if attributes.key?(:'users')
@@ -113,12 +110,6 @@ module Authentik::Api
       if attributes.key?(:'roles')
         if (value = attributes[:'roles']).is_a?(Array)
           self.roles = value
-        end
-      end
-
-      if attributes.key?(:'children')
-        if (value = attributes[:'children']).is_a?(Array)
-          self.children = value
         end
       end
     end
@@ -169,11 +160,10 @@ module Authentik::Api
       self.class == o.class &&
           name == o.name &&
           is_superuser == o.is_superuser &&
-          parent == o.parent &&
+          parents == o.parents &&
           users == o.users &&
           attributes == o.attributes &&
-          roles == o.roles &&
-          children == o.children
+          roles == o.roles
     end
 
     # @see the `==` method
@@ -185,7 +175,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, is_superuser, parent, users, attributes, roles, children].hash
+      [name, is_superuser, parents, users, attributes, roles].hash
     end
 
     # Builds the object from hash
