@@ -21,28 +21,10 @@ else
   output_path="${project_base_path}/tmp"
 fi
 
-copy_files=(
-  ".openapi-generator/VERSION:"
-  "docs/:"
-  "spec/:"
-  "README.md:README_API.md"
-  "authentik-api.gemspec:"
-  "Gemfile:"
-  "Rakefile:"
-)
-
-for file_mapping in "${copy_files[@]}"; do
-  source_file="${file_mapping%%:*}"
-  target_file="${file_mapping#*:}"
-
-  if [[ -n "$target_file" ]]; then
-    rm -f "${project_base_path}/${target_file}"
-    cp "${output_path}/${source_file}" "${project_base_path}/${target_file}"
-  else
-    rm -rf "${project_base_path}/${source_file}"
-    cp -r "${output_path}/${source_file}" "${project_base_path}/"
-  fi
-done
+rm -rf "${project_base_path}"/{docs,spec}
+cp -r "${output_path}"/{docs,spec} "${project_base_path}"/
+cp "${output_path}/README.md" "${project_base_path}/README_API.md"
+cp "${output_path}/.openapi-generator/VERSION" "${project_base_path}/VERSION"
 
 # Restructure lib/ for Zeitwerk-based loading.
 # The generator outputs into lib/authentik-api/, move everything into
