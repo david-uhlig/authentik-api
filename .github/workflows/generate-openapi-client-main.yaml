@@ -1,0 +1,78 @@
+# Generates the OpenAPI client on the main branch and opens a PR for review.
+#
+# Review the PR and merge into `main`.
+#
+# Detection logic for changes is in `poll-schema-and-dispatch-updates.yaml`.
+# This workflow runs regardless of changes.
+#
+# Keep this file in "sync" with `generate-openapi-client-on-release.yaml`.
+name: Generate OpenAPI client (main)
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+env:
+  OPENAPI_GENERATOR_PATH: "tmp"
+
+jobs:
+  get-release-branch:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/get-release-branch.yaml
+    with:
+      schema-url: "https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml"
+
+  build-client:
+    permissions:
+      contents: write
+      pull-requests: write
+    needs: get-release-branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Download schema artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: schema
+          path: ./.authentik/
+
+      - name: Remove current client
+        run: rm -rf "./${OPENAPI_GENERATOR_PATH:?}"
+
+      - name: Build client using OpenAPI Generator
+        uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
+        with:
+          generator: ruby
+          config-file: ./.openapi-generator/config.yaml
+          openapi-file: ./.authentik/schema.yaml
+          command-args:
+            -t ./.openapi-generator/ruby-templates
+            --output="./${OPENAPI_GENERATOR_PATH}"
+            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.authentik-version }}
+
+      - name: Postprocessing
+        run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
+
+      # TODO If you want branches to be deleted immediately on merge then you should use GitHub's Automatically delete head branches feature in your repository settings.
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          commit-message: "Update OpenAPI client (nightly)"
+          branch: "openapi-client-update/nightly"
+          base: main
+          title: "Nightly OpenAPI client update"
+          body: |
+            This PR updates the generated OpenAPI client to match the latest nightly schema from authentik's `main` branch.
+
+            Authentik version: `${{ needs.get-release-branch.outputs.authentik-version }}`
+
+            > Schema sourced from [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
+          labels: nightly
+          reviewers: david-uhlig
+          delete-branch: true

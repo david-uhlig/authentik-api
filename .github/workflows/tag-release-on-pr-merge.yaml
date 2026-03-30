@@ -1,0 +1,39 @@
+# Tags the merge commit of a release PR with the authentik version from the
+# OpenAPI schema.
+#
+# Activates when a PR labeled `release` is merged into a release branch.
+name: Tag release on PR merge
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  tag-release:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release branch  # zizmor: ignore[artipacked]
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: Extract authentik version
+        id: get-authentik-version
+        uses: mikefarah/yq@0f4fb8d35ec1a939d78dd6862f494d19ec589f19 # v4.52.5
+        with:
+          cmd: yq -r ".info.version" ./.authentik/schema.yaml
+
+      - name: Create and push tag
+        env:
+          TAG: v${{ steps.get-authentik-version.outputs.result }}
+        run: |
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "Tag '$TAG' already exists. Skipping."
+          else
+            git tag "$TAG"
+            git push origin "$TAG"
+          fi

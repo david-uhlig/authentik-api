@@ -1,0 +1,61 @@
+#!/bin/bash -e
+# Post-processes the OpenAPI Generator output for this project.
+#
+# Copies generated files to their correct locations and restructures lib/ for
+# Zeitwerk-based autoloading.
+#
+# Usage: bin/postprocess-api [<generated-output-path>]
+#   <generated-output-path>  Path to the OpenAPI Generator output directory.
+#                            Defaults to <project-root>/tmp.
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+project_base_path="$( cd "$script_dir/.." && pwd )"
+
+# Resolve generated output path (default: <project-root>/tmp).
+if [[ -n "$1" ]]; then
+  if [[ "$1" = /* ]]; then
+    output_path="$1"
+  else
+    output_path="${PWD}/$1"
+  fi
+else
+  output_path="${project_base_path}/tmp"
+fi
+
+copy_files=(
+  ".openapi-generator/VERSION:"
+  "docs/:"
+  "spec/:"
+  "README.md:README_API.md"
+  "authentik-api.gemspec:"
+  "Gemfile:"
+  "Rakefile:"
+)
+
+for file_mapping in "${copy_files[@]}"; do
+  source_file="${file_mapping%%:*}"
+  target_file="${file_mapping#*:}"
+
+  if [[ -n "$target_file" ]]; then
+    rm -f "${project_base_path}/${target_file}"
+    cp "${output_path}/${source_file}" "${project_base_path}/${target_file}"
+  else
+    rm -rf "${project_base_path}/${source_file}"
+    cp -r "${output_path}/${source_file}" "${project_base_path}/"
+  fi
+done
+
+# Restructure lib/ for Zeitwerk-based loading.
+# The generator outputs into lib/authentik-api/, move everything into
+# lib/authentik/api as suggested per conventions.
+rm -rf "${project_base_path}/lib"
+mkdir -p "${project_base_path}/lib/authentik/api"
+
+cp -R "${output_path}/lib/authentik-api/"* "${project_base_path}/lib/authentik/api/"
+cp "${output_path}/lib/authentik-api.rb" "${project_base_path}/lib/authentik/api.rb"
+cp "${project_base_path}/.openapi-generator/inflector.rb" "${project_base_path}/lib/authentik/api/"
+
+# Update spec_helper to use the new require path.
+sed -i "s/require 'authentik-api'/require 'authentik\/api'/" "${project_base_path}/spec/spec_helper.rb"
+
+# Clean up.
+rm -rf "${output_path}"

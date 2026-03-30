@@ -1,0 +1,93 @@
+# Monitors the `goauthentik/authentik` repository for new tags.
+#
+# When new tags are found:
+# * Compares against known tags (a branch with the same name exists).
+# * Dispatches builder workflows for unknown tags.
+name: Poll tags and dispatch builders
+
+on:
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+
+env:
+  SOURCE_OWNER: goauthentik
+  SOURCE_REPO: authentik
+  SOURCE_LATEST_TAGS_NUM: 1
+  AUTO_PR_BRANCH_PREFIX: "openapi-client-update/"
+
+jobs:
+  check-tags:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      tags: ${{ steps.set-tags.outputs.tags }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0 # All history for all branches and tags.
+          persist-credentials: false
+
+      - id: get-branches
+        name: Get local branches
+        run: |
+          BRANCHES=$(git branch --format='%(refname:short)' | jq -Rnc '[inputs]')
+          echo "BRANCHES=$BRANCHES" >> "$GITHUB_ENV"
+
+      - id: get-tags
+        name: Get local tags
+        run: |
+          TAGS=$(git tag | jq -Rnc '[inputs]')
+          echo "TAGS=$TAGS" >> "$GITHUB_ENV"          
+
+      - id: get-missing-tags
+        name: Get missing authentik tags
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = process.env.SOURCE_OWNER;
+            const repo = process.env.SOURCE_REPO;
+            const numTags = process.env.SOURCE_LATEST_TAGS_NUM;
+            const branchPrefix = process.env.AUTO_PR_BRANCH_PREFIX;
+            const res = await github.rest.repos.listTags({owner, repo, per_page: numTags});
+            const sourceTags = res.data.map(t => t.name);
+            const branches = JSON.parse(process.env.BRANCHES);
+            const tags = JSON.parse(process.env.TAGS);
+            
+            // Filter out source tags that already exist as tag or PR branch.
+            const filteredTags = sourceTags.filter(
+              tag => tag.startsWith('version/') && 
+                !branches.includes(`${branchPrefix}${tag}`) &&
+                !tags.includes('v' + tag.replace('version/', ''))
+            );
+            
+            core.setOutput('tags', JSON.stringify(filteredTags));
+            core.info(`New tags: ${filteredTags.join(', ')}`);
+
+      - id: set-tags
+        name: Set tags
+        env:
+          TAGS_JSON: ${{ steps.get-missing-tags.outputs.tags }}
+        run: |
+          {
+            echo "tags<<JSON"
+            echo "$TAGS_JSON"
+            echo "JSON"
+          } >> "$GITHUB_OUTPUT"
+
+  dispatch-update:
+    needs: check-tags
+    permissions:
+      contents: write
+      pull-requests: write
+    strategy:
+      fail-fast: true
+      max-parallel: 1 # Prevent race-conditions when creating the base branch, e.g. `version/2026.2`
+      matrix:
+        tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
+    uses: ./.github/workflows/generate-openapi-client-on-release.yaml
+    with:
+      tag-name: ${{ matrix.tag }}

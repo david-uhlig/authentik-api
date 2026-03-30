@@ -1,0 +1,86 @@
+# Generates the OpenAPI client for an authentik release and opens a PR for review.
+#
+# 1. Review the PR and merge.
+# 2. Tag release.
+# 3. Publish gem.
+#
+# Keep this file in "sync" with `generate-openapi-client-main.yaml`.
+name: Generate OpenAPI client (authentik release)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag-name:
+        description: "The authentik version tag, e.g. 'version/2026.2.0'"
+        required: true
+        type: string
+  workflow_call:
+    inputs:
+      tag-name:
+        description: "The authentik version tag detected by the calling workflow."
+        required: true
+        type: string
+
+env:
+  OPENAPI_GENERATOR_PATH: "tmp"
+
+jobs:
+  get-release-branch:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/get-release-branch.yaml
+    with:
+      schema-url: "https://raw.githubusercontent.com/goauthentik/authentik/${{ inputs.tag-name }}/schema.yml"
+
+  build-client:
+    permissions:
+      contents: write
+      pull-requests: write
+    needs: get-release-branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: "${{ needs.get-release-branch.outputs.release-branch }}"
+          persist-credentials: false
+
+      - name: Download schema artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: schema
+          path: ./.authentik/
+
+      - name: Remove current client
+        run: rm -rf "./${OPENAPI_GENERATOR_PATH:?}"
+
+      - name: Build client using OpenAPI Generator
+        uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
+        with:
+          generator: ruby
+          config-file: ./.openapi-generator/config.yaml
+          openapi-file: ./.authentik/schema.yaml
+          command-args:
+            -t ./.openapi-generator/ruby-templates
+            --output="./${OPENAPI_GENERATOR_PATH}"
+            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.authentik-version }}
+
+      - name: Postprocessing
+        run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
+
+      - name: Create pull request for release
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          commit-message: "Update OpenAPI client for release ${{ inputs.tag-name }}"
+          branch: "openapi-client-update/${{ inputs.tag-name }}"
+          base: "${{ needs.get-release-branch.outputs.release-branch }}"
+          title: "OpenAPI client update for release ${{ inputs.tag-name }}"
+          body: |
+            This PR updates the generated OpenAPI client to match the schema for authentik release `${{ inputs.tag-name }}`.
+
+            Authentik version: `${{ needs.get-release-branch.outputs.authentik-version }}`
+
+            > Schema sourced from [goauthentik/authentik@${{ inputs.tag-name }}](https://github.com/goauthentik/authentik/blob/${{ inputs.tag-name }}/schema.yml)
+          labels: release
+          reviewers: david-uhlig
+          delete-branch: true

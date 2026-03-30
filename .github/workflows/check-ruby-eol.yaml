@@ -1,0 +1,121 @@
+# Checks Ruby's end-of-life status against the minimum required Ruby version
+# used in this library (including the vendored gem in /vendor/gems).
+#
+# When the minimum required Ruby version has reached end-of-life, this workflow
+# bumps it to the oldest still-supported Ruby release and opens a pull request.
+#
+# EOL data is sourced from https://endoflife.date/ruby
+name: Check Ruby EOL
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 1 * *" # First of every month at noon UTC.
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-ruby-eol:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Fetch gemspec path
+        id: gemspec-path
+        run: |
+          gemspec_path=$(find . -maxdepth 1 -name '*.gemspec' | sort | head -1)
+          echo "Gemspec path detected: $gemspec_path"
+          echo "gemspec_path=$gemspec_path" >> "$GITHUB_OUTPUT"
+
+      - name: Extract current Ruby version
+        id: fetch-ruby-version
+        env:
+          GEMSPEC_PATH: ${{ steps.gemspec-path.outputs.gemspec_path }}
+        run: |
+          # Extract major.minor from the gemspec, e.g. ">= 3.2.0" → "3.2"
+          required_ruby_version=$(grep -oP '(?<=required_ruby_version = ">= )\d+\.\d+' "$GEMSPEC_PATH")
+          echo "Current minimum Ruby version: $required_ruby_version"
+          echo "required_ruby_version=$required_ruby_version" >> "$GITHUB_OUTPUT"
+
+      - name: Check if current Ruby version is EOL
+        id: check-if-ruby-eol
+        env:
+          CURRENT_VERSION: ${{ steps.fetch-ruby-version.outputs.required_ruby_version }}
+        run: |
+          today=$(date +%Y-%m-%d)
+          current_version="$CURRENT_VERSION"
+          
+          curl -fsSL https://endoflife.date/api/ruby.json -o /tmp/ruby-eol.json
+          
+          # .eol is either a date string ("YYYY-MM-DD") or the boolean false
+          eol=$(jq -r --arg v "$current_version" '.[] | select(.cycle == $v) | .eol' /tmp/ruby-eol.json)
+          echo "EOL for Ruby $current_version: $eol"
+          
+          # Trigger when EOL date is today or in the past; skip when eol == false (no EOL announced)
+          if [[ "$eol" != "false" && ( "$eol" < "$today" || "$eol" == "$today" ) ]]; then
+            # Pick the oldest cycle whose EOL is in the future (or has no EOL announced)
+            new_version=$(jq -r --arg today "$today" \
+              '[.[] | select(.eol == false or .eol > $today)] | sort_by(.cycle) | .[0].cycle' \
+              /tmp/ruby-eol.json)
+            echo "New minimum Ruby version: $new_version"
+          
+            echo "is_eol=true" >> "$GITHUB_OUTPUT"
+            echo "new_ruby_version=$new_version" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_eol=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update *.gemspec
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        env:
+          NEW_RUBY_VERSION: ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}
+          GEMSPEC_PATH: ${{ steps.gemspec-path.outputs.gemspec_path }}
+        run: |
+          sed -ri "s/required_ruby_version = \">= [0-9]*\.[0-9]*(\.[0-9]*)?/required_ruby_version = \">= $NEW_RUBY_VERSION.0/" \
+            "$GEMSPEC_PATH"
+
+      - name: Update .openapi-generator/config.yaml
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        env:
+          NEW_RUBY_VERSION: ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}
+        run: |
+          sed -ri "s/gemRequiredRubyVersion: \">= [0-9]*\.[0-9]*(\.[0-9]*)?/gemRequiredRubyVersion: \">= $NEW_RUBY_VERSION.0/" \
+            .openapi-generator/config.yaml
+
+      - name: Update mise.toml
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        env:
+          NEW_RUBY_VERSION: ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}
+        run: |
+          # mise.toml  (ruby = "3.2")
+          sed -i "s/ruby = \"[0-9]*\.[0-9]*/ruby = \"$NEW_RUBY_VERSION/" mise.toml
+
+      - name: Create pull request
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          commit-message: "Bump Ruby version requirement to ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}"
+          branch: "ruby-eol-bump/${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}"
+          base: main
+          title: "Bump Ruby version requirement to ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}"
+          body: |
+            Ruby ${{ steps.fetch-ruby-version.outputs.required_ruby_version }} has reached end-of-life.
+
+            This PR bumps the minimum required Ruby version to ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}.
+
+            Updated files:
+            - `*.gemspec`
+            - `.openapi-generator/config.yaml`
+            - `mise.toml`
+            - `.standard.yml`
+
+            > EOL data sourced from [endoflife.date](https://endoflife.date/ruby)
+          reviewers: david-uhlig
+          delete-branch: true

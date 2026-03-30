@@ -1,0 +1,18 @@
+# Add gemVersion to the commandline parameters to set it programmatically,
+# e.g. `--additional-properties=gemVersion=${AUTHENTIK_VERSION}`
+#
+# See: `bin/generate-api`
+additionalProperties:
+  gemAuthor: "David Uhlig"
+  gemAuthorEmail: "david.uhlig@gmail.com"
+  gemDescription: "API client to talk to authentik's API. Automatically generated with the OpenAPI Generator."
+  gemHomepage: "https://github.com/david-uhlig/authentik-api"
+  gemLicense: "MIT"
+  # This generates `lib/authentik-api.rb` instead of the recommended `lib/authentik/api.rb`.
+  gemName: authentik-api
+  gemRequiredRubyVersion: ">= 3.2.0"
+  gemSummary: "API client to talk to authentik's API."
+  # It doesn't generate the `Authentik` top-level module, which requires a workaround in the builder scripts.
+  moduleName: "Authentik::Api"
+nameMappings:
+  object_id: obj_id # Prevent overlaying Ruby's default object identifier.

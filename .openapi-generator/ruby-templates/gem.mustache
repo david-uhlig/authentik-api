@@ -1,0 +1,32 @@
+=begin
+{{> api_info}}
+
+=end
+# frozen_string_literal: true
+
+require "logger"
+require "zeitwerk"
+require_relative "api/inflector"
+
+loader = Zeitwerk::Loader.for_gem_extension(Authentik)
+loader.collapse("#{__dir__}/api/{api,models}")
+loader.inflector = {{moduleName}}::Inflector.new(__FILE__)
+loader.setup
+
+module {{moduleName}}
+  class << self
+    # Customize default settings for the SDK using block.
+    #   {{moduleName}}.configure do |config|
+    #     config.username = "xxx"
+    #     config.password = "xxx"
+    #   end
+    # If no block given, return the default Configuration object.
+    def configure
+      if block_given?
+        yield(Configuration.default)
+      else
+        Configuration.default
+      end
+    end
+  end
+end
