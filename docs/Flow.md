@@ -12,6 +12,7 @@
 | **designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. |  |
 | **background** | **String** | Background shown during execution | [optional] |
 | **background_url** | **String** | Get the URL to the background image | [readonly] |
+| **background_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **stages** | **Array&lt;String&gt;** |  | [readonly] |
 | **policies** | **Array&lt;String&gt;** |  | [readonly] |
 | **cache_count** | **Integer** | Get count of cached flows | [readonly] |
@@ -36,6 +37,7 @@ instance = Authentik::Api::Flow.new(
   designation: null,
   background: null,
   background_url: null,
+  background_themed_urls: null,
   stages: null,
   policies: null,
   cache_count: null,

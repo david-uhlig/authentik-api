@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** | Get the URL to the source icon | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = Authentik::Api::Source.new(
   managed: null,
   user_path_template: null,
   icon: null,
-  icon_url: null
+  icon_url: null,
+  icon_themed_urls: null
 )
 ```
 

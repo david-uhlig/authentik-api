@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **group_matching_mode** | [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] |
 | **client_id** | **String** | Client identifier used to talk to Plex. | [optional] |
 | **allowed_servers** | **Array&lt;String&gt;** | Which servers a user has to be a member of to be granted access. Empty list allows every server. | [optional] |
@@ -54,6 +55,7 @@ instance = Authentik::Api::PlexSource.new(
   user_path_template: null,
   icon: null,
   icon_url: null,
+  icon_themed_urls: null,
   group_matching_mode: null,
   client_id: null,
   allowed_servers: null,

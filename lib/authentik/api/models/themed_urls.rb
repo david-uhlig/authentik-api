@@ -8,23 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Base serializer class which doesn't implement create/update methods
-  class FileList < ApiModelBase
-    attr_accessor :name
+  # Themed URLs - maps theme names to URLs for light and dark themes
+  class ThemedUrls < ApiModelBase
+    attr_accessor :light
 
-    attr_accessor :mime_type
-
-    attr_accessor :url
-
-    attr_accessor :themed_urls
+    attr_accessor :dark
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'name' => :'name',
-        :'mime_type' => :'mime_type',
-        :'url' => :'url',
-        :'themed_urls' => :'themed_urls'
+        :'light' => :'light',
+        :'dark' => :'dark'
       }
     end
 
@@ -41,17 +35,16 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'name' => :'String',
-        :'mime_type' => :'String',
-        :'url' => :'String',
-        :'themed_urls' => :'ThemedUrls'
+        :'light' => :'String',
+        :'dark' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'themed_urls'
+        :'light',
+        :'dark'
       ])
     end
 
@@ -59,38 +52,24 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::FileList` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::ThemedUrls` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::FileList`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::ThemedUrls`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
+      if attributes.key?(:'light')
+        self.light = attributes[:'light']
       end
 
-      if attributes.key?(:'mime_type')
-        self.mime_type = attributes[:'mime_type']
-      else
-        self.mime_type = nil
-      end
-
-      if attributes.key?(:'url')
-        self.url = attributes[:'url']
-      else
-        self.url = nil
-      end
-
-      if attributes.key?(:'themed_urls')
-        self.themed_urls = attributes[:'themed_urls']
+      if attributes.key?(:'dark')
+        self.dark = attributes[:'dark']
       end
     end
 
@@ -99,18 +78,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @mime_type.nil?
-        invalid_properties.push('invalid value for "mime_type", mime_type cannot be nil.')
-      end
-
-      if @url.nil?
-        invalid_properties.push('invalid value for "url", url cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -118,40 +85,7 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @mime_type.nil?
-      return false if @url.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
-      end
-
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] mime_type Value to be assigned
-    def mime_type=(mime_type)
-      if mime_type.nil?
-        fail ArgumentError, 'mime_type cannot be nil'
-      end
-
-      @mime_type = mime_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] url Value to be assigned
-    def url=(url)
-      if url.nil?
-        fail ArgumentError, 'url cannot be nil'
-      end
-
-      @url = url
     end
 
     # Checks equality by comparing each attribute.
@@ -159,10 +93,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          name == o.name &&
-          mime_type == o.mime_type &&
-          url == o.url &&
-          themed_urls == o.themed_urls
+          light == o.light &&
+          dark == o.dark
     end
 
     # @see the `==` method
@@ -174,7 +106,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, mime_type, url, themed_urls].hash
+      [light, dark].hash
     end
 
     # Builds the object from hash

@@ -135,6 +135,12 @@ describe Authentik::Api::OAuthSource do
     end
   end
 
+  describe 'test attribute "icon_themed_urls"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "group_matching_mode"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

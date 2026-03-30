@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **server_uri** | **String** |  |  |
 | **peer_certificate** | **String** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] |
 | **client_certificate** | **String** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] |
@@ -72,6 +73,7 @@ instance = Authentik::Api::LDAPSource.new(
   user_path_template: null,
   icon: null,
   icon_url: null,
+  icon_themed_urls: null,
   server_uri: null,
   peer_certificate: null,
   client_certificate: null,

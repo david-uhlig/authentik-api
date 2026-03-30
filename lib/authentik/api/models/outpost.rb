@@ -105,6 +105,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'service_connection',
+        :'service_connection_obj',
         :'managed'
       ])
     end
@@ -219,10 +220,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "providers_obj", providers_obj cannot be nil.')
       end
 
-      if @service_connection_obj.nil?
-        invalid_properties.push('invalid value for "service_connection_obj", service_connection_obj cannot be nil.')
-      end
-
       if @refresh_interval_s.nil?
         invalid_properties.push('invalid value for "refresh_interval_s", refresh_interval_s cannot be nil.')
       end
@@ -247,7 +244,6 @@ module Authentik::Api
       return false if @type.nil?
       return false if @providers.nil?
       return false if @providers_obj.nil?
-      return false if @service_connection_obj.nil?
       return false if @refresh_interval_s.nil?
       return false if @token_identifier.nil?
       return false if @config.nil?
@@ -302,16 +298,6 @@ module Authentik::Api
       end
 
       @providers_obj = providers_obj
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] service_connection_obj Value to be assigned
-    def service_connection_obj=(service_connection_obj)
-      if service_connection_obj.nil?
-        fail ArgumentError, 'service_connection_obj cannot be nil'
-      end
-
-      @service_connection_obj = service_connection_obj
     end
 
     # Custom attribute writer method with validation

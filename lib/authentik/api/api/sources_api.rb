@@ -3725,7 +3725,7 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_kerberos_list ...'
       end
-      allowable_values = ["Heimdal", "MIT", "other"]
+      allowable_values = ["Heimdal", "MIT"]
       if @api_client.config.client_side_validation && opts[:'kadmin_type'] && !allowable_values.include?(opts[:'kadmin_type'])
         fail ArgumentError, "invalid value for \"kadmin_type\", must be one of #{allowable_values}"
       end

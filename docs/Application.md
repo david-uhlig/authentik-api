@@ -16,6 +16,7 @@
 | **meta_launch_url** | **String** |  | [optional] |
 | **meta_icon** | **String** |  | [optional] |
 | **meta_icon_url** | **String** | Get the URL to the App Icon image | [readonly] |
+| **meta_icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **meta_description** | **String** |  | [optional] |
 | **meta_publisher** | **String** |  | [optional] |
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
@@ -39,6 +40,7 @@ instance = Authentik::Api::Application.new(
   meta_launch_url: null,
   meta_icon: null,
   meta_icon_url: null,
+  meta_icon_themed_urls: null,
   meta_description: null,
   meta_publisher: null,
   policy_engine_mode: null,
