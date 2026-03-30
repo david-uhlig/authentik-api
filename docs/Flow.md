@@ -10,7 +10,8 @@
 | **slug** | **String** | Visible in the URL. |  |
 | **title** | **String** | Shown as the Title in Flow pages. |  |
 | **designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. |  |
-| **background** | **String** | Get the URL to the background image. If the name is /static or starts with http it is returned as-is | [readonly] |
+| **background** | **String** | Background shown during execution | [optional] |
+| **background_url** | **String** | Get the URL to the background image | [readonly] |
 | **stages** | **Array&lt;String&gt;** |  | [readonly] |
 | **policies** | **Array&lt;String&gt;** |  | [readonly] |
 | **cache_count** | **Integer** | Get count of cached flows | [readonly] |
@@ -34,6 +35,7 @@ instance = Authentik::Api::Flow.new(
   title: null,
   designation: null,
   background: null,
+  background_url: null,
   stages: null,
   policies: null,
   cache_count: null,

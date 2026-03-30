@@ -17,8 +17,6 @@ All URIs are relative to */api/v3*
 | [**core_applications_list**](CoreApi.md#core_applications_list) | **GET** /core/applications/ |  |
 | [**core_applications_partial_update**](CoreApi.md#core_applications_partial_update) | **PATCH** /core/applications/{slug}/ |  |
 | [**core_applications_retrieve**](CoreApi.md#core_applications_retrieve) | **GET** /core/applications/{slug}/ |  |
-| [**core_applications_set_icon_create**](CoreApi.md#core_applications_set_icon_create) | **POST** /core/applications/{slug}/set_icon/ |  |
-| [**core_applications_set_icon_url_create**](CoreApi.md#core_applications_set_icon_url_create) | **POST** /core/applications/{slug}/set_icon_url/ |  |
 | [**core_applications_update**](CoreApi.md#core_applications_update) | **PUT** /core/applications/{slug}/ |  |
 | [**core_applications_used_by_list**](CoreApi.md#core_applications_used_by_list) | **GET** /core/applications/{slug}/used_by/ |  |
 | [**core_authenticated_sessions_destroy**](CoreApi.md#core_authenticated_sessions_destroy) | **DELETE** /core/authenticated_sessions/{uuid}/ |  |
@@ -58,6 +56,7 @@ All URIs are relative to */api/v3*
 | [**core_user_consent_used_by_list**](CoreApi.md#core_user_consent_used_by_list) | **GET** /core/user_consent/{id}/used_by/ |  |
 | [**core_users_create**](CoreApi.md#core_users_create) | **POST** /core/users/ |  |
 | [**core_users_destroy**](CoreApi.md#core_users_destroy) | **DELETE** /core/users/{id}/ |  |
+| [**core_users_export_create**](CoreApi.md#core_users_export_create) | **POST** /core/users/export/ |  |
 | [**core_users_impersonate_create**](CoreApi.md#core_users_impersonate_create) | **POST** /core/users/{id}/impersonate/ |  |
 | [**core_users_impersonate_end_retrieve**](CoreApi.md#core_users_impersonate_end_retrieve) | **GET** /core/users/impersonate_end/ |  |
 | [**core_users_list**](CoreApi.md#core_users_list) | **GET** /core/users/ |  |
@@ -1019,150 +1018,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## core_applications_set_icon_create
-
-> core_applications_set_icon_create(slug, opts)
-
-
-
-Set application icon
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::CoreApi.new
-slug = 'slug_example' # String | 
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  clear: true # Boolean | 
-}
-
-begin
-  
-  api_instance.core_applications_set_icon_create(slug, opts)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling CoreApi->core_applications_set_icon_create: #{e}"
-end
-```
-
-#### Using the core_applications_set_icon_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> core_applications_set_icon_create_with_http_info(slug, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.core_applications_set_icon_create_with_http_info(slug, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling CoreApi->core_applications_set_icon_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file** | **File** |  | [optional] |
-| **clear** | **Boolean** |  | [optional][default to false] |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-## core_applications_set_icon_url_create
-
-> core_applications_set_icon_url_create(slug, file_path_request)
-
-
-
-Set application icon (as URL)
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::CoreApi.new
-slug = 'slug_example' # String | 
-file_path_request = Authentik::Api::FilePathRequest.new({url: 'url_example'}) # FilePathRequest | 
-
-begin
-  
-  api_instance.core_applications_set_icon_url_create(slug, file_path_request)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling CoreApi->core_applications_set_icon_url_create: #{e}"
-end
-```
-
-#### Using the core_applications_set_icon_url_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> core_applications_set_icon_url_create_with_http_info(slug, file_path_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.core_applications_set_icon_url_create_with_http_info(slug, file_path_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling CoreApi->core_applications_set_icon_url_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file_path_request** | [**FilePathRequest**](FilePathRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -2417,6 +2272,8 @@ api_instance = Authentik::Api::CoreApi.new
 opts = {
   attributes: 'attributes_example', # String | Attributes
   include_children: true, # Boolean | 
+  include_inherited_roles: true, # Boolean | 
+  include_parents: true, # Boolean | 
   include_users: true, # Boolean | 
   is_superuser: true, # Boolean | 
   members_by_pk: [37], # Array<Integer> | 
@@ -2461,6 +2318,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **attributes** | **String** | Attributes | [optional] |
 | **include_children** | **Boolean** |  | [optional][default to false] |
+| **include_inherited_roles** | **Boolean** |  | [optional][default to false] |
+| **include_parents** | **Boolean** |  | [optional][default to false] |
 | **include_users** | **Boolean** |  | [optional][default to true] |
 | **is_superuser** | **Boolean** |  | [optional] |
 | **members_by_pk** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
@@ -2651,6 +2510,8 @@ api_instance = Authentik::Api::CoreApi.new
 group_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Group.
 opts = {
   include_children: true, # Boolean | 
+  include_inherited_roles: true, # Boolean | 
+  include_parents: true, # Boolean | 
   include_users: true # Boolean | 
 }
 
@@ -2687,6 +2548,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **group_uuid** | **String** | A UUID string identifying this Group. |  |
 | **include_children** | **Boolean** |  | [optional][default to false] |
+| **include_inherited_roles** | **Boolean** |  | [optional][default to false] |
+| **include_parents** | **Boolean** |  | [optional][default to false] |
 | **include_users** | **Boolean** |  | [optional][default to true] |
 
 ### Return type
@@ -3985,6 +3848,119 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## core_users_export_create
+
+> <DataExport> core_users_export_create(opts)
+
+
+
+Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  attributes: 'attributes_example', # String | Attributes
+  date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  email: 'email_example', # String | 
+  groups_by_name: ['inner_example'], # Array<String> | 
+  groups_by_pk: ['inner_example'], # Array<String> | 
+  is_active: true, # Boolean | 
+  is_superuser: true, # Boolean | 
+  last_updated: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  last_updated__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  last_updated__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  path: 'path_example', # String | 
+  path_startswith: 'path_startswith_example', # String | 
+  roles_by_name: ['inner_example'], # Array<String> | 
+  roles_by_pk: ['inner_example'], # Array<String> | 
+  search: 'search_example', # String | A search term.
+  type: ['external'], # Array<String> | 
+  username: 'username_example', # String | 
+  uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+}
+
+begin
+  
+  result = api_instance.core_users_export_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_export_create: #{e}"
+end
+```
+
+#### Using the core_users_export_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DataExport>, Integer, Hash)> core_users_export_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_export_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DataExport>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_export_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attributes** | **String** | Attributes | [optional] |
+| **date_joined** | **Time** |  | [optional] |
+| **date_joined__gt** | **Time** |  | [optional] |
+| **date_joined__lt** | **Time** |  | [optional] |
+| **email** | **String** |  | [optional] |
+| **groups_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **groups_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **is_active** | **Boolean** |  | [optional] |
+| **is_superuser** | **Boolean** |  | [optional] |
+| **last_updated** | **Time** |  | [optional] |
+| **last_updated__gt** | **Time** |  | [optional] |
+| **last_updated__lt** | **Time** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **path** | **String** |  | [optional] |
+| **path_startswith** | **String** |  | [optional] |
+| **roles_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **roles_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **type** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **username** | **String** |  | [optional] |
+| **uuid** | **String** |  | [optional] |
+
+### Return type
+
+[**DataExport**](DataExport.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## core_users_impersonate_create
 
 > core_users_impersonate_create(id, impersonation_request)
@@ -4149,6 +4125,7 @@ opts = {
   groups_by_name: ['inner_example'], # Array<String> | 
   groups_by_pk: ['inner_example'], # Array<String> | 
   include_groups: true, # Boolean | 
+  include_roles: true, # Boolean | 
   is_active: true, # Boolean | 
   is_superuser: true, # Boolean | 
   last_updated: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -4160,6 +4137,8 @@ opts = {
   page_size: 56, # Integer | Number of results to return per page.
   path: 'path_example', # String | 
   path_startswith: 'path_startswith_example', # String | 
+  roles_by_name: ['inner_example'], # Array<String> | 
+  roles_by_pk: ['inner_example'], # Array<String> | 
   search: 'search_example', # String | A search term.
   type: ['external'], # Array<String> | 
   username: 'username_example', # String | 
@@ -4205,6 +4184,7 @@ end
 | **groups_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **groups_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **include_groups** | **Boolean** |  | [optional][default to true] |
+| **include_roles** | **Boolean** |  | [optional][default to true] |
 | **is_active** | **Boolean** |  | [optional] |
 | **is_superuser** | **Boolean** |  | [optional] |
 | **last_updated** | **Time** |  | [optional] |
@@ -4216,6 +4196,8 @@ end
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **path** | **String** |  | [optional] |
 | **path_startswith** | **String** |  | [optional] |
+| **roles_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **roles_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **type** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **username** | **String** |  | [optional] |

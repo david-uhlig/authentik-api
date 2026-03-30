@@ -22,6 +22,8 @@ module Authentik::Api
 
     attr_accessor :requires_enterprise
 
+    attr_accessor :deprecated
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -30,7 +32,8 @@ module Authentik::Api
         :'component' => :'component',
         :'model_name' => :'model_name',
         :'icon_url' => :'icon_url',
-        :'requires_enterprise' => :'requires_enterprise'
+        :'requires_enterprise' => :'requires_enterprise',
+        :'deprecated' => :'deprecated'
       }
     end
 
@@ -52,7 +55,8 @@ module Authentik::Api
         :'component' => :'String',
         :'model_name' => :'String',
         :'icon_url' => :'String',
-        :'requires_enterprise' => :'Boolean'
+        :'requires_enterprise' => :'Boolean',
+        :'deprecated' => :'Boolean'
       }
     end
 
@@ -110,6 +114,12 @@ module Authentik::Api
         self.requires_enterprise = attributes[:'requires_enterprise']
       else
         self.requires_enterprise = false
+      end
+
+      if attributes.key?(:'deprecated')
+        self.deprecated = attributes[:'deprecated']
+      else
+        self.deprecated = false
       end
     end
 
@@ -198,7 +208,8 @@ module Authentik::Api
           component == o.component &&
           model_name == o.model_name &&
           icon_url == o.icon_url &&
-          requires_enterprise == o.requires_enterprise
+          requires_enterprise == o.requires_enterprise &&
+          deprecated == o.deprecated
     end
 
     # @see the `==` method
@@ -210,7 +221,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, component, model_name, icon_url, requires_enterprise].hash
+      [name, description, component, model_name, icon_url, requires_enterprise, deprecated].hash
     end
 
     # Builds the object from hash

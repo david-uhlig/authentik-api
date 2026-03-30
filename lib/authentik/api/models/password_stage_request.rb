@@ -12,8 +12,6 @@ module Authentik::Api
   class PasswordStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Selection of backends to test the password against.
     attr_accessor :backends
 
@@ -30,7 +28,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'backends' => :'backends',
         :'configure_flow' => :'configure_flow',
         :'failed_attempts_before_cancel' => :'failed_attempts_before_cancel',
@@ -52,7 +49,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'backends' => :'Array<BackendsEnum>',
         :'configure_flow' => :'String',
         :'failed_attempts_before_cancel' => :'Integer',
@@ -87,12 +83,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'backends')
@@ -204,7 +194,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           backends == o.backends &&
           configure_flow == o.configure_flow &&
           failed_attempts_before_cancel == o.failed_attempts_before_cancel &&
@@ -220,7 +209,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, backends, configure_flow, failed_attempts_before_cancel, allow_show_password].hash
+      [name, backends, configure_flow, failed_attempts_before_cancel, allow_show_password].hash
     end
 
     # Builds the object from hash

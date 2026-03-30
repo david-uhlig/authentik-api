@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  |  |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **configure_flow** | **String** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] |
 | **friendly_name** | **String** |  | [optional] |
 | **use_global_settings** | **Boolean** | When enabled, global Email connection settings will be used and connection settings below will be ignored. | [optional] |
@@ -28,7 +27,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::AuthenticatorEmailStageRequest.new(
   name: null,
-  flow_set: null,
   configure_flow: null,
   friendly_name: null,
   use_global_settings: null,

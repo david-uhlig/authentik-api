@@ -39,6 +39,12 @@ describe Authentik::Api::KerberosSourceRequest do
     end
   end
 
+  describe 'test attribute "promoted"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "authentication_flow"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -76,6 +82,12 @@ describe Authentik::Api::KerberosSourceRequest do
   end
 
   describe 'test attribute "user_path_template"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "icon"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -160,6 +172,12 @@ describe Authentik::Api::KerberosSourceRequest do
   end
 
   describe 'test attribute "password_login_update_internal_password"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "sync_outgoing_trigger_mode"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

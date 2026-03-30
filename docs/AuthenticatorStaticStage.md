@@ -10,7 +10,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
 | **configure_flow** | **String** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] |
 | **friendly_name** | **String** |  | [optional] |
 | **token_count** | **Integer** |  | [optional] |

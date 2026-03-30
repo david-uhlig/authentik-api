@@ -8,6 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
+  # Set token's key
   class TokenSetKeyRequest < ApiModelBase
     attr_accessor :key
 

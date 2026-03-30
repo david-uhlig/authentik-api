@@ -116,10 +116,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
-        :'assigned_application_slug',
-        :'assigned_application_name',
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
       ])
     end
 
@@ -259,6 +255,22 @@ module Authentik::Api
         invalid_properties.push('invalid value for "component", component cannot be nil.')
       end
 
+      if @assigned_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_application_slug", assigned_application_slug cannot be nil.')
+      end
+
+      if @assigned_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_application_name", assigned_application_name cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
+      end
+
       if @verbose_name.nil?
         invalid_properties.push('invalid value for "verbose_name", verbose_name cannot be nil.')
       end
@@ -286,6 +298,10 @@ module Authentik::Api
       return false if @name.nil?
       return false if @authorization_flow.nil?
       return false if @component.nil?
+      return false if @assigned_application_slug.nil?
+      return false if @assigned_application_name.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
@@ -331,6 +347,46 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_slug Value to be assigned
+    def assigned_application_slug=(assigned_application_slug)
+      if assigned_application_slug.nil?
+        fail ArgumentError, 'assigned_application_slug cannot be nil'
+      end
+
+      @assigned_application_slug = assigned_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_name Value to be assigned
+    def assigned_application_name=(assigned_application_name)
+      if assigned_application_name.nil?
+        fail ArgumentError, 'assigned_application_name cannot be nil'
+      end
+
+      @assigned_application_name = assigned_application_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation

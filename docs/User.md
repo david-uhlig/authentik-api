@@ -13,6 +13,8 @@
 | **is_superuser** | **Boolean** |  | [readonly] |
 | **groups** | **Array&lt;String&gt;** |  | [optional] |
 | **groups_obj** | [**Array&lt;PartialGroup&gt;**](PartialGroup.md) |  | [readonly] |
+| **roles** | **Array&lt;String&gt;** |  | [optional] |
+| **roles_obj** | [**Array&lt;Role&gt;**](Role.md) |  | [readonly] |
 | **email** | **String** |  | [optional] |
 | **avatar** | **String** | User&#39;s avatar, either a http/https URL or a data URI | [readonly] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
@@ -38,6 +40,8 @@ instance = Authentik::Api::User.new(
   is_superuser: null,
   groups: null,
   groups_obj: null,
+  roles: null,
+  roles_obj: null,
   email: null,
   avatar: null,
   attributes: null,

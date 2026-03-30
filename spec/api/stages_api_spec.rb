@@ -1314,6 +1314,89 @@ describe 'StagesApi' do
     end
   end
 
+  # unit tests for stages_endpoints_create
+  # EndpointStage Viewset
+  # @param endpoint_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_destroy
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'stages_endpoints_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_list
+  # EndpointStage Viewset
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedEndpointStageList]
+  describe 'stages_endpoints_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_partial_update
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedEndpointStageRequest] :patched_endpoint_stage_request 
+  # @return [EndpointStage]
+  describe 'stages_endpoints_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_retrieve
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_update
+  # EndpointStage Viewset
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param endpoint_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointStage]
+  describe 'stages_endpoints_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_endpoints_used_by_list
+  # Get a list of all objects that use this object
+  # @param stage_uuid A UUID string identifying this Endpoint Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'stages_endpoints_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for stages_identification_create
   # IdentificationStage Viewset
   # @param identification_stage_request 
@@ -1352,6 +1435,7 @@ describe 'StagesApi' do
   # @option opts [String] :search A search term.
   # @option opts [Boolean] :show_matched_user 
   # @option opts [Boolean] :show_source_labels 
+  # @option opts [String] :webauthn_stage 
   # @return [PaginatedIdentificationStageList]
   describe 'stages_identification_list test' do
     it 'should work' do

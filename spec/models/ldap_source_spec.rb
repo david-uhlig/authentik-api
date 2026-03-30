@@ -45,6 +45,12 @@ describe Authentik::Api::LDAPSource do
     end
   end
 
+  describe 'test attribute "promoted"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "authentication_flow"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -118,6 +124,12 @@ describe Authentik::Api::LDAPSource do
   end
 
   describe 'test attribute "icon"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "icon_url"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -250,6 +262,12 @@ describe Authentik::Api::LDAPSource do
   end
 
   describe 'test attribute "delete_not_found_objects"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "sync_outgoing_trigger_mode"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

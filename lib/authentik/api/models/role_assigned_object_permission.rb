@@ -14,14 +14,17 @@ module Authentik::Api
 
     attr_accessor :name
 
-    attr_accessor :permissions
+    attr_accessor :object_permissions
+
+    attr_accessor :model_permissions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'role_pk' => :'role_pk',
         :'name' => :'name',
-        :'permissions' => :'permissions'
+        :'object_permissions' => :'object_permissions',
+        :'model_permissions' => :'model_permissions'
       }
     end
 
@@ -40,7 +43,8 @@ module Authentik::Api
       {
         :'role_pk' => :'String',
         :'name' => :'String',
-        :'permissions' => :'Array<RoleObjectPermission>'
+        :'object_permissions' => :'Array<RoleObjectPermission>',
+        :'model_permissions' => :'Array<RoleModelPermission>'
       }
     end
 
@@ -78,12 +82,20 @@ module Authentik::Api
         self.name = nil
       end
 
-      if attributes.key?(:'permissions')
-        if (value = attributes[:'permissions']).is_a?(Array)
-          self.permissions = value
+      if attributes.key?(:'object_permissions')
+        if (value = attributes[:'object_permissions']).is_a?(Array)
+          self.object_permissions = value
         end
       else
-        self.permissions = nil
+        self.object_permissions = nil
+      end
+
+      if attributes.key?(:'model_permissions')
+        if (value = attributes[:'model_permissions']).is_a?(Array)
+          self.model_permissions = value
+        end
+      else
+        self.model_permissions = nil
       end
     end
 
@@ -100,8 +112,12 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @permissions.nil?
-        invalid_properties.push('invalid value for "permissions", permissions cannot be nil.')
+      if @object_permissions.nil?
+        invalid_properties.push('invalid value for "object_permissions", object_permissions cannot be nil.')
+      end
+
+      if @model_permissions.nil?
+        invalid_properties.push('invalid value for "model_permissions", model_permissions cannot be nil.')
       end
 
       invalid_properties
@@ -113,7 +129,8 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @role_pk.nil?
       return false if @name.nil?
-      return false if @permissions.nil?
+      return false if @object_permissions.nil?
+      return false if @model_permissions.nil?
       true
     end
 
@@ -138,13 +155,23 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] permissions Value to be assigned
-    def permissions=(permissions)
-      if permissions.nil?
-        fail ArgumentError, 'permissions cannot be nil'
+    # @param [Object] object_permissions Value to be assigned
+    def object_permissions=(object_permissions)
+      if object_permissions.nil?
+        fail ArgumentError, 'object_permissions cannot be nil'
       end
 
-      @permissions = permissions
+      @object_permissions = object_permissions
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] model_permissions Value to be assigned
+    def model_permissions=(model_permissions)
+      if model_permissions.nil?
+        fail ArgumentError, 'model_permissions cannot be nil'
+      end
+
+      @model_permissions = model_permissions
     end
 
     # Checks equality by comparing each attribute.
@@ -154,7 +181,8 @@ module Authentik::Api
       self.class == o.class &&
           role_pk == o.role_pk &&
           name == o.name &&
-          permissions == o.permissions
+          object_permissions == o.object_permissions &&
+          model_permissions == o.model_permissions
     end
 
     # @see the `==` method
@@ -166,7 +194,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [role_pk, name, permissions].hash
+      [role_pk, name, object_permissions, model_permissions].hash
     end
 
     # Builds the object from hash

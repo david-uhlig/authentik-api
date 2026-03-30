@@ -10,8 +10,6 @@ require 'time'
 module Authentik::Api
   # Base class for all challenge responses
   class TelegramChallengeResponseRequest < ApiModelBase
-    attr_accessor :component
-
     attr_accessor :id
 
     attr_accessor :first_name
@@ -26,17 +24,19 @@ module Authentik::Api
 
     attr_accessor :hash
 
+    attr_accessor :component
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'component' => :'component',
         :'id' => :'id',
         :'first_name' => :'first_name',
         :'last_name' => :'last_name',
         :'username' => :'username',
         :'photo_url' => :'photo_url',
         :'auth_date' => :'auth_date',
-        :'hash' => :'hash'
+        :'hash' => :'hash',
+        :'component' => :'component'
       }
     end
 
@@ -53,14 +53,14 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'component' => :'String',
         :'id' => :'Integer',
         :'first_name' => :'String',
         :'last_name' => :'String',
         :'username' => :'String',
         :'photo_url' => :'String',
         :'auth_date' => :'Integer',
-        :'hash' => :'String'
+        :'hash' => :'String',
+        :'component' => :'String'
       }
     end
 
@@ -85,12 +85,6 @@ module Authentik::Api
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'component')
-        self.component = attributes[:'component']
-      else
-        self.component = 'ak-source-telegram'
-      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -125,6 +119,12 @@ module Authentik::Api
       else
         self.hash = nil
       end
+
+      if attributes.key?(:'component')
+        self.component = attributes[:'component']
+      else
+        self.component = 'ak-source-telegram'
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -132,10 +132,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@component.nil? && @component.to_s.length < 1
-        invalid_properties.push('invalid value for "component", the character length must be greater than or equal to 1.')
-      end
-
       if @id.nil?
         invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
@@ -184,6 +180,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "hash", the character length must be greater than or equal to 1.')
       end
 
+      if !@component.nil? && @component.to_s.length < 1
+        invalid_properties.push('invalid value for "component", the character length must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -191,7 +191,6 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@component.nil? && @component.to_s.length < 1
       return false if @id.nil?
       return false if !@first_name.nil? && @first_name.to_s.length > 255
       return false if !@first_name.nil? && @first_name.to_s.length < 1
@@ -204,21 +203,8 @@ module Authentik::Api
       return false if @hash.nil?
       return false if @hash.to_s.length > 64
       return false if @hash.to_s.length < 1
+      return false if !@component.nil? && @component.to_s.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] component Value to be assigned
-    def component=(component)
-      if component.nil?
-        fail ArgumentError, 'component cannot be nil'
-      end
-
-      if component.to_s.length < 1
-        fail ArgumentError, 'invalid value for "component", the character length must be greater than or equal to 1.'
-      end
-
-      @component = component
     end
 
     # Custom attribute writer method with validation
@@ -327,19 +313,33 @@ module Authentik::Api
       @hash = hash
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] component Value to be assigned
+    def component=(component)
+      if component.nil?
+        fail ArgumentError, 'component cannot be nil'
+      end
+
+      if component.to_s.length < 1
+        fail ArgumentError, 'invalid value for "component", the character length must be greater than or equal to 1.'
+      end
+
+      @component = component
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          component == o.component &&
           id == o.id &&
           first_name == o.first_name &&
           last_name == o.last_name &&
           username == o.username &&
           photo_url == o.photo_url &&
           auth_date == o.auth_date &&
-          hash == o.hash
+          hash == o.hash &&
+          component == o.component
     end
 
     # @see the `==` method
@@ -351,7 +351,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [component, id, first_name, last_name, username, photo_url, auth_date, hash].hash
+      [id, first_name, last_name, username, photo_url, auth_date, hash, component].hash
     end
 
     # Builds the object from hash

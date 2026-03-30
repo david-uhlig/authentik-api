@@ -1051,7 +1051,7 @@ describe 'ProvidersApi' do
   # @param invalidation_flow 
   # @param file 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SAMLProvider]
   describe 'providers_saml_import_metadata_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

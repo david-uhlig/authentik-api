@@ -12,15 +12,12 @@ module Authentik::Api
   class PatchedDenyStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :deny_message
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'deny_message' => :'deny_message'
       }
     end
@@ -39,7 +36,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'deny_message' => :'String'
       }
     end
@@ -68,12 +64,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'deny_message')
@@ -121,7 +111,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           deny_message == o.deny_message
     end
 
@@ -134,7 +123,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, deny_message].hash
+      [name, deny_message].hash
     end
 
     # Builds the object from hash

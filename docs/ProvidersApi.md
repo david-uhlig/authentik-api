@@ -6040,7 +6040,7 @@ nil (empty response body)
 
 ## providers_saml_import_metadata_create
 
-> providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+> <SAMLProvider> providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
 
 
 
@@ -6065,7 +6065,8 @@ file = File.new('/path/to/some/file') # File |
 
 begin
   
-  api_instance.providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+  result = api_instance.providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file)
+  p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling ProvidersApi->providers_saml_import_metadata_create: #{e}"
 end
@@ -6073,9 +6074,9 @@ end
 
 #### Using the providers_saml_import_metadata_create_with_http_info variant
 
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
+This returns an Array which contains the response data, status code and headers.
 
-> <Array(nil, Integer, Hash)> providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
+> <Array(<SAMLProvider>, Integer, Hash)> providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
 
 ```ruby
 begin
@@ -6083,7 +6084,7 @@ begin
   data, status_code, headers = api_instance.providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => nil
+  p data # => <SAMLProvider>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling ProvidersApi->providers_saml_import_metadata_create_with_http_info: #{e}"
 end
@@ -6100,7 +6101,7 @@ end
 
 ### Return type
 
-nil (empty response body)
+[**SAMLProvider**](SAMLProvider.md)
 
 ### Authorization
 

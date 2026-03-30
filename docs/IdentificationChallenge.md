@@ -20,6 +20,7 @@
 | **sources** | [**Array&lt;LoginSource&gt;**](LoginSource.md) |  | [optional] |
 | **show_source_labels** | **Boolean** |  |  |
 | **enable_remember_me** | **Boolean** |  | [optional][default to true] |
+| **passkey_challenge** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 
@@ -42,7 +43,8 @@ instance = Authentik::Api::IdentificationChallenge.new(
   primary_action: null,
   sources: null,
   show_source_labels: null,
-  enable_remember_me: null
+  enable_remember_me: null,
+  passkey_challenge: null
 )
 ```
 

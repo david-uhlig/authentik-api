@@ -68,6 +68,280 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Upload file to storage backend.
+    # @param file [File] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :usage  (default to 'media')
+    # @return [nil]
+    def admin_file_create(file, opts = {})
+      admin_file_create_with_http_info(file, opts)
+      nil
+    end
+
+    # Upload file to storage backend.
+    # @param file [File] 
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :usage  (default to 'media')
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def admin_file_create_with_http_info(file, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_create ...'
+      end
+      # verify the required parameter 'file' is set
+      if @api_client.config.client_side_validation && file.nil?
+        fail ArgumentError, "Missing the required parameter 'file' when calling AdminApi.admin_file_create"
+      end
+      if @api_client.config.client_side_validation && !opts[:'usage'].nil? && opts[:'usage'].to_s.length < 1
+        fail ArgumentError, 'invalid value for "opts[:"usage"]" when calling AdminApi.admin_file_create, the character length must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/admin/file/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = file
+      form_params['name'] = opts[:'name'] if !opts[:'name'].nil?
+      form_params['usage'] = opts[:'usage'] if !opts[:'usage'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_file_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_file_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete file from storage backend.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :usage  (default to 'media')
+    # @return [nil]
+    def admin_file_destroy(opts = {})
+      admin_file_destroy_with_http_info(opts)
+      nil
+    end
+
+    # Delete file from storage backend.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :usage  (default to 'media')
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def admin_file_destroy_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_destroy ...'
+      end
+      allowable_values = ["media"]
+      if @api_client.config.client_side_validation && opts[:'usage'] && !allowable_values.include?(opts[:'usage'])
+        fail ArgumentError, "invalid value for \"usage\", must be one of #{allowable_values}"
+      end
+      if @api_client.config.client_side_validation && !opts[:'usage'].nil? && opts[:'usage'].to_s.length < 1
+        fail ArgumentError, 'invalid value for "opts[:"usage"]" when calling AdminApi.admin_file_destroy, the character length must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/admin/file/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'usage'] = opts[:'usage'] if !opts[:'usage'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_file_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_file_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List files from storage backend.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :manageable_only  (default to false)
+    # @option opts [String] :search A search term.
+    # @option opts [String] :usage  (default to 'media')
+    # @return [Array<FileList>]
+    def admin_file_list(opts = {})
+      data, _status_code, _headers = admin_file_list_with_http_info(opts)
+      data
+    end
+
+    # List files from storage backend.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :manageable_only  (default to false)
+    # @option opts [String] :search A search term.
+    # @option opts [String] :usage  (default to 'media')
+    # @return [Array<(Array<FileList>, Integer, Hash)>] Array<FileList> data, response status code and response headers
+    def admin_file_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_list ...'
+      end
+      allowable_values = ["media"]
+      if @api_client.config.client_side_validation && opts[:'usage'] && !allowable_values.include?(opts[:'usage'])
+        fail ArgumentError, "invalid value for \"usage\", must be one of #{allowable_values}"
+      end
+      if @api_client.config.client_side_validation && !opts[:'usage'].nil? && opts[:'usage'].to_s.length < 1
+        fail ArgumentError, 'invalid value for "opts[:"usage"]" when calling AdminApi.admin_file_list, the character length must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/admin/file/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'manageable_only'] = opts[:'manageable_only'] if !opts[:'manageable_only'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'usage'] = opts[:'usage'] if !opts[:'usage'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<FileList>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_file_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_file_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @return [Array<UsedBy>]
+    def admin_file_used_by_list(opts = {})
+      data, _status_code, _headers = admin_file_used_by_list_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def admin_file_used_by_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_used_by_list ...'
+      end
+      # resource path
+      local_var_path = '/admin/file/used_by/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_file_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_file_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read-only view list all installed models
     # @param [Hash] opts the optional parameters
     # @return [Array<App>]

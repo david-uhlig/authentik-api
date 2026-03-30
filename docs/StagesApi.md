@@ -107,6 +107,13 @@ All URIs are relative to */api/v3*
 | [**stages_email_templates_list**](StagesApi.md#stages_email_templates_list) | **GET** /stages/email/templates/ |  |
 | [**stages_email_update**](StagesApi.md#stages_email_update) | **PUT** /stages/email/{stage_uuid}/ |  |
 | [**stages_email_used_by_list**](StagesApi.md#stages_email_used_by_list) | **GET** /stages/email/{stage_uuid}/used_by/ |  |
+| [**stages_endpoints_create**](StagesApi.md#stages_endpoints_create) | **POST** /stages/endpoints/ |  |
+| [**stages_endpoints_destroy**](StagesApi.md#stages_endpoints_destroy) | **DELETE** /stages/endpoints/{stage_uuid}/ |  |
+| [**stages_endpoints_list**](StagesApi.md#stages_endpoints_list) | **GET** /stages/endpoints/ |  |
+| [**stages_endpoints_partial_update**](StagesApi.md#stages_endpoints_partial_update) | **PATCH** /stages/endpoints/{stage_uuid}/ |  |
+| [**stages_endpoints_retrieve**](StagesApi.md#stages_endpoints_retrieve) | **GET** /stages/endpoints/{stage_uuid}/ |  |
+| [**stages_endpoints_update**](StagesApi.md#stages_endpoints_update) | **PUT** /stages/endpoints/{stage_uuid}/ |  |
+| [**stages_endpoints_used_by_list**](StagesApi.md#stages_endpoints_used_by_list) | **GET** /stages/endpoints/{stage_uuid}/used_by/ |  |
 | [**stages_identification_create**](StagesApi.md#stages_identification_create) | **POST** /stages/identification/ |  |
 | [**stages_identification_destroy**](StagesApi.md#stages_identification_destroy) | **DELETE** /stages/identification/{stage_uuid}/ |  |
 | [**stages_identification_list**](StagesApi.md#stages_identification_list) | **GET** /stages/identification/ |  |
@@ -7656,6 +7663,504 @@ end
 - **Accept**: application/json
 
 
+## stages_endpoints_create
+
+> <EndpointStage> stages_endpoints_create(endpoint_stage_request)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+endpoint_stage_request = Authentik::Api::EndpointStageRequest.new({name: 'name_example', connector: 'connector_example'}) # EndpointStageRequest | 
+
+begin
+  
+  result = api_instance.stages_endpoints_create(endpoint_stage_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_create: #{e}"
+end
+```
+
+#### Using the stages_endpoints_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EndpointStage>, Integer, Hash)> stages_endpoints_create_with_http_info(endpoint_stage_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_create_with_http_info(endpoint_stage_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EndpointStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **endpoint_stage_request** | [**EndpointStageRequest**](EndpointStageRequest.md) |  |  |
+
+### Return type
+
+[**EndpointStage**](EndpointStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_endpoints_destroy
+
+> stages_endpoints_destroy(stage_uuid)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Stage.
+
+begin
+  
+  api_instance.stages_endpoints_destroy(stage_uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_destroy: #{e}"
+end
+```
+
+#### Using the stages_endpoints_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> stages_endpoints_destroy_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_destroy_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Endpoint Stage. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_endpoints_list
+
+> <PaginatedEndpointStageList> stages_endpoints_list(opts)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+opts = {
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.stages_endpoints_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_list: #{e}"
+end
+```
+
+#### Using the stages_endpoints_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedEndpointStageList>, Integer, Hash)> stages_endpoints_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedEndpointStageList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedEndpointStageList**](PaginatedEndpointStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_endpoints_partial_update
+
+> <EndpointStage> stages_endpoints_partial_update(stage_uuid, opts)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Stage.
+opts = {
+  patched_endpoint_stage_request: Authentik::Api::PatchedEndpointStageRequest.new # PatchedEndpointStageRequest | 
+}
+
+begin
+  
+  result = api_instance.stages_endpoints_partial_update(stage_uuid, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_partial_update: #{e}"
+end
+```
+
+#### Using the stages_endpoints_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EndpointStage>, Integer, Hash)> stages_endpoints_partial_update_with_http_info(stage_uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_partial_update_with_http_info(stage_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EndpointStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Endpoint Stage. |  |
+| **patched_endpoint_stage_request** | [**PatchedEndpointStageRequest**](PatchedEndpointStageRequest.md) |  | [optional] |
+
+### Return type
+
+[**EndpointStage**](EndpointStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_endpoints_retrieve
+
+> <EndpointStage> stages_endpoints_retrieve(stage_uuid)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Stage.
+
+begin
+  
+  result = api_instance.stages_endpoints_retrieve(stage_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_retrieve: #{e}"
+end
+```
+
+#### Using the stages_endpoints_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EndpointStage>, Integer, Hash)> stages_endpoints_retrieve_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_retrieve_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EndpointStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Endpoint Stage. |  |
+
+### Return type
+
+[**EndpointStage**](EndpointStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_endpoints_update
+
+> <EndpointStage> stages_endpoints_update(stage_uuid, endpoint_stage_request)
+
+
+
+EndpointStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Stage.
+endpoint_stage_request = Authentik::Api::EndpointStageRequest.new({name: 'name_example', connector: 'connector_example'}) # EndpointStageRequest | 
+
+begin
+  
+  result = api_instance.stages_endpoints_update(stage_uuid, endpoint_stage_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_update: #{e}"
+end
+```
+
+#### Using the stages_endpoints_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EndpointStage>, Integer, Hash)> stages_endpoints_update_with_http_info(stage_uuid, endpoint_stage_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_update_with_http_info(stage_uuid, endpoint_stage_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EndpointStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Endpoint Stage. |  |
+| **endpoint_stage_request** | [**EndpointStageRequest**](EndpointStageRequest.md) |  |  |
+
+### Return type
+
+[**EndpointStage**](EndpointStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_endpoints_used_by_list
+
+> <Array<UsedBy>> stages_endpoints_used_by_list(stage_uuid)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Stage.
+
+begin
+  
+  result = api_instance.stages_endpoints_used_by_list(stage_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_used_by_list: #{e}"
+end
+```
+
+#### Using the stages_endpoints_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> stages_endpoints_used_by_list_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_endpoints_used_by_list_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_endpoints_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Endpoint Stage. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## stages_identification_create
 
 > <IdentificationStage> stages_identification_create(identification_stage_request)
@@ -7826,7 +8331,8 @@ opts = {
   recovery_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   search: 'search_example', # String | A search term.
   show_matched_user: true, # Boolean | 
-  show_source_labels: true # Boolean | 
+  show_source_labels: true, # Boolean | 
+  webauthn_stage: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
 
 begin
@@ -7873,6 +8379,7 @@ end
 | **search** | **String** | A search term. | [optional] |
 | **show_matched_user** | **Boolean** |  | [optional] |
 | **show_source_labels** | **Boolean** |  | [optional] |
+| **webauthn_stage** | **String** |  | [optional] |
 
 ### Return type
 
@@ -9198,7 +9705,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::StagesApi.new
-mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::MutualTLSStageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
+mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::StageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
 
 begin
   
@@ -9567,7 +10074,7 @@ end
 
 api_instance = Authentik::Api::StagesApi.new
 stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::MutualTLSStageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
+mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::StageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
 
 begin
   

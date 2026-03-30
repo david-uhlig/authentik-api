@@ -8,6 +8,7 @@
 | **name** | **String** | Source&#39;s display Name. |  |
 | **slug** | **String** | Internal source name, used in URLs. |  |
 | **enabled** | **Boolean** |  | [optional] |
+| **promoted** | **Boolean** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] |
 | **authentication_flow** | **String** | Flow to use when authenticating existing users. | [optional] |
 | **enrollment_flow** | **String** | Flow to use when enrolling new users. | [optional] |
 | **user_property_mappings** | **Array&lt;String&gt;** |  | [optional] |
@@ -20,7 +21,8 @@
 | **user_matching_mode** | [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] |
 | **managed** | **String** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] |
 | **user_path_template** | **String** |  | [optional] |
-| **icon** | **String** |  | [readonly] |
+| **icon** | **String** |  | [optional] |
+| **icon_url** | **String** |  | [readonly] |
 | **server_uri** | **String** |  |  |
 | **peer_certificate** | **String** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] |
 | **client_certificate** | **String** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] |
@@ -43,6 +45,7 @@
 | **connectivity** | **Hash&lt;String, Hash&lt;String, String&gt;&gt;** | Get cached source connectivity | [readonly] |
 | **lookup_groups_from_user** | **Boolean** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] |
 | **delete_not_found_objects** | **Boolean** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] |
+| **sync_outgoing_trigger_mode** | [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] |
 
 ## Example
 
@@ -54,6 +57,7 @@ instance = Authentik::Api::LDAPSource.new(
   name: null,
   slug: null,
   enabled: null,
+  promoted: null,
   authentication_flow: null,
   enrollment_flow: null,
   user_property_mappings: null,
@@ -67,6 +71,7 @@ instance = Authentik::Api::LDAPSource.new(
   managed: null,
   user_path_template: null,
   icon: null,
+  icon_url: null,
   server_uri: null,
   peer_certificate: null,
   client_certificate: null,
@@ -88,7 +93,8 @@ instance = Authentik::Api::LDAPSource.new(
   sync_parent_group: null,
   connectivity: null,
   lookup_groups_from_user: null,
-  delete_not_found_objects: null
+  delete_not_found_objects: null,
+  sync_outgoing_trigger_mode: null
 )
 ```
 

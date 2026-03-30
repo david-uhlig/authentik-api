@@ -11,7 +11,7 @@
 | **cert_expiry** | **Time** | Get certificate expiry | [readonly] |
 | **cert_subject** | **String** | Get certificate subject as full rfc4514 | [readonly] |
 | **private_key_available** | **Boolean** | Show if this keypair has a private key configured or not | [readonly] |
-| **private_key_type** | **String** | Get the private key&#39;s type, if set | [readonly] |
+| **key_type** | [**KeyTypeEnum**](KeyTypeEnum.md) |  | [readonly] |
 | **certificate_download_url** | **String** | Get URL to download certificate | [readonly] |
 | **private_key_download_url** | **String** | Get URL to download private key | [readonly] |
 | **managed** | **String** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] |
@@ -29,7 +29,7 @@ instance = Authentik::Api::CertificateKeyPair.new(
   cert_expiry: null,
   cert_subject: null,
   private_key_available: null,
-  private_key_type: null,
+  key_type: null,
   certificate_download_url: null,
   private_key_download_url: null,
   managed: null

@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedEmailStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # When enabled, global Email connection settings will be used and connection settings below will be ignored.
     attr_accessor :use_global_settings
 
@@ -52,7 +50,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'use_global_settings' => :'use_global_settings',
         :'host' => :'host',
         :'port' => :'port',
@@ -85,7 +82,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'use_global_settings' => :'Boolean',
         :'host' => :'String',
         :'port' => :'Integer',
@@ -128,12 +124,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'use_global_settings')
@@ -444,7 +434,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           use_global_settings == o.use_global_settings &&
           host == o.host &&
           port == o.port &&
@@ -471,7 +460,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, use_global_settings, host, port, username, password, use_tls, use_ssl, timeout, from_address, token_expiry, subject, template, activate_user_on_success, recovery_max_attempts, recovery_cache_timeout].hash
+      [name, use_global_settings, host, port, username, password, use_tls, use_ssl, timeout, from_address, token_expiry, subject, template, activate_user_on_success, recovery_max_attempts, recovery_cache_timeout].hash
     end
 
     # Builds the object from hash

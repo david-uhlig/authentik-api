@@ -30,6 +30,10 @@ module Authentik::Api
 
     attr_accessor :groups_obj
 
+    attr_accessor :roles
+
+    attr_accessor :roles_obj
+
     attr_accessor :email
 
     # User's avatar, either a http/https URL or a data URI
@@ -83,6 +87,8 @@ module Authentik::Api
         :'is_superuser' => :'is_superuser',
         :'groups' => :'groups',
         :'groups_obj' => :'groups_obj',
+        :'roles' => :'roles',
+        :'roles_obj' => :'roles_obj',
         :'email' => :'email',
         :'avatar' => :'avatar',
         :'attributes' => :'attributes',
@@ -117,6 +123,8 @@ module Authentik::Api
         :'is_superuser' => :'Boolean',
         :'groups' => :'Array<String>',
         :'groups_obj' => :'Array<PartialGroup>',
+        :'roles' => :'Array<String>',
+        :'roles_obj' => :'Array<Role>',
         :'email' => :'String',
         :'avatar' => :'String',
         :'attributes' => :'Hash<String, Object>',
@@ -134,6 +142,7 @@ module Authentik::Api
       Set.new([
         :'last_login',
         :'groups_obj',
+        :'roles_obj',
       ])
     end
 
@@ -203,6 +212,20 @@ module Authentik::Api
         end
       else
         self.groups_obj = nil
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      end
+
+      if attributes.key?(:'roles_obj')
+        if (value = attributes[:'roles_obj']).is_a?(Array)
+          self.roles_obj = value
+        end
+      else
+        self.roles_obj = nil
       end
 
       if attributes.key?(:'email')
@@ -461,6 +484,8 @@ module Authentik::Api
           is_superuser == o.is_superuser &&
           groups == o.groups &&
           groups_obj == o.groups_obj &&
+          roles == o.roles &&
+          roles_obj == o.roles_obj &&
           email == o.email &&
           avatar == o.avatar &&
           attributes == o.attributes &&
@@ -481,7 +506,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, last_updated].hash
+      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, roles, roles_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, last_updated].hash
     end
 
     # Builds the object from hash

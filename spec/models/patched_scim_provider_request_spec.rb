@@ -81,6 +81,12 @@ describe Authentik::Api::PatchedSCIMProviderRequest do
     end
   end
 
+  describe 'test attribute "service_provider_config_cache_timeout"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "exclude_users_service_account"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -88,6 +94,18 @@ describe Authentik::Api::PatchedSCIMProviderRequest do
   end
 
   describe 'test attribute "filter_group"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "sync_page_size"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "sync_page_timeout"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

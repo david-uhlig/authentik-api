@@ -12,8 +12,6 @@ module Authentik::Api
   class AuthenticatorTOTPStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
     attr_accessor :configure_flow
 
@@ -47,7 +45,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'configure_flow' => :'configure_flow',
         :'friendly_name' => :'friendly_name',
         :'digits' => :'digits'
@@ -68,7 +65,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'configure_flow' => :'String',
         :'friendly_name' => :'String',
         :'digits' => :'DigitsEnum'
@@ -102,12 +98,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'configure_flow')
@@ -185,7 +175,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           configure_flow == o.configure_flow &&
           friendly_name == o.friendly_name &&
           digits == o.digits
@@ -200,7 +189,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, configure_flow, friendly_name, digits].hash
+      [name, configure_flow, friendly_name, digits].hash
     end
 
     # Builds the object from hash

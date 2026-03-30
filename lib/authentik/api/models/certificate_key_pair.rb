@@ -29,8 +29,7 @@ module Authentik::Api
     # Show if this keypair has a private key configured or not
     attr_accessor :private_key_available
 
-    # Get the private key's type, if set
-    attr_accessor :private_key_type
+    attr_accessor :key_type
 
     # Get URL to download certificate
     attr_accessor :certificate_download_url
@@ -40,6 +39,28 @@ module Authentik::Api
 
     # Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update.
     attr_accessor :managed
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -51,7 +72,7 @@ module Authentik::Api
         :'cert_expiry' => :'cert_expiry',
         :'cert_subject' => :'cert_subject',
         :'private_key_available' => :'private_key_available',
-        :'private_key_type' => :'private_key_type',
+        :'key_type' => :'key_type',
         :'certificate_download_url' => :'certificate_download_url',
         :'private_key_download_url' => :'private_key_download_url',
         :'managed' => :'managed'
@@ -78,7 +99,7 @@ module Authentik::Api
         :'cert_expiry' => :'Time',
         :'cert_subject' => :'String',
         :'private_key_available' => :'Boolean',
-        :'private_key_type' => :'String',
+        :'key_type' => :'KeyTypeEnum',
         :'certificate_download_url' => :'String',
         :'private_key_download_url' => :'String',
         :'managed' => :'String'
@@ -92,7 +113,7 @@ module Authentik::Api
         :'fingerprint_sha1',
         :'cert_expiry',
         :'cert_subject',
-        :'private_key_type',
+        :'key_type',
         :'managed'
       ])
     end
@@ -155,10 +176,10 @@ module Authentik::Api
         self.private_key_available = nil
       end
 
-      if attributes.key?(:'private_key_type')
-        self.private_key_type = attributes[:'private_key_type']
+      if attributes.key?(:'key_type')
+        self.key_type = attributes[:'key_type']
       else
-        self.private_key_type = nil
+        self.key_type = nil
       end
 
       if attributes.key?(:'certificate_download_url')
@@ -282,7 +303,7 @@ module Authentik::Api
           cert_expiry == o.cert_expiry &&
           cert_subject == o.cert_subject &&
           private_key_available == o.private_key_available &&
-          private_key_type == o.private_key_type &&
+          key_type == o.key_type &&
           certificate_download_url == o.certificate_download_url &&
           private_key_download_url == o.private_key_download_url &&
           managed == o.managed
@@ -297,7 +318,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, fingerprint_sha256, fingerprint_sha1, cert_expiry, cert_subject, private_key_available, private_key_type, certificate_download_url, private_key_download_url, managed].hash
+      [pk, name, fingerprint_sha256, fingerprint_sha1, cert_expiry, cert_subject, private_key_available, key_type, certificate_download_url, private_key_download_url, managed].hash
     end
 
     # Builds the object from hash

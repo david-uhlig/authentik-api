@@ -34,8 +34,10 @@ module Authentik::Api
 
     attr_accessor :meta_launch_url
 
-    # Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is
     attr_accessor :meta_icon
+
+    # Get the URL to the App Icon image
+    attr_accessor :meta_icon_url
 
     attr_accessor :meta_description
 
@@ -81,6 +83,7 @@ module Authentik::Api
         :'open_in_new_tab' => :'open_in_new_tab',
         :'meta_launch_url' => :'meta_launch_url',
         :'meta_icon' => :'meta_icon',
+        :'meta_icon_url' => :'meta_icon_url',
         :'meta_description' => :'meta_description',
         :'meta_publisher' => :'meta_publisher',
         :'policy_engine_mode' => :'policy_engine_mode',
@@ -112,6 +115,7 @@ module Authentik::Api
         :'open_in_new_tab' => :'Boolean',
         :'meta_launch_url' => :'String',
         :'meta_icon' => :'String',
+        :'meta_icon_url' => :'String',
         :'meta_description' => :'String',
         :'meta_publisher' => :'String',
         :'policy_engine_mode' => :'PolicyEngineMode',
@@ -124,7 +128,7 @@ module Authentik::Api
       Set.new([
         :'provider',
         :'launch_url',
-        :'meta_icon',
+        :'meta_icon_url',
       ])
     end
 
@@ -202,8 +206,12 @@ module Authentik::Api
 
       if attributes.key?(:'meta_icon')
         self.meta_icon = attributes[:'meta_icon']
+      end
+
+      if attributes.key?(:'meta_icon_url')
+        self.meta_icon_url = attributes[:'meta_icon_url']
       else
-        self.meta_icon = nil
+        self.meta_icon_url = nil
       end
 
       if attributes.key?(:'meta_description')
@@ -240,10 +248,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if @slug !~ pattern
         invalid_properties.push("invalid value for \"slug\", must conform to the pattern #{pattern}.")
@@ -267,7 +271,6 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @provider_obj.nil?
       return false if @backchannel_providers_obj.nil?
@@ -299,10 +302,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -349,6 +348,7 @@ module Authentik::Api
           open_in_new_tab == o.open_in_new_tab &&
           meta_launch_url == o.meta_launch_url &&
           meta_icon == o.meta_icon &&
+          meta_icon_url == o.meta_icon_url &&
           meta_description == o.meta_description &&
           meta_publisher == o.meta_publisher &&
           policy_engine_mode == o.policy_engine_mode &&
@@ -364,7 +364,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_description, meta_publisher, policy_engine_mode, group].hash
+      [pk, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_icon_url, meta_description, meta_publisher, policy_engine_mode, group].hash
     end
 
     # Builds the object from hash

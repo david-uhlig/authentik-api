@@ -25,8 +25,11 @@ module Authentik::Api
     # Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
     attr_accessor :designation
 
-    # Get the URL to the background image. If the name is /static or starts with http it is returned as-is
+    # Background shown during execution
     attr_accessor :background
+
+    # Get the URL to the background image
+    attr_accessor :background_url
 
     attr_accessor :stages
 
@@ -83,6 +86,7 @@ module Authentik::Api
         :'title' => :'title',
         :'designation' => :'designation',
         :'background' => :'background',
+        :'background_url' => :'background_url',
         :'stages' => :'stages',
         :'policies' => :'policies',
         :'cache_count' => :'cache_count',
@@ -115,6 +119,7 @@ module Authentik::Api
         :'title' => :'String',
         :'designation' => :'FlowDesignationEnum',
         :'background' => :'String',
+        :'background_url' => :'String',
         :'stages' => :'Array<String>',
         :'policies' => :'Array<String>',
         :'cache_count' => :'Integer',
@@ -187,8 +192,12 @@ module Authentik::Api
 
       if attributes.key?(:'background')
         self.background = attributes[:'background']
+      end
+
+      if attributes.key?(:'background_url')
+        self.background_url = attributes[:'background_url']
       else
-        self.background = nil
+        self.background_url = nil
       end
 
       if attributes.key?(:'stages')
@@ -261,10 +270,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if @slug !~ pattern
         invalid_properties.push("invalid value for \"slug\", must conform to the pattern #{pattern}.")
@@ -278,8 +283,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "designation", designation cannot be nil.')
       end
 
-      if @background.nil?
-        invalid_properties.push('invalid value for "background", background cannot be nil.')
+      if @background_url.nil?
+        invalid_properties.push('invalid value for "background_url", background_url cannot be nil.')
       end
 
       if @stages.nil?
@@ -309,11 +314,10 @@ module Authentik::Api
       return false if @policybindingmodel_ptr_id.nil?
       return false if @name.nil?
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @title.nil?
       return false if @designation.nil?
-      return false if @background.nil?
+      return false if @background_url.nil?
       return false if @stages.nil?
       return false if @policies.nil?
       return false if @cache_count.nil?
@@ -358,10 +362,6 @@ module Authentik::Api
         fail ArgumentError, 'slug cannot be nil'
       end
 
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if slug !~ pattern
         fail ArgumentError, "invalid value for \"slug\", must conform to the pattern #{pattern}."
@@ -391,13 +391,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] background Value to be assigned
-    def background=(background)
-      if background.nil?
-        fail ArgumentError, 'background cannot be nil'
+    # @param [Object] background_url Value to be assigned
+    def background_url=(background_url)
+      if background_url.nil?
+        fail ArgumentError, 'background_url cannot be nil'
       end
 
-      @background = background
+      @background_url = background_url
     end
 
     # Custom attribute writer method with validation
@@ -452,6 +452,7 @@ module Authentik::Api
           title == o.title &&
           designation == o.designation &&
           background == o.background &&
+          background_url == o.background_url &&
           stages == o.stages &&
           policies == o.policies &&
           cache_count == o.cache_count &&
@@ -472,7 +473,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, policybindingmodel_ptr_id, name, slug, title, designation, background, stages, policies, cache_count, policy_engine_mode, compatibility_mode, export_url, layout, denied_action, authentication].hash
+      [pk, policybindingmodel_ptr_id, name, slug, title, designation, background, background_url, stages, policies, cache_count, policy_engine_mode, compatibility_mode, export_url, layout, denied_action, authentication].hash
     end
 
     # Builds the object from hash
