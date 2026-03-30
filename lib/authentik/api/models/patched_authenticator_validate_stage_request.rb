@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedAuthenticatorValidateStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :not_configured_action
 
     # Device classes which can be used to authenticate
@@ -56,7 +54,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'not_configured_action' => :'not_configured_action',
         :'device_classes' => :'device_classes',
         :'configuration_stages' => :'configuration_stages',
@@ -80,7 +77,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'not_configured_action' => :'NotConfiguredActionEnum',
         :'device_classes' => :'Array<DeviceClassesEnum>',
         :'configuration_stages' => :'Array<String>',
@@ -114,12 +110,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'not_configured_action')
@@ -212,7 +202,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           not_configured_action == o.not_configured_action &&
           device_classes == o.device_classes &&
           configuration_stages == o.configuration_stages &&
@@ -230,7 +219,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_allowed_device_types].hash
+      [name, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_allowed_device_types].hash
     end
 
     # Builds the object from hash

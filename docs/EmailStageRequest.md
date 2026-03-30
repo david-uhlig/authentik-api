@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  |  |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **use_global_settings** | **Boolean** | When enabled, global Email connection settings will be used and connection settings below will be ignored. | [optional] |
 | **host** | **String** |  | [optional] |
 | **port** | **Integer** |  | [optional] |
@@ -29,7 +28,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::EmailStageRequest.new(
   name: null,
-  flow_set: null,
   use_global_settings: null,
   host: null,
   port: null,

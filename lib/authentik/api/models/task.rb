@@ -104,7 +104,7 @@ module Authentik::Api
         :'message_id' => :'String',
         :'queue_name' => :'String',
         :'actor_name' => :'String',
-        :'state' => :'StateEnum',
+        :'state' => :'TaskStateEnum',
         :'mtime' => :'Time',
         :'retries' => :'Integer',
         :'eta' => :'Time',

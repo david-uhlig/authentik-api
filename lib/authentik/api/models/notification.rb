@@ -16,6 +16,10 @@ module Authentik::Api
 
     attr_accessor :body
 
+    attr_accessor :hyperlink
+
+    attr_accessor :hyperlink_label
+
     attr_accessor :created
 
     attr_accessor :event
@@ -50,6 +54,8 @@ module Authentik::Api
         :'pk' => :'pk',
         :'severity' => :'severity',
         :'body' => :'body',
+        :'hyperlink' => :'hyperlink',
+        :'hyperlink_label' => :'hyperlink_label',
         :'created' => :'created',
         :'event' => :'event',
         :'seen' => :'seen'
@@ -72,6 +78,8 @@ module Authentik::Api
         :'pk' => :'String',
         :'severity' => :'SeverityEnum',
         :'body' => :'String',
+        :'hyperlink' => :'String',
+        :'hyperlink_label' => :'String',
         :'created' => :'Time',
         :'event' => :'Event',
         :'seen' => :'Boolean'
@@ -81,6 +89,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'hyperlink',
+        :'hyperlink_label',
       ])
     end
 
@@ -118,6 +128,14 @@ module Authentik::Api
         self.body = nil
       end
 
+      if attributes.key?(:'hyperlink')
+        self.hyperlink = attributes[:'hyperlink']
+      end
+
+      if attributes.key?(:'hyperlink_label')
+        self.hyperlink_label = attributes[:'hyperlink_label']
+      end
+
       if attributes.key?(:'created')
         self.created = attributes[:'created']
       else
@@ -150,6 +168,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "body", body cannot be nil.')
       end
 
+      if !@hyperlink.nil? && @hyperlink.to_s.length > 4096
+        invalid_properties.push('invalid value for "hyperlink", the character length must be smaller than or equal to 4096.')
+      end
+
       if @created.nil?
         invalid_properties.push('invalid value for "created", created cannot be nil.')
       end
@@ -164,6 +186,7 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @severity.nil?
       return false if @body.nil?
+      return false if !@hyperlink.nil? && @hyperlink.to_s.length > 4096
       return false if @created.nil?
       true
     end
@@ -199,6 +222,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] hyperlink Value to be assigned
+    def hyperlink=(hyperlink)
+      if !hyperlink.nil? && hyperlink.to_s.length > 4096
+        fail ArgumentError, 'invalid value for "hyperlink", the character length must be smaller than or equal to 4096.'
+      end
+
+      @hyperlink = hyperlink
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] created Value to be assigned
     def created=(created)
       if created.nil?
@@ -216,6 +249,8 @@ module Authentik::Api
           pk == o.pk &&
           severity == o.severity &&
           body == o.body &&
+          hyperlink == o.hyperlink &&
+          hyperlink_label == o.hyperlink_label &&
           created == o.created &&
           event == o.event &&
           seen == o.seen
@@ -230,7 +265,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, severity, body, created, event, seen].hash
+      [pk, severity, body, hyperlink, hyperlink_label, created, event, seen].hash
     end
 
     # Builds the object from hash

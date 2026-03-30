@@ -174,7 +174,7 @@ module Authentik::Api
         :'sign_logout_request' => :'Boolean',
         :'sp_binding' => :'SAMLBindingsEnum',
         :'sls_binding' => :'SAMLBindingsEnum',
-        :'logout_method' => :'SAMLProviderLogoutMethodEnum',
+        :'logout_method' => :'SAMLLogoutMethods',
         :'default_relay_state' => :'String',
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum'
       }

@@ -68,10 +68,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@name.nil? && @name.to_s.length > 150
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 150.')
-      end
-
       if !@name.nil? && @name.to_s.length < 1
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
@@ -83,7 +79,6 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@name.nil? && @name.to_s.length > 150
       return false if !@name.nil? && @name.to_s.length < 1
       true
     end
@@ -93,10 +88,6 @@ module Authentik::Api
     def name=(name)
       if name.nil?
         fail ArgumentError, 'name cannot be nil'
-      end
-
-      if name.to_s.length > 150
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 150.'
       end
 
       if name.to_s.length < 1

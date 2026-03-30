@@ -27,12 +27,6 @@ describe Authentik::Api::PatchedRedirectStageRequest do
     end
   end
 
-  describe 'test attribute "flow_set"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "keep_context"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

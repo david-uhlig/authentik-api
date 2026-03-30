@@ -1051,7 +1051,7 @@ describe 'ProvidersApi' do
   # @param invalidation_flow 
   # @param file 
   # @param [Hash] opts the optional parameters
-  # @return [nil]
+  # @return [SAMLProvider]
   describe 'providers_saml_import_metadata_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -1259,7 +1259,7 @@ describe 'ProvidersApi' do
   # SCIMProvider Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :exclude_users_service_account 
-  # @option opts [String] :filter_group 
+  # @option opts [Array<String>] :group_filters 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -1482,6 +1482,142 @@ describe 'ProvidersApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'providers_ssf_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_create
+  # WSFederationProvider Viewset
+  # @param ws_federation_provider_request 
+  # @param [Hash] opts the optional parameters
+  # @return [WSFederationProvider]
+  describe 'providers_wsfed_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_destroy
+  # WSFederationProvider Viewset
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'providers_wsfed_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_list
+  # WSFederationProvider Viewset
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :acs_url 
+  # @option opts [String] :assertion_valid_not_before 
+  # @option opts [String] :assertion_valid_not_on_or_after 
+  # @option opts [String] :audience 
+  # @option opts [String] :authentication_flow 
+  # @option opts [String] :authn_context_class_ref_mapping 
+  # @option opts [String] :authorization_flow 
+  # @option opts [String] :backchannel_application 
+  # @option opts [String] :default_name_id_policy 
+  # @option opts [String] :default_relay_state 
+  # @option opts [String] :digest_algorithm 
+  # @option opts [String] :encryption_kp 
+  # @option opts [String] :invalidation_flow 
+  # @option opts [Boolean] :is_backchannel 
+  # @option opts [String] :issuer 
+  # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
+  # @option opts [String] :name 
+  # @option opts [String] :name_id_mapping 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [Array<String>] :property_mappings 
+  # @option opts [String] :search A search term.
+  # @option opts [String] :session_valid_not_on_or_after 
+  # @option opts [Boolean] :sign_assertion 
+  # @option opts [Boolean] :sign_logout_request 
+  # @option opts [Boolean] :sign_response 
+  # @option opts [String] :signature_algorithm 
+  # @option opts [String] :signing_kp 
+  # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
+  # @option opts [String] :sls_url 
+  # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
+  # @option opts [String] :verification_kp 
+  # @return [PaginatedWSFederationProviderList]
+  describe 'providers_wsfed_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_metadata_retrieve
+  # Return metadata as XML string
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :download 
+  # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
+  # @return [SAMLMetadata]
+  describe 'providers_wsfed_metadata_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_partial_update
+  # WSFederationProvider Viewset
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedWSFederationProviderRequest] :patched_ws_federation_provider_request 
+  # @return [WSFederationProvider]
+  describe 'providers_wsfed_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_preview_user_retrieve
+  # Preview user data for provider
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :for_user 
+  # @return [PropertyMappingPreview]
+  describe 'providers_wsfed_preview_user_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_retrieve
+  # WSFederationProvider Viewset
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @return [WSFederationProvider]
+  describe 'providers_wsfed_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_update
+  # WSFederationProvider Viewset
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param ws_federation_provider_request 
+  # @param [Hash] opts the optional parameters
+  # @return [WSFederationProvider]
+  describe 'providers_wsfed_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_wsfed_used_by_list
+  # Get a list of all objects that use this object
+  # @param id A unique integer value identifying this WS-Federation Provider.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'providers_wsfed_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

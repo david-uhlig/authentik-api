@@ -5,9 +5,10 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **component** | **String** |  | [optional][default to &#39;ak-stage-identification&#39;] |
-| **uid_field** | **String** |  |  |
+| **uid_field** | **String** |  | [optional] |
 | **password** | **String** |  | [optional] |
 | **captcha_token** | **String** |  | [optional] |
+| **passkey** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = Authentik::Api::IdentificationChallengeResponseRequest.new(
   component: null,
   uid_field: null,
   password: null,
-  captcha_token: null
+  captcha_token: null,
+  passkey: null
 )
 ```
 

@@ -9,6 +9,8 @@ require 'time'
 
 module Authentik::Api
   class PatchedSettingsRequestFlags < ApiModelBase
+    attr_accessor :enterprise_audit_include_expanded_diff
+
     attr_accessor :policies_buffered_access_view
 
     attr_accessor :flows_refresh_others
@@ -16,6 +18,7 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'enterprise_audit_include_expanded_diff' => :'enterprise_audit_include_expanded_diff',
         :'policies_buffered_access_view' => :'policies_buffered_access_view',
         :'flows_refresh_others' => :'flows_refresh_others'
       }
@@ -34,6 +37,7 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
+        :'enterprise_audit_include_expanded_diff' => :'Boolean',
         :'policies_buffered_access_view' => :'Boolean',
         :'flows_refresh_others' => :'Boolean'
       }
@@ -61,6 +65,12 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
+      if attributes.key?(:'enterprise_audit_include_expanded_diff')
+        self.enterprise_audit_include_expanded_diff = attributes[:'enterprise_audit_include_expanded_diff']
+      else
+        self.enterprise_audit_include_expanded_diff = nil
+      end
+
       if attributes.key?(:'policies_buffered_access_view')
         self.policies_buffered_access_view = attributes[:'policies_buffered_access_view']
       else
@@ -79,6 +89,10 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @enterprise_audit_include_expanded_diff.nil?
+        invalid_properties.push('invalid value for "enterprise_audit_include_expanded_diff", enterprise_audit_include_expanded_diff cannot be nil.')
+      end
+
       if @policies_buffered_access_view.nil?
         invalid_properties.push('invalid value for "policies_buffered_access_view", policies_buffered_access_view cannot be nil.')
       end
@@ -94,9 +108,20 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @enterprise_audit_include_expanded_diff.nil?
       return false if @policies_buffered_access_view.nil?
       return false if @flows_refresh_others.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] enterprise_audit_include_expanded_diff Value to be assigned
+    def enterprise_audit_include_expanded_diff=(enterprise_audit_include_expanded_diff)
+      if enterprise_audit_include_expanded_diff.nil?
+        fail ArgumentError, 'enterprise_audit_include_expanded_diff cannot be nil'
+      end
+
+      @enterprise_audit_include_expanded_diff = enterprise_audit_include_expanded_diff
     end
 
     # Custom attribute writer method with validation
@@ -124,6 +149,7 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          enterprise_audit_include_expanded_diff == o.enterprise_audit_include_expanded_diff &&
           policies_buffered_access_view == o.policies_buffered_access_view &&
           flows_refresh_others == o.flows_refresh_others
     end
@@ -137,7 +163,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [policies_buffered_access_view, flows_refresh_others].hash
+      [enterprise_audit_include_expanded_diff, policies_buffered_access_view, flows_refresh_others].hash
     end
 
     # Builds the object from hash

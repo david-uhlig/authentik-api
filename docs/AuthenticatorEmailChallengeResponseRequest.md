@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **component** | **String** |  | [optional][default to &#39;ak-stage-authenticator-email&#39;] |
-| **code** | **Integer** |  | [optional] |
+| **code** | **String** |  | [optional] |
 | **email** | **String** |  | [optional] |
 
 ## Example

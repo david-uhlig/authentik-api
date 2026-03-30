@@ -18,6 +18,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+    attr_accessor :promoted
+
     # Flow to use when authenticating existing users.
     attr_accessor :authentication_flow
 
@@ -34,6 +37,8 @@ module Authentik::Api
     attr_accessor :user_matching_mode
 
     attr_accessor :user_path_template
+
+    attr_accessor :icon
 
     # Telegram bot username
     attr_accessor :bot_username
@@ -75,6 +80,7 @@ module Authentik::Api
         :'name' => :'name',
         :'slug' => :'slug',
         :'enabled' => :'enabled',
+        :'promoted' => :'promoted',
         :'authentication_flow' => :'authentication_flow',
         :'enrollment_flow' => :'enrollment_flow',
         :'user_property_mappings' => :'user_property_mappings',
@@ -82,6 +88,7 @@ module Authentik::Api
         :'policy_engine_mode' => :'policy_engine_mode',
         :'user_matching_mode' => :'user_matching_mode',
         :'user_path_template' => :'user_path_template',
+        :'icon' => :'icon',
         :'bot_username' => :'bot_username',
         :'bot_token' => :'bot_token',
         :'request_message_access' => :'request_message_access',
@@ -105,6 +112,7 @@ module Authentik::Api
         :'name' => :'String',
         :'slug' => :'String',
         :'enabled' => :'Boolean',
+        :'promoted' => :'Boolean',
         :'authentication_flow' => :'String',
         :'enrollment_flow' => :'String',
         :'user_property_mappings' => :'Array<String>',
@@ -112,6 +120,7 @@ module Authentik::Api
         :'policy_engine_mode' => :'PolicyEngineMode',
         :'user_matching_mode' => :'UserMatchingModeEnum',
         :'user_path_template' => :'String',
+        :'icon' => :'String',
         :'bot_username' => :'String',
         :'bot_token' => :'String',
         :'request_message_access' => :'Boolean',
@@ -159,6 +168,10 @@ module Authentik::Api
         self.enabled = attributes[:'enabled']
       end
 
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
+      end
+
       if attributes.key?(:'authentication_flow')
         self.authentication_flow = attributes[:'authentication_flow']
       end
@@ -189,6 +202,10 @@ module Authentik::Api
 
       if attributes.key?(:'user_path_template')
         self.user_path_template = attributes[:'user_path_template']
+      end
+
+      if attributes.key?(:'icon')
+        self.icon = attributes[:'icon']
       end
 
       if attributes.key?(:'bot_username')
@@ -229,10 +246,6 @@ module Authentik::Api
 
       if @slug.nil?
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
-      end
-
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
       end
 
       if @slug.to_s.length < 1
@@ -278,7 +291,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug.to_s.length < 1
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if !@user_path_template.nil? && @user_path_template.to_s.length < 1
@@ -309,10 +321,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       if slug.to_s.length < 1
@@ -387,6 +395,7 @@ module Authentik::Api
           name == o.name &&
           slug == o.slug &&
           enabled == o.enabled &&
+          promoted == o.promoted &&
           authentication_flow == o.authentication_flow &&
           enrollment_flow == o.enrollment_flow &&
           user_property_mappings == o.user_property_mappings &&
@@ -394,6 +403,7 @@ module Authentik::Api
           policy_engine_mode == o.policy_engine_mode &&
           user_matching_mode == o.user_matching_mode &&
           user_path_template == o.user_path_template &&
+          icon == o.icon &&
           bot_username == o.bot_username &&
           bot_token == o.bot_token &&
           request_message_access == o.request_message_access &&
@@ -409,7 +419,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, bot_username, bot_token, request_message_access, pre_authentication_flow].hash
+      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, bot_username, bot_token, request_message_access, pre_authentication_flow].hash
     end
 
     # Builds the object from hash
