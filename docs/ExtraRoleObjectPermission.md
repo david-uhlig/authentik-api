@@ -12,7 +12,7 @@
 | **name** | **String** |  | [readonly] |
 | **app_label_verbose** | **String** | Get app label from permission&#39;s model | [readonly] |
 | **model_verbose** | **String** | Get model label from permission&#39;s model | [readonly] |
-| **object_description** | **String** | Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the user/role has the view_ permission on the object | [readonly] |
+| **object_description** | **String** | Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the role has the view_ permission on the object | [readonly] |
 
 ## Example
 

@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  |  |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **user_creation_mode** | [**UserCreationModeEnum**](UserCreationModeEnum.md) |  | [optional] |
 | **create_users_as_inactive** | **Boolean** | When set, newly created users are inactive and cannot login. | [optional] |
 | **create_users_group** | **String** | Optionally add newly created users to this group. | [optional] |
@@ -19,7 +18,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::UserWriteStageRequest.new(
   name: null,
-  flow_set: null,
   user_creation_mode: null,
   create_users_as_inactive: null,
   create_users_group: null,

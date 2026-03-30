@@ -5502,10 +5502,10 @@ module Authentik::Api
     # @param invalidation_flow [String] 
     # @param file [File] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SAMLProvider]
     def providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file, opts = {})
-      providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts)
-      nil
+      data, _status_code, _headers = providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts)
+      data
     end
 
     # Create provider from SAML Metadata
@@ -5514,7 +5514,7 @@ module Authentik::Api
     # @param invalidation_flow [String] 
     # @param file [File] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SAMLProvider, Integer, Hash)>] SAMLProvider data, response status code and response headers
     def providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_saml_import_metadata_create ...'
@@ -5566,7 +5566,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'SAMLProvider'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']

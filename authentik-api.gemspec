@@ -28,15 +28,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'irb'
   s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  gemspec = File.basename(__FILE__)
-  s.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
-    ls.readlines("\x0", chomp: true).reject do |f|
-      (f == gemspec) ||
-        f.start_with?(*%w[.authentik/ .github/ .gitignore .openapi-generator/ .rspec .standard.yml Appraisals Gemfile VERSION bin/ docs/ gemfiles/ mise.toml spec/])
-    end
-  end
+  s.files         = `find *`.split("\n").uniq.sort.select { |f| !f.empty? }
   s.test_files    = `find spec/*`.split("\n")
   s.executables   = []
   s.require_paths = ["lib"]

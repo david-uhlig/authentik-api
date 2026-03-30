@@ -18,6 +18,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+    attr_accessor :promoted
+
     # Flow to use when authenticating existing users.
     attr_accessor :authentication_flow
 
@@ -34,6 +37,8 @@ module Authentik::Api
     attr_accessor :user_matching_mode
 
     attr_accessor :user_path_template
+
+    attr_accessor :icon
 
     # How the source determines if an existing group should be used or a new group created.
     attr_accessor :group_matching_mode
@@ -77,6 +82,9 @@ module Authentik::Api
     # If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend
     attr_accessor :password_login_update_internal_password
 
+    # When to trigger sync for outgoing providers
+    attr_accessor :sync_outgoing_trigger_mode
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -105,6 +113,7 @@ module Authentik::Api
         :'name' => :'name',
         :'slug' => :'slug',
         :'enabled' => :'enabled',
+        :'promoted' => :'promoted',
         :'authentication_flow' => :'authentication_flow',
         :'enrollment_flow' => :'enrollment_flow',
         :'user_property_mappings' => :'user_property_mappings',
@@ -112,6 +121,7 @@ module Authentik::Api
         :'policy_engine_mode' => :'policy_engine_mode',
         :'user_matching_mode' => :'user_matching_mode',
         :'user_path_template' => :'user_path_template',
+        :'icon' => :'icon',
         :'group_matching_mode' => :'group_matching_mode',
         :'realm' => :'realm',
         :'krb5_conf' => :'krb5_conf',
@@ -125,7 +135,8 @@ module Authentik::Api
         :'spnego_server_name' => :'spnego_server_name',
         :'spnego_keytab' => :'spnego_keytab',
         :'spnego_ccache' => :'spnego_ccache',
-        :'password_login_update_internal_password' => :'password_login_update_internal_password'
+        :'password_login_update_internal_password' => :'password_login_update_internal_password',
+        :'sync_outgoing_trigger_mode' => :'sync_outgoing_trigger_mode'
       }
     end
 
@@ -145,6 +156,7 @@ module Authentik::Api
         :'name' => :'String',
         :'slug' => :'String',
         :'enabled' => :'Boolean',
+        :'promoted' => :'Boolean',
         :'authentication_flow' => :'String',
         :'enrollment_flow' => :'String',
         :'user_property_mappings' => :'Array<String>',
@@ -152,6 +164,7 @@ module Authentik::Api
         :'policy_engine_mode' => :'PolicyEngineMode',
         :'user_matching_mode' => :'UserMatchingModeEnum',
         :'user_path_template' => :'String',
+        :'icon' => :'String',
         :'group_matching_mode' => :'GroupMatchingModeEnum',
         :'realm' => :'String',
         :'krb5_conf' => :'String',
@@ -165,7 +178,8 @@ module Authentik::Api
         :'spnego_server_name' => :'String',
         :'spnego_keytab' => :'String',
         :'spnego_ccache' => :'String',
-        :'password_login_update_internal_password' => :'Boolean'
+        :'password_login_update_internal_password' => :'Boolean',
+        :'sync_outgoing_trigger_mode' => :'SyncOutgoingTriggerModeEnum'
       }
     end
 
@@ -209,6 +223,10 @@ module Authentik::Api
         self.enabled = attributes[:'enabled']
       end
 
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
+      end
+
       if attributes.key?(:'authentication_flow')
         self.authentication_flow = attributes[:'authentication_flow']
       end
@@ -239,6 +257,10 @@ module Authentik::Api
 
       if attributes.key?(:'user_path_template')
         self.user_path_template = attributes[:'user_path_template']
+      end
+
+      if attributes.key?(:'icon')
+        self.icon = attributes[:'icon']
       end
 
       if attributes.key?(:'group_matching_mode')
@@ -298,6 +320,10 @@ module Authentik::Api
       if attributes.key?(:'password_login_update_internal_password')
         self.password_login_update_internal_password = attributes[:'password_login_update_internal_password']
       end
+
+      if attributes.key?(:'sync_outgoing_trigger_mode')
+        self.sync_outgoing_trigger_mode = attributes[:'sync_outgoing_trigger_mode']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -315,10 +341,6 @@ module Authentik::Api
 
       if @slug.nil?
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
-      end
-
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
       end
 
       if @slug.to_s.length < 1
@@ -352,7 +374,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug.to_s.length < 1
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if !@user_path_template.nil? && @user_path_template.to_s.length < 1
@@ -380,10 +401,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       if slug.to_s.length < 1
@@ -434,6 +451,7 @@ module Authentik::Api
           name == o.name &&
           slug == o.slug &&
           enabled == o.enabled &&
+          promoted == o.promoted &&
           authentication_flow == o.authentication_flow &&
           enrollment_flow == o.enrollment_flow &&
           user_property_mappings == o.user_property_mappings &&
@@ -441,6 +459,7 @@ module Authentik::Api
           policy_engine_mode == o.policy_engine_mode &&
           user_matching_mode == o.user_matching_mode &&
           user_path_template == o.user_path_template &&
+          icon == o.icon &&
           group_matching_mode == o.group_matching_mode &&
           realm == o.realm &&
           krb5_conf == o.krb5_conf &&
@@ -454,7 +473,8 @@ module Authentik::Api
           spnego_server_name == o.spnego_server_name &&
           spnego_keytab == o.spnego_keytab &&
           spnego_ccache == o.spnego_ccache &&
-          password_login_update_internal_password == o.password_login_update_internal_password
+          password_login_update_internal_password == o.password_login_update_internal_password &&
+          sync_outgoing_trigger_mode == o.sync_outgoing_trigger_mode
     end
 
     # @see the `==` method
@@ -466,7 +486,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, group_matching_mode, realm, krb5_conf, kadmin_type, sync_users, sync_users_password, sync_principal, sync_password, sync_keytab, sync_ccache, spnego_server_name, spnego_keytab, spnego_ccache, password_login_update_internal_password].hash
+      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, group_matching_mode, realm, krb5_conf, kadmin_type, sync_users, sync_users_password, sync_principal, sync_password, sync_keytab, sync_ccache, spnego_server_name, spnego_keytab, spnego_ccache, password_login_update_internal_password, sync_outgoing_trigger_mode].hash
     end
 
     # Builds the object from hash

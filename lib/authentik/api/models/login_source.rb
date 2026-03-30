@@ -14,6 +14,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :promoted
+
     attr_accessor :challenge
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -21,6 +23,7 @@ module Authentik::Api
       {
         :'name' => :'name',
         :'icon_url' => :'icon_url',
+        :'promoted' => :'promoted',
         :'challenge' => :'challenge'
       }
     end
@@ -40,6 +43,7 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'icon_url' => :'String',
+        :'promoted' => :'Boolean',
         :'challenge' => :'LoginChallengeTypes'
       }
     end
@@ -75,6 +79,12 @@ module Authentik::Api
 
       if attributes.key?(:'icon_url')
         self.icon_url = attributes[:'icon_url']
+      end
+
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
+      else
+        self.promoted = false
       end
 
       if attributes.key?(:'challenge')
@@ -136,6 +146,7 @@ module Authentik::Api
       self.class == o.class &&
           name == o.name &&
           icon_url == o.icon_url &&
+          promoted == o.promoted &&
           challenge == o.challenge
     end
 
@@ -148,7 +159,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, icon_url, challenge].hash
+      [name, icon_url, promoted, challenge].hash
     end
 
     # Builds the object from hash

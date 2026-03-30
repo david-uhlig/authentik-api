@@ -31,6 +31,12 @@ module Authentik::Api
 
     attr_accessor :group_delete_action
 
+    # Controls the number of objects synced in a single task
+    attr_accessor :sync_page_size
+
+    # Timeout for synchronization of a single page
+    attr_accessor :sync_page_timeout
+
     # When enabled, provider will not modify or create objects in the remote system.
     attr_accessor :dry_run
 
@@ -69,6 +75,8 @@ module Authentik::Api
         :'filter_group' => :'filter_group',
         :'user_delete_action' => :'user_delete_action',
         :'group_delete_action' => :'group_delete_action',
+        :'sync_page_size' => :'sync_page_size',
+        :'sync_page_timeout' => :'sync_page_timeout',
         :'dry_run' => :'dry_run'
       }
     end
@@ -96,6 +104,8 @@ module Authentik::Api
         :'filter_group' => :'String',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
         :'group_delete_action' => :'OutgoingSyncDeleteAction',
+        :'sync_page_size' => :'Integer',
+        :'sync_page_timeout' => :'String',
         :'dry_run' => :'Boolean'
       }
     end
@@ -175,6 +185,14 @@ module Authentik::Api
         self.group_delete_action = attributes[:'group_delete_action']
       end
 
+      if attributes.key?(:'sync_page_size')
+        self.sync_page_size = attributes[:'sync_page_size']
+      end
+
+      if attributes.key?(:'sync_page_timeout')
+        self.sync_page_timeout = attributes[:'sync_page_timeout']
+      end
+
       if attributes.key?(:'dry_run')
         self.dry_run = attributes[:'dry_run']
       end
@@ -217,6 +235,18 @@ module Authentik::Api
         invalid_properties.push('invalid value for "tenant_id", the character length must be greater than or equal to 1.')
       end
 
+      if !@sync_page_size.nil? && @sync_page_size > 2147483647
+        invalid_properties.push('invalid value for "sync_page_size", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@sync_page_size.nil? && @sync_page_size < 1
+        invalid_properties.push('invalid value for "sync_page_size", must be greater than or equal to 1.')
+      end
+
+      if !@sync_page_timeout.nil? && @sync_page_timeout.to_s.length < 1
+        invalid_properties.push('invalid value for "sync_page_timeout", the character length must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -232,6 +262,9 @@ module Authentik::Api
       return false if @client_secret.to_s.length < 1
       return false if @tenant_id.nil?
       return false if @tenant_id.to_s.length < 1
+      return false if !@sync_page_size.nil? && @sync_page_size > 2147483647
+      return false if !@sync_page_size.nil? && @sync_page_size < 1
+      return false if !@sync_page_timeout.nil? && @sync_page_timeout.to_s.length < 1
       true
     end
 
@@ -291,6 +324,38 @@ module Authentik::Api
       @tenant_id = tenant_id
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] sync_page_size Value to be assigned
+    def sync_page_size=(sync_page_size)
+      if sync_page_size.nil?
+        fail ArgumentError, 'sync_page_size cannot be nil'
+      end
+
+      if sync_page_size > 2147483647
+        fail ArgumentError, 'invalid value for "sync_page_size", must be smaller than or equal to 2147483647.'
+      end
+
+      if sync_page_size < 1
+        fail ArgumentError, 'invalid value for "sync_page_size", must be greater than or equal to 1.'
+      end
+
+      @sync_page_size = sync_page_size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sync_page_timeout Value to be assigned
+    def sync_page_timeout=(sync_page_timeout)
+      if sync_page_timeout.nil?
+        fail ArgumentError, 'sync_page_timeout cannot be nil'
+      end
+
+      if sync_page_timeout.to_s.length < 1
+        fail ArgumentError, 'invalid value for "sync_page_timeout", the character length must be greater than or equal to 1.'
+      end
+
+      @sync_page_timeout = sync_page_timeout
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -306,6 +371,8 @@ module Authentik::Api
           filter_group == o.filter_group &&
           user_delete_action == o.user_delete_action &&
           group_delete_action == o.group_delete_action &&
+          sync_page_size == o.sync_page_size &&
+          sync_page_timeout == o.sync_page_timeout &&
           dry_run == o.dry_run
     end
 
@@ -318,7 +385,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, dry_run].hash
+      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, sync_page_timeout, dry_run].hash
     end
 
     # Builds the object from hash

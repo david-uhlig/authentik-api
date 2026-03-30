@@ -14,7 +14,8 @@
 | **launch_url** | **String** | Allow formatting of launch URL | [readonly] |
 | **open_in_new_tab** | **Boolean** | Open launch URL in a new browser tab or window. | [optional] |
 | **meta_launch_url** | **String** |  | [optional] |
-| **meta_icon** | **String** | Get the URL to the App Icon image. If the name is /static or starts with http it is returned as-is | [readonly] |
+| **meta_icon** | **String** |  | [optional] |
+| **meta_icon_url** | **String** | Get the URL to the App Icon image | [readonly] |
 | **meta_description** | **String** |  | [optional] |
 | **meta_publisher** | **String** |  | [optional] |
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
@@ -37,6 +38,7 @@ instance = Authentik::Api::Application.new(
   open_in_new_tab: null,
   meta_launch_url: null,
   meta_icon: null,
+  meta_icon_url: null,
   meta_description: null,
   meta_publisher: null,
   policy_engine_mode: null,

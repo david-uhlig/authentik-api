@@ -12,39 +12,14 @@ module Authentik::Api
   class PatchedInitialPermissionsRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :mode
-
     attr_accessor :role
 
     attr_accessor :permissions
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'mode' => :'mode',
         :'role' => :'role',
         :'permissions' => :'permissions'
       }
@@ -64,7 +39,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'mode' => :'InitialPermissionsModeEnum',
         :'role' => :'String',
         :'permissions' => :'Array<Integer>'
       }
@@ -94,10 +68,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'mode')
-        self.mode = attributes[:'mode']
       end
 
       if attributes.key?(:'role')
@@ -160,7 +130,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          mode == o.mode &&
           role == o.role &&
           permissions == o.permissions
     end
@@ -174,7 +143,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, mode, role, permissions].hash
+      [name, role, permissions].hash
     end
 
     # Builds the object from hash

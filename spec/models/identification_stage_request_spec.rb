@@ -27,12 +27,6 @@ describe Authentik::Api::IdentificationStageRequest do
     end
   end
 
-  describe 'test attribute "flow_set"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "user_fields"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -100,6 +94,12 @@ describe Authentik::Api::IdentificationStageRequest do
   end
 
   describe 'test attribute "enable_remember_me"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "webauthn_stage"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

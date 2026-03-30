@@ -17,6 +17,8 @@
 | **impersonation_require_reason** | **Boolean** | Require administrators to provide a reason for impersonating a user. | [optional] |
 | **default_token_duration** | **String** | Default token duration | [optional] |
 | **default_token_length** | **Integer** | Default token length | [optional] |
+| **pagination_default_page_size** | **Integer** | Default page size for API responses, if no size was requested. | [optional] |
+| **pagination_max_page_size** | **Integer** | Maximum page size | [optional] |
 | **flags** | [**PatchedSettingsRequestFlags**](PatchedSettingsRequestFlags.md) |  |  |
 
 ## Example
@@ -38,6 +40,8 @@ instance = Authentik::Api::SettingsRequest.new(
   impersonation_require_reason: null,
   default_token_duration: null,
   default_token_length: null,
+  pagination_default_page_size: null,
+  pagination_max_page_size: null,
   flags: null
 )
 ```

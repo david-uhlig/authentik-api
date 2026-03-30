@@ -36,6 +36,54 @@ describe 'AdminApi' do
     end
   end
 
+  # unit tests for admin_file_create
+  # Upload file to storage backend.
+  # @param file 
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :usage 
+  # @return [nil]
+  describe 'admin_file_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for admin_file_destroy
+  # Delete file from storage backend.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :usage 
+  # @return [nil]
+  describe 'admin_file_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for admin_file_list
+  # List files from storage backend.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :manageable_only 
+  # @option opts [String] :search A search term.
+  # @option opts [String] :usage 
+  # @return [Array<FileList>]
+  describe 'admin_file_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for admin_file_used_by_list
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @return [Array<UsedBy>]
+  describe 'admin_file_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for admin_models_list
   # Read-only view list all installed models
   # @param [Hash] opts the optional parameters

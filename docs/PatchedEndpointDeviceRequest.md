@@ -4,8 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **pk** | **String** |  | [optional] |
-| **name** | **String** | The human-readable name of this device. | [optional] |
+| **device_uuid** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **access_group** | **String** |  | [optional] |
+| **access_group_obj** | [**DeviceAccessGroupRequest**](DeviceAccessGroupRequest.md) |  | [optional] |
+| **expiring** | **Boolean** |  | [optional] |
+| **expires** | **Time** |  | [optional] |
+| **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
 
 ## Example
 
@@ -13,8 +18,13 @@
 require 'authentik-api'
 
 instance = Authentik::Api::PatchedEndpointDeviceRequest.new(
-  pk: null,
-  name: null
+  device_uuid: null,
+  name: null,
+  access_group: null,
+  access_group_obj: null,
+  expiring: null,
+  expires: null,
+  attributes: null
 )
 ```
 

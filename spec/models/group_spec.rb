@@ -45,13 +45,13 @@ describe Authentik::Api::Group do
     end
   end
 
-  describe 'test attribute "parent"' do
+  describe 'test attribute "parents"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 
-  describe 'test attribute "parent_name"' do
+  describe 'test attribute "parents_obj"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -82,6 +82,12 @@ describe Authentik::Api::Group do
   end
 
   describe 'test attribute "roles_obj"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "inherited_roles_obj"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

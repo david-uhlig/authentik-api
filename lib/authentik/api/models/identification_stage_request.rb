@@ -12,8 +12,6 @@ module Authentik::Api
   class IdentificationStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Fields of the user object to match against. (Hold shift to select multiple options)
     attr_accessor :user_fields
 
@@ -49,11 +47,13 @@ module Authentik::Api
     # Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
     attr_accessor :enable_remember_me
 
+    # When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor.
+    attr_accessor :webauthn_stage
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'user_fields' => :'user_fields',
         :'password_stage' => :'password_stage',
         :'captcha_stage' => :'captcha_stage',
@@ -65,7 +65,8 @@ module Authentik::Api
         :'sources' => :'sources',
         :'show_source_labels' => :'show_source_labels',
         :'pretend_user_exists' => :'pretend_user_exists',
-        :'enable_remember_me' => :'enable_remember_me'
+        :'enable_remember_me' => :'enable_remember_me',
+        :'webauthn_stage' => :'webauthn_stage'
       }
     end
 
@@ -83,7 +84,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'user_fields' => :'Array<UserFieldsEnum>',
         :'password_stage' => :'String',
         :'captcha_stage' => :'String',
@@ -95,7 +95,8 @@ module Authentik::Api
         :'sources' => :'Array<String>',
         :'show_source_labels' => :'Boolean',
         :'pretend_user_exists' => :'Boolean',
-        :'enable_remember_me' => :'Boolean'
+        :'enable_remember_me' => :'Boolean',
+        :'webauthn_stage' => :'String'
       }
     end
 
@@ -107,6 +108,7 @@ module Authentik::Api
         :'enrollment_flow',
         :'recovery_flow',
         :'passwordless_flow',
+        :'webauthn_stage'
       ])
     end
 
@@ -130,12 +132,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'user_fields')
@@ -189,6 +185,10 @@ module Authentik::Api
       if attributes.key?(:'enable_remember_me')
         self.enable_remember_me = attributes[:'enable_remember_me']
       end
+
+      if attributes.key?(:'webauthn_stage')
+        self.webauthn_stage = attributes[:'webauthn_stage']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -236,7 +236,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           user_fields == o.user_fields &&
           password_stage == o.password_stage &&
           captcha_stage == o.captcha_stage &&
@@ -248,7 +247,8 @@ module Authentik::Api
           sources == o.sources &&
           show_source_labels == o.show_source_labels &&
           pretend_user_exists == o.pretend_user_exists &&
-          enable_remember_me == o.enable_remember_me
+          enable_remember_me == o.enable_remember_me &&
+          webauthn_stage == o.webauthn_stage
     end
 
     # @see the `==` method
@@ -260,7 +260,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, user_fields, password_stage, captcha_stage, case_insensitive_matching, show_matched_user, enrollment_flow, recovery_flow, passwordless_flow, sources, show_source_labels, pretend_user_exists, enable_remember_me].hash
+      [name, user_fields, password_stage, captcha_stage, case_insensitive_matching, show_matched_user, enrollment_flow, recovery_flow, passwordless_flow, sources, show_source_labels, pretend_user_exists, enable_remember_me, webauthn_stage].hash
     end
 
     # Builds the object from hash

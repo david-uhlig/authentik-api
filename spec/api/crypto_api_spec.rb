@@ -64,6 +64,7 @@ describe 'CryptoApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
   # @option opts [Boolean] :include_details 
+  # @option opts [Array<String>] :key_type Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;)
   # @option opts [String] :managed 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.

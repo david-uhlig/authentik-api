@@ -21,6 +21,9 @@ module Authentik::Api
     # Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.
     attr_accessor :designation
 
+    # Background shown during execution
+    attr_accessor :background
+
     attr_accessor :policy_engine_mode
 
     # Enable compatibility mode, increases compatibility with password managers on mobile devices.
@@ -63,6 +66,7 @@ module Authentik::Api
         :'slug' => :'slug',
         :'title' => :'title',
         :'designation' => :'designation',
+        :'background' => :'background',
         :'policy_engine_mode' => :'policy_engine_mode',
         :'compatibility_mode' => :'compatibility_mode',
         :'layout' => :'layout',
@@ -88,6 +92,7 @@ module Authentik::Api
         :'slug' => :'String',
         :'title' => :'String',
         :'designation' => :'FlowDesignationEnum',
+        :'background' => :'String',
         :'policy_engine_mode' => :'PolicyEngineMode',
         :'compatibility_mode' => :'Boolean',
         :'layout' => :'FlowLayoutEnum',
@@ -142,6 +147,10 @@ module Authentik::Api
         self.designation = nil
       end
 
+      if attributes.key?(:'background')
+        self.background = attributes[:'background']
+      end
+
       if attributes.key?(:'policy_engine_mode')
         self.policy_engine_mode = attributes[:'policy_engine_mode']
       end
@@ -180,10 +189,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       if @slug.to_s.length < 1
         invalid_properties.push('invalid value for "slug", the character length must be greater than or equal to 1.')
       end
@@ -215,7 +220,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug.to_s.length < 1
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @title.nil?
@@ -243,10 +247,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       if slug.to_s.length < 1
@@ -294,6 +294,7 @@ module Authentik::Api
           slug == o.slug &&
           title == o.title &&
           designation == o.designation &&
+          background == o.background &&
           policy_engine_mode == o.policy_engine_mode &&
           compatibility_mode == o.compatibility_mode &&
           layout == o.layout &&
@@ -310,7 +311,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, title, designation, policy_engine_mode, compatibility_mode, layout, denied_action, authentication].hash
+      [name, slug, title, designation, background, policy_engine_mode, compatibility_mode, layout, denied_action, authentication].hash
     end
 
     # Builds the object from hash

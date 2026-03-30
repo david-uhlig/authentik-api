@@ -20,6 +20,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+    attr_accessor :promoted
+
     # Flow to use when authenticating existing users.
     attr_accessor :authentication_flow
 
@@ -53,6 +56,8 @@ module Authentik::Api
     attr_accessor :user_path_template
 
     attr_accessor :icon
+
+    attr_accessor :icon_url
 
     attr_accessor :server_uri
 
@@ -112,6 +117,9 @@ module Authentik::Api
     # Delete authentik users and groups which were previously supplied by this source, but are now missing from it.
     attr_accessor :delete_not_found_objects
 
+    # When to trigger sync for outgoing providers
+    attr_accessor :sync_outgoing_trigger_mode
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -141,6 +149,7 @@ module Authentik::Api
         :'name' => :'name',
         :'slug' => :'slug',
         :'enabled' => :'enabled',
+        :'promoted' => :'promoted',
         :'authentication_flow' => :'authentication_flow',
         :'enrollment_flow' => :'enrollment_flow',
         :'user_property_mappings' => :'user_property_mappings',
@@ -154,6 +163,7 @@ module Authentik::Api
         :'managed' => :'managed',
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
+        :'icon_url' => :'icon_url',
         :'server_uri' => :'server_uri',
         :'peer_certificate' => :'peer_certificate',
         :'client_certificate' => :'client_certificate',
@@ -175,7 +185,8 @@ module Authentik::Api
         :'sync_parent_group' => :'sync_parent_group',
         :'connectivity' => :'connectivity',
         :'lookup_groups_from_user' => :'lookup_groups_from_user',
-        :'delete_not_found_objects' => :'delete_not_found_objects'
+        :'delete_not_found_objects' => :'delete_not_found_objects',
+        :'sync_outgoing_trigger_mode' => :'sync_outgoing_trigger_mode'
       }
     end
 
@@ -196,6 +207,7 @@ module Authentik::Api
         :'name' => :'String',
         :'slug' => :'String',
         :'enabled' => :'Boolean',
+        :'promoted' => :'Boolean',
         :'authentication_flow' => :'String',
         :'enrollment_flow' => :'String',
         :'user_property_mappings' => :'Array<String>',
@@ -209,6 +221,7 @@ module Authentik::Api
         :'managed' => :'String',
         :'user_path_template' => :'String',
         :'icon' => :'String',
+        :'icon_url' => :'String',
         :'server_uri' => :'String',
         :'peer_certificate' => :'String',
         :'client_certificate' => :'String',
@@ -230,7 +243,8 @@ module Authentik::Api
         :'sync_parent_group' => :'String',
         :'connectivity' => :'Hash<String, Hash<String, String>>',
         :'lookup_groups_from_user' => :'Boolean',
-        :'delete_not_found_objects' => :'Boolean'
+        :'delete_not_found_objects' => :'Boolean',
+        :'sync_outgoing_trigger_mode' => :'SyncOutgoingTriggerModeEnum'
       }
     end
 
@@ -283,6 +297,10 @@ module Authentik::Api
 
       if attributes.key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
       end
 
       if attributes.key?(:'authentication_flow')
@@ -349,8 +367,12 @@ module Authentik::Api
 
       if attributes.key?(:'icon')
         self.icon = attributes[:'icon']
+      end
+
+      if attributes.key?(:'icon_url')
+        self.icon_url = attributes[:'icon_url']
       else
-        self.icon = nil
+        self.icon_url = nil
       end
 
       if attributes.key?(:'server_uri')
@@ -448,6 +470,10 @@ module Authentik::Api
       if attributes.key?(:'delete_not_found_objects')
         self.delete_not_found_objects = attributes[:'delete_not_found_objects']
       end
+
+      if attributes.key?(:'sync_outgoing_trigger_mode')
+        self.sync_outgoing_trigger_mode = attributes[:'sync_outgoing_trigger_mode']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -465,10 +491,6 @@ module Authentik::Api
 
       if @slug.nil?
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
-      end
-
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -492,8 +514,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
-      if @icon.nil?
-        invalid_properties.push('invalid value for "icon", icon cannot be nil.')
+      if @icon_url.nil?
+        invalid_properties.push('invalid value for "icon_url", icon_url cannot be nil.')
       end
 
       if @server_uri.nil?
@@ -514,13 +536,12 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @component.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
-      return false if @icon.nil?
+      return false if @icon_url.nil?
       return false if @server_uri.nil?
       return false if @base_dn.nil?
       true
@@ -551,10 +572,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -606,13 +623,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] icon Value to be assigned
-    def icon=(icon)
-      if icon.nil?
-        fail ArgumentError, 'icon cannot be nil'
+    # @param [Object] icon_url Value to be assigned
+    def icon_url=(icon_url)
+      if icon_url.nil?
+        fail ArgumentError, 'icon_url cannot be nil'
       end
 
-      @icon = icon
+      @icon_url = icon_url
     end
 
     # Custom attribute writer method with validation
@@ -644,6 +661,7 @@ module Authentik::Api
           name == o.name &&
           slug == o.slug &&
           enabled == o.enabled &&
+          promoted == o.promoted &&
           authentication_flow == o.authentication_flow &&
           enrollment_flow == o.enrollment_flow &&
           user_property_mappings == o.user_property_mappings &&
@@ -657,6 +675,7 @@ module Authentik::Api
           managed == o.managed &&
           user_path_template == o.user_path_template &&
           icon == o.icon &&
+          icon_url == o.icon_url &&
           server_uri == o.server_uri &&
           peer_certificate == o.peer_certificate &&
           client_certificate == o.client_certificate &&
@@ -678,7 +697,8 @@ module Authentik::Api
           sync_parent_group == o.sync_parent_group &&
           connectivity == o.connectivity &&
           lookup_groups_from_user == o.lookup_groups_from_user &&
-          delete_not_found_objects == o.delete_not_found_objects
+          delete_not_found_objects == o.delete_not_found_objects &&
+          sync_outgoing_trigger_mode == o.sync_outgoing_trigger_mode
     end
 
     # @see the `==` method
@@ -690,7 +710,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode].hash
     end
 
     # Builds the object from hash

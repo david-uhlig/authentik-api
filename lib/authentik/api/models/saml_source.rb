@@ -20,6 +20,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+    attr_accessor :promoted
+
     # Flow to use when authenticating existing users.
     attr_accessor :authentication_flow
 
@@ -53,6 +56,8 @@ module Authentik::Api
     attr_accessor :user_path_template
 
     attr_accessor :icon
+
+    attr_accessor :icon_url
 
     # How the source determines if an existing group should be used or a new group created.
     attr_accessor :group_matching_mode
@@ -126,6 +131,7 @@ module Authentik::Api
         :'name' => :'name',
         :'slug' => :'slug',
         :'enabled' => :'enabled',
+        :'promoted' => :'promoted',
         :'authentication_flow' => :'authentication_flow',
         :'enrollment_flow' => :'enrollment_flow',
         :'user_property_mappings' => :'user_property_mappings',
@@ -139,6 +145,7 @@ module Authentik::Api
         :'managed' => :'managed',
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
+        :'icon_url' => :'icon_url',
         :'group_matching_mode' => :'group_matching_mode',
         :'pre_authentication_flow' => :'pre_authentication_flow',
         :'issuer' => :'issuer',
@@ -175,6 +182,7 @@ module Authentik::Api
         :'name' => :'String',
         :'slug' => :'String',
         :'enabled' => :'Boolean',
+        :'promoted' => :'Boolean',
         :'authentication_flow' => :'String',
         :'enrollment_flow' => :'String',
         :'user_property_mappings' => :'Array<String>',
@@ -188,6 +196,7 @@ module Authentik::Api
         :'managed' => :'String',
         :'user_path_template' => :'String',
         :'icon' => :'String',
+        :'icon_url' => :'String',
         :'group_matching_mode' => :'GroupMatchingModeEnum',
         :'pre_authentication_flow' => :'String',
         :'issuer' => :'String',
@@ -258,6 +267,10 @@ module Authentik::Api
         self.enabled = attributes[:'enabled']
       end
 
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
+      end
+
       if attributes.key?(:'authentication_flow')
         self.authentication_flow = attributes[:'authentication_flow']
       end
@@ -322,8 +335,12 @@ module Authentik::Api
 
       if attributes.key?(:'icon')
         self.icon = attributes[:'icon']
+      end
+
+      if attributes.key?(:'icon_url')
+        self.icon_url = attributes[:'icon_url']
       else
-        self.icon = nil
+        self.icon_url = nil
       end
 
       if attributes.key?(:'group_matching_mode')
@@ -412,10 +429,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if @slug !~ pattern
         invalid_properties.push("invalid value for \"slug\", must conform to the pattern #{pattern}.")
@@ -437,8 +450,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
-      if @icon.nil?
-        invalid_properties.push('invalid value for "icon", icon cannot be nil.')
+      if @icon_url.nil?
+        invalid_properties.push('invalid value for "icon_url", icon_url cannot be nil.')
       end
 
       if @pre_authentication_flow.nil?
@@ -459,13 +472,12 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @component.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
-      return false if @icon.nil?
+      return false if @icon_url.nil?
       return false if @pre_authentication_flow.nil?
       return false if @sso_url.nil?
       true
@@ -496,10 +508,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -551,13 +559,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] icon Value to be assigned
-    def icon=(icon)
-      if icon.nil?
-        fail ArgumentError, 'icon cannot be nil'
+    # @param [Object] icon_url Value to be assigned
+    def icon_url=(icon_url)
+      if icon_url.nil?
+        fail ArgumentError, 'icon_url cannot be nil'
       end
 
-      @icon = icon
+      @icon_url = icon_url
     end
 
     # Custom attribute writer method with validation
@@ -589,6 +597,7 @@ module Authentik::Api
           name == o.name &&
           slug == o.slug &&
           enabled == o.enabled &&
+          promoted == o.promoted &&
           authentication_flow == o.authentication_flow &&
           enrollment_flow == o.enrollment_flow &&
           user_property_mappings == o.user_property_mappings &&
@@ -602,6 +611,7 @@ module Authentik::Api
           managed == o.managed &&
           user_path_template == o.user_path_template &&
           icon == o.icon &&
+          icon_url == o.icon_url &&
           group_matching_mode == o.group_matching_mode &&
           pre_authentication_flow == o.pre_authentication_flow &&
           issuer == o.issuer &&
@@ -629,7 +639,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
     end
 
     # Builds the object from hash
