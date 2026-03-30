@@ -135,6 +135,12 @@ describe Authentik::Api::TelegramSource do
     end
   end
 
+  describe 'test attribute "icon_themed_urls"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "bot_username"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

@@ -59,6 +59,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     attr_accessor :server_uri
 
     # Optionally verify the LDAP Server's Certificate against the CA Chain in this keypair.
@@ -164,6 +166,7 @@ module Authentik::Api
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
         :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls',
         :'server_uri' => :'server_uri',
         :'peer_certificate' => :'peer_certificate',
         :'client_certificate' => :'client_certificate',
@@ -222,6 +225,7 @@ module Authentik::Api
         :'user_path_template' => :'String',
         :'icon' => :'String',
         :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls',
         :'server_uri' => :'String',
         :'peer_certificate' => :'String',
         :'client_certificate' => :'String',
@@ -254,6 +258,7 @@ module Authentik::Api
         :'authentication_flow',
         :'enrollment_flow',
         :'managed',
+        :'icon_themed_urls',
         :'peer_certificate',
         :'client_certificate',
         :'sync_parent_group',
@@ -373,6 +378,12 @@ module Authentik::Api
         self.icon_url = attributes[:'icon_url']
       else
         self.icon_url = nil
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
+      else
+        self.icon_themed_urls = nil
       end
 
       if attributes.key?(:'server_uri')
@@ -676,6 +687,7 @@ module Authentik::Api
           user_path_template == o.user_path_template &&
           icon == o.icon &&
           icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls &&
           server_uri == o.server_uri &&
           peer_certificate == o.peer_certificate &&
           client_certificate == o.client_certificate &&
@@ -710,7 +722,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode].hash
     end
 
     # Builds the object from hash

@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **bot_username** | **String** | Telegram bot username |  |
 | **request_message_access** | **Boolean** | Request access to send messages from your bot. | [optional] |
 | **pre_authentication_flow** | **String** | Flow used before authentication. |  |
@@ -52,6 +53,7 @@ instance = Authentik::Api::TelegramSource.new(
   user_path_template: null,
   icon: null,
   icon_url: null,
+  icon_themed_urls: null,
   bot_username: null,
   request_message_access: null,
   pre_authentication_flow: null

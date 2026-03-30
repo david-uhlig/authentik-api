@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **group_matching_mode** | [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] |
 | **pre_authentication_flow** | **String** | Flow used before authentication. |  |
 | **issuer** | **String** | Also known as Entity ID. Defaults the Metadata URL. | [optional] |
@@ -65,6 +66,7 @@ instance = Authentik::Api::SAMLSource.new(
   user_path_template: null,
   icon: null,
   icon_url: null,
+  icon_themed_urls: null,
   group_matching_mode: null,
   pre_authentication_flow: null,
   issuer: null,

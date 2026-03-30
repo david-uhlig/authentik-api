@@ -7,7 +7,9 @@
 | **matched_domain** | **String** |  |  |
 | **branding_title** | **String** |  |  |
 | **branding_logo** | **String** |  |  |
+| **branding_logo_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **branding_favicon** | **String** |  |  |
+| **branding_favicon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **branding_custom_css** | **String** |  |  |
 | **ui_footer_links** | [**Array&lt;FooterLink&gt;**](FooterLink.md) |  | [readonly] |
 | **ui_theme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] |
@@ -29,7 +31,9 @@ instance = Authentik::Api::CurrentBrand.new(
   matched_domain: null,
   branding_title: null,
   branding_logo: null,
+  branding_logo_themed_urls: null,
   branding_favicon: null,
+  branding_favicon_themed_urls: null,
   branding_custom_css: null,
   ui_footer_links: null,
   ui_theme: null,

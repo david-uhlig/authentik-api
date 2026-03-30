@@ -7,6 +7,7 @@
 | **name** | **String** |  |  |
 | **mime_type** | **String** |  |  |
 | **url** | **String** |  |  |
+| **themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [optional] |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'authentik-api'
 instance = Authentik::Api::FileList.new(
   name: null,
   mime_type: null,
-  url: null
+  url: null,
+  themed_urls: null
 )
 ```
 

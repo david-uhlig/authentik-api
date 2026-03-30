@@ -11,10 +11,9 @@ module Authentik::Api
   class KadminTypeEnum
     MIT = "MIT".freeze
     HEIMDAL = "Heimdal".freeze
-    OTHER = "other".freeze
 
     def self.all_vars
-      @all_vars ||= [MIT, HEIMDAL, OTHER].freeze
+      @all_vars ||= [MIT, HEIMDAL].freeze
     end
 
     # Builds the enum from string

@@ -60,6 +60,8 @@ module Authentik::Api
     # Get the URL to the source icon
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -103,7 +105,8 @@ module Authentik::Api
         :'managed' => :'managed',
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
-        :'icon_url' => :'icon_url'
+        :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls'
       }
     end
 
@@ -138,7 +141,8 @@ module Authentik::Api
         :'managed' => :'String',
         :'user_path_template' => :'String',
         :'icon' => :'String',
-        :'icon_url' => :'String'
+        :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls'
       }
     end
 
@@ -148,7 +152,8 @@ module Authentik::Api
         :'authentication_flow',
         :'enrollment_flow',
         :'managed',
-        :'icon_url'
+        :'icon_url',
+        :'icon_themed_urls'
       ])
     end
 
@@ -264,6 +269,12 @@ module Authentik::Api
         self.icon_url = attributes[:'icon_url']
       else
         self.icon_url = nil
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
+      else
+        self.icon_themed_urls = nil
       end
     end
 
@@ -421,7 +432,8 @@ module Authentik::Api
           managed == o.managed &&
           user_path_template == o.user_path_template &&
           icon == o.icon &&
-          icon_url == o.icon_url
+          icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls
     end
 
     # @see the `==` method
@@ -433,7 +445,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls].hash
     end
 
     # Builds the object from hash

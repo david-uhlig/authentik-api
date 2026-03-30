@@ -23,6 +23,7 @@
 | **user_path_template** | **String** |  | [optional] |
 | **icon** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **group_matching_mode** | [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] |
 | **provider_type** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  |  |
 | **request_token_url** | **String** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] |
@@ -64,6 +65,7 @@ instance = Authentik::Api::OAuthSource.new(
   user_path_template: null,
   icon: null,
   icon_url: null,
+  icon_themed_urls: null,
   group_matching_mode: null,
   provider_type: null,
   request_token_url: null,

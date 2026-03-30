@@ -59,6 +59,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     # Telegram bot username
     attr_accessor :bot_username
 
@@ -112,6 +114,7 @@ module Authentik::Api
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
         :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls',
         :'bot_username' => :'bot_username',
         :'request_message_access' => :'request_message_access',
         :'pre_authentication_flow' => :'pre_authentication_flow'
@@ -150,6 +153,7 @@ module Authentik::Api
         :'user_path_template' => :'String',
         :'icon' => :'String',
         :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls',
         :'bot_username' => :'String',
         :'request_message_access' => :'Boolean',
         :'pre_authentication_flow' => :'String'
@@ -163,6 +167,7 @@ module Authentik::Api
         :'enrollment_flow',
         :'managed',
         :'icon_url',
+        :'icon_themed_urls',
       ])
     end
 
@@ -278,6 +283,12 @@ module Authentik::Api
         self.icon_url = attributes[:'icon_url']
       else
         self.icon_url = nil
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
+      else
+        self.icon_themed_urls = nil
       end
 
       if attributes.key?(:'bot_username')
@@ -482,6 +493,7 @@ module Authentik::Api
           user_path_template == o.user_path_template &&
           icon == o.icon &&
           icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls &&
           bot_username == o.bot_username &&
           request_message_access == o.request_message_access &&
           pre_authentication_flow == o.pre_authentication_flow
@@ -496,7 +508,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, bot_username, request_message_access, pre_authentication_flow].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, bot_username, request_message_access, pre_authentication_flow].hash
     end
 
     # Builds the object from hash
