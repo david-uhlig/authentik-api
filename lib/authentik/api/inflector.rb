@@ -8,11 +8,12 @@ require "zeitwerk"
 module Authentik
   module Api
     class Inflector < Zeitwerk::GemInflector
-      ACRONYMS = %w[gdtc id ip ldap ldapapi mdm pkce rac saml scim sms ssf tls totp uri url ws].map(&:capitalize).freeze
+      ACRONYMS = %w[gdtc id ip ldap ldapapi mdm os pkce psso rac saml scim sms ssf tls totp uri url ws].map(&:capitalize).freeze
       REGULAR_INFLECTIONS = ACRONYMS.to_h { [ _1, _1.upcase ] }.freeze
       IRREGULAR_INFLECTIONS = {
         "OAuth2ProviderSetupUrls" => "OAuth2ProviderSetupURLs",
         "AuthenticatedSessionGeoIp" => "AuthenticatedSessionGeoIp",
+        "AuthenticatedSessionUserAgentOs" => "AuthenticatedSessionUserAgentOs"
       }.freeze
       INFLECTIONS = IRREGULAR_INFLECTIONS.merge(REGULAR_INFLECTIONS).freeze
       # Matches inflections followed by an upcase letter or EOL.
