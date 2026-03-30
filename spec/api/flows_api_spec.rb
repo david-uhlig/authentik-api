@@ -283,31 +283,6 @@ describe 'FlowsApi' do
     end
   end
 
-  # unit tests for flows_instances_set_background_create
-  # Set Flow background
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [Boolean] :clear 
-  # @return [nil]
-  describe 'flows_instances_set_background_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for flows_instances_set_background_url_create
-  # Set Flow background (as URL)
-  # @param slug 
-  # @param file_path_request 
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'flows_instances_set_background_url_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for flows_instances_update
   # Flow Viewset
   # @param slug 

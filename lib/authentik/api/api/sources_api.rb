@@ -214,150 +214,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Set source icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [nil]
-    def sources_all_set_icon_create(slug, opts = {})
-      sources_all_set_icon_create_with_http_info(slug, opts)
-      nil
-    end
-
-    # Set source icon
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [File] :file 
-    # @option opts [Boolean] :clear  (default to false)
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_all_set_icon_create_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_all_set_icon_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_set_icon_create"
-      end
-      # resource path
-      local_var_path = '/sources/all/{slug}/set_icon/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['multipart/form-data'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
-      form_params['clear'] = opts[:'clear'] if !opts[:'clear'].nil?
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_all_set_icon_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_all_set_icon_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Set source icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_all_set_icon_url_create(slug, file_path_request, opts = {})
-      sources_all_set_icon_url_create_with_http_info(slug, file_path_request, opts)
-      nil
-    end
-
-    # Set source icon (as URL)
-    # @param slug [String] 
-    # @param file_path_request [FilePathRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_all_set_icon_url_create_with_http_info(slug, file_path_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_all_set_icon_url_create ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_set_icon_url_create"
-      end
-      # verify the required parameter 'file_path_request' is set
-      if @api_client.config.client_side_validation && file_path_request.nil?
-        fail ArgumentError, "Missing the required parameter 'file_path_request' when calling SourcesApi.sources_all_set_icon_url_create"
-      end
-      # resource path
-      local_var_path = '/sources/all/{slug}/set_icon_url/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(file_path_request)
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_all_set_icon_url_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_all_set_icon_url_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Get all creatable types
     # @param [Hash] opts the optional parameters
     # @return [Array<TypeCreate>]
@@ -3869,7 +3725,7 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_kerberos_list ...'
       end
-      allowable_values = ["Heimdal", "MIT", "other"]
+      allowable_values = ["Heimdal", "MIT"]
       if @api_client.config.client_side_validation && opts[:'kadmin_type'] && !allowable_values.include?(opts[:'kadmin_type'])
         fail ArgumentError, "invalid value for \"kadmin_type\", must be one of #{allowable_values}"
       end
@@ -8125,6 +7981,78 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SourcesApi#sources_scim_users_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param slug [String] 
+    # @param telegram_auth_request [TelegramAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [UserTelegramSourceConnection]
+    def sources_telegram_connect_user_create(slug, telegram_auth_request, opts = {})
+      data, _status_code, _headers = sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param slug [String] 
+    # @param telegram_auth_request [TelegramAuthRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
+    def sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_connect_user_create ...'
+      end
+      # verify the required parameter 'slug' is set
+      if @api_client.config.client_side_validation && slug.nil?
+        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_connect_user_create"
+      end
+      # verify the required parameter 'telegram_auth_request' is set
+      if @api_client.config.client_side_validation && telegram_auth_request.nil?
+        fail ArgumentError, "Missing the required parameter 'telegram_auth_request' when calling SourcesApi.sources_telegram_connect_user_create"
+      end
+      # resource path
+      local_var_path = '/sources/telegram/{slug}/connect_user/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(telegram_auth_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"SourcesApi.sources_telegram_connect_user_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_connect_user_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

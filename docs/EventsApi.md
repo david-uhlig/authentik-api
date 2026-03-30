@@ -7,6 +7,7 @@ All URIs are relative to */api/v3*
 | [**events_events_actions_list**](EventsApi.md#events_events_actions_list) | **GET** /events/events/actions/ |  |
 | [**events_events_create**](EventsApi.md#events_events_create) | **POST** /events/events/ |  |
 | [**events_events_destroy**](EventsApi.md#events_events_destroy) | **DELETE** /events/events/{event_uuid}/ |  |
+| [**events_events_export_create**](EventsApi.md#events_events_export_create) | **POST** /events/events/export/ |  |
 | [**events_events_list**](EventsApi.md#events_events_list) | **GET** /events/events/ |  |
 | [**events_events_partial_update**](EventsApi.md#events_events_partial_update) | **PATCH** /events/events/{event_uuid}/ |  |
 | [**events_events_retrieve**](EventsApi.md#events_events_retrieve) | **GET** /events/events/{event_uuid}/ |  |
@@ -229,6 +230,97 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## events_events_export_create
+
+> <DataExport> events_events_export_create(opts)
+
+
+
+Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EventsApi.new
+opts = {
+  action: 'action_example', # String | 
+  actions: ['authorize_application'], # Array<String> | 
+  brand_name: 'brand_name_example', # String | Brand name
+  client_ip: 'client_ip_example', # String | 
+  context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
+  context_model_app: 'context_model_app_example', # String | Context Model App
+  context_model_name: 'context_model_name_example', # String | Context Model Name
+  context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  search: 'search_example', # String | A search term.
+  username: 'username_example' # String | Username
+}
+
+begin
+  
+  result = api_instance.events_events_export_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_events_export_create: #{e}"
+end
+```
+
+#### Using the events_events_export_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<DataExport>, Integer, Hash)> events_events_export_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.events_events_export_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <DataExport>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_events_export_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | **String** |  | [optional] |
+| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **brand_name** | **String** | Brand name | [optional] |
+| **client_ip** | **String** |  | [optional] |
+| **context_authorized_app** | **String** | Context Authorized application | [optional] |
+| **context_model_app** | **String** | Context Model App | [optional] |
+| **context_model_name** | **String** | Context Model Name | [optional] |
+| **context_model_pk** | **String** | Context Model Primary Key | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **username** | **String** | Username | [optional] |
+
+### Return type
+
+[**DataExport**](DataExport.md)
 
 ### Authorization
 

@@ -1631,7 +1631,7 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PoliciesApi.policies_event_matcher_list ...'
       end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
+      allowable_values = ["authorize_application", "configuration_error", "configuration_warning", "custom_", "email_sent", "export_ready", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "review_attested", "review_completed", "review_initiated", "review_overdue", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
       if @api_client.config.client_side_validation && opts[:'action'] && !allowable_values.include?(opts[:'action'])
         fail ArgumentError, "invalid value for \"action\", must be one of #{allowable_values}"
       end

@@ -23,7 +23,8 @@ Authentik::Api::ModelRequest.openapi_one_of
 #   :'RadiusProviderRequest',
 #   :'SAMLProviderRequest',
 #   :'SCIMProviderRequest',
-#   :'SSFProviderRequest'
+#   :'SSFProviderRequest',
+#   :'WSFederationProviderRequest'
 # ]
 ```
 
@@ -61,7 +62,8 @@ Authentik::Api::ModelRequest.openapi_discriminator_mapping
 #   :'authentik_providers_radius.radiusprovider' => :'RadiusProviderRequest',
 #   :'authentik_providers_saml.samlprovider' => :'SAMLProviderRequest',
 #   :'authentik_providers_scim.scimprovider' => :'SCIMProviderRequest',
-#   :'authentik_providers_ssf.ssfprovider' => :'SSFProviderRequest'
+#   :'authentik_providers_ssf.ssfprovider' => :'SSFProviderRequest',
+#   :'authentik_providers_ws_federation.wsfederationprovider' => :'WSFederationProviderRequest'
 # }
 ```
 
@@ -99,5 +101,6 @@ Authentik::Api::ModelRequest.build(data_that_doesnt_match)
 - `SAMLProviderRequest`
 - `SCIMProviderRequest`
 - `SSFProviderRequest`
+- `WSFederationProviderRequest`
 - `nil` (if no type matches)
 

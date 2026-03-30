@@ -16,7 +16,11 @@ module Authentik::Api
 
     attr_accessor :branding_logo
 
+    attr_accessor :branding_logo_themed_urls
+
     attr_accessor :branding_favicon
+
+    attr_accessor :branding_favicon_themed_urls
 
     attr_accessor :branding_custom_css
 
@@ -68,7 +72,9 @@ module Authentik::Api
         :'matched_domain' => :'matched_domain',
         :'branding_title' => :'branding_title',
         :'branding_logo' => :'branding_logo',
+        :'branding_logo_themed_urls' => :'branding_logo_themed_urls',
         :'branding_favicon' => :'branding_favicon',
+        :'branding_favicon_themed_urls' => :'branding_favicon_themed_urls',
         :'branding_custom_css' => :'branding_custom_css',
         :'ui_footer_links' => :'ui_footer_links',
         :'ui_theme' => :'ui_theme',
@@ -99,7 +105,9 @@ module Authentik::Api
         :'matched_domain' => :'String',
         :'branding_title' => :'String',
         :'branding_logo' => :'String',
+        :'branding_logo_themed_urls' => :'ThemedUrls',
         :'branding_favicon' => :'String',
+        :'branding_favicon_themed_urls' => :'ThemedUrls',
         :'branding_custom_css' => :'String',
         :'ui_footer_links' => :'Array<FooterLink>',
         :'ui_theme' => :'UiThemeEnum',
@@ -117,6 +125,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'branding_logo_themed_urls',
+        :'branding_favicon_themed_urls',
       ])
     end
 
@@ -154,10 +164,22 @@ module Authentik::Api
         self.branding_logo = nil
       end
 
+      if attributes.key?(:'branding_logo_themed_urls')
+        self.branding_logo_themed_urls = attributes[:'branding_logo_themed_urls']
+      else
+        self.branding_logo_themed_urls = nil
+      end
+
       if attributes.key?(:'branding_favicon')
         self.branding_favicon = attributes[:'branding_favicon']
       else
         self.branding_favicon = nil
+      end
+
+      if attributes.key?(:'branding_favicon_themed_urls')
+        self.branding_favicon_themed_urls = attributes[:'branding_favicon_themed_urls']
+      else
+        self.branding_favicon_themed_urls = nil
       end
 
       if attributes.key?(:'branding_custom_css')
@@ -375,7 +397,9 @@ module Authentik::Api
           matched_domain == o.matched_domain &&
           branding_title == o.branding_title &&
           branding_logo == o.branding_logo &&
+          branding_logo_themed_urls == o.branding_logo_themed_urls &&
           branding_favicon == o.branding_favicon &&
+          branding_favicon_themed_urls == o.branding_favicon_themed_urls &&
           branding_custom_css == o.branding_custom_css &&
           ui_footer_links == o.ui_footer_links &&
           ui_theme == o.ui_theme &&
@@ -398,7 +422,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matched_domain, branding_title, branding_logo, branding_favicon, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_locale, flags].hash
+      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_locale, flags].hash
     end
 
     # Builds the object from hash

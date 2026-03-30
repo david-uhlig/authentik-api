@@ -8,18 +8,37 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Serializer for Endpoint authenticator devices
   class EndpointDevice < ApiModelBase
-    attr_accessor :pk
+    attr_accessor :device_uuid
 
-    # The human-readable name of this device.
+    attr_accessor :pbm_uuid
+
     attr_accessor :name
+
+    attr_accessor :access_group
+
+    attr_accessor :access_group_obj
+
+    attr_accessor :expiring
+
+    attr_accessor :expires
+
+    attr_accessor :facts
+
+    attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pk' => :'pk',
-        :'name' => :'name'
+        :'device_uuid' => :'device_uuid',
+        :'pbm_uuid' => :'pbm_uuid',
+        :'name' => :'name',
+        :'access_group' => :'access_group',
+        :'access_group_obj' => :'access_group_obj',
+        :'expiring' => :'expiring',
+        :'expires' => :'expires',
+        :'facts' => :'facts',
+        :'attributes' => :'attributes'
       }
     end
 
@@ -36,14 +55,23 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pk' => :'String',
-        :'name' => :'String'
+        :'device_uuid' => :'String',
+        :'pbm_uuid' => :'String',
+        :'name' => :'String',
+        :'access_group' => :'String',
+        :'access_group_obj' => :'DeviceAccessGroup',
+        :'expiring' => :'Boolean',
+        :'expires' => :'Time',
+        :'facts' => :'DeviceFactSnapshot',
+        :'attributes' => :'Hash<String, Object>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'access_group',
+        :'expires',
       ])
     end
 
@@ -63,14 +91,48 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'pk')
-        self.pk = attributes[:'pk']
+      if attributes.key?(:'device_uuid')
+        self.device_uuid = attributes[:'device_uuid']
+      end
+
+      if attributes.key?(:'pbm_uuid')
+        self.pbm_uuid = attributes[:'pbm_uuid']
+      else
+        self.pbm_uuid = nil
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
       else
         self.name = nil
+      end
+
+      if attributes.key?(:'access_group')
+        self.access_group = attributes[:'access_group']
+      end
+
+      if attributes.key?(:'access_group_obj')
+        self.access_group_obj = attributes[:'access_group_obj']
+      end
+
+      if attributes.key?(:'expiring')
+        self.expiring = attributes[:'expiring']
+      end
+
+      if attributes.key?(:'expires')
+        self.expires = attributes[:'expires']
+      end
+
+      if attributes.key?(:'facts')
+        self.facts = attributes[:'facts']
+      else
+        self.facts = nil
+      end
+
+      if attributes.key?(:'attributes')
+        if (value = attributes[:'attributes']).is_a?(Hash)
+          self.attributes = value
+        end
       end
     end
 
@@ -79,12 +141,16 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @pbm_uuid.nil?
+        invalid_properties.push('invalid value for "pbm_uuid", pbm_uuid cannot be nil.')
+      end
+
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @name.to_s.length > 64
-        invalid_properties.push('invalid value for "name", the character length must be smaller than or equal to 64.')
+      if @facts.nil?
+        invalid_properties.push('invalid value for "facts", facts cannot be nil.')
       end
 
       invalid_properties
@@ -94,9 +160,20 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @pbm_uuid.nil?
       return false if @name.nil?
-      return false if @name.to_s.length > 64
+      return false if @facts.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] pbm_uuid Value to be assigned
+    def pbm_uuid=(pbm_uuid)
+      if pbm_uuid.nil?
+        fail ArgumentError, 'pbm_uuid cannot be nil'
+      end
+
+      @pbm_uuid = pbm_uuid
     end
 
     # Custom attribute writer method with validation
@@ -106,11 +183,17 @@ module Authentik::Api
         fail ArgumentError, 'name cannot be nil'
       end
 
-      if name.to_s.length > 64
-        fail ArgumentError, 'invalid value for "name", the character length must be smaller than or equal to 64.'
+      @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] facts Value to be assigned
+    def facts=(facts)
+      if facts.nil?
+        fail ArgumentError, 'facts cannot be nil'
       end
 
-      @name = name
+      @facts = facts
     end
 
     # Checks equality by comparing each attribute.
@@ -118,8 +201,15 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pk == o.pk &&
-          name == o.name
+          device_uuid == o.device_uuid &&
+          pbm_uuid == o.pbm_uuid &&
+          name == o.name &&
+          access_group == o.access_group &&
+          access_group_obj == o.access_group_obj &&
+          expiring == o.expiring &&
+          expires == o.expires &&
+          facts == o.facts &&
+          attributes == o.attributes
     end
 
     # @see the `==` method
@@ -131,7 +221,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name].hash
+      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes].hash
     end
 
     # Builds the object from hash

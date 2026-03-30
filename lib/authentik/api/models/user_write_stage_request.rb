@@ -12,8 +12,6 @@ module Authentik::Api
   class UserWriteStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :user_creation_mode
 
     # When set, newly created users are inactive and cannot login.
@@ -52,7 +50,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'user_creation_mode' => :'user_creation_mode',
         :'create_users_as_inactive' => :'create_users_as_inactive',
         :'create_users_group' => :'create_users_group',
@@ -75,7 +72,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'user_creation_mode' => :'UserCreationModeEnum',
         :'create_users_as_inactive' => :'Boolean',
         :'create_users_group' => :'String',
@@ -111,12 +107,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'user_creation_mode')
@@ -185,7 +175,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           user_creation_mode == o.user_creation_mode &&
           create_users_as_inactive == o.create_users_as_inactive &&
           create_users_group == o.create_users_group &&
@@ -202,7 +191,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, user_creation_mode, create_users_as_inactive, create_users_group, user_type, user_path_template].hash
+      [name, user_creation_mode, create_users_as_inactive, create_users_group, user_type, user_path_template].hash
     end
 
     # Builds the object from hash

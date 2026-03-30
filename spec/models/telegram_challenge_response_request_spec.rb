@@ -21,12 +21,6 @@ describe Authentik::Api::TelegramChallengeResponseRequest do
     end
   end
 
-  describe 'test attribute "component"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -64,6 +58,12 @@ describe Authentik::Api::TelegramChallengeResponseRequest do
   end
 
   describe 'test attribute "hash"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "component"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

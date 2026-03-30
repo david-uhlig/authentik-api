@@ -868,25 +868,25 @@ module Authentik::Api
     end
 
     # Viewset for Endpoint authenticator devices (for admins)
-    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param google_endpoint_device_request [GoogleEndpointDeviceRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [EndpointDevice]
-    def authenticators_admin_endpoint_create(endpoint_device_request, opts = {})
-      data, _status_code, _headers = authenticators_admin_endpoint_create_with_http_info(endpoint_device_request, opts)
+    # @return [GoogleEndpointDevice]
+    def authenticators_admin_endpoint_create(google_endpoint_device_request, opts = {})
+      data, _status_code, _headers = authenticators_admin_endpoint_create_with_http_info(google_endpoint_device_request, opts)
       data
     end
 
     # Viewset for Endpoint authenticator devices (for admins)
-    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param google_endpoint_device_request [GoogleEndpointDeviceRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
-    def authenticators_admin_endpoint_create_with_http_info(endpoint_device_request, opts = {})
+    # @return [Array<(GoogleEndpointDevice, Integer, Hash)>] GoogleEndpointDevice data, response status code and response headers
+    def authenticators_admin_endpoint_create_with_http_info(google_endpoint_device_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_admin_endpoint_create ...'
       end
-      # verify the required parameter 'endpoint_device_request' is set
-      if @api_client.config.client_side_validation && endpoint_device_request.nil?
-        fail ArgumentError, "Missing the required parameter 'endpoint_device_request' when calling AuthenticatorsApi.authenticators_admin_endpoint_create"
+      # verify the required parameter 'google_endpoint_device_request' is set
+      if @api_client.config.client_side_validation && google_endpoint_device_request.nil?
+        fail ArgumentError, "Missing the required parameter 'google_endpoint_device_request' when calling AuthenticatorsApi.authenticators_admin_endpoint_create"
       end
       # resource path
       local_var_path = '/authenticators/admin/endpoint/'
@@ -908,10 +908,10 @@ module Authentik::Api
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_device_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(google_endpoint_device_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EndpointDevice'
+      return_type = opts[:debug_return_type] || 'GoogleEndpointDevice'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -1001,7 +1001,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @return [PaginatedEndpointDeviceList]
+    # @return [PaginatedGoogleEndpointDeviceList]
     def authenticators_admin_endpoint_list(opts = {})
       data, _status_code, _headers = authenticators_admin_endpoint_list_with_http_info(opts)
       data
@@ -1014,7 +1014,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @return [Array<(PaginatedEndpointDeviceList, Integer, Hash)>] PaginatedEndpointDeviceList data, response status code and response headers
+    # @return [Array<(PaginatedGoogleEndpointDeviceList, Integer, Hash)>] PaginatedGoogleEndpointDeviceList data, response status code and response headers
     def authenticators_admin_endpoint_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_admin_endpoint_list ...'
@@ -1042,7 +1042,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedEndpointDeviceList'
+      return_type = opts[:debug_return_type] || 'PaginatedGoogleEndpointDeviceList'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -1067,8 +1067,8 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @option opts [PatchedEndpointDeviceRequest] :patched_endpoint_device_request 
-    # @return [EndpointDevice]
+    # @option opts [PatchedGoogleEndpointDeviceRequest] :patched_google_endpoint_device_request 
+    # @return [GoogleEndpointDevice]
     def authenticators_admin_endpoint_partial_update(uuid, opts = {})
       data, _status_code, _headers = authenticators_admin_endpoint_partial_update_with_http_info(uuid, opts)
       data
@@ -1077,8 +1077,8 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @option opts [PatchedEndpointDeviceRequest] :patched_endpoint_device_request 
-    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
+    # @option opts [PatchedGoogleEndpointDeviceRequest] :patched_google_endpoint_device_request 
+    # @return [Array<(GoogleEndpointDevice, Integer, Hash)>] GoogleEndpointDevice data, response status code and response headers
     def authenticators_admin_endpoint_partial_update_with_http_info(uuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_admin_endpoint_partial_update ...'
@@ -1107,10 +1107,10 @@ module Authentik::Api
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_endpoint_device_request'])
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_google_endpoint_device_request'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EndpointDevice'
+      return_type = opts[:debug_return_type] || 'GoogleEndpointDevice'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -1135,7 +1135,7 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @return [EndpointDevice]
+    # @return [GoogleEndpointDevice]
     def authenticators_admin_endpoint_retrieve(uuid, opts = {})
       data, _status_code, _headers = authenticators_admin_endpoint_retrieve_with_http_info(uuid, opts)
       data
@@ -1144,7 +1144,7 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
+    # @return [Array<(GoogleEndpointDevice, Integer, Hash)>] GoogleEndpointDevice data, response status code and response headers
     def authenticators_admin_endpoint_retrieve_with_http_info(uuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_admin_endpoint_retrieve ...'
@@ -1171,7 +1171,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EndpointDevice'
+      return_type = opts[:debug_return_type] || 'GoogleEndpointDevice'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -1195,20 +1195,20 @@ module Authentik::Api
 
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
-    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param google_endpoint_device_request [GoogleEndpointDeviceRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [EndpointDevice]
-    def authenticators_admin_endpoint_update(uuid, endpoint_device_request, opts = {})
-      data, _status_code, _headers = authenticators_admin_endpoint_update_with_http_info(uuid, endpoint_device_request, opts)
+    # @return [GoogleEndpointDevice]
+    def authenticators_admin_endpoint_update(uuid, google_endpoint_device_request, opts = {})
+      data, _status_code, _headers = authenticators_admin_endpoint_update_with_http_info(uuid, google_endpoint_device_request, opts)
       data
     end
 
     # Viewset for Endpoint authenticator devices (for admins)
     # @param uuid [String] A UUID string identifying this Endpoint Device.
-    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param google_endpoint_device_request [GoogleEndpointDeviceRequest] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
-    def authenticators_admin_endpoint_update_with_http_info(uuid, endpoint_device_request, opts = {})
+    # @return [Array<(GoogleEndpointDevice, Integer, Hash)>] GoogleEndpointDevice data, response status code and response headers
+    def authenticators_admin_endpoint_update_with_http_info(uuid, google_endpoint_device_request, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_admin_endpoint_update ...'
       end
@@ -1216,9 +1216,9 @@ module Authentik::Api
       if @api_client.config.client_side_validation && uuid.nil?
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_admin_endpoint_update"
       end
-      # verify the required parameter 'endpoint_device_request' is set
-      if @api_client.config.client_side_validation && endpoint_device_request.nil?
-        fail ArgumentError, "Missing the required parameter 'endpoint_device_request' when calling AuthenticatorsApi.authenticators_admin_endpoint_update"
+      # verify the required parameter 'google_endpoint_device_request' is set
+      if @api_client.config.client_side_validation && google_endpoint_device_request.nil?
+        fail ArgumentError, "Missing the required parameter 'google_endpoint_device_request' when calling AuthenticatorsApi.authenticators_admin_endpoint_update"
       end
       # resource path
       local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
@@ -1240,10 +1240,10 @@ module Authentik::Api
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_device_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(google_endpoint_device_request)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EndpointDevice'
+      return_type = opts[:debug_return_type] || 'GoogleEndpointDevice'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -3705,7 +3705,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @return [PaginatedEndpointDeviceList]
+    # @return [PaginatedGoogleEndpointDeviceList]
     def authenticators_endpoint_list(opts = {})
       data, _status_code, _headers = authenticators_endpoint_list_with_http_info(opts)
       data
@@ -3718,7 +3718,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @return [Array<(PaginatedEndpointDeviceList, Integer, Hash)>] PaginatedEndpointDeviceList data, response status code and response headers
+    # @return [Array<(PaginatedGoogleEndpointDeviceList, Integer, Hash)>] PaginatedGoogleEndpointDeviceList data, response status code and response headers
     def authenticators_endpoint_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_endpoint_list ...'
@@ -3746,7 +3746,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedEndpointDeviceList'
+      return_type = opts[:debug_return_type] || 'PaginatedGoogleEndpointDeviceList'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -3771,7 +3771,7 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @return [EndpointDevice]
+    # @return [GoogleEndpointDevice]
     def authenticators_endpoint_retrieve(uuid, opts = {})
       data, _status_code, _headers = authenticators_endpoint_retrieve_with_http_info(uuid, opts)
       data
@@ -3780,7 +3780,7 @@ module Authentik::Api
     # Viewset for Endpoint authenticator devices
     # @param uuid [String] A UUID string identifying this Endpoint Device.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
+    # @return [Array<(GoogleEndpointDevice, Integer, Hash)>] GoogleEndpointDevice data, response status code and response headers
     def authenticators_endpoint_retrieve_with_http_info(uuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AuthenticatorsApi.authenticators_endpoint_retrieve ...'
@@ -3807,7 +3807,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'EndpointDevice'
+      return_type = opts[:debug_return_type] || 'GoogleEndpointDevice'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']

@@ -20,6 +20,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon.
+    attr_accessor :promoted
+
     # Flow to use when authenticating existing users.
     attr_accessor :authentication_flow
 
@@ -53,6 +56,10 @@ module Authentik::Api
     attr_accessor :user_path_template
 
     attr_accessor :icon
+
+    attr_accessor :icon_url
+
+    attr_accessor :icon_themed_urls
 
     # How the source determines if an existing group should be used or a new group created.
     attr_accessor :group_matching_mode
@@ -98,6 +105,7 @@ module Authentik::Api
         :'name' => :'name',
         :'slug' => :'slug',
         :'enabled' => :'enabled',
+        :'promoted' => :'promoted',
         :'authentication_flow' => :'authentication_flow',
         :'enrollment_flow' => :'enrollment_flow',
         :'user_property_mappings' => :'user_property_mappings',
@@ -111,6 +119,8 @@ module Authentik::Api
         :'managed' => :'managed',
         :'user_path_template' => :'user_path_template',
         :'icon' => :'icon',
+        :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls',
         :'group_matching_mode' => :'group_matching_mode',
         :'client_id' => :'client_id',
         :'allowed_servers' => :'allowed_servers',
@@ -136,6 +146,7 @@ module Authentik::Api
         :'name' => :'String',
         :'slug' => :'String',
         :'enabled' => :'Boolean',
+        :'promoted' => :'Boolean',
         :'authentication_flow' => :'String',
         :'enrollment_flow' => :'String',
         :'user_property_mappings' => :'Array<String>',
@@ -149,6 +160,8 @@ module Authentik::Api
         :'managed' => :'String',
         :'user_path_template' => :'String',
         :'icon' => :'String',
+        :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls',
         :'group_matching_mode' => :'GroupMatchingModeEnum',
         :'client_id' => :'String',
         :'allowed_servers' => :'Array<String>',
@@ -163,6 +176,7 @@ module Authentik::Api
         :'authentication_flow',
         :'enrollment_flow',
         :'managed',
+        :'icon_themed_urls',
       ])
     end
 
@@ -202,6 +216,10 @@ module Authentik::Api
 
       if attributes.key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'promoted')
+        self.promoted = attributes[:'promoted']
       end
 
       if attributes.key?(:'authentication_flow')
@@ -268,8 +286,18 @@ module Authentik::Api
 
       if attributes.key?(:'icon')
         self.icon = attributes[:'icon']
+      end
+
+      if attributes.key?(:'icon_url')
+        self.icon_url = attributes[:'icon_url']
       else
-        self.icon = nil
+        self.icon_url = nil
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
+      else
+        self.icon_themed_urls = nil
       end
 
       if attributes.key?(:'group_matching_mode')
@@ -314,10 +342,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "slug", slug cannot be nil.')
       end
 
-      if @slug.to_s.length > 50
-        invalid_properties.push('invalid value for "slug", the character length must be smaller than or equal to 50.')
-      end
-
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
       if @slug !~ pattern
         invalid_properties.push("invalid value for \"slug\", must conform to the pattern #{pattern}.")
@@ -339,8 +363,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
-      if @icon.nil?
-        invalid_properties.push('invalid value for "icon", icon cannot be nil.')
+      if @icon_url.nil?
+        invalid_properties.push('invalid value for "icon_url", icon_url cannot be nil.')
       end
 
       if @plex_token.nil?
@@ -357,13 +381,12 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @slug.nil?
-      return false if @slug.to_s.length > 50
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if @component.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
-      return false if @icon.nil?
+      return false if @icon_url.nil?
       return false if @plex_token.nil?
       true
     end
@@ -393,10 +416,6 @@ module Authentik::Api
     def slug=(slug)
       if slug.nil?
         fail ArgumentError, 'slug cannot be nil'
-      end
-
-      if slug.to_s.length > 50
-        fail ArgumentError, 'invalid value for "slug", the character length must be smaller than or equal to 50.'
       end
 
       pattern = Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -448,13 +467,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] icon Value to be assigned
-    def icon=(icon)
-      if icon.nil?
-        fail ArgumentError, 'icon cannot be nil'
+    # @param [Object] icon_url Value to be assigned
+    def icon_url=(icon_url)
+      if icon_url.nil?
+        fail ArgumentError, 'icon_url cannot be nil'
       end
 
-      @icon = icon
+      @icon_url = icon_url
     end
 
     # Custom attribute writer method with validation
@@ -476,6 +495,7 @@ module Authentik::Api
           name == o.name &&
           slug == o.slug &&
           enabled == o.enabled &&
+          promoted == o.promoted &&
           authentication_flow == o.authentication_flow &&
           enrollment_flow == o.enrollment_flow &&
           user_property_mappings == o.user_property_mappings &&
@@ -489,6 +509,8 @@ module Authentik::Api
           managed == o.managed &&
           user_path_template == o.user_path_template &&
           icon == o.icon &&
+          icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls &&
           group_matching_mode == o.group_matching_mode &&
           client_id == o.client_id &&
           allowed_servers == o.allowed_servers &&
@@ -505,7 +527,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, group_matching_mode, client_id, allowed_servers, allow_friends, plex_token].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, group_matching_mode, client_id, allowed_servers, allow_friends, plex_token].hash
     end
 
     # Builds the object from hash

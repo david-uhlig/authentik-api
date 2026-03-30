@@ -14,9 +14,11 @@ module Authentik::Api
     CONTENT_RIGHT = "content_right".freeze
     SIDEBAR_LEFT = "sidebar_left".freeze
     SIDEBAR_RIGHT = "sidebar_right".freeze
+    SIDEBAR_LEFT_FRAME_BACKGROUND = "sidebar_left_frame_background".freeze
+    SIDEBAR_RIGHT_FRAME_BACKGROUND = "sidebar_right_frame_background".freeze
 
     def self.all_vars
-      @all_vars ||= [STACKED, CONTENT_LEFT, CONTENT_RIGHT, SIDEBAR_LEFT, SIDEBAR_RIGHT].freeze
+      @all_vars ||= [STACKED, CONTENT_LEFT, CONTENT_RIGHT, SIDEBAR_LEFT, SIDEBAR_RIGHT, SIDEBAR_LEFT_FRAME_BACKGROUND, SIDEBAR_RIGHT_FRAME_BACKGROUND].freeze
     end
 
     # Builds the enum from string

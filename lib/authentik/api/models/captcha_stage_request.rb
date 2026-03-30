@@ -12,8 +12,6 @@ module Authentik::Api
   class CaptchaStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Public key, acquired your captcha Provider.
     attr_accessor :public_key
 
@@ -37,7 +35,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'public_key' => :'public_key',
         :'private_key' => :'private_key',
         :'js_url' => :'js_url',
@@ -63,7 +60,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'public_key' => :'String',
         :'private_key' => :'String',
         :'js_url' => :'String',
@@ -101,12 +97,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'public_key')
@@ -277,7 +267,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           public_key == o.public_key &&
           private_key == o.private_key &&
           js_url == o.js_url &&
@@ -297,7 +286,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, public_key, private_key, js_url, api_url, interactive, score_min_threshold, score_max_threshold, error_on_invalid_score].hash
+      [name, public_key, private_key, js_url, api_url, interactive, score_min_threshold, score_max_threshold, error_on_invalid_score].hash
     end
 
     # Builds the object from hash

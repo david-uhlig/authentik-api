@@ -183,9 +183,9 @@ describe 'AuthenticatorsApi' do
 
   # unit tests for authenticators_admin_endpoint_create
   # Viewset for Endpoint authenticator devices (for admins)
-  # @param endpoint_device_request 
+  # @param google_endpoint_device_request 
   # @param [Hash] opts the optional parameters
-  # @return [EndpointDevice]
+  # @return [GoogleEndpointDevice]
   describe 'authenticators_admin_endpoint_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -211,7 +211,7 @@ describe 'AuthenticatorsApi' do
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
-  # @return [PaginatedEndpointDeviceList]
+  # @return [PaginatedGoogleEndpointDeviceList]
   describe 'authenticators_admin_endpoint_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -222,8 +222,8 @@ describe 'AuthenticatorsApi' do
   # Viewset for Endpoint authenticator devices (for admins)
   # @param uuid A UUID string identifying this Endpoint Device.
   # @param [Hash] opts the optional parameters
-  # @option opts [PatchedEndpointDeviceRequest] :patched_endpoint_device_request 
-  # @return [EndpointDevice]
+  # @option opts [PatchedGoogleEndpointDeviceRequest] :patched_google_endpoint_device_request 
+  # @return [GoogleEndpointDevice]
   describe 'authenticators_admin_endpoint_partial_update test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -234,7 +234,7 @@ describe 'AuthenticatorsApi' do
   # Viewset for Endpoint authenticator devices (for admins)
   # @param uuid A UUID string identifying this Endpoint Device.
   # @param [Hash] opts the optional parameters
-  # @return [EndpointDevice]
+  # @return [GoogleEndpointDevice]
   describe 'authenticators_admin_endpoint_retrieve test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -244,9 +244,9 @@ describe 'AuthenticatorsApi' do
   # unit tests for authenticators_admin_endpoint_update
   # Viewset for Endpoint authenticator devices (for admins)
   # @param uuid A UUID string identifying this Endpoint Device.
-  # @param endpoint_device_request 
+  # @param google_endpoint_device_request 
   # @param [Hash] opts the optional parameters
-  # @return [EndpointDevice]
+  # @return [GoogleEndpointDevice]
   describe 'authenticators_admin_endpoint_update test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -703,7 +703,7 @@ describe 'AuthenticatorsApi' do
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
-  # @return [PaginatedEndpointDeviceList]
+  # @return [PaginatedGoogleEndpointDeviceList]
   describe 'authenticators_endpoint_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -714,7 +714,7 @@ describe 'AuthenticatorsApi' do
   # Viewset for Endpoint authenticator devices
   # @param uuid A UUID string identifying this Endpoint Device.
   # @param [Hash] opts the optional parameters
-  # @return [EndpointDevice]
+  # @return [GoogleEndpointDevice]
   describe 'authenticators_endpoint_retrieve test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

@@ -1020,7 +1020,7 @@ end
 
 ## authenticators_admin_endpoint_create
 
-> <EndpointDevice> authenticators_admin_endpoint_create(endpoint_device_request)
+> <GoogleEndpointDevice> authenticators_admin_endpoint_create(google_endpoint_device_request)
 
 
 
@@ -1038,11 +1038,11 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AuthenticatorsApi.new
-endpoint_device_request = Authentik::Api::EndpointDeviceRequest.new({name: 'name_example'}) # EndpointDeviceRequest | 
+google_endpoint_device_request = Authentik::Api::GoogleEndpointDeviceRequest.new({name: 'name_example'}) # GoogleEndpointDeviceRequest | 
 
 begin
   
-  result = api_instance.authenticators_admin_endpoint_create(endpoint_device_request)
+  result = api_instance.authenticators_admin_endpoint_create(google_endpoint_device_request)
   p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_create: #{e}"
@@ -1053,15 +1053,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_create_with_http_info(endpoint_device_request)
+> <Array(<GoogleEndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_create_with_http_info(google_endpoint_device_request)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.authenticators_admin_endpoint_create_with_http_info(endpoint_device_request)
+  data, status_code, headers = api_instance.authenticators_admin_endpoint_create_with_http_info(google_endpoint_device_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <EndpointDevice>
+  p data # => <GoogleEndpointDevice>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_create_with_http_info: #{e}"
 end
@@ -1071,11 +1071,11 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **endpoint_device_request** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  |  |
+| **google_endpoint_device_request** | [**GoogleEndpointDeviceRequest**](GoogleEndpointDeviceRequest.md) |  |  |
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1157,7 +1157,7 @@ nil (empty response body)
 
 ## authenticators_admin_endpoint_list
 
-> <PaginatedEndpointDeviceList> authenticators_admin_endpoint_list(opts)
+> <PaginatedGoogleEndpointDeviceList> authenticators_admin_endpoint_list(opts)
 
 
 
@@ -1196,7 +1196,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaginatedEndpointDeviceList>, Integer, Hash)> authenticators_admin_endpoint_list_with_http_info(opts)
+> <Array(<PaginatedGoogleEndpointDeviceList>, Integer, Hash)> authenticators_admin_endpoint_list_with_http_info(opts)
 
 ```ruby
 begin
@@ -1204,7 +1204,7 @@ begin
   data, status_code, headers = api_instance.authenticators_admin_endpoint_list_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PaginatedEndpointDeviceList>
+  p data # => <PaginatedGoogleEndpointDeviceList>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_list_with_http_info: #{e}"
 end
@@ -1222,7 +1222,7 @@ end
 
 ### Return type
 
-[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+[**PaginatedGoogleEndpointDeviceList**](PaginatedGoogleEndpointDeviceList.md)
 
 ### Authorization
 
@@ -1236,7 +1236,7 @@ end
 
 ## authenticators_admin_endpoint_partial_update
 
-> <EndpointDevice> authenticators_admin_endpoint_partial_update(uuid, opts)
+> <GoogleEndpointDevice> authenticators_admin_endpoint_partial_update(uuid, opts)
 
 
 
@@ -1256,7 +1256,7 @@ end
 api_instance = Authentik::Api::AuthenticatorsApi.new
 uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Device.
 opts = {
-  patched_endpoint_device_request: Authentik::Api::PatchedEndpointDeviceRequest.new # PatchedEndpointDeviceRequest | 
+  patched_google_endpoint_device_request: Authentik::Api::PatchedGoogleEndpointDeviceRequest.new # PatchedGoogleEndpointDeviceRequest | 
 }
 
 begin
@@ -1272,7 +1272,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_partial_update_with_http_info(uuid, opts)
+> <Array(<GoogleEndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_partial_update_with_http_info(uuid, opts)
 
 ```ruby
 begin
@@ -1280,7 +1280,7 @@ begin
   data, status_code, headers = api_instance.authenticators_admin_endpoint_partial_update_with_http_info(uuid, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <EndpointDevice>
+  p data # => <GoogleEndpointDevice>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_partial_update_with_http_info: #{e}"
 end
@@ -1291,11 +1291,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **uuid** | **String** | A UUID string identifying this Endpoint Device. |  |
-| **patched_endpoint_device_request** | [**PatchedEndpointDeviceRequest**](PatchedEndpointDeviceRequest.md) |  | [optional] |
+| **patched_google_endpoint_device_request** | [**PatchedGoogleEndpointDeviceRequest**](PatchedGoogleEndpointDeviceRequest.md) |  | [optional] |
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1309,7 +1309,7 @@ end
 
 ## authenticators_admin_endpoint_retrieve
 
-> <EndpointDevice> authenticators_admin_endpoint_retrieve(uuid)
+> <GoogleEndpointDevice> authenticators_admin_endpoint_retrieve(uuid)
 
 
 
@@ -1342,7 +1342,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_retrieve_with_http_info(uuid)
+> <Array(<GoogleEndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_retrieve_with_http_info(uuid)
 
 ```ruby
 begin
@@ -1350,7 +1350,7 @@ begin
   data, status_code, headers = api_instance.authenticators_admin_endpoint_retrieve_with_http_info(uuid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <EndpointDevice>
+  p data # => <GoogleEndpointDevice>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_retrieve_with_http_info: #{e}"
 end
@@ -1364,7 +1364,7 @@ end
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -1378,7 +1378,7 @@ end
 
 ## authenticators_admin_endpoint_update
 
-> <EndpointDevice> authenticators_admin_endpoint_update(uuid, endpoint_device_request)
+> <GoogleEndpointDevice> authenticators_admin_endpoint_update(uuid, google_endpoint_device_request)
 
 
 
@@ -1397,11 +1397,11 @@ end
 
 api_instance = Authentik::Api::AuthenticatorsApi.new
 uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Device.
-endpoint_device_request = Authentik::Api::EndpointDeviceRequest.new({name: 'name_example'}) # EndpointDeviceRequest | 
+google_endpoint_device_request = Authentik::Api::GoogleEndpointDeviceRequest.new({name: 'name_example'}) # GoogleEndpointDeviceRequest | 
 
 begin
   
-  result = api_instance.authenticators_admin_endpoint_update(uuid, endpoint_device_request)
+  result = api_instance.authenticators_admin_endpoint_update(uuid, google_endpoint_device_request)
   p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_update: #{e}"
@@ -1412,15 +1412,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_update_with_http_info(uuid, endpoint_device_request)
+> <Array(<GoogleEndpointDevice>, Integer, Hash)> authenticators_admin_endpoint_update_with_http_info(uuid, google_endpoint_device_request)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.authenticators_admin_endpoint_update_with_http_info(uuid, endpoint_device_request)
+  data, status_code, headers = api_instance.authenticators_admin_endpoint_update_with_http_info(uuid, google_endpoint_device_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <EndpointDevice>
+  p data # => <GoogleEndpointDevice>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_admin_endpoint_update_with_http_info: #{e}"
 end
@@ -1431,11 +1431,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **uuid** | **String** | A UUID string identifying this Endpoint Device. |  |
-| **endpoint_device_request** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  |  |
+| **google_endpoint_device_request** | [**GoogleEndpointDeviceRequest**](GoogleEndpointDeviceRequest.md) |  |  |
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 
@@ -4089,7 +4089,7 @@ end
 
 ## authenticators_endpoint_list
 
-> <PaginatedEndpointDeviceList> authenticators_endpoint_list(opts)
+> <PaginatedGoogleEndpointDeviceList> authenticators_endpoint_list(opts)
 
 
 
@@ -4128,7 +4128,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaginatedEndpointDeviceList>, Integer, Hash)> authenticators_endpoint_list_with_http_info(opts)
+> <Array(<PaginatedGoogleEndpointDeviceList>, Integer, Hash)> authenticators_endpoint_list_with_http_info(opts)
 
 ```ruby
 begin
@@ -4136,7 +4136,7 @@ begin
   data, status_code, headers = api_instance.authenticators_endpoint_list_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PaginatedEndpointDeviceList>
+  p data # => <PaginatedGoogleEndpointDeviceList>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_endpoint_list_with_http_info: #{e}"
 end
@@ -4154,7 +4154,7 @@ end
 
 ### Return type
 
-[**PaginatedEndpointDeviceList**](PaginatedEndpointDeviceList.md)
+[**PaginatedGoogleEndpointDeviceList**](PaginatedGoogleEndpointDeviceList.md)
 
 ### Authorization
 
@@ -4168,7 +4168,7 @@ end
 
 ## authenticators_endpoint_retrieve
 
-> <EndpointDevice> authenticators_endpoint_retrieve(uuid)
+> <GoogleEndpointDevice> authenticators_endpoint_retrieve(uuid)
 
 
 
@@ -4201,7 +4201,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<EndpointDevice>, Integer, Hash)> authenticators_endpoint_retrieve_with_http_info(uuid)
+> <Array(<GoogleEndpointDevice>, Integer, Hash)> authenticators_endpoint_retrieve_with_http_info(uuid)
 
 ```ruby
 begin
@@ -4209,7 +4209,7 @@ begin
   data, status_code, headers = api_instance.authenticators_endpoint_retrieve_with_http_info(uuid)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <EndpointDevice>
+  p data # => <GoogleEndpointDevice>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AuthenticatorsApi->authenticators_endpoint_retrieve_with_http_info: #{e}"
 end
@@ -4223,7 +4223,7 @@ end
 
 ### Return type
 
-[**EndpointDevice**](EndpointDevice.md)
+[**GoogleEndpointDevice**](GoogleEndpointDevice.md)
 
 ### Authorization
 

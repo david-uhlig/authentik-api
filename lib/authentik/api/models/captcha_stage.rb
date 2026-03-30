@@ -156,6 +156,8 @@ module Authentik::Api
         if (value = attributes[:'flow_set']).is_a?(Array)
           self.flow_set = value
         end
+      else
+        self.flow_set = nil
       end
 
       if attributes.key?(:'public_key')
@@ -218,6 +220,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
+      if @flow_set.nil?
+        invalid_properties.push('invalid value for "flow_set", flow_set cannot be nil.')
+      end
+
       if @public_key.nil?
         invalid_properties.push('invalid value for "public_key", public_key cannot be nil.')
       end
@@ -235,6 +241,7 @@ module Authentik::Api
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
+      return false if @flow_set.nil?
       return false if @public_key.nil?
       true
     end
@@ -297,6 +304,16 @@ module Authentik::Api
       end
 
       @meta_model_name = meta_model_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] flow_set Value to be assigned
+    def flow_set=(flow_set)
+      if flow_set.nil?
+        fail ArgumentError, 'flow_set cannot be nil'
+      end
+
+      @flow_set = flow_set
     end
 
     # Custom attribute writer method with validation

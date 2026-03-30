@@ -545,7 +545,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'DuoDeviceEnrollmentStatus'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || []
 
       new_options = opts.merge(
         :operation => :"StagesApi.stages_authenticator_duo_enrollment_status_create",
@@ -6968,6 +6968,465 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # EndpointStage Viewset
+    # @param endpoint_stage_request [EndpointStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [EndpointStage]
+    def stages_endpoints_create(endpoint_stage_request, opts = {})
+      data, _status_code, _headers = stages_endpoints_create_with_http_info(endpoint_stage_request, opts)
+      data
+    end
+
+    # EndpointStage Viewset
+    # @param endpoint_stage_request [EndpointStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EndpointStage, Integer, Hash)>] EndpointStage data, response status code and response headers
+    def stages_endpoints_create_with_http_info(endpoint_stage_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_create ...'
+      end
+      # verify the required parameter 'endpoint_stage_request' is set
+      if @api_client.config.client_side_validation && endpoint_stage_request.nil?
+        fail ArgumentError, "Missing the required parameter 'endpoint_stage_request' when calling StagesApi.stages_endpoints_create"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_stage_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EndpointStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def stages_endpoints_destroy(stage_uuid, opts = {})
+      stages_endpoints_destroy_with_http_info(stage_uuid, opts)
+      nil
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def stages_endpoints_destroy_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_destroy ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_destroy"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # EndpointStage Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [PaginatedEndpointStageList]
+    def stages_endpoints_list(opts = {})
+      data, _status_code, _headers = stages_endpoints_list_with_http_info(opts)
+      data
+    end
+
+    # EndpointStage Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedEndpointStageList, Integer, Hash)>] PaginatedEndpointStageList data, response status code and response headers
+    def stages_endpoints_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_list ...'
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedEndpointStageList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedEndpointStageRequest] :patched_endpoint_stage_request 
+    # @return [EndpointStage]
+    def stages_endpoints_partial_update(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_endpoints_partial_update_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedEndpointStageRequest] :patched_endpoint_stage_request 
+    # @return [Array<(EndpointStage, Integer, Hash)>] EndpointStage data, response status code and response headers
+    def stages_endpoints_partial_update_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_partial_update ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_partial_update"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_endpoint_stage_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EndpointStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [EndpointStage]
+    def stages_endpoints_retrieve(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_endpoints_retrieve_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EndpointStage, Integer, Hash)>] EndpointStage data, response status code and response headers
+    def stages_endpoints_retrieve_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_retrieve ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_retrieve"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EndpointStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param endpoint_stage_request [EndpointStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [EndpointStage]
+    def stages_endpoints_update(stage_uuid, endpoint_stage_request, opts = {})
+      data, _status_code, _headers = stages_endpoints_update_with_http_info(stage_uuid, endpoint_stage_request, opts)
+      data
+    end
+
+    # EndpointStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param endpoint_stage_request [EndpointStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EndpointStage, Integer, Hash)>] EndpointStage data, response status code and response headers
+    def stages_endpoints_update_with_http_info(stage_uuid, endpoint_stage_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_update ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_update"
+      end
+      # verify the required parameter 'endpoint_stage_request' is set
+      if @api_client.config.client_side_validation && endpoint_stage_request.nil?
+        fail ArgumentError, "Missing the required parameter 'endpoint_stage_request' when calling StagesApi.stages_endpoints_update"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_stage_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EndpointStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of all objects that use this object
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<UsedBy>]
+    def stages_endpoints_used_by_list(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_endpoints_used_by_list_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # Get a list of all objects that use this object
+    # @param stage_uuid [String] A UUID string identifying this Endpoint Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def stages_endpoints_used_by_list_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_endpoints_used_by_list ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_used_by_list"
+      end
+      # resource path
+      local_var_path = '/stages/endpoints/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_endpoints_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_endpoints_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # IdentificationStage Viewset
     # @param identification_stage_request [IdentificationStageRequest] 
     # @param [Hash] opts the optional parameters
@@ -7110,6 +7569,7 @@ module Authentik::Api
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :show_matched_user 
     # @option opts [Boolean] :show_source_labels 
+    # @option opts [String] :webauthn_stage 
     # @return [PaginatedIdentificationStageList]
     def stages_identification_list(opts = {})
       data, _status_code, _headers = stages_identification_list_with_http_info(opts)
@@ -7131,6 +7591,7 @@ module Authentik::Api
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :show_matched_user 
     # @option opts [Boolean] :show_source_labels 
+    # @option opts [String] :webauthn_stage 
     # @return [Array<(PaginatedIdentificationStageList, Integer, Hash)>] PaginatedIdentificationStageList data, response status code and response headers
     def stages_identification_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -7154,6 +7615,7 @@ module Authentik::Api
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'show_matched_user'] = opts[:'show_matched_user'] if !opts[:'show_matched_user'].nil?
       query_params[:'show_source_labels'] = opts[:'show_source_labels'] if !opts[:'show_source_labels'].nil?
+      query_params[:'webauthn_stage'] = opts[:'webauthn_stage'] if !opts[:'webauthn_stage'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

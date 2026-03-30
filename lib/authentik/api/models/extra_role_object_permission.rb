@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # User permission with additional object-related data
+  # Role permission with additional object-related data
   class ExtraRoleObjectPermission < ApiModelBase
     attr_accessor :id
 
@@ -28,7 +28,7 @@ module Authentik::Api
     # Get model label from permission's model
     attr_accessor :model_verbose
 
-    # Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the user/role has the view_ permission on the object
+    # Get model description from attached model. This operation takes at least one additional query, and the description is only shown if the role has the view_ permission on the object
     attr_accessor :object_description
 
     # Attribute mapping from ruby-style variable name to JSON key.

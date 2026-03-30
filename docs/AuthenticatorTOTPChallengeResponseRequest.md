@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **component** | **String** |  | [optional][default to &#39;ak-stage-authenticator-totp&#39;] |
-| **code** | **Integer** |  |  |
+| **code** | **String** |  |  |
 
 ## Example
 

@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **not_configured_action** | [**NotConfiguredActionEnum**](NotConfiguredActionEnum.md) |  | [optional] |
 | **device_classes** | [**Array&lt;DeviceClassesEnum&gt;**](DeviceClassesEnum.md) | Device classes which can be used to authenticate | [optional] |
 | **configuration_stages** | **Array&lt;String&gt;** | Stages used to configure Authenticator when user doesn&#39;t have any compatible devices. After this configuration Stage passes, the user is not prompted again. | [optional] |
@@ -20,7 +19,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::PatchedAuthenticatorValidateStageRequest.new(
   name: null,
-  flow_set: null,
   not_configured_action: null,
   device_classes: null,
   configuration_stages: null,

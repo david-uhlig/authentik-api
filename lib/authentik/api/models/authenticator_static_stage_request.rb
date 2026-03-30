@@ -12,8 +12,6 @@ module Authentik::Api
   class AuthenticatorStaticStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     # Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
     attr_accessor :configure_flow
 
@@ -27,7 +25,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'configure_flow' => :'configure_flow',
         :'friendly_name' => :'friendly_name',
         :'token_count' => :'token_count',
@@ -49,7 +46,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'configure_flow' => :'String',
         :'friendly_name' => :'String',
         :'token_count' => :'Integer',
@@ -84,12 +80,6 @@ module Authentik::Api
         self.name = attributes[:'name']
       else
         self.name = nil
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'configure_flow')
@@ -130,8 +120,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "token_count", must be greater than or equal to 0.')
       end
 
-      if !@token_length.nil? && @token_length > 2147483647
-        invalid_properties.push('invalid value for "token_length", must be smaller than or equal to 2147483647.')
+      if !@token_length.nil? && @token_length > 100
+        invalid_properties.push('invalid value for "token_length", must be smaller than or equal to 100.')
       end
 
       if !@token_length.nil? && @token_length < 0
@@ -149,7 +139,7 @@ module Authentik::Api
       return false if @name.to_s.length < 1
       return false if !@token_count.nil? && @token_count > 2147483647
       return false if !@token_count.nil? && @token_count < 0
-      return false if !@token_length.nil? && @token_length > 2147483647
+      return false if !@token_length.nil? && @token_length > 100
       return false if !@token_length.nil? && @token_length < 0
       true
     end
@@ -193,8 +183,8 @@ module Authentik::Api
         fail ArgumentError, 'token_length cannot be nil'
       end
 
-      if token_length > 2147483647
-        fail ArgumentError, 'invalid value for "token_length", must be smaller than or equal to 2147483647.'
+      if token_length > 100
+        fail ArgumentError, 'invalid value for "token_length", must be smaller than or equal to 100.'
       end
 
       if token_length < 0
@@ -210,7 +200,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           configure_flow == o.configure_flow &&
           friendly_name == o.friendly_name &&
           token_count == o.token_count &&
@@ -226,7 +215,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, configure_flow, friendly_name, token_count, token_length].hash
+      [name, configure_flow, friendly_name, token_count, token_length].hash
     end
 
     # Builds the object from hash

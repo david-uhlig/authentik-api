@@ -576,7 +576,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'model' when calling RbacApi.rbac_permissions_assigned_by_roles_list"
       end
       # verify enum value
-      allowable_values = ["authentik_blueprints.blueprintinstance", "authentik_brands.brand", "authentik_core.application", "authentik_core.applicationentitlement", "authentik_core.group", "authentik_core.token", "authentik_core.user", "authentik_crypto.certificatekeypair", "authentik_enterprise.license", "authentik_events.event", "authentik_events.notification", "authentik_events.notificationrule", "authentik_events.notificationtransport", "authentik_events.notificationwebhookmapping", "authentik_flows.flow", "authentik_flows.flowstagebinding", "authentik_outposts.dockerserviceconnection", "authentik_outposts.kubernetesserviceconnection", "authentik_outposts.outpost", "authentik_policies.policybinding", "authentik_policies_dummy.dummypolicy", "authentik_policies_event_matcher.eventmatcherpolicy", "authentik_policies_expiry.passwordexpirypolicy", "authentik_policies_expression.expressionpolicy", "authentik_policies_geoip.geoippolicy", "authentik_policies_password.passwordpolicy", "authentik_policies_reputation.reputationpolicy", "authentik_policies_unique_password.uniquepasswordpolicy", "authentik_providers_google_workspace.googleworkspaceprovider", "authentik_providers_google_workspace.googleworkspaceprovidermapping", "authentik_providers_ldap.ldapprovider", "authentik_providers_microsoft_entra.microsoftentraprovider", "authentik_providers_microsoft_entra.microsoftentraprovidermapping", "authentik_providers_oauth2.oauth2provider", "authentik_providers_oauth2.scopemapping", "authentik_providers_proxy.proxyprovider", "authentik_providers_rac.endpoint", "authentik_providers_rac.racpropertymapping", "authentik_providers_rac.racprovider", "authentik_providers_radius.radiusprovider", "authentik_providers_radius.radiusproviderpropertymapping", "authentik_providers_saml.samlpropertymapping", "authentik_providers_saml.samlprovider", "authentik_providers_scim.scimmapping", "authentik_providers_scim.scimprovider", "authentik_providers_ssf.ssfprovider", "authentik_rbac.initialpermissions", "authentik_rbac.role", "authentik_sources_kerberos.groupkerberossourceconnection", "authentik_sources_kerberos.kerberossource", "authentik_sources_kerberos.kerberossourcepropertymapping", "authentik_sources_kerberos.userkerberossourceconnection", "authentik_sources_ldap.groupldapsourceconnection", "authentik_sources_ldap.ldapsource", "authentik_sources_ldap.ldapsourcepropertymapping", "authentik_sources_ldap.userldapsourceconnection", "authentik_sources_oauth.groupoauthsourceconnection", "authentik_sources_oauth.oauthsource", "authentik_sources_oauth.oauthsourcepropertymapping", "authentik_sources_oauth.useroauthsourceconnection", "authentik_sources_plex.groupplexsourceconnection", "authentik_sources_plex.plexsource", "authentik_sources_plex.plexsourcepropertymapping", "authentik_sources_plex.userplexsourceconnection", "authentik_sources_saml.groupsamlsourceconnection", "authentik_sources_saml.samlsource", "authentik_sources_saml.samlsourcepropertymapping", "authentik_sources_saml.usersamlsourceconnection", "authentik_sources_scim.scimsource", "authentik_sources_scim.scimsourcepropertymapping", "authentik_sources_telegram.grouptelegramsourceconnection", "authentik_sources_telegram.telegramsource", "authentik_sources_telegram.telegramsourcepropertymapping", "authentik_sources_telegram.usertelegramsourceconnection", "authentik_stages_authenticator_duo.authenticatorduostage", "authentik_stages_authenticator_duo.duodevice", "authentik_stages_authenticator_email.authenticatoremailstage", "authentik_stages_authenticator_email.emaildevice", "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage", "authentik_stages_authenticator_sms.authenticatorsmsstage", "authentik_stages_authenticator_sms.smsdevice", "authentik_stages_authenticator_static.authenticatorstaticstage", "authentik_stages_authenticator_static.staticdevice", "authentik_stages_authenticator_totp.authenticatortotpstage", "authentik_stages_authenticator_totp.totpdevice", "authentik_stages_authenticator_validate.authenticatorvalidatestage", "authentik_stages_authenticator_webauthn.authenticatorwebauthnstage", "authentik_stages_authenticator_webauthn.webauthndevice", "authentik_stages_captcha.captchastage", "authentik_stages_consent.consentstage", "authentik_stages_deny.denystage", "authentik_stages_dummy.dummystage", "authentik_stages_email.emailstage", "authentik_stages_identification.identificationstage", "authentik_stages_invitation.invitation", "authentik_stages_invitation.invitationstage", "authentik_stages_mtls.mutualtlsstage", "authentik_stages_password.passwordstage", "authentik_stages_prompt.prompt", "authentik_stages_prompt.promptstage", "authentik_stages_redirect.redirectstage", "authentik_stages_source.sourcestage", "authentik_stages_user_delete.userdeletestage", "authentik_stages_user_login.userloginstage", "authentik_stages_user_logout.userlogoutstage", "authentik_stages_user_write.userwritestage", "authentik_tasks_schedules.schedule", "authentik_tenants.domain"]
+      allowable_values = ["authentik_blueprints.blueprintinstance", "authentik_brands.brand", "authentik_core.application", "authentik_core.applicationentitlement", "authentik_core.group", "authentik_core.token", "authentik_core.user", "authentik_crypto.certificatekeypair", "authentik_endpoints.deviceaccessgroup", "authentik_endpoints.deviceuserbinding", "authentik_endpoints.endpointstage", "authentik_endpoints_connectors_agent.agentconnector", "authentik_endpoints_connectors_agent.agentdeviceuserbinding", "authentik_endpoints_connectors_agent.enrollmenttoken", "authentik_endpoints_connectors_fleet.fleetconnector", "authentik_enterprise.license", "authentik_events.event", "authentik_events.notification", "authentik_events.notificationrule", "authentik_events.notificationtransport", "authentik_events.notificationwebhookmapping", "authentik_flows.flow", "authentik_flows.flowstagebinding", "authentik_lifecycle.lifecycleiteration", "authentik_lifecycle.lifecyclerule", "authentik_lifecycle.review", "authentik_outposts.dockerserviceconnection", "authentik_outposts.kubernetesserviceconnection", "authentik_outposts.outpost", "authentik_policies.policybinding", "authentik_policies_dummy.dummypolicy", "authentik_policies_event_matcher.eventmatcherpolicy", "authentik_policies_expiry.passwordexpirypolicy", "authentik_policies_expression.expressionpolicy", "authentik_policies_geoip.geoippolicy", "authentik_policies_password.passwordpolicy", "authentik_policies_reputation.reputationpolicy", "authentik_policies_unique_password.uniquepasswordpolicy", "authentik_providers_google_workspace.googleworkspaceprovider", "authentik_providers_google_workspace.googleworkspaceprovidermapping", "authentik_providers_ldap.ldapprovider", "authentik_providers_microsoft_entra.microsoftentraprovider", "authentik_providers_microsoft_entra.microsoftentraprovidermapping", "authentik_providers_oauth2.oauth2provider", "authentik_providers_oauth2.scopemapping", "authentik_providers_proxy.proxyprovider", "authentik_providers_rac.endpoint", "authentik_providers_rac.racpropertymapping", "authentik_providers_rac.racprovider", "authentik_providers_radius.radiusprovider", "authentik_providers_radius.radiusproviderpropertymapping", "authentik_providers_saml.samlpropertymapping", "authentik_providers_saml.samlprovider", "authentik_providers_scim.scimmapping", "authentik_providers_scim.scimprovider", "authentik_providers_ssf.ssfprovider", "authentik_providers_ws_federation.wsfederationprovider", "authentik_rbac.initialpermissions", "authentik_rbac.role", "authentik_reports.dataexport", "authentik_sources_kerberos.groupkerberossourceconnection", "authentik_sources_kerberos.kerberossource", "authentik_sources_kerberos.kerberossourcepropertymapping", "authentik_sources_kerberos.userkerberossourceconnection", "authentik_sources_ldap.groupldapsourceconnection", "authentik_sources_ldap.ldapsource", "authentik_sources_ldap.ldapsourcepropertymapping", "authentik_sources_ldap.userldapsourceconnection", "authentik_sources_oauth.groupoauthsourceconnection", "authentik_sources_oauth.oauthsource", "authentik_sources_oauth.oauthsourcepropertymapping", "authentik_sources_oauth.useroauthsourceconnection", "authentik_sources_plex.groupplexsourceconnection", "authentik_sources_plex.plexsource", "authentik_sources_plex.plexsourcepropertymapping", "authentik_sources_plex.userplexsourceconnection", "authentik_sources_saml.groupsamlsourceconnection", "authentik_sources_saml.samlsource", "authentik_sources_saml.samlsourcepropertymapping", "authentik_sources_saml.usersamlsourceconnection", "authentik_sources_scim.scimsource", "authentik_sources_scim.scimsourcepropertymapping", "authentik_sources_telegram.grouptelegramsourceconnection", "authentik_sources_telegram.telegramsource", "authentik_sources_telegram.telegramsourcepropertymapping", "authentik_sources_telegram.usertelegramsourceconnection", "authentik_stages_authenticator_duo.authenticatorduostage", "authentik_stages_authenticator_duo.duodevice", "authentik_stages_authenticator_email.authenticatoremailstage", "authentik_stages_authenticator_email.emaildevice", "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage", "authentik_stages_authenticator_sms.authenticatorsmsstage", "authentik_stages_authenticator_sms.smsdevice", "authentik_stages_authenticator_static.authenticatorstaticstage", "authentik_stages_authenticator_static.staticdevice", "authentik_stages_authenticator_totp.authenticatortotpstage", "authentik_stages_authenticator_totp.totpdevice", "authentik_stages_authenticator_validate.authenticatorvalidatestage", "authentik_stages_authenticator_webauthn.authenticatorwebauthnstage", "authentik_stages_authenticator_webauthn.webauthndevice", "authentik_stages_captcha.captchastage", "authentik_stages_consent.consentstage", "authentik_stages_deny.denystage", "authentik_stages_dummy.dummystage", "authentik_stages_email.emailstage", "authentik_stages_identification.identificationstage", "authentik_stages_invitation.invitation", "authentik_stages_invitation.invitationstage", "authentik_stages_mtls.mutualtlsstage", "authentik_stages_password.passwordstage", "authentik_stages_prompt.prompt", "authentik_stages_prompt.promptstage", "authentik_stages_redirect.redirectstage", "authentik_stages_source.sourcestage", "authentik_stages_user_delete.userdeletestage", "authentik_stages_user_login.userloginstage", "authentik_stages_user_logout.userlogoutstage", "authentik_stages_user_write.userwritestage", "authentik_tasks_schedules.schedule", "authentik_tenants.domain"]
       if @api_client.config.client_side_validation && !allowable_values.include?(model)
         fail ArgumentError, "invalid value for \"model\", must be one of #{allowable_values}"
       end
@@ -694,228 +694,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Assign permission(s) to user
-    # @param id [Integer] A unique integer value identifying this User.
-    # @param permission_assign_request [PermissionAssignRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<PermissionAssignResult>]
-    def rbac_permissions_assigned_by_users_assign(id, permission_assign_request, opts = {})
-      data, _status_code, _headers = rbac_permissions_assigned_by_users_assign_with_http_info(id, permission_assign_request, opts)
-      data
-    end
-
-    # Assign permission(s) to user
-    # @param id [Integer] A unique integer value identifying this User.
-    # @param permission_assign_request [PermissionAssignRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<PermissionAssignResult>, Integer, Hash)>] Array<PermissionAssignResult> data, response status code and response headers
-    def rbac_permissions_assigned_by_users_assign_with_http_info(id, permission_assign_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_assigned_by_users_assign ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_assigned_by_users_assign"
-      end
-      # verify the required parameter 'permission_assign_request' is set
-      if @api_client.config.client_side_validation && permission_assign_request.nil?
-        fail ArgumentError, "Missing the required parameter 'permission_assign_request' when calling RbacApi.rbac_permissions_assigned_by_users_assign"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/assigned_by_users/{id}/assign/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(permission_assign_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<PermissionAssignResult>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_assigned_by_users_assign",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_assigned_by_users_assign\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get assigned object permissions for a single object
-    # @param model [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :object_pk 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @return [PaginatedUserAssignedObjectPermissionList]
-    def rbac_permissions_assigned_by_users_list(model, opts = {})
-      data, _status_code, _headers = rbac_permissions_assigned_by_users_list_with_http_info(model, opts)
-      data
-    end
-
-    # Get assigned object permissions for a single object
-    # @param model [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :object_pk 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @return [Array<(PaginatedUserAssignedObjectPermissionList, Integer, Hash)>] PaginatedUserAssignedObjectPermissionList data, response status code and response headers
-    def rbac_permissions_assigned_by_users_list_with_http_info(model, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_assigned_by_users_list ...'
-      end
-      # verify the required parameter 'model' is set
-      if @api_client.config.client_side_validation && model.nil?
-        fail ArgumentError, "Missing the required parameter 'model' when calling RbacApi.rbac_permissions_assigned_by_users_list"
-      end
-      # verify enum value
-      allowable_values = ["authentik_blueprints.blueprintinstance", "authentik_brands.brand", "authentik_core.application", "authentik_core.applicationentitlement", "authentik_core.group", "authentik_core.token", "authentik_core.user", "authentik_crypto.certificatekeypair", "authentik_enterprise.license", "authentik_events.event", "authentik_events.notification", "authentik_events.notificationrule", "authentik_events.notificationtransport", "authentik_events.notificationwebhookmapping", "authentik_flows.flow", "authentik_flows.flowstagebinding", "authentik_outposts.dockerserviceconnection", "authentik_outposts.kubernetesserviceconnection", "authentik_outposts.outpost", "authentik_policies.policybinding", "authentik_policies_dummy.dummypolicy", "authentik_policies_event_matcher.eventmatcherpolicy", "authentik_policies_expiry.passwordexpirypolicy", "authentik_policies_expression.expressionpolicy", "authentik_policies_geoip.geoippolicy", "authentik_policies_password.passwordpolicy", "authentik_policies_reputation.reputationpolicy", "authentik_policies_unique_password.uniquepasswordpolicy", "authentik_providers_google_workspace.googleworkspaceprovider", "authentik_providers_google_workspace.googleworkspaceprovidermapping", "authentik_providers_ldap.ldapprovider", "authentik_providers_microsoft_entra.microsoftentraprovider", "authentik_providers_microsoft_entra.microsoftentraprovidermapping", "authentik_providers_oauth2.oauth2provider", "authentik_providers_oauth2.scopemapping", "authentik_providers_proxy.proxyprovider", "authentik_providers_rac.endpoint", "authentik_providers_rac.racpropertymapping", "authentik_providers_rac.racprovider", "authentik_providers_radius.radiusprovider", "authentik_providers_radius.radiusproviderpropertymapping", "authentik_providers_saml.samlpropertymapping", "authentik_providers_saml.samlprovider", "authentik_providers_scim.scimmapping", "authentik_providers_scim.scimprovider", "authentik_providers_ssf.ssfprovider", "authentik_rbac.initialpermissions", "authentik_rbac.role", "authentik_sources_kerberos.groupkerberossourceconnection", "authentik_sources_kerberos.kerberossource", "authentik_sources_kerberos.kerberossourcepropertymapping", "authentik_sources_kerberos.userkerberossourceconnection", "authentik_sources_ldap.groupldapsourceconnection", "authentik_sources_ldap.ldapsource", "authentik_sources_ldap.ldapsourcepropertymapping", "authentik_sources_ldap.userldapsourceconnection", "authentik_sources_oauth.groupoauthsourceconnection", "authentik_sources_oauth.oauthsource", "authentik_sources_oauth.oauthsourcepropertymapping", "authentik_sources_oauth.useroauthsourceconnection", "authentik_sources_plex.groupplexsourceconnection", "authentik_sources_plex.plexsource", "authentik_sources_plex.plexsourcepropertymapping", "authentik_sources_plex.userplexsourceconnection", "authentik_sources_saml.groupsamlsourceconnection", "authentik_sources_saml.samlsource", "authentik_sources_saml.samlsourcepropertymapping", "authentik_sources_saml.usersamlsourceconnection", "authentik_sources_scim.scimsource", "authentik_sources_scim.scimsourcepropertymapping", "authentik_sources_telegram.grouptelegramsourceconnection", "authentik_sources_telegram.telegramsource", "authentik_sources_telegram.telegramsourcepropertymapping", "authentik_sources_telegram.usertelegramsourceconnection", "authentik_stages_authenticator_duo.authenticatorduostage", "authentik_stages_authenticator_duo.duodevice", "authentik_stages_authenticator_email.authenticatoremailstage", "authentik_stages_authenticator_email.emaildevice", "authentik_stages_authenticator_endpoint_gdtc.authenticatorendpointgdtcstage", "authentik_stages_authenticator_sms.authenticatorsmsstage", "authentik_stages_authenticator_sms.smsdevice", "authentik_stages_authenticator_static.authenticatorstaticstage", "authentik_stages_authenticator_static.staticdevice", "authentik_stages_authenticator_totp.authenticatortotpstage", "authentik_stages_authenticator_totp.totpdevice", "authentik_stages_authenticator_validate.authenticatorvalidatestage", "authentik_stages_authenticator_webauthn.authenticatorwebauthnstage", "authentik_stages_authenticator_webauthn.webauthndevice", "authentik_stages_captcha.captchastage", "authentik_stages_consent.consentstage", "authentik_stages_deny.denystage", "authentik_stages_dummy.dummystage", "authentik_stages_email.emailstage", "authentik_stages_identification.identificationstage", "authentik_stages_invitation.invitation", "authentik_stages_invitation.invitationstage", "authentik_stages_mtls.mutualtlsstage", "authentik_stages_password.passwordstage", "authentik_stages_prompt.prompt", "authentik_stages_prompt.promptstage", "authentik_stages_redirect.redirectstage", "authentik_stages_source.sourcestage", "authentik_stages_user_delete.userdeletestage", "authentik_stages_user_login.userloginstage", "authentik_stages_user_logout.userlogoutstage", "authentik_stages_user_write.userwritestage", "authentik_tasks_schedules.schedule", "authentik_tenants.domain"]
-      if @api_client.config.client_side_validation && !allowable_values.include?(model)
-        fail ArgumentError, "invalid value for \"model\", must be one of #{allowable_values}"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/assigned_by_users/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'model'] = model
-      query_params[:'object_pk'] = opts[:'object_pk'] if !opts[:'object_pk'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedUserAssignedObjectPermissionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_assigned_by_users_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_assigned_by_users_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Unassign permission(s) to user. When `object_pk` is set, the permissions are only assigned to the specific object, otherwise they are assigned globally.
-    # @param id [Integer] A unique integer value identifying this User.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedPermissionAssignRequest] :patched_permission_assign_request 
-    # @return [nil]
-    def rbac_permissions_assigned_by_users_unassign_partial_update(id, opts = {})
-      rbac_permissions_assigned_by_users_unassign_partial_update_with_http_info(id, opts)
-      nil
-    end
-
-    # Unassign permission(s) to user. When &#x60;object_pk&#x60; is set, the permissions are only assigned to the specific object, otherwise they are assigned globally.
-    # @param id [Integer] A unique integer value identifying this User.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedPermissionAssignRequest] :patched_permission_assign_request 
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def rbac_permissions_assigned_by_users_unassign_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_assigned_by_users_unassign_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_assigned_by_users_unassign_partial_update"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/assigned_by_users/{id}/unassign/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_permission_assign_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_assigned_by_users_unassign_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_assigned_by_users_unassign_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Read-only list of all permissions, filterable by model and app
     # @param [Hash] opts the optional parameters
     # @option opts [String] :codename 
@@ -926,7 +704,6 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :role 
     # @option opts [String] :search A search term.
-    # @option opts [Integer] :user 
     # @return [PaginatedPermissionList]
     def rbac_permissions_list(opts = {})
       data, _status_code, _headers = rbac_permissions_list_with_http_info(opts)
@@ -943,7 +720,6 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :role 
     # @option opts [String] :search A search term.
-    # @option opts [Integer] :user 
     # @return [Array<(PaginatedPermissionList, Integer, Hash)>] PaginatedPermissionList data, response status code and response headers
     def rbac_permissions_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -962,7 +738,6 @@ module Authentik::Api
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'role'] = opts[:'role'] if !opts[:'role'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'user'] = opts[:'user'] if !opts[:'user'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1060,67 +835,6 @@ module Authentik::Api
     end
 
     # Get a role's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def rbac_permissions_roles_destroy(id, opts = {})
-      rbac_permissions_roles_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # Get a role&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def rbac_permissions_roles_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_roles_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_roles_destroy"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/roles/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_roles_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_roles_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a role's assigned object permissions
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -1190,230 +904,35 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Get a role's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedExtraRoleObjectPermissionRequest] :patched_extra_role_object_permission_request 
-    # @return [ExtraRoleObjectPermission]
-    def rbac_permissions_roles_partial_update(id, opts = {})
-      data, _status_code, _headers = rbac_permissions_roles_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Get a role&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedExtraRoleObjectPermissionRequest] :patched_extra_role_object_permission_request 
-    # @return [Array<(ExtraRoleObjectPermission, Integer, Hash)>] ExtraRoleObjectPermission data, response status code and response headers
-    def rbac_permissions_roles_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_roles_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_roles_partial_update"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/roles/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_extra_role_object_permission_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraRoleObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_roles_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_roles_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a role's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [ExtraRoleObjectPermission]
-    def rbac_permissions_roles_retrieve(id, opts = {})
-      data, _status_code, _headers = rbac_permissions_roles_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # Get a role&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExtraRoleObjectPermission, Integer, Hash)>] ExtraRoleObjectPermission data, response status code and response headers
-    def rbac_permissions_roles_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_roles_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_roles_retrieve"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/roles/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraRoleObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_roles_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_roles_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a role's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param extra_role_object_permission_request [ExtraRoleObjectPermissionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [ExtraRoleObjectPermission]
-    def rbac_permissions_roles_update(id, extra_role_object_permission_request, opts = {})
-      data, _status_code, _headers = rbac_permissions_roles_update_with_http_info(id, extra_role_object_permission_request, opts)
-      data
-    end
-
-    # Get a role&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this group object permission.
-    # @param extra_role_object_permission_request [ExtraRoleObjectPermissionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExtraRoleObjectPermission, Integer, Hash)>] ExtraRoleObjectPermission data, response status code and response headers
-    def rbac_permissions_roles_update_with_http_info(id, extra_role_object_permission_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_roles_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_roles_update"
-      end
-      # verify the required parameter 'extra_role_object_permission_request' is set
-      if @api_client.config.client_side_validation && extra_role_object_permission_request.nil?
-        fail ArgumentError, "Missing the required parameter 'extra_role_object_permission_request' when calling RbacApi.rbac_permissions_roles_update"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/roles/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(extra_role_object_permission_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraRoleObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_roles_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_roles_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a users's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
+    # Add user to role
+    # @param uuid [String] A UUID string identifying this Role.
+    # @param user_account_serializer_for_role_request [UserAccountSerializerForRoleRequest] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
-    def rbac_permissions_users_destroy(id, opts = {})
-      rbac_permissions_users_destroy_with_http_info(id, opts)
+    def rbac_roles_add_user_create(uuid, user_account_serializer_for_role_request, opts = {})
+      rbac_roles_add_user_create_with_http_info(uuid, user_account_serializer_for_role_request, opts)
       nil
     end
 
-    # Get a users&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
+    # Add user to role
+    # @param uuid [String] A UUID string identifying this Role.
+    # @param user_account_serializer_for_role_request [UserAccountSerializerForRoleRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def rbac_permissions_users_destroy_with_http_info(id, opts = {})
+    def rbac_roles_add_user_create_with_http_info(uuid, user_account_serializer_for_role_request, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_users_destroy ...'
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_roles_add_user_create ...'
       end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_users_destroy"
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_add_user_create"
+      end
+      # verify the required parameter 'user_account_serializer_for_role_request' is set
+      if @api_client.config.client_side_validation && user_account_serializer_for_role_request.nil?
+        fail ArgumentError, "Missing the required parameter 'user_account_serializer_for_role_request' when calling RbacApi.rbac_roles_add_user_create"
       end
       # resource path
-      local_var_path = '/rbac/permissions/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/roles/{uuid}/add_user/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1422,12 +941,17 @@ module Authentik::Api
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_account_serializer_for_role_request)
 
       # return_type
       return_type = opts[:debug_return_type]
@@ -1436,7 +960,7 @@ module Authentik::Api
       auth_names = opts[:debug_auth_names] || ['authentik']
 
       new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_users_destroy",
+        :operation => :"RbacApi.rbac_roles_add_user_create",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -1445,280 +969,9 @@ module Authentik::Api
         :return_type => return_type
       )
 
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_users_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a users's assigned object permissions
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [Integer] :user_id 
-    # @return [PaginatedExtraUserObjectPermissionList]
-    def rbac_permissions_users_list(opts = {})
-      data, _status_code, _headers = rbac_permissions_users_list_with_http_info(opts)
-      data
-    end
-
-    # Get a users&#39;s assigned object permissions
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [Integer] :user_id 
-    # @return [Array<(PaginatedExtraUserObjectPermissionList, Integer, Hash)>] PaginatedExtraUserObjectPermissionList data, response status code and response headers
-    def rbac_permissions_users_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_users_list ...'
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/users/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'user_id'] = opts[:'user_id'] if !opts[:'user_id'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedExtraUserObjectPermissionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_users_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_users_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a users's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedExtraUserObjectPermissionRequest] :patched_extra_user_object_permission_request 
-    # @return [ExtraUserObjectPermission]
-    def rbac_permissions_users_partial_update(id, opts = {})
-      data, _status_code, _headers = rbac_permissions_users_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Get a users&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedExtraUserObjectPermissionRequest] :patched_extra_user_object_permission_request 
-    # @return [Array<(ExtraUserObjectPermission, Integer, Hash)>] ExtraUserObjectPermission data, response status code and response headers
-    def rbac_permissions_users_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_users_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_users_partial_update"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_extra_user_object_permission_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraUserObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_users_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_users_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a users's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [ExtraUserObjectPermission]
-    def rbac_permissions_users_retrieve(id, opts = {})
-      data, _status_code, _headers = rbac_permissions_users_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # Get a users&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExtraUserObjectPermission, Integer, Hash)>] ExtraUserObjectPermission data, response status code and response headers
-    def rbac_permissions_users_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_users_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_users_retrieve"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraUserObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_users_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_users_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a users's assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param extra_user_object_permission_request [ExtraUserObjectPermissionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [ExtraUserObjectPermission]
-    def rbac_permissions_users_update(id, extra_user_object_permission_request, opts = {})
-      data, _status_code, _headers = rbac_permissions_users_update_with_http_info(id, extra_user_object_permission_request, opts)
-      data
-    end
-
-    # Get a users&#39;s assigned object permissions
-    # @param id [Integer] A unique integer value identifying this user object permission.
-    # @param extra_user_object_permission_request [ExtraUserObjectPermissionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ExtraUserObjectPermission, Integer, Hash)>] ExtraUserObjectPermission data, response status code and response headers
-    def rbac_permissions_users_update_with_http_info(id, extra_user_object_permission_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permissions_users_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_users_update"
-      end
-      # verify the required parameter 'extra_user_object_permission_request' is set
-      if @api_client.config.client_side_validation && extra_user_object_permission_request.nil?
-        fail ArgumentError, "Missing the required parameter 'extra_user_object_permission_request' when calling RbacApi.rbac_permissions_users_update"
-      end
-      # resource path
-      local_var_path = '/rbac/permissions/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(extra_user_object_permission_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'ExtraUserObjectPermission'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RbacApi.rbac_permissions_users_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RbacApi#rbac_permissions_users_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: RbacApi#rbac_roles_add_user_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1852,11 +1105,16 @@ module Authentik::Api
 
     # Role viewset
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :groups 
+    # @option opts [Boolean] :inherited Include inherited roles (requires users or groups filter)
+    # @option opts [Array<String>] :managed 
+    # @option opts [Boolean] :managed__isnull 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
+    # @option opts [Integer] :users 
     # @return [PaginatedRoleList]
     def rbac_roles_list(opts = {})
       data, _status_code, _headers = rbac_roles_list_with_http_info(opts)
@@ -1865,11 +1123,16 @@ module Authentik::Api
 
     # Role viewset
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :groups 
+    # @option opts [Boolean] :inherited Include inherited roles (requires users or groups filter)
+    # @option opts [Array<String>] :managed 
+    # @option opts [Boolean] :managed__isnull 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
+    # @option opts [Integer] :users 
     # @return [Array<(PaginatedRoleList, Integer, Hash)>] PaginatedRoleList data, response status code and response headers
     def rbac_roles_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -1880,11 +1143,16 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'groups'] = opts[:'groups'] if !opts[:'groups'].nil?
+      query_params[:'inherited'] = opts[:'inherited'] if !opts[:'inherited'].nil?
+      query_params[:'managed'] = @api_client.build_collection_param(opts[:'managed'], :multi) if !opts[:'managed'].nil?
+      query_params[:'managed__isnull'] = opts[:'managed__isnull'] if !opts[:'managed__isnull'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'users'] = opts[:'users'] if !opts[:'users'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -1984,6 +1252,78 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RbacApi#rbac_roles_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Remove user from role
+    # @param uuid [String] A UUID string identifying this Role.
+    # @param user_account_serializer_for_role_request [UserAccountSerializerForRoleRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def rbac_roles_remove_user_create(uuid, user_account_serializer_for_role_request, opts = {})
+      rbac_roles_remove_user_create_with_http_info(uuid, user_account_serializer_for_role_request, opts)
+      nil
+    end
+
+    # Remove user from role
+    # @param uuid [String] A UUID string identifying this Role.
+    # @param user_account_serializer_for_role_request [UserAccountSerializerForRoleRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def rbac_roles_remove_user_create_with_http_info(uuid, user_account_serializer_for_role_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_roles_remove_user_create ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_remove_user_create"
+      end
+      # verify the required parameter 'user_account_serializer_for_role_request' is set
+      if @api_client.config.client_side_validation && user_account_serializer_for_role_request.nil?
+        fail ArgumentError, "Missing the required parameter 'user_account_serializer_for_role_request' when calling RbacApi.rbac_roles_remove_user_create"
+      end
+      # resource path
+      local_var_path = '/rbac/roles/{uuid}/remove_user/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_account_serializer_for_role_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_roles_remove_user_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_roles_remove_user_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

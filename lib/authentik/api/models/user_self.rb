@@ -25,6 +25,8 @@ module Authentik::Api
 
     attr_accessor :groups
 
+    attr_accessor :roles
+
     attr_accessor :email
 
     # User's avatar, either a http/https URL or a data URI
@@ -71,6 +73,7 @@ module Authentik::Api
         :'is_active' => :'is_active',
         :'is_superuser' => :'is_superuser',
         :'groups' => :'groups',
+        :'roles' => :'roles',
         :'email' => :'email',
         :'avatar' => :'avatar',
         :'uid' => :'uid',
@@ -99,6 +102,7 @@ module Authentik::Api
         :'is_active' => :'Boolean',
         :'is_superuser' => :'Boolean',
         :'groups' => :'Array<UserSelfGroups>',
+        :'roles' => :'Array<UserSelfRoles>',
         :'email' => :'String',
         :'avatar' => :'String',
         :'uid' => :'String',
@@ -166,6 +170,14 @@ module Authentik::Api
         end
       else
         self.groups = nil
+      end
+
+      if attributes.key?(:'roles')
+        if (value = attributes[:'roles']).is_a?(Array)
+          self.roles = value
+        end
+      else
+        self.roles = nil
       end
 
       if attributes.key?(:'email')
@@ -243,6 +255,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "groups", groups cannot be nil.')
       end
 
+      if @roles.nil?
+        invalid_properties.push('invalid value for "roles", roles cannot be nil.')
+      end
+
       if !@email.nil? && @email.to_s.length > 254
         invalid_properties.push('invalid value for "email", the character length must be smaller than or equal to 254.')
       end
@@ -278,6 +294,7 @@ module Authentik::Api
       return false if @is_active.nil?
       return false if @is_superuser.nil?
       return false if @groups.nil?
+      return false if @roles.nil?
       return false if !@email.nil? && @email.to_s.length > 254
       return false if @avatar.nil?
       return false if @uid.nil?
@@ -356,6 +373,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] roles Value to be assigned
+    def roles=(roles)
+      if roles.nil?
+        fail ArgumentError, 'roles cannot be nil'
+      end
+
+      @roles = roles
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] email Value to be assigned
     def email=(email)
       if email.nil?
@@ -420,6 +447,7 @@ module Authentik::Api
           is_active == o.is_active &&
           is_superuser == o.is_superuser &&
           groups == o.groups &&
+          roles == o.roles &&
           email == o.email &&
           avatar == o.avatar &&
           uid == o.uid &&
@@ -437,7 +465,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, is_superuser, groups, email, avatar, uid, settings, type, system_permissions].hash
+      [pk, username, name, is_active, is_superuser, groups, roles, email, avatar, uid, settings, type, system_permissions].hash
     end
 
     # Builds the object from hash

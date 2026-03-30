@@ -13,9 +13,10 @@ module Authentik::Api
     CASCADE_MANY = "cascade_many".freeze
     SET_NULL = "set_null".freeze
     SET_DEFAULT = "set_default".freeze
+    LEFT_DANGLING = "left_dangling".freeze
 
     def self.all_vars
-      @all_vars ||= [CASCADE, CASCADE_MANY, SET_NULL, SET_DEFAULT].freeze
+      @all_vars ||= [CASCADE, CASCADE_MANY, SET_NULL, SET_DEFAULT, LEFT_DANGLING].freeze
     end
 
     # Builds the enum from string

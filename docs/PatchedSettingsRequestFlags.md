@@ -4,6 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **enterprise_audit_include_expanded_diff** | **Boolean** |  |  |
 | **policies_buffered_access_view** | **Boolean** |  |  |
 | **flows_refresh_others** | **Boolean** |  |  |
 
@@ -13,6 +14,7 @@
 require 'authentik-api'
 
 instance = Authentik::Api::PatchedSettingsRequestFlags.new(
+  enterprise_audit_include_expanded_diff: null,
   policies_buffered_access_view: null,
   flows_refresh_others: null
 )

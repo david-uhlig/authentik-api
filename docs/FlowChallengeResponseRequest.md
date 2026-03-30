@@ -27,6 +27,7 @@ Authentik::Api::FlowChallengeResponseRequest.openapi_one_of
 #   :'ConsentChallengeResponseRequest',
 #   :'DummyChallengeResponseRequest',
 #   :'EmailChallengeResponseRequest',
+#   :'EndpointAgentChallengeResponseRequest',
 #   :'FrameChallengeResponseRequest',
 #   :'IdentificationChallengeResponseRequest',
 #   :'IframeLogoutChallengeResponseRequest',
@@ -86,6 +87,7 @@ Authentik::Api::FlowChallengeResponseRequest.openapi_discriminator_mapping
 #   :'ak-stage-consent' => :'ConsentChallengeResponseRequest',
 #   :'ak-stage-dummy' => :'DummyChallengeResponseRequest',
 #   :'ak-stage-email' => :'EmailChallengeResponseRequest',
+#   :'ak-stage-endpoint-agent' => :'EndpointAgentChallengeResponseRequest',
 #   :'ak-stage-identification' => :'IdentificationChallengeResponseRequest',
 #   :'ak-stage-password' => :'PasswordChallengeResponseRequest',
 #   :'ak-stage-prompt' => :'PromptChallengeResponseRequest',
@@ -132,6 +134,7 @@ Authentik::Api::FlowChallengeResponseRequest.build(data_that_doesnt_match)
 - `ConsentChallengeResponseRequest`
 - `DummyChallengeResponseRequest`
 - `EmailChallengeResponseRequest`
+- `EndpointAgentChallengeResponseRequest`
 - `FrameChallengeResponseRequest`
 - `IdentificationChallengeResponseRequest`
 - `IframeLogoutChallengeResponseRequest`
