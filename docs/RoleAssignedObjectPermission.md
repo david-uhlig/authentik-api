@@ -6,7 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **role_pk** | **String** |  | [readonly] |
 | **name** | **String** |  | [readonly] |
-| **permissions** | [**Array&lt;RoleObjectPermission&gt;**](RoleObjectPermission.md) |  |  |
+| **object_permissions** | [**Array&lt;RoleObjectPermission&gt;**](RoleObjectPermission.md) |  |  |
+| **model_permissions** | [**Array&lt;RoleModelPermission&gt;**](RoleModelPermission.md) |  |  |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'authentik-api'
 instance = Authentik::Api::RoleAssignedObjectPermission.new(
   role_pk: null,
   name: null,
-  permissions: null
+  object_permissions: null,
+  model_permissions: null
 )
 ```
 

@@ -33,7 +33,13 @@ describe Authentik::Api::RoleAssignedObjectPermission do
     end
   end
 
-  describe 'test attribute "permissions"' do
+  describe 'test attribute "object_permissions"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "model_permissions"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -144,6 +144,8 @@ module Authentik::Api
         if (value = attributes[:'flow_set']).is_a?(Array)
           self.flow_set = value
         end
+      else
+        self.flow_set = nil
       end
 
       if attributes.key?(:'configure_flow')
@@ -192,6 +194,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
+      if @flow_set.nil?
+        invalid_properties.push('invalid value for "flow_set", flow_set cannot be nil.')
+      end
+
       if !@token_count.nil? && @token_count > 2147483647
         invalid_properties.push('invalid value for "token_count", must be smaller than or equal to 2147483647.')
       end
@@ -200,8 +206,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "token_count", must be greater than or equal to 0.')
       end
 
-      if !@token_length.nil? && @token_length > 2147483647
-        invalid_properties.push('invalid value for "token_length", must be smaller than or equal to 2147483647.')
+      if !@token_length.nil? && @token_length > 100
+        invalid_properties.push('invalid value for "token_length", must be smaller than or equal to 100.')
       end
 
       if !@token_length.nil? && @token_length < 0
@@ -221,9 +227,10 @@ module Authentik::Api
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
+      return false if @flow_set.nil?
       return false if !@token_count.nil? && @token_count > 2147483647
       return false if !@token_count.nil? && @token_count < 0
-      return false if !@token_length.nil? && @token_length > 2147483647
+      return false if !@token_length.nil? && @token_length > 100
       return false if !@token_length.nil? && @token_length < 0
       true
     end
@@ -289,6 +296,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] flow_set Value to be assigned
+    def flow_set=(flow_set)
+      if flow_set.nil?
+        fail ArgumentError, 'flow_set cannot be nil'
+      end
+
+      @flow_set = flow_set
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] token_count Value to be assigned
     def token_count=(token_count)
       if token_count.nil?
@@ -313,8 +330,8 @@ module Authentik::Api
         fail ArgumentError, 'token_length cannot be nil'
       end
 
-      if token_length > 2147483647
-        fail ArgumentError, 'invalid value for "token_length", must be smaller than or equal to 2147483647.'
+      if token_length > 100
+        fail ArgumentError, 'invalid value for "token_length", must be smaller than or equal to 100.'
       end
 
       if token_length < 0

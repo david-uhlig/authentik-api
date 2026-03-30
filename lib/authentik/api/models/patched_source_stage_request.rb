@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedSourceStageRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :flow_set
-
     attr_accessor :source
 
     # Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
@@ -23,7 +21,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'name' => :'name',
-        :'flow_set' => :'flow_set',
         :'source' => :'source',
         :'resume_timeout' => :'resume_timeout'
       }
@@ -43,7 +40,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'flow_set' => :'Array<FlowSetRequest>',
         :'source' => :'String',
         :'resume_timeout' => :'String'
       }
@@ -73,12 +69,6 @@ module Authentik::Api
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'flow_set')
-        if (value = attributes[:'flow_set']).is_a?(Array)
-          self.flow_set = value
-        end
       end
 
       if attributes.key?(:'source')
@@ -149,7 +139,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          flow_set == o.flow_set &&
           source == o.source &&
           resume_timeout == o.resume_timeout
     end
@@ -163,7 +152,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, source, resume_timeout].hash
+      [name, source, resume_timeout].hash
     end
 
     # Builds the object from hash

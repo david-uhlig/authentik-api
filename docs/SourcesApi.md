@@ -7,8 +7,6 @@ All URIs are relative to */api/v3*
 | [**sources_all_destroy**](SourcesApi.md#sources_all_destroy) | **DELETE** /sources/all/{slug}/ |  |
 | [**sources_all_list**](SourcesApi.md#sources_all_list) | **GET** /sources/all/ |  |
 | [**sources_all_retrieve**](SourcesApi.md#sources_all_retrieve) | **GET** /sources/all/{slug}/ |  |
-| [**sources_all_set_icon_create**](SourcesApi.md#sources_all_set_icon_create) | **POST** /sources/all/{slug}/set_icon/ |  |
-| [**sources_all_set_icon_url_create**](SourcesApi.md#sources_all_set_icon_url_create) | **POST** /sources/all/{slug}/set_icon_url/ |  |
 | [**sources_all_types_list**](SourcesApi.md#sources_all_types_list) | **GET** /sources/all/types/ |  |
 | [**sources_all_used_by_list**](SourcesApi.md#sources_all_used_by_list) | **GET** /sources/all/{slug}/used_by/ |  |
 | [**sources_all_user_settings_list**](SourcesApi.md#sources_all_user_settings_list) | **GET** /sources/all/user_settings/ |  |
@@ -123,6 +121,7 @@ All URIs are relative to */api/v3*
 | [**sources_scim_users_retrieve**](SourcesApi.md#sources_scim_users_retrieve) | **GET** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_update**](SourcesApi.md#sources_scim_users_update) | **PUT** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_used_by_list**](SourcesApi.md#sources_scim_users_used_by_list) | **GET** /sources/scim_users/{id}/used_by/ |  |
+| [**sources_telegram_connect_user_create**](SourcesApi.md#sources_telegram_connect_user_create) | **POST** /sources/telegram/{slug}/connect_user/ |  |
 | [**sources_telegram_create**](SourcesApi.md#sources_telegram_create) | **POST** /sources/telegram/ |  |
 | [**sources_telegram_destroy**](SourcesApi.md#sources_telegram_destroy) | **DELETE** /sources/telegram/{slug}/ |  |
 | [**sources_telegram_list**](SourcesApi.md#sources_telegram_list) | **GET** /sources/telegram/ |  |
@@ -399,150 +398,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_all_set_icon_create
-
-> sources_all_set_icon_create(slug, opts)
-
-
-
-Set source icon
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  clear: true # Boolean | 
-}
-
-begin
-  
-  api_instance.sources_all_set_icon_create(slug, opts)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_create: #{e}"
-end
-```
-
-#### Using the sources_all_set_icon_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_all_set_icon_create_with_http_info(slug, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_all_set_icon_create_with_http_info(slug, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file** | **File** |  | [optional] |
-| **clear** | **Boolean** |  | [optional][default to false] |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
-- **Accept**: application/json
-
-
-## sources_all_set_icon_url_create
-
-> sources_all_set_icon_url_create(slug, file_path_request)
-
-
-
-Set source icon (as URL)
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-file_path_request = Authentik::Api::FilePathRequest.new({url: 'url_example'}) # FilePathRequest | 
-
-begin
-  
-  api_instance.sources_all_set_icon_url_create(slug, file_path_request)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_url_create: #{e}"
-end
-```
-
-#### Using the sources_all_set_icon_url_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_all_set_icon_url_create_with_http_info(slug, file_path_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_all_set_icon_url_create_with_http_info(slug, file_path_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_all_set_icon_url_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **file_path_request** | [**FilePathRequest**](FilePathRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -8831,6 +8686,77 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## sources_telegram_connect_user_create
+
+> <UserTelegramSourceConnection> sources_telegram_connect_user_create(slug, telegram_auth_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::SourcesApi.new
+slug = 'slug_example' # String | 
+telegram_auth_request = Authentik::Api::TelegramAuthRequest.new({id: 37, auth_date: 37, hash: 'hash_example'}) # TelegramAuthRequest | 
+
+begin
+  
+  result = api_instance.sources_telegram_connect_user_create(slug, telegram_auth_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SourcesApi->sources_telegram_connect_user_create: #{e}"
+end
+```
+
+#### Using the sources_telegram_connect_user_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.sources_telegram_connect_user_create_with_http_info(slug, telegram_auth_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserTelegramSourceConnection>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SourcesApi->sources_telegram_connect_user_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **slug** | **String** |  |  |
+| **telegram_auth_request** | [**TelegramAuthRequest**](TelegramAuthRequest.md) |  |  |
+
+### Return type
+
+[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

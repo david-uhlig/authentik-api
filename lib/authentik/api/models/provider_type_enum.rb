@@ -22,11 +22,13 @@ module Authentik::Api
     OKTA = "okta".freeze
     PATREON = "patreon".freeze
     REDDIT = "reddit".freeze
+    SLACK = "slack".freeze
     TWITCH = "twitch".freeze
     TWITTER = "twitter".freeze
+    WECHAT = "wechat".freeze
 
     def self.all_vars
-      @all_vars ||= [APPLE, OPENIDCONNECT, ENTRAID, AZUREAD, DISCORD, FACEBOOK, GITHUB, GITLAB, GOOGLE, MAILCOW, OKTA, PATREON, REDDIT, TWITCH, TWITTER].freeze
+      @all_vars ||= [APPLE, OPENIDCONNECT, ENTRAID, AZUREAD, DISCORD, FACEBOOK, GITHUB, GITLAB, GOOGLE, MAILCOW, OKTA, PATREON, REDDIT, SLACK, TWITCH, TWITTER, WECHAT].freeze
     end
 
     # Builds the enum from string

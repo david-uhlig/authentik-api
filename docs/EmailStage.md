@@ -10,7 +10,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
 | **use_global_settings** | **Boolean** | When enabled, global Email connection settings will be used and connection settings below will be ignored. | [optional] |
 | **host** | **String** |  | [optional] |
 | **port** | **Integer** |  | [optional] |

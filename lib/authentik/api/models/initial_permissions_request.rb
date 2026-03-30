@@ -12,39 +12,14 @@ module Authentik::Api
   class InitialPermissionsRequest < ApiModelBase
     attr_accessor :name
 
-    attr_accessor :mode
-
     attr_accessor :role
 
     attr_accessor :permissions
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
-        :'mode' => :'mode',
         :'role' => :'role',
         :'permissions' => :'permissions'
       }
@@ -64,7 +39,6 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'mode' => :'InitialPermissionsModeEnum',
         :'role' => :'String',
         :'permissions' => :'Array<Integer>'
       }
@@ -98,12 +72,6 @@ module Authentik::Api
         self.name = nil
       end
 
-      if attributes.key?(:'mode')
-        self.mode = attributes[:'mode']
-      else
-        self.mode = nil
-      end
-
       if attributes.key?(:'role')
         self.role = attributes[:'role']
       else
@@ -134,10 +102,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
-      if @mode.nil?
-        invalid_properties.push('invalid value for "mode", mode cannot be nil.')
-      end
-
       if @role.nil?
         invalid_properties.push('invalid value for "role", role cannot be nil.')
       end
@@ -152,7 +116,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length > 150
       return false if @name.to_s.length < 1
-      return false if @mode.nil?
       return false if @role.nil?
       true
     end
@@ -176,16 +139,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] mode Value to be assigned
-    def mode=(mode)
-      if mode.nil?
-        fail ArgumentError, 'mode cannot be nil'
-      end
-
-      @mode = mode
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] role Value to be assigned
     def role=(role)
       if role.nil?
@@ -201,7 +154,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           name == o.name &&
-          mode == o.mode &&
           role == o.role &&
           permissions == o.permissions
     end
@@ -215,7 +167,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, mode, role, permissions].hash
+      [name, role, permissions].hash
     end
 
     # Builds the object from hash

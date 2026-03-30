@@ -18,13 +18,16 @@ module Authentik::Api
 
     attr_accessor :captcha_token
 
+    attr_accessor :passkey
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'component' => :'component',
         :'uid_field' => :'uid_field',
         :'password' => :'password',
-        :'captcha_token' => :'captcha_token'
+        :'captcha_token' => :'captcha_token',
+        :'passkey' => :'passkey'
       }
     end
 
@@ -44,15 +47,18 @@ module Authentik::Api
         :'component' => :'String',
         :'uid_field' => :'String',
         :'password' => :'String',
-        :'captcha_token' => :'String'
+        :'captcha_token' => :'String',
+        :'passkey' => :'Hash<String, Object>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'uid_field',
         :'password',
-        :'captcha_token'
+        :'captcha_token',
+        :'passkey'
       ])
     end
 
@@ -80,8 +86,6 @@ module Authentik::Api
 
       if attributes.key?(:'uid_field')
         self.uid_field = attributes[:'uid_field']
-      else
-        self.uid_field = nil
       end
 
       if attributes.key?(:'password')
@@ -90,6 +94,12 @@ module Authentik::Api
 
       if attributes.key?(:'captcha_token')
         self.captcha_token = attributes[:'captcha_token']
+      end
+
+      if attributes.key?(:'passkey')
+        if (value = attributes[:'passkey']).is_a?(Hash)
+          self.passkey = value
+        end
       end
     end
 
@@ -102,14 +112,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "component", the character length must be greater than or equal to 1.')
       end
 
-      if @uid_field.nil?
-        invalid_properties.push('invalid value for "uid_field", uid_field cannot be nil.')
-      end
-
-      if @uid_field.to_s.length < 1
-        invalid_properties.push('invalid value for "uid_field", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -118,8 +120,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@component.nil? && @component.to_s.length < 1
-      return false if @uid_field.nil?
-      return false if @uid_field.to_s.length < 1
       true
     end
 
@@ -137,20 +137,6 @@ module Authentik::Api
       @component = component
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] uid_field Value to be assigned
-    def uid_field=(uid_field)
-      if uid_field.nil?
-        fail ArgumentError, 'uid_field cannot be nil'
-      end
-
-      if uid_field.to_s.length < 1
-        fail ArgumentError, 'invalid value for "uid_field", the character length must be greater than or equal to 1.'
-      end
-
-      @uid_field = uid_field
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -159,7 +145,8 @@ module Authentik::Api
           component == o.component &&
           uid_field == o.uid_field &&
           password == o.password &&
-          captcha_token == o.captcha_token
+          captcha_token == o.captcha_token &&
+          passkey == o.passkey
     end
 
     # @see the `==` method
@@ -171,7 +158,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [component, uid_field, password, captcha_token].hash
+      [component, uid_field, password, captcha_token, passkey].hash
     end
 
     # Builds the object from hash

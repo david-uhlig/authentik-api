@@ -5502,10 +5502,10 @@ module Authentik::Api
     # @param invalidation_flow [String] 
     # @param file [File] 
     # @param [Hash] opts the optional parameters
-    # @return [nil]
+    # @return [SAMLProvider]
     def providers_saml_import_metadata_create(name, authorization_flow, invalidation_flow, file, opts = {})
-      providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts)
-      nil
+      data, _status_code, _headers = providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts)
+      data
     end
 
     # Create provider from SAML Metadata
@@ -5514,7 +5514,7 @@ module Authentik::Api
     # @param invalidation_flow [String] 
     # @param file [File] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    # @return [Array<(SAMLProvider, Integer, Hash)>] SAMLProvider data, response status code and response headers
     def providers_saml_import_metadata_create_with_http_info(name, authorization_flow, invalidation_flow, file, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_saml_import_metadata_create ...'
@@ -5566,7 +5566,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type]
+      return_type = opts[:debug_return_type] || 'SAMLProvider'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -6618,7 +6618,7 @@ module Authentik::Api
     # SCIMProvider Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -6634,7 +6634,7 @@ module Authentik::Api
     # SCIMProvider Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -6652,7 +6652,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'exclude_users_service_account'] = opts[:'exclude_users_service_account'] if !opts[:'exclude_users_service_account'].nil?
-      query_params[:'filter_group'] = opts[:'filter_group'] if !opts[:'filter_group'].nil?
+      query_params[:'group_filters'] = @api_client.build_collection_param(opts[:'group_filters'], :multi) if !opts[:'group_filters'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -7872,6 +7872,708 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ProvidersApi#providers_ssf_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param ws_federation_provider_request [WSFederationProviderRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [WSFederationProvider]
+    def providers_wsfed_create(ws_federation_provider_request, opts = {})
+      data, _status_code, _headers = providers_wsfed_create_with_http_info(ws_federation_provider_request, opts)
+      data
+    end
+
+    # WSFederationProvider Viewset
+    # @param ws_federation_provider_request [WSFederationProviderRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WSFederationProvider, Integer, Hash)>] WSFederationProvider data, response status code and response headers
+    def providers_wsfed_create_with_http_info(ws_federation_provider_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_create ...'
+      end
+      # verify the required parameter 'ws_federation_provider_request' is set
+      if @api_client.config.client_side_validation && ws_federation_provider_request.nil?
+        fail ArgumentError, "Missing the required parameter 'ws_federation_provider_request' when calling ProvidersApi.providers_wsfed_create"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ws_federation_provider_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WSFederationProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def providers_wsfed_destroy(id, opts = {})
+      providers_wsfed_destroy_with_http_info(id, opts)
+      nil
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def providers_wsfed_destroy_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_destroy ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_destroy"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :acs_url 
+    # @option opts [String] :assertion_valid_not_before 
+    # @option opts [String] :assertion_valid_not_on_or_after 
+    # @option opts [String] :audience 
+    # @option opts [String] :authentication_flow 
+    # @option opts [String] :authn_context_class_ref_mapping 
+    # @option opts [String] :authorization_flow 
+    # @option opts [String] :backchannel_application 
+    # @option opts [String] :default_name_id_policy 
+    # @option opts [String] :default_relay_state 
+    # @option opts [String] :digest_algorithm 
+    # @option opts [String] :encryption_kp 
+    # @option opts [String] :invalidation_flow 
+    # @option opts [Boolean] :is_backchannel 
+    # @option opts [String] :issuer 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
+    # @option opts [String] :name 
+    # @option opts [String] :name_id_mapping 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Array<String>] :property_mappings 
+    # @option opts [String] :search A search term.
+    # @option opts [String] :session_valid_not_on_or_after 
+    # @option opts [Boolean] :sign_assertion 
+    # @option opts [Boolean] :sign_logout_request 
+    # @option opts [Boolean] :sign_response 
+    # @option opts [String] :signature_algorithm 
+    # @option opts [String] :signing_kp 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
+    # @option opts [String] :sls_url 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
+    # @option opts [String] :verification_kp 
+    # @return [PaginatedWSFederationProviderList]
+    def providers_wsfed_list(opts = {})
+      data, _status_code, _headers = providers_wsfed_list_with_http_info(opts)
+      data
+    end
+
+    # WSFederationProvider Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :acs_url 
+    # @option opts [String] :assertion_valid_not_before 
+    # @option opts [String] :assertion_valid_not_on_or_after 
+    # @option opts [String] :audience 
+    # @option opts [String] :authentication_flow 
+    # @option opts [String] :authn_context_class_ref_mapping 
+    # @option opts [String] :authorization_flow 
+    # @option opts [String] :backchannel_application 
+    # @option opts [String] :default_name_id_policy 
+    # @option opts [String] :default_relay_state 
+    # @option opts [String] :digest_algorithm 
+    # @option opts [String] :encryption_kp 
+    # @option opts [String] :invalidation_flow 
+    # @option opts [Boolean] :is_backchannel 
+    # @option opts [String] :issuer 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
+    # @option opts [String] :name 
+    # @option opts [String] :name_id_mapping 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Array<String>] :property_mappings 
+    # @option opts [String] :search A search term.
+    # @option opts [String] :session_valid_not_on_or_after 
+    # @option opts [Boolean] :sign_assertion 
+    # @option opts [Boolean] :sign_logout_request 
+    # @option opts [Boolean] :sign_response 
+    # @option opts [String] :signature_algorithm 
+    # @option opts [String] :signing_kp 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
+    # @option opts [String] :sls_url 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
+    # @option opts [String] :verification_kp 
+    # @return [Array<(PaginatedWSFederationProviderList, Integer, Hash)>] PaginatedWSFederationProviderList data, response status code and response headers
+    def providers_wsfed_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_list ...'
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
+      if @api_client.config.client_side_validation && opts[:'default_name_id_policy'] && !allowable_values.include?(opts[:'default_name_id_policy'])
+        fail ArgumentError, "invalid value for \"default_name_id_policy\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
+      if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
+        fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["backchannel", "frontchannel_iframe", "frontchannel_native"]
+      if @api_client.config.client_side_validation && opts[:'logout_method'] && !allowable_values.include?(opts[:'logout_method'])
+        fail ArgumentError, "invalid value for \"logout_method\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
+      if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
+        fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sls_binding'] && !allowable_values.include?(opts[:'sls_binding'])
+        fail ArgumentError, "invalid value for \"sls_binding\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sp_binding'] && !allowable_values.include?(opts[:'sp_binding'])
+        fail ArgumentError, "invalid value for \"sp_binding\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'acs_url'] = opts[:'acs_url'] if !opts[:'acs_url'].nil?
+      query_params[:'assertion_valid_not_before'] = opts[:'assertion_valid_not_before'] if !opts[:'assertion_valid_not_before'].nil?
+      query_params[:'assertion_valid_not_on_or_after'] = opts[:'assertion_valid_not_on_or_after'] if !opts[:'assertion_valid_not_on_or_after'].nil?
+      query_params[:'audience'] = opts[:'audience'] if !opts[:'audience'].nil?
+      query_params[:'authentication_flow'] = opts[:'authentication_flow'] if !opts[:'authentication_flow'].nil?
+      query_params[:'authn_context_class_ref_mapping'] = opts[:'authn_context_class_ref_mapping'] if !opts[:'authn_context_class_ref_mapping'].nil?
+      query_params[:'authorization_flow'] = opts[:'authorization_flow'] if !opts[:'authorization_flow'].nil?
+      query_params[:'backchannel_application'] = opts[:'backchannel_application'] if !opts[:'backchannel_application'].nil?
+      query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
+      query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
+      query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
+      query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
+      query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
+      query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
+      query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
+      query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'property_mappings'] = @api_client.build_collection_param(opts[:'property_mappings'], :multi) if !opts[:'property_mappings'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'session_valid_not_on_or_after'] = opts[:'session_valid_not_on_or_after'] if !opts[:'session_valid_not_on_or_after'].nil?
+      query_params[:'sign_assertion'] = opts[:'sign_assertion'] if !opts[:'sign_assertion'].nil?
+      query_params[:'sign_logout_request'] = opts[:'sign_logout_request'] if !opts[:'sign_logout_request'].nil?
+      query_params[:'sign_response'] = opts[:'sign_response'] if !opts[:'sign_response'].nil?
+      query_params[:'signature_algorithm'] = opts[:'signature_algorithm'] if !opts[:'signature_algorithm'].nil?
+      query_params[:'signing_kp'] = opts[:'signing_kp'] if !opts[:'signing_kp'].nil?
+      query_params[:'sls_binding'] = opts[:'sls_binding'] if !opts[:'sls_binding'].nil?
+      query_params[:'sls_url'] = opts[:'sls_url'] if !opts[:'sls_url'].nil?
+      query_params[:'sp_binding'] = opts[:'sp_binding'] if !opts[:'sp_binding'].nil?
+      query_params[:'verification_kp'] = opts[:'verification_kp'] if !opts[:'verification_kp'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedWSFederationProviderList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Return metadata as XML string
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :download 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
+    # @return [SAMLMetadata]
+    def providers_wsfed_metadata_retrieve(id, opts = {})
+      data, _status_code, _headers = providers_wsfed_metadata_retrieve_with_http_info(id, opts)
+      data
+    end
+
+    # Return metadata as XML string
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :download 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
+    # @return [Array<(SAMLMetadata, Integer, Hash)>] SAMLMetadata data, response status code and response headers
+    def providers_wsfed_metadata_retrieve_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_metadata_retrieve ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_metadata_retrieve"
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST", "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"]
+      if @api_client.config.client_side_validation && opts[:'force_binding'] && !allowable_values.include?(opts[:'force_binding'])
+        fail ArgumentError, "invalid value for \"force_binding\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/metadata/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'download'] = opts[:'download'] if !opts[:'download'].nil?
+      query_params[:'force_binding'] = opts[:'force_binding'] if !opts[:'force_binding'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json', 'application/xml']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SAMLMetadata'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_metadata_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_metadata_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedWSFederationProviderRequest] :patched_ws_federation_provider_request 
+    # @return [WSFederationProvider]
+    def providers_wsfed_partial_update(id, opts = {})
+      data, _status_code, _headers = providers_wsfed_partial_update_with_http_info(id, opts)
+      data
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedWSFederationProviderRequest] :patched_ws_federation_provider_request 
+    # @return [Array<(WSFederationProvider, Integer, Hash)>] WSFederationProvider data, response status code and response headers
+    def providers_wsfed_partial_update_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_partial_update ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_partial_update"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_ws_federation_provider_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WSFederationProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Preview user data for provider
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :for_user 
+    # @return [PropertyMappingPreview]
+    def providers_wsfed_preview_user_retrieve(id, opts = {})
+      data, _status_code, _headers = providers_wsfed_preview_user_retrieve_with_http_info(id, opts)
+      data
+    end
+
+    # Preview user data for provider
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :for_user 
+    # @return [Array<(PropertyMappingPreview, Integer, Hash)>] PropertyMappingPreview data, response status code and response headers
+    def providers_wsfed_preview_user_retrieve_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_preview_user_retrieve ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_preview_user_retrieve"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/preview_user/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PropertyMappingPreview'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_preview_user_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_preview_user_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [WSFederationProvider]
+    def providers_wsfed_retrieve(id, opts = {})
+      data, _status_code, _headers = providers_wsfed_retrieve_with_http_info(id, opts)
+      data
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WSFederationProvider, Integer, Hash)>] WSFederationProvider data, response status code and response headers
+    def providers_wsfed_retrieve_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_retrieve ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_retrieve"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WSFederationProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param ws_federation_provider_request [WSFederationProviderRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [WSFederationProvider]
+    def providers_wsfed_update(id, ws_federation_provider_request, opts = {})
+      data, _status_code, _headers = providers_wsfed_update_with_http_info(id, ws_federation_provider_request, opts)
+      data
+    end
+
+    # WSFederationProvider Viewset
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param ws_federation_provider_request [WSFederationProviderRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(WSFederationProvider, Integer, Hash)>] WSFederationProvider data, response status code and response headers
+    def providers_wsfed_update_with_http_info(id, ws_federation_provider_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_update ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_update"
+      end
+      # verify the required parameter 'ws_federation_provider_request' is set
+      if @api_client.config.client_side_validation && ws_federation_provider_request.nil?
+        fail ArgumentError, "Missing the required parameter 'ws_federation_provider_request' when calling ProvidersApi.providers_wsfed_update"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(ws_federation_provider_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'WSFederationProvider'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of all objects that use this object
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<UsedBy>]
+    def providers_wsfed_used_by_list(id, opts = {})
+      data, _status_code, _headers = providers_wsfed_used_by_list_with_http_info(id, opts)
+      data
+    end
+
+    # Get a list of all objects that use this object
+    # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def providers_wsfed_used_by_list_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_used_by_list ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_used_by_list"
+      end
+      # resource path
+      local_var_path = '/providers/wsfed/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_wsfed_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_wsfed_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -5,7 +5,6 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
-| **flow_set** | [**Array&lt;FlowSetRequest&gt;**](FlowSetRequest.md) |  | [optional] |
 | **public_key** | **String** | Public key, acquired your captcha Provider. | [optional] |
 | **private_key** | **String** | Private key, acquired your captcha Provider. | [optional] |
 | **js_url** | **String** |  | [optional] |
@@ -22,7 +21,6 @@ require 'authentik-api'
 
 instance = Authentik::Api::PatchedCaptchaStageRequest.new(
   name: null,
-  flow_set: null,
   public_key: null,
   private_key: null,
   js_url: null,

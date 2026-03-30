@@ -8,6 +8,7 @@
 | **name** | **String** | Source&#39;s display Name. |  |
 | **slug** | **String** | Internal source name, used in URLs. |  |
 | **enabled** | **Boolean** |  | [optional] |
+| **promoted** | **Boolean** | When enabled, this source will be displayed as a prominent button on the login page, instead of a small icon. | [optional] |
 | **authentication_flow** | **String** | Flow to use when authenticating existing users. | [optional] |
 | **enrollment_flow** | **String** | Flow to use when enrolling new users. | [optional] |
 | **user_property_mappings** | **Array&lt;String&gt;** |  | [optional] |
@@ -20,7 +21,9 @@
 | **user_matching_mode** | [**UserMatchingModeEnum**](UserMatchingModeEnum.md) | How the source determines if an existing user should be authenticated or a new user enrolled. | [optional] |
 | **managed** | **String** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] |
 | **user_path_template** | **String** |  | [optional] |
-| **icon** | **String** |  | [readonly] |
+| **icon** | **String** |  | [optional] |
+| **icon_url** | **String** |  | [readonly] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **group_matching_mode** | [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] |
 | **provider_type** | [**ProviderTypeEnum**](ProviderTypeEnum.md) |  |  |
 | **request_token_url** | **String** | URL used to request the initial token. This URL is only required for OAuth 1. | [optional] |
@@ -47,6 +50,7 @@ instance = Authentik::Api::OAuthSource.new(
   name: null,
   slug: null,
   enabled: null,
+  promoted: null,
   authentication_flow: null,
   enrollment_flow: null,
   user_property_mappings: null,
@@ -60,6 +64,8 @@ instance = Authentik::Api::OAuthSource.new(
   managed: null,
   user_path_template: null,
   icon: null,
+  icon_url: null,
+  icon_themed_urls: null,
   group_matching_mode: null,
   provider_type: null,
   request_token_url: null,

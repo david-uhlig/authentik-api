@@ -28,6 +28,7 @@ Authentik::Api::ChallengeTypes.openapi_one_of
 #   :'ConsentChallenge',
 #   :'DummyChallenge',
 #   :'EmailChallenge',
+#   :'EndpointAgentChallenge',
 #   :'FlowErrorChallenge',
 #   :'FrameChallenge',
 #   :'IdentificationChallenge',
@@ -91,6 +92,7 @@ Authentik::Api::ChallengeTypes.openapi_discriminator_mapping
 #   :'ak-stage-consent' => :'ConsentChallenge',
 #   :'ak-stage-dummy' => :'DummyChallenge',
 #   :'ak-stage-email' => :'EmailChallenge',
+#   :'ak-stage-endpoint-agent' => :'EndpointAgentChallenge',
 #   :'ak-stage-flow-error' => :'FlowErrorChallenge',
 #   :'ak-stage-identification' => :'IdentificationChallenge',
 #   :'ak-stage-password' => :'PasswordChallenge',
@@ -141,6 +143,7 @@ Authentik::Api::ChallengeTypes.build(data_that_doesnt_match)
 - `ConsentChallenge`
 - `DummyChallenge`
 - `EmailChallenge`
+- `EndpointAgentChallenge`
 - `FlowErrorChallenge`
 - `FrameChallenge`
 - `IdentificationChallenge`

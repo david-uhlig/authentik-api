@@ -39,7 +39,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'component' => :'String',
-        :'code' => :'Integer',
+        :'code' => :'String',
         :'email' => :'String'
       }
     end
@@ -90,6 +90,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "component", the character length must be greater than or equal to 1.')
       end
 
+      if !@code.nil? && @code.to_s.length < 1
+        invalid_properties.push('invalid value for "code", the character length must be greater than or equal to 1.')
+      end
+
       if !@email.nil? && @email.to_s.length < 1
         invalid_properties.push('invalid value for "email", the character length must be greater than or equal to 1.')
       end
@@ -102,6 +106,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@component.nil? && @component.to_s.length < 1
+      return false if !@code.nil? && @code.to_s.length < 1
       return false if !@email.nil? && @email.to_s.length < 1
       true
     end
@@ -118,6 +123,20 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] code Value to be assigned
+    def code=(code)
+      if code.nil?
+        fail ArgumentError, 'code cannot be nil'
+      end
+
+      if code.to_s.length < 1
+        fail ArgumentError, 'invalid value for "code", the character length must be greater than or equal to 1.'
+      end
+
+      @code = code
     end
 
     # Custom attribute writer method with validation

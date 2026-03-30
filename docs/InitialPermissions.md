@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **pk** | **Integer** |  | [readonly] |
 | **name** | **String** |  |  |
-| **mode** | [**InitialPermissionsModeEnum**](InitialPermissionsModeEnum.md) |  |  |
 | **role** | **String** |  |  |
 | **permissions** | **Array&lt;Integer&gt;** |  | [optional] |
 | **permissions_obj** | [**Array&lt;Permission&gt;**](Permission.md) |  | [readonly] |
@@ -19,7 +18,6 @@ require 'authentik-api'
 instance = Authentik::Api::InitialPermissions.new(
   pk: null,
   name: null,
-  mode: null,
   role: null,
   permissions: null,
   permissions_obj: null

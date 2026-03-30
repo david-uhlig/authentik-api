@@ -10,7 +10,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
+| **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [readonly] |
 | **user_fields** | [**Array&lt;UserFieldsEnum&gt;**](UserFieldsEnum.md) | Fields of the user object to match against. (Hold shift to select multiple options) | [optional] |
 | **password_stage** | **String** | When set, shows a password field, instead of showing the password field as separate step. | [optional] |
 | **captcha_stage** | **String** | When set, adds functionality exactly like a Captcha stage, but baked into the Identification stage. | [optional] |
@@ -23,6 +23,7 @@
 | **show_source_labels** | **Boolean** |  | [optional] |
 | **pretend_user_exists** | **Boolean** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] |
 | **enable_remember_me** | **Boolean** | Show the user the &#39;Remember me on this device&#39; toggle, allowing repeat users to skip straight to entering their password. | [optional] |
+| **webauthn_stage** | **String** | When set, and conditional WebAuthn is available, allow the user to use their passkey as a first factor. | [optional] |
 
 ## Example
 
@@ -48,7 +49,8 @@ instance = Authentik::Api::IdentificationStage.new(
   sources: null,
   show_source_labels: null,
   pretend_user_exists: null,
-  enable_remember_me: null
+  enable_remember_me: null,
+  webauthn_stage: null
 )
 ```
 

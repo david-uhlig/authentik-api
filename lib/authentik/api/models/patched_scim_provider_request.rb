@@ -36,9 +36,19 @@ module Authentik::Api
     # Alter authentik behavior for vendor-specific SCIM implementations.
     attr_accessor :compatibility_mode
 
+    # Cache duration for ServiceProviderConfig responses. Set minutes=0 to disable.
+    attr_accessor :service_provider_config_cache_timeout
+
     attr_accessor :exclude_users_service_account
 
-    attr_accessor :filter_group
+    # Controls the number of objects synced in a single task
+    attr_accessor :sync_page_size
+
+    # Timeout for synchronization of a single page
+    attr_accessor :sync_page_timeout
+
+    # Group filters used to define sync-scope for groups.
+    attr_accessor :group_filters
 
     # When enabled, provider will not modify or create objects in the remote system.
     attr_accessor :dry_run
@@ -78,8 +88,11 @@ module Authentik::Api
         :'auth_oauth' => :'auth_oauth',
         :'auth_oauth_params' => :'auth_oauth_params',
         :'compatibility_mode' => :'compatibility_mode',
+        :'service_provider_config_cache_timeout' => :'service_provider_config_cache_timeout',
         :'exclude_users_service_account' => :'exclude_users_service_account',
-        :'filter_group' => :'filter_group',
+        :'sync_page_size' => :'sync_page_size',
+        :'sync_page_timeout' => :'sync_page_timeout',
+        :'group_filters' => :'group_filters',
         :'dry_run' => :'dry_run'
       }
     end
@@ -107,8 +120,11 @@ module Authentik::Api
         :'auth_oauth' => :'String',
         :'auth_oauth_params' => :'Hash<String, Object>',
         :'compatibility_mode' => :'CompatibilityModeEnum',
+        :'service_provider_config_cache_timeout' => :'String',
         :'exclude_users_service_account' => :'Boolean',
-        :'filter_group' => :'String',
+        :'sync_page_size' => :'Integer',
+        :'sync_page_timeout' => :'String',
+        :'group_filters' => :'Array<String>',
         :'dry_run' => :'Boolean'
       }
     end
@@ -117,7 +133,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'auth_oauth',
-        :'filter_group',
       ])
     end
 
@@ -183,12 +198,26 @@ module Authentik::Api
         self.compatibility_mode = attributes[:'compatibility_mode']
       end
 
+      if attributes.key?(:'service_provider_config_cache_timeout')
+        self.service_provider_config_cache_timeout = attributes[:'service_provider_config_cache_timeout']
+      end
+
       if attributes.key?(:'exclude_users_service_account')
         self.exclude_users_service_account = attributes[:'exclude_users_service_account']
       end
 
-      if attributes.key?(:'filter_group')
-        self.filter_group = attributes[:'filter_group']
+      if attributes.key?(:'sync_page_size')
+        self.sync_page_size = attributes[:'sync_page_size']
+      end
+
+      if attributes.key?(:'sync_page_timeout')
+        self.sync_page_timeout = attributes[:'sync_page_timeout']
+      end
+
+      if attributes.key?(:'group_filters')
+        if (value = attributes[:'group_filters']).is_a?(Array)
+          self.group_filters = value
+        end
       end
 
       if attributes.key?(:'dry_run')
@@ -209,6 +238,22 @@ module Authentik::Api
         invalid_properties.push('invalid value for "url", the character length must be greater than or equal to 1.')
       end
 
+      if !@service_provider_config_cache_timeout.nil? && @service_provider_config_cache_timeout.to_s.length < 1
+        invalid_properties.push('invalid value for "service_provider_config_cache_timeout", the character length must be greater than or equal to 1.')
+      end
+
+      if !@sync_page_size.nil? && @sync_page_size > 2147483647
+        invalid_properties.push('invalid value for "sync_page_size", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@sync_page_size.nil? && @sync_page_size < 1
+        invalid_properties.push('invalid value for "sync_page_size", must be greater than or equal to 1.')
+      end
+
+      if !@sync_page_timeout.nil? && @sync_page_timeout.to_s.length < 1
+        invalid_properties.push('invalid value for "sync_page_timeout", the character length must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -218,6 +263,10 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@url.nil? && @url.to_s.length < 1
+      return false if !@service_provider_config_cache_timeout.nil? && @service_provider_config_cache_timeout.to_s.length < 1
+      return false if !@sync_page_size.nil? && @sync_page_size > 2147483647
+      return false if !@sync_page_size.nil? && @sync_page_size < 1
+      return false if !@sync_page_timeout.nil? && @sync_page_timeout.to_s.length < 1
       true
     end
 
@@ -249,6 +298,52 @@ module Authentik::Api
       @url = url
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] service_provider_config_cache_timeout Value to be assigned
+    def service_provider_config_cache_timeout=(service_provider_config_cache_timeout)
+      if service_provider_config_cache_timeout.nil?
+        fail ArgumentError, 'service_provider_config_cache_timeout cannot be nil'
+      end
+
+      if service_provider_config_cache_timeout.to_s.length < 1
+        fail ArgumentError, 'invalid value for "service_provider_config_cache_timeout", the character length must be greater than or equal to 1.'
+      end
+
+      @service_provider_config_cache_timeout = service_provider_config_cache_timeout
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sync_page_size Value to be assigned
+    def sync_page_size=(sync_page_size)
+      if sync_page_size.nil?
+        fail ArgumentError, 'sync_page_size cannot be nil'
+      end
+
+      if sync_page_size > 2147483647
+        fail ArgumentError, 'invalid value for "sync_page_size", must be smaller than or equal to 2147483647.'
+      end
+
+      if sync_page_size < 1
+        fail ArgumentError, 'invalid value for "sync_page_size", must be greater than or equal to 1.'
+      end
+
+      @sync_page_size = sync_page_size
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] sync_page_timeout Value to be assigned
+    def sync_page_timeout=(sync_page_timeout)
+      if sync_page_timeout.nil?
+        fail ArgumentError, 'sync_page_timeout cannot be nil'
+      end
+
+      if sync_page_timeout.to_s.length < 1
+        fail ArgumentError, 'invalid value for "sync_page_timeout", the character length must be greater than or equal to 1.'
+      end
+
+      @sync_page_timeout = sync_page_timeout
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -264,8 +359,11 @@ module Authentik::Api
           auth_oauth == o.auth_oauth &&
           auth_oauth_params == o.auth_oauth_params &&
           compatibility_mode == o.compatibility_mode &&
+          service_provider_config_cache_timeout == o.service_provider_config_cache_timeout &&
           exclude_users_service_account == o.exclude_users_service_account &&
-          filter_group == o.filter_group &&
+          sync_page_size == o.sync_page_size &&
+          sync_page_timeout == o.sync_page_timeout &&
+          group_filters == o.group_filters &&
           dry_run == o.dry_run
     end
 
@@ -278,7 +376,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, exclude_users_service_account, filter_group, dry_run].hash
+      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
     end
 
     # Builds the object from hash

@@ -209,7 +209,7 @@ module Authentik::Api
     # CertificateKeyPair Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
-    # @option opts [Boolean] :include_details  (default to true)
+    # @option opts [Array<String>] :key_type Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;)
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -225,7 +225,7 @@ module Authentik::Api
     # CertificateKeyPair Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :has_key Only return certificate-key pairs with keys
-    # @option opts [Boolean] :include_details  (default to true)
+    # @option opts [Array<String>] :key_type Filter by key algorithm type (RSA, EC, DSA, etc). Can be specified multiple times (e.g. &#39;?key_type&#x3D;rsa&amp;key_type&#x3D;ec&#39;)
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -237,13 +237,17 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CryptoApi.crypto_certificatekeypairs_list ...'
       end
+      allowable_values = ["dsa", "ec", "ed25519", "ed448", "rsa"]
+      if @api_client.config.client_side_validation && opts[:'key_type'] && !opts[:'key_type'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"key_type\", must include one of #{allowable_values}"
+      end
       # resource path
       local_var_path = '/crypto/certificatekeypairs/'
 
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'has_key'] = opts[:'has_key'] if !opts[:'has_key'].nil?
-      query_params[:'include_details'] = opts[:'include_details'] if !opts[:'include_details'].nil?
+      query_params[:'key_type'] = @api_client.build_collection_param(opts[:'key_type'], :multi) if !opts[:'key_type'].nil?
       query_params[:'managed'] = opts[:'managed'] if !opts[:'managed'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?

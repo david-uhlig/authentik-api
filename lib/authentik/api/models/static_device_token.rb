@@ -74,8 +74,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "token", token cannot be nil.')
       end
 
-      if @token.to_s.length > 16
-        invalid_properties.push('invalid value for "token", the character length must be smaller than or equal to 16.')
+      if @token.to_s.length > 100
+        invalid_properties.push('invalid value for "token", the character length must be smaller than or equal to 100.')
       end
 
       invalid_properties
@@ -86,7 +86,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @token.nil?
-      return false if @token.to_s.length > 16
+      return false if @token.to_s.length > 100
       true
     end
 
@@ -97,8 +97,8 @@ module Authentik::Api
         fail ArgumentError, 'token cannot be nil'
       end
 
-      if token.to_s.length > 16
-        fail ArgumentError, 'invalid value for "token", the character length must be smaller than or equal to 16.'
+      if token.to_s.length > 100
+        fail ArgumentError, 'invalid value for "token", the character length must be smaller than or equal to 100.'
       end
 
       @token = token

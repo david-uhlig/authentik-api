@@ -22,7 +22,8 @@ module Authentik::Api
           :'RadiusProviderRequest',
           :'SAMLProviderRequest',
           :'SCIMProviderRequest',
-          :'SSFProviderRequest'
+          :'SSFProviderRequest',
+          :'WSFederationProviderRequest'
         ]
       end
 
@@ -43,7 +44,8 @@ module Authentik::Api
           :'authentik_providers_radius.radiusprovider' => :'RadiusProviderRequest',
           :'authentik_providers_saml.samlprovider' => :'SAMLProviderRequest',
           :'authentik_providers_scim.scimprovider' => :'SCIMProviderRequest',
-          :'authentik_providers_ssf.ssfprovider' => :'SSFProviderRequest'
+          :'authentik_providers_ssf.ssfprovider' => :'SSFProviderRequest',
+          :'authentik_providers_ws_federation.wsfederationprovider' => :'WSFederationProviderRequest'
         }
       end
 

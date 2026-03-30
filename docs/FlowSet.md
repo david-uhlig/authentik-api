@@ -10,7 +10,7 @@
 | **slug** | **String** | Visible in the URL. |  |
 | **title** | **String** | Shown as the Title in Flow pages. |  |
 | **designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik. |  |
-| **background** | **String** | Get the URL to the background image. If the name is /static or starts with http it is returned as-is | [readonly] |
+| **background_url** | **String** | Get the URL to the background image | [readonly] |
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
 | **compatibility_mode** | **Boolean** | Enable compatibility mode, increases compatibility with password managers on mobile devices. | [optional] |
 | **export_url** | **String** | Get export URL for flow | [readonly] |
@@ -29,7 +29,7 @@ instance = Authentik::Api::FlowSet.new(
   slug: null,
   title: null,
   designation: null,
-  background: null,
+  background_url: null,
   policy_engine_mode: null,
   compatibility_mode: null,
   export_url: null,

@@ -66,31 +66,6 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_all_set_icon_create
-  # Set source icon
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [Boolean] :clear 
-  # @return [nil]
-  describe 'sources_all_set_icon_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_all_set_icon_url_create
-  # Set source icon (as URL)
-  # @param slug 
-  # @param file_path_request 
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_all_set_icon_url_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_all_types_list
   # Get all creatable types
   # @param [Hash] opts the optional parameters
@@ -1527,6 +1502,18 @@ describe 'SourcesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'sources_scim_users_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for sources_telegram_connect_user_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param slug 
+  # @param telegram_auth_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserTelegramSourceConnection]
+  describe 'sources_telegram_connect_user_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

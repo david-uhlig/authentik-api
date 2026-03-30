@@ -14,6 +14,8 @@ module Authentik::Api
 
     attr_accessor :background
 
+    attr_accessor :background_themed_urls
+
     attr_accessor :cancel_url
 
     attr_accessor :layout
@@ -45,6 +47,7 @@ module Authentik::Api
       {
         :'title' => :'title',
         :'background' => :'background',
+        :'background_themed_urls' => :'background_themed_urls',
         :'cancel_url' => :'cancel_url',
         :'layout' => :'layout'
       }
@@ -65,6 +68,7 @@ module Authentik::Api
       {
         :'title' => :'String',
         :'background' => :'String',
+        :'background_themed_urls' => :'ThemedUrls',
         :'cancel_url' => :'String',
         :'layout' => :'ContextualFlowInfoLayoutEnum'
       }
@@ -73,6 +77,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'background_themed_urls',
       ])
     end
 
@@ -98,6 +103,10 @@ module Authentik::Api
 
       if attributes.key?(:'background')
         self.background = attributes[:'background']
+      end
+
+      if attributes.key?(:'background_themed_urls')
+        self.background_themed_urls = attributes[:'background_themed_urls']
       end
 
       if attributes.key?(:'cancel_url')
@@ -165,6 +174,7 @@ module Authentik::Api
       self.class == o.class &&
           title == o.title &&
           background == o.background &&
+          background_themed_urls == o.background_themed_urls &&
           cancel_url == o.cancel_url &&
           layout == o.layout
     end
@@ -178,7 +188,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [title, background, cancel_url, layout].hash
+      [title, background, background_themed_urls, cancel_url, layout].hash
     end
 
     # Builds the object from hash
