@@ -57,10 +57,4 @@ describe Authentik::Api::GroupOAuthSourceConnection do
     end
   end
 
-  describe 'test attribute "last_updated"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

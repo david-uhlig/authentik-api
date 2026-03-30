@@ -85,9 +85,6 @@ module Authentik::Api
     # Field which contains members of a group.
     attr_accessor :group_membership_field
 
-    # Attribute which matches the value of `group_membership_field`.
-    attr_accessor :user_membership_attribute
-
     # Field which contains a unique Identifier.
     attr_accessor :object_uniqueness_field
 
@@ -105,12 +102,6 @@ module Authentik::Api
 
     # Get cached source connectivity
     attr_accessor :connectivity
-
-    # Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory
-    attr_accessor :lookup_groups_from_user
-
-    # Delete authentik users and groups which were previously supplied by this source, but are now missing from it.
-    attr_accessor :delete_not_found_objects
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -166,16 +157,13 @@ module Authentik::Api
         :'user_object_filter' => :'user_object_filter',
         :'group_object_filter' => :'group_object_filter',
         :'group_membership_field' => :'group_membership_field',
-        :'user_membership_attribute' => :'user_membership_attribute',
         :'object_uniqueness_field' => :'object_uniqueness_field',
         :'password_login_update_internal_password' => :'password_login_update_internal_password',
         :'sync_users' => :'sync_users',
         :'sync_users_password' => :'sync_users_password',
         :'sync_groups' => :'sync_groups',
         :'sync_parent_group' => :'sync_parent_group',
-        :'connectivity' => :'connectivity',
-        :'lookup_groups_from_user' => :'lookup_groups_from_user',
-        :'delete_not_found_objects' => :'delete_not_found_objects'
+        :'connectivity' => :'connectivity'
       }
     end
 
@@ -221,16 +209,13 @@ module Authentik::Api
         :'user_object_filter' => :'String',
         :'group_object_filter' => :'String',
         :'group_membership_field' => :'String',
-        :'user_membership_attribute' => :'String',
         :'object_uniqueness_field' => :'String',
         :'password_login_update_internal_password' => :'Boolean',
         :'sync_users' => :'Boolean',
         :'sync_users_password' => :'Boolean',
         :'sync_groups' => :'Boolean',
         :'sync_parent_group' => :'String',
-        :'connectivity' => :'Hash<String, Hash<String, String>>',
-        :'lookup_groups_from_user' => :'Boolean',
-        :'delete_not_found_objects' => :'Boolean'
+        :'connectivity' => :'Hash<String, Hash<String, String>>'
       }
     end
 
@@ -243,7 +228,7 @@ module Authentik::Api
         :'peer_certificate',
         :'client_certificate',
         :'sync_parent_group',
-        :'connectivity',
+        :'connectivity'
       ])
     end
 
@@ -405,10 +390,6 @@ module Authentik::Api
         self.group_membership_field = attributes[:'group_membership_field']
       end
 
-      if attributes.key?(:'user_membership_attribute')
-        self.user_membership_attribute = attributes[:'user_membership_attribute']
-      end
-
       if attributes.key?(:'object_uniqueness_field')
         self.object_uniqueness_field = attributes[:'object_uniqueness_field']
       end
@@ -439,14 +420,6 @@ module Authentik::Api
         end
       else
         self.connectivity = nil
-      end
-
-      if attributes.key?(:'lookup_groups_from_user')
-        self.lookup_groups_from_user = attributes[:'lookup_groups_from_user']
-      end
-
-      if attributes.key?(:'delete_not_found_objects')
-        self.delete_not_found_objects = attributes[:'delete_not_found_objects']
       end
     end
 
@@ -669,16 +642,13 @@ module Authentik::Api
           user_object_filter == o.user_object_filter &&
           group_object_filter == o.group_object_filter &&
           group_membership_field == o.group_membership_field &&
-          user_membership_attribute == o.user_membership_attribute &&
           object_uniqueness_field == o.object_uniqueness_field &&
           password_login_update_internal_password == o.password_login_update_internal_password &&
           sync_users == o.sync_users &&
           sync_users_password == o.sync_users_password &&
           sync_groups == o.sync_groups &&
           sync_parent_group == o.sync_parent_group &&
-          connectivity == o.connectivity &&
-          lookup_groups_from_user == o.lookup_groups_from_user &&
-          delete_not_found_objects == o.delete_not_found_objects
+          connectivity == o.connectivity
     end
 
     # @see the `==` method
@@ -690,7 +660,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects].hash
+      [pk, name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity].hash
     end
 
     # Builds the object from hash

@@ -30,8 +30,6 @@ module Authentik::Api
           :'FlowErrorChallenge',
           :'FrameChallenge',
           :'IdentificationChallenge',
-          :'IframeLogoutChallenge',
-          :'NativeLogoutChallenge',
           :'OAuthDeviceCodeChallenge',
           :'OAuthDeviceCodeFinishChallenge',
           :'PasswordChallenge',
@@ -40,7 +38,6 @@ module Authentik::Api
           :'RedirectChallenge',
           :'SessionEndChallenge',
           :'ShellChallenge',
-          :'TelegramLoginChallenge',
           :'UserLoginChallenge'
         ]
       end
@@ -53,13 +50,10 @@ module Authentik::Api
       # Discriminator's mapping (OpenAPI v3)
       def openapi_discriminator_mapping
         {
-          :'ak-provider-iframe-logout' => :'IframeLogoutChallenge',
           :'ak-provider-oauth2-device-code' => :'OAuthDeviceCodeChallenge',
           :'ak-provider-oauth2-device-code-finish' => :'OAuthDeviceCodeFinishChallenge',
-          :'ak-provider-saml-native-logout' => :'NativeLogoutChallenge',
           :'ak-source-oauth-apple' => :'AppleLoginChallenge',
           :'ak-source-plex' => :'PlexAuthenticationChallenge',
-          :'ak-source-telegram' => :'TelegramLoginChallenge',
           :'ak-stage-access-denied' => :'AccessDeniedChallenge',
           :'ak-stage-authenticator-duo' => :'AuthenticatorDuoChallenge',
           :'ak-stage-authenticator-email' => :'AuthenticatorEmailChallenge',

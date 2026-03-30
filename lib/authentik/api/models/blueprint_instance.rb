@@ -87,13 +87,13 @@ module Authentik::Api
         :'pk' => :'String',
         :'name' => :'String',
         :'path' => :'String',
-        :'context' => :'Hash<String, Object>',
+        :'context' => :'Object',
         :'last_applied' => :'Time',
         :'last_applied_hash' => :'String',
         :'status' => :'BlueprintInstanceStatusEnum',
         :'enabled' => :'Boolean',
         :'managed_models' => :'Array<String>',
-        :'metadata' => :'Hash<String, Object>',
+        :'metadata' => :'Object',
         :'content' => :'String'
       }
     end
@@ -101,6 +101,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'context',
+        :'metadata',
       ])
     end
 
@@ -139,9 +141,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'context')
-        if (value = attributes[:'context']).is_a?(Hash)
-          self.context = value
-        end
+        self.context = attributes[:'context']
       end
 
       if attributes.key?(:'last_applied')
@@ -175,9 +175,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'metadata')
-        if (value = attributes[:'metadata']).is_a?(Hash)
-          self.metadata = value
-        end
+        self.metadata = attributes[:'metadata']
       else
         self.metadata = nil
       end
@@ -216,10 +214,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "managed_models", managed_models cannot be nil.')
       end
 
-      if @metadata.nil?
-        invalid_properties.push('invalid value for "metadata", metadata cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -233,7 +227,6 @@ module Authentik::Api
       return false if @last_applied_hash.nil?
       return false if @status.nil?
       return false if @managed_models.nil?
-      return false if @metadata.nil?
       true
     end
 
@@ -295,16 +288,6 @@ module Authentik::Api
       end
 
       @managed_models = managed_models
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] metadata Value to be assigned
-    def metadata=(metadata)
-      if metadata.nil?
-        fail ArgumentError, 'metadata cannot be nil'
-      end
-
-      @metadata = metadata
     end
 
     # Checks equality by comparing each attribute.

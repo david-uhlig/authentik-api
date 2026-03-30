@@ -12,8 +12,6 @@ module Authentik::Api
   class PatchedSCIMSourceUserRequest < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :external_id
-
     attr_accessor :user
 
     attr_accessor :source
@@ -24,7 +22,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'id' => :'id',
-        :'external_id' => :'external_id',
         :'user' => :'user',
         :'source' => :'source',
         :'attributes' => :'attributes'
@@ -45,16 +42,16 @@ module Authentik::Api
     def self.openapi_types
       {
         :'id' => :'String',
-        :'external_id' => :'String',
         :'user' => :'Integer',
         :'source' => :'String',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'attributes'
       ])
     end
 
@@ -78,10 +75,6 @@ module Authentik::Api
         self.id = attributes[:'id']
       end
 
-      if attributes.key?(:'external_id')
-        self.external_id = attributes[:'external_id']
-      end
-
       if attributes.key?(:'user')
         self.user = attributes[:'user']
       end
@@ -91,9 +84,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
+        self.attributes = attributes[:'attributes']
       end
     end
 
@@ -106,10 +97,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "id", the character length must be greater than or equal to 1.')
       end
 
-      if !@external_id.nil? && @external_id.to_s.length < 1
-        invalid_properties.push('invalid value for "external_id", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -118,7 +105,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@id.nil? && @id.to_s.length < 1
-      return false if !@external_id.nil? && @external_id.to_s.length < 1
       true
     end
 
@@ -136,27 +122,12 @@ module Authentik::Api
       @id = id
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] external_id Value to be assigned
-    def external_id=(external_id)
-      if external_id.nil?
-        fail ArgumentError, 'external_id cannot be nil'
-      end
-
-      if external_id.to_s.length < 1
-        fail ArgumentError, 'invalid value for "external_id", the character length must be greater than or equal to 1.'
-      end
-
-      @external_id = external_id
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          external_id == o.external_id &&
           user == o.user &&
           source == o.source &&
           attributes == o.attributes
@@ -171,7 +142,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, external_id, user, source, attributes].hash
+      [id, user, source, attributes].hash
     end
 
     # Builds the object from hash

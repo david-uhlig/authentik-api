@@ -40,13 +40,14 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'app' => :'String',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'attributes'
       ])
     end
 
@@ -75,9 +76,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
+        self.attributes = attributes[:'attributes']
       end
     end
 

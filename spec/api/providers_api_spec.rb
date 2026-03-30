@@ -1066,17 +1066,14 @@ describe 'ProvidersApi' do
   # @option opts [String] :assertion_valid_not_on_or_after 
   # @option opts [String] :audience 
   # @option opts [String] :authentication_flow 
-  # @option opts [String] :authn_context_class_ref_mapping 
   # @option opts [String] :authorization_flow 
   # @option opts [String] :backchannel_application 
-  # @option opts [String] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
   # @option opts [String] :digest_algorithm 
   # @option opts [String] :encryption_kp 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer 
-  # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
   # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1086,12 +1083,9 @@ describe 'ProvidersApi' do
   # @option opts [String] :search A search term.
   # @option opts [String] :session_valid_not_on_or_after 
   # @option opts [Boolean] :sign_assertion 
-  # @option opts [Boolean] :sign_logout_request 
   # @option opts [Boolean] :sign_response 
   # @option opts [String] :signature_algorithm 
   # @option opts [String] :signing_kp 
-  # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
-  # @option opts [String] :sls_url 
   # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
   # @option opts [String] :verification_kp 
   # @return [PaginatedSAMLProviderList]

@@ -8,7 +8,7 @@
 | **name** | **String** |  |  |
 | **expires** | **Time** |  | [optional] |
 | **fixed_data** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **created_by** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **created_by** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 | **single_use** | **Boolean** | When enabled, the invitation will be deleted after usage. | [optional] |
 | **flow** | **String** | When set, only the configured flow can use this invitation. | [optional] |
 | **flow_obj** | [**Flow**](Flow.md) |  | [readonly] |

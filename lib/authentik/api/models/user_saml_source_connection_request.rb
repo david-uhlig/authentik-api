@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # User source connection
+  # SAML Source Serializer
   class UserSAMLSourceConnectionRequest < ApiModelBase
     attr_accessor :user
 

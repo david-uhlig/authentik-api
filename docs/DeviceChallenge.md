@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **device_class** | [**DeviceClassesEnum**](DeviceClassesEnum.md) |  |  |
+| **device_class** | **String** |  |  |
 | **device_uid** | **String** |  |  |
 | **challenge** | **Hash&lt;String, Object&gt;** |  |  |
 | **last_used** | **Time** |  |  |

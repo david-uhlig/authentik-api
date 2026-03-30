@@ -23,8 +23,6 @@ module Authentik::Api
 
     attr_accessor :roles
 
-    attr_accessor :children
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -33,8 +31,7 @@ module Authentik::Api
         :'parent' => :'parent',
         :'users' => :'users',
         :'attributes' => :'attributes',
-        :'roles' => :'roles',
-        :'children' => :'children'
+        :'roles' => :'roles'
       }
     end
 
@@ -56,8 +53,7 @@ module Authentik::Api
         :'parent' => :'String',
         :'users' => :'Array<Integer>',
         :'attributes' => :'Hash<String, Object>',
-        :'roles' => :'Array<String>',
-        :'children' => :'Array<String>'
+        :'roles' => :'Array<String>'
       }
     end
 
@@ -115,12 +111,6 @@ module Authentik::Api
           self.roles = value
         end
       end
-
-      if attributes.key?(:'children')
-        if (value = attributes[:'children']).is_a?(Array)
-          self.children = value
-        end
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -172,8 +162,7 @@ module Authentik::Api
           parent == o.parent &&
           users == o.users &&
           attributes == o.attributes &&
-          roles == o.roles &&
-          children == o.children
+          roles == o.roles
     end
 
     # @see the `==` method
@@ -185,7 +174,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, is_superuser, parent, users, attributes, roles, children].hash
+      [name, is_superuser, parent, users, attributes, roles].hash
     end
 
     # Builds the object from hash

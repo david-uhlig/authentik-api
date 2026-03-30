@@ -7,13 +7,13 @@
 | **pk** | **String** |  | [readonly] |
 | **name** | **String** |  |  |
 | **path** | **String** |  | [optional][default to &#39;&#39;] |
-| **context** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **context** | **Object** |  | [optional] |
 | **last_applied** | **Time** |  | [readonly] |
 | **last_applied_hash** | **String** |  | [readonly] |
 | **status** | [**BlueprintInstanceStatusEnum**](BlueprintInstanceStatusEnum.md) |  | [readonly] |
 | **enabled** | **Boolean** |  | [optional] |
 | **managed_models** | **Array&lt;String&gt;** |  | [readonly] |
-| **metadata** | **Hash&lt;String, Object&gt;** |  | [readonly] |
+| **metadata** | **Object** |  | [readonly] |
 | **content** | **String** |  | [optional] |
 
 ## Example

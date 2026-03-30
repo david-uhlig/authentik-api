@@ -51,9 +51,6 @@ module Authentik::Api
 
     attr_accessor :group_delete_action
 
-    # When enabled, provider will not modify or create objects in the remote system.
-    attr_accessor :dry_run
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -95,8 +92,7 @@ module Authentik::Api
         :'exclude_users_service_account' => :'exclude_users_service_account',
         :'filter_group' => :'filter_group',
         :'user_delete_action' => :'user_delete_action',
-        :'group_delete_action' => :'group_delete_action',
-        :'dry_run' => :'dry_run'
+        :'group_delete_action' => :'group_delete_action'
       }
     end
 
@@ -129,16 +125,13 @@ module Authentik::Api
         :'exclude_users_service_account' => :'Boolean',
         :'filter_group' => :'String',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
-        :'group_delete_action' => :'OutgoingSyncDeleteAction',
-        :'dry_run' => :'Boolean'
+        :'group_delete_action' => :'OutgoingSyncDeleteAction'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
         :'filter_group',
       ])
     end
@@ -252,10 +245,6 @@ module Authentik::Api
       if attributes.key?(:'group_delete_action')
         self.group_delete_action = attributes[:'group_delete_action']
       end
-
-      if attributes.key?(:'dry_run')
-        self.dry_run = attributes[:'dry_run']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -273,6 +262,14 @@ module Authentik::Api
 
       if @component.nil?
         invalid_properties.push('invalid value for "component", component cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
       end
 
       if @verbose_name.nil?
@@ -309,6 +306,8 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @component.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
@@ -346,6 +345,26 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation
@@ -429,8 +448,7 @@ module Authentik::Api
           exclude_users_service_account == o.exclude_users_service_account &&
           filter_group == o.filter_group &&
           user_delete_action == o.user_delete_action &&
-          group_delete_action == o.group_delete_action &&
-          dry_run == o.dry_run
+          group_delete_action == o.group_delete_action
     end
 
     # @see the `==` method
@@ -442,7 +460,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action].hash
     end
 
     # Builds the object from hash

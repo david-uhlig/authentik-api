@@ -546,7 +546,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Integer] :provider 
-    # @option opts [String] :search A search term.
+    # @option opts [String] :search 
     # @option opts [Boolean] :superuser_full_list 
     # @return [PaginatedEndpointList]
     def rac_endpoints_list(opts = {})
@@ -561,7 +561,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Integer] :provider 
-    # @option opts [String] :search A search term.
+    # @option opts [String] :search 
     # @option opts [Boolean] :superuser_full_list 
     # @return [Array<(PaginatedEndpointList, Integer, Hash)>] PaginatedEndpointList data, response status code and response headers
     def rac_endpoints_list_with_http_info(opts = {})

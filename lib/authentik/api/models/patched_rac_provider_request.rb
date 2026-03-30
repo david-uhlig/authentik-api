@@ -58,7 +58,7 @@ module Authentik::Api
         :'authentication_flow' => :'String',
         :'authorization_flow' => :'String',
         :'property_mappings' => :'Array<String>',
-        :'settings' => :'Hash<String, Object>',
+        :'settings' => :'Object',
         :'connection_expiry' => :'String',
         :'delete_token_on_disconnect' => :'Boolean'
       }
@@ -68,6 +68,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
+        :'settings',
       ])
     end
 
@@ -106,9 +107,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'settings')
-        if (value = attributes[:'settings']).is_a?(Hash)
-          self.settings = value
-        end
+        self.settings = attributes[:'settings']
       end
 
       if attributes.key?(:'connection_expiry')

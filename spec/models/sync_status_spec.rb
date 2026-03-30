@@ -27,13 +27,7 @@ describe Authentik::Api::SyncStatus do
     end
   end
 
-  describe 'test attribute "last_successful_sync"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "last_sync_status"' do
+  describe 'test attribute "tasks"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

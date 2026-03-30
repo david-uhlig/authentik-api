@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # User source connection
+  # Kerberos Source Serializer
   class UserKerberosSourceConnectionRequest < ApiModelBase
     attr_accessor :user
 

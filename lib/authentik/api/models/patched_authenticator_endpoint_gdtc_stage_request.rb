@@ -49,7 +49,7 @@ module Authentik::Api
         :'flow_set' => :'Array<FlowSetRequest>',
         :'configure_flow' => :'String',
         :'friendly_name' => :'String',
-        :'credentials' => :'Hash<String, Object>'
+        :'credentials' => :'Object'
       }
     end
 
@@ -57,6 +57,8 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'configure_flow',
+        :'friendly_name',
+        :'credentials'
       ])
     end
 
@@ -95,9 +97,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
-        end
+        self.credentials = attributes[:'credentials']
       end
     end
 
@@ -110,6 +110,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
+      if !@friendly_name.nil? && @friendly_name.to_s.length < 1
+        invalid_properties.push('invalid value for "friendly_name", the character length must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -118,6 +122,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@name.nil? && @name.to_s.length < 1
+      return false if !@friendly_name.nil? && @friendly_name.to_s.length < 1
       true
     end
 
@@ -133,6 +138,16 @@ module Authentik::Api
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] friendly_name Value to be assigned
+    def friendly_name=(friendly_name)
+      if !friendly_name.nil? && friendly_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "friendly_name", the character length must be greater than or equal to 1.'
+      end
+
+      @friendly_name = friendly_name
     end
 
     # Checks equality by comparing each attribute.

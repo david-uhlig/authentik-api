@@ -8,9 +8,9 @@
 | **provider** | **Integer** |  |  |
 | **protocol** | [**ProtocolEnum**](ProtocolEnum.md) |  |  |
 | **host** | **String** |  |  |
-| **settings** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **settings** | **Object** |  | [optional] |
 | **property_mappings** | **Array&lt;String&gt;** |  | [optional] |
-| **auth_mode** | [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  |  |
+| **auth_mode** | [**AuthModeEnum**](AuthModeEnum.md) |  |  |
 | **maximum_connections** | **Integer** |  | [optional] |
 
 ## Example

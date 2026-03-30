@@ -73,7 +73,7 @@ module Authentik::Api
         :'flow_set' => :'Array<FlowSet>',
         :'configure_flow' => :'String',
         :'friendly_name' => :'String',
-        :'credentials' => :'Hash<String, Object>'
+        :'credentials' => :'Object'
       }
     end
 
@@ -81,6 +81,8 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'configure_flow',
+        :'friendly_name',
+        :'credentials'
       ])
     end
 
@@ -151,9 +153,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
-        end
+        self.credentials = attributes[:'credentials']
       else
         self.credentials = nil
       end
@@ -188,10 +188,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "meta_model_name", meta_model_name cannot be nil.')
       end
 
-      if @credentials.nil?
-        invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -205,7 +201,6 @@ module Authentik::Api
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
-      return false if @credentials.nil?
       true
     end
 
@@ -267,16 +262,6 @@ module Authentik::Api
       end
 
       @meta_model_name = meta_model_name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] credentials Value to be assigned
-    def credentials=(credentials)
-      if credentials.nil?
-        fail ArgumentError, 'credentials cannot be nil'
-      end
-
-      @credentials = credentials
     end
 
     # Checks equality by comparing each attribute.

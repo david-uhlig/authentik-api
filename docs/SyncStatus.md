@@ -4,9 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **is_running** | **Boolean** |  |  |
-| **last_successful_sync** | **Time** |  | [optional] |
-| **last_sync_status** | [**TaskAggregatedStatusEnum**](TaskAggregatedStatusEnum.md) |  | [optional] |
+| **is_running** | **Boolean** |  | [readonly] |
+| **tasks** | [**Array&lt;SystemTask&gt;**](SystemTask.md) |  | [readonly] |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::SyncStatus.new(
   is_running: null,
-  last_successful_sync: null,
-  last_sync_status: null
+  tasks: null
 )
 ```
 

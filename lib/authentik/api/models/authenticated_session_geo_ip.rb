@@ -55,10 +55,6 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'continent',
-        :'country',
-        :'lat',
-        :'long',
       ])
     end
 
@@ -114,6 +110,22 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @continent.nil?
+        invalid_properties.push('invalid value for "continent", continent cannot be nil.')
+      end
+
+      if @country.nil?
+        invalid_properties.push('invalid value for "country", country cannot be nil.')
+      end
+
+      if @lat.nil?
+        invalid_properties.push('invalid value for "lat", lat cannot be nil.')
+      end
+
+      if @long.nil?
+        invalid_properties.push('invalid value for "long", long cannot be nil.')
+      end
+
       if @city.nil?
         invalid_properties.push('invalid value for "city", city cannot be nil.')
       end
@@ -125,8 +137,52 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @continent.nil?
+      return false if @country.nil?
+      return false if @lat.nil?
+      return false if @long.nil?
       return false if @city.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] continent Value to be assigned
+    def continent=(continent)
+      if continent.nil?
+        fail ArgumentError, 'continent cannot be nil'
+      end
+
+      @continent = continent
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] country Value to be assigned
+    def country=(country)
+      if country.nil?
+        fail ArgumentError, 'country cannot be nil'
+      end
+
+      @country = country
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] lat Value to be assigned
+    def lat=(lat)
+      if lat.nil?
+        fail ArgumentError, 'lat cannot be nil'
+      end
+
+      @lat = lat
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] long Value to be assigned
+    def long=(long)
+      if long.nil?
+        fail ArgumentError, 'long cannot be nil'
+      end
+
+      @long = long
     end
 
     # Custom attribute writer method with validation

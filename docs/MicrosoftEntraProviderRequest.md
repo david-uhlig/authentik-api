@@ -14,7 +14,6 @@
 | **filter_group** | **String** |  | [optional] |
 | **user_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **group_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
-| **dry_run** | **Boolean** | When enabled, provider will not modify or create objects in the remote system. | [optional] |
 
 ## Example
 
@@ -31,8 +30,7 @@ instance = Authentik::Api::MicrosoftEntraProviderRequest.new(
   exclude_users_service_account: null,
   filter_group: null,
   user_delete_action: null,
-  group_delete_action: null,
-  dry_run: null
+  group_delete_action: null
 )
 ```
 

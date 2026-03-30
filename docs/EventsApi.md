@@ -1,6 +1,6 @@
 # Authentik::Api::EventsApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -9,6 +9,7 @@ All URIs are relative to */api/v3*
 | [**events_events_destroy**](EventsApi.md#events_events_destroy) | **DELETE** /events/events/{event_uuid}/ |  |
 | [**events_events_list**](EventsApi.md#events_events_list) | **GET** /events/events/ |  |
 | [**events_events_partial_update**](EventsApi.md#events_events_partial_update) | **PATCH** /events/events/{event_uuid}/ |  |
+| [**events_events_per_month_list**](EventsApi.md#events_events_per_month_list) | **GET** /events/events/per_month/ |  |
 | [**events_events_retrieve**](EventsApi.md#events_events_retrieve) | **GET** /events/events/{event_uuid}/ |  |
 | [**events_events_top_per_user_list**](EventsApi.md#events_events_top_per_user_list) | **GET** /events/events/top_per_user/ |  |
 | [**events_events_update**](EventsApi.md#events_events_update) | **PUT** /events/events/{event_uuid}/ |  |
@@ -27,6 +28,9 @@ All URIs are relative to */api/v3*
 | [**events_rules_retrieve**](EventsApi.md#events_rules_retrieve) | **GET** /events/rules/{pbm_uuid}/ |  |
 | [**events_rules_update**](EventsApi.md#events_rules_update) | **PUT** /events/rules/{pbm_uuid}/ |  |
 | [**events_rules_used_by_list**](EventsApi.md#events_rules_used_by_list) | **GET** /events/rules/{pbm_uuid}/used_by/ |  |
+| [**events_system_tasks_list**](EventsApi.md#events_system_tasks_list) | **GET** /events/system_tasks/ |  |
+| [**events_system_tasks_retrieve**](EventsApi.md#events_system_tasks_retrieve) | **GET** /events/system_tasks/{uuid}/ |  |
+| [**events_system_tasks_run_create**](EventsApi.md#events_system_tasks_run_create) | **POST** /events/system_tasks/{uuid}/run/ |  |
 | [**events_transports_create**](EventsApi.md#events_transports_create) | **POST** /events/transports/ |  |
 | [**events_transports_destroy**](EventsApi.md#events_transports_destroy) | **DELETE** /events/transports/{uuid}/ |  |
 | [**events_transports_list**](EventsApi.md#events_transports_list) | **GET** /events/transports/ |  |
@@ -262,7 +266,6 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  actions: ['authorize_application'], # Array<String> | 
   brand_name: 'brand_name_example', # String | Brand name
   client_ip: 'client_ip_example', # String | 
   context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
@@ -308,7 +311,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **brand_name** | **String** | Brand name | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **context_authorized_app** | **String** | Context Authorized application | [optional] |
@@ -405,6 +407,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## events_events_per_month_list
+
+> <Array<Coordinate>> events_events_per_month_list(opts)
+
+
+
+Get the count of events per month
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EventsApi.new
+opts = {
+  action: 'action_example', # String | 
+  query: 'query_example' # String | 
+}
+
+begin
+  
+  result = api_instance.events_events_per_month_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_events_per_month_list: #{e}"
+end
+```
+
+#### Using the events_events_per_month_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Coordinate>>, Integer, Hash)> events_events_per_month_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.events_events_per_month_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Coordinate>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_events_per_month_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | **String** |  | [optional] |
+| **query** | **String** |  | [optional] |
+
+### Return type
+
+[**Array&lt;Coordinate&gt;**](Coordinate.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -623,7 +698,7 @@ end
 
 ## events_events_volume_list
 
-> <Array<EventVolume>> events_events_volume_list(opts)
+> <Array<Coordinate>> events_events_volume_list(opts)
 
 
 
@@ -643,14 +718,12 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  actions: ['authorize_application'], # Array<String> | 
   brand_name: 'brand_name_example', # String | Brand name
   client_ip: 'client_ip_example', # String | 
   context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
   context_model_app: 'context_model_app_example', # String | Context Model App
   context_model_name: 'context_model_name_example', # String | Context Model Name
   context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
-  history_days: 8.14, # Float | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   search: 'search_example', # String | A search term.
   username: 'username_example' # String | Username
@@ -669,7 +742,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<EventVolume>>, Integer, Hash)> events_events_volume_list_with_http_info(opts)
+> <Array(<Array<Coordinate>>, Integer, Hash)> events_events_volume_list_with_http_info(opts)
 
 ```ruby
 begin
@@ -677,7 +750,7 @@ begin
   data, status_code, headers = api_instance.events_events_volume_list_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Array<EventVolume>>
+  p data # => <Array<Coordinate>>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling EventsApi->events_events_volume_list_with_http_info: #{e}"
 end
@@ -688,21 +761,19 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **brand_name** | **String** | Brand name | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **context_authorized_app** | **String** | Context Authorized application | [optional] |
 | **context_model_app** | **String** | Context Model App | [optional] |
 | **context_model_name** | **String** | Context Model Name | [optional] |
 | **context_model_pk** | **String** | Context Model Primary Key | [optional] |
-| **history_days** | **Float** |  | [optional][default to 7] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **username** | **String** | Username | [optional] |
 
 ### Return type
 
-[**Array&lt;EventVolume&gt;**](EventVolume.md)
+[**Array&lt;Coordinate&gt;**](Coordinate.md)
 
 ### Authorization
 
@@ -1378,7 +1449,7 @@ end
 
 api_instance = Authentik::Api::EventsApi.new
 opts = {
-  destination_group__name: 'destination_group__name_example', # String | 
+  group__name: 'group__name_example', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -1418,7 +1489,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **destination_group__name** | **String** |  | [optional] |
+| **group__name** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -1711,6 +1782,226 @@ end
 ### Return type
 
 [**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## events_system_tasks_list
+
+> <PaginatedSystemTaskList> events_system_tasks_list(opts)
+
+
+
+Read-only view set that returns all background tasks
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EventsApi.new
+opts = {
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  status: 'error', # String | 
+  uid: 'uid_example' # String | 
+}
+
+begin
+  
+  result = api_instance.events_system_tasks_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_list: #{e}"
+end
+```
+
+#### Using the events_system_tasks_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedSystemTaskList>, Integer, Hash)> events_system_tasks_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.events_system_tasks_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedSystemTaskList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **status** | **String** |  | [optional] |
+| **uid** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedSystemTaskList**](PaginatedSystemTaskList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## events_system_tasks_retrieve
+
+> <SystemTask> events_system_tasks_retrieve(uuid)
+
+
+
+Read-only view set that returns all background tasks
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EventsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this System Task.
+
+begin
+  
+  result = api_instance.events_system_tasks_retrieve(uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_retrieve: #{e}"
+end
+```
+
+#### Using the events_system_tasks_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<SystemTask>, Integer, Hash)> events_system_tasks_retrieve_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.events_system_tasks_retrieve_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <SystemTask>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this System Task. |  |
+
+### Return type
+
+[**SystemTask**](SystemTask.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## events_system_tasks_run_create
+
+> events_system_tasks_run_create(uuid)
+
+
+
+Run task
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EventsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this System Task.
+
+begin
+  
+  api_instance.events_system_tasks_run_create(uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_run_create: #{e}"
+end
+```
+
+#### Using the events_system_tasks_run_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> events_system_tasks_run_create_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.events_system_tasks_run_create_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EventsApi->events_system_tasks_run_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this System Task. |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

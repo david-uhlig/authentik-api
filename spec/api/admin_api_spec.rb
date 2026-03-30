@@ -36,6 +36,16 @@ describe 'AdminApi' do
     end
   end
 
+  # unit tests for admin_metrics_retrieve
+  # Login Metrics per 1h
+  # @param [Hash] opts the optional parameters
+  # @return [LoginMetrics]
+  describe 'admin_metrics_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for admin_models_list
   # Read-only view list all installed models
   # @param [Hash] opts the optional parameters
@@ -69,8 +79,8 @@ describe 'AdminApi' do
 
   # unit tests for admin_settings_update
   # Settings view
-  # @param settings_request 
   # @param [Hash] opts the optional parameters
+  # @option opts [SettingsRequest] :settings_request 
   # @return [Settings]
   describe 'admin_settings_update test' do
     it 'should work' do
@@ -128,6 +138,16 @@ describe 'AdminApi' do
   # @param [Hash] opts the optional parameters
   # @return [Version]
   describe 'admin_version_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for admin_workers_list
+  # Get currently connected worker count.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Worker>]
+  describe 'admin_workers_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

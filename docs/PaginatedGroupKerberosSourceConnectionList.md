@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **pagination** | [**Pagination**](Pagination.md) |  |  |
 | **results** | [**Array&lt;GroupKerberosSourceConnection&gt;**](GroupKerberosSourceConnection.md) |  |  |
-| **autocomplete** | **Hash&lt;String, Object&gt;** |  |  |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::PaginatedGroupKerberosSourceConnectionList.new(
   pagination: null,
-  results: null,
-  autocomplete: null
+  results: null
 )
 ```
 

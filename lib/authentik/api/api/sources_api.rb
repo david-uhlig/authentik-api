@@ -13,7 +13,7 @@ module Authentik::Api
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
-    # Prevent deletion of built-in sources
+    # Source Viewset
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -22,7 +22,7 @@ module Authentik::Api
       nil
     end
 
-    # Prevent deletion of built-in sources
+    # Source Viewset
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -530,468 +530,6 @@ module Authentik::Api
     end
 
     # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_group_connections_all_destroy(id, opts = {})
-      sources_group_connections_all_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_group_connections_all_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [PaginatedGroupSourceConnectionList]
-    def sources_group_connections_all_list(opts = {})
-      data, _status_code, _headers = sources_group_connections_all_list_with_http_info(opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [Array<(PaginatedGroupSourceConnectionList, Integer, Hash)>] PaginatedGroupSourceConnectionList data, response status code and response headers
-    def sources_group_connections_all_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_list ...'
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedGroupSourceConnectionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupSourceConnectionRequest] :patched_group_source_connection_request 
-    # @return [GroupSourceConnection]
-    def sources_group_connections_all_partial_update(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_all_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupSourceConnectionRequest] :patched_group_source_connection_request 
-    # @return [Array<(GroupSourceConnection, Integer, Hash)>] GroupSourceConnection data, response status code and response headers
-    def sources_group_connections_all_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_group_source_connection_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [GroupSourceConnection]
-    def sources_group_connections_all_retrieve(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_all_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupSourceConnection, Integer, Hash)>] GroupSourceConnection data, response status code and response headers
-    def sources_group_connections_all_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param group_source_connection_request [GroupSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupSourceConnection]
-    def sources_group_connections_all_update(id, group_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_all_update_with_http_info(id, group_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param group_source_connection_request [GroupSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupSourceConnection, Integer, Hash)>] GroupSourceConnection data, response status code and response headers
-    def sources_group_connections_all_update_with_http_info(id, group_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_update"
-      end
-      # verify the required parameter 'group_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_source_connection_request' when calling SourcesApi.sources_group_connections_all_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_group_connections_all_used_by_list(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_all_used_by_list_with_http_info(id, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this group source connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_group_connections_all_used_by_list_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_all_used_by_list ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/all/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_all_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_all_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param group_kerberos_source_connection_request [GroupKerberosSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupKerberosSourceConnection]
-    def sources_group_connections_kerberos_create(group_kerberos_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_kerberos_create_with_http_info(group_kerberos_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param group_kerberos_source_connection_request [GroupKerberosSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupKerberosSourceConnection, Integer, Hash)>] GroupKerberosSourceConnection data, response status code and response headers
-    def sources_group_connections_kerberos_create_with_http_info(group_kerberos_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_kerberos_create ...'
-      end
-      # verify the required parameter 'group_kerberos_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_kerberos_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_kerberos_source_connection_request' when calling SourcesApi.sources_group_connections_kerberos_create"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/kerberos/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_kerberos_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupKerberosSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_kerberos_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_kerberos_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
     # @param id [Integer] A unique integer value identifying this Group Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -1383,468 +921,6 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_kerberos_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param group_ldap_source_connection_request [GroupLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupLDAPSourceConnection]
-    def sources_group_connections_ldap_create(group_ldap_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_create_with_http_info(group_ldap_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param group_ldap_source_connection_request [GroupLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupLDAPSourceConnection, Integer, Hash)>] GroupLDAPSourceConnection data, response status code and response headers
-    def sources_group_connections_ldap_create_with_http_info(group_ldap_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_create ...'
-      end
-      # verify the required parameter 'group_ldap_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_ldap_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_ldap_source_connection_request' when calling SourcesApi.sources_group_connections_ldap_create"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_ldap_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_group_connections_ldap_destroy(id, opts = {})
-      sources_group_connections_ldap_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_group_connections_ldap_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [PaginatedGroupLDAPSourceConnectionList]
-    def sources_group_connections_ldap_list(opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_list_with_http_info(opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [Array<(PaginatedGroupLDAPSourceConnectionList, Integer, Hash)>] PaginatedGroupLDAPSourceConnectionList data, response status code and response headers
-    def sources_group_connections_ldap_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_list ...'
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedGroupLDAPSourceConnectionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupLDAPSourceConnectionRequest] :patched_group_ldap_source_connection_request 
-    # @return [GroupLDAPSourceConnection]
-    def sources_group_connections_ldap_partial_update(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupLDAPSourceConnectionRequest] :patched_group_ldap_source_connection_request 
-    # @return [Array<(GroupLDAPSourceConnection, Integer, Hash)>] GroupLDAPSourceConnection data, response status code and response headers
-    def sources_group_connections_ldap_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_group_ldap_source_connection_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [GroupLDAPSourceConnection]
-    def sources_group_connections_ldap_retrieve(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupLDAPSourceConnection, Integer, Hash)>] GroupLDAPSourceConnection data, response status code and response headers
-    def sources_group_connections_ldap_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param group_ldap_source_connection_request [GroupLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupLDAPSourceConnection]
-    def sources_group_connections_ldap_update(id, group_ldap_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_update_with_http_info(id, group_ldap_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param group_ldap_source_connection_request [GroupLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupLDAPSourceConnection, Integer, Hash)>] GroupLDAPSourceConnection data, response status code and response headers
-    def sources_group_connections_ldap_update_with_http_info(id, group_ldap_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_update"
-      end
-      # verify the required parameter 'group_ldap_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_ldap_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_ldap_source_connection_request' when calling SourcesApi.sources_group_connections_ldap_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_ldap_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_group_connections_ldap_used_by_list(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_ldap_used_by_list_with_http_info(id, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this Group LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_group_connections_ldap_used_by_list_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_ldap_used_by_list ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_ldap_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_ldap_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2774,72 +1850,6 @@ module Authentik::Api
     end
 
     # Group-source connection Viewset
-    # @param group_saml_source_connection_request [GroupSAMLSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupSAMLSourceConnection]
-    def sources_group_connections_saml_create(group_saml_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_saml_create_with_http_info(group_saml_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param group_saml_source_connection_request [GroupSAMLSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupSAMLSourceConnection, Integer, Hash)>] GroupSAMLSourceConnection data, response status code and response headers
-    def sources_group_connections_saml_create_with_http_info(group_saml_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_saml_create ...'
-      end
-      # verify the required parameter 'group_saml_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_saml_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_saml_source_connection_request' when calling SourcesApi.sources_group_connections_saml_create"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/saml/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_saml_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupSAMLSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_saml_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_saml_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
     # @param id [Integer] A unique integer value identifying this Group SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -3235,468 +2245,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Group-source connection Viewset
-    # @param group_telegram_source_connection_request [GroupTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupTelegramSourceConnection]
-    def sources_group_connections_telegram_create(group_telegram_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_create_with_http_info(group_telegram_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param group_telegram_source_connection_request [GroupTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupTelegramSourceConnection, Integer, Hash)>] GroupTelegramSourceConnection data, response status code and response headers
-    def sources_group_connections_telegram_create_with_http_info(group_telegram_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_create ...'
-      end
-      # verify the required parameter 'group_telegram_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_telegram_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_telegram_source_connection_request' when calling SourcesApi.sources_group_connections_telegram_create"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_telegram_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_group_connections_telegram_destroy(id, opts = {})
-      sources_group_connections_telegram_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_group_connections_telegram_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [PaginatedGroupTelegramSourceConnectionList]
-    def sources_group_connections_telegram_list(opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_list_with_http_info(opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :group 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @return [Array<(PaginatedGroupTelegramSourceConnectionList, Integer, Hash)>] PaginatedGroupTelegramSourceConnectionList data, response status code and response headers
-    def sources_group_connections_telegram_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_list ...'
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedGroupTelegramSourceConnectionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupTelegramSourceConnectionRequest] :patched_group_telegram_source_connection_request 
-    # @return [GroupTelegramSourceConnection]
-    def sources_group_connections_telegram_partial_update(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedGroupTelegramSourceConnectionRequest] :patched_group_telegram_source_connection_request 
-    # @return [Array<(GroupTelegramSourceConnection, Integer, Hash)>] GroupTelegramSourceConnection data, response status code and response headers
-    def sources_group_connections_telegram_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_group_telegram_source_connection_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [GroupTelegramSourceConnection]
-    def sources_group_connections_telegram_retrieve(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupTelegramSourceConnection, Integer, Hash)>] GroupTelegramSourceConnection data, response status code and response headers
-    def sources_group_connections_telegram_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param group_telegram_source_connection_request [GroupTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [GroupTelegramSourceConnection]
-    def sources_group_connections_telegram_update(id, group_telegram_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_update_with_http_info(id, group_telegram_source_connection_request, opts)
-      data
-    end
-
-    # Group-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param group_telegram_source_connection_request [GroupTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(GroupTelegramSourceConnection, Integer, Hash)>] GroupTelegramSourceConnection data, response status code and response headers
-    def sources_group_connections_telegram_update_with_http_info(id, group_telegram_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_update"
-      end
-      # verify the required parameter 'group_telegram_source_connection_request' is set
-      if @api_client.config.client_side_validation && group_telegram_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'group_telegram_source_connection_request' when calling SourcesApi.sources_group_connections_telegram_update"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(group_telegram_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'GroupTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_group_connections_telegram_used_by_list(id, opts = {})
-      data, _status_code, _headers = sources_group_connections_telegram_used_by_list_with_http_info(id, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this Group Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_group_connections_telegram_used_by_list_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_group_connections_telegram_used_by_list ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_group_connections_telegram_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_group_connections_telegram_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Kerberos Source Viewset
     # @param kerberos_source_request [KerberosSourceRequest] 
     # @param [Hash] opts the optional parameters
@@ -4057,19 +2605,19 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Get provider's sync status
+    # Get source's sync status
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
-    # @return [SyncStatus]
+    # @return [KerberosSyncStatus]
     def sources_kerberos_sync_status_retrieve(slug, opts = {})
       data, _status_code, _headers = sources_kerberos_sync_status_retrieve_with_http_info(slug, opts)
       data
     end
 
-    # Get provider&#39;s sync status
+    # Get source&#39;s sync status
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(SyncStatus, Integer, Hash)>] SyncStatus data, response status code and response headers
+    # @return [Array<(KerberosSyncStatus, Integer, Hash)>] KerberosSyncStatus data, response status code and response headers
     def sources_kerberos_sync_status_retrieve_with_http_info(slug, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_kerberos_sync_status_retrieve ...'
@@ -4096,7 +2644,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'SyncStatus'
+      return_type = opts[:debug_return_type] || 'KerberosSyncStatus'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -4446,12 +2994,10 @@ module Authentik::Api
     # @option opts [String] :base_dn 
     # @option opts [String] :bind_cn 
     # @option opts [String] :client_certificate 
-    # @option opts [Boolean] :delete_not_found_objects 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :group_membership_field 
     # @option opts [String] :group_object_filter 
     # @option opts [Array<String>] :group_property_mappings 
-    # @option opts [Boolean] :lookup_groups_from_user 
     # @option opts [String] :name 
     # @option opts [String] :object_uniqueness_field 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -4469,7 +3015,6 @@ module Authentik::Api
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
     # @option opts [Boolean] :sync_users_password 
-    # @option opts [String] :user_membership_attribute 
     # @option opts [String] :user_object_filter 
     # @option opts [Array<String>] :user_property_mappings 
     # @return [PaginatedLDAPSourceList]
@@ -4485,12 +3030,10 @@ module Authentik::Api
     # @option opts [String] :base_dn 
     # @option opts [String] :bind_cn 
     # @option opts [String] :client_certificate 
-    # @option opts [Boolean] :delete_not_found_objects 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :group_membership_field 
     # @option opts [String] :group_object_filter 
     # @option opts [Array<String>] :group_property_mappings 
-    # @option opts [Boolean] :lookup_groups_from_user 
     # @option opts [String] :name 
     # @option opts [String] :object_uniqueness_field 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -4508,7 +3051,6 @@ module Authentik::Api
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
     # @option opts [Boolean] :sync_users_password 
-    # @option opts [String] :user_membership_attribute 
     # @option opts [String] :user_object_filter 
     # @option opts [Array<String>] :user_property_mappings 
     # @return [Array<(PaginatedLDAPSourceList, Integer, Hash)>] PaginatedLDAPSourceList data, response status code and response headers
@@ -4526,12 +3068,10 @@ module Authentik::Api
       query_params[:'base_dn'] = opts[:'base_dn'] if !opts[:'base_dn'].nil?
       query_params[:'bind_cn'] = opts[:'bind_cn'] if !opts[:'bind_cn'].nil?
       query_params[:'client_certificate'] = opts[:'client_certificate'] if !opts[:'client_certificate'].nil?
-      query_params[:'delete_not_found_objects'] = opts[:'delete_not_found_objects'] if !opts[:'delete_not_found_objects'].nil?
       query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
       query_params[:'group_membership_field'] = opts[:'group_membership_field'] if !opts[:'group_membership_field'].nil?
       query_params[:'group_object_filter'] = opts[:'group_object_filter'] if !opts[:'group_object_filter'].nil?
       query_params[:'group_property_mappings'] = @api_client.build_collection_param(opts[:'group_property_mappings'], :multi) if !opts[:'group_property_mappings'].nil?
-      query_params[:'lookup_groups_from_user'] = opts[:'lookup_groups_from_user'] if !opts[:'lookup_groups_from_user'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'object_uniqueness_field'] = opts[:'object_uniqueness_field'] if !opts[:'object_uniqueness_field'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
@@ -4549,7 +3089,6 @@ module Authentik::Api
       query_params[:'sync_parent_group'] = opts[:'sync_parent_group'] if !opts[:'sync_parent_group'].nil?
       query_params[:'sync_users'] = opts[:'sync_users'] if !opts[:'sync_users'].nil?
       query_params[:'sync_users_password'] = opts[:'sync_users_password'] if !opts[:'sync_users_password'].nil?
-      query_params[:'user_membership_attribute'] = opts[:'user_membership_attribute'] if !opts[:'user_membership_attribute'].nil?
       query_params[:'user_object_filter'] = opts[:'user_object_filter'] if !opts[:'user_object_filter'].nil?
       query_params[:'user_property_mappings'] = @api_client.build_collection_param(opts[:'user_property_mappings'], :multi) if !opts[:'user_property_mappings'].nil?
 
@@ -4716,7 +3255,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Get provider's sync status
+    # Get source's sync status
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [SyncStatus]
@@ -4725,7 +3264,7 @@ module Authentik::Api
       data
     end
 
-    # Get provider&#39;s sync status
+    # Get source&#39;s sync status
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(SyncStatus, Integer, Hash)>] SyncStatus data, response status code and response headers
@@ -6271,8 +4810,6 @@ module Authentik::Api
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
     # @option opts [String] :signature_algorithm 
-    # @option opts [Boolean] :signed_assertion 
-    # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
     # @option opts [String] :slo_url 
     # @option opts [String] :slug 
@@ -6306,8 +4843,6 @@ module Authentik::Api
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
     # @option opts [String] :signature_algorithm 
-    # @option opts [Boolean] :signed_assertion 
-    # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
     # @option opts [String] :slo_url 
     # @option opts [String] :slug 
@@ -6328,7 +4863,7 @@ module Authentik::Api
       if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
         fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
       end
-      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
+      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
       if @api_client.config.client_side_validation && opts[:'name_id_policy'] && !allowable_values.include?(opts[:'name_id_policy'])
         fail ArgumentError, "invalid value for \"name_id_policy\", must be one of #{allowable_values}"
       end
@@ -6367,8 +4902,6 @@ module Authentik::Api
       query_params[:'pre_authentication_flow'] = opts[:'pre_authentication_flow'] if !opts[:'pre_authentication_flow'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'signature_algorithm'] = opts[:'signature_algorithm'] if !opts[:'signature_algorithm'].nil?
-      query_params[:'signed_assertion'] = opts[:'signed_assertion'] if !opts[:'signed_assertion'].nil?
-      query_params[:'signed_response'] = opts[:'signed_response'] if !opts[:'signed_response'].nil?
       query_params[:'signing_kp'] = opts[:'signing_kp'] if !opts[:'signing_kp'].nil?
       query_params[:'slo_url'] = opts[:'slo_url'] if !opts[:'slo_url'].nil?
       query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
@@ -8129,507 +6662,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param telegram_source_request [TelegramSourceRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [TelegramSource]
-    def sources_telegram_create(telegram_source_request, opts = {})
-      data, _status_code, _headers = sources_telegram_create_with_http_info(telegram_source_request, opts)
-      data
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param telegram_source_request [TelegramSourceRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(TelegramSource, Integer, Hash)>] TelegramSource data, response status code and response headers
-    def sources_telegram_create_with_http_info(telegram_source_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_create ...'
-      end
-      # verify the required parameter 'telegram_source_request' is set
-      if @api_client.config.client_side_validation && telegram_source_request.nil?
-        fail ArgumentError, "Missing the required parameter 'telegram_source_request' when calling SourcesApi.sources_telegram_create"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(telegram_source_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'TelegramSource'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_telegram_destroy(slug, opts = {})
-      sources_telegram_destroy_with_http_info(slug, opts)
-      nil
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_telegram_destroy_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_destroy ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authentication_flow 
-    # @option opts [String] :bot_username 
-    # @option opts [Boolean] :enabled 
-    # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
-    # @option opts [String] :name 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
-    # @option opts [Boolean] :request_message_access 
-    # @option opts [String] :search A search term.
-    # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
-    # @return [PaginatedTelegramSourceList]
-    def sources_telegram_list(opts = {})
-      data, _status_code, _headers = sources_telegram_list_with_http_info(opts)
-      data
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :authentication_flow 
-    # @option opts [String] :bot_username 
-    # @option opts [Boolean] :enabled 
-    # @option opts [String] :enrollment_flow 
-    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
-    # @option opts [String] :name 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :pbm_uuid 
-    # @option opts [String] :policy_engine_mode 
-    # @option opts [Boolean] :request_message_access 
-    # @option opts [String] :search A search term.
-    # @option opts [String] :slug 
-    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
-    # @return [Array<(PaginatedTelegramSourceList, Integer, Hash)>] PaginatedTelegramSourceList data, response status code and response headers
-    def sources_telegram_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_list ...'
-      end
-      allowable_values = ["identifier", "name_deny", "name_link"]
-      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
-        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["all", "any"]
-      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
-        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
-      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
-        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'authentication_flow'] = opts[:'authentication_flow'] if !opts[:'authentication_flow'].nil?
-      query_params[:'bot_username'] = opts[:'bot_username'] if !opts[:'bot_username'].nil?
-      query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
-      query_params[:'enrollment_flow'] = opts[:'enrollment_flow'] if !opts[:'enrollment_flow'].nil?
-      query_params[:'group_matching_mode'] = opts[:'group_matching_mode'] if !opts[:'group_matching_mode'].nil?
-      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'pbm_uuid'] = opts[:'pbm_uuid'] if !opts[:'pbm_uuid'].nil?
-      query_params[:'policy_engine_mode'] = opts[:'policy_engine_mode'] if !opts[:'policy_engine_mode'].nil?
-      query_params[:'request_message_access'] = opts[:'request_message_access'] if !opts[:'request_message_access'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
-      query_params[:'user_matching_mode'] = opts[:'user_matching_mode'] if !opts[:'user_matching_mode'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedTelegramSourceList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedTelegramSourceRequest] :patched_telegram_source_request 
-    # @return [TelegramSource]
-    def sources_telegram_partial_update(slug, opts = {})
-      data, _status_code, _headers = sources_telegram_partial_update_with_http_info(slug, opts)
-      data
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedTelegramSourceRequest] :patched_telegram_source_request 
-    # @return [Array<(TelegramSource, Integer, Hash)>] TelegramSource data, response status code and response headers
-    def sources_telegram_partial_update_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_partial_update ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_telegram_source_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'TelegramSource'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [TelegramSource]
-    def sources_telegram_retrieve(slug, opts = {})
-      data, _status_code, _headers = sources_telegram_retrieve_with_http_info(slug, opts)
-      data
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(TelegramSource, Integer, Hash)>] TelegramSource data, response status code and response headers
-    def sources_telegram_retrieve_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_retrieve ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'TelegramSource'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param telegram_source_request [TelegramSourceRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [TelegramSource]
-    def sources_telegram_update(slug, telegram_source_request, opts = {})
-      data, _status_code, _headers = sources_telegram_update_with_http_info(slug, telegram_source_request, opts)
-      data
-    end
-
-    # Mixin to add a used_by endpoint to return a list of all objects using this object
-    # @param slug [String] 
-    # @param telegram_source_request [TelegramSourceRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(TelegramSource, Integer, Hash)>] TelegramSource data, response status code and response headers
-    def sources_telegram_update_with_http_info(slug, telegram_source_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_update ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_update"
-      end
-      # verify the required parameter 'telegram_source_request' is set
-      if @api_client.config.client_side_validation && telegram_source_request.nil?
-        fail ArgumentError, "Missing the required parameter 'telegram_source_request' when calling SourcesApi.sources_telegram_update"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(telegram_source_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'TelegramSource'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_telegram_used_by_list(slug, opts = {})
-      data, _status_code, _headers = sources_telegram_used_by_list_with_http_info(slug, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param slug [String] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_telegram_used_by_list_with_http_info(slug, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_used_by_list ...'
-      end
-      # verify the required parameter 'slug' is set
-      if @api_client.config.client_side_validation && slug.nil?
-        fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/telegram/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_telegram_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_telegram_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # User-source connection Viewset
     # @param id [Integer] A unique integer value identifying this user source connection.
     # @param [Hash] opts the optional parameters
@@ -9026,7 +7058,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_kerberos_source_connection_request [UserKerberosSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [UserKerberosSourceConnection]
@@ -9035,7 +7067,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_kerberos_source_connection_request [UserKerberosSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserKerberosSourceConnection, Integer, Hash)>] UserKerberosSourceConnection data, response status code and response headers
@@ -9092,7 +7124,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -9101,7 +7133,7 @@ module Authentik::Api
       nil
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -9153,28 +7185,26 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
     # @return [PaginatedUserKerberosSourceConnectionList]
     def sources_user_connections_kerberos_list(opts = {})
       data, _status_code, _headers = sources_user_connections_kerberos_list_with_http_info(opts)
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
     # @return [Array<(PaginatedUserKerberosSourceConnectionList, Integer, Hash)>] PaginatedUserKerberosSourceConnectionList data, response status code and response headers
     def sources_user_connections_kerberos_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -9190,7 +7220,6 @@ module Authentik::Api
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-      query_params[:'user'] = opts[:'user'] if !opts[:'user'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -9226,7 +7255,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserKerberosSourceConnectionRequest] :patched_user_kerberos_source_connection_request 
@@ -9236,7 +7265,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserKerberosSourceConnectionRequest] :patched_user_kerberos_source_connection_request 
@@ -9294,7 +7323,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [UserKerberosSourceConnection]
@@ -9303,7 +7332,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserKerberosSourceConnection, Integer, Hash)>] UserKerberosSourceConnection data, response status code and response headers
@@ -9355,7 +7384,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param user_kerberos_source_connection_request [UserKerberosSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -9365,7 +7394,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User Kerberos Source Connection.
     # @param user_kerberos_source_connection_request [UserKerberosSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -9488,469 +7517,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
-    # @param user_ldap_source_connection_request [UserLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [UserLDAPSourceConnection]
-    def sources_user_connections_ldap_create(user_ldap_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_create_with_http_info(user_ldap_source_connection_request, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param user_ldap_source_connection_request [UserLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserLDAPSourceConnection, Integer, Hash)>] UserLDAPSourceConnection data, response status code and response headers
-    def sources_user_connections_ldap_create_with_http_info(user_ldap_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_create ...'
-      end
-      # verify the required parameter 'user_ldap_source_connection_request' is set
-      if @api_client.config.client_side_validation && user_ldap_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'user_ldap_source_connection_request' when calling SourcesApi.sources_user_connections_ldap_create"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_ldap_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_user_connections_ldap_destroy(id, opts = {})
-      sources_user_connections_ldap_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_user_connections_ldap_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
-    # @return [PaginatedUserLDAPSourceConnectionList]
-    def sources_user_connections_ldap_list(opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_list_with_http_info(opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
-    # @return [Array<(PaginatedUserLDAPSourceConnectionList, Integer, Hash)>] PaginatedUserLDAPSourceConnectionList data, response status code and response headers
-    def sources_user_connections_ldap_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_list ...'
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-      query_params[:'user'] = opts[:'user'] if !opts[:'user'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedUserLDAPSourceConnectionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedUserLDAPSourceConnectionRequest] :patched_user_ldap_source_connection_request 
-    # @return [UserLDAPSourceConnection]
-    def sources_user_connections_ldap_partial_update(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedUserLDAPSourceConnectionRequest] :patched_user_ldap_source_connection_request 
-    # @return [Array<(UserLDAPSourceConnection, Integer, Hash)>] UserLDAPSourceConnection data, response status code and response headers
-    def sources_user_connections_ldap_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_user_ldap_source_connection_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [UserLDAPSourceConnection]
-    def sources_user_connections_ldap_retrieve(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserLDAPSourceConnection, Integer, Hash)>] UserLDAPSourceConnection data, response status code and response headers
-    def sources_user_connections_ldap_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param user_ldap_source_connection_request [UserLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [UserLDAPSourceConnection]
-    def sources_user_connections_ldap_update(id, user_ldap_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_update_with_http_info(id, user_ldap_source_connection_request, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param user_ldap_source_connection_request [UserLDAPSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserLDAPSourceConnection, Integer, Hash)>] UserLDAPSourceConnection data, response status code and response headers
-    def sources_user_connections_ldap_update_with_http_info(id, user_ldap_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_update"
-      end
-      # verify the required parameter 'user_ldap_source_connection_request' is set
-      if @api_client.config.client_side_validation && user_ldap_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'user_ldap_source_connection_request' when calling SourcesApi.sources_user_connections_ldap_update"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_ldap_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserLDAPSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_user_connections_ldap_used_by_list(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_ldap_used_by_list_with_http_info(id, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this User LDAP Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_user_connections_ldap_used_by_list_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_ldap_used_by_list ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_ldap_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_ldap_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_o_auth_source_connection_request [UserOAuthSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [UserOAuthSourceConnection]
@@ -9959,7 +7526,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_o_auth_source_connection_request [UserOAuthSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserOAuthSourceConnection, Integer, Hash)>] UserOAuthSourceConnection data, response status code and response headers
@@ -10016,7 +7583,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -10025,7 +7592,7 @@ module Authentik::Api
       nil
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -10077,7 +7644,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -10091,7 +7658,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -10150,7 +7717,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserOAuthSourceConnectionRequest] :patched_user_o_auth_source_connection_request 
@@ -10160,7 +7727,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserOAuthSourceConnectionRequest] :patched_user_o_auth_source_connection_request 
@@ -10218,7 +7785,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [UserOAuthSourceConnection]
@@ -10227,7 +7794,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserOAuthSourceConnection, Integer, Hash)>] UserOAuthSourceConnection data, response status code and response headers
@@ -10279,7 +7846,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param user_o_auth_source_connection_request [UserOAuthSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -10289,7 +7856,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User OAuth Source Connection.
     # @param user_o_auth_source_connection_request [UserOAuthSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -10412,7 +7979,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param user_plex_source_connection_request [UserPlexSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [UserPlexSourceConnection]
@@ -10421,7 +7988,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param user_plex_source_connection_request [UserPlexSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserPlexSourceConnection, Integer, Hash)>] UserPlexSourceConnection data, response status code and response headers
@@ -10478,7 +8045,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -10487,7 +8054,7 @@ module Authentik::Api
       nil
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -10539,7 +8106,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -10553,7 +8120,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -10612,7 +8179,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserPlexSourceConnectionRequest] :patched_user_plex_source_connection_request 
@@ -10622,7 +8189,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserPlexSourceConnectionRequest] :patched_user_plex_source_connection_request 
@@ -10680,7 +8247,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [UserPlexSourceConnection]
@@ -10689,7 +8256,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserPlexSourceConnection, Integer, Hash)>] UserPlexSourceConnection data, response status code and response headers
@@ -10741,7 +8308,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param user_plex_source_connection_request [UserPlexSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -10751,7 +8318,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Plex Source connection Serializer
     # @param id [Integer] A unique integer value identifying this User Plex Source Connection.
     # @param user_plex_source_connection_request [UserPlexSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -10874,7 +8441,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_saml_source_connection_request [UserSAMLSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [UserSAMLSourceConnection]
@@ -10883,7 +8450,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param user_saml_source_connection_request [UserSAMLSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserSAMLSourceConnection, Integer, Hash)>] UserSAMLSourceConnection data, response status code and response headers
@@ -10940,7 +8507,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [nil]
@@ -10949,7 +8516,7 @@ module Authentik::Api
       nil
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
@@ -11001,7 +8568,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -11015,7 +8582,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -11074,7 +8641,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserSAMLSourceConnectionRequest] :patched_user_saml_source_connection_request 
@@ -11084,7 +8651,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @option opts [PatchedUserSAMLSourceConnectionRequest] :patched_user_saml_source_connection_request 
@@ -11142,7 +8709,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [UserSAMLSourceConnection]
@@ -11151,7 +8718,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param [Hash] opts the optional parameters
     # @return [Array<(UserSAMLSourceConnection, Integer, Hash)>] UserSAMLSourceConnection data, response status code and response headers
@@ -11203,7 +8770,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param user_saml_source_connection_request [UserSAMLSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -11213,7 +8780,7 @@ module Authentik::Api
       data
     end
 
-    # User-source connection Viewset
+    # Source Viewset
     # @param id [Integer] A unique integer value identifying this User SAML Source Connection.
     # @param user_saml_source_connection_request [UserSAMLSourceConnectionRequest] 
     # @param [Hash] opts the optional parameters
@@ -11332,468 +8899,6 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_saml_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param user_telegram_source_connection_request [UserTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [UserTelegramSourceConnection]
-    def sources_user_connections_telegram_create(user_telegram_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_create_with_http_info(user_telegram_source_connection_request, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param user_telegram_source_connection_request [UserTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
-    def sources_user_connections_telegram_create_with_http_info(user_telegram_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_create ...'
-      end
-      # verify the required parameter 'user_telegram_source_connection_request' is set
-      if @api_client.config.client_side_validation && user_telegram_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'user_telegram_source_connection_request' when calling SourcesApi.sources_user_connections_telegram_create"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_telegram_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def sources_user_connections_telegram_destroy(id, opts = {})
-      sources_user_connections_telegram_destroy_with_http_info(id, opts)
-      nil
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def sources_user_connections_telegram_destroy_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_destroy ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_destroy"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
-    # @return [PaginatedUserTelegramSourceConnectionList]
-    def sources_user_connections_telegram_list(opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_list_with_http_info(opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :source__slug 
-    # @option opts [Integer] :user 
-    # @return [Array<(PaginatedUserTelegramSourceConnectionList, Integer, Hash)>] PaginatedUserTelegramSourceConnectionList data, response status code and response headers
-    def sources_user_connections_telegram_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_list ...'
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'source__slug'] = opts[:'source__slug'] if !opts[:'source__slug'].nil?
-      query_params[:'user'] = opts[:'user'] if !opts[:'user'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedUserTelegramSourceConnectionList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedUserTelegramSourceConnectionRequest] :patched_user_telegram_source_connection_request 
-    # @return [UserTelegramSourceConnection]
-    def sources_user_connections_telegram_partial_update(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_partial_update_with_http_info(id, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedUserTelegramSourceConnectionRequest] :patched_user_telegram_source_connection_request 
-    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
-    def sources_user_connections_telegram_partial_update_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_partial_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_partial_update"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_user_telegram_source_connection_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [UserTelegramSourceConnection]
-    def sources_user_connections_telegram_retrieve(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_retrieve_with_http_info(id, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
-    def sources_user_connections_telegram_retrieve_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_retrieve ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_retrieve"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param user_telegram_source_connection_request [UserTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [UserTelegramSourceConnection]
-    def sources_user_connections_telegram_update(id, user_telegram_source_connection_request, opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_update_with_http_info(id, user_telegram_source_connection_request, opts)
-      data
-    end
-
-    # User-source connection Viewset
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param user_telegram_source_connection_request [UserTelegramSourceConnectionRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(UserTelegramSourceConnection, Integer, Hash)>] UserTelegramSourceConnection data, response status code and response headers
-    def sources_user_connections_telegram_update_with_http_info(id, user_telegram_source_connection_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_update ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_update"
-      end
-      # verify the required parameter 'user_telegram_source_connection_request' is set
-      if @api_client.config.client_side_validation && user_telegram_source_connection_request.nil?
-        fail ArgumentError, "Missing the required parameter 'user_telegram_source_connection_request' when calling SourcesApi.sources_user_connections_telegram_update"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_telegram_source_connection_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'UserTelegramSourceConnection'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def sources_user_connections_telegram_used_by_list(id, opts = {})
-      data, _status_code, _headers = sources_user_connections_telegram_used_by_list_with_http_info(id, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param id [Integer] A unique integer value identifying this User Telegram Source Connection.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def sources_user_connections_telegram_used_by_list_with_http_info(id, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: SourcesApi.sources_user_connections_telegram_used_by_list ...'
-      end
-      # verify the required parameter 'id' is set
-      if @api_client.config.client_side_validation && id.nil?
-        fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_used_by_list"
-      end
-      # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"SourcesApi.sources_user_connections_telegram_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: SourcesApi#sources_user_connections_telegram_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

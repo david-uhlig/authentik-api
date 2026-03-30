@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Group Source Connection
+  # Plex Group-Source connection Serializer
   class GroupPlexSourceConnectionRequest < ApiModelBase
     attr_accessor :group
 

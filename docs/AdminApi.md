@@ -1,10 +1,11 @@
 # Authentik::Api::AdminApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**admin_apps_list**](AdminApi.md#admin_apps_list) | **GET** /admin/apps/ |  |
+| [**admin_metrics_retrieve**](AdminApi.md#admin_metrics_retrieve) | **GET** /admin/metrics/ |  |
 | [**admin_models_list**](AdminApi.md#admin_models_list) | **GET** /admin/models/ |  |
 | [**admin_settings_partial_update**](AdminApi.md#admin_settings_partial_update) | **PATCH** /admin/settings/ |  |
 | [**admin_settings_retrieve**](AdminApi.md#admin_settings_retrieve) | **GET** /admin/settings/ |  |
@@ -14,6 +15,7 @@ All URIs are relative to */api/v3*
 | [**admin_version_history_list**](AdminApi.md#admin_version_history_list) | **GET** /admin/version/history/ |  |
 | [**admin_version_history_retrieve**](AdminApi.md#admin_version_history_retrieve) | **GET** /admin/version/history/{id}/ |  |
 | [**admin_version_retrieve**](AdminApi.md#admin_version_retrieve) | **GET** /admin/version/ |  |
+| [**admin_workers_list**](AdminApi.md#admin_workers_list) | **GET** /admin/workers/ |  |
 
 
 ## admin_apps_list
@@ -71,6 +73,72 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Array&lt;App&gt;**](App.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## admin_metrics_retrieve
+
+> <LoginMetrics> admin_metrics_retrieve
+
+
+
+Login Metrics per 1h
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+
+begin
+  
+  result = api_instance.admin_metrics_retrieve
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_metrics_retrieve: #{e}"
+end
+```
+
+#### Using the admin_metrics_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<LoginMetrics>, Integer, Hash)> admin_metrics_retrieve_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_metrics_retrieve_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <LoginMetrics>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_metrics_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**LoginMetrics**](LoginMetrics.md)
 
 ### Authorization
 
@@ -287,7 +355,7 @@ This endpoint does not need any parameter.
 
 ## admin_settings_update
 
-> <Settings> admin_settings_update(settings_request)
+> <Settings> admin_settings_update(opts)
 
 
 
@@ -305,11 +373,13 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AdminApi.new
-settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({policies_buffered_access_view: false, flows_refresh_others: false})}) # SettingsRequest | 
+opts = {
+  settings_request: Authentik::Api::SettingsRequest.new # SettingsRequest | 
+}
 
 begin
   
-  result = api_instance.admin_settings_update(settings_request)
+  result = api_instance.admin_settings_update(opts)
   p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AdminApi->admin_settings_update: #{e}"
@@ -320,12 +390,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Settings>, Integer, Hash)> admin_settings_update_with_http_info(settings_request)
+> <Array(<Settings>, Integer, Hash)> admin_settings_update_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.admin_settings_update_with_http_info(settings_request)
+  data, status_code, headers = api_instance.admin_settings_update_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Settings>
@@ -338,7 +408,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **settings_request** | [**SettingsRequest**](SettingsRequest.md) |  |  |
+| **settings_request** | [**SettingsRequest**](SettingsRequest.md) |  | [optional] |
 
 ### Return type
 
@@ -687,6 +757,72 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**Version**](Version.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## admin_workers_list
+
+> <Array<Worker>> admin_workers_list
+
+
+
+Get currently connected worker count.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AdminApi.new
+
+begin
+  
+  result = api_instance.admin_workers_list
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_workers_list: #{e}"
+end
+```
+
+#### Using the admin_workers_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Worker>>, Integer, Hash)> admin_workers_list_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.admin_workers_list_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Worker>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AdminApi->admin_workers_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Array&lt;Worker&gt;**](Worker.md)
 
 ### Authorization
 

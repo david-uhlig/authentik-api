@@ -26,89 +26,6 @@ describe 'RbacApi' do
     end
   end
 
-  # unit tests for rbac_initial_permissions_create
-  # InitialPermissions viewset
-  # @param initial_permissions_request 
-  # @param [Hash] opts the optional parameters
-  # @return [InitialPermissions]
-  describe 'rbac_initial_permissions_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_destroy
-  # InitialPermissions viewset
-  # @param id A unique integer value identifying this Initial Permissions.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'rbac_initial_permissions_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_list
-  # InitialPermissions viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :name 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @return [PaginatedInitialPermissionsList]
-  describe 'rbac_initial_permissions_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_partial_update
-  # InitialPermissions viewset
-  # @param id A unique integer value identifying this Initial Permissions.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedInitialPermissionsRequest] :patched_initial_permissions_request 
-  # @return [InitialPermissions]
-  describe 'rbac_initial_permissions_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_retrieve
-  # InitialPermissions viewset
-  # @param id A unique integer value identifying this Initial Permissions.
-  # @param [Hash] opts the optional parameters
-  # @return [InitialPermissions]
-  describe 'rbac_initial_permissions_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_update
-  # InitialPermissions viewset
-  # @param id A unique integer value identifying this Initial Permissions.
-  # @param initial_permissions_request 
-  # @param [Hash] opts the optional parameters
-  # @return [InitialPermissions]
-  describe 'rbac_initial_permissions_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rbac_initial_permissions_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this Initial Permissions.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'rbac_initial_permissions_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for rbac_permissions_assigned_by_roles_assign
   # Assign permission(s) to role. When &#x60;object_pk&#x60; is set, the permissions are only assigned to the specific object, otherwise they are assigned globally.
   # @param uuid A UUID string identifying this Role.
@@ -366,7 +283,7 @@ describe 'RbacApi' do
   # unit tests for rbac_roles_list
   # Role viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :name 
+  # @option opts [String] :group__name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.

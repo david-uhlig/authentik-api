@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Serializer for authenticator devices
+  # Serializer for Duo authenticator devices
   class Device < ApiModelBase
     # Return object's verbose_name
     attr_accessor :verbose_name
@@ -37,9 +37,6 @@ module Authentik::Api
     # Get extra description
     attr_accessor :extra_description
 
-    # Get external Device ID
-    attr_accessor :external_id
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -53,8 +50,7 @@ module Authentik::Api
         :'created' => :'created',
         :'last_updated' => :'last_updated',
         :'last_used' => :'last_used',
-        :'extra_description' => :'extra_description',
-        :'external_id' => :'external_id'
+        :'extra_description' => :'extra_description'
       }
     end
 
@@ -81,8 +77,7 @@ module Authentik::Api
         :'created' => :'Time',
         :'last_updated' => :'Time',
         :'last_used' => :'Time',
-        :'extra_description' => :'String',
-        :'external_id' => :'String'
+        :'extra_description' => :'String'
       }
     end
 
@@ -90,8 +85,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'last_used',
-        :'extra_description',
-        :'external_id'
       ])
     end
 
@@ -176,12 +169,6 @@ module Authentik::Api
       else
         self.extra_description = nil
       end
-
-      if attributes.key?(:'external_id')
-        self.external_id = attributes[:'external_id']
-      else
-        self.external_id = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -225,6 +212,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
       end
 
+      if @extra_description.nil?
+        invalid_properties.push('invalid value for "extra_description", extra_description cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -241,6 +232,7 @@ module Authentik::Api
       return false if @confirmed.nil?
       return false if @created.nil?
       return false if @last_updated.nil?
+      return false if @extra_description.nil?
       true
     end
 
@@ -334,6 +326,16 @@ module Authentik::Api
       @last_updated = last_updated
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] extra_description Value to be assigned
+    def extra_description=(extra_description)
+      if extra_description.nil?
+        fail ArgumentError, 'extra_description cannot be nil'
+      end
+
+      @extra_description = extra_description
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -349,8 +351,7 @@ module Authentik::Api
           created == o.created &&
           last_updated == o.last_updated &&
           last_used == o.last_used &&
-          extra_description == o.extra_description &&
-          external_id == o.external_id
+          extra_description == o.extra_description
     end
 
     # @see the `==` method
@@ -362,7 +363,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [verbose_name, verbose_name_plural, meta_model_name, pk, name, type, confirmed, created, last_updated, last_used, extra_description, external_id].hash
+      [verbose_name, verbose_name_plural, meta_model_name, pk, name, type, confirmed, created, last_updated, last_used, extra_description].hash
     end
 
     # Builds the object from hash

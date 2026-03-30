@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
 | **path** | **String** |  | [optional][default to &#39;&#39;] |
-| **context** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **context** | **Object** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **content** | **String** |  | [optional] |
 

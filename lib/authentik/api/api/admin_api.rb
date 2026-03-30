@@ -68,6 +68,61 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Login Metrics per 1h
+    # @param [Hash] opts the optional parameters
+    # @return [LoginMetrics]
+    def admin_metrics_retrieve(opts = {})
+      data, _status_code, _headers = admin_metrics_retrieve_with_http_info(opts)
+      data
+    end
+
+    # Login Metrics per 1h
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(LoginMetrics, Integer, Hash)>] LoginMetrics data, response status code and response headers
+    def admin_metrics_retrieve_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_metrics_retrieve ...'
+      end
+      # resource path
+      local_var_path = '/admin/metrics/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LoginMetrics'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_metrics_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_metrics_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Read-only view list all installed models
     # @param [Hash] opts the optional parameters
     # @return [Array<App>]
@@ -241,25 +296,21 @@ module Authentik::Api
     end
 
     # Settings view
-    # @param settings_request [SettingsRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [SettingsRequest] :settings_request 
     # @return [Settings]
-    def admin_settings_update(settings_request, opts = {})
-      data, _status_code, _headers = admin_settings_update_with_http_info(settings_request, opts)
+    def admin_settings_update(opts = {})
+      data, _status_code, _headers = admin_settings_update_with_http_info(opts)
       data
     end
 
     # Settings view
-    # @param settings_request [SettingsRequest] 
     # @param [Hash] opts the optional parameters
+    # @option opts [SettingsRequest] :settings_request 
     # @return [Array<(Settings, Integer, Hash)>] Settings data, response status code and response headers
-    def admin_settings_update_with_http_info(settings_request, opts = {})
+    def admin_settings_update_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AdminApi.admin_settings_update ...'
-      end
-      # verify the required parameter 'settings_request' is set
-      if @api_client.config.client_side_validation && settings_request.nil?
-        fail ArgumentError, "Missing the required parameter 'settings_request' when calling AdminApi.admin_settings_update"
       end
       # resource path
       local_var_path = '/admin/settings/'
@@ -281,7 +332,7 @@ module Authentik::Api
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(settings_request)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'settings_request'])
 
       # return_type
       return_type = opts[:debug_return_type] || 'Settings'
@@ -595,6 +646,61 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AdminApi#admin_version_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get currently connected worker count.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Worker>]
+    def admin_workers_list(opts = {})
+      data, _status_code, _headers = admin_workers_list_with_http_info(opts)
+      data
+    end
+
+    # Get currently connected worker count.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Worker>, Integer, Hash)>] Array<Worker> data, response status code and response headers
+    def admin_workers_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_workers_list ...'
+      end
+      # resource path
+      local_var_path = '/admin/workers/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Worker>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"AdminApi.admin_workers_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_workers_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

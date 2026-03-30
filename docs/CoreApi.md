@@ -1,6 +1,6 @@
 # Authentik::Api::CoreApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -15,6 +15,7 @@ All URIs are relative to */api/v3*
 | [**core_applications_create**](CoreApi.md#core_applications_create) | **POST** /core/applications/ |  |
 | [**core_applications_destroy**](CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ |  |
 | [**core_applications_list**](CoreApi.md#core_applications_list) | **GET** /core/applications/ |  |
+| [**core_applications_metrics_list**](CoreApi.md#core_applications_metrics_list) | **GET** /core/applications/{slug}/metrics/ |  |
 | [**core_applications_partial_update**](CoreApi.md#core_applications_partial_update) | **PATCH** /core/applications/{slug}/ |  |
 | [**core_applications_retrieve**](CoreApi.md#core_applications_retrieve) | **GET** /core/applications/{slug}/ |  |
 | [**core_applications_set_icon_create**](CoreApi.md#core_applications_set_icon_create) | **POST** /core/applications/{slug}/set_icon/ |  |
@@ -62,6 +63,7 @@ All URIs are relative to */api/v3*
 | [**core_users_impersonate_end_retrieve**](CoreApi.md#core_users_impersonate_end_retrieve) | **GET** /core/users/impersonate_end/ |  |
 | [**core_users_list**](CoreApi.md#core_users_list) | **GET** /core/users/ |  |
 | [**core_users_me_retrieve**](CoreApi.md#core_users_me_retrieve) | **GET** /core/users/me/ |  |
+| [**core_users_metrics_retrieve**](CoreApi.md#core_users_metrics_retrieve) | **GET** /core/users/{id}/metrics/ |  |
 | [**core_users_partial_update**](CoreApi.md#core_users_partial_update) | **PATCH** /core/users/{id}/ |  |
 | [**core_users_paths_retrieve**](CoreApi.md#core_users_paths_retrieve) | **GET** /core/users/paths/ |  |
 | [**core_users_recovery_create**](CoreApi.md#core_users_recovery_create) | **POST** /core/users/{id}/recovery/ |  |
@@ -880,6 +882,75 @@ end
 - **Accept**: application/json
 
 
+## core_applications_metrics_list
+
+> <Array<Coordinate>> core_applications_metrics_list(slug)
+
+
+
+Metrics for application logins
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+slug = 'slug_example' # String | 
+
+begin
+  
+  result = api_instance.core_applications_metrics_list(slug)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_metrics_list: #{e}"
+end
+```
+
+#### Using the core_applications_metrics_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<Coordinate>>, Integer, Hash)> core_applications_metrics_list_with_http_info(slug)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_applications_metrics_list_with_http_info(slug)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<Coordinate>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_metrics_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **slug** | **String** |  |  |
+
+### Return type
+
+[**Array&lt;Coordinate&gt;**](Coordinate.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## core_applications_partial_update
 
 > <Application> core_applications_partial_update(slug, opts)
@@ -1326,7 +1397,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::CoreApi.new
-uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Authenticated Session.
 
 begin
   
@@ -1358,7 +1429,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  |  |
+| **uuid** | **String** | A UUID string identifying this Authenticated Session. |  |
 
 ### Return type
 
@@ -1395,12 +1466,12 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
+  last_ip: 'last_ip_example', # String | 
+  last_user_agent: 'last_user_agent_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
-  session__last_ip: 'session__last_ip_example', # String | 
-  session__last_user_agent: 'session__last_user_agent_example', # String | 
   user__username: 'user__username_example' # String | 
 }
 
@@ -1435,12 +1506,12 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **last_ip** | **String** |  | [optional] |
+| **last_user_agent** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **session__last_ip** | **String** |  | [optional] |
-| **session__last_user_agent** | **String** |  | [optional] |
 | **user__username** | **String** |  | [optional] |
 
 ### Return type
@@ -1477,7 +1548,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::CoreApi.new
-uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Authenticated Session.
 
 begin
   
@@ -1510,7 +1581,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  |  |
+| **uuid** | **String** | A UUID string identifying this Authenticated Session. |  |
 
 ### Return type
 
@@ -1546,7 +1617,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::CoreApi.new
-uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Authenticated Session.
 
 begin
   
@@ -1579,7 +1650,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **uuid** | **String** |  |  |
+| **uuid** | **String** | A UUID string identifying this Authenticated Session. |  |
 
 ### Return type
 
@@ -1820,11 +1891,9 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   brand_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  branding_default_flow_background: 'branding_default_flow_background_example', # String | 
   branding_favicon: 'branding_favicon_example', # String | 
   branding_logo: 'branding_logo_example', # String | 
   branding_title: 'branding_title_example', # String | 
-  client_certificates: ['inner_example'], # Array<String> | 
   default: true, # Boolean | 
   domain: 'domain_example', # String | 
   flow_authentication: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -1872,11 +1941,9 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **brand_uuid** | **String** |  | [optional] |
-| **branding_default_flow_background** | **String** |  | [optional] |
 | **branding_favicon** | **String** |  | [optional] |
 | **branding_logo** | **String** |  | [optional] |
 | **branding_title** | **String** |  | [optional] |
-| **client_certificates** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **default** | **Boolean** |  | [optional] |
 | **domain** | **String** |  | [optional] |
 | **flow_authentication** | **String** |  | [optional] |
@@ -2416,7 +2483,6 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   attributes: 'attributes_example', # String | Attributes
-  include_children: true, # Boolean | 
   include_users: true, # Boolean | 
   is_superuser: true, # Boolean | 
   members_by_pk: [37], # Array<Integer> | 
@@ -2460,7 +2526,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **attributes** | **String** | Attributes | [optional] |
-| **include_children** | **Boolean** |  | [optional][default to false] |
 | **include_users** | **Boolean** |  | [optional][default to true] |
 | **is_superuser** | **Boolean** |  | [optional] |
 | **members_by_pk** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
@@ -2564,7 +2629,7 @@ end
 
 
 
-Remove user from group
+Add user to group
 
 ### Examples
 
@@ -2650,7 +2715,6 @@ end
 api_instance = Authentik::Api::CoreApi.new
 group_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Group.
 opts = {
-  include_children: true, # Boolean | 
   include_users: true # Boolean | 
 }
 
@@ -2686,7 +2750,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **group_uuid** | **String** | A UUID string identifying this Group. |  |
-| **include_children** | **Boolean** |  | [optional][default to false] |
 | **include_users** | **Boolean** |  | [optional][default to true] |
 
 ### Return type
@@ -3512,7 +3575,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::CoreApi.new
-transaction_application_request = Authentik::Api::TransactionApplicationRequest.new({app: Authentik::Api::ApplicationRequest.new({name: 'name_example', slug: 'slug_example'}), provider_model: Authentik::Api::ProviderModelEnum::AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER, provider: Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: { key: 3.56}, default_group_email_domain: 'default_group_email_domain_example'})}) # TransactionApplicationRequest | 
+transaction_application_request = Authentik::Api::TransactionApplicationRequest.new({app: Authentik::Api::ApplicationRequest.new({name: 'name_example', slug: 'slug_example'}), provider_model: Authentik::Api::ProviderModelEnum::AUTHENTIK_PROVIDERS_GOOGLE_WORKSPACE_GOOGLEWORKSPACEPROVIDER, provider: Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: 3.56, default_group_email_domain: 'default_group_email_domain_example'})}) # TransactionApplicationRequest | 
 
 begin
   
@@ -4142,18 +4205,12 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   attributes: 'attributes_example', # String | Attributes
-  date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
-  date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
-  date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   email: 'email_example', # String | 
   groups_by_name: ['inner_example'], # Array<String> | 
   groups_by_pk: ['inner_example'], # Array<String> | 
   include_groups: true, # Boolean | 
   is_active: true, # Boolean | 
   is_superuser: true, # Boolean | 
-  last_updated: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
-  last_updated__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
-  last_updated__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -4198,18 +4255,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **attributes** | **String** | Attributes | [optional] |
-| **date_joined** | **Time** |  | [optional] |
-| **date_joined__gt** | **Time** |  | [optional] |
-| **date_joined__lt** | **Time** |  | [optional] |
 | **email** | **String** |  | [optional] |
 | **groups_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **groups_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **include_groups** | **Boolean** |  | [optional][default to true] |
 | **is_active** | **Boolean** |  | [optional] |
 | **is_superuser** | **Boolean** |  | [optional] |
-| **last_updated** | **Time** |  | [optional] |
-| **last_updated__gt** | **Time** |  | [optional] |
-| **last_updated__lt** | **Time** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -4290,6 +4341,75 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**SessionUser**](SessionUser.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_users_metrics_retrieve
+
+> <UserMetrics> core_users_metrics_retrieve(id)
+
+
+
+User metrics per 1h
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+id = 56 # Integer | A unique integer value identifying this User.
+
+begin
+  
+  result = api_instance.core_users_metrics_retrieve(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_metrics_retrieve: #{e}"
+end
+```
+
+#### Using the core_users_metrics_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserMetrics>, Integer, Hash)> core_users_metrics_retrieve_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_metrics_retrieve_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserMetrics>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_metrics_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this User. |  |
+
+### Return type
+
+[**UserMetrics**](UserMetrics.md)
 
 ### Authorization
 
@@ -4395,7 +4515,7 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  search: 'search_example' # String | A search term.
+  search: 'search_example' # String | 
 }
 
 begin
@@ -4429,7 +4549,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **search** | **String** | A search term. | [optional] |
+| **search** | **String** |  | [optional] |
 
 ### Return type
 
@@ -4451,7 +4571,7 @@ end
 
 
 
-Create a temporary link that a user can use to recover their account
+Create a temporary link that a user can use to recover their accounts
 
 ### Examples
 
@@ -4520,7 +4640,7 @@ end
 
 
 
-Send an email with a temporary link that a user can use to recover their account
+Create a temporary link that a user can use to recover their accounts
 
 ### Examples
 

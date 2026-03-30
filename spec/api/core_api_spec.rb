@@ -168,6 +168,17 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_applications_metrics_list
+  # Metrics for application logins
+  # @param slug 
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Coordinate>]
+  describe 'core_applications_metrics_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_applications_partial_update
   # Application Viewset
   # @param slug 
@@ -241,7 +252,7 @@ describe 'CoreApi' do
 
   # unit tests for core_authenticated_sessions_destroy
   # AuthenticatedSession Viewset
-  # @param uuid 
+  # @param uuid A UUID string identifying this Authenticated Session.
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'core_authenticated_sessions_destroy test' do
@@ -253,12 +264,12 @@ describe 'CoreApi' do
   # unit tests for core_authenticated_sessions_list
   # AuthenticatedSession Viewset
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :last_ip 
+  # @option opts [String] :last_user_agent 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
-  # @option opts [String] :session__last_ip 
-  # @option opts [String] :session__last_user_agent 
   # @option opts [String] :user__username 
   # @return [PaginatedAuthenticatedSessionList]
   describe 'core_authenticated_sessions_list test' do
@@ -269,7 +280,7 @@ describe 'CoreApi' do
 
   # unit tests for core_authenticated_sessions_retrieve
   # AuthenticatedSession Viewset
-  # @param uuid 
+  # @param uuid A UUID string identifying this Authenticated Session.
   # @param [Hash] opts the optional parameters
   # @return [AuthenticatedSession]
   describe 'core_authenticated_sessions_retrieve test' do
@@ -280,7 +291,7 @@ describe 'CoreApi' do
 
   # unit tests for core_authenticated_sessions_used_by_list
   # Get a list of all objects that use this object
-  # @param uuid 
+  # @param uuid A UUID string identifying this Authenticated Session.
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'core_authenticated_sessions_used_by_list test' do
@@ -325,11 +336,9 @@ describe 'CoreApi' do
   # Brand Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :brand_uuid 
-  # @option opts [String] :branding_default_flow_background 
   # @option opts [String] :branding_favicon 
   # @option opts [String] :branding_logo 
   # @option opts [String] :branding_title 
-  # @option opts [Array<String>] :client_certificates 
   # @option opts [Boolean] :default 
   # @option opts [String] :domain 
   # @option opts [String] :flow_authentication 
@@ -434,7 +443,6 @@ describe 'CoreApi' do
   # Group Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :attributes Attributes
-  # @option opts [Boolean] :include_children 
   # @option opts [Boolean] :include_users 
   # @option opts [Boolean] :is_superuser 
   # @option opts [Array<Integer>] :members_by_pk 
@@ -464,7 +472,7 @@ describe 'CoreApi' do
   end
 
   # unit tests for core_groups_remove_user_create
-  # Remove user from group
+  # Add user to group
   # @param group_uuid A UUID string identifying this Group.
   # @param user_account_request 
   # @param [Hash] opts the optional parameters
@@ -479,7 +487,6 @@ describe 'CoreApi' do
   # Group Viewset
   # @param group_uuid A UUID string identifying this Group.
   # @param [Hash] opts the optional parameters
-  # @option opts [Boolean] :include_children 
   # @option opts [Boolean] :include_users 
   # @return [Group]
   describe 'core_groups_retrieve test' do
@@ -731,18 +738,12 @@ describe 'CoreApi' do
   # User Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :attributes Attributes
-  # @option opts [Time] :date_joined 
-  # @option opts [Time] :date_joined__gt 
-  # @option opts [Time] :date_joined__lt 
   # @option opts [String] :email 
   # @option opts [Array<String>] :groups_by_name 
   # @option opts [Array<String>] :groups_by_pk 
   # @option opts [Boolean] :include_groups 
   # @option opts [Boolean] :is_active 
   # @option opts [Boolean] :is_superuser 
-  # @option opts [Time] :last_updated 
-  # @option opts [Time] :last_updated__gt 
-  # @option opts [Time] :last_updated__lt 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -770,6 +771,17 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_users_metrics_retrieve
+  # User metrics per 1h
+  # @param id A unique integer value identifying this User.
+  # @param [Hash] opts the optional parameters
+  # @return [UserMetrics]
+  describe 'core_users_metrics_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_users_partial_update
   # User Viewset
   # @param id A unique integer value identifying this User.
@@ -785,7 +797,7 @@ describe 'CoreApi' do
   # unit tests for core_users_paths_retrieve
   # Get all user paths
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :search A search term.
+  # @option opts [String] :search 
   # @return [UserPath]
   describe 'core_users_paths_retrieve test' do
     it 'should work' do
@@ -794,7 +806,7 @@ describe 'CoreApi' do
   end
 
   # unit tests for core_users_recovery_create
-  # Create a temporary link that a user can use to recover their account
+  # Create a temporary link that a user can use to recover their accounts
   # @param id A unique integer value identifying this User.
   # @param [Hash] opts the optional parameters
   # @return [Link]
@@ -805,7 +817,7 @@ describe 'CoreApi' do
   end
 
   # unit tests for core_users_recovery_email_create
-  # Send an email with a temporary link that a user can use to recover their account
+  # Create a temporary link that a user can use to recover their accounts
   # @param email_stage 
   # @param id A unique integer value identifying this User.
   # @param [Hash] opts the optional parameters

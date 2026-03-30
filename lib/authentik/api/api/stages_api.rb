@@ -4192,7 +4192,6 @@ module Authentik::Api
     # @option opts [String] :configure_flow 
     # @option opts [Array<String>] :device_type_restrictions 
     # @option opts [String] :friendly_name 
-    # @option opts [Integer] :max_attempts 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -4213,7 +4212,6 @@ module Authentik::Api
     # @option opts [String] :configure_flow 
     # @option opts [Array<String>] :device_type_restrictions 
     # @option opts [String] :friendly_name 
-    # @option opts [Integer] :max_attempts 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -4248,7 +4246,6 @@ module Authentik::Api
       query_params[:'configure_flow'] = opts[:'configure_flow'] if !opts[:'configure_flow'].nil?
       query_params[:'device_type_restrictions'] = @api_client.build_collection_param(opts[:'device_type_restrictions'], :multi) if !opts[:'device_type_restrictions'].nil?
       query_params[:'friendly_name'] = opts[:'friendly_name'] if !opts[:'friendly_name'].nil?
-      query_params[:'max_attempts'] = opts[:'max_attempts'] if !opts[:'max_attempts'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -6559,7 +6556,7 @@ module Authentik::Api
     # @option opts [String] :subject 
     # @option opts [String] :template 
     # @option opts [Integer] :timeout 
-    # @option opts [String] :token_expiry 
+    # @option opts [Integer] :token_expiry 
     # @option opts [Boolean] :use_global_settings 
     # @option opts [Boolean] :use_ssl 
     # @option opts [Boolean] :use_tls 
@@ -6584,7 +6581,7 @@ module Authentik::Api
     # @option opts [String] :subject 
     # @option opts [String] :template 
     # @option opts [Integer] :timeout 
-    # @option opts [String] :token_expiry 
+    # @option opts [Integer] :token_expiry 
     # @option opts [Boolean] :use_global_settings 
     # @option opts [Boolean] :use_ssl 
     # @option opts [Boolean] :use_tls 
@@ -8383,492 +8380,6 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StagesApi#stages_invitation_stages_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param mutual_tls_stage_request [MutualTLSStageRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [MutualTLSStage]
-    def stages_mtls_create(mutual_tls_stage_request, opts = {})
-      data, _status_code, _headers = stages_mtls_create_with_http_info(mutual_tls_stage_request, opts)
-      data
-    end
-
-    # MutualTLSStage Viewset
-    # @param mutual_tls_stage_request [MutualTLSStageRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(MutualTLSStage, Integer, Hash)>] MutualTLSStage data, response status code and response headers
-    def stages_mtls_create_with_http_info(mutual_tls_stage_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_create ...'
-      end
-      # verify the required parameter 'mutual_tls_stage_request' is set
-      if @api_client.config.client_side_validation && mutual_tls_stage_request.nil?
-        fail ArgumentError, "Missing the required parameter 'mutual_tls_stage_request' when calling StagesApi.stages_mtls_create"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(mutual_tls_stage_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'MutualTLSStage'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def stages_mtls_destroy(stage_uuid, opts = {})
-      stages_mtls_destroy_with_http_info(stage_uuid, opts)
-      nil
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def stages_mtls_destroy_with_http_info(stage_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_destroy ...'
-      end
-      # verify the required parameter 'stage_uuid' is set
-      if @api_client.config.client_side_validation && stage_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_destroy"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :cert_attribute 
-    # @option opts [Array<String>] :certificate_authorities 
-    # @option opts [String] :mode 
-    # @option opts [String] :name 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :stage_uuid 
-    # @option opts [String] :user_attribute 
-    # @return [PaginatedMutualTLSStageList]
-    def stages_mtls_list(opts = {})
-      data, _status_code, _headers = stages_mtls_list_with_http_info(opts)
-      data
-    end
-
-    # MutualTLSStage Viewset
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :cert_attribute 
-    # @option opts [Array<String>] :certificate_authorities 
-    # @option opts [String] :mode 
-    # @option opts [String] :name 
-    # @option opts [String] :ordering Which field to use when ordering the results.
-    # @option opts [Integer] :page A page number within the paginated result set.
-    # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :search A search term.
-    # @option opts [String] :stage_uuid 
-    # @option opts [String] :user_attribute 
-    # @return [Array<(PaginatedMutualTLSStageList, Integer, Hash)>] PaginatedMutualTLSStageList data, response status code and response headers
-    def stages_mtls_list_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_list ...'
-      end
-      allowable_values = ["common_name", "email", "subject"]
-      if @api_client.config.client_side_validation && opts[:'cert_attribute'] && !allowable_values.include?(opts[:'cert_attribute'])
-        fail ArgumentError, "invalid value for \"cert_attribute\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["optional", "required"]
-      if @api_client.config.client_side_validation && opts[:'mode'] && !allowable_values.include?(opts[:'mode'])
-        fail ArgumentError, "invalid value for \"mode\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["email", "username"]
-      if @api_client.config.client_side_validation && opts[:'user_attribute'] && !allowable_values.include?(opts[:'user_attribute'])
-        fail ArgumentError, "invalid value for \"user_attribute\", must be one of #{allowable_values}"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'cert_attribute'] = opts[:'cert_attribute'] if !opts[:'cert_attribute'].nil?
-      query_params[:'certificate_authorities'] = @api_client.build_collection_param(opts[:'certificate_authorities'], :multi) if !opts[:'certificate_authorities'].nil?
-      query_params[:'mode'] = opts[:'mode'] if !opts[:'mode'].nil?
-      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
-      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'stage_uuid'] = opts[:'stage_uuid'] if !opts[:'stage_uuid'].nil?
-      query_params[:'user_attribute'] = opts[:'user_attribute'] if !opts[:'user_attribute'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedMutualTLSStageList'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedMutualTLSStageRequest] :patched_mutual_tls_stage_request 
-    # @return [MutualTLSStage]
-    def stages_mtls_partial_update(stage_uuid, opts = {})
-      data, _status_code, _headers = stages_mtls_partial_update_with_http_info(stage_uuid, opts)
-      data
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedMutualTLSStageRequest] :patched_mutual_tls_stage_request 
-    # @return [Array<(MutualTLSStage, Integer, Hash)>] MutualTLSStage data, response status code and response headers
-    def stages_mtls_partial_update_with_http_info(stage_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_partial_update ...'
-      end
-      # verify the required parameter 'stage_uuid' is set
-      if @api_client.config.client_side_validation && stage_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_partial_update"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_mutual_tls_stage_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'MutualTLSStage'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [MutualTLSStage]
-    def stages_mtls_retrieve(stage_uuid, opts = {})
-      data, _status_code, _headers = stages_mtls_retrieve_with_http_info(stage_uuid, opts)
-      data
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(MutualTLSStage, Integer, Hash)>] MutualTLSStage data, response status code and response headers
-    def stages_mtls_retrieve_with_http_info(stage_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_retrieve ...'
-      end
-      # verify the required parameter 'stage_uuid' is set
-      if @api_client.config.client_side_validation && stage_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_retrieve"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'MutualTLSStage'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param mutual_tls_stage_request [MutualTLSStageRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [MutualTLSStage]
-    def stages_mtls_update(stage_uuid, mutual_tls_stage_request, opts = {})
-      data, _status_code, _headers = stages_mtls_update_with_http_info(stage_uuid, mutual_tls_stage_request, opts)
-      data
-    end
-
-    # MutualTLSStage Viewset
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param mutual_tls_stage_request [MutualTLSStageRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(MutualTLSStage, Integer, Hash)>] MutualTLSStage data, response status code and response headers
-    def stages_mtls_update_with_http_info(stage_uuid, mutual_tls_stage_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_update ...'
-      end
-      # verify the required parameter 'stage_uuid' is set
-      if @api_client.config.client_side_validation && stage_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_update"
-      end
-      # verify the required parameter 'mutual_tls_stage_request' is set
-      if @api_client.config.client_side_validation && mutual_tls_stage_request.nil?
-        fail ArgumentError, "Missing the required parameter 'mutual_tls_stage_request' when calling StagesApi.stages_mtls_update"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(mutual_tls_stage_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'MutualTLSStage'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def stages_mtls_used_by_list(stage_uuid, opts = {})
-      data, _status_code, _headers = stages_mtls_used_by_list_with_http_info(stage_uuid, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param stage_uuid [String] A UUID string identifying this Mutual TLS Stage.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def stages_mtls_used_by_list_with_http_info(stage_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_used_by_list ...'
-      end
-      # verify the required parameter 'stage_uuid' is set
-      if @api_client.config.client_side_validation && stage_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_used_by_list"
-      end
-      # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_mtls_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_mtls_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -11874,7 +11385,6 @@ module Authentik::Api
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remember_device 
     # @option opts [String] :remember_me_offset 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_duration 
@@ -11894,7 +11404,6 @@ module Authentik::Api
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [String] :remember_device 
     # @option opts [String] :remember_me_offset 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_duration 
@@ -11924,7 +11433,6 @@ module Authentik::Api
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'remember_device'] = opts[:'remember_device'] if !opts[:'remember_device'].nil?
       query_params[:'remember_me_offset'] = opts[:'remember_me_offset'] if !opts[:'remember_me_offset'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'session_duration'] = opts[:'session_duration'] if !opts[:'session_duration'].nil?

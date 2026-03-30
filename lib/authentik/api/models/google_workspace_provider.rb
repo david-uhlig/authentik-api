@@ -53,9 +53,6 @@ module Authentik::Api
 
     attr_accessor :default_group_email_domain
 
-    # When enabled, provider will not modify or create objects in the remote system.
-    attr_accessor :dry_run
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -98,8 +95,7 @@ module Authentik::Api
         :'filter_group' => :'filter_group',
         :'user_delete_action' => :'user_delete_action',
         :'group_delete_action' => :'group_delete_action',
-        :'default_group_email_domain' => :'default_group_email_domain',
-        :'dry_run' => :'dry_run'
+        :'default_group_email_domain' => :'default_group_email_domain'
       }
     end
 
@@ -127,22 +123,20 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'delegated_subject' => :'String',
-        :'credentials' => :'Hash<String, Object>',
+        :'credentials' => :'Object',
         :'scopes' => :'String',
         :'exclude_users_service_account' => :'Boolean',
         :'filter_group' => :'String',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
         :'group_delete_action' => :'OutgoingSyncDeleteAction',
-        :'default_group_email_domain' => :'String',
-        :'dry_run' => :'Boolean'
+        :'default_group_email_domain' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
+        :'credentials',
         :'filter_group',
       ])
     end
@@ -230,9 +224,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
-        end
+        self.credentials = attributes[:'credentials']
       else
         self.credentials = nil
       end
@@ -262,10 +254,6 @@ module Authentik::Api
       else
         self.default_group_email_domain = nil
       end
-
-      if attributes.key?(:'dry_run')
-        self.dry_run = attributes[:'dry_run']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -283,6 +271,14 @@ module Authentik::Api
 
       if @component.nil?
         invalid_properties.push('invalid value for "component", component cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
       end
 
       if @verbose_name.nil?
@@ -305,10 +301,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "delegated_subject", the character length must be smaller than or equal to 254.')
       end
 
-      if @credentials.nil?
-        invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
-      end
-
       if @default_group_email_domain.nil?
         invalid_properties.push('invalid value for "default_group_email_domain", default_group_email_domain cannot be nil.')
       end
@@ -323,12 +315,13 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @component.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @delegated_subject.nil?
       return false if @delegated_subject.to_s.length > 254
-      return false if @credentials.nil?
       return false if @default_group_email_domain.nil?
       true
     end
@@ -361,6 +354,26 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation
@@ -408,16 +421,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] credentials Value to be assigned
-    def credentials=(credentials)
-      if credentials.nil?
-        fail ArgumentError, 'credentials cannot be nil'
-      end
-
-      @credentials = credentials
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] default_group_email_domain Value to be assigned
     def default_group_email_domain=(default_group_email_domain)
       if default_group_email_domain.nil?
@@ -449,8 +452,7 @@ module Authentik::Api
           filter_group == o.filter_group &&
           user_delete_action == o.user_delete_action &&
           group_delete_action == o.group_delete_action &&
-          default_group_email_domain == o.default_group_email_domain &&
-          dry_run == o.dry_run
+          default_group_email_domain == o.default_group_email_domain
     end
 
     # @see the `==` method
@@ -462,7 +464,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain].hash
     end
 
     # Builds the object from hash

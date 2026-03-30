@@ -4,13 +4,13 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **user** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **user** | **Object** |  | [optional] |
 | **action** | [**EventActions**](EventActions.md) |  | [optional] |
 | **app** | **String** |  | [optional] |
-| **context** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **context** | **Object** |  | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **expires** | **Time** |  | [optional] |
-| **brand** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **brand** | **Object** |  | [optional] |
 
 ## Example
 

@@ -27,8 +27,6 @@ module Authentik::Api
 
     attr_accessor :device_type_restrictions
 
-    attr_accessor :max_attempts
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -61,8 +59,7 @@ module Authentik::Api
         :'user_verification' => :'user_verification',
         :'authenticator_attachment' => :'authenticator_attachment',
         :'resident_key_requirement' => :'resident_key_requirement',
-        :'device_type_restrictions' => :'device_type_restrictions',
-        :'max_attempts' => :'max_attempts'
+        :'device_type_restrictions' => :'device_type_restrictions'
       }
     end
 
@@ -86,8 +83,7 @@ module Authentik::Api
         :'user_verification' => :'UserVerificationEnum',
         :'authenticator_attachment' => :'AuthenticatorAttachmentEnum',
         :'resident_key_requirement' => :'ResidentKeyRequirementEnum',
-        :'device_type_restrictions' => :'Array<String>',
-        :'max_attempts' => :'Integer'
+        :'device_type_restrictions' => :'Array<String>'
       }
     end
 
@@ -95,6 +91,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'configure_flow',
+        :'friendly_name',
         :'authenticator_attachment',
       ])
     end
@@ -150,10 +147,6 @@ module Authentik::Api
           self.device_type_restrictions = value
         end
       end
-
-      if attributes.key?(:'max_attempts')
-        self.max_attempts = attributes[:'max_attempts']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -165,12 +158,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
-      if !@max_attempts.nil? && @max_attempts > 2147483647
-        invalid_properties.push('invalid value for "max_attempts", must be smaller than or equal to 2147483647.')
-      end
-
-      if !@max_attempts.nil? && @max_attempts < 0
-        invalid_properties.push('invalid value for "max_attempts", must be greater than or equal to 0.')
+      if !@friendly_name.nil? && @friendly_name.to_s.length < 1
+        invalid_properties.push('invalid value for "friendly_name", the character length must be greater than or equal to 1.')
       end
 
       invalid_properties
@@ -181,8 +170,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@name.nil? && @name.to_s.length < 1
-      return false if !@max_attempts.nil? && @max_attempts > 2147483647
-      return false if !@max_attempts.nil? && @max_attempts < 0
+      return false if !@friendly_name.nil? && @friendly_name.to_s.length < 1
       true
     end
 
@@ -201,21 +189,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] max_attempts Value to be assigned
-    def max_attempts=(max_attempts)
-      if max_attempts.nil?
-        fail ArgumentError, 'max_attempts cannot be nil'
+    # @param [Object] friendly_name Value to be assigned
+    def friendly_name=(friendly_name)
+      if !friendly_name.nil? && friendly_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "friendly_name", the character length must be greater than or equal to 1.'
       end
 
-      if max_attempts > 2147483647
-        fail ArgumentError, 'invalid value for "max_attempts", must be smaller than or equal to 2147483647.'
-      end
-
-      if max_attempts < 0
-        fail ArgumentError, 'invalid value for "max_attempts", must be greater than or equal to 0.'
-      end
-
-      @max_attempts = max_attempts
+      @friendly_name = friendly_name
     end
 
     # Checks equality by comparing each attribute.
@@ -230,8 +210,7 @@ module Authentik::Api
           user_verification == o.user_verification &&
           authenticator_attachment == o.authenticator_attachment &&
           resident_key_requirement == o.resident_key_requirement &&
-          device_type_restrictions == o.device_type_restrictions &&
-          max_attempts == o.max_attempts
+          device_type_restrictions == o.device_type_restrictions
     end
 
     # @see the `==` method
@@ -243,7 +222,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, device_type_restrictions, max_attempts].hash
+      [name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, device_type_restrictions].hash
     end
 
     # Builds the object from hash

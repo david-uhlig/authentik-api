@@ -45,7 +45,7 @@ module Authentik::Api
         :'name' => :'String',
         :'token_set' => :'Array<StaticDeviceToken>',
         :'pk' => :'Integer',
-        :'user' => :'PartialUser'
+        :'user' => :'GroupMember'
       }
     end
 

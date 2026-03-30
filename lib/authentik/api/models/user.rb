@@ -22,8 +22,6 @@ module Authentik::Api
 
     attr_accessor :last_login
 
-    attr_accessor :date_joined
-
     attr_accessor :is_superuser
 
     attr_accessor :groups
@@ -46,8 +44,6 @@ module Authentik::Api
     attr_accessor :uuid
 
     attr_accessor :password_change_date
-
-    attr_accessor :last_updated
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -79,7 +75,6 @@ module Authentik::Api
         :'name' => :'name',
         :'is_active' => :'is_active',
         :'last_login' => :'last_login',
-        :'date_joined' => :'date_joined',
         :'is_superuser' => :'is_superuser',
         :'groups' => :'groups',
         :'groups_obj' => :'groups_obj',
@@ -90,8 +85,7 @@ module Authentik::Api
         :'path' => :'path',
         :'type' => :'type',
         :'uuid' => :'uuid',
-        :'password_change_date' => :'password_change_date',
-        :'last_updated' => :'last_updated'
+        :'password_change_date' => :'password_change_date'
       }
     end
 
@@ -113,10 +107,9 @@ module Authentik::Api
         :'name' => :'String',
         :'is_active' => :'Boolean',
         :'last_login' => :'Time',
-        :'date_joined' => :'Time',
         :'is_superuser' => :'Boolean',
         :'groups' => :'Array<String>',
-        :'groups_obj' => :'Array<PartialGroup>',
+        :'groups_obj' => :'Array<UserGroup>',
         :'email' => :'String',
         :'avatar' => :'String',
         :'attributes' => :'Hash<String, Object>',
@@ -124,8 +117,7 @@ module Authentik::Api
         :'path' => :'String',
         :'type' => :'UserTypeEnum',
         :'uuid' => :'String',
-        :'password_change_date' => :'Time',
-        :'last_updated' => :'Time'
+        :'password_change_date' => :'Time'
       }
     end
 
@@ -177,12 +169,6 @@ module Authentik::Api
 
       if attributes.key?(:'last_login')
         self.last_login = attributes[:'last_login']
-      end
-
-      if attributes.key?(:'date_joined')
-        self.date_joined = attributes[:'date_joined']
-      else
-        self.date_joined = nil
       end
 
       if attributes.key?(:'is_superuser')
@@ -246,12 +232,6 @@ module Authentik::Api
       else
         self.password_change_date = nil
       end
-
-      if attributes.key?(:'last_updated')
-        self.last_updated = attributes[:'last_updated']
-      else
-        self.last_updated = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -273,10 +253,6 @@ module Authentik::Api
 
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @date_joined.nil?
-        invalid_properties.push('invalid value for "date_joined", date_joined cannot be nil.')
       end
 
       if @is_superuser.nil?
@@ -303,10 +279,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "password_change_date", password_change_date cannot be nil.')
       end
 
-      if @last_updated.nil?
-        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -318,14 +290,12 @@ module Authentik::Api
       return false if @username.nil?
       return false if @username.to_s.length > 150
       return false if @name.nil?
-      return false if @date_joined.nil?
       return false if @is_superuser.nil?
       return false if !@email.nil? && @email.to_s.length > 254
       return false if @avatar.nil?
       return false if @uid.nil?
       return false if @uuid.nil?
       return false if @password_change_date.nil?
-      return false if @last_updated.nil?
       true
     end
 
@@ -361,16 +331,6 @@ module Authentik::Api
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] date_joined Value to be assigned
-    def date_joined=(date_joined)
-      if date_joined.nil?
-        fail ArgumentError, 'date_joined cannot be nil'
-      end
-
-      @date_joined = date_joined
     end
 
     # Custom attribute writer method with validation
@@ -437,16 +397,6 @@ module Authentik::Api
       @password_change_date = password_change_date
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] last_updated Value to be assigned
-    def last_updated=(last_updated)
-      if last_updated.nil?
-        fail ArgumentError, 'last_updated cannot be nil'
-      end
-
-      @last_updated = last_updated
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -457,7 +407,6 @@ module Authentik::Api
           name == o.name &&
           is_active == o.is_active &&
           last_login == o.last_login &&
-          date_joined == o.date_joined &&
           is_superuser == o.is_superuser &&
           groups == o.groups &&
           groups_obj == o.groups_obj &&
@@ -468,8 +417,7 @@ module Authentik::Api
           path == o.path &&
           type == o.type &&
           uuid == o.uuid &&
-          password_change_date == o.password_change_date &&
-          last_updated == o.last_updated
+          password_change_date == o.password_change_date
     end
 
     # @see the `==` method
@@ -481,7 +429,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, last_updated].hash
+      [pk, username, name, is_active, last_login, is_superuser, groups, groups_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date].hash
     end
 
     # Builds the object from hash

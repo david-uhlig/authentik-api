@@ -57,30 +57,6 @@ describe Authentik::Api::SCIMProviderRequest do
     end
   end
 
-  describe 'test attribute "auth_mode"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "auth_oauth"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "auth_oauth_params"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "compatibility_mode"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "exclude_users_service_account"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -88,12 +64,6 @@ describe Authentik::Api::SCIMProviderRequest do
   end
 
   describe 'test attribute "filter_group"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "dry_run"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

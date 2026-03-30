@@ -14,8 +14,6 @@ module Authentik::Api
 
     attr_accessor :sync_object_id
 
-    attr_accessor :override_dry_run
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -42,8 +40,7 @@ module Authentik::Api
     def self.attribute_map
       {
         :'sync_object_model' => :'sync_object_model',
-        :'sync_object_id' => :'sync_object_id',
-        :'override_dry_run' => :'override_dry_run'
+        :'sync_object_id' => :'sync_object_id'
       }
     end
 
@@ -61,8 +58,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'sync_object_model' => :'SyncObjectModelEnum',
-        :'sync_object_id' => :'String',
-        :'override_dry_run' => :'Boolean'
+        :'sync_object_id' => :'String'
       }
     end
 
@@ -98,12 +94,6 @@ module Authentik::Api
         self.sync_object_id = attributes[:'sync_object_id']
       else
         self.sync_object_id = nil
-      end
-
-      if attributes.key?(:'override_dry_run')
-        self.override_dry_run = attributes[:'override_dry_run']
-      else
-        self.override_dry_run = false
       end
     end
 
@@ -167,8 +157,7 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           sync_object_model == o.sync_object_model &&
-          sync_object_id == o.sync_object_id &&
-          override_dry_run == o.override_dry_run
+          sync_object_id == o.sync_object_id
     end
 
     # @see the `==` method
@@ -180,7 +169,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [sync_object_model, sync_object_id, override_dry_run].hash
+      [sync_object_model, sync_object_id].hash
     end
 
     # Builds the object from hash

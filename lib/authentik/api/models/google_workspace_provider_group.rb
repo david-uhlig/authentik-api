@@ -50,15 +50,16 @@ module Authentik::Api
         :'id' => :'String',
         :'google_id' => :'String',
         :'group' => :'String',
-        :'group_obj' => :'PartialGroup',
+        :'group_obj' => :'UserGroup',
         :'provider' => :'Integer',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'attributes'
       ])
     end
 
@@ -109,9 +110,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
+        self.attributes = attributes[:'attributes']
       else
         self.attributes = nil
       end
@@ -142,10 +141,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "provider", provider cannot be nil.')
       end
 
-      if @attributes.nil?
-        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -158,7 +153,6 @@ module Authentik::Api
       return false if @group.nil?
       return false if @group_obj.nil?
       return false if @provider.nil?
-      return false if @attributes.nil?
       true
     end
 
@@ -210,16 +204,6 @@ module Authentik::Api
       end
 
       @provider = provider
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] attributes Value to be assigned
-    def attributes=(attributes)
-      if attributes.nil?
-        fail ArgumentError, 'attributes cannot be nil'
-      end
-
-      @attributes = attributes
     end
 
     # Checks equality by comparing each attribute.

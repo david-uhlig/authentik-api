@@ -15,8 +15,7 @@ module Authentik::Api
         [
           :'AppleLoginChallenge',
           :'PlexAuthenticationChallenge',
-          :'RedirectChallenge',
-          :'TelegramLoginChallenge'
+          :'RedirectChallenge'
         ]
       end
 
@@ -30,7 +29,6 @@ module Authentik::Api
         {
           :'ak-source-oauth-apple' => :'AppleLoginChallenge',
           :'ak-source-plex' => :'PlexAuthenticationChallenge',
-          :'ak-source-telegram' => :'TelegramLoginChallenge',
           :'xak-flow-redirect' => :'RedirectChallenge'
         }
       end

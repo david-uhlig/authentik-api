@@ -65,9 +65,6 @@ module Authentik::Api
     # Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
     attr_accessor :refresh_token_validity
 
-    # When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds=0, token will always be renewed. (Format: hours=1;minutes=2;seconds=3).
-    attr_accessor :refresh_token_threshold
-
     # Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
     attr_accessor :include_claims_in_id_token
 
@@ -78,11 +75,6 @@ module Authentik::Api
     attr_accessor :encryption_key
 
     attr_accessor :redirect_uris
-
-    attr_accessor :logout_uri
-
-    # Backchannel logs out with server to server calls. Frontchannel uses iframes in your browser
-    attr_accessor :logout_method
 
     # Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
     attr_accessor :sub_mode
@@ -139,13 +131,10 @@ module Authentik::Api
         :'access_code_validity' => :'access_code_validity',
         :'access_token_validity' => :'access_token_validity',
         :'refresh_token_validity' => :'refresh_token_validity',
-        :'refresh_token_threshold' => :'refresh_token_threshold',
         :'include_claims_in_id_token' => :'include_claims_in_id_token',
         :'signing_key' => :'signing_key',
         :'encryption_key' => :'encryption_key',
         :'redirect_uris' => :'redirect_uris',
-        :'logout_uri' => :'logout_uri',
-        :'logout_method' => :'logout_method',
         :'sub_mode' => :'sub_mode',
         :'issuer_mode' => :'issuer_mode',
         :'jwt_federation_sources' => :'jwt_federation_sources',
@@ -186,13 +175,10 @@ module Authentik::Api
         :'access_code_validity' => :'String',
         :'access_token_validity' => :'String',
         :'refresh_token_validity' => :'String',
-        :'refresh_token_threshold' => :'String',
         :'include_claims_in_id_token' => :'Boolean',
         :'signing_key' => :'String',
         :'encryption_key' => :'String',
         :'redirect_uris' => :'Array<RedirectURI>',
-        :'logout_uri' => :'String',
-        :'logout_method' => :'OAuth2ProviderLogoutMethodEnum',
         :'sub_mode' => :'SubModeEnum',
         :'issuer_mode' => :'IssuerModeEnum',
         :'jwt_federation_sources' => :'Array<String>',
@@ -204,10 +190,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
-        :'assigned_application_slug',
-        :'assigned_application_name',
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
         :'signing_key',
         :'encryption_key',
       ])
@@ -335,10 +317,6 @@ module Authentik::Api
         self.refresh_token_validity = attributes[:'refresh_token_validity']
       end
 
-      if attributes.key?(:'refresh_token_threshold')
-        self.refresh_token_threshold = attributes[:'refresh_token_threshold']
-      end
-
       if attributes.key?(:'include_claims_in_id_token')
         self.include_claims_in_id_token = attributes[:'include_claims_in_id_token']
       end
@@ -357,14 +335,6 @@ module Authentik::Api
         end
       else
         self.redirect_uris = nil
-      end
-
-      if attributes.key?(:'logout_uri')
-        self.logout_uri = attributes[:'logout_uri']
-      end
-
-      if attributes.key?(:'logout_method')
-        self.logout_method = attributes[:'logout_method']
       end
 
       if attributes.key?(:'sub_mode')
@@ -413,6 +383,22 @@ module Authentik::Api
         invalid_properties.push('invalid value for "component", component cannot be nil.')
       end
 
+      if @assigned_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_application_slug", assigned_application_slug cannot be nil.')
+      end
+
+      if @assigned_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_application_name", assigned_application_name cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
+      end
+
       if @verbose_name.nil?
         invalid_properties.push('invalid value for "verbose_name", verbose_name cannot be nil.')
       end
@@ -449,6 +435,10 @@ module Authentik::Api
       return false if @authorization_flow.nil?
       return false if @invalidation_flow.nil?
       return false if @component.nil?
+      return false if @assigned_application_slug.nil?
+      return false if @assigned_application_name.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
@@ -506,6 +496,46 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_slug Value to be assigned
+    def assigned_application_slug=(assigned_application_slug)
+      if assigned_application_slug.nil?
+        fail ArgumentError, 'assigned_application_slug cannot be nil'
+      end
+
+      @assigned_application_slug = assigned_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_name Value to be assigned
+    def assigned_application_name=(assigned_application_name)
+      if assigned_application_name.nil?
+        fail ArgumentError, 'assigned_application_name cannot be nil'
+      end
+
+      @assigned_application_name = assigned_application_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation
@@ -601,13 +631,10 @@ module Authentik::Api
           access_code_validity == o.access_code_validity &&
           access_token_validity == o.access_token_validity &&
           refresh_token_validity == o.refresh_token_validity &&
-          refresh_token_threshold == o.refresh_token_threshold &&
           include_claims_in_id_token == o.include_claims_in_id_token &&
           signing_key == o.signing_key &&
           encryption_key == o.encryption_key &&
           redirect_uris == o.redirect_uris &&
-          logout_uri == o.logout_uri &&
-          logout_method == o.logout_method &&
           sub_mode == o.sub_mode &&
           issuer_mode == o.issuer_mode &&
           jwt_federation_sources == o.jwt_federation_sources &&
@@ -623,7 +650,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_type, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, refresh_token_threshold, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, logout_uri, logout_method, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_type, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
     end
 
     # Builds the object from hash

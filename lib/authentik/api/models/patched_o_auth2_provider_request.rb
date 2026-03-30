@@ -39,9 +39,6 @@ module Authentik::Api
     # Tokens not valid on or after current time + this value (Format: hours=1;minutes=2;seconds=3).
     attr_accessor :refresh_token_validity
 
-    # When refreshing a token, if the refresh token is valid for less than this duration, it will be renewed. When set to seconds=0, token will always be renewed. (Format: hours=1;minutes=2;seconds=3).
-    attr_accessor :refresh_token_threshold
-
     # Include User claims from scopes in the id_token, for applications that don't access the userinfo endpoint.
     attr_accessor :include_claims_in_id_token
 
@@ -52,11 +49,6 @@ module Authentik::Api
     attr_accessor :encryption_key
 
     attr_accessor :redirect_uris
-
-    attr_accessor :logout_uri
-
-    # Backchannel logs out with server to server calls. Frontchannel uses iframes in your browser
-    attr_accessor :logout_method
 
     # Configure what data should be used as unique User Identifier. For most cases, the default should be fine.
     attr_accessor :sub_mode
@@ -104,13 +96,10 @@ module Authentik::Api
         :'access_code_validity' => :'access_code_validity',
         :'access_token_validity' => :'access_token_validity',
         :'refresh_token_validity' => :'refresh_token_validity',
-        :'refresh_token_threshold' => :'refresh_token_threshold',
         :'include_claims_in_id_token' => :'include_claims_in_id_token',
         :'signing_key' => :'signing_key',
         :'encryption_key' => :'encryption_key',
         :'redirect_uris' => :'redirect_uris',
-        :'logout_uri' => :'logout_uri',
-        :'logout_method' => :'logout_method',
         :'sub_mode' => :'sub_mode',
         :'issuer_mode' => :'issuer_mode',
         :'jwt_federation_sources' => :'jwt_federation_sources',
@@ -142,13 +131,10 @@ module Authentik::Api
         :'access_code_validity' => :'String',
         :'access_token_validity' => :'String',
         :'refresh_token_validity' => :'String',
-        :'refresh_token_threshold' => :'String',
         :'include_claims_in_id_token' => :'Boolean',
         :'signing_key' => :'String',
         :'encryption_key' => :'String',
         :'redirect_uris' => :'Array<RedirectURIRequest>',
-        :'logout_uri' => :'String',
-        :'logout_method' => :'OAuth2ProviderLogoutMethodEnum',
         :'sub_mode' => :'SubModeEnum',
         :'issuer_mode' => :'IssuerModeEnum',
         :'jwt_federation_sources' => :'Array<String>',
@@ -227,10 +213,6 @@ module Authentik::Api
         self.refresh_token_validity = attributes[:'refresh_token_validity']
       end
 
-      if attributes.key?(:'refresh_token_threshold')
-        self.refresh_token_threshold = attributes[:'refresh_token_threshold']
-      end
-
       if attributes.key?(:'include_claims_in_id_token')
         self.include_claims_in_id_token = attributes[:'include_claims_in_id_token']
       end
@@ -247,14 +229,6 @@ module Authentik::Api
         if (value = attributes[:'redirect_uris']).is_a?(Array)
           self.redirect_uris = value
         end
-      end
-
-      if attributes.key?(:'logout_uri')
-        self.logout_uri = attributes[:'logout_uri']
-      end
-
-      if attributes.key?(:'logout_method')
-        self.logout_method = attributes[:'logout_method']
       end
 
       if attributes.key?(:'sub_mode')
@@ -311,10 +285,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "refresh_token_validity", the character length must be greater than or equal to 1.')
       end
 
-      if !@refresh_token_threshold.nil? && @refresh_token_threshold.to_s.length < 1
-        invalid_properties.push('invalid value for "refresh_token_threshold", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -329,7 +299,6 @@ module Authentik::Api
       return false if !@access_code_validity.nil? && @access_code_validity.to_s.length < 1
       return false if !@access_token_validity.nil? && @access_token_validity.to_s.length < 1
       return false if !@refresh_token_validity.nil? && @refresh_token_validity.to_s.length < 1
-      return false if !@refresh_token_threshold.nil? && @refresh_token_threshold.to_s.length < 1
       true
     end
 
@@ -421,20 +390,6 @@ module Authentik::Api
       @refresh_token_validity = refresh_token_validity
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] refresh_token_threshold Value to be assigned
-    def refresh_token_threshold=(refresh_token_threshold)
-      if refresh_token_threshold.nil?
-        fail ArgumentError, 'refresh_token_threshold cannot be nil'
-      end
-
-      if refresh_token_threshold.to_s.length < 1
-        fail ArgumentError, 'invalid value for "refresh_token_threshold", the character length must be greater than or equal to 1.'
-      end
-
-      @refresh_token_threshold = refresh_token_threshold
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -451,13 +406,10 @@ module Authentik::Api
           access_code_validity == o.access_code_validity &&
           access_token_validity == o.access_token_validity &&
           refresh_token_validity == o.refresh_token_validity &&
-          refresh_token_threshold == o.refresh_token_threshold &&
           include_claims_in_id_token == o.include_claims_in_id_token &&
           signing_key == o.signing_key &&
           encryption_key == o.encryption_key &&
           redirect_uris == o.redirect_uris &&
-          logout_uri == o.logout_uri &&
-          logout_method == o.logout_method &&
           sub_mode == o.sub_mode &&
           issuer_mode == o.issuer_mode &&
           jwt_federation_sources == o.jwt_federation_sources &&
@@ -473,7 +425,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, client_type, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, refresh_token_threshold, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, logout_uri, logout_method, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, client_type, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
     end
 
     # Builds the object from hash

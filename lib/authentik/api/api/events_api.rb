@@ -198,7 +198,6 @@ module Authentik::Api
     # Event Read-Only Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
@@ -219,7 +218,6 @@ module Authentik::Api
     # Event Read-Only Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
@@ -236,17 +234,12 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_events_list ...'
       end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
-      if @api_client.config.client_side_validation && opts[:'actions'] && !opts[:'actions'].all? { |item| allowable_values.include?(item) }
-        fail ArgumentError, "invalid value for \"actions\", must include one of #{allowable_values}"
-      end
       # resource path
       local_var_path = '/events/events/'
 
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
-      query_params[:'actions'] = @api_client.build_collection_param(opts[:'actions'], :multi) if !opts[:'actions'].nil?
       query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
       query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
       query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
@@ -357,6 +350,67 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EventsApi#events_events_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get the count of events per month
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [String] :query 
+    # @return [Array<Coordinate>]
+    def events_events_per_month_list(opts = {})
+      data, _status_code, _headers = events_events_per_month_list_with_http_info(opts)
+      data
+    end
+
+    # Get the count of events per month
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :action 
+    # @option opts [String] :query 
+    # @return [Array<(Array<Coordinate>, Integer, Hash)>] Array<Coordinate> data, response status code and response headers
+    def events_events_per_month_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_events_per_month_list ...'
+      end
+      # resource path
+      local_var_path = '/events/events/per_month/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
+      query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Coordinate>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_events_per_month_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_events_per_month_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -558,18 +612,16 @@ module Authentik::Api
     # Get event volume for specified filters and timeframe
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
-    # @option opts [Float] :history_days  (default to 7)
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [String] :search A search term.
     # @option opts [String] :username Username
-    # @return [Array<EventVolume>]
+    # @return [Array<Coordinate>]
     def events_events_volume_list(opts = {})
       data, _status_code, _headers = events_events_volume_list_with_http_info(opts)
       data
@@ -578,25 +630,19 @@ module Authentik::Api
     # Get event volume for specified filters and timeframe
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Array<String>] :actions 
     # @option opts [String] :brand_name Brand name
     # @option opts [String] :client_ip 
     # @option opts [String] :context_authorized_app Context Authorized application
     # @option opts [String] :context_model_app Context Model App
     # @option opts [String] :context_model_name Context Model Name
     # @option opts [String] :context_model_pk Context Model Primary Key
-    # @option opts [Float] :history_days  (default to 7)
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [String] :search A search term.
     # @option opts [String] :username Username
-    # @return [Array<(Array<EventVolume>, Integer, Hash)>] Array<EventVolume> data, response status code and response headers
+    # @return [Array<(Array<Coordinate>, Integer, Hash)>] Array<Coordinate> data, response status code and response headers
     def events_events_volume_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: EventsApi.events_events_volume_list ...'
-      end
-      allowable_values = ["authorize_application", "configuration_error", "custom_", "email_sent", "flow_execution", "impersonation_ended", "impersonation_started", "invitation_used", "login", "login_failed", "logout", "model_created", "model_deleted", "model_updated", "password_set", "policy_exception", "policy_execution", "property_mapping_exception", "secret_rotate", "secret_view", "source_linked", "suspicious_request", "system_exception", "system_task_exception", "system_task_execution", "update_available", "user_write"]
-      if @api_client.config.client_side_validation && opts[:'actions'] && !opts[:'actions'].all? { |item| allowable_values.include?(item) }
-        fail ArgumentError, "invalid value for \"actions\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/events/events/volume/'
@@ -604,14 +650,12 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
-      query_params[:'actions'] = @api_client.build_collection_param(opts[:'actions'], :multi) if !opts[:'actions'].nil?
       query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
       query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
       query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
       query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
       query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
       query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
-      query_params[:'history_days'] = opts[:'history_days'] if !opts[:'history_days'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
@@ -628,7 +672,7 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Array<EventVolume>'
+      return_type = opts[:debug_return_type] || 'Array<Coordinate>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
@@ -1242,7 +1286,7 @@ module Authentik::Api
 
     # NotificationRule Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :destination_group__name 
+    # @option opts [String] :group__name 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -1257,7 +1301,7 @@ module Authentik::Api
 
     # NotificationRule Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :destination_group__name 
+    # @option opts [String] :group__name 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -1278,7 +1322,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'destination_group__name'] = opts[:'destination_group__name'] if !opts[:'destination_group__name'].nil?
+      query_params[:'group__name'] = opts[:'group__name'] if !opts[:'group__name'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -1578,6 +1622,208 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EventsApi#events_rules_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read-only view set that returns all background tasks
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :status 
+    # @option opts [String] :uid 
+    # @return [PaginatedSystemTaskList]
+    def events_system_tasks_list(opts = {})
+      data, _status_code, _headers = events_system_tasks_list_with_http_info(opts)
+      data
+    end
+
+    # Read-only view set that returns all background tasks
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :status 
+    # @option opts [String] :uid 
+    # @return [Array<(PaginatedSystemTaskList, Integer, Hash)>] PaginatedSystemTaskList data, response status code and response headers
+    def events_system_tasks_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_system_tasks_list ...'
+      end
+      allowable_values = ["error", "successful", "unknown", "warning"]
+      if @api_client.config.client_side_validation && opts[:'status'] && !allowable_values.include?(opts[:'status'])
+        fail ArgumentError, "invalid value for \"status\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/events/system_tasks/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'status'] = opts[:'status'] if !opts[:'status'].nil?
+      query_params[:'uid'] = opts[:'uid'] if !opts[:'uid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedSystemTaskList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_system_tasks_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_system_tasks_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Read-only view set that returns all background tasks
+    # @param uuid [String] A UUID string identifying this System Task.
+    # @param [Hash] opts the optional parameters
+    # @return [SystemTask]
+    def events_system_tasks_retrieve(uuid, opts = {})
+      data, _status_code, _headers = events_system_tasks_retrieve_with_http_info(uuid, opts)
+      data
+    end
+
+    # Read-only view set that returns all background tasks
+    # @param uuid [String] A UUID string identifying this System Task.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(SystemTask, Integer, Hash)>] SystemTask data, response status code and response headers
+    def events_system_tasks_retrieve_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_system_tasks_retrieve ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_system_tasks_retrieve"
+      end
+      # resource path
+      local_var_path = '/events/system_tasks/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'SystemTask'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_system_tasks_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_system_tasks_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Run task
+    # @param uuid [String] A UUID string identifying this System Task.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def events_system_tasks_run_create(uuid, opts = {})
+      events_system_tasks_run_create_with_http_info(uuid, opts)
+      nil
+    end
+
+    # Run task
+    # @param uuid [String] A UUID string identifying this System Task.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def events_system_tasks_run_create_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EventsApi.events_system_tasks_run_create ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_system_tasks_run_create"
+      end
+      # resource path
+      local_var_path = '/events/system_tasks/{uuid}/run/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EventsApi.events_system_tasks_run_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EventsApi#events_system_tasks_run_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

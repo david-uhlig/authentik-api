@@ -14,14 +14,11 @@ module Authentik::Api
 
     attr_accessor :source
 
-    attr_accessor :identifier
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user' => :'user',
-        :'source' => :'source',
-        :'identifier' => :'identifier'
+        :'source' => :'source'
       }
     end
 
@@ -39,8 +36,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'user' => :'Integer',
-        :'source' => :'String',
-        :'identifier' => :'String'
+        :'source' => :'String'
       }
     end
 
@@ -77,12 +73,6 @@ module Authentik::Api
       else
         self.source = nil
       end
-
-      if attributes.key?(:'identifier')
-        self.identifier = attributes[:'identifier']
-      else
-        self.identifier = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -98,14 +88,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "source", source cannot be nil.')
       end
 
-      if @identifier.nil?
-        invalid_properties.push('invalid value for "identifier", identifier cannot be nil.')
-      end
-
-      if @identifier.to_s.length < 1
-        invalid_properties.push('invalid value for "identifier", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -115,8 +97,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @user.nil?
       return false if @source.nil?
-      return false if @identifier.nil?
-      return false if @identifier.to_s.length < 1
       true
     end
 
@@ -140,28 +120,13 @@ module Authentik::Api
       @source = source
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] identifier Value to be assigned
-    def identifier=(identifier)
-      if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
-      end
-
-      if identifier.to_s.length < 1
-        fail ArgumentError, 'invalid value for "identifier", the character length must be greater than or equal to 1.'
-      end
-
-      @identifier = identifier
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           user == o.user &&
-          source == o.source &&
-          identifier == o.identifier
+          source == o.source
     end
 
     # @see the `==` method
@@ -173,7 +138,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, source, identifier].hash
+      [user, source].hash
     end
 
     # Builds the object from hash

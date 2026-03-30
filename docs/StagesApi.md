@@ -1,6 +1,6 @@
 # Authentik::Api::StagesApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -128,13 +128,6 @@ All URIs are relative to */api/v3*
 | [**stages_invitation_stages_retrieve**](StagesApi.md#stages_invitation_stages_retrieve) | **GET** /stages/invitation/stages/{stage_uuid}/ |  |
 | [**stages_invitation_stages_update**](StagesApi.md#stages_invitation_stages_update) | **PUT** /stages/invitation/stages/{stage_uuid}/ |  |
 | [**stages_invitation_stages_used_by_list**](StagesApi.md#stages_invitation_stages_used_by_list) | **GET** /stages/invitation/stages/{stage_uuid}/used_by/ |  |
-| [**stages_mtls_create**](StagesApi.md#stages_mtls_create) | **POST** /stages/mtls/ |  |
-| [**stages_mtls_destroy**](StagesApi.md#stages_mtls_destroy) | **DELETE** /stages/mtls/{stage_uuid}/ |  |
-| [**stages_mtls_list**](StagesApi.md#stages_mtls_list) | **GET** /stages/mtls/ |  |
-| [**stages_mtls_partial_update**](StagesApi.md#stages_mtls_partial_update) | **PATCH** /stages/mtls/{stage_uuid}/ |  |
-| [**stages_mtls_retrieve**](StagesApi.md#stages_mtls_retrieve) | **GET** /stages/mtls/{stage_uuid}/ |  |
-| [**stages_mtls_update**](StagesApi.md#stages_mtls_update) | **PUT** /stages/mtls/{stage_uuid}/ |  |
-| [**stages_mtls_used_by_list**](StagesApi.md#stages_mtls_used_by_list) | **GET** /stages/mtls/{stage_uuid}/used_by/ |  |
 | [**stages_password_create**](StagesApi.md#stages_password_create) | **POST** /stages/password/ |  |
 | [**stages_password_destroy**](StagesApi.md#stages_password_destroy) | **DELETE** /stages/password/{stage_uuid}/ |  |
 | [**stages_password_list**](StagesApi.md#stages_password_list) | **GET** /stages/password/ |  |
@@ -1878,7 +1871,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::StagesApi.new
-authenticator_endpoint_gdtc_stage_request = Authentik::Api::AuthenticatorEndpointGDTCStageRequest.new({name: 'name_example', credentials: { key: 3.56}}) # AuthenticatorEndpointGDTCStageRequest | 
+authenticator_endpoint_gdtc_stage_request = Authentik::Api::AuthenticatorEndpointGDTCStageRequest.new({name: 'name_example', credentials: 3.56}) # AuthenticatorEndpointGDTCStageRequest | 
 
 begin
   
@@ -2239,7 +2232,7 @@ end
 
 api_instance = Authentik::Api::StagesApi.new
 stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Endpoint Authenticator Google Device Trust Connector Stage.
-authenticator_endpoint_gdtc_stage_request = Authentik::Api::AuthenticatorEndpointGDTCStageRequest.new({name: 'name_example', credentials: { key: 3.56}}) # AuthenticatorEndpointGDTCStageRequest | 
+authenticator_endpoint_gdtc_stage_request = Authentik::Api::AuthenticatorEndpointGDTCStageRequest.new({name: 'name_example', credentials: 3.56}) # AuthenticatorEndpointGDTCStageRequest | 
 
 begin
   
@@ -4708,7 +4701,6 @@ opts = {
   configure_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   device_type_restrictions: ['inner_example'], # Array<String> | 
   friendly_name: 'friendly_name_example', # String | 
-  max_attempts: 56, # Integer | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -4754,7 +4746,6 @@ end
 | **configure_flow** | **String** |  | [optional] |
 | **device_type_restrictions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **friendly_name** | **String** |  | [optional] |
-| **max_attempts** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -7238,7 +7229,7 @@ opts = {
   subject: 'subject_example', # String | 
   template: 'template_example', # String | 
   timeout: 56, # Integer | 
-  token_expiry: 'token_expiry_example', # String | 
+  token_expiry: 56, # Integer | 
   use_global_settings: true, # Boolean | 
   use_ssl: true, # Boolean | 
   use_tls: true, # Boolean | 
@@ -7288,7 +7279,7 @@ end
 | **subject** | **String** |  | [optional] |
 | **template** | **String** |  | [optional] |
 | **timeout** | **Integer** |  | [optional] |
-| **token_expiry** | **String** |  | [optional] |
+| **token_expiry** | **Integer** |  | [optional] |
 | **use_global_settings** | **Boolean** |  | [optional] |
 | **use_ssl** | **Boolean** |  | [optional] |
 | **use_tls** | **Boolean** |  | [optional] |
@@ -9163,514 +9154,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **stage_uuid** | **String** | A UUID string identifying this Invitation Stage. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## stages_mtls_create
-
-> <MutualTLSStage> stages_mtls_create(mutual_tls_stage_request)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::MutualTLSStageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
-
-begin
-  
-  result = api_instance.stages_mtls_create(mutual_tls_stage_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_create: #{e}"
-end
-```
-
-#### Using the stages_mtls_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<MutualTLSStage>, Integer, Hash)> stages_mtls_create_with_http_info(mutual_tls_stage_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_create_with_http_info(mutual_tls_stage_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <MutualTLSStage>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **mutual_tls_stage_request** | [**MutualTLSStageRequest**](MutualTLSStageRequest.md) |  |  |
-
-### Return type
-
-[**MutualTLSStage**](MutualTLSStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## stages_mtls_destroy
-
-> stages_mtls_destroy(stage_uuid)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-
-begin
-  
-  api_instance.stages_mtls_destroy(stage_uuid)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_destroy: #{e}"
-end
-```
-
-#### Using the stages_mtls_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> stages_mtls_destroy_with_http_info(stage_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_destroy_with_http_info(stage_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **stage_uuid** | **String** | A UUID string identifying this Mutual TLS Stage. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## stages_mtls_list
-
-> <PaginatedMutualTLSStageList> stages_mtls_list(opts)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-opts = {
-  cert_attribute: 'common_name', # String | 
-  certificate_authorities: ['inner_example'], # Array<String> | 
-  mode: 'optional', # String | 
-  name: 'name_example', # String | 
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  user_attribute: 'email' # String | 
-}
-
-begin
-  
-  result = api_instance.stages_mtls_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_list: #{e}"
-end
-```
-
-#### Using the stages_mtls_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedMutualTLSStageList>, Integer, Hash)> stages_mtls_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedMutualTLSStageList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **cert_attribute** | **String** |  | [optional] |
-| **certificate_authorities** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **mode** | **String** |  | [optional] |
-| **name** | **String** |  | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **stage_uuid** | **String** |  | [optional] |
-| **user_attribute** | **String** |  | [optional] |
-
-### Return type
-
-[**PaginatedMutualTLSStageList**](PaginatedMutualTLSStageList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## stages_mtls_partial_update
-
-> <MutualTLSStage> stages_mtls_partial_update(stage_uuid, opts)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-opts = {
-  patched_mutual_tls_stage_request: Authentik::Api::PatchedMutualTLSStageRequest.new # PatchedMutualTLSStageRequest | 
-}
-
-begin
-  
-  result = api_instance.stages_mtls_partial_update(stage_uuid, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_partial_update: #{e}"
-end
-```
-
-#### Using the stages_mtls_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<MutualTLSStage>, Integer, Hash)> stages_mtls_partial_update_with_http_info(stage_uuid, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_partial_update_with_http_info(stage_uuid, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <MutualTLSStage>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **stage_uuid** | **String** | A UUID string identifying this Mutual TLS Stage. |  |
-| **patched_mutual_tls_stage_request** | [**PatchedMutualTLSStageRequest**](PatchedMutualTLSStageRequest.md) |  | [optional] |
-
-### Return type
-
-[**MutualTLSStage**](MutualTLSStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## stages_mtls_retrieve
-
-> <MutualTLSStage> stages_mtls_retrieve(stage_uuid)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-
-begin
-  
-  result = api_instance.stages_mtls_retrieve(stage_uuid)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_retrieve: #{e}"
-end
-```
-
-#### Using the stages_mtls_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<MutualTLSStage>, Integer, Hash)> stages_mtls_retrieve_with_http_info(stage_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_retrieve_with_http_info(stage_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <MutualTLSStage>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **stage_uuid** | **String** | A UUID string identifying this Mutual TLS Stage. |  |
-
-### Return type
-
-[**MutualTLSStage**](MutualTLSStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## stages_mtls_update
-
-> <MutualTLSStage> stages_mtls_update(stage_uuid, mutual_tls_stage_request)
-
-
-
-MutualTLSStage Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-mutual_tls_stage_request = Authentik::Api::MutualTLSStageRequest.new({name: 'name_example', mode: Authentik::Api::MutualTLSStageModeEnum::OPTIONAL, cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, user_attribute: Authentik::Api::UserAttributeEnum::USERNAME}) # MutualTLSStageRequest | 
-
-begin
-  
-  result = api_instance.stages_mtls_update(stage_uuid, mutual_tls_stage_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_update: #{e}"
-end
-```
-
-#### Using the stages_mtls_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<MutualTLSStage>, Integer, Hash)> stages_mtls_update_with_http_info(stage_uuid, mutual_tls_stage_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_update_with_http_info(stage_uuid, mutual_tls_stage_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <MutualTLSStage>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **stage_uuid** | **String** | A UUID string identifying this Mutual TLS Stage. |  |
-| **mutual_tls_stage_request** | [**MutualTLSStageRequest**](MutualTLSStageRequest.md) |  |  |
-
-### Return type
-
-[**MutualTLSStage**](MutualTLSStage.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## stages_mtls_used_by_list
-
-> <Array<UsedBy>> stages_mtls_used_by_list(stage_uuid)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Mutual TLS Stage.
-
-begin
-  
-  result = api_instance.stages_mtls_used_by_list(stage_uuid)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_used_by_list: #{e}"
-end
-```
-
-#### Using the stages_mtls_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> stages_mtls_used_by_list_with_http_info(stage_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_mtls_used_by_list_with_http_info(stage_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_mtls_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **stage_uuid** | **String** | A UUID string identifying this Mutual TLS Stage. |  |
 
 ### Return type
 
@@ -12935,7 +12418,6 @@ opts = {
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
-  remember_device: 'remember_device_example', # String | 
   remember_me_offset: 'remember_me_offset_example', # String | 
   search: 'search_example', # String | A search term.
   session_duration: 'session_duration_example', # String | 
@@ -12980,7 +12462,6 @@ end
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **remember_device** | **String** |  | [optional] |
 | **remember_me_offset** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **session_duration** | **String** |  | [optional] |

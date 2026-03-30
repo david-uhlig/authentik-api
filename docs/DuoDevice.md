@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **pk** | **Integer** |  | [readonly] |
 | **name** | **String** | The human-readable name of this device. |  |
-| **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 
 ## Example
 

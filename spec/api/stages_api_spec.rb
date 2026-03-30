@@ -807,7 +807,6 @@ describe 'StagesApi' do
   # @option opts [String] :configure_flow 
   # @option opts [Array<String>] :device_type_restrictions 
   # @option opts [String] :friendly_name 
-  # @option opts [Integer] :max_attempts 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -1246,7 +1245,7 @@ describe 'StagesApi' do
   # @option opts [String] :subject 
   # @option opts [String] :template 
   # @option opts [Integer] :timeout 
-  # @option opts [String] :token_expiry 
+  # @option opts [Integer] :token_expiry 
   # @option opts [Boolean] :use_global_settings 
   # @option opts [Boolean] :use_ssl 
   # @option opts [Boolean] :use_tls 
@@ -1572,94 +1571,6 @@ describe 'StagesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'stages_invitation_stages_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_create
-  # MutualTLSStage Viewset
-  # @param mutual_tls_stage_request 
-  # @param [Hash] opts the optional parameters
-  # @return [MutualTLSStage]
-  describe 'stages_mtls_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_destroy
-  # MutualTLSStage Viewset
-  # @param stage_uuid A UUID string identifying this Mutual TLS Stage.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'stages_mtls_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_list
-  # MutualTLSStage Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :cert_attribute 
-  # @option opts [Array<String>] :certificate_authorities 
-  # @option opts [String] :mode 
-  # @option opts [String] :name 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :stage_uuid 
-  # @option opts [String] :user_attribute 
-  # @return [PaginatedMutualTLSStageList]
-  describe 'stages_mtls_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_partial_update
-  # MutualTLSStage Viewset
-  # @param stage_uuid A UUID string identifying this Mutual TLS Stage.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedMutualTLSStageRequest] :patched_mutual_tls_stage_request 
-  # @return [MutualTLSStage]
-  describe 'stages_mtls_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_retrieve
-  # MutualTLSStage Viewset
-  # @param stage_uuid A UUID string identifying this Mutual TLS Stage.
-  # @param [Hash] opts the optional parameters
-  # @return [MutualTLSStage]
-  describe 'stages_mtls_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_update
-  # MutualTLSStage Viewset
-  # @param stage_uuid A UUID string identifying this Mutual TLS Stage.
-  # @param mutual_tls_stage_request 
-  # @param [Hash] opts the optional parameters
-  # @return [MutualTLSStage]
-  describe 'stages_mtls_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for stages_mtls_used_by_list
-  # Get a list of all objects that use this object
-  # @param stage_uuid A UUID string identifying this Mutual TLS Stage.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'stages_mtls_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -2219,7 +2130,6 @@ describe 'StagesApi' do
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :remember_device 
   # @option opts [String] :remember_me_offset 
   # @option opts [String] :search A search term.
   # @option opts [String] :session_duration 

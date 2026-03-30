@@ -91,9 +91,9 @@ module Authentik::Api
         :'provider_obj' => :'RACProvider',
         :'protocol' => :'ProtocolEnum',
         :'host' => :'String',
-        :'settings' => :'Hash<String, Object>',
+        :'settings' => :'Object',
         :'property_mappings' => :'Array<String>',
-        :'auth_mode' => :'EndpointAuthModeEnum',
+        :'auth_mode' => :'AuthModeEnum',
         :'launch_url' => :'String',
         :'maximum_connections' => :'Integer'
       }
@@ -102,6 +102,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'settings',
         :'launch_url',
       ])
     end
@@ -159,9 +160,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'settings')
-        if (value = attributes[:'settings']).is_a?(Hash)
-          self.settings = value
-        end
+        self.settings = attributes[:'settings']
       end
 
       if attributes.key?(:'property_mappings')

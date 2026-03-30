@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **pagination** | [**Pagination**](Pagination.md) |  |  |
 | **results** | [**Array&lt;ApplicationEntitlement&gt;**](ApplicationEntitlement.md) |  |  |
-| **autocomplete** | **Hash&lt;String, Object&gt;** |  |  |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::PaginatedApplicationEntitlementList.new(
   pagination: null,
-  results: null,
-  autocomplete: null
+  results: null
 )
 ```
 

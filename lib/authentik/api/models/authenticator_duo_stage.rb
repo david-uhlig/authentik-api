@@ -89,6 +89,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'configure_flow',
+        :'friendly_name',
       ])
     end
 

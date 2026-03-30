@@ -27,7 +27,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_all_destroy
-  # Prevent deletion of built-in sources
+  # Source Viewset
   # @param slug 
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -122,90 +122,6 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_group_connections_all_destroy
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this group source connection.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_group_connections_all_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_all_list
-  # Group-source connection Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :group 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :source__slug 
-  # @return [PaginatedGroupSourceConnectionList]
-  describe 'sources_group_connections_all_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_all_partial_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this group source connection.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedGroupSourceConnectionRequest] :patched_group_source_connection_request 
-  # @return [GroupSourceConnection]
-  describe 'sources_group_connections_all_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_all_retrieve
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this group source connection.
-  # @param [Hash] opts the optional parameters
-  # @return [GroupSourceConnection]
-  describe 'sources_group_connections_all_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_all_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this group source connection.
-  # @param group_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupSourceConnection]
-  describe 'sources_group_connections_all_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_all_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this group source connection.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_group_connections_all_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_kerberos_create
-  # Group-source connection Viewset
-  # @param group_kerberos_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupKerberosSourceConnection]
-  describe 'sources_group_connections_kerberos_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_group_connections_kerberos_destroy
   # Group-source connection Viewset
   # @param id A unique integer value identifying this Group Kerberos Source Connection.
@@ -274,90 +190,6 @@ describe 'SourcesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'sources_group_connections_kerberos_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_create
-  # Group-source connection Viewset
-  # @param group_ldap_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupLDAPSourceConnection]
-  describe 'sources_group_connections_ldap_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_destroy
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_group_connections_ldap_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_list
-  # Group-source connection Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :group 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :source__slug 
-  # @return [PaginatedGroupLDAPSourceConnectionList]
-  describe 'sources_group_connections_ldap_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_partial_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedGroupLDAPSourceConnectionRequest] :patched_group_ldap_source_connection_request 
-  # @return [GroupLDAPSourceConnection]
-  describe 'sources_group_connections_ldap_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_retrieve
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [GroupLDAPSourceConnection]
-  describe 'sources_group_connections_ldap_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group LDAP Source Connection.
-  # @param group_ldap_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupLDAPSourceConnection]
-  describe 'sources_group_connections_ldap_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_ldap_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this Group LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_group_connections_ldap_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -531,17 +363,6 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_group_connections_saml_create
-  # Group-source connection Viewset
-  # @param group_saml_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupSAMLSourceConnection]
-  describe 'sources_group_connections_saml_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_group_connections_saml_destroy
   # Group-source connection Viewset
   # @param id A unique integer value identifying this Group SAML Source Connection.
@@ -610,90 +431,6 @@ describe 'SourcesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'sources_group_connections_saml_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_create
-  # Group-source connection Viewset
-  # @param group_telegram_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupTelegramSourceConnection]
-  describe 'sources_group_connections_telegram_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_destroy
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_group_connections_telegram_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_list
-  # Group-source connection Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :group 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :source__slug 
-  # @return [PaginatedGroupTelegramSourceConnectionList]
-  describe 'sources_group_connections_telegram_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_partial_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedGroupTelegramSourceConnectionRequest] :patched_group_telegram_source_connection_request 
-  # @return [GroupTelegramSourceConnection]
-  describe 'sources_group_connections_telegram_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_retrieve
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [GroupTelegramSourceConnection]
-  describe 'sources_group_connections_telegram_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_update
-  # Group-source connection Viewset
-  # @param id A unique integer value identifying this Group Telegram Source Connection.
-  # @param group_telegram_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [GroupTelegramSourceConnection]
-  describe 'sources_group_connections_telegram_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_group_connections_telegram_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this Group Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_group_connections_telegram_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -770,10 +507,10 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_kerberos_sync_status_retrieve
-  # Get provider&#39;s sync status
+  # Get source&#39;s sync status
   # @param slug 
   # @param [Hash] opts the optional parameters
-  # @return [SyncStatus]
+  # @return [KerberosSyncStatus]
   describe 'sources_kerberos_sync_status_retrieve test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -844,12 +581,10 @@ describe 'SourcesApi' do
   # @option opts [String] :base_dn 
   # @option opts [String] :bind_cn 
   # @option opts [String] :client_certificate 
-  # @option opts [Boolean] :delete_not_found_objects 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :group_membership_field 
   # @option opts [String] :group_object_filter 
   # @option opts [Array<String>] :group_property_mappings 
-  # @option opts [Boolean] :lookup_groups_from_user 
   # @option opts [String] :name 
   # @option opts [String] :object_uniqueness_field 
   # @option opts [String] :ordering Which field to use when ordering the results.
@@ -867,7 +602,6 @@ describe 'SourcesApi' do
   # @option opts [String] :sync_parent_group 
   # @option opts [Boolean] :sync_users 
   # @option opts [Boolean] :sync_users_password 
-  # @option opts [String] :user_membership_attribute 
   # @option opts [String] :user_object_filter 
   # @option opts [Array<String>] :user_property_mappings 
   # @return [PaginatedLDAPSourceList]
@@ -901,7 +635,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_ldap_sync_status_retrieve
-  # Get provider&#39;s sync status
+  # Get source&#39;s sync status
   # @param slug 
   # @param [Hash] opts the optional parameters
   # @return [SyncStatus]
@@ -1204,8 +938,6 @@ describe 'SourcesApi' do
   # @option opts [String] :pre_authentication_flow 
   # @option opts [String] :search A search term.
   # @option opts [String] :signature_algorithm 
-  # @option opts [Boolean] :signed_assertion 
-  # @option opts [Boolean] :signed_response 
   # @option opts [String] :signing_kp 
   # @option opts [String] :slo_url 
   # @option opts [String] :slug 
@@ -1532,99 +1264,6 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_telegram_create
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param telegram_source_request 
-  # @param [Hash] opts the optional parameters
-  # @return [TelegramSource]
-  describe 'sources_telegram_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_destroy
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_telegram_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_list
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :authentication_flow 
-  # @option opts [String] :bot_username 
-  # @option opts [Boolean] :enabled 
-  # @option opts [String] :enrollment_flow 
-  # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
-  # @option opts [String] :name 
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :pbm_uuid 
-  # @option opts [String] :policy_engine_mode 
-  # @option opts [Boolean] :request_message_access 
-  # @option opts [String] :search A search term.
-  # @option opts [String] :slug 
-  # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
-  # @return [PaginatedTelegramSourceList]
-  describe 'sources_telegram_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_partial_update
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedTelegramSourceRequest] :patched_telegram_source_request 
-  # @return [TelegramSource]
-  describe 'sources_telegram_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_retrieve
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @return [TelegramSource]
-  describe 'sources_telegram_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_update
-  # Mixin to add a used_by endpoint to return a list of all objects using this object
-  # @param slug 
-  # @param telegram_source_request 
-  # @param [Hash] opts the optional parameters
-  # @return [TelegramSource]
-  describe 'sources_telegram_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_telegram_used_by_list
-  # Get a list of all objects that use this object
-  # @param slug 
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_telegram_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_user_connections_all_destroy
   # User-source connection Viewset
   # @param id A unique integer value identifying this user source connection.
@@ -1699,7 +1338,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_create
-  # User-source connection Viewset
+  # Source Viewset
   # @param user_kerberos_source_connection_request 
   # @param [Hash] opts the optional parameters
   # @return [UserKerberosSourceConnection]
@@ -1710,7 +1349,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_destroy
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User Kerberos Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -1721,14 +1360,13 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_list
-  # User-source connection Viewset
+  # Source Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
   # @option opts [String] :source__slug 
-  # @option opts [Integer] :user 
   # @return [PaginatedUserKerberosSourceConnectionList]
   describe 'sources_user_connections_kerberos_list test' do
     it 'should work' do
@@ -1737,7 +1375,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_partial_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User Kerberos Source Connection.
   # @param [Hash] opts the optional parameters
   # @option opts [PatchedUserKerberosSourceConnectionRequest] :patched_user_kerberos_source_connection_request 
@@ -1749,7 +1387,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_retrieve
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User Kerberos Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [UserKerberosSourceConnection]
@@ -1760,7 +1398,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_kerberos_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User Kerberos Source Connection.
   # @param user_kerberos_source_connection_request 
   # @param [Hash] opts the optional parameters
@@ -1782,92 +1420,8 @@ describe 'SourcesApi' do
     end
   end
 
-  # unit tests for sources_user_connections_ldap_create
-  # User-source connection Viewset
-  # @param user_ldap_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [UserLDAPSourceConnection]
-  describe 'sources_user_connections_ldap_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_destroy
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_user_connections_ldap_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_list
-  # User-source connection Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :source__slug 
-  # @option opts [Integer] :user 
-  # @return [PaginatedUserLDAPSourceConnectionList]
-  describe 'sources_user_connections_ldap_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_partial_update
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedUserLDAPSourceConnectionRequest] :patched_user_ldap_source_connection_request 
-  # @return [UserLDAPSourceConnection]
-  describe 'sources_user_connections_ldap_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_retrieve
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [UserLDAPSourceConnection]
-  describe 'sources_user_connections_ldap_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_update
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User LDAP Source Connection.
-  # @param user_ldap_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [UserLDAPSourceConnection]
-  describe 'sources_user_connections_ldap_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_ldap_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this User LDAP Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_user_connections_ldap_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for sources_user_connections_oauth_create
-  # User-source connection Viewset
+  # Source Viewset
   # @param user_o_auth_source_connection_request 
   # @param [Hash] opts the optional parameters
   # @return [UserOAuthSourceConnection]
@@ -1878,7 +1432,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_oauth_destroy
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User OAuth Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -1889,7 +1443,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_oauth_list
-  # User-source connection Viewset
+  # Source Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -1905,7 +1459,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_oauth_partial_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User OAuth Source Connection.
   # @param [Hash] opts the optional parameters
   # @option opts [PatchedUserOAuthSourceConnectionRequest] :patched_user_o_auth_source_connection_request 
@@ -1917,7 +1471,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_oauth_retrieve
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User OAuth Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [UserOAuthSourceConnection]
@@ -1928,7 +1482,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_oauth_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User OAuth Source Connection.
   # @param user_o_auth_source_connection_request 
   # @param [Hash] opts the optional parameters
@@ -1951,7 +1505,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_create
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param user_plex_source_connection_request 
   # @param [Hash] opts the optional parameters
   # @return [UserPlexSourceConnection]
@@ -1962,7 +1516,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_destroy
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param id A unique integer value identifying this User Plex Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -1973,7 +1527,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_list
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -1989,7 +1543,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_partial_update
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param id A unique integer value identifying this User Plex Source Connection.
   # @param [Hash] opts the optional parameters
   # @option opts [PatchedUserPlexSourceConnectionRequest] :patched_user_plex_source_connection_request 
@@ -2001,7 +1555,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_retrieve
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param id A unique integer value identifying this User Plex Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [UserPlexSourceConnection]
@@ -2012,7 +1566,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_plex_update
-  # User-source connection Viewset
+  # Plex Source connection Serializer
   # @param id A unique integer value identifying this User Plex Source Connection.
   # @param user_plex_source_connection_request 
   # @param [Hash] opts the optional parameters
@@ -2035,7 +1589,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_create
-  # User-source connection Viewset
+  # Source Viewset
   # @param user_saml_source_connection_request 
   # @param [Hash] opts the optional parameters
   # @return [UserSAMLSourceConnection]
@@ -2046,7 +1600,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_destroy
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User SAML Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [nil]
@@ -2057,7 +1611,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_list
-  # User-source connection Viewset
+  # Source Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -2073,7 +1627,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_partial_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User SAML Source Connection.
   # @param [Hash] opts the optional parameters
   # @option opts [PatchedUserSAMLSourceConnectionRequest] :patched_user_saml_source_connection_request 
@@ -2085,7 +1639,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_retrieve
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User SAML Source Connection.
   # @param [Hash] opts the optional parameters
   # @return [UserSAMLSourceConnection]
@@ -2096,7 +1650,7 @@ describe 'SourcesApi' do
   end
 
   # unit tests for sources_user_connections_saml_update
-  # User-source connection Viewset
+  # Source Viewset
   # @param id A unique integer value identifying this User SAML Source Connection.
   # @param user_saml_source_connection_request 
   # @param [Hash] opts the optional parameters
@@ -2113,90 +1667,6 @@ describe 'SourcesApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'sources_user_connections_saml_used_by_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_create
-  # User-source connection Viewset
-  # @param user_telegram_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [UserTelegramSourceConnection]
-  describe 'sources_user_connections_telegram_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_destroy
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'sources_user_connections_telegram_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_list
-  # User-source connection Viewset
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [Integer] :page A page number within the paginated result set.
-  # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :source__slug 
-  # @option opts [Integer] :user 
-  # @return [PaginatedUserTelegramSourceConnectionList]
-  describe 'sources_user_connections_telegram_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_partial_update
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedUserTelegramSourceConnectionRequest] :patched_user_telegram_source_connection_request 
-  # @return [UserTelegramSourceConnection]
-  describe 'sources_user_connections_telegram_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_retrieve
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [UserTelegramSourceConnection]
-  describe 'sources_user_connections_telegram_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_update
-  # User-source connection Viewset
-  # @param id A unique integer value identifying this User Telegram Source Connection.
-  # @param user_telegram_source_connection_request 
-  # @param [Hash] opts the optional parameters
-  # @return [UserTelegramSourceConnection]
-  describe 'sources_user_connections_telegram_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for sources_user_connections_telegram_used_by_list
-  # Get a list of all objects that use this object
-  # @param id A unique integer value identifying this User Telegram Source Connection.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'sources_user_connections_telegram_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

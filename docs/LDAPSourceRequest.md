@@ -27,15 +27,12 @@
 | **user_object_filter** | **String** | Consider Objects matching this filter to be Users. | [optional] |
 | **group_object_filter** | **String** | Consider Objects matching this filter to be Groups. | [optional] |
 | **group_membership_field** | **String** | Field which contains members of a group. | [optional] |
-| **user_membership_attribute** | **String** | Attribute which matches the value of &#x60;group_membership_field&#x60;. | [optional] |
 | **object_uniqueness_field** | **String** | Field which contains a unique Identifier. | [optional] |
 | **password_login_update_internal_password** | **Boolean** | Update internal authentik password when login succeeds with LDAP | [optional] |
 | **sync_users** | **Boolean** |  | [optional] |
 | **sync_users_password** | **Boolean** | When a user changes their password, sync it back to LDAP. This can only be enabled on a single LDAP source. | [optional] |
 | **sync_groups** | **Boolean** |  | [optional] |
 | **sync_parent_group** | **String** |  | [optional] |
-| **lookup_groups_from_user** | **Boolean** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] |
-| **delete_not_found_objects** | **Boolean** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] |
 
 ## Example
 
@@ -66,15 +63,12 @@ instance = Authentik::Api::LDAPSourceRequest.new(
   user_object_filter: null,
   group_object_filter: null,
   group_membership_field: null,
-  user_membership_attribute: null,
   object_uniqueness_field: null,
   password_login_update_internal_password: null,
   sync_users: null,
   sync_users_password: null,
   sync_groups: null,
-  sync_parent_group: null,
-  lookup_groups_from_user: null,
-  delete_not_found_objects: null
+  sync_parent_group: null
 )
 ```
 

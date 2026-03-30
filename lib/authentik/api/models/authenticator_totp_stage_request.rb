@@ -79,6 +79,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'configure_flow',
+        :'friendly_name',
       ])
     end
 
@@ -138,6 +139,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
       end
 
+      if !@friendly_name.nil? && @friendly_name.to_s.length < 1
+        invalid_properties.push('invalid value for "friendly_name", the character length must be greater than or equal to 1.')
+      end
+
       if @digits.nil?
         invalid_properties.push('invalid value for "digits", digits cannot be nil.')
       end
@@ -151,6 +156,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @name.nil?
       return false if @name.to_s.length < 1
+      return false if !@friendly_name.nil? && @friendly_name.to_s.length < 1
       return false if @digits.nil?
       true
     end
@@ -167,6 +173,16 @@ module Authentik::Api
       end
 
       @name = name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] friendly_name Value to be assigned
+    def friendly_name=(friendly_name)
+      if !friendly_name.nil? && friendly_name.to_s.length < 1
+        fail ArgumentError, 'invalid value for "friendly_name", the character length must be greater than or equal to 1.'
+      end
+
+      @friendly_name = friendly_name
     end
 
     # Custom attribute writer method with validation

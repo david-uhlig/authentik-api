@@ -75,7 +75,7 @@ describe Authentik::Api::Prompt do
     end
   end
 
-  describe 'test attribute "prompt_stages_obj"' do
+  describe 'test attribute "promptstage_set"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

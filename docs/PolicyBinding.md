@@ -9,8 +9,8 @@
 | **group** | **String** |  | [optional] |
 | **user** | **Integer** |  | [optional] |
 | **policy_obj** | [**Policy**](Policy.md) |  | [readonly] |
-| **group_obj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] |
-| **user_obj** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **group_obj** | [**Group**](Group.md) |  | [readonly] |
+| **user_obj** | [**User**](User.md) |  | [readonly] |
 | **target** | **String** |  |  |
 | **negate** | **Boolean** | Negates the outcome of the policy. Messages are unaffected. | [optional] |
 | **enabled** | **Boolean** |  | [optional] |

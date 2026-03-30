@@ -7,9 +7,9 @@
 | **id** | **String** |  | [readonly] |
 | **microsoft_id** | **String** |  |  |
 | **user** | **Integer** |  |  |
-| **user_obj** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user_obj** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 | **provider** | **Integer** |  |  |
-| **attributes** | **Hash&lt;String, Object&gt;** |  | [readonly] |
+| **attributes** | **Object** |  | [readonly] |
 
 ## Example
 

@@ -29,9 +29,6 @@ module Authentik::Api
     # Bind sessions created by this stage to the configured GeoIP location
     attr_accessor :geoip_binding
 
-    # When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-    attr_accessor :remember_device
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -63,8 +60,7 @@ module Authentik::Api
         :'terminate_other_sessions' => :'terminate_other_sessions',
         :'remember_me_offset' => :'remember_me_offset',
         :'network_binding' => :'network_binding',
-        :'geoip_binding' => :'geoip_binding',
-        :'remember_device' => :'remember_device'
+        :'geoip_binding' => :'geoip_binding'
       }
     end
 
@@ -87,8 +83,7 @@ module Authentik::Api
         :'terminate_other_sessions' => :'Boolean',
         :'remember_me_offset' => :'String',
         :'network_binding' => :'NetworkBindingEnum',
-        :'geoip_binding' => :'GeoipBindingEnum',
-        :'remember_device' => :'String'
+        :'geoip_binding' => :'GeoipBindingEnum'
       }
     end
 
@@ -145,10 +140,6 @@ module Authentik::Api
       if attributes.key?(:'geoip_binding')
         self.geoip_binding = attributes[:'geoip_binding']
       end
-
-      if attributes.key?(:'remember_device')
-        self.remember_device = attributes[:'remember_device']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -172,10 +163,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "remember_me_offset", the character length must be greater than or equal to 1.')
       end
 
-      if !@remember_device.nil? && @remember_device.to_s.length < 1
-        invalid_properties.push('invalid value for "remember_device", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -187,7 +174,6 @@ module Authentik::Api
       return false if @name.to_s.length < 1
       return false if !@session_duration.nil? && @session_duration.to_s.length < 1
       return false if !@remember_me_offset.nil? && @remember_me_offset.to_s.length < 1
-      return false if !@remember_device.nil? && @remember_device.to_s.length < 1
       true
     end
 
@@ -233,20 +219,6 @@ module Authentik::Api
       @remember_me_offset = remember_me_offset
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] remember_device Value to be assigned
-    def remember_device=(remember_device)
-      if remember_device.nil?
-        fail ArgumentError, 'remember_device cannot be nil'
-      end
-
-      if remember_device.to_s.length < 1
-        fail ArgumentError, 'invalid value for "remember_device", the character length must be greater than or equal to 1.'
-      end
-
-      @remember_device = remember_device
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -258,8 +230,7 @@ module Authentik::Api
           terminate_other_sessions == o.terminate_other_sessions &&
           remember_me_offset == o.remember_me_offset &&
           network_binding == o.network_binding &&
-          geoip_binding == o.geoip_binding &&
-          remember_device == o.remember_device
+          geoip_binding == o.geoip_binding
     end
 
     # @see the `==` method
@@ -271,7 +242,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, flow_set, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding, remember_device].hash
+      [name, flow_set, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding].hash
     end
 
     # Builds the object from hash

@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
 | **app** | **String** |  | [optional] |
-| **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **attributes** | **Object** |  | [optional] |
 
 ## Example
 

@@ -45,45 +45,9 @@ module Authentik::Api
     # Authentication token
     attr_accessor :token
 
-    attr_accessor :auth_mode
-
-    # OAuth Source used for authentication
-    attr_accessor :auth_oauth
-
-    # Additional OAuth parameters, such as grant_type
-    attr_accessor :auth_oauth_params
-
-    # Alter authentik behavior for vendor-specific SCIM implementations.
-    attr_accessor :compatibility_mode
-
     attr_accessor :exclude_users_service_account
 
     attr_accessor :filter_group
-
-    # When enabled, provider will not modify or create objects in the remote system.
-    attr_accessor :dry_run
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -101,13 +65,8 @@ module Authentik::Api
         :'url' => :'url',
         :'verify_certificates' => :'verify_certificates',
         :'token' => :'token',
-        :'auth_mode' => :'auth_mode',
-        :'auth_oauth' => :'auth_oauth',
-        :'auth_oauth_params' => :'auth_oauth_params',
-        :'compatibility_mode' => :'compatibility_mode',
         :'exclude_users_service_account' => :'exclude_users_service_account',
-        :'filter_group' => :'filter_group',
-        :'dry_run' => :'dry_run'
+        :'filter_group' => :'filter_group'
       }
     end
 
@@ -137,23 +96,15 @@ module Authentik::Api
         :'url' => :'String',
         :'verify_certificates' => :'Boolean',
         :'token' => :'String',
-        :'auth_mode' => :'SCIMAuthenticationModeEnum',
-        :'auth_oauth' => :'String',
-        :'auth_oauth_params' => :'Hash<String, Object>',
-        :'compatibility_mode' => :'CompatibilityModeEnum',
         :'exclude_users_service_account' => :'Boolean',
-        :'filter_group' => :'String',
-        :'dry_run' => :'Boolean'
+        :'filter_group' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
-        :'auth_oauth',
-        :'filter_group',
+        :'filter_group'
       ])
     end
 
@@ -245,24 +196,8 @@ module Authentik::Api
 
       if attributes.key?(:'token')
         self.token = attributes[:'token']
-      end
-
-      if attributes.key?(:'auth_mode')
-        self.auth_mode = attributes[:'auth_mode']
-      end
-
-      if attributes.key?(:'auth_oauth')
-        self.auth_oauth = attributes[:'auth_oauth']
-      end
-
-      if attributes.key?(:'auth_oauth_params')
-        if (value = attributes[:'auth_oauth_params']).is_a?(Hash)
-          self.auth_oauth_params = value
-        end
-      end
-
-      if attributes.key?(:'compatibility_mode')
-        self.compatibility_mode = attributes[:'compatibility_mode']
+      else
+        self.token = nil
       end
 
       if attributes.key?(:'exclude_users_service_account')
@@ -271,10 +206,6 @@ module Authentik::Api
 
       if attributes.key?(:'filter_group')
         self.filter_group = attributes[:'filter_group']
-      end
-
-      if attributes.key?(:'dry_run')
-        self.dry_run = attributes[:'dry_run']
       end
     end
 
@@ -295,6 +226,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "component", component cannot be nil.')
       end
 
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
+      end
+
       if @verbose_name.nil?
         invalid_properties.push('invalid value for "verbose_name", verbose_name cannot be nil.')
       end
@@ -311,6 +250,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "url", url cannot be nil.')
       end
 
+      if @token.nil?
+        invalid_properties.push('invalid value for "token", token cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -321,10 +264,13 @@ module Authentik::Api
       return false if @pk.nil?
       return false if @name.nil?
       return false if @component.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @url.nil?
+      return false if @token.nil?
       true
     end
 
@@ -356,6 +302,26 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation
@@ -398,6 +364,16 @@ module Authentik::Api
       @url = url
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] token Value to be assigned
+    def token=(token)
+      if token.nil?
+        fail ArgumentError, 'token cannot be nil'
+      end
+
+      @token = token
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -416,13 +392,8 @@ module Authentik::Api
           url == o.url &&
           verify_certificates == o.verify_certificates &&
           token == o.token &&
-          auth_mode == o.auth_mode &&
-          auth_oauth == o.auth_oauth &&
-          auth_oauth_params == o.auth_oauth_params &&
-          compatibility_mode == o.compatibility_mode &&
           exclude_users_service_account == o.exclude_users_service_account &&
-          filter_group == o.filter_group &&
-          dry_run == o.dry_run
+          filter_group == o.filter_group
     end
 
     # @see the `==` method
@@ -434,7 +405,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, exclude_users_service_account, filter_group, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, token, exclude_users_service_account, filter_group].hash
     end
 
     # Builds the object from hash

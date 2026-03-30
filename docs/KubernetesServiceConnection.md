@@ -11,7 +11,7 @@
 | **verbose_name** | **String** | Return object&#39;s verbose_name | [readonly] |
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
-| **kubeconfig** | **Hash&lt;String, Object&gt;** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] |
+| **kubeconfig** | **Object** | Paste your kubeconfig here. authentik will automatically use the currently selected context. | [optional] |
 | **verify_ssl** | **Boolean** | Verify SSL Certificates of the Kubernetes API endpoint | [optional] |
 
 ## Example

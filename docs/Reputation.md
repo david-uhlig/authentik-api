@@ -7,8 +7,8 @@
 | **pk** | **String** |  | [optional] |
 | **identifier** | **String** |  |  |
 | **ip** | **String** |  |  |
-| **ip_geo_data** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **ip_asn_data** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **ip_geo_data** | **Object** |  | [optional] |
+| **ip_asn_data** | **Object** |  | [optional] |
 | **score** | **Integer** |  | [optional] |
 | **updated** | **Time** |  | [readonly] |
 

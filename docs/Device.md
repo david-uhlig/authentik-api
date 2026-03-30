@@ -15,7 +15,6 @@
 | **last_updated** | **Time** |  | [readonly] |
 | **last_used** | **Time** |  | [readonly] |
 | **extra_description** | **String** | Get extra description | [readonly] |
-| **external_id** | **String** | Get external Device ID | [readonly] |
 
 ## Example
 
@@ -33,8 +32,7 @@ instance = Authentik::Api::Device.new(
   created: null,
   last_updated: null,
   last_used: null,
-  extra_description: null,
-  external_id: null
+  extra_description: null
 )
 ```
 

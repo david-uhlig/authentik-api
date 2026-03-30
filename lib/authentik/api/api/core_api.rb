@@ -763,6 +763,67 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Metrics for application logins
+    # @param slug [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Coordinate>]
+    def core_applications_metrics_list(slug, opts = {})
+      data, _status_code, _headers = core_applications_metrics_list_with_http_info(slug, opts)
+      data
+    end
+
+    # Metrics for application logins
+    # @param slug [String] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Coordinate>, Integer, Hash)>] Array<Coordinate> data, response status code and response headers
+    def core_applications_metrics_list_with_http_info(slug, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_metrics_list ...'
+      end
+      # verify the required parameter 'slug' is set
+      if @api_client.config.client_side_validation && slug.nil?
+        fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_metrics_list"
+      end
+      # resource path
+      local_var_path = '/core/applications/{slug}/metrics/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Coordinate>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_applications_metrics_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_applications_metrics_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Application Viewset
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
@@ -1170,7 +1231,7 @@ module Authentik::Api
     end
 
     # AuthenticatedSession Viewset
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [nil]
     def core_authenticated_sessions_destroy(uuid, opts = {})
@@ -1179,7 +1240,7 @@ module Authentik::Api
     end
 
     # AuthenticatedSession Viewset
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def core_authenticated_sessions_destroy_with_http_info(uuid, opts = {})
@@ -1232,12 +1293,12 @@ module Authentik::Api
 
     # AuthenticatedSession Viewset
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :last_ip 
+    # @option opts [String] :last_user_agent 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [String] :session__last_ip 
-    # @option opts [String] :session__last_user_agent 
     # @option opts [String] :user__username 
     # @return [PaginatedAuthenticatedSessionList]
     def core_authenticated_sessions_list(opts = {})
@@ -1247,12 +1308,12 @@ module Authentik::Api
 
     # AuthenticatedSession Viewset
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :last_ip 
+    # @option opts [String] :last_user_agent 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [String] :session__last_ip 
-    # @option opts [String] :session__last_user_agent 
     # @option opts [String] :user__username 
     # @return [Array<(PaginatedAuthenticatedSessionList, Integer, Hash)>] PaginatedAuthenticatedSessionList data, response status code and response headers
     def core_authenticated_sessions_list_with_http_info(opts = {})
@@ -1264,12 +1325,12 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'last_ip'] = opts[:'last_ip'] if !opts[:'last_ip'].nil?
+      query_params[:'last_user_agent'] = opts[:'last_user_agent'] if !opts[:'last_user_agent'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'session__last_ip'] = opts[:'session__last_ip'] if !opts[:'session__last_ip'].nil?
-      query_params[:'session__last_user_agent'] = opts[:'session__last_user_agent'] if !opts[:'session__last_user_agent'].nil?
       query_params[:'user__username'] = opts[:'user__username'] if !opts[:'user__username'].nil?
 
       # header parameters
@@ -1307,7 +1368,7 @@ module Authentik::Api
     end
 
     # AuthenticatedSession Viewset
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [AuthenticatedSession]
     def core_authenticated_sessions_retrieve(uuid, opts = {})
@@ -1316,7 +1377,7 @@ module Authentik::Api
     end
 
     # AuthenticatedSession Viewset
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [Array<(AuthenticatedSession, Integer, Hash)>] AuthenticatedSession data, response status code and response headers
     def core_authenticated_sessions_retrieve_with_http_info(uuid, opts = {})
@@ -1368,7 +1429,7 @@ module Authentik::Api
     end
 
     # Get a list of all objects that use this object
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [Array<UsedBy>]
     def core_authenticated_sessions_used_by_list(uuid, opts = {})
@@ -1377,7 +1438,7 @@ module Authentik::Api
     end
 
     # Get a list of all objects that use this object
-    # @param uuid [String] 
+    # @param uuid [String] A UUID string identifying this Authenticated Session.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
     def core_authenticated_sessions_used_by_list_with_http_info(uuid, opts = {})
@@ -1613,11 +1674,9 @@ module Authentik::Api
     # Brand Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brand_uuid 
-    # @option opts [String] :branding_default_flow_background 
     # @option opts [String] :branding_favicon 
     # @option opts [String] :branding_logo 
     # @option opts [String] :branding_title 
-    # @option opts [Array<String>] :client_certificates 
     # @option opts [Boolean] :default 
     # @option opts [String] :domain 
     # @option opts [String] :flow_authentication 
@@ -1640,11 +1699,9 @@ module Authentik::Api
     # Brand Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :brand_uuid 
-    # @option opts [String] :branding_default_flow_background 
     # @option opts [String] :branding_favicon 
     # @option opts [String] :branding_logo 
     # @option opts [String] :branding_title 
-    # @option opts [Array<String>] :client_certificates 
     # @option opts [Boolean] :default 
     # @option opts [String] :domain 
     # @option opts [String] :flow_authentication 
@@ -1669,11 +1726,9 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'brand_uuid'] = opts[:'brand_uuid'] if !opts[:'brand_uuid'].nil?
-      query_params[:'branding_default_flow_background'] = opts[:'branding_default_flow_background'] if !opts[:'branding_default_flow_background'].nil?
       query_params[:'branding_favicon'] = opts[:'branding_favicon'] if !opts[:'branding_favicon'].nil?
       query_params[:'branding_logo'] = opts[:'branding_logo'] if !opts[:'branding_logo'].nil?
       query_params[:'branding_title'] = opts[:'branding_title'] if !opts[:'branding_title'].nil?
-      query_params[:'client_certificates'] = @api_client.build_collection_param(opts[:'client_certificates'], :multi) if !opts[:'client_certificates'].nil?
       query_params[:'default'] = opts[:'default'] if !opts[:'default'].nil?
       query_params[:'domain'] = opts[:'domain'] if !opts[:'domain'].nil?
       query_params[:'flow_authentication'] = opts[:'flow_authentication'] if !opts[:'flow_authentication'].nil?
@@ -2186,7 +2241,6 @@ module Authentik::Api
     # Group Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
-    # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @option opts [Boolean] :is_superuser 
     # @option opts [Array<Integer>] :members_by_pk 
@@ -2205,7 +2259,6 @@ module Authentik::Api
     # Group Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
-    # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @option opts [Boolean] :is_superuser 
     # @option opts [Array<Integer>] :members_by_pk 
@@ -2226,7 +2279,6 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
-      query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
       query_params[:'include_users'] = opts[:'include_users'] if !opts[:'include_users'].nil?
       query_params[:'is_superuser'] = opts[:'is_superuser'] if !opts[:'is_superuser'].nil?
       query_params[:'members_by_pk'] = @api_client.build_collection_param(opts[:'members_by_pk'], :multi) if !opts[:'members_by_pk'].nil?
@@ -2339,7 +2391,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Remove user from group
+    # Add user to group
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param user_account_request [UserAccountRequest] 
     # @param [Hash] opts the optional parameters
@@ -2349,7 +2401,7 @@ module Authentik::Api
       nil
     end
 
-    # Remove user from group
+    # Add user to group
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param user_account_request [UserAccountRequest] 
     # @param [Hash] opts the optional parameters
@@ -2414,7 +2466,6 @@ module Authentik::Api
     # Group Viewset
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @return [Group]
     def core_groups_retrieve(group_uuid, opts = {})
@@ -2425,7 +2476,6 @@ module Authentik::Api
     # Group Viewset
     # @param group_uuid [String] A UUID string identifying this Group.
     # @param [Hash] opts the optional parameters
-    # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_users  (default to true)
     # @return [Array<(Group, Integer, Hash)>] Group data, response status code and response headers
     def core_groups_retrieve_with_http_info(group_uuid, opts = {})
@@ -2441,7 +2491,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
       query_params[:'include_users'] = opts[:'include_users'] if !opts[:'include_users'].nil?
 
       # header parameters
@@ -3804,18 +3853,12 @@ module Authentik::Api
     # User Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
-    # @option opts [Time] :date_joined 
-    # @option opts [Time] :date_joined__gt 
-    # @option opts [Time] :date_joined__lt 
     # @option opts [String] :email 
     # @option opts [Array<String>] :groups_by_name 
     # @option opts [Array<String>] :groups_by_pk 
     # @option opts [Boolean] :include_groups  (default to true)
     # @option opts [Boolean] :is_active 
     # @option opts [Boolean] :is_superuser 
-    # @option opts [Time] :last_updated 
-    # @option opts [Time] :last_updated__gt 
-    # @option opts [Time] :last_updated__lt 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3835,18 +3878,12 @@ module Authentik::Api
     # User Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :attributes Attributes
-    # @option opts [Time] :date_joined 
-    # @option opts [Time] :date_joined__gt 
-    # @option opts [Time] :date_joined__lt 
     # @option opts [String] :email 
     # @option opts [Array<String>] :groups_by_name 
     # @option opts [Array<String>] :groups_by_pk 
     # @option opts [Boolean] :include_groups  (default to true)
     # @option opts [Boolean] :is_active 
     # @option opts [Boolean] :is_superuser 
-    # @option opts [Time] :last_updated 
-    # @option opts [Time] :last_updated__gt 
-    # @option opts [Time] :last_updated__lt 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3872,18 +3909,12 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
-      query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
-      query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
-      query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?
       query_params[:'email'] = opts[:'email'] if !opts[:'email'].nil?
       query_params[:'groups_by_name'] = @api_client.build_collection_param(opts[:'groups_by_name'], :multi) if !opts[:'groups_by_name'].nil?
       query_params[:'groups_by_pk'] = @api_client.build_collection_param(opts[:'groups_by_pk'], :multi) if !opts[:'groups_by_pk'].nil?
       query_params[:'include_groups'] = opts[:'include_groups'] if !opts[:'include_groups'].nil?
       query_params[:'is_active'] = opts[:'is_active'] if !opts[:'is_active'].nil?
       query_params[:'is_superuser'] = opts[:'is_superuser'] if !opts[:'is_superuser'].nil?
-      query_params[:'last_updated'] = opts[:'last_updated'] if !opts[:'last_updated'].nil?
-      query_params[:'last_updated__gt'] = opts[:'last_updated__gt'] if !opts[:'last_updated__gt'].nil?
-      query_params[:'last_updated__lt'] = opts[:'last_updated__lt'] if !opts[:'last_updated__lt'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -3984,6 +4015,67 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # User metrics per 1h
+    # @param id [Integer] A unique integer value identifying this User.
+    # @param [Hash] opts the optional parameters
+    # @return [UserMetrics]
+    def core_users_metrics_retrieve(id, opts = {})
+      data, _status_code, _headers = core_users_metrics_retrieve_with_http_info(id, opts)
+      data
+    end
+
+    # User metrics per 1h
+    # @param id [Integer] A unique integer value identifying this User.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(UserMetrics, Integer, Hash)>] UserMetrics data, response status code and response headers
+    def core_users_metrics_retrieve_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_metrics_retrieve ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_metrics_retrieve"
+      end
+      # resource path
+      local_var_path = '/core/users/{id}/metrics/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserMetrics'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_metrics_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_metrics_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # User Viewset
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
@@ -4054,7 +4146,7 @@ module Authentik::Api
 
     # Get all user paths
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :search A search term.
+    # @option opts [String] :search 
     # @return [UserPath]
     def core_users_paths_retrieve(opts = {})
       data, _status_code, _headers = core_users_paths_retrieve_with_http_info(opts)
@@ -4063,7 +4155,7 @@ module Authentik::Api
 
     # Get all user paths
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :search A search term.
+    # @option opts [String] :search 
     # @return [Array<(UserPath, Integer, Hash)>] UserPath data, response status code and response headers
     def core_users_paths_retrieve_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -4110,7 +4202,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Create a temporary link that a user can use to recover their account
+    # Create a temporary link that a user can use to recover their accounts
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
     # @return [Link]
@@ -4119,7 +4211,7 @@ module Authentik::Api
       data
     end
 
-    # Create a temporary link that a user can use to recover their account
+    # Create a temporary link that a user can use to recover their accounts
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
     # @return [Array<(Link, Integer, Hash)>] Link data, response status code and response headers
@@ -4171,7 +4263,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Send an email with a temporary link that a user can use to recover their account
+    # Create a temporary link that a user can use to recover their accounts
     # @param email_stage [String] 
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters
@@ -4181,7 +4273,7 @@ module Authentik::Api
       nil
     end
 
-    # Send an email with a temporary link that a user can use to recover their account
+    # Create a temporary link that a user can use to recover their accounts
     # @param email_stage [String] 
     # @param id [Integer] A unique integer value identifying this User.
     # @param [Hash] opts the optional parameters

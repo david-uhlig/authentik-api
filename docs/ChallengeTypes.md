@@ -31,8 +31,6 @@ Authentik::Api::ChallengeTypes.openapi_one_of
 #   :'FlowErrorChallenge',
 #   :'FrameChallenge',
 #   :'IdentificationChallenge',
-#   :'IframeLogoutChallenge',
-#   :'NativeLogoutChallenge',
 #   :'OAuthDeviceCodeChallenge',
 #   :'OAuthDeviceCodeFinishChallenge',
 #   :'PasswordChallenge',
@@ -41,7 +39,6 @@ Authentik::Api::ChallengeTypes.openapi_one_of
 #   :'RedirectChallenge',
 #   :'SessionEndChallenge',
 #   :'ShellChallenge',
-#   :'TelegramLoginChallenge',
 #   :'UserLoginChallenge'
 # ]
 ```
@@ -71,13 +68,10 @@ require 'authentik-api'
 Authentik::Api::ChallengeTypes.openapi_discriminator_mapping
 # =>
 # {
-#   :'ak-provider-iframe-logout' => :'IframeLogoutChallenge',
 #   :'ak-provider-oauth2-device-code' => :'OAuthDeviceCodeChallenge',
 #   :'ak-provider-oauth2-device-code-finish' => :'OAuthDeviceCodeFinishChallenge',
-#   :'ak-provider-saml-native-logout' => :'NativeLogoutChallenge',
 #   :'ak-source-oauth-apple' => :'AppleLoginChallenge',
 #   :'ak-source-plex' => :'PlexAuthenticationChallenge',
-#   :'ak-source-telegram' => :'TelegramLoginChallenge',
 #   :'ak-stage-access-denied' => :'AccessDeniedChallenge',
 #   :'ak-stage-authenticator-duo' => :'AuthenticatorDuoChallenge',
 #   :'ak-stage-authenticator-email' => :'AuthenticatorEmailChallenge',
@@ -144,8 +138,6 @@ Authentik::Api::ChallengeTypes.build(data_that_doesnt_match)
 - `FlowErrorChallenge`
 - `FrameChallenge`
 - `IdentificationChallenge`
-- `IframeLogoutChallenge`
-- `NativeLogoutChallenge`
 - `OAuthDeviceCodeChallenge`
 - `OAuthDeviceCodeFinishChallenge`
 - `PasswordChallenge`
@@ -154,7 +146,6 @@ Authentik::Api::ChallengeTypes.build(data_that_doesnt_match)
 - `RedirectChallenge`
 - `SessionEndChallenge`
 - `ShellChallenge`
-- `TelegramLoginChallenge`
 - `UserLoginChallenge`
 - `nil` (if no type matches)
 

@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **user** | **Integer** |  |  |
 | **source** | **String** |  |  |
-| **identifier** | **String** |  |  |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::UserSourceConnectionRequest.new(
   user: null,
-  source: null,
-  identifier: null
+  source: null
 )
 ```
 

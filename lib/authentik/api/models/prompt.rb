@@ -31,7 +31,7 @@ module Authentik::Api
 
     attr_accessor :order
 
-    attr_accessor :prompt_stages_obj
+    attr_accessor :promptstage_set
 
     attr_accessor :sub_text
 
@@ -73,7 +73,7 @@ module Authentik::Api
         :'placeholder' => :'placeholder',
         :'initial_value' => :'initial_value',
         :'order' => :'order',
-        :'prompt_stages_obj' => :'prompt_stages_obj',
+        :'promptstage_set' => :'promptstage_set',
         :'sub_text' => :'sub_text',
         :'placeholder_expression' => :'placeholder_expression',
         :'initial_value_expression' => :'initial_value_expression'
@@ -102,7 +102,7 @@ module Authentik::Api
         :'placeholder' => :'String',
         :'initial_value' => :'String',
         :'order' => :'Integer',
-        :'prompt_stages_obj' => :'Array<PromptStage>',
+        :'promptstage_set' => :'Array<Stage>',
         :'sub_text' => :'String',
         :'placeholder_expression' => :'Boolean',
         :'initial_value_expression' => :'Boolean'
@@ -177,12 +177,10 @@ module Authentik::Api
         self.order = attributes[:'order']
       end
 
-      if attributes.key?(:'prompt_stages_obj')
-        if (value = attributes[:'prompt_stages_obj']).is_a?(Array)
-          self.prompt_stages_obj = value
+      if attributes.key?(:'promptstage_set')
+        if (value = attributes[:'promptstage_set']).is_a?(Array)
+          self.promptstage_set = value
         end
-      else
-        self.prompt_stages_obj = nil
       end
 
       if attributes.key?(:'sub_text')
@@ -231,10 +229,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "order", must be greater than or equal to -2147483648.')
       end
 
-      if @prompt_stages_obj.nil?
-        invalid_properties.push('invalid value for "prompt_stages_obj", prompt_stages_obj cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -249,7 +243,6 @@ module Authentik::Api
       return false if @type.nil?
       return false if !@order.nil? && @order > 2147483647
       return false if !@order.nil? && @order < -2147483648
-      return false if @prompt_stages_obj.nil?
       true
     end
 
@@ -321,16 +314,6 @@ module Authentik::Api
       @order = order
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] prompt_stages_obj Value to be assigned
-    def prompt_stages_obj=(prompt_stages_obj)
-      if prompt_stages_obj.nil?
-        fail ArgumentError, 'prompt_stages_obj cannot be nil'
-      end
-
-      @prompt_stages_obj = prompt_stages_obj
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -345,7 +328,7 @@ module Authentik::Api
           placeholder == o.placeholder &&
           initial_value == o.initial_value &&
           order == o.order &&
-          prompt_stages_obj == o.prompt_stages_obj &&
+          promptstage_set == o.promptstage_set &&
           sub_text == o.sub_text &&
           placeholder_expression == o.placeholder_expression &&
           initial_value_expression == o.initial_value_expression
@@ -360,7 +343,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, field_key, label, type, required, placeholder, initial_value, order, prompt_stages_obj, sub_text, placeholder_expression, initial_value_expression].hash
+      [pk, name, field_key, label, type, required, placeholder, initial_value, order, promptstage_set, sub_text, placeholder_expression, initial_value_expression].hash
     end
 
     # Builds the object from hash

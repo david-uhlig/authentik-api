@@ -8,9 +8,8 @@
 | **user** | **Integer** |  |  |
 | **source** | **String** |  |  |
 | **source_obj** | [**Source**](Source.md) |  | [readonly] |
-| **identifier** | **String** |  |  |
 | **created** | **Time** |  | [readonly] |
-| **last_updated** | **Time** |  | [readonly] |
+| **identifier** | **String** |  |  |
 
 ## Example
 
@@ -22,9 +21,8 @@ instance = Authentik::Api::UserPlexSourceConnection.new(
   user: null,
   source: null,
   source_obj: null,
-  identifier: null,
   created: null,
-  last_updated: null
+  identifier: null
 )
 ```
 

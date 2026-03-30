@@ -195,12 +195,6 @@ describe Authentik::Api::LDAPSource do
     end
   end
 
-  describe 'test attribute "user_membership_attribute"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "object_uniqueness_field"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -238,18 +232,6 @@ describe Authentik::Api::LDAPSource do
   end
 
   describe 'test attribute "connectivity"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "lookup_groups_from_user"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "delete_not_found_objects"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **pagination** | [**Pagination**](Pagination.md) |  |  |
 | **results** | [**Array&lt;LDAPOutpostConfig&gt;**](LDAPOutpostConfig.md) |  |  |
-| **autocomplete** | **Hash&lt;String, Object&gt;** |  |  |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::PaginatedLDAPOutpostConfigList.new(
   pagination: null,
-  results: null,
-  autocomplete: null
+  results: null
 )
 ```
 

@@ -45,7 +45,7 @@ module Authentik::Api
 
     attr_accessor :from_address
 
-    # Time the token sent is valid (Format: hours=3,minutes=17,seconds=300).
+    # Time in minutes the token sent is valid.
     attr_accessor :token_expiry
 
     attr_accessor :subject
@@ -54,11 +54,6 @@ module Authentik::Api
 
     # Activate users upon completion of stage.
     attr_accessor :activate_user_on_success
-
-    attr_accessor :recovery_max_attempts
-
-    # The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours=1;minutes=2;seconds=3).
-    attr_accessor :recovery_cache_timeout
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -81,9 +76,7 @@ module Authentik::Api
         :'token_expiry' => :'token_expiry',
         :'subject' => :'subject',
         :'template' => :'template',
-        :'activate_user_on_success' => :'activate_user_on_success',
-        :'recovery_max_attempts' => :'recovery_max_attempts',
-        :'recovery_cache_timeout' => :'recovery_cache_timeout'
+        :'activate_user_on_success' => :'activate_user_on_success'
       }
     end
 
@@ -115,12 +108,10 @@ module Authentik::Api
         :'use_ssl' => :'Boolean',
         :'timeout' => :'Integer',
         :'from_address' => :'String',
-        :'token_expiry' => :'String',
+        :'token_expiry' => :'Integer',
         :'subject' => :'String',
         :'template' => :'String',
-        :'activate_user_on_success' => :'Boolean',
-        :'recovery_max_attempts' => :'Integer',
-        :'recovery_cache_timeout' => :'String'
+        :'activate_user_on_success' => :'Boolean'
       }
     end
 
@@ -235,14 +226,6 @@ module Authentik::Api
       if attributes.key?(:'activate_user_on_success')
         self.activate_user_on_success = attributes[:'activate_user_on_success']
       end
-
-      if attributes.key?(:'recovery_max_attempts')
-        self.recovery_max_attempts = attributes[:'recovery_max_attempts']
-      end
-
-      if attributes.key?(:'recovery_cache_timeout')
-        self.recovery_cache_timeout = attributes[:'recovery_cache_timeout']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -294,12 +277,12 @@ module Authentik::Api
         invalid_properties.push('invalid value for "from_address", the character length must be smaller than or equal to 254.')
       end
 
-      if !@recovery_max_attempts.nil? && @recovery_max_attempts > 2147483647
-        invalid_properties.push('invalid value for "recovery_max_attempts", must be smaller than or equal to 2147483647.')
+      if !@token_expiry.nil? && @token_expiry > 2147483647
+        invalid_properties.push('invalid value for "token_expiry", must be smaller than or equal to 2147483647.')
       end
 
-      if !@recovery_max_attempts.nil? && @recovery_max_attempts < 0
-        invalid_properties.push('invalid value for "recovery_max_attempts", must be greater than or equal to 0.')
+      if !@token_expiry.nil? && @token_expiry < -2147483648
+        invalid_properties.push('invalid value for "token_expiry", must be greater than or equal to -2147483648.')
       end
 
       invalid_properties
@@ -320,8 +303,8 @@ module Authentik::Api
       return false if !@timeout.nil? && @timeout > 2147483647
       return false if !@timeout.nil? && @timeout < -2147483648
       return false if !@from_address.nil? && @from_address.to_s.length > 254
-      return false if !@recovery_max_attempts.nil? && @recovery_max_attempts > 2147483647
-      return false if !@recovery_max_attempts.nil? && @recovery_max_attempts < 0
+      return false if !@token_expiry.nil? && @token_expiry > 2147483647
+      return false if !@token_expiry.nil? && @token_expiry < -2147483648
       true
     end
 
@@ -436,21 +419,21 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] recovery_max_attempts Value to be assigned
-    def recovery_max_attempts=(recovery_max_attempts)
-      if recovery_max_attempts.nil?
-        fail ArgumentError, 'recovery_max_attempts cannot be nil'
+    # @param [Object] token_expiry Value to be assigned
+    def token_expiry=(token_expiry)
+      if token_expiry.nil?
+        fail ArgumentError, 'token_expiry cannot be nil'
       end
 
-      if recovery_max_attempts > 2147483647
-        fail ArgumentError, 'invalid value for "recovery_max_attempts", must be smaller than or equal to 2147483647.'
+      if token_expiry > 2147483647
+        fail ArgumentError, 'invalid value for "token_expiry", must be smaller than or equal to 2147483647.'
       end
 
-      if recovery_max_attempts < 0
-        fail ArgumentError, 'invalid value for "recovery_max_attempts", must be greater than or equal to 0.'
+      if token_expiry < -2147483648
+        fail ArgumentError, 'invalid value for "token_expiry", must be greater than or equal to -2147483648.'
       end
 
-      @recovery_max_attempts = recovery_max_attempts
+      @token_expiry = token_expiry
     end
 
     # Checks equality by comparing each attribute.
@@ -476,9 +459,7 @@ module Authentik::Api
           token_expiry == o.token_expiry &&
           subject == o.subject &&
           template == o.template &&
-          activate_user_on_success == o.activate_user_on_success &&
-          recovery_max_attempts == o.recovery_max_attempts &&
-          recovery_cache_timeout == o.recovery_cache_timeout
+          activate_user_on_success == o.activate_user_on_success
     end
 
     # @see the `==` method
@@ -490,7 +471,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, use_global_settings, host, port, username, use_tls, use_ssl, timeout, from_address, token_expiry, subject, template, activate_user_on_success, recovery_max_attempts, recovery_cache_timeout].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, use_global_settings, host, port, username, use_tls, use_ssl, timeout, from_address, token_expiry, subject, template, activate_user_on_success].hash
     end
 
     # Builds the object from hash

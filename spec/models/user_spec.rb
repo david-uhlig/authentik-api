@@ -51,12 +51,6 @@ describe Authentik::Api::User do
     end
   end
 
-  describe 'test attribute "date_joined"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "is_superuser"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -118,12 +112,6 @@ describe Authentik::Api::User do
   end
 
   describe 'test attribute "password_change_date"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "last_updated"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

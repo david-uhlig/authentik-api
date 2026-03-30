@@ -12,7 +12,7 @@
 | **initial_value** | **String** |  |  |
 | **order** | **Integer** |  |  |
 | **sub_text** | **String** |  |  |
-| **choices** | [**Array&lt;PromptChoice&gt;**](PromptChoice.md) |  |  |
+| **choices** | **Array&lt;String&gt;** |  |  |
 
 ## Example
 

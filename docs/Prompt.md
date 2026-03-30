@@ -13,7 +13,7 @@
 | **placeholder** | **String** | Optionally provide a short hint that describes the expected input value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple choices. | [optional] |
 | **initial_value** | **String** | Optionally pre-fill the input with an initial value. When creating a fixed choice field, enable interpreting as expression and return a list to return multiple default choices. | [optional] |
 | **order** | **Integer** |  | [optional] |
-| **prompt_stages_obj** | [**Array&lt;PromptStage&gt;**](PromptStage.md) |  | [readonly] |
+| **promptstage_set** | [**Array&lt;Stage&gt;**](Stage.md) |  | [optional] |
 | **sub_text** | **String** |  | [optional] |
 | **placeholder_expression** | **Boolean** |  | [optional] |
 | **initial_value_expression** | **Boolean** |  | [optional] |
@@ -33,7 +33,7 @@ instance = Authentik::Api::Prompt.new(
   placeholder: null,
   initial_value: null,
   order: null,
-  prompt_stages_obj: null,
+  promptstage_set: null,
   sub_text: null,
   placeholder_expression: null,
   initial_value_expression: null

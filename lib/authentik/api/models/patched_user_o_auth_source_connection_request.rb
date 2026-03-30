@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # User source connection
+  # OAuth Source Serializer
   class PatchedUserOAuthSourceConnectionRequest < ApiModelBase
     attr_accessor :user
 
@@ -18,16 +18,13 @@ module Authentik::Api
 
     attr_accessor :access_token
 
-    attr_accessor :expires
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user' => :'user',
         :'source' => :'source',
         :'identifier' => :'identifier',
-        :'access_token' => :'access_token',
-        :'expires' => :'expires'
+        :'access_token' => :'access_token'
       }
     end
 
@@ -47,15 +44,14 @@ module Authentik::Api
         :'user' => :'Integer',
         :'source' => :'String',
         :'identifier' => :'String',
-        :'access_token' => :'String',
-        :'expires' => :'Time'
+        :'access_token' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'access_token',
+        :'access_token'
       ])
     end
 
@@ -90,10 +86,6 @@ module Authentik::Api
       if attributes.key?(:'access_token')
         self.access_token = attributes[:'access_token']
       end
-
-      if attributes.key?(:'expires')
-        self.expires = attributes[:'expires']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -101,6 +93,10 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if !@identifier.nil? && @identifier.to_s.length > 255
+        invalid_properties.push('invalid value for "identifier", the character length must be smaller than or equal to 255.')
+      end
+
       if !@identifier.nil? && @identifier.to_s.length < 1
         invalid_properties.push('invalid value for "identifier", the character length must be greater than or equal to 1.')
       end
@@ -112,6 +108,7 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if !@identifier.nil? && @identifier.to_s.length > 255
       return false if !@identifier.nil? && @identifier.to_s.length < 1
       true
     end
@@ -121,6 +118,10 @@ module Authentik::Api
     def identifier=(identifier)
       if identifier.nil?
         fail ArgumentError, 'identifier cannot be nil'
+      end
+
+      if identifier.to_s.length > 255
+        fail ArgumentError, 'invalid value for "identifier", the character length must be smaller than or equal to 255.'
       end
 
       if identifier.to_s.length < 1
@@ -138,8 +139,7 @@ module Authentik::Api
           user == o.user &&
           source == o.source &&
           identifier == o.identifier &&
-          access_token == o.access_token &&
-          expires == o.expires
+          access_token == o.access_token
     end
 
     # @see the `==` method
@@ -151,7 +151,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, source, identifier, access_token, expires].hash
+      [user, source, identifier, access_token].hash
     end
 
     # Builds the object from hash

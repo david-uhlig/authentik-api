@@ -21,15 +21,7 @@ module Authentik::Api
 
     attr_accessor :webhook_url
 
-    # Customize the body of the request. Mapping should return data that is JSON-serializable.
-    attr_accessor :webhook_mapping_body
-
-    # Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs
-    attr_accessor :webhook_mapping_headers
-
-    attr_accessor :email_subject_prefix
-
-    attr_accessor :email_template
+    attr_accessor :webhook_mapping
 
     # Only send notification once, for example when sending a webhook into a chat channel.
     attr_accessor :send_once
@@ -64,10 +56,7 @@ module Authentik::Api
         :'mode' => :'mode',
         :'mode_verbose' => :'mode_verbose',
         :'webhook_url' => :'webhook_url',
-        :'webhook_mapping_body' => :'webhook_mapping_body',
-        :'webhook_mapping_headers' => :'webhook_mapping_headers',
-        :'email_subject_prefix' => :'email_subject_prefix',
-        :'email_template' => :'email_template',
+        :'webhook_mapping' => :'webhook_mapping',
         :'send_once' => :'send_once'
       }
     end
@@ -90,10 +79,7 @@ module Authentik::Api
         :'mode' => :'NotificationTransportModeEnum',
         :'mode_verbose' => :'String',
         :'webhook_url' => :'String',
-        :'webhook_mapping_body' => :'String',
-        :'webhook_mapping_headers' => :'String',
-        :'email_subject_prefix' => :'String',
-        :'email_template' => :'String',
+        :'webhook_mapping' => :'String',
         :'send_once' => :'Boolean'
       }
     end
@@ -101,8 +87,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'webhook_mapping_body',
-        :'webhook_mapping_headers',
+        :'webhook_mapping',
       ])
     end
 
@@ -148,20 +133,8 @@ module Authentik::Api
         self.webhook_url = attributes[:'webhook_url']
       end
 
-      if attributes.key?(:'webhook_mapping_body')
-        self.webhook_mapping_body = attributes[:'webhook_mapping_body']
-      end
-
-      if attributes.key?(:'webhook_mapping_headers')
-        self.webhook_mapping_headers = attributes[:'webhook_mapping_headers']
-      end
-
-      if attributes.key?(:'email_subject_prefix')
-        self.email_subject_prefix = attributes[:'email_subject_prefix']
-      end
-
-      if attributes.key?(:'email_template')
-        self.email_template = attributes[:'email_template']
+      if attributes.key?(:'webhook_mapping')
+        self.webhook_mapping = attributes[:'webhook_mapping']
       end
 
       if attributes.key?(:'send_once')
@@ -239,10 +212,7 @@ module Authentik::Api
           mode == o.mode &&
           mode_verbose == o.mode_verbose &&
           webhook_url == o.webhook_url &&
-          webhook_mapping_body == o.webhook_mapping_body &&
-          webhook_mapping_headers == o.webhook_mapping_headers &&
-          email_subject_prefix == o.email_subject_prefix &&
-          email_template == o.email_template &&
+          webhook_mapping == o.webhook_mapping &&
           send_once == o.send_once
     end
 
@@ -255,7 +225,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, mode, mode_verbose, webhook_url, webhook_mapping_body, webhook_mapping_headers, email_subject_prefix, email_template, send_once].hash
+      [pk, name, mode, mode_verbose, webhook_url, webhook_mapping, send_once].hash
     end
 
     # Builds the object from hash

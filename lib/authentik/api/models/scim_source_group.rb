@@ -12,8 +12,6 @@ module Authentik::Api
   class SCIMSourceGroup < ApiModelBase
     attr_accessor :id
 
-    attr_accessor :external_id
-
     attr_accessor :group
 
     attr_accessor :group_obj
@@ -26,7 +24,6 @@ module Authentik::Api
     def self.attribute_map
       {
         :'id' => :'id',
-        :'external_id' => :'external_id',
         :'group' => :'group',
         :'group_obj' => :'group_obj',
         :'source' => :'source',
@@ -48,17 +45,17 @@ module Authentik::Api
     def self.openapi_types
       {
         :'id' => :'String',
-        :'external_id' => :'String',
         :'group' => :'String',
-        :'group_obj' => :'PartialGroup',
+        :'group_obj' => :'UserGroup',
         :'source' => :'String',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'attributes'
       ])
     end
 
@@ -80,12 +77,8 @@ module Authentik::Api
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'external_id')
-        self.external_id = attributes[:'external_id']
       else
-        self.external_id = nil
+        self.id = nil
       end
 
       if attributes.key?(:'group')
@@ -107,9 +100,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
+        self.attributes = attributes[:'attributes']
       end
     end
 
@@ -118,8 +109,8 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @external_id.nil?
-        invalid_properties.push('invalid value for "external_id", external_id cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
       if @group.nil?
@@ -141,7 +132,7 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @external_id.nil?
+      return false if @id.nil?
       return false if @group.nil?
       return false if @group_obj.nil?
       return false if @source.nil?
@@ -149,13 +140,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] external_id Value to be assigned
-    def external_id=(external_id)
-      if external_id.nil?
-        fail ArgumentError, 'external_id cannot be nil'
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
       end
 
-      @external_id = external_id
+      @id = id
     end
 
     # Custom attribute writer method with validation
@@ -194,7 +185,6 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           id == o.id &&
-          external_id == o.external_id &&
           group == o.group &&
           group_obj == o.group_obj &&
           source == o.source &&
@@ -210,7 +200,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, external_id, group, group_obj, source, attributes].hash
+      [id, group, group_obj, source, attributes].hash
     end
 
     # Builds the object from hash

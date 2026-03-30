@@ -10,10 +10,10 @@
 | **geo_ip** | [**AuthenticatedSessionGeoIp**](AuthenticatedSessionGeoIp.md) |  |  |
 | **asn** | [**AuthenticatedSessionAsn**](AuthenticatedSessionAsn.md) |  |  |
 | **user** | **Integer** |  |  |
-| **last_ip** | **String** |  | [readonly] |
-| **last_user_agent** | **String** |  | [readonly] |
+| **last_ip** | **String** |  |  |
+| **last_user_agent** | **String** |  | [optional] |
 | **last_used** | **Time** |  | [readonly] |
-| **expires** | **Time** |  | [readonly] |
+| **expires** | **Time** |  | [optional] |
 
 ## Example
 

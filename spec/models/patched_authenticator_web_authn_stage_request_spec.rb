@@ -69,10 +69,4 @@ describe Authentik::Api::PatchedAuthenticatorWebAuthnStageRequest do
     end
   end
 
-  describe 'test attribute "max_attempts"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

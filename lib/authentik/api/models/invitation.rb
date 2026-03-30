@@ -59,7 +59,7 @@ module Authentik::Api
         :'name' => :'String',
         :'expires' => :'Time',
         :'fixed_data' => :'Hash<String, Object>',
-        :'created_by' => :'PartialUser',
+        :'created_by' => :'GroupMember',
         :'single_use' => :'Boolean',
         :'flow' => :'String',
         :'flow_obj' => :'Flow'

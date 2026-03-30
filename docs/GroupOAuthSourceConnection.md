@@ -10,7 +10,6 @@
 | **source_obj** | [**Source**](Source.md) |  | [readonly] |
 | **identifier** | **String** |  |  |
 | **created** | **Time** |  | [readonly] |
-| **last_updated** | **Time** |  | [readonly] |
 
 ## Example
 
@@ -23,8 +22,7 @@ instance = Authentik::Api::GroupOAuthSourceConnection.new(
   source: null,
   source_obj: null,
   identifier: null,
-  created: null,
-  last_updated: null
+  created: null
 )
 ```
 

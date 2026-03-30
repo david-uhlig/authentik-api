@@ -27,8 +27,6 @@ module Authentik::Api
     # When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
     attr_accessor :mfa_support
 
-    attr_accessor :certificate
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,8 +36,7 @@ module Authentik::Api
         :'auth_flow_slug' => :'auth_flow_slug',
         :'client_networks' => :'client_networks',
         :'shared_secret' => :'shared_secret',
-        :'mfa_support' => :'mfa_support',
-        :'certificate' => :'certificate'
+        :'mfa_support' => :'mfa_support'
       }
     end
 
@@ -62,15 +59,13 @@ module Authentik::Api
         :'auth_flow_slug' => :'String',
         :'client_networks' => :'String',
         :'shared_secret' => :'String',
-        :'mfa_support' => :'Boolean',
-        :'certificate' => :'String'
+        :'mfa_support' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'certificate'
       ])
     end
 
@@ -124,10 +119,6 @@ module Authentik::Api
 
       if attributes.key?(:'mfa_support')
         self.mfa_support = attributes[:'mfa_support']
-      end
-
-      if attributes.key?(:'certificate')
-        self.certificate = attributes[:'certificate']
       end
     end
 
@@ -217,8 +208,7 @@ module Authentik::Api
           auth_flow_slug == o.auth_flow_slug &&
           client_networks == o.client_networks &&
           shared_secret == o.shared_secret &&
-          mfa_support == o.mfa_support &&
-          certificate == o.certificate
+          mfa_support == o.mfa_support
     end
 
     # @see the `==` method
@@ -230,7 +220,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, application_slug, auth_flow_slug, client_networks, shared_secret, mfa_support, certificate].hash
+      [pk, name, application_slug, auth_flow_slug, client_networks, shared_secret, mfa_support].hash
     end
 
     # Builds the object from hash

@@ -45,12 +45,6 @@ describe Authentik::Api::CurrentBrand do
     end
   end
 
-  describe 'test attribute "branding_custom_css"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "ui_footer_links"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -100,12 +94,6 @@ describe Authentik::Api::CurrentBrand do
   end
 
   describe 'test attribute "default_locale"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "flags"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

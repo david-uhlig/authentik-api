@@ -135,16 +135,4 @@ describe Authentik::Api::EmailStage do
     end
   end
 
-  describe 'test attribute "recovery_max_attempts"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "recovery_cache_timeout"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
 end

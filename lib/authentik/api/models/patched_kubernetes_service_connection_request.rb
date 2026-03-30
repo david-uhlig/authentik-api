@@ -46,7 +46,7 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'local' => :'Boolean',
-        :'kubeconfig' => :'Hash<String, Object>',
+        :'kubeconfig' => :'Object',
         :'verify_ssl' => :'Boolean'
       }
     end
@@ -54,6 +54,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'kubeconfig',
       ])
     end
 
@@ -82,9 +83,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'kubeconfig')
-        if (value = attributes[:'kubeconfig']).is_a?(Hash)
-          self.kubeconfig = value
-        end
+        self.kubeconfig = attributes[:'kubeconfig']
       end
 
       if attributes.key?(:'verify_ssl')

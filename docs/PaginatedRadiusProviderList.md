@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **pagination** | [**Pagination**](Pagination.md) |  |  |
 | **results** | [**Array&lt;RadiusProvider&gt;**](RadiusProvider.md) |  |  |
-| **autocomplete** | **Hash&lt;String, Object&gt;** |  |  |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::PaginatedRadiusProviderList.new(
   pagination: null,
-  results: null,
-  autocomplete: null
+  results: null
 )
 ```
 

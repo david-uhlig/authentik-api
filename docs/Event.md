@@ -5,14 +5,14 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pk** | **String** |  | [readonly] |
-| **user** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **user** | **Object** |  | [optional] |
 | **action** | [**EventActions**](EventActions.md) |  |  |
 | **app** | **String** |  |  |
-| **context** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **context** | **Object** |  | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **created** | **Time** |  | [readonly] |
 | **expires** | **Time** |  | [optional] |
-| **brand** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **brand** | **Object** |  | [optional] |
 
 ## Example
 

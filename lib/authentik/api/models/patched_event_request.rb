@@ -72,20 +72,23 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'user' => :'Hash<String, Object>',
+        :'user' => :'Object',
         :'action' => :'EventActions',
         :'app' => :'String',
-        :'context' => :'Hash<String, Object>',
+        :'context' => :'Object',
         :'client_ip' => :'String',
         :'expires' => :'Time',
-        :'brand' => :'Hash<String, Object>'
+        :'brand' => :'Object'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'user',
+        :'context',
         :'client_ip',
+        :'brand'
       ])
     end
 
@@ -106,9 +109,7 @@ module Authentik::Api
       }
 
       if attributes.key?(:'user')
-        if (value = attributes[:'user']).is_a?(Hash)
-          self.user = value
-        end
+        self.user = attributes[:'user']
       end
 
       if attributes.key?(:'action')
@@ -120,9 +121,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'context')
-        if (value = attributes[:'context']).is_a?(Hash)
-          self.context = value
-        end
+        self.context = attributes[:'context']
       end
 
       if attributes.key?(:'client_ip')
@@ -134,9 +133,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'brand')
-        if (value = attributes[:'brand']).is_a?(Hash)
-          self.brand = value
-        end
+        self.brand = attributes[:'brand']
       end
     end
 

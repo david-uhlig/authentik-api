@@ -19,10 +19,7 @@ module Authentik::Api
     attr_accessor :severity
 
     # Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-    attr_accessor :destination_group
-
-    # When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
-    attr_accessor :destination_event_user
+    attr_accessor :group
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -52,8 +49,7 @@ module Authentik::Api
         :'name' => :'name',
         :'transports' => :'transports',
         :'severity' => :'severity',
-        :'destination_group' => :'destination_group',
-        :'destination_event_user' => :'destination_event_user'
+        :'group' => :'group'
       }
     end
 
@@ -73,15 +69,14 @@ module Authentik::Api
         :'name' => :'String',
         :'transports' => :'Array<String>',
         :'severity' => :'SeverityEnum',
-        :'destination_group' => :'String',
-        :'destination_event_user' => :'Boolean'
+        :'group' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'destination_group',
+        :'group'
       ])
     end
 
@@ -117,12 +112,8 @@ module Authentik::Api
         self.severity = attributes[:'severity']
       end
 
-      if attributes.key?(:'destination_group')
-        self.destination_group = attributes[:'destination_group']
-      end
-
-      if attributes.key?(:'destination_event_user')
-        self.destination_event_user = attributes[:'destination_event_user']
+      if attributes.key?(:'group')
+        self.group = attributes[:'group']
       end
     end
 
@@ -173,8 +164,7 @@ module Authentik::Api
           name == o.name &&
           transports == o.transports &&
           severity == o.severity &&
-          destination_group == o.destination_group &&
-          destination_event_user == o.destination_event_user
+          group == o.group
     end
 
     # @see the `==` method
@@ -186,7 +176,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, transports, severity, destination_group, destination_event_user].hash
+      [name, transports, severity, group].hash
     end
 
     # Builds the object from hash

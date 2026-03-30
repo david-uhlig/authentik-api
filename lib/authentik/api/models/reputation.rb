@@ -53,8 +53,8 @@ module Authentik::Api
         :'pk' => :'String',
         :'identifier' => :'String',
         :'ip' => :'String',
-        :'ip_geo_data' => :'Hash<String, Object>',
-        :'ip_asn_data' => :'Hash<String, Object>',
+        :'ip_geo_data' => :'Object',
+        :'ip_asn_data' => :'Object',
         :'score' => :'Integer',
         :'updated' => :'Time'
       }
@@ -63,6 +63,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'ip_geo_data',
+        :'ip_asn_data',
       ])
     end
 
@@ -99,15 +101,11 @@ module Authentik::Api
       end
 
       if attributes.key?(:'ip_geo_data')
-        if (value = attributes[:'ip_geo_data']).is_a?(Hash)
-          self.ip_geo_data = value
-        end
+        self.ip_geo_data = attributes[:'ip_geo_data']
       end
 
       if attributes.key?(:'ip_asn_data')
-        if (value = attributes[:'ip_asn_data']).is_a?(Hash)
-          self.ip_asn_data = value
-        end
+        self.ip_asn_data = attributes[:'ip_asn_data']
       end
 
       if attributes.key?(:'score')

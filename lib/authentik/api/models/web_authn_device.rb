@@ -52,7 +52,7 @@ module Authentik::Api
         :'created_on' => :'Time',
         :'device_type' => :'WebAuthnDeviceType',
         :'aaguid' => :'String',
-        :'user' => :'PartialUser'
+        :'user' => :'GroupMember'
       }
     end
 

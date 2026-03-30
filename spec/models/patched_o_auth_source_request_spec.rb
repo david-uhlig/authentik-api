@@ -117,12 +117,6 @@ describe Authentik::Api::PatchedOAuthSourceRequest do
     end
   end
 
-  describe 'test attribute "pkce"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "consumer_key"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -154,12 +148,6 @@ describe Authentik::Api::PatchedOAuthSourceRequest do
   end
 
   describe 'test attribute "oidc_jwks"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "authorization_code_auth_method"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

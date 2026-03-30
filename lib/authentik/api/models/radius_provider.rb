@@ -60,8 +60,6 @@ module Authentik::Api
     # When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
     attr_accessor :mfa_support
 
-    attr_accessor :certificate
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -82,8 +80,7 @@ module Authentik::Api
         :'client_networks' => :'client_networks',
         :'shared_secret' => :'shared_secret',
         :'outpost_set' => :'outpost_set',
-        :'mfa_support' => :'mfa_support',
-        :'certificate' => :'certificate'
+        :'mfa_support' => :'mfa_support'
       }
     end
 
@@ -117,8 +114,7 @@ module Authentik::Api
         :'client_networks' => :'String',
         :'shared_secret' => :'String',
         :'outpost_set' => :'Array<String>',
-        :'mfa_support' => :'Boolean',
-        :'certificate' => :'String'
+        :'mfa_support' => :'Boolean'
       }
     end
 
@@ -126,11 +122,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
-        :'assigned_application_slug',
-        :'assigned_application_name',
-        :'assigned_backchannel_application_slug',
-        :'assigned_backchannel_application_name',
-        :'certificate'
       ])
     end
 
@@ -251,10 +242,6 @@ module Authentik::Api
       if attributes.key?(:'mfa_support')
         self.mfa_support = attributes[:'mfa_support']
       end
-
-      if attributes.key?(:'certificate')
-        self.certificate = attributes[:'certificate']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -280,6 +267,22 @@ module Authentik::Api
 
       if @component.nil?
         invalid_properties.push('invalid value for "component", component cannot be nil.')
+      end
+
+      if @assigned_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_application_slug", assigned_application_slug cannot be nil.')
+      end
+
+      if @assigned_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_application_name", assigned_application_name cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_slug.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_slug", assigned_backchannel_application_slug cannot be nil.')
+      end
+
+      if @assigned_backchannel_application_name.nil?
+        invalid_properties.push('invalid value for "assigned_backchannel_application_name", assigned_backchannel_application_name cannot be nil.')
       end
 
       if @verbose_name.nil?
@@ -310,6 +313,10 @@ module Authentik::Api
       return false if @authorization_flow.nil?
       return false if @invalidation_flow.nil?
       return false if @component.nil?
+      return false if @assigned_application_slug.nil?
+      return false if @assigned_application_name.nil?
+      return false if @assigned_backchannel_application_slug.nil?
+      return false if @assigned_backchannel_application_name.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
@@ -365,6 +372,46 @@ module Authentik::Api
       end
 
       @component = component
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_slug Value to be assigned
+    def assigned_application_slug=(assigned_application_slug)
+      if assigned_application_slug.nil?
+        fail ArgumentError, 'assigned_application_slug cannot be nil'
+      end
+
+      @assigned_application_slug = assigned_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_application_name Value to be assigned
+    def assigned_application_name=(assigned_application_name)
+      if assigned_application_name.nil?
+        fail ArgumentError, 'assigned_application_name cannot be nil'
+      end
+
+      @assigned_application_name = assigned_application_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_slug Value to be assigned
+    def assigned_backchannel_application_slug=(assigned_backchannel_application_slug)
+      if assigned_backchannel_application_slug.nil?
+        fail ArgumentError, 'assigned_backchannel_application_slug cannot be nil'
+      end
+
+      @assigned_backchannel_application_slug = assigned_backchannel_application_slug
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] assigned_backchannel_application_name Value to be assigned
+    def assigned_backchannel_application_name=(assigned_backchannel_application_name)
+      if assigned_backchannel_application_name.nil?
+        fail ArgumentError, 'assigned_backchannel_application_name cannot be nil'
+      end
+
+      @assigned_backchannel_application_name = assigned_backchannel_application_name
     end
 
     # Custom attribute writer method with validation
@@ -429,8 +476,7 @@ module Authentik::Api
           client_networks == o.client_networks &&
           shared_secret == o.shared_secret &&
           outpost_set == o.outpost_set &&
-          mfa_support == o.mfa_support &&
-          certificate == o.certificate
+          mfa_support == o.mfa_support
     end
 
     # @see the `==` method
@@ -442,7 +488,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_networks, shared_secret, outpost_set, mfa_support, certificate].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_networks, shared_secret, outpost_set, mfa_support].hash
     end
 
     # Builds the object from hash

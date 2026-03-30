@@ -10,7 +10,6 @@
 | **users** | **Array&lt;Integer&gt;** |  | [optional] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **roles** | **Array&lt;String&gt;** |  | [optional] |
-| **children** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -23,8 +22,7 @@ instance = Authentik::Api::GroupRequest.new(
   parent: null,
   users: null,
   attributes: null,
-  roles: null,
-  children: null
+  roles: null
 )
 ```
 

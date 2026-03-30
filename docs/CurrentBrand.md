@@ -8,7 +8,6 @@
 | **branding_title** | **String** |  |  |
 | **branding_logo** | **String** |  |  |
 | **branding_favicon** | **String** |  |  |
-| **branding_custom_css** | **String** |  |  |
 | **ui_footer_links** | [**Array&lt;FooterLink&gt;**](FooterLink.md) |  | [readonly] |
 | **ui_theme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] |
 | **flow_authentication** | **String** |  | [optional] |
@@ -18,7 +17,6 @@
 | **flow_user_settings** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **default_locale** | **String** |  | [readonly] |
-| **flags** | [**CurrentBrandFlags**](CurrentBrandFlags.md) |  |  |
 
 ## Example
 
@@ -30,7 +28,6 @@ instance = Authentik::Api::CurrentBrand.new(
   branding_title: null,
   branding_logo: null,
   branding_favicon: null,
-  branding_custom_css: null,
   ui_footer_links: null,
   ui_theme: null,
   flow_authentication: null,
@@ -39,8 +36,7 @@ instance = Authentik::Api::CurrentBrand.new(
   flow_unenrollment: null,
   flow_user_settings: null,
   flow_device_code: null,
-  default_locale: null,
-  flags: null
+  default_locale: null
 )
 ```
 

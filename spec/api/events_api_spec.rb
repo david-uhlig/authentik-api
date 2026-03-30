@@ -62,7 +62,6 @@ describe 'EventsApi' do
   # Event Read-Only Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
-  # @option opts [Array<String>] :actions 
   # @option opts [String] :brand_name Brand name
   # @option opts [String] :client_ip 
   # @option opts [String] :context_authorized_app Context Authorized application
@@ -88,6 +87,18 @@ describe 'EventsApi' do
   # @option opts [PatchedEventRequest] :patched_event_request 
   # @return [Event]
   describe 'events_events_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for events_events_per_month_list
+  # Get the count of events per month
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :action 
+  # @option opts [String] :query 
+  # @return [Array<Coordinate>]
+  describe 'events_events_per_month_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -132,18 +143,16 @@ describe 'EventsApi' do
   # Get event volume for specified filters and timeframe
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
-  # @option opts [Array<String>] :actions 
   # @option opts [String] :brand_name Brand name
   # @option opts [String] :client_ip 
   # @option opts [String] :context_authorized_app Context Authorized application
   # @option opts [String] :context_model_app Context Model App
   # @option opts [String] :context_model_name Context Model Name
   # @option opts [String] :context_model_pk Context Model Primary Key
-  # @option opts [Float] :history_days 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [String] :search A search term.
   # @option opts [String] :username Username
-  # @return [Array<EventVolume>]
+  # @return [Array<Coordinate>]
   describe 'events_events_volume_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -262,7 +271,7 @@ describe 'EventsApi' do
   # unit tests for events_rules_list
   # NotificationRule Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :destination_group__name 
+  # @option opts [String] :group__name 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -317,6 +326,45 @@ describe 'EventsApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'events_rules_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for events_system_tasks_list
+  # Read-only view set that returns all background tasks
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @option opts [String] :status 
+  # @option opts [String] :uid 
+  # @return [PaginatedSystemTaskList]
+  describe 'events_system_tasks_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for events_system_tasks_retrieve
+  # Read-only view set that returns all background tasks
+  # @param uuid A UUID string identifying this System Task.
+  # @param [Hash] opts the optional parameters
+  # @return [SystemTask]
+  describe 'events_system_tasks_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for events_system_tasks_run_create
+  # Run task
+  # @param uuid A UUID string identifying this System Task.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'events_system_tasks_run_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -1,6 +1,6 @@
 # Authentik::Api::ProvidersApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -495,7 +495,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::ProvidersApi.new
-google_workspace_provider_request = Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: { key: 3.56}, default_group_email_domain: 'default_group_email_domain_example'}) # GoogleWorkspaceProviderRequest | 
+google_workspace_provider_request = Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: 3.56, default_group_email_domain: 'default_group_email_domain_example'}) # GoogleWorkspaceProviderRequest | 
 
 begin
   
@@ -1358,7 +1358,7 @@ end
 
 api_instance = Authentik::Api::ProvidersApi.new
 id = 56 # Integer | A unique integer value identifying this Google Workspace Provider.
-google_workspace_provider_request = Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: { key: 3.56}, default_group_email_domain: 'default_group_email_domain_example'}) # GoogleWorkspaceProviderRequest | 
+google_workspace_provider_request = Authentik::Api::GoogleWorkspaceProviderRequest.new({name: 'name_example', delegated_subject: 'delegated_subject_example', credentials: 3.56, default_group_email_domain: 'default_group_email_domain_example'}) # GoogleWorkspaceProviderRequest | 
 
 begin
   
@@ -6138,17 +6138,14 @@ opts = {
   assertion_valid_not_on_or_after: 'assertion_valid_not_on_or_after_example', # String | 
   audience: 'audience_example', # String | 
   authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  authn_context_class_ref_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   authorization_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   backchannel_application: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  default_name_id_policy: 'urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName', # String | 
   default_relay_state: 'default_relay_state_example', # String | 
   digest_algorithm: 'http://www.w3.org/2000/09/xmldsig#sha1', # String | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer: 'issuer_example', # String | 
-  logout_method: 'backchannel', # String | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -6158,12 +6155,9 @@ opts = {
   search: 'search_example', # String | A search term.
   session_valid_not_on_or_after: 'session_valid_not_on_or_after_example', # String | 
   sign_assertion: true, # Boolean | 
-  sign_logout_request: true, # Boolean | 
   sign_response: true, # Boolean | 
   signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#dsa-sha1', # String | 
   signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  sls_binding: 'post', # String | This determines how authentik sends the logout response back to the Service Provider.  
-  sls_url: 'sls_url_example', # String | 
   sp_binding: 'post', # String | This determines how authentik sends the response back to the Service Provider.  
   verification_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
@@ -6204,17 +6198,14 @@ end
 | **assertion_valid_not_on_or_after** | **String** |  | [optional] |
 | **audience** | **String** |  | [optional] |
 | **authentication_flow** | **String** |  | [optional] |
-| **authn_context_class_ref_mapping** | **String** |  | [optional] |
 | **authorization_flow** | **String** |  | [optional] |
 | **backchannel_application** | **String** |  | [optional] |
-| **default_name_id_policy** | **String** |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
 | **digest_algorithm** | **String** |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer** | **String** |  | [optional] |
-| **logout_method** | **String** | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).   | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
@@ -6224,12 +6215,9 @@ end
 | **search** | **String** | A search term. | [optional] |
 | **session_valid_not_on_or_after** | **String** |  | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
-| **sign_logout_request** | **Boolean** |  | [optional] |
 | **sign_response** | **Boolean** |  | [optional] |
 | **signature_algorithm** | **String** |  | [optional] |
 | **signing_kp** | **String** |  | [optional] |
-| **sls_binding** | **String** | This determines how authentik sends the logout response back to the Service Provider.   | [optional] |
-| **sls_url** | **String** |  | [optional] |
 | **sp_binding** | **String** | This determines how authentik sends the response back to the Service Provider.   | [optional] |
 | **verification_kp** | **String** |  | [optional] |
 
@@ -6697,7 +6685,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::ProvidersApi.new
-scim_provider_request = Authentik::Api::SCIMProviderRequest.new({name: 'name_example', url: 'url_example'}) # SCIMProviderRequest | 
+scim_provider_request = Authentik::Api::SCIMProviderRequest.new({name: 'name_example', url: 'url_example', token: 'token_example'}) # SCIMProviderRequest | 
 
 begin
   
@@ -7560,7 +7548,7 @@ end
 
 api_instance = Authentik::Api::ProvidersApi.new
 id = 56 # Integer | A unique integer value identifying this SCIM Provider.
-scim_provider_request = Authentik::Api::SCIMProviderRequest.new({name: 'name_example', url: 'url_example'}) # SCIMProviderRequest | 
+scim_provider_request = Authentik::Api::SCIMProviderRequest.new({name: 'name_example', url: 'url_example', token: 'token_example'}) # SCIMProviderRequest | 
 
 begin
   

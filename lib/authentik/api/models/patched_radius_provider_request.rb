@@ -32,8 +32,6 @@ module Authentik::Api
     # When enabled, code-based multi-factor authentication can be used by appending a semicolon and the TOTP code to the password. This should only be enabled if all users that will bind to this provider have a TOTP device configured, as otherwise a password may incorrectly be rejected if it contains a semicolon.
     attr_accessor :mfa_support
 
-    attr_accessor :certificate
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -44,8 +42,7 @@ module Authentik::Api
         :'property_mappings' => :'property_mappings',
         :'client_networks' => :'client_networks',
         :'shared_secret' => :'shared_secret',
-        :'mfa_support' => :'mfa_support',
-        :'certificate' => :'certificate'
+        :'mfa_support' => :'mfa_support'
       }
     end
 
@@ -69,8 +66,7 @@ module Authentik::Api
         :'property_mappings' => :'Array<String>',
         :'client_networks' => :'String',
         :'shared_secret' => :'String',
-        :'mfa_support' => :'Boolean',
-        :'certificate' => :'String'
+        :'mfa_support' => :'Boolean'
       }
     end
 
@@ -78,7 +74,6 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
-        :'certificate'
       ])
     end
 
@@ -130,10 +125,6 @@ module Authentik::Api
 
       if attributes.key?(:'mfa_support')
         self.mfa_support = attributes[:'mfa_support']
-      end
-
-      if attributes.key?(:'certificate')
-        self.certificate = attributes[:'certificate']
       end
     end
 
@@ -221,8 +212,7 @@ module Authentik::Api
           property_mappings == o.property_mappings &&
           client_networks == o.client_networks &&
           shared_secret == o.shared_secret &&
-          mfa_support == o.mfa_support &&
-          certificate == o.certificate
+          mfa_support == o.mfa_support
     end
 
     # @see the `==` method
@@ -234,7 +224,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, client_networks, shared_secret, mfa_support, certificate].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, client_networks, shared_secret, mfa_support].hash
     end
 
     # Builds the object from hash

@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # User source connection
+  # Plex Source connection Serializer
   class UserPlexSourceConnectionRequest < ApiModelBase
     attr_accessor :user
 

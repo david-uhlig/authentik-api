@@ -9,14 +9,9 @@
 | **property_mappings_group** | **Array&lt;String&gt;** | Property mappings used for group creation/updating. | [optional] |
 | **url** | **String** | Base URL to SCIM requests, usually ends in /v2 |  |
 | **verify_certificates** | **Boolean** |  | [optional] |
-| **token** | **String** | Authentication token | [optional] |
-| **auth_mode** | [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] |
-| **auth_oauth** | **String** | OAuth Source used for authentication | [optional] |
-| **auth_oauth_params** | **Hash&lt;String, Object&gt;** | Additional OAuth parameters, such as grant_type | [optional] |
-| **compatibility_mode** | [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] |
+| **token** | **String** | Authentication token |  |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
 | **filter_group** | **String** |  | [optional] |
-| **dry_run** | **Boolean** | When enabled, provider will not modify or create objects in the remote system. | [optional] |
 
 ## Example
 
@@ -30,13 +25,8 @@ instance = Authentik::Api::SCIMProviderRequest.new(
   url: null,
   verify_certificates: null,
   token: null,
-  auth_mode: null,
-  auth_oauth: null,
-  auth_oauth_params: null,
-  compatibility_mode: null,
   exclude_users_service_account: null,
-  filter_group: null,
-  dry_run: null
+  filter_group: null
 )
 ```
 

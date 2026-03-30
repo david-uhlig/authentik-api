@@ -9,7 +9,7 @@
 | **provider_obj** | [**RACProvider**](RACProvider.md) |  | [readonly] |
 | **endpoint** | **String** |  |  |
 | **endpoint_obj** | [**Endpoint**](Endpoint.md) |  | [readonly] |
-| **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 
 ## Example
 

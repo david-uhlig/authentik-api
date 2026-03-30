@@ -16,8 +16,7 @@ Authentik::Api::LoginChallengeTypes.openapi_one_of
 # [
 #   :'AppleLoginChallenge',
 #   :'PlexAuthenticationChallenge',
-#   :'RedirectChallenge',
-#   :'TelegramLoginChallenge'
+#   :'RedirectChallenge'
 # ]
 ```
 
@@ -48,7 +47,6 @@ Authentik::Api::LoginChallengeTypes.openapi_discriminator_mapping
 # {
 #   :'ak-source-oauth-apple' => :'AppleLoginChallenge',
 #   :'ak-source-plex' => :'PlexAuthenticationChallenge',
-#   :'ak-source-telegram' => :'TelegramLoginChallenge',
 #   :'xak-flow-redirect' => :'RedirectChallenge'
 # }
 ```
@@ -80,6 +78,5 @@ Authentik::Api::LoginChallengeTypes.build(data_that_doesnt_match)
 - `AppleLoginChallenge`
 - `PlexAuthenticationChallenge`
 - `RedirectChallenge`
-- `TelegramLoginChallenge`
 - `nil` (if no type matches)
 

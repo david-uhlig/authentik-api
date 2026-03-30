@@ -46,7 +46,7 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'path' => :'String',
-        :'context' => :'Hash<String, Object>',
+        :'context' => :'Object',
         :'enabled' => :'Boolean',
         :'content' => :'String'
       }
@@ -55,6 +55,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'context',
       ])
     end
 
@@ -85,9 +86,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'context')
-        if (value = attributes[:'context']).is_a?(Hash)
-          self.context = value
-        end
+        self.context = attributes[:'context']
       end
 
       if attributes.key?(:'enabled')

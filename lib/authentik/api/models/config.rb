@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :cache_timeout_policies
 
+    attr_accessor :cache_timeout_reputation
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -27,7 +29,8 @@ module Authentik::Api
         :'capabilities' => :'capabilities',
         :'cache_timeout' => :'cache_timeout',
         :'cache_timeout_flows' => :'cache_timeout_flows',
-        :'cache_timeout_policies' => :'cache_timeout_policies'
+        :'cache_timeout_policies' => :'cache_timeout_policies',
+        :'cache_timeout_reputation' => :'cache_timeout_reputation'
       }
     end
 
@@ -48,7 +51,8 @@ module Authentik::Api
         :'capabilities' => :'Array<CapabilitiesEnum>',
         :'cache_timeout' => :'Integer',
         :'cache_timeout_flows' => :'Integer',
-        :'cache_timeout_policies' => :'Integer'
+        :'cache_timeout_policies' => :'Integer',
+        :'cache_timeout_reputation' => :'Integer'
       }
     end
 
@@ -105,6 +109,12 @@ module Authentik::Api
       else
         self.cache_timeout_policies = nil
       end
+
+      if attributes.key?(:'cache_timeout_reputation')
+        self.cache_timeout_reputation = attributes[:'cache_timeout_reputation']
+      else
+        self.cache_timeout_reputation = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -132,6 +142,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "cache_timeout_policies", cache_timeout_policies cannot be nil.')
       end
 
+      if @cache_timeout_reputation.nil?
+        invalid_properties.push('invalid value for "cache_timeout_reputation", cache_timeout_reputation cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -144,6 +158,7 @@ module Authentik::Api
       return false if @cache_timeout.nil?
       return false if @cache_timeout_flows.nil?
       return false if @cache_timeout_policies.nil?
+      return false if @cache_timeout_reputation.nil?
       true
     end
 
@@ -197,6 +212,16 @@ module Authentik::Api
       @cache_timeout_policies = cache_timeout_policies
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] cache_timeout_reputation Value to be assigned
+    def cache_timeout_reputation=(cache_timeout_reputation)
+      if cache_timeout_reputation.nil?
+        fail ArgumentError, 'cache_timeout_reputation cannot be nil'
+      end
+
+      @cache_timeout_reputation = cache_timeout_reputation
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -206,7 +231,8 @@ module Authentik::Api
           capabilities == o.capabilities &&
           cache_timeout == o.cache_timeout &&
           cache_timeout_flows == o.cache_timeout_flows &&
-          cache_timeout_policies == o.cache_timeout_policies
+          cache_timeout_policies == o.cache_timeout_policies &&
+          cache_timeout_reputation == o.cache_timeout_reputation
     end
 
     # @see the `==` method
@@ -218,7 +244,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error_reporting, capabilities, cache_timeout, cache_timeout_flows, cache_timeout_policies].hash
+      [error_reporting, capabilities, cache_timeout, cache_timeout_flows, cache_timeout_policies, cache_timeout_reputation].hash
     end
 
     # Builds the object from hash

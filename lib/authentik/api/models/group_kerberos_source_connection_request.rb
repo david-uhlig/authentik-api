@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Group Source Connection
+  # OAuth Group-Source connection Serializer
   class GroupKerberosSourceConnectionRequest < ApiModelBase
     attr_accessor :group
 

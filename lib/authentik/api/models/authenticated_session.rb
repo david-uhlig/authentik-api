@@ -78,6 +78,7 @@ module Authentik::Api
       Set.new([
         :'geo_ip',
         :'asn',
+        :'expires'
       ])
     end
 
@@ -139,8 +140,6 @@ module Authentik::Api
 
       if attributes.key?(:'last_user_agent')
         self.last_user_agent = attributes[:'last_user_agent']
-      else
-        self.last_user_agent = nil
       end
 
       if attributes.key?(:'last_used')
@@ -151,8 +150,6 @@ module Authentik::Api
 
       if attributes.key?(:'expires')
         self.expires = attributes[:'expires']
-      else
-        self.expires = nil
       end
     end
 
@@ -177,16 +174,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "last_ip", last_ip cannot be nil.')
       end
 
-      if @last_user_agent.nil?
-        invalid_properties.push('invalid value for "last_user_agent", last_user_agent cannot be nil.')
-      end
-
       if @last_used.nil?
         invalid_properties.push('invalid value for "last_used", last_used cannot be nil.')
-      end
-
-      if @expires.nil?
-        invalid_properties.push('invalid value for "expires", expires cannot be nil.')
       end
 
       invalid_properties
@@ -200,9 +189,7 @@ module Authentik::Api
       return false if @user_agent.nil?
       return false if @user.nil?
       return false if @last_ip.nil?
-      return false if @last_user_agent.nil?
       return false if @last_used.nil?
-      return false if @expires.nil?
       true
     end
 
@@ -247,16 +234,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] last_user_agent Value to be assigned
-    def last_user_agent=(last_user_agent)
-      if last_user_agent.nil?
-        fail ArgumentError, 'last_user_agent cannot be nil'
-      end
-
-      @last_user_agent = last_user_agent
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] last_used Value to be assigned
     def last_used=(last_used)
       if last_used.nil?
@@ -264,16 +241,6 @@ module Authentik::Api
       end
 
       @last_used = last_used
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] expires Value to be assigned
-    def expires=(expires)
-      if expires.nil?
-        fail ArgumentError, 'expires cannot be nil'
-      end
-
-      @expires = expires
     end
 
     # Checks equality by comparing each attribute.

@@ -47,7 +47,6 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'asn',
         :'as_org',
         :'network'
       ])
@@ -93,6 +92,10 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
+      if @asn.nil?
+        invalid_properties.push('invalid value for "asn", asn cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -100,7 +103,18 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
+      return false if @asn.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] asn Value to be assigned
+    def asn=(asn)
+      if asn.nil?
+        fail ArgumentError, 'asn cannot be nil'
+      end
+
+      @asn = asn
     end
 
     # Checks equality by comparing each attribute.

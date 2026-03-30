@@ -43,9 +43,6 @@ module Authentik::Api
     # Bind sessions created by this stage to the configured GeoIP location
     attr_accessor :geoip_binding
 
-    # When set to a non-zero value, authentik will save a cookie with a longer expiry,to remember the device the user is logging in from. (Format: hours=-1;minutes=-2;seconds=-3)
-    attr_accessor :remember_device
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -82,8 +79,7 @@ module Authentik::Api
         :'terminate_other_sessions' => :'terminate_other_sessions',
         :'remember_me_offset' => :'remember_me_offset',
         :'network_binding' => :'network_binding',
-        :'geoip_binding' => :'geoip_binding',
-        :'remember_device' => :'remember_device'
+        :'geoip_binding' => :'geoip_binding'
       }
     end
 
@@ -111,8 +107,7 @@ module Authentik::Api
         :'terminate_other_sessions' => :'Boolean',
         :'remember_me_offset' => :'String',
         :'network_binding' => :'NetworkBindingEnum',
-        :'geoip_binding' => :'GeoipBindingEnum',
-        :'remember_device' => :'String'
+        :'geoip_binding' => :'GeoipBindingEnum'
       }
     end
 
@@ -198,10 +193,6 @@ module Authentik::Api
 
       if attributes.key?(:'geoip_binding')
         self.geoip_binding = attributes[:'geoip_binding']
-      end
-
-      if attributes.key?(:'remember_device')
-        self.remember_device = attributes[:'remember_device']
       end
     end
 
@@ -326,8 +317,7 @@ module Authentik::Api
           terminate_other_sessions == o.terminate_other_sessions &&
           remember_me_offset == o.remember_me_offset &&
           network_binding == o.network_binding &&
-          geoip_binding == o.geoip_binding &&
-          remember_device == o.remember_device
+          geoip_binding == o.geoip_binding
     end
 
     # @see the `==` method
@@ -339,7 +329,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding, remember_device].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, session_duration, terminate_other_sessions, remember_me_offset, network_binding, geoip_binding].hash
     end
 
     # Builds the object from hash

@@ -17,7 +17,6 @@
 | **sources** | **Array&lt;String&gt;** | Specify which sources should be shown. | [optional] |
 | **show_source_labels** | **Boolean** |  | [optional] |
 | **pretend_user_exists** | **Boolean** | When enabled, the stage will succeed and continue even when incorrect user info is entered. | [optional] |
-| **enable_remember_me** | **Boolean** | Show the user the &#39;Remember me on this device&#39; toggle, allowing repeat users to skip straight to entering their password. | [optional] |
 
 ## Example
 
@@ -37,8 +36,7 @@ instance = Authentik::Api::PatchedIdentificationStageRequest.new(
   passwordless_flow: null,
   sources: null,
   show_source_labels: null,
-  pretend_user_exists: null,
-  enable_remember_me: null
+  pretend_user_exists: null
 )
 ```
 

@@ -18,7 +18,6 @@
 | **resident_key_requirement** | [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] |
 | **device_type_restrictions** | **Array&lt;String&gt;** |  | [optional] |
 | **device_type_restrictions_obj** | [**Array&lt;WebAuthnDeviceType&gt;**](WebAuthnDeviceType.md) |  | [readonly] |
-| **max_attempts** | **Integer** |  | [optional] |
 
 ## Example
 
@@ -39,8 +38,7 @@ instance = Authentik::Api::AuthenticatorWebAuthnStage.new(
   authenticator_attachment: null,
   resident_key_requirement: null,
   device_type_restrictions: null,
-  device_type_restrictions_obj: null,
-  max_attempts: null
+  device_type_restrictions_obj: null
 )
 ```
 

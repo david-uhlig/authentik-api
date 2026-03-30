@@ -20,8 +20,6 @@ module Authentik::Api
 
     attr_accessor :provider
 
-    attr_accessor :attributes
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -29,8 +27,7 @@ module Authentik::Api
         :'scim_id' => :'scim_id',
         :'user' => :'user',
         :'user_obj' => :'user_obj',
-        :'provider' => :'provider',
-        :'attributes' => :'attributes'
+        :'provider' => :'provider'
       }
     end
 
@@ -50,9 +47,8 @@ module Authentik::Api
         :'id' => :'String',
         :'scim_id' => :'String',
         :'user' => :'Integer',
-        :'user_obj' => :'PartialUser',
-        :'provider' => :'Integer',
-        :'attributes' => :'Hash<String, Object>'
+        :'user_obj' => :'GroupMember',
+        :'provider' => :'Integer'
       }
     end
 
@@ -107,14 +103,6 @@ module Authentik::Api
       else
         self.provider = nil
       end
-
-      if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
-      else
-        self.attributes = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -142,10 +130,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "provider", provider cannot be nil.')
       end
 
-      if @attributes.nil?
-        invalid_properties.push('invalid value for "attributes", attributes cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -158,7 +142,6 @@ module Authentik::Api
       return false if @user.nil?
       return false if @user_obj.nil?
       return false if @provider.nil?
-      return false if @attributes.nil?
       true
     end
 
@@ -212,16 +195,6 @@ module Authentik::Api
       @provider = provider
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] attributes Value to be assigned
-    def attributes=(attributes)
-      if attributes.nil?
-        fail ArgumentError, 'attributes cannot be nil'
-      end
-
-      @attributes = attributes
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -231,8 +204,7 @@ module Authentik::Api
           scim_id == o.scim_id &&
           user == o.user &&
           user_obj == o.user_obj &&
-          provider == o.provider &&
-          attributes == o.attributes
+          provider == o.provider
     end
 
     # @see the `==` method
@@ -244,7 +216,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, scim_id, user, user_obj, provider, attributes].hash
+      [id, scim_id, user, user_obj, provider].hash
     end
 
     # Builds the object from hash

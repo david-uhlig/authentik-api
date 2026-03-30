@@ -7,7 +7,7 @@
 | **name** | **String** | The human-readable name of this device. |  |
 | **token_set** | [**Array&lt;StaticDeviceToken&gt;**](StaticDeviceToken.md) |  | [readonly] |
 | **pk** | **Integer** |  | [readonly] |
-| **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 
 ## Example
 

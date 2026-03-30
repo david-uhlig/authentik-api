@@ -25,9 +25,6 @@ module Authentik::Api
 
     attr_accessor :acs_url
 
-    # Single Logout Service URL where the logout response should be sent.
-    attr_accessor :sls_url
-
     # Value of the audience restriction field of the assertion. When left empty, no audience restriction will be added.
     attr_accessor :audience
 
@@ -46,9 +43,6 @@ module Authentik::Api
     # Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered
     attr_accessor :name_id_mapping
 
-    # Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate.
-    attr_accessor :authn_context_class_ref_mapping
-
     attr_accessor :digest_algorithm
 
     attr_accessor :signature_algorithm
@@ -66,21 +60,11 @@ module Authentik::Api
 
     attr_accessor :sign_response
 
-    attr_accessor :sign_logout_request
-
     # This determines how authentik sends the response back to the Service Provider.
     attr_accessor :sp_binding
 
-    # This determines how authentik sends the logout response back to the Service Provider.
-    attr_accessor :sls_binding
-
-    # Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).
-    attr_accessor :logout_method
-
     # Default relay_state value for IDP-initiated logins
     attr_accessor :default_relay_state
-
-    attr_accessor :default_name_id_policy
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -113,14 +97,12 @@ module Authentik::Api
         :'invalidation_flow' => :'invalidation_flow',
         :'property_mappings' => :'property_mappings',
         :'acs_url' => :'acs_url',
-        :'sls_url' => :'sls_url',
         :'audience' => :'audience',
         :'issuer' => :'issuer',
         :'assertion_valid_not_before' => :'assertion_valid_not_before',
         :'assertion_valid_not_on_or_after' => :'assertion_valid_not_on_or_after',
         :'session_valid_not_on_or_after' => :'session_valid_not_on_or_after',
         :'name_id_mapping' => :'name_id_mapping',
-        :'authn_context_class_ref_mapping' => :'authn_context_class_ref_mapping',
         :'digest_algorithm' => :'digest_algorithm',
         :'signature_algorithm' => :'signature_algorithm',
         :'signing_kp' => :'signing_kp',
@@ -128,12 +110,8 @@ module Authentik::Api
         :'encryption_kp' => :'encryption_kp',
         :'sign_assertion' => :'sign_assertion',
         :'sign_response' => :'sign_response',
-        :'sign_logout_request' => :'sign_logout_request',
         :'sp_binding' => :'sp_binding',
-        :'sls_binding' => :'sls_binding',
-        :'logout_method' => :'logout_method',
-        :'default_relay_state' => :'default_relay_state',
-        :'default_name_id_policy' => :'default_name_id_policy'
+        :'default_relay_state' => :'default_relay_state'
       }
     end
 
@@ -156,14 +134,12 @@ module Authentik::Api
         :'invalidation_flow' => :'String',
         :'property_mappings' => :'Array<String>',
         :'acs_url' => :'String',
-        :'sls_url' => :'String',
         :'audience' => :'String',
         :'issuer' => :'String',
         :'assertion_valid_not_before' => :'String',
         :'assertion_valid_not_on_or_after' => :'String',
         :'session_valid_not_on_or_after' => :'String',
         :'name_id_mapping' => :'String',
-        :'authn_context_class_ref_mapping' => :'String',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'signing_kp' => :'String',
@@ -171,12 +147,8 @@ module Authentik::Api
         :'encryption_kp' => :'String',
         :'sign_assertion' => :'Boolean',
         :'sign_response' => :'Boolean',
-        :'sign_logout_request' => :'Boolean',
-        :'sp_binding' => :'SAMLBindingsEnum',
-        :'sls_binding' => :'SAMLBindingsEnum',
-        :'logout_method' => :'SAMLProviderLogoutMethodEnum',
-        :'default_relay_state' => :'String',
-        :'default_name_id_policy' => :'SAMLNameIDPolicyEnum'
+        :'sp_binding' => :'SpBindingEnum',
+        :'default_relay_state' => :'String'
       }
     end
 
@@ -185,7 +157,6 @@ module Authentik::Api
       Set.new([
         :'authentication_flow',
         :'name_id_mapping',
-        :'authn_context_class_ref_mapping',
         :'signing_kp',
         :'verification_kp',
         :'encryption_kp',
@@ -242,10 +213,6 @@ module Authentik::Api
         self.acs_url = nil
       end
 
-      if attributes.key?(:'sls_url')
-        self.sls_url = attributes[:'sls_url']
-      end
-
       if attributes.key?(:'audience')
         self.audience = attributes[:'audience']
       end
@@ -268,10 +235,6 @@ module Authentik::Api
 
       if attributes.key?(:'name_id_mapping')
         self.name_id_mapping = attributes[:'name_id_mapping']
-      end
-
-      if attributes.key?(:'authn_context_class_ref_mapping')
-        self.authn_context_class_ref_mapping = attributes[:'authn_context_class_ref_mapping']
       end
 
       if attributes.key?(:'digest_algorithm')
@@ -302,28 +265,12 @@ module Authentik::Api
         self.sign_response = attributes[:'sign_response']
       end
 
-      if attributes.key?(:'sign_logout_request')
-        self.sign_logout_request = attributes[:'sign_logout_request']
-      end
-
       if attributes.key?(:'sp_binding')
         self.sp_binding = attributes[:'sp_binding']
       end
 
-      if attributes.key?(:'sls_binding')
-        self.sls_binding = attributes[:'sls_binding']
-      end
-
-      if attributes.key?(:'logout_method')
-        self.logout_method = attributes[:'logout_method']
-      end
-
       if attributes.key?(:'default_relay_state')
         self.default_relay_state = attributes[:'default_relay_state']
-      end
-
-      if attributes.key?(:'default_name_id_policy')
-        self.default_name_id_policy = attributes[:'default_name_id_policy']
       end
     end
 
@@ -350,6 +297,10 @@ module Authentik::Api
 
       if @acs_url.nil?
         invalid_properties.push('invalid value for "acs_url", acs_url cannot be nil.')
+      end
+
+      if @acs_url.to_s.length > 200
+        invalid_properties.push('invalid value for "acs_url", the character length must be smaller than or equal to 200.')
       end
 
       if @acs_url.to_s.length < 1
@@ -384,6 +335,7 @@ module Authentik::Api
       return false if @authorization_flow.nil?
       return false if @invalidation_flow.nil?
       return false if @acs_url.nil?
+      return false if @acs_url.to_s.length > 200
       return false if @acs_url.to_s.length < 1
       return false if !@issuer.nil? && @issuer.to_s.length < 1
       return false if !@assertion_valid_not_before.nil? && @assertion_valid_not_before.to_s.length < 1
@@ -431,6 +383,10 @@ module Authentik::Api
     def acs_url=(acs_url)
       if acs_url.nil?
         fail ArgumentError, 'acs_url cannot be nil'
+      end
+
+      if acs_url.to_s.length > 200
+        fail ArgumentError, 'invalid value for "acs_url", the character length must be smaller than or equal to 200.'
       end
 
       if acs_url.to_s.length < 1
@@ -507,14 +463,12 @@ module Authentik::Api
           invalidation_flow == o.invalidation_flow &&
           property_mappings == o.property_mappings &&
           acs_url == o.acs_url &&
-          sls_url == o.sls_url &&
           audience == o.audience &&
           issuer == o.issuer &&
           assertion_valid_not_before == o.assertion_valid_not_before &&
           assertion_valid_not_on_or_after == o.assertion_valid_not_on_or_after &&
           session_valid_not_on_or_after == o.session_valid_not_on_or_after &&
           name_id_mapping == o.name_id_mapping &&
-          authn_context_class_ref_mapping == o.authn_context_class_ref_mapping &&
           digest_algorithm == o.digest_algorithm &&
           signature_algorithm == o.signature_algorithm &&
           signing_kp == o.signing_kp &&
@@ -522,12 +476,8 @@ module Authentik::Api
           encryption_kp == o.encryption_kp &&
           sign_assertion == o.sign_assertion &&
           sign_response == o.sign_response &&
-          sign_logout_request == o.sign_logout_request &&
           sp_binding == o.sp_binding &&
-          sls_binding == o.sls_binding &&
-          logout_method == o.logout_method &&
-          default_relay_state == o.default_relay_state &&
-          default_name_id_policy == o.default_name_id_policy
+          default_relay_state == o.default_relay_state
     end
 
     # @see the `==` method
@@ -539,7 +489,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, sls_url, audience, issuer, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, audience, issuer, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sp_binding, default_relay_state].hash
     end
 
     # Builds the object from hash

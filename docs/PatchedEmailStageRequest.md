@@ -15,12 +15,10 @@
 | **use_ssl** | **Boolean** |  | [optional] |
 | **timeout** | **Integer** |  | [optional] |
 | **from_address** | **String** |  | [optional] |
-| **token_expiry** | **String** | Time the token sent is valid (Format: hours&#x3D;3,minutes&#x3D;17,seconds&#x3D;300). | [optional] |
+| **token_expiry** | **Integer** | Time in minutes the token sent is valid. | [optional] |
 | **subject** | **String** |  | [optional] |
 | **template** | **String** |  | [optional] |
 | **activate_user_on_success** | **Boolean** | Activate users upon completion of stage. | [optional] |
-| **recovery_max_attempts** | **Integer** |  | [optional] |
-| **recovery_cache_timeout** | **String** | The time window used to count recent account recovery attempts. If the number of attempts exceed recovery_max_attempts within this period, further attempts will be rate-limited. (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
 
 ## Example
 
@@ -42,9 +40,7 @@ instance = Authentik::Api::PatchedEmailStageRequest.new(
   token_expiry: null,
   subject: null,
   template: null,
-  activate_user_on_success: null,
-  recovery_max_attempts: null,
-  recovery_cache_timeout: null
+  activate_user_on_success: null
 )
 ```
 

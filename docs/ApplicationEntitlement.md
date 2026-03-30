@@ -7,7 +7,7 @@
 | **pbm_uuid** | **String** |  | [readonly] |
 | **name** | **String** |  |  |
 | **app** | **String** |  |  |
-| **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **attributes** | **Object** |  | [optional] |
 
 ## Example
 

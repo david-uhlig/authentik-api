@@ -8,7 +8,6 @@
 | **source** | **String** |  |  |
 | **identifier** | **String** |  |  |
 | **access_token** | **String** |  | [optional] |
-| **expires** | **Time** |  | [optional] |
 
 ## Example
 
@@ -19,8 +18,7 @@ instance = Authentik::Api::UserOAuthSourceConnectionRequest.new(
   user: null,
   source: null,
   identifier: null,
-  access_token: null,
-  expires: null
+  access_token: null
 )
 ```
 

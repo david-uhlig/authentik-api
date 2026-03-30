@@ -52,7 +52,7 @@ module Authentik::Api
         :'provider_obj' => :'RACProvider',
         :'endpoint' => :'String',
         :'endpoint_obj' => :'Endpoint',
-        :'user' => :'PartialUser'
+        :'user' => :'GroupMember'
       }
     end
 

@@ -10,9 +10,9 @@
 | **provider_obj** | [**RACProvider**](RACProvider.md) |  | [readonly] |
 | **protocol** | [**ProtocolEnum**](ProtocolEnum.md) |  |  |
 | **host** | **String** |  |  |
-| **settings** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **settings** | **Object** |  | [optional] |
 | **property_mappings** | **Array&lt;String&gt;** |  | [optional] |
-| **auth_mode** | [**EndpointAuthModeEnum**](EndpointAuthModeEnum.md) |  |  |
+| **auth_mode** | [**AuthModeEnum**](AuthModeEnum.md) |  |  |
 | **launch_url** | **String** | Build actual launch URL (the provider itself does not have one, just individual endpoints) | [readonly] |
 | **maximum_connections** | **Integer** |  | [optional] |
 

@@ -8,7 +8,6 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Payload to create a service account
   class UserServiceAccountRequest < ApiModelBase
     attr_accessor :name
 

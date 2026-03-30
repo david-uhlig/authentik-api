@@ -28,15 +28,12 @@ module Authentik::Api
           :'EmailChallengeResponseRequest',
           :'FrameChallengeResponseRequest',
           :'IdentificationChallengeResponseRequest',
-          :'IframeLogoutChallengeResponseRequest',
-          :'NativeLogoutChallengeResponseRequest',
           :'OAuthDeviceCodeChallengeResponseRequest',
           :'OAuthDeviceCodeFinishChallengeResponseRequest',
           :'PasswordChallengeResponseRequest',
           :'PlexAuthenticationChallengeResponseRequest',
           :'PromptChallengeResponseRequest',
           :'RedirectChallengeResponseRequest',
-          :'TelegramChallengeResponseRequest',
           :'UserLoginChallengeResponseRequest'
         ]
       end
@@ -49,13 +46,10 @@ module Authentik::Api
       # Discriminator's mapping (OpenAPI v3)
       def openapi_discriminator_mapping
         {
-          :'ak-provider-iframe-logout' => :'IframeLogoutChallengeResponseRequest',
           :'ak-provider-oauth2-device-code' => :'OAuthDeviceCodeChallengeResponseRequest',
           :'ak-provider-oauth2-device-code-finish' => :'OAuthDeviceCodeFinishChallengeResponseRequest',
-          :'ak-provider-saml-native-logout' => :'NativeLogoutChallengeResponseRequest',
           :'ak-source-oauth-apple' => :'AppleChallengeResponseRequest',
           :'ak-source-plex' => :'PlexAuthenticationChallengeResponseRequest',
-          :'ak-source-telegram' => :'TelegramChallengeResponseRequest',
           :'ak-stage-authenticator-duo' => :'AuthenticatorDuoChallengeResponseRequest',
           :'ak-stage-authenticator-email' => :'AuthenticatorEmailChallengeResponseRequest',
           :'ak-stage-authenticator-sms' => :'AuthenticatorSMSChallengeResponseRequest',

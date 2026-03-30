@@ -86,7 +86,7 @@ module Authentik::Api
         :'initial_value' => :'String',
         :'order' => :'Integer',
         :'sub_text' => :'String',
-        :'choices' => :'Array<PromptChoice>'
+        :'choices' => :'Array<String>'
       }
     end
 

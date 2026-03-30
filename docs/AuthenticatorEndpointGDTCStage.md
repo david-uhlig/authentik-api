@@ -13,7 +13,7 @@
 | **flow_set** | [**Array&lt;FlowSet&gt;**](FlowSet.md) |  | [optional] |
 | **configure_flow** | **String** | Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage. | [optional] |
 | **friendly_name** | **String** |  | [optional] |
-| **credentials** | **Hash&lt;String, Object&gt;** |  |  |
+| **credentials** | **Object** |  |  |
 
 ## Example
 

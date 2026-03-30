@@ -8,42 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Provider/source sync status
+  # Provider sync status
   class SyncStatus < ApiModelBase
     attr_accessor :is_running
 
-    attr_accessor :last_successful_sync
-
-    attr_accessor :last_sync_status
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :tasks
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'is_running' => :'is_running',
-        :'last_successful_sync' => :'last_successful_sync',
-        :'last_sync_status' => :'last_sync_status'
+        :'tasks' => :'tasks'
       }
     end
 
@@ -61,8 +36,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'is_running' => :'Boolean',
-        :'last_successful_sync' => :'Time',
-        :'last_sync_status' => :'TaskAggregatedStatusEnum'
+        :'tasks' => :'Array<SystemTask>'
       }
     end
 
@@ -94,12 +68,12 @@ module Authentik::Api
         self.is_running = nil
       end
 
-      if attributes.key?(:'last_successful_sync')
-        self.last_successful_sync = attributes[:'last_successful_sync']
-      end
-
-      if attributes.key?(:'last_sync_status')
-        self.last_sync_status = attributes[:'last_sync_status']
+      if attributes.key?(:'tasks')
+        if (value = attributes[:'tasks']).is_a?(Array)
+          self.tasks = value
+        end
+      else
+        self.tasks = nil
       end
     end
 
@@ -112,6 +86,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "is_running", is_running cannot be nil.')
       end
 
+      if @tasks.nil?
+        invalid_properties.push('invalid value for "tasks", tasks cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -120,6 +98,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @is_running.nil?
+      return false if @tasks.nil?
       true
     end
 
@@ -133,14 +112,23 @@ module Authentik::Api
       @is_running = is_running
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] tasks Value to be assigned
+    def tasks=(tasks)
+      if tasks.nil?
+        fail ArgumentError, 'tasks cannot be nil'
+      end
+
+      @tasks = tasks
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           is_running == o.is_running &&
-          last_successful_sync == o.last_successful_sync &&
-          last_sync_status == o.last_sync_status
+          tasks == o.tasks
     end
 
     # @see the `==` method
@@ -152,7 +140,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [is_running, last_successful_sync, last_sync_status].hash
+      [is_running, tasks].hash
     end
 
     # Builds the object from hash

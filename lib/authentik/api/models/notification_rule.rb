@@ -21,12 +21,9 @@ module Authentik::Api
     attr_accessor :severity
 
     # Define which group of users this notification should be sent and shown to. If left empty, Notification won't ben sent.
-    attr_accessor :destination_group
+    attr_accessor :group
 
-    attr_accessor :destination_group_obj
-
-    # When enabled, notification will be sent to user the user that triggered the event.When destination_group is configured, notification is sent to both.
-    attr_accessor :destination_event_user
+    attr_accessor :group_obj
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -57,9 +54,8 @@ module Authentik::Api
         :'name' => :'name',
         :'transports' => :'transports',
         :'severity' => :'severity',
-        :'destination_group' => :'destination_group',
-        :'destination_group_obj' => :'destination_group_obj',
-        :'destination_event_user' => :'destination_event_user'
+        :'group' => :'group',
+        :'group_obj' => :'group_obj'
       }
     end
 
@@ -80,16 +76,15 @@ module Authentik::Api
         :'name' => :'String',
         :'transports' => :'Array<String>',
         :'severity' => :'SeverityEnum',
-        :'destination_group' => :'String',
-        :'destination_group_obj' => :'Group',
-        :'destination_event_user' => :'Boolean'
+        :'group' => :'String',
+        :'group_obj' => :'Group'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'destination_group',
+        :'group',
       ])
     end
 
@@ -131,18 +126,14 @@ module Authentik::Api
         self.severity = attributes[:'severity']
       end
 
-      if attributes.key?(:'destination_group')
-        self.destination_group = attributes[:'destination_group']
+      if attributes.key?(:'group')
+        self.group = attributes[:'group']
       end
 
-      if attributes.key?(:'destination_group_obj')
-        self.destination_group_obj = attributes[:'destination_group_obj']
+      if attributes.key?(:'group_obj')
+        self.group_obj = attributes[:'group_obj']
       else
-        self.destination_group_obj = nil
-      end
-
-      if attributes.key?(:'destination_event_user')
-        self.destination_event_user = attributes[:'destination_event_user']
+        self.group_obj = nil
       end
     end
 
@@ -159,8 +150,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @destination_group_obj.nil?
-        invalid_properties.push('invalid value for "destination_group_obj", destination_group_obj cannot be nil.')
+      if @group_obj.nil?
+        invalid_properties.push('invalid value for "group_obj", group_obj cannot be nil.')
       end
 
       invalid_properties
@@ -172,7 +163,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
       return false if @name.nil?
-      return false if @destination_group_obj.nil?
+      return false if @group_obj.nil?
       true
     end
 
@@ -197,13 +188,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] destination_group_obj Value to be assigned
-    def destination_group_obj=(destination_group_obj)
-      if destination_group_obj.nil?
-        fail ArgumentError, 'destination_group_obj cannot be nil'
+    # @param [Object] group_obj Value to be assigned
+    def group_obj=(group_obj)
+      if group_obj.nil?
+        fail ArgumentError, 'group_obj cannot be nil'
       end
 
-      @destination_group_obj = destination_group_obj
+      @group_obj = group_obj
     end
 
     # Checks equality by comparing each attribute.
@@ -215,9 +206,8 @@ module Authentik::Api
           name == o.name &&
           transports == o.transports &&
           severity == o.severity &&
-          destination_group == o.destination_group &&
-          destination_group_obj == o.destination_group_obj &&
-          destination_event_user == o.destination_event_user
+          group == o.group &&
+          group_obj == o.group_obj
     end
 
     # @see the `==` method
@@ -229,7 +219,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, transports, severity, destination_group, destination_group_obj, destination_event_user].hash
+      [pk, name, transports, severity, group, group_obj].hash
     end
 
     # Builds the object from hash

@@ -31,9 +31,6 @@ module Authentik::Api
 
     attr_accessor :group_delete_action
 
-    # When enabled, provider will not modify or create objects in the remote system.
-    attr_accessor :dry_run
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -68,8 +65,7 @@ module Authentik::Api
         :'exclude_users_service_account' => :'exclude_users_service_account',
         :'filter_group' => :'filter_group',
         :'user_delete_action' => :'user_delete_action',
-        :'group_delete_action' => :'group_delete_action',
-        :'dry_run' => :'dry_run'
+        :'group_delete_action' => :'group_delete_action'
       }
     end
 
@@ -95,8 +91,7 @@ module Authentik::Api
         :'exclude_users_service_account' => :'Boolean',
         :'filter_group' => :'String',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
-        :'group_delete_action' => :'OutgoingSyncDeleteAction',
-        :'dry_run' => :'Boolean'
+        :'group_delete_action' => :'OutgoingSyncDeleteAction'
       }
     end
 
@@ -165,10 +160,6 @@ module Authentik::Api
 
       if attributes.key?(:'group_delete_action')
         self.group_delete_action = attributes[:'group_delete_action']
-      end
-
-      if attributes.key?(:'dry_run')
-        self.dry_run = attributes[:'dry_run']
       end
     end
 
@@ -277,8 +268,7 @@ module Authentik::Api
           exclude_users_service_account == o.exclude_users_service_account &&
           filter_group == o.filter_group &&
           user_delete_action == o.user_delete_action &&
-          group_delete_action == o.group_delete_action &&
-          dry_run == o.dry_run
+          group_delete_action == o.group_delete_action
     end
 
     # @see the `==` method
@@ -290,7 +280,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, dry_run].hash
+      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action].hash
     end
 
     # Builds the object from hash

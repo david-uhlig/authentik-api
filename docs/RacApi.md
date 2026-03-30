@@ -1,6 +1,6 @@
 # Authentik::Api::RacApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -472,7 +472,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::RacApi.new
-endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::EndpointAuthModeEnum::STATIC}) # EndpointRequest | 
+endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::AuthModeEnum::STATIC}) # EndpointRequest | 
 
 begin
   
@@ -615,7 +615,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   provider: 56, # Integer | 
-  search: 'search_example', # String | A search term.
+  search: 'search_example', # String | 
   superuser_full_list: true # Boolean | 
 }
 
@@ -655,7 +655,7 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **provider** | **Integer** |  | [optional] |
-| **search** | **String** | A search term. | [optional] |
+| **search** | **String** |  | [optional] |
 | **superuser_full_list** | **Boolean** |  | [optional] |
 
 ### Return type
@@ -835,7 +835,7 @@ end
 
 api_instance = Authentik::Api::RacApi.new
 pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::EndpointAuthModeEnum::STATIC}) # EndpointRequest | 
+endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::AuthModeEnum::STATIC}) # EndpointRequest | 
 
 begin
   

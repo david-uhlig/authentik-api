@@ -9,7 +9,7 @@
 | **created_on** | **Time** |  | [readonly] |
 | **device_type** | [**WebAuthnDeviceType**](WebAuthnDeviceType.md) |  | [readonly] |
 | **aaguid** | **String** |  | [readonly] |
-| **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 
 ## Example
 

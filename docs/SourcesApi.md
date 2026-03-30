@@ -1,6 +1,6 @@
 # Authentik::Api::SourcesApi
 
-All URIs are relative to */api/v3*
+All URIs are relative to *http://localhost/api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -12,26 +12,12 @@ All URIs are relative to */api/v3*
 | [**sources_all_types_list**](SourcesApi.md#sources_all_types_list) | **GET** /sources/all/types/ |  |
 | [**sources_all_used_by_list**](SourcesApi.md#sources_all_used_by_list) | **GET** /sources/all/{slug}/used_by/ |  |
 | [**sources_all_user_settings_list**](SourcesApi.md#sources_all_user_settings_list) | **GET** /sources/all/user_settings/ |  |
-| [**sources_group_connections_all_destroy**](SourcesApi.md#sources_group_connections_all_destroy) | **DELETE** /sources/group_connections/all/{id}/ |  |
-| [**sources_group_connections_all_list**](SourcesApi.md#sources_group_connections_all_list) | **GET** /sources/group_connections/all/ |  |
-| [**sources_group_connections_all_partial_update**](SourcesApi.md#sources_group_connections_all_partial_update) | **PATCH** /sources/group_connections/all/{id}/ |  |
-| [**sources_group_connections_all_retrieve**](SourcesApi.md#sources_group_connections_all_retrieve) | **GET** /sources/group_connections/all/{id}/ |  |
-| [**sources_group_connections_all_update**](SourcesApi.md#sources_group_connections_all_update) | **PUT** /sources/group_connections/all/{id}/ |  |
-| [**sources_group_connections_all_used_by_list**](SourcesApi.md#sources_group_connections_all_used_by_list) | **GET** /sources/group_connections/all/{id}/used_by/ |  |
-| [**sources_group_connections_kerberos_create**](SourcesApi.md#sources_group_connections_kerberos_create) | **POST** /sources/group_connections/kerberos/ |  |
 | [**sources_group_connections_kerberos_destroy**](SourcesApi.md#sources_group_connections_kerberos_destroy) | **DELETE** /sources/group_connections/kerberos/{id}/ |  |
 | [**sources_group_connections_kerberos_list**](SourcesApi.md#sources_group_connections_kerberos_list) | **GET** /sources/group_connections/kerberos/ |  |
 | [**sources_group_connections_kerberos_partial_update**](SourcesApi.md#sources_group_connections_kerberos_partial_update) | **PATCH** /sources/group_connections/kerberos/{id}/ |  |
 | [**sources_group_connections_kerberos_retrieve**](SourcesApi.md#sources_group_connections_kerberos_retrieve) | **GET** /sources/group_connections/kerberos/{id}/ |  |
 | [**sources_group_connections_kerberos_update**](SourcesApi.md#sources_group_connections_kerberos_update) | **PUT** /sources/group_connections/kerberos/{id}/ |  |
 | [**sources_group_connections_kerberos_used_by_list**](SourcesApi.md#sources_group_connections_kerberos_used_by_list) | **GET** /sources/group_connections/kerberos/{id}/used_by/ |  |
-| [**sources_group_connections_ldap_create**](SourcesApi.md#sources_group_connections_ldap_create) | **POST** /sources/group_connections/ldap/ |  |
-| [**sources_group_connections_ldap_destroy**](SourcesApi.md#sources_group_connections_ldap_destroy) | **DELETE** /sources/group_connections/ldap/{id}/ |  |
-| [**sources_group_connections_ldap_list**](SourcesApi.md#sources_group_connections_ldap_list) | **GET** /sources/group_connections/ldap/ |  |
-| [**sources_group_connections_ldap_partial_update**](SourcesApi.md#sources_group_connections_ldap_partial_update) | **PATCH** /sources/group_connections/ldap/{id}/ |  |
-| [**sources_group_connections_ldap_retrieve**](SourcesApi.md#sources_group_connections_ldap_retrieve) | **GET** /sources/group_connections/ldap/{id}/ |  |
-| [**sources_group_connections_ldap_update**](SourcesApi.md#sources_group_connections_ldap_update) | **PUT** /sources/group_connections/ldap/{id}/ |  |
-| [**sources_group_connections_ldap_used_by_list**](SourcesApi.md#sources_group_connections_ldap_used_by_list) | **GET** /sources/group_connections/ldap/{id}/used_by/ |  |
 | [**sources_group_connections_oauth_create**](SourcesApi.md#sources_group_connections_oauth_create) | **POST** /sources/group_connections/oauth/ |  |
 | [**sources_group_connections_oauth_destroy**](SourcesApi.md#sources_group_connections_oauth_destroy) | **DELETE** /sources/group_connections/oauth/{id}/ |  |
 | [**sources_group_connections_oauth_list**](SourcesApi.md#sources_group_connections_oauth_list) | **GET** /sources/group_connections/oauth/ |  |
@@ -46,20 +32,12 @@ All URIs are relative to */api/v3*
 | [**sources_group_connections_plex_retrieve**](SourcesApi.md#sources_group_connections_plex_retrieve) | **GET** /sources/group_connections/plex/{id}/ |  |
 | [**sources_group_connections_plex_update**](SourcesApi.md#sources_group_connections_plex_update) | **PUT** /sources/group_connections/plex/{id}/ |  |
 | [**sources_group_connections_plex_used_by_list**](SourcesApi.md#sources_group_connections_plex_used_by_list) | **GET** /sources/group_connections/plex/{id}/used_by/ |  |
-| [**sources_group_connections_saml_create**](SourcesApi.md#sources_group_connections_saml_create) | **POST** /sources/group_connections/saml/ |  |
 | [**sources_group_connections_saml_destroy**](SourcesApi.md#sources_group_connections_saml_destroy) | **DELETE** /sources/group_connections/saml/{id}/ |  |
 | [**sources_group_connections_saml_list**](SourcesApi.md#sources_group_connections_saml_list) | **GET** /sources/group_connections/saml/ |  |
 | [**sources_group_connections_saml_partial_update**](SourcesApi.md#sources_group_connections_saml_partial_update) | **PATCH** /sources/group_connections/saml/{id}/ |  |
 | [**sources_group_connections_saml_retrieve**](SourcesApi.md#sources_group_connections_saml_retrieve) | **GET** /sources/group_connections/saml/{id}/ |  |
 | [**sources_group_connections_saml_update**](SourcesApi.md#sources_group_connections_saml_update) | **PUT** /sources/group_connections/saml/{id}/ |  |
 | [**sources_group_connections_saml_used_by_list**](SourcesApi.md#sources_group_connections_saml_used_by_list) | **GET** /sources/group_connections/saml/{id}/used_by/ |  |
-| [**sources_group_connections_telegram_create**](SourcesApi.md#sources_group_connections_telegram_create) | **POST** /sources/group_connections/telegram/ |  |
-| [**sources_group_connections_telegram_destroy**](SourcesApi.md#sources_group_connections_telegram_destroy) | **DELETE** /sources/group_connections/telegram/{id}/ |  |
-| [**sources_group_connections_telegram_list**](SourcesApi.md#sources_group_connections_telegram_list) | **GET** /sources/group_connections/telegram/ |  |
-| [**sources_group_connections_telegram_partial_update**](SourcesApi.md#sources_group_connections_telegram_partial_update) | **PATCH** /sources/group_connections/telegram/{id}/ |  |
-| [**sources_group_connections_telegram_retrieve**](SourcesApi.md#sources_group_connections_telegram_retrieve) | **GET** /sources/group_connections/telegram/{id}/ |  |
-| [**sources_group_connections_telegram_update**](SourcesApi.md#sources_group_connections_telegram_update) | **PUT** /sources/group_connections/telegram/{id}/ |  |
-| [**sources_group_connections_telegram_used_by_list**](SourcesApi.md#sources_group_connections_telegram_used_by_list) | **GET** /sources/group_connections/telegram/{id}/used_by/ |  |
 | [**sources_kerberos_create**](SourcesApi.md#sources_kerberos_create) | **POST** /sources/kerberos/ |  |
 | [**sources_kerberos_destroy**](SourcesApi.md#sources_kerberos_destroy) | **DELETE** /sources/kerberos/{slug}/ |  |
 | [**sources_kerberos_list**](SourcesApi.md#sources_kerberos_list) | **GET** /sources/kerberos/ |  |
@@ -123,13 +101,6 @@ All URIs are relative to */api/v3*
 | [**sources_scim_users_retrieve**](SourcesApi.md#sources_scim_users_retrieve) | **GET** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_update**](SourcesApi.md#sources_scim_users_update) | **PUT** /sources/scim_users/{id}/ |  |
 | [**sources_scim_users_used_by_list**](SourcesApi.md#sources_scim_users_used_by_list) | **GET** /sources/scim_users/{id}/used_by/ |  |
-| [**sources_telegram_create**](SourcesApi.md#sources_telegram_create) | **POST** /sources/telegram/ |  |
-| [**sources_telegram_destroy**](SourcesApi.md#sources_telegram_destroy) | **DELETE** /sources/telegram/{slug}/ |  |
-| [**sources_telegram_list**](SourcesApi.md#sources_telegram_list) | **GET** /sources/telegram/ |  |
-| [**sources_telegram_partial_update**](SourcesApi.md#sources_telegram_partial_update) | **PATCH** /sources/telegram/{slug}/ |  |
-| [**sources_telegram_retrieve**](SourcesApi.md#sources_telegram_retrieve) | **GET** /sources/telegram/{slug}/ |  |
-| [**sources_telegram_update**](SourcesApi.md#sources_telegram_update) | **PUT** /sources/telegram/{slug}/ |  |
-| [**sources_telegram_used_by_list**](SourcesApi.md#sources_telegram_used_by_list) | **GET** /sources/telegram/{slug}/used_by/ |  |
 | [**sources_user_connections_all_destroy**](SourcesApi.md#sources_user_connections_all_destroy) | **DELETE** /sources/user_connections/all/{id}/ |  |
 | [**sources_user_connections_all_list**](SourcesApi.md#sources_user_connections_all_list) | **GET** /sources/user_connections/all/ |  |
 | [**sources_user_connections_all_partial_update**](SourcesApi.md#sources_user_connections_all_partial_update) | **PATCH** /sources/user_connections/all/{id}/ |  |
@@ -143,13 +114,6 @@ All URIs are relative to */api/v3*
 | [**sources_user_connections_kerberos_retrieve**](SourcesApi.md#sources_user_connections_kerberos_retrieve) | **GET** /sources/user_connections/kerberos/{id}/ |  |
 | [**sources_user_connections_kerberos_update**](SourcesApi.md#sources_user_connections_kerberos_update) | **PUT** /sources/user_connections/kerberos/{id}/ |  |
 | [**sources_user_connections_kerberos_used_by_list**](SourcesApi.md#sources_user_connections_kerberos_used_by_list) | **GET** /sources/user_connections/kerberos/{id}/used_by/ |  |
-| [**sources_user_connections_ldap_create**](SourcesApi.md#sources_user_connections_ldap_create) | **POST** /sources/user_connections/ldap/ |  |
-| [**sources_user_connections_ldap_destroy**](SourcesApi.md#sources_user_connections_ldap_destroy) | **DELETE** /sources/user_connections/ldap/{id}/ |  |
-| [**sources_user_connections_ldap_list**](SourcesApi.md#sources_user_connections_ldap_list) | **GET** /sources/user_connections/ldap/ |  |
-| [**sources_user_connections_ldap_partial_update**](SourcesApi.md#sources_user_connections_ldap_partial_update) | **PATCH** /sources/user_connections/ldap/{id}/ |  |
-| [**sources_user_connections_ldap_retrieve**](SourcesApi.md#sources_user_connections_ldap_retrieve) | **GET** /sources/user_connections/ldap/{id}/ |  |
-| [**sources_user_connections_ldap_update**](SourcesApi.md#sources_user_connections_ldap_update) | **PUT** /sources/user_connections/ldap/{id}/ |  |
-| [**sources_user_connections_ldap_used_by_list**](SourcesApi.md#sources_user_connections_ldap_used_by_list) | **GET** /sources/user_connections/ldap/{id}/used_by/ |  |
 | [**sources_user_connections_oauth_create**](SourcesApi.md#sources_user_connections_oauth_create) | **POST** /sources/user_connections/oauth/ |  |
 | [**sources_user_connections_oauth_destroy**](SourcesApi.md#sources_user_connections_oauth_destroy) | **DELETE** /sources/user_connections/oauth/{id}/ |  |
 | [**sources_user_connections_oauth_list**](SourcesApi.md#sources_user_connections_oauth_list) | **GET** /sources/user_connections/oauth/ |  |
@@ -171,13 +135,6 @@ All URIs are relative to */api/v3*
 | [**sources_user_connections_saml_retrieve**](SourcesApi.md#sources_user_connections_saml_retrieve) | **GET** /sources/user_connections/saml/{id}/ |  |
 | [**sources_user_connections_saml_update**](SourcesApi.md#sources_user_connections_saml_update) | **PUT** /sources/user_connections/saml/{id}/ |  |
 | [**sources_user_connections_saml_used_by_list**](SourcesApi.md#sources_user_connections_saml_used_by_list) | **GET** /sources/user_connections/saml/{id}/used_by/ |  |
-| [**sources_user_connections_telegram_create**](SourcesApi.md#sources_user_connections_telegram_create) | **POST** /sources/user_connections/telegram/ |  |
-| [**sources_user_connections_telegram_destroy**](SourcesApi.md#sources_user_connections_telegram_destroy) | **DELETE** /sources/user_connections/telegram/{id}/ |  |
-| [**sources_user_connections_telegram_list**](SourcesApi.md#sources_user_connections_telegram_list) | **GET** /sources/user_connections/telegram/ |  |
-| [**sources_user_connections_telegram_partial_update**](SourcesApi.md#sources_user_connections_telegram_partial_update) | **PATCH** /sources/user_connections/telegram/{id}/ |  |
-| [**sources_user_connections_telegram_retrieve**](SourcesApi.md#sources_user_connections_telegram_retrieve) | **GET** /sources/user_connections/telegram/{id}/ |  |
-| [**sources_user_connections_telegram_update**](SourcesApi.md#sources_user_connections_telegram_update) | **PUT** /sources/user_connections/telegram/{id}/ |  |
-| [**sources_user_connections_telegram_used_by_list**](SourcesApi.md#sources_user_connections_telegram_used_by_list) | **GET** /sources/user_connections/telegram/{id}/used_by/ |  |
 
 
 ## sources_all_destroy
@@ -186,7 +143,7 @@ All URIs are relative to */api/v3*
 
 
 
-Prevent deletion of built-in sources
+Source Viewset
 
 ### Examples
 
@@ -747,506 +704,6 @@ This endpoint does not need any parameter.
 - **Accept**: application/json
 
 
-## sources_group_connections_all_destroy
-
-> sources_group_connections_all_destroy(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this group source connection.
-
-begin
-  
-  api_instance.sources_group_connections_all_destroy(id)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_destroy: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_group_connections_all_destroy_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_destroy_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this group source connection. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_all_list
-
-> <PaginatedGroupSourceConnectionList> sources_group_connections_all_list(opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example' # String | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_all_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedGroupSourceConnectionList>, Integer, Hash)> sources_group_connections_all_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedGroupSourceConnectionList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group** | **String** |  | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **source__slug** | **String** |  | [optional] |
-
-### Return type
-
-[**PaginatedGroupSourceConnectionList**](PaginatedGroupSourceConnectionList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_all_partial_update
-
-> <GroupSourceConnection> sources_group_connections_all_partial_update(id, opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this group source connection.
-opts = {
-  patched_group_source_connection_request: Authentik::Api::PatchedGroupSourceConnectionRequest.new # PatchedGroupSourceConnectionRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_all_partial_update(id, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_partial_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupSourceConnection>, Integer, Hash)> sources_group_connections_all_partial_update_with_http_info(id, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_partial_update_with_http_info(id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this group source connection. |  |
-| **patched_group_source_connection_request** | [**PatchedGroupSourceConnectionRequest**](PatchedGroupSourceConnectionRequest.md) |  | [optional] |
-
-### Return type
-
-[**GroupSourceConnection**](GroupSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_all_retrieve
-
-> <GroupSourceConnection> sources_group_connections_all_retrieve(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this group source connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_all_retrieve(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_retrieve: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupSourceConnection>, Integer, Hash)> sources_group_connections_all_retrieve_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_retrieve_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this group source connection. |  |
-
-### Return type
-
-[**GroupSourceConnection**](GroupSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_all_update
-
-> <GroupSourceConnection> sources_group_connections_all_update(id, group_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this group source connection.
-group_source_connection_request = Authentik::Api::GroupSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_all_update(id, group_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupSourceConnection>, Integer, Hash)> sources_group_connections_all_update_with_http_info(id, group_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_update_with_http_info(id, group_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this group source connection. |  |
-| **group_source_connection_request** | [**GroupSourceConnectionRequest**](GroupSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupSourceConnection**](GroupSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_all_used_by_list
-
-> <Array<UsedBy>> sources_group_connections_all_used_by_list(id)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this group source connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_all_used_by_list(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_all_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_group_connections_all_used_by_list_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_all_used_by_list_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_all_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this group source connection. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_kerberos_create
-
-> <GroupKerberosSourceConnection> sources_group_connections_kerberos_create(group_kerberos_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-group_kerberos_source_connection_request = Authentik::Api::GroupKerberosSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupKerberosSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_kerberos_create(group_kerberos_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_kerberos_create: #{e}"
-end
-```
-
-#### Using the sources_group_connections_kerberos_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupKerberosSourceConnection>, Integer, Hash)> sources_group_connections_kerberos_create_with_http_info(group_kerberos_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_kerberos_create_with_http_info(group_kerberos_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupKerberosSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_kerberos_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group_kerberos_source_connection_request** | [**GroupKerberosSourceConnectionRequest**](GroupKerberosSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupKerberosSourceConnection**](GroupKerberosSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## sources_group_connections_kerberos_destroy
 
 > sources_group_connections_kerberos_destroy(id)
@@ -1663,506 +1120,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | A unique integer value identifying this Group Kerberos Source Connection. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_create
-
-> <GroupLDAPSourceConnection> sources_group_connections_ldap_create(group_ldap_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_create(group_ldap_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_create: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupLDAPSourceConnection>, Integer, Hash)> sources_group_connections_ldap_create_with_http_info(group_ldap_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_create_with_http_info(group_ldap_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group_ldap_source_connection_request** | [**GroupLDAPSourceConnectionRequest**](GroupLDAPSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_destroy
-
-> sources_group_connections_ldap_destroy(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-
-begin
-  
-  api_instance.sources_group_connections_ldap_destroy(id)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_destroy: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_group_connections_ldap_destroy_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_destroy_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group LDAP Source Connection. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_list
-
-> <PaginatedGroupLDAPSourceConnectionList> sources_group_connections_ldap_list(opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example' # String | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedGroupLDAPSourceConnectionList>, Integer, Hash)> sources_group_connections_ldap_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedGroupLDAPSourceConnectionList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group** | **String** |  | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **source__slug** | **String** |  | [optional] |
-
-### Return type
-
-[**PaginatedGroupLDAPSourceConnectionList**](PaginatedGroupLDAPSourceConnectionList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_partial_update
-
-> <GroupLDAPSourceConnection> sources_group_connections_ldap_partial_update(id, opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-opts = {
-  patched_group_ldap_source_connection_request: Authentik::Api::PatchedGroupLDAPSourceConnectionRequest.new # PatchedGroupLDAPSourceConnectionRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_partial_update(id, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_partial_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupLDAPSourceConnection>, Integer, Hash)> sources_group_connections_ldap_partial_update_with_http_info(id, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_partial_update_with_http_info(id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group LDAP Source Connection. |  |
-| **patched_group_ldap_source_connection_request** | [**PatchedGroupLDAPSourceConnectionRequest**](PatchedGroupLDAPSourceConnectionRequest.md) |  | [optional] |
-
-### Return type
-
-[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_retrieve
-
-> <GroupLDAPSourceConnection> sources_group_connections_ldap_retrieve(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_retrieve(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_retrieve: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupLDAPSourceConnection>, Integer, Hash)> sources_group_connections_ldap_retrieve_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_retrieve_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group LDAP Source Connection. |  |
-
-### Return type
-
-[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_update
-
-> <GroupLDAPSourceConnection> sources_group_connections_ldap_update(id, group_ldap_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_update(id, group_ldap_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupLDAPSourceConnection>, Integer, Hash)> sources_group_connections_ldap_update_with_http_info(id, group_ldap_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_update_with_http_info(id, group_ldap_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group LDAP Source Connection. |  |
-| **group_ldap_source_connection_request** | [**GroupLDAPSourceConnectionRequest**](GroupLDAPSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupLDAPSourceConnection**](GroupLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_ldap_used_by_list
-
-> <Array<UsedBy>> sources_group_connections_ldap_used_by_list(id)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_ldap_used_by_list(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_ldap_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_group_connections_ldap_used_by_list_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_ldap_used_by_list_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_ldap_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group LDAP Source Connection. |  |
 
 ### Return type
 
@@ -3178,75 +2135,6 @@ end
 - **Accept**: application/json
 
 
-## sources_group_connections_saml_create
-
-> <GroupSAMLSourceConnection> sources_group_connections_saml_create(group_saml_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-group_saml_source_connection_request = Authentik::Api::GroupSAMLSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupSAMLSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_saml_create(group_saml_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_saml_create: #{e}"
-end
-```
-
-#### Using the sources_group_connections_saml_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupSAMLSourceConnection>, Integer, Hash)> sources_group_connections_saml_create_with_http_info(group_saml_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_saml_create_with_http_info(group_saml_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupSAMLSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_saml_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group_saml_source_connection_request** | [**GroupSAMLSourceConnectionRequest**](GroupSAMLSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupSAMLSourceConnection**](GroupSAMLSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## sources_group_connections_saml_destroy
 
 > sources_group_connections_saml_destroy(id)
@@ -3678,506 +2566,6 @@ end
 - **Accept**: application/json
 
 
-## sources_group_connections_telegram_create
-
-> <GroupTelegramSourceConnection> sources_group_connections_telegram_create(group_telegram_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_create(group_telegram_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_create: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupTelegramSourceConnection>, Integer, Hash)> sources_group_connections_telegram_create_with_http_info(group_telegram_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_create_with_http_info(group_telegram_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group_telegram_source_connection_request** | [**GroupTelegramSourceConnectionRequest**](GroupTelegramSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_destroy
-
-> sources_group_connections_telegram_destroy(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-
-begin
-  
-  api_instance.sources_group_connections_telegram_destroy(id)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_destroy: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_group_connections_telegram_destroy_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_destroy_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group Telegram Source Connection. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_list
-
-> <PaginatedGroupTelegramSourceConnectionList> sources_group_connections_telegram_list(opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example' # String | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedGroupTelegramSourceConnectionList>, Integer, Hash)> sources_group_connections_telegram_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedGroupTelegramSourceConnectionList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **group** | **String** |  | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **source__slug** | **String** |  | [optional] |
-
-### Return type
-
-[**PaginatedGroupTelegramSourceConnectionList**](PaginatedGroupTelegramSourceConnectionList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_partial_update
-
-> <GroupTelegramSourceConnection> sources_group_connections_telegram_partial_update(id, opts)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-opts = {
-  patched_group_telegram_source_connection_request: Authentik::Api::PatchedGroupTelegramSourceConnectionRequest.new # PatchedGroupTelegramSourceConnectionRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_partial_update(id, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_partial_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupTelegramSourceConnection>, Integer, Hash)> sources_group_connections_telegram_partial_update_with_http_info(id, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_partial_update_with_http_info(id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group Telegram Source Connection. |  |
-| **patched_group_telegram_source_connection_request** | [**PatchedGroupTelegramSourceConnectionRequest**](PatchedGroupTelegramSourceConnectionRequest.md) |  | [optional] |
-
-### Return type
-
-[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_retrieve
-
-> <GroupTelegramSourceConnection> sources_group_connections_telegram_retrieve(id)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_retrieve(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_retrieve: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupTelegramSourceConnection>, Integer, Hash)> sources_group_connections_telegram_retrieve_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_retrieve_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group Telegram Source Connection. |  |
-
-### Return type
-
-[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_update
-
-> <GroupTelegramSourceConnection> sources_group_connections_telegram_update(id, group_telegram_source_connection_request)
-
-
-
-Group-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_update(id, group_telegram_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_update: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<GroupTelegramSourceConnection>, Integer, Hash)> sources_group_connections_telegram_update_with_http_info(id, group_telegram_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_update_with_http_info(id, group_telegram_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <GroupTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group Telegram Source Connection. |  |
-| **group_telegram_source_connection_request** | [**GroupTelegramSourceConnectionRequest**](GroupTelegramSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**GroupTelegramSourceConnection**](GroupTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_group_connections_telegram_used_by_list
-
-> <Array<UsedBy>> sources_group_connections_telegram_used_by_list(id)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-
-begin
-  
-  result = api_instance.sources_group_connections_telegram_used_by_list(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_group_connections_telegram_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_group_connections_telegram_used_by_list_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_group_connections_telegram_used_by_list_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_group_connections_telegram_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this Group Telegram Source Connection. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## sources_kerberos_create
 
 > <KerberosSource> sources_kerberos_create(kerberos_source_request)
@@ -4558,11 +2946,11 @@ end
 
 ## sources_kerberos_sync_status_retrieve
 
-> <SyncStatus> sources_kerberos_sync_status_retrieve(slug)
+> <KerberosSyncStatus> sources_kerberos_sync_status_retrieve(slug)
 
 
 
-Get provider's sync status
+Get source's sync status
 
 ### Examples
 
@@ -4591,7 +2979,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<SyncStatus>, Integer, Hash)> sources_kerberos_sync_status_retrieve_with_http_info(slug)
+> <Array(<KerberosSyncStatus>, Integer, Hash)> sources_kerberos_sync_status_retrieve_with_http_info(slug)
 
 ```ruby
 begin
@@ -4599,7 +2987,7 @@ begin
   data, status_code, headers = api_instance.sources_kerberos_sync_status_retrieve_with_http_info(slug)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <SyncStatus>
+  p data # => <KerberosSyncStatus>
 rescue Authentik::Api::ApiError => e
   puts "Error when calling SourcesApi->sources_kerberos_sync_status_retrieve_with_http_info: #{e}"
 end
@@ -4613,7 +3001,7 @@ end
 
 ### Return type
 
-[**SyncStatus**](SyncStatus.md)
+[**KerberosSyncStatus**](KerberosSyncStatus.md)
 
 ### Authorization
 
@@ -4997,12 +3385,10 @@ opts = {
   base_dn: 'base_dn_example', # String | 
   bind_cn: 'bind_cn_example', # String | 
   client_certificate: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  delete_not_found_objects: true, # Boolean | 
   enabled: true, # Boolean | 
   group_membership_field: 'group_membership_field_example', # String | 
   group_object_filter: 'group_object_filter_example', # String | 
   group_property_mappings: ['inner_example'], # Array<String> | 
-  lookup_groups_from_user: true, # Boolean | 
   name: 'name_example', # String | 
   object_uniqueness_field: 'object_uniqueness_field_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -5020,7 +3406,6 @@ opts = {
   sync_parent_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   sync_users: true, # Boolean | 
   sync_users_password: true, # Boolean | 
-  user_membership_attribute: 'user_membership_attribute_example', # String | 
   user_object_filter: 'user_object_filter_example', # String | 
   user_property_mappings: ['inner_example'] # Array<String> | 
 }
@@ -5061,12 +3446,10 @@ end
 | **base_dn** | **String** |  | [optional] |
 | **bind_cn** | **String** |  | [optional] |
 | **client_certificate** | **String** |  | [optional] |
-| **delete_not_found_objects** | **Boolean** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **group_membership_field** | **String** |  | [optional] |
 | **group_object_filter** | **String** |  | [optional] |
 | **group_property_mappings** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **lookup_groups_from_user** | **Boolean** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **object_uniqueness_field** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
@@ -5084,7 +3467,6 @@ end
 | **sync_parent_group** | **String** |  | [optional] |
 | **sync_users** | **Boolean** |  | [optional] |
 | **sync_users_password** | **Boolean** |  | [optional] |
-| **user_membership_attribute** | **String** |  | [optional] |
 | **user_object_filter** | **String** |  | [optional] |
 | **user_property_mappings** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 
@@ -5250,7 +3632,7 @@ end
 
 
 
-Get provider's sync status
+Get source's sync status
 
 ### Examples
 
@@ -6893,8 +5275,6 @@ opts = {
   pre_authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   search: 'search_example', # String | A search term.
   signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#dsa-sha1', # String | 
-  signed_assertion: true, # Boolean | 
-  signed_response: true, # Boolean | 
   signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   slo_url: 'slo_url_example', # String | 
   slug: 'slug_example', # String | 
@@ -6953,8 +5333,6 @@ end
 | **pre_authentication_flow** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **signature_algorithm** | **String** |  | [optional] |
-| **signed_assertion** | **Boolean** |  | [optional] |
-| **signed_response** | **Boolean** |  | [optional] |
 | **signing_kp** | **String** |  | [optional] |
 | **slo_url** | **String** |  | [optional] |
 | **slug** | **String** |  | [optional] |
@@ -7485,7 +5863,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-scim_source_group_request = Authentik::Api::SCIMSourceGroupRequest.new({external_id: 'external_id_example', group: 'group_example', source: 'source_example'}) # SCIMSourceGroupRequest | 
+scim_source_group_request = Authentik::Api::SCIMSourceGroupRequest.new({id: 'id_example', group: 'group_example', source: 'source_example'}) # SCIMSourceGroupRequest | 
 
 begin
   
@@ -7848,7 +6226,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 'id_example' # String | A unique value identifying this scim source group.
-scim_source_group_request = Authentik::Api::SCIMSourceGroupRequest.new({external_id: 'external_id_example', group: 'group_example', source: 'source_example'}) # SCIMSourceGroupRequest | 
+scim_source_group_request = Authentik::Api::SCIMSourceGroupRequest.new({id: 'id_example', group: 'group_example', source: 'source_example'}) # SCIMSourceGroupRequest | 
 
 begin
   
@@ -8352,7 +6730,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-scim_source_user_request = Authentik::Api::SCIMSourceUserRequest.new({external_id: 'external_id_example', user: 37, source: 'source_example'}) # SCIMSourceUserRequest | 
+scim_source_user_request = Authentik::Api::SCIMSourceUserRequest.new({id: 'id_example', user: 37, source: 'source_example'}) # SCIMSourceUserRequest | 
 
 begin
   
@@ -8715,7 +7093,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 'id_example' # String | A unique value identifying this scim source user.
-scim_source_user_request = Authentik::Api::SCIMSourceUserRequest.new({external_id: 'external_id_example', user: 37, source: 'source_example'}) # SCIMSourceUserRequest | 
+scim_source_user_request = Authentik::Api::SCIMSourceUserRequest.new({id: 'id_example', user: 37, source: 'source_example'}) # SCIMSourceUserRequest | 
 
 begin
   
@@ -8819,524 +7197,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** | A unique value identifying this scim source user. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_telegram_create
-
-> <TelegramSource> sources_telegram_create(telegram_source_request)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-telegram_source_request = Authentik::Api::TelegramSourceRequest.new({name: 'name_example', slug: 'slug_example', bot_username: 'bot_username_example', bot_token: 'bot_token_example', pre_authentication_flow: 'pre_authentication_flow_example'}) # TelegramSourceRequest | 
-
-begin
-  
-  result = api_instance.sources_telegram_create(telegram_source_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_create: #{e}"
-end
-```
-
-#### Using the sources_telegram_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<TelegramSource>, Integer, Hash)> sources_telegram_create_with_http_info(telegram_source_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_create_with_http_info(telegram_source_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <TelegramSource>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **telegram_source_request** | [**TelegramSourceRequest**](TelegramSourceRequest.md) |  |  |
-
-### Return type
-
-[**TelegramSource**](TelegramSource.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_telegram_destroy
-
-> sources_telegram_destroy(slug)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-
-begin
-  
-  api_instance.sources_telegram_destroy(slug)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_destroy: #{e}"
-end
-```
-
-#### Using the sources_telegram_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_telegram_destroy_with_http_info(slug)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_destroy_with_http_info(slug)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_telegram_list
-
-> <PaginatedTelegramSourceList> sources_telegram_list(opts)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  bot_username: 'bot_username_example', # String | 
-  enabled: true, # Boolean | 
-  enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
-  name: 'name_example', # String | 
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: 'all', # String | 
-  request_message_access: true, # Boolean | 
-  search: 'search_example', # String | A search term.
-  slug: 'slug_example', # String | 
-  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
-}
-
-begin
-  
-  result = api_instance.sources_telegram_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_list: #{e}"
-end
-```
-
-#### Using the sources_telegram_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedTelegramSourceList>, Integer, Hash)> sources_telegram_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedTelegramSourceList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **authentication_flow** | **String** |  | [optional] |
-| **bot_username** | **String** |  | [optional] |
-| **enabled** | **Boolean** |  | [optional] |
-| **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
-| **name** | **String** |  | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | **String** |  | [optional] |
-| **request_message_access** | **Boolean** |  | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **slug** | **String** |  | [optional] |
-| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
-
-### Return type
-
-[**PaginatedTelegramSourceList**](PaginatedTelegramSourceList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_telegram_partial_update
-
-> <TelegramSource> sources_telegram_partial_update(slug, opts)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-opts = {
-  patched_telegram_source_request: Authentik::Api::PatchedTelegramSourceRequest.new # PatchedTelegramSourceRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_telegram_partial_update(slug, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_partial_update: #{e}"
-end
-```
-
-#### Using the sources_telegram_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<TelegramSource>, Integer, Hash)> sources_telegram_partial_update_with_http_info(slug, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_partial_update_with_http_info(slug, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <TelegramSource>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **patched_telegram_source_request** | [**PatchedTelegramSourceRequest**](PatchedTelegramSourceRequest.md) |  | [optional] |
-
-### Return type
-
-[**TelegramSource**](TelegramSource.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_telegram_retrieve
-
-> <TelegramSource> sources_telegram_retrieve(slug)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-
-begin
-  
-  result = api_instance.sources_telegram_retrieve(slug)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_retrieve: #{e}"
-end
-```
-
-#### Using the sources_telegram_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<TelegramSource>, Integer, Hash)> sources_telegram_retrieve_with_http_info(slug)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_retrieve_with_http_info(slug)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <TelegramSource>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-
-### Return type
-
-[**TelegramSource**](TelegramSource.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_telegram_update
-
-> <TelegramSource> sources_telegram_update(slug, telegram_source_request)
-
-
-
-Mixin to add a used_by endpoint to return a list of all objects using this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-telegram_source_request = Authentik::Api::TelegramSourceRequest.new({name: 'name_example', slug: 'slug_example', bot_username: 'bot_username_example', bot_token: 'bot_token_example', pre_authentication_flow: 'pre_authentication_flow_example'}) # TelegramSourceRequest | 
-
-begin
-  
-  result = api_instance.sources_telegram_update(slug, telegram_source_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_update: #{e}"
-end
-```
-
-#### Using the sources_telegram_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<TelegramSource>, Integer, Hash)> sources_telegram_update_with_http_info(slug, telegram_source_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_update_with_http_info(slug, telegram_source_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <TelegramSource>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
-| **telegram_source_request** | [**TelegramSourceRequest**](TelegramSourceRequest.md) |  |  |
-
-### Return type
-
-[**TelegramSource**](TelegramSource.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_telegram_used_by_list
-
-> <Array<UsedBy>> sources_telegram_used_by_list(slug)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-slug = 'slug_example' # String | 
-
-begin
-  
-  result = api_instance.sources_telegram_used_by_list(slug)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_telegram_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_telegram_used_by_list_with_http_info(slug)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_telegram_used_by_list_with_http_info(slug)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_telegram_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **slug** | **String** |  |  |
 
 ### Return type
 
@@ -9664,7 +7524,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this user source connection.
-user_source_connection_request = Authentik::Api::UserSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserSourceConnectionRequest | 
+user_source_connection_request = Authentik::Api::UserSourceConnectionRequest.new({user: 37, source: 'source_example'}) # UserSourceConnectionRequest | 
 
 begin
   
@@ -9789,7 +7649,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -9858,7 +7718,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -9926,7 +7786,7 @@ nil (empty response body)
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -9945,8 +7805,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example', # String | 
-  user: 56 # Integer | 
+  source__slug: 'source__slug_example' # String | 
 }
 
 begin
@@ -9985,7 +7844,6 @@ end
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **source__slug** | **String** |  | [optional] |
-| **user** | **Integer** |  | [optional] |
 
 ### Return type
 
@@ -10007,7 +7865,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -10080,7 +7938,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -10149,7 +8007,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -10283,513 +8141,13 @@ end
 - **Accept**: application/json
 
 
-## sources_user_connections_ldap_create
-
-> <UserLDAPSourceConnection> sources_user_connections_ldap_create(user_ldap_source_connection_request)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_create(user_ldap_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_create: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserLDAPSourceConnection>, Integer, Hash)> sources_user_connections_ldap_create_with_http_info(user_ldap_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_create_with_http_info(user_ldap_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **user_ldap_source_connection_request** | [**UserLDAPSourceConnectionRequest**](UserLDAPSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_destroy
-
-> sources_user_connections_ldap_destroy(id)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-
-begin
-  
-  api_instance.sources_user_connections_ldap_destroy(id)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_destroy: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_user_connections_ldap_destroy_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_destroy_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User LDAP Source Connection. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_list
-
-> <PaginatedUserLDAPSourceConnectionList> sources_user_connections_ldap_list(opts)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example', # String | 
-  user: 56 # Integer | 
-}
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_list: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedUserLDAPSourceConnectionList>, Integer, Hash)> sources_user_connections_ldap_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedUserLDAPSourceConnectionList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **source__slug** | **String** |  | [optional] |
-| **user** | **Integer** |  | [optional] |
-
-### Return type
-
-[**PaginatedUserLDAPSourceConnectionList**](PaginatedUserLDAPSourceConnectionList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_partial_update
-
-> <UserLDAPSourceConnection> sources_user_connections_ldap_partial_update(id, opts)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-opts = {
-  patched_user_ldap_source_connection_request: Authentik::Api::PatchedUserLDAPSourceConnectionRequest.new # PatchedUserLDAPSourceConnectionRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_partial_update(id, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_partial_update: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserLDAPSourceConnection>, Integer, Hash)> sources_user_connections_ldap_partial_update_with_http_info(id, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_partial_update_with_http_info(id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User LDAP Source Connection. |  |
-| **patched_user_ldap_source_connection_request** | [**PatchedUserLDAPSourceConnectionRequest**](PatchedUserLDAPSourceConnectionRequest.md) |  | [optional] |
-
-### Return type
-
-[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_retrieve
-
-> <UserLDAPSourceConnection> sources_user_connections_ldap_retrieve(id)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_retrieve(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_retrieve: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserLDAPSourceConnection>, Integer, Hash)> sources_user_connections_ldap_retrieve_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_retrieve_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User LDAP Source Connection. |  |
-
-### Return type
-
-[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_update
-
-> <UserLDAPSourceConnection> sources_user_connections_ldap_update(id, user_ldap_source_connection_request)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_update(id, user_ldap_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_update: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserLDAPSourceConnection>, Integer, Hash)> sources_user_connections_ldap_update_with_http_info(id, user_ldap_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_update_with_http_info(id, user_ldap_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserLDAPSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User LDAP Source Connection. |  |
-| **user_ldap_source_connection_request** | [**UserLDAPSourceConnectionRequest**](UserLDAPSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**UserLDAPSourceConnection**](UserLDAPSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_ldap_used_by_list
-
-> <Array<UsedBy>> sources_user_connections_ldap_used_by_list(id)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-
-begin
-  
-  result = api_instance.sources_user_connections_ldap_used_by_list(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_user_connections_ldap_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_user_connections_ldap_used_by_list_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_ldap_used_by_list_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_ldap_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User LDAP Source Connection. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
 ## sources_user_connections_oauth_create
 
 > <UserOAuthSourceConnection> sources_user_connections_oauth_create(user_o_auth_source_connection_request)
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -10858,7 +8216,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -10926,7 +8284,7 @@ nil (empty response body)
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11007,7 +8365,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11080,7 +8438,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11149,7 +8507,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11289,7 +8647,7 @@ end
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11358,7 +8716,7 @@ end
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11426,7 +8784,7 @@ nil (empty response body)
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11507,7 +8865,7 @@ end
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11580,7 +8938,7 @@ end
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11649,7 +9007,7 @@ end
 
 
 
-User-source connection Viewset
+Plex Source connection Serializer
 
 ### Examples
 
@@ -11789,7 +9147,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11858,7 +9216,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -11926,7 +9284,7 @@ nil (empty response body)
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -12007,7 +9365,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -12080,7 +9438,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -12149,7 +9507,7 @@ end
 
 
 
-User-source connection Viewset
+Source Viewset
 
 ### Examples
 
@@ -12268,506 +9626,6 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | A unique integer value identifying this User SAML Source Connection. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_create
-
-> <UserTelegramSourceConnection> sources_user_connections_telegram_create(user_telegram_source_connection_request)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_create(user_telegram_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_create: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_user_connections_telegram_create_with_http_info(user_telegram_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_create_with_http_info(user_telegram_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **user_telegram_source_connection_request** | [**UserTelegramSourceConnectionRequest**](UserTelegramSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_destroy
-
-> sources_user_connections_telegram_destroy(id)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-
-begin
-  
-  api_instance.sources_user_connections_telegram_destroy(id)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_destroy: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> sources_user_connections_telegram_destroy_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_destroy_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User Telegram Source Connection. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_list
-
-> <PaginatedUserTelegramSourceConnectionList> sources_user_connections_telegram_list(opts)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-opts = {
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  page: 56, # Integer | A page number within the paginated result set.
-  page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  source__slug: 'source__slug_example', # String | 
-  user: 56 # Integer | 
-}
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_list(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_list: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PaginatedUserTelegramSourceConnectionList>, Integer, Hash)> sources_user_connections_telegram_list_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_list_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PaginatedUserTelegramSourceConnectionList>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **page** | **Integer** | A page number within the paginated result set. | [optional] |
-| **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **source__slug** | **String** |  | [optional] |
-| **user** | **Integer** |  | [optional] |
-
-### Return type
-
-[**PaginatedUserTelegramSourceConnectionList**](PaginatedUserTelegramSourceConnectionList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_partial_update
-
-> <UserTelegramSourceConnection> sources_user_connections_telegram_partial_update(id, opts)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-opts = {
-  patched_user_telegram_source_connection_request: Authentik::Api::PatchedUserTelegramSourceConnectionRequest.new # PatchedUserTelegramSourceConnectionRequest | 
-}
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_partial_update(id, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_partial_update: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_user_connections_telegram_partial_update_with_http_info(id, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_partial_update_with_http_info(id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User Telegram Source Connection. |  |
-| **patched_user_telegram_source_connection_request** | [**PatchedUserTelegramSourceConnectionRequest**](PatchedUserTelegramSourceConnectionRequest.md) |  | [optional] |
-
-### Return type
-
-[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_retrieve
-
-> <UserTelegramSourceConnection> sources_user_connections_telegram_retrieve(id)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_retrieve(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_retrieve: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_user_connections_telegram_retrieve_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_retrieve_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User Telegram Source Connection. |  |
-
-### Return type
-
-[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_update
-
-> <UserTelegramSourceConnection> sources_user_connections_telegram_update(id, user_telegram_source_connection_request)
-
-
-
-User-source connection Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_update(id, user_telegram_source_connection_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_update: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserTelegramSourceConnection>, Integer, Hash)> sources_user_connections_telegram_update_with_http_info(id, user_telegram_source_connection_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_update_with_http_info(id, user_telegram_source_connection_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserTelegramSourceConnection>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User Telegram Source Connection. |  |
-| **user_telegram_source_connection_request** | [**UserTelegramSourceConnectionRequest**](UserTelegramSourceConnectionRequest.md) |  |  |
-
-### Return type
-
-[**UserTelegramSourceConnection**](UserTelegramSourceConnection.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## sources_user_connections_telegram_used_by_list
-
-> <Array<UsedBy>> sources_user_connections_telegram_used_by_list(id)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::SourcesApi.new
-id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-
-begin
-  
-  result = api_instance.sources_user_connections_telegram_used_by_list(id)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_used_by_list: #{e}"
-end
-```
-
-#### Using the sources_user_connections_telegram_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> sources_user_connections_telegram_used_by_list_with_http_info(id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.sources_user_connections_telegram_used_by_list_with_http_info(id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling SourcesApi->sources_user_connections_telegram_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **id** | **Integer** | A unique integer value identifying this User Telegram Source Connection. |  |
 
 ### Return type
 

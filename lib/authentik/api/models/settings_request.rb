@@ -25,12 +25,7 @@ module Authentik::Api
     # Events will be deleted after this duration.(Format: weeks=3;days=2;hours=3,seconds=2).
     attr_accessor :event_retention
 
-    # Reputation cannot decrease lower than this value. Zero or negative.
-    attr_accessor :reputation_lower_limit
-
-    # Reputation cannot increase higher than this value. Zero or positive.
-    attr_accessor :reputation_upper_limit
-
+    # The option configures the footer links on the flow executor pages.
     attr_accessor :footer_links
 
     # When enabled, all the events caused by a user will be deleted upon the user's deletion.
@@ -48,8 +43,6 @@ module Authentik::Api
     # Default token length
     attr_accessor :default_token_length
 
-    attr_accessor :flags
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -58,15 +51,12 @@ module Authentik::Api
         :'default_user_change_email' => :'default_user_change_email',
         :'default_user_change_username' => :'default_user_change_username',
         :'event_retention' => :'event_retention',
-        :'reputation_lower_limit' => :'reputation_lower_limit',
-        :'reputation_upper_limit' => :'reputation_upper_limit',
         :'footer_links' => :'footer_links',
         :'gdpr_compliance' => :'gdpr_compliance',
         :'impersonation' => :'impersonation',
         :'impersonation_require_reason' => :'impersonation_require_reason',
         :'default_token_duration' => :'default_token_duration',
-        :'default_token_length' => :'default_token_length',
-        :'flags' => :'flags'
+        :'default_token_length' => :'default_token_length'
       }
     end
 
@@ -88,15 +78,12 @@ module Authentik::Api
         :'default_user_change_email' => :'Boolean',
         :'default_user_change_username' => :'Boolean',
         :'event_retention' => :'String',
-        :'reputation_lower_limit' => :'Integer',
-        :'reputation_upper_limit' => :'Integer',
         :'footer_links' => :'Object',
         :'gdpr_compliance' => :'Boolean',
         :'impersonation' => :'Boolean',
         :'impersonation_require_reason' => :'Boolean',
         :'default_token_duration' => :'String',
-        :'default_token_length' => :'Integer',
-        :'flags' => :'PatchedSettingsRequestFlags'
+        :'default_token_length' => :'Integer'
       }
     end
 
@@ -143,14 +130,6 @@ module Authentik::Api
         self.event_retention = attributes[:'event_retention']
       end
 
-      if attributes.key?(:'reputation_lower_limit')
-        self.reputation_lower_limit = attributes[:'reputation_lower_limit']
-      end
-
-      if attributes.key?(:'reputation_upper_limit')
-        self.reputation_upper_limit = attributes[:'reputation_upper_limit']
-      end
-
       if attributes.key?(:'footer_links')
         self.footer_links = attributes[:'footer_links']
       end
@@ -174,12 +153,6 @@ module Authentik::Api
       if attributes.key?(:'default_token_length')
         self.default_token_length = attributes[:'default_token_length']
       end
-
-      if attributes.key?(:'flags')
-        self.flags = attributes[:'flags']
-      else
-        self.flags = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -195,22 +168,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "event_retention", the character length must be greater than or equal to 1.')
       end
 
-      if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
-        invalid_properties.push('invalid value for "reputation_lower_limit", must be smaller than or equal to 0.')
-      end
-
-      if !@reputation_lower_limit.nil? && @reputation_lower_limit < -2147483648
-        invalid_properties.push('invalid value for "reputation_lower_limit", must be greater than or equal to -2147483648.')
-      end
-
-      if !@reputation_upper_limit.nil? && @reputation_upper_limit > 2147483647
-        invalid_properties.push('invalid value for "reputation_upper_limit", must be smaller than or equal to 2147483647.')
-      end
-
-      if !@reputation_upper_limit.nil? && @reputation_upper_limit < 0
-        invalid_properties.push('invalid value for "reputation_upper_limit", must be greater than or equal to 0.')
-      end
-
       if !@default_token_duration.nil? && @default_token_duration.to_s.length < 1
         invalid_properties.push('invalid value for "default_token_duration", the character length must be greater than or equal to 1.')
       end
@@ -223,10 +180,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "default_token_length", must be greater than or equal to 1.')
       end
 
-      if @flags.nil?
-        invalid_properties.push('invalid value for "flags", flags cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -236,14 +189,9 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@avatars.nil? && @avatars.to_s.length < 1
       return false if !@event_retention.nil? && @event_retention.to_s.length < 1
-      return false if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
-      return false if !@reputation_lower_limit.nil? && @reputation_lower_limit < -2147483648
-      return false if !@reputation_upper_limit.nil? && @reputation_upper_limit > 2147483647
-      return false if !@reputation_upper_limit.nil? && @reputation_upper_limit < 0
       return false if !@default_token_duration.nil? && @default_token_duration.to_s.length < 1
       return false if !@default_token_length.nil? && @default_token_length > 2147483647
       return false if !@default_token_length.nil? && @default_token_length < 1
-      return false if @flags.nil?
       true
     end
 
@@ -273,42 +221,6 @@ module Authentik::Api
       end
 
       @event_retention = event_retention
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reputation_lower_limit Value to be assigned
-    def reputation_lower_limit=(reputation_lower_limit)
-      if reputation_lower_limit.nil?
-        fail ArgumentError, 'reputation_lower_limit cannot be nil'
-      end
-
-      if reputation_lower_limit > 0
-        fail ArgumentError, 'invalid value for "reputation_lower_limit", must be smaller than or equal to 0.'
-      end
-
-      if reputation_lower_limit < -2147483648
-        fail ArgumentError, 'invalid value for "reputation_lower_limit", must be greater than or equal to -2147483648.'
-      end
-
-      @reputation_lower_limit = reputation_lower_limit
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reputation_upper_limit Value to be assigned
-    def reputation_upper_limit=(reputation_upper_limit)
-      if reputation_upper_limit.nil?
-        fail ArgumentError, 'reputation_upper_limit cannot be nil'
-      end
-
-      if reputation_upper_limit > 2147483647
-        fail ArgumentError, 'invalid value for "reputation_upper_limit", must be smaller than or equal to 2147483647.'
-      end
-
-      if reputation_upper_limit < 0
-        fail ArgumentError, 'invalid value for "reputation_upper_limit", must be greater than or equal to 0.'
-      end
-
-      @reputation_upper_limit = reputation_upper_limit
     end
 
     # Custom attribute writer method with validation
@@ -343,16 +255,6 @@ module Authentik::Api
       @default_token_length = default_token_length
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] flags Value to be assigned
-    def flags=(flags)
-      if flags.nil?
-        fail ArgumentError, 'flags cannot be nil'
-      end
-
-      @flags = flags
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -363,15 +265,12 @@ module Authentik::Api
           default_user_change_email == o.default_user_change_email &&
           default_user_change_username == o.default_user_change_username &&
           event_retention == o.event_retention &&
-          reputation_lower_limit == o.reputation_lower_limit &&
-          reputation_upper_limit == o.reputation_upper_limit &&
           footer_links == o.footer_links &&
           gdpr_compliance == o.gdpr_compliance &&
           impersonation == o.impersonation &&
           impersonation_require_reason == o.impersonation_require_reason &&
           default_token_duration == o.default_token_duration &&
-          default_token_length == o.default_token_length &&
-          flags == o.flags
+          default_token_length == o.default_token_length
     end
 
     # @see the `==` method
@@ -383,7 +282,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avatars, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, reputation_lower_limit, reputation_upper_limit, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length, flags].hash
+      [avatars, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length].hash
     end
 
     # Builds the object from hash

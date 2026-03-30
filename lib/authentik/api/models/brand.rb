@@ -23,10 +23,6 @@ module Authentik::Api
 
     attr_accessor :branding_favicon
 
-    attr_accessor :branding_custom_css
-
-    attr_accessor :branding_default_flow_background
-
     attr_accessor :flow_authentication
 
     attr_accessor :flow_invalidation
@@ -45,9 +41,6 @@ module Authentik::Api
     # Web Certificate used by the authentik Core webserver.
     attr_accessor :web_certificate
 
-    # Certificates used for client authentication.
-    attr_accessor :client_certificates
-
     attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -59,8 +52,6 @@ module Authentik::Api
         :'branding_title' => :'branding_title',
         :'branding_logo' => :'branding_logo',
         :'branding_favicon' => :'branding_favicon',
-        :'branding_custom_css' => :'branding_custom_css',
-        :'branding_default_flow_background' => :'branding_default_flow_background',
         :'flow_authentication' => :'flow_authentication',
         :'flow_invalidation' => :'flow_invalidation',
         :'flow_recovery' => :'flow_recovery',
@@ -69,7 +60,6 @@ module Authentik::Api
         :'flow_device_code' => :'flow_device_code',
         :'default_application' => :'default_application',
         :'web_certificate' => :'web_certificate',
-        :'client_certificates' => :'client_certificates',
         :'attributes' => :'attributes'
       }
     end
@@ -93,8 +83,6 @@ module Authentik::Api
         :'branding_title' => :'String',
         :'branding_logo' => :'String',
         :'branding_favicon' => :'String',
-        :'branding_custom_css' => :'String',
-        :'branding_default_flow_background' => :'String',
         :'flow_authentication' => :'String',
         :'flow_invalidation' => :'String',
         :'flow_recovery' => :'String',
@@ -103,8 +91,7 @@ module Authentik::Api
         :'flow_device_code' => :'String',
         :'default_application' => :'String',
         :'web_certificate' => :'String',
-        :'client_certificates' => :'Array<String>',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Object'
       }
     end
 
@@ -119,6 +106,7 @@ module Authentik::Api
         :'flow_device_code',
         :'default_application',
         :'web_certificate',
+        :'attributes'
       ])
     end
 
@@ -166,14 +154,6 @@ module Authentik::Api
         self.branding_favicon = attributes[:'branding_favicon']
       end
 
-      if attributes.key?(:'branding_custom_css')
-        self.branding_custom_css = attributes[:'branding_custom_css']
-      end
-
-      if attributes.key?(:'branding_default_flow_background')
-        self.branding_default_flow_background = attributes[:'branding_default_flow_background']
-      end
-
       if attributes.key?(:'flow_authentication')
         self.flow_authentication = attributes[:'flow_authentication']
       end
@@ -206,16 +186,8 @@ module Authentik::Api
         self.web_certificate = attributes[:'web_certificate']
       end
 
-      if attributes.key?(:'client_certificates')
-        if (value = attributes[:'client_certificates']).is_a?(Array)
-          self.client_certificates = value
-        end
-      end
-
       if attributes.key?(:'attributes')
-        if (value = attributes[:'attributes']).is_a?(Hash)
-          self.attributes = value
-        end
+        self.attributes = attributes[:'attributes']
       end
     end
 
@@ -275,8 +247,6 @@ module Authentik::Api
           branding_title == o.branding_title &&
           branding_logo == o.branding_logo &&
           branding_favicon == o.branding_favicon &&
-          branding_custom_css == o.branding_custom_css &&
-          branding_default_flow_background == o.branding_default_flow_background &&
           flow_authentication == o.flow_authentication &&
           flow_invalidation == o.flow_invalidation &&
           flow_recovery == o.flow_recovery &&
@@ -285,7 +255,6 @@ module Authentik::Api
           flow_device_code == o.flow_device_code &&
           default_application == o.default_application &&
           web_certificate == o.web_certificate &&
-          client_certificates == o.client_certificates &&
           attributes == o.attributes
     end
 
@@ -298,7 +267,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [brand_uuid, domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_application, web_certificate, client_certificates, attributes].hash
+      [brand_uuid, domain, default, branding_title, branding_logo, branding_favicon, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_application, web_certificate, attributes].hash
     end
 
     # Builds the object from hash

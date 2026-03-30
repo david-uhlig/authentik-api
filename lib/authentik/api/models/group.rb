@@ -33,10 +33,6 @@ module Authentik::Api
 
     attr_accessor :roles_obj
 
-    attr_accessor :children
-
-    attr_accessor :children_obj
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -50,9 +46,7 @@ module Authentik::Api
         :'users_obj' => :'users_obj',
         :'attributes' => :'attributes',
         :'roles' => :'roles',
-        :'roles_obj' => :'roles_obj',
-        :'children' => :'children',
-        :'children_obj' => :'children_obj'
+        :'roles_obj' => :'roles_obj'
       }
     end
 
@@ -76,12 +70,10 @@ module Authentik::Api
         :'parent' => :'String',
         :'parent_name' => :'String',
         :'users' => :'Array<Integer>',
-        :'users_obj' => :'Array<PartialUser>',
+        :'users_obj' => :'Array<GroupMember>',
         :'attributes' => :'Hash<String, Object>',
         :'roles' => :'Array<String>',
-        :'roles_obj' => :'Array<Role>',
-        :'children' => :'Array<String>',
-        :'children_obj' => :'Array<GroupChild>'
+        :'roles_obj' => :'Array<Role>'
       }
     end
 
@@ -91,7 +83,6 @@ module Authentik::Api
         :'parent',
         :'parent_name',
         :'users_obj',
-        :'children_obj'
       ])
     end
 
@@ -175,20 +166,6 @@ module Authentik::Api
         end
       else
         self.roles_obj = nil
-      end
-
-      if attributes.key?(:'children')
-        if (value = attributes[:'children']).is_a?(Array)
-          self.children = value
-        end
-      end
-
-      if attributes.key?(:'children_obj')
-        if (value = attributes[:'children_obj']).is_a?(Array)
-          self.children_obj = value
-        end
-      else
-        self.children_obj = nil
       end
     end
 
@@ -282,9 +259,7 @@ module Authentik::Api
           users_obj == o.users_obj &&
           attributes == o.attributes &&
           roles == o.roles &&
-          roles_obj == o.roles_obj &&
-          children == o.children &&
-          children_obj == o.children_obj
+          roles_obj == o.roles_obj
     end
 
     # @see the `==` method
@@ -296,7 +271,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, num_pk, name, is_superuser, parent, parent_name, users, users_obj, attributes, roles, roles_obj, children, children_obj].hash
+      [pk, num_pk, name, is_superuser, parent, parent_name, users, users_obj, attributes, roles, roles_obj].hash
     end
 
     # Builds the object from hash

@@ -29,15 +29,12 @@ Authentik::Api::FlowChallengeResponseRequest.openapi_one_of
 #   :'EmailChallengeResponseRequest',
 #   :'FrameChallengeResponseRequest',
 #   :'IdentificationChallengeResponseRequest',
-#   :'IframeLogoutChallengeResponseRequest',
-#   :'NativeLogoutChallengeResponseRequest',
 #   :'OAuthDeviceCodeChallengeResponseRequest',
 #   :'OAuthDeviceCodeFinishChallengeResponseRequest',
 #   :'PasswordChallengeResponseRequest',
 #   :'PlexAuthenticationChallengeResponseRequest',
 #   :'PromptChallengeResponseRequest',
 #   :'RedirectChallengeResponseRequest',
-#   :'TelegramChallengeResponseRequest',
 #   :'UserLoginChallengeResponseRequest'
 # ]
 ```
@@ -67,13 +64,10 @@ require 'authentik-api'
 Authentik::Api::FlowChallengeResponseRequest.openapi_discriminator_mapping
 # =>
 # {
-#   :'ak-provider-iframe-logout' => :'IframeLogoutChallengeResponseRequest',
 #   :'ak-provider-oauth2-device-code' => :'OAuthDeviceCodeChallengeResponseRequest',
 #   :'ak-provider-oauth2-device-code-finish' => :'OAuthDeviceCodeFinishChallengeResponseRequest',
-#   :'ak-provider-saml-native-logout' => :'NativeLogoutChallengeResponseRequest',
 #   :'ak-source-oauth-apple' => :'AppleChallengeResponseRequest',
 #   :'ak-source-plex' => :'PlexAuthenticationChallengeResponseRequest',
-#   :'ak-source-telegram' => :'TelegramChallengeResponseRequest',
 #   :'ak-stage-authenticator-duo' => :'AuthenticatorDuoChallengeResponseRequest',
 #   :'ak-stage-authenticator-email' => :'AuthenticatorEmailChallengeResponseRequest',
 #   :'ak-stage-authenticator-sms' => :'AuthenticatorSMSChallengeResponseRequest',
@@ -134,15 +128,12 @@ Authentik::Api::FlowChallengeResponseRequest.build(data_that_doesnt_match)
 - `EmailChallengeResponseRequest`
 - `FrameChallengeResponseRequest`
 - `IdentificationChallengeResponseRequest`
-- `IframeLogoutChallengeResponseRequest`
-- `NativeLogoutChallengeResponseRequest`
 - `OAuthDeviceCodeChallengeResponseRequest`
 - `OAuthDeviceCodeFinishChallengeResponseRequest`
 - `PasswordChallengeResponseRequest`
 - `PlexAuthenticationChallengeResponseRequest`
 - `PromptChallengeResponseRequest`
 - `RedirectChallengeResponseRequest`
-- `TelegramChallengeResponseRequest`
 - `UserLoginChallengeResponseRequest`
 - `nil` (if no type matches)
 

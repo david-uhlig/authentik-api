@@ -29,6 +29,8 @@ module Authentik::Api
 
     attr_accessor :order
 
+    attr_accessor :promptstage_set
+
     attr_accessor :sub_text
 
     attr_accessor :placeholder_expression
@@ -68,6 +70,7 @@ module Authentik::Api
         :'placeholder' => :'placeholder',
         :'initial_value' => :'initial_value',
         :'order' => :'order',
+        :'promptstage_set' => :'promptstage_set',
         :'sub_text' => :'sub_text',
         :'placeholder_expression' => :'placeholder_expression',
         :'initial_value_expression' => :'initial_value_expression'
@@ -95,6 +98,7 @@ module Authentik::Api
         :'placeholder' => :'String',
         :'initial_value' => :'String',
         :'order' => :'Integer',
+        :'promptstage_set' => :'Array<StageRequest>',
         :'sub_text' => :'String',
         :'placeholder_expression' => :'Boolean',
         :'initial_value_expression' => :'Boolean'
@@ -161,6 +165,12 @@ module Authentik::Api
 
       if attributes.key?(:'order')
         self.order = attributes[:'order']
+      end
+
+      if attributes.key?(:'promptstage_set')
+        if (value = attributes[:'promptstage_set']).is_a?(Array)
+          self.promptstage_set = value
+        end
       end
 
       if attributes.key?(:'sub_text')
@@ -319,6 +329,7 @@ module Authentik::Api
           placeholder == o.placeholder &&
           initial_value == o.initial_value &&
           order == o.order &&
+          promptstage_set == o.promptstage_set &&
           sub_text == o.sub_text &&
           placeholder_expression == o.placeholder_expression &&
           initial_value_expression == o.initial_value_expression
@@ -333,7 +344,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, field_key, label, type, required, placeholder, initial_value, order, sub_text, placeholder_expression, initial_value_expression].hash
+      [name, field_key, label, type, required, placeholder, initial_value, order, promptstage_set, sub_text, placeholder_expression, initial_value_expression].hash
     end
 
     # Builds the object from hash

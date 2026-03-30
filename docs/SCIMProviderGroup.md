@@ -7,9 +7,8 @@
 | **id** | **String** |  | [readonly] |
 | **scim_id** | **String** |  |  |
 | **group** | **String** |  |  |
-| **group_obj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] |
+| **group_obj** | [**UserGroup**](UserGroup.md) |  | [readonly] |
 | **provider** | **Integer** |  |  |
-| **attributes** | **Hash&lt;String, Object&gt;** |  | [readonly] |
 
 ## Example
 
@@ -21,8 +20,7 @@ instance = Authentik::Api::SCIMProviderGroup.new(
   scim_id: null,
   group: null,
   group_obj: null,
-  provider: null,
-  attributes: null
+  provider: null
 )
 ```
 

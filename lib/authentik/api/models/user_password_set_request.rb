@@ -8,7 +8,6 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Payload to set a users' password directly
   class UserPasswordSetRequest < ApiModelBase
     attr_accessor :password
 

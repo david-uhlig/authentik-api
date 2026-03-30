@@ -14,14 +14,11 @@ module Authentik::Api
 
     attr_accessor :source
 
-    attr_accessor :identifier
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user' => :'user',
-        :'source' => :'source',
-        :'identifier' => :'identifier'
+        :'source' => :'source'
       }
     end
 
@@ -39,8 +36,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'user' => :'Integer',
-        :'source' => :'String',
-        :'identifier' => :'String'
+        :'source' => :'String'
       }
     end
 
@@ -73,10 +69,6 @@ module Authentik::Api
       if attributes.key?(:'source')
         self.source = attributes[:'source']
       end
-
-      if attributes.key?(:'identifier')
-        self.identifier = attributes[:'identifier']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -84,10 +76,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@identifier.nil? && @identifier.to_s.length < 1
-        invalid_properties.push('invalid value for "identifier", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -95,22 +83,7 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@identifier.nil? && @identifier.to_s.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] identifier Value to be assigned
-    def identifier=(identifier)
-      if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
-      end
-
-      if identifier.to_s.length < 1
-        fail ArgumentError, 'invalid value for "identifier", the character length must be greater than or equal to 1.'
-      end
-
-      @identifier = identifier
     end
 
     # Checks equality by comparing each attribute.
@@ -119,8 +92,7 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           user == o.user &&
-          source == o.source &&
-          identifier == o.identifier
+          source == o.source
     end
 
     # @see the `==` method
@@ -132,7 +104,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, source, identifier].hash
+      [user, source].hash
     end
 
     # Builds the object from hash

@@ -52,8 +52,6 @@ module Authentik::Api
     # URL used by authentik to get user information.
     attr_accessor :profile_url
 
-    attr_accessor :pkce
-
     attr_accessor :consumer_key
 
     attr_accessor :consumer_secret
@@ -65,9 +63,6 @@ module Authentik::Api
     attr_accessor :oidc_jwks_url
 
     attr_accessor :oidc_jwks
-
-    # How to perform authentication during an authorization_code token request flow
-    attr_accessor :authorization_code_auth_method
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -110,14 +105,12 @@ module Authentik::Api
         :'authorization_url' => :'authorization_url',
         :'access_token_url' => :'access_token_url',
         :'profile_url' => :'profile_url',
-        :'pkce' => :'pkce',
         :'consumer_key' => :'consumer_key',
         :'consumer_secret' => :'consumer_secret',
         :'additional_scopes' => :'additional_scopes',
         :'oidc_well_known_url' => :'oidc_well_known_url',
         :'oidc_jwks_url' => :'oidc_jwks_url',
-        :'oidc_jwks' => :'oidc_jwks',
-        :'authorization_code_auth_method' => :'authorization_code_auth_method'
+        :'oidc_jwks' => :'oidc_jwks'
       }
     end
 
@@ -150,14 +143,12 @@ module Authentik::Api
         :'authorization_url' => :'String',
         :'access_token_url' => :'String',
         :'profile_url' => :'String',
-        :'pkce' => :'PKCEMethodEnum',
         :'consumer_key' => :'String',
         :'consumer_secret' => :'String',
         :'additional_scopes' => :'String',
         :'oidc_well_known_url' => :'String',
         :'oidc_jwks_url' => :'String',
-        :'oidc_jwks' => :'Hash<String, Object>',
-        :'authorization_code_auth_method' => :'AuthorizationCodeAuthMethodEnum'
+        :'oidc_jwks' => :'Object'
       }
     end
 
@@ -170,6 +161,7 @@ module Authentik::Api
         :'authorization_url',
         :'access_token_url',
         :'profile_url',
+        :'oidc_jwks'
       ])
     end
 
@@ -263,10 +255,6 @@ module Authentik::Api
         self.profile_url = attributes[:'profile_url']
       end
 
-      if attributes.key?(:'pkce')
-        self.pkce = attributes[:'pkce']
-      end
-
       if attributes.key?(:'consumer_key')
         self.consumer_key = attributes[:'consumer_key']
       else
@@ -292,13 +280,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'oidc_jwks')
-        if (value = attributes[:'oidc_jwks']).is_a?(Hash)
-          self.oidc_jwks = value
-        end
-      end
-
-      if attributes.key?(:'authorization_code_auth_method')
-        self.authorization_code_auth_method = attributes[:'authorization_code_auth_method']
+        self.oidc_jwks = attributes[:'oidc_jwks']
       end
     end
 
@@ -548,14 +530,12 @@ module Authentik::Api
           authorization_url == o.authorization_url &&
           access_token_url == o.access_token_url &&
           profile_url == o.profile_url &&
-          pkce == o.pkce &&
           consumer_key == o.consumer_key &&
           consumer_secret == o.consumer_secret &&
           additional_scopes == o.additional_scopes &&
           oidc_well_known_url == o.oidc_well_known_url &&
           oidc_jwks_url == o.oidc_jwks_url &&
-          oidc_jwks == o.oidc_jwks &&
-          authorization_code_auth_method == o.authorization_code_auth_method
+          oidc_jwks == o.oidc_jwks
     end
 
     # @see the `==` method
@@ -567,7 +547,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, group_matching_mode, provider_type, request_token_url, authorization_url, access_token_url, profile_url, pkce, consumer_key, consumer_secret, additional_scopes, oidc_well_known_url, oidc_jwks_url, oidc_jwks, authorization_code_auth_method].hash
+      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, group_matching_mode, provider_type, request_token_url, authorization_url, access_token_url, profile_url, consumer_key, consumer_secret, additional_scopes, oidc_well_known_url, oidc_jwks_url, oidc_jwks].hash
     end
 
     # Builds the object from hash

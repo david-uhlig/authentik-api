@@ -18,8 +18,6 @@ module Authentik::Api
 
     attr_accessor :branding_favicon
 
-    attr_accessor :branding_custom_css
-
     attr_accessor :ui_footer_links
 
     attr_accessor :ui_theme
@@ -37,8 +35,6 @@ module Authentik::Api
     attr_accessor :flow_device_code
 
     attr_accessor :default_locale
-
-    attr_accessor :flags
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -69,7 +65,6 @@ module Authentik::Api
         :'branding_title' => :'branding_title',
         :'branding_logo' => :'branding_logo',
         :'branding_favicon' => :'branding_favicon',
-        :'branding_custom_css' => :'branding_custom_css',
         :'ui_footer_links' => :'ui_footer_links',
         :'ui_theme' => :'ui_theme',
         :'flow_authentication' => :'flow_authentication',
@@ -78,8 +73,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'flow_unenrollment',
         :'flow_user_settings' => :'flow_user_settings',
         :'flow_device_code' => :'flow_device_code',
-        :'default_locale' => :'default_locale',
-        :'flags' => :'flags'
+        :'default_locale' => :'default_locale'
       }
     end
 
@@ -100,7 +94,6 @@ module Authentik::Api
         :'branding_title' => :'String',
         :'branding_logo' => :'String',
         :'branding_favicon' => :'String',
-        :'branding_custom_css' => :'String',
         :'ui_footer_links' => :'Array<FooterLink>',
         :'ui_theme' => :'UiThemeEnum',
         :'flow_authentication' => :'String',
@@ -109,8 +102,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'String',
         :'flow_user_settings' => :'String',
         :'flow_device_code' => :'String',
-        :'default_locale' => :'String',
-        :'flags' => :'CurrentBrandFlags'
+        :'default_locale' => :'String'
       }
     end
 
@@ -160,12 +152,6 @@ module Authentik::Api
         self.branding_favicon = nil
       end
 
-      if attributes.key?(:'branding_custom_css')
-        self.branding_custom_css = attributes[:'branding_custom_css']
-      else
-        self.branding_custom_css = nil
-      end
-
       if attributes.key?(:'ui_footer_links')
         if (value = attributes[:'ui_footer_links']).is_a?(Array)
           self.ui_footer_links = value
@@ -209,12 +195,6 @@ module Authentik::Api
       else
         self.default_locale = nil
       end
-
-      if attributes.key?(:'flags')
-        self.flags = attributes[:'flags']
-      else
-        self.flags = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -238,10 +218,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "branding_favicon", branding_favicon cannot be nil.')
       end
 
-      if @branding_custom_css.nil?
-        invalid_properties.push('invalid value for "branding_custom_css", branding_custom_css cannot be nil.')
-      end
-
       if @ui_footer_links.nil?
         invalid_properties.push('invalid value for "ui_footer_links", ui_footer_links cannot be nil.')
       end
@@ -252,10 +228,6 @@ module Authentik::Api
 
       if @default_locale.nil?
         invalid_properties.push('invalid value for "default_locale", default_locale cannot be nil.')
-      end
-
-      if @flags.nil?
-        invalid_properties.push('invalid value for "flags", flags cannot be nil.')
       end
 
       invalid_properties
@@ -269,11 +241,9 @@ module Authentik::Api
       return false if @branding_title.nil?
       return false if @branding_logo.nil?
       return false if @branding_favicon.nil?
-      return false if @branding_custom_css.nil?
       return false if @ui_footer_links.nil?
       return false if @ui_theme.nil?
       return false if @default_locale.nil?
-      return false if @flags.nil?
       true
     end
 
@@ -318,16 +288,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] branding_custom_css Value to be assigned
-    def branding_custom_css=(branding_custom_css)
-      if branding_custom_css.nil?
-        fail ArgumentError, 'branding_custom_css cannot be nil'
-      end
-
-      @branding_custom_css = branding_custom_css
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] ui_footer_links Value to be assigned
     def ui_footer_links=(ui_footer_links)
       if ui_footer_links.nil?
@@ -357,16 +317,6 @@ module Authentik::Api
       @default_locale = default_locale
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] flags Value to be assigned
-    def flags=(flags)
-      if flags.nil?
-        fail ArgumentError, 'flags cannot be nil'
-      end
-
-      @flags = flags
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -376,7 +326,6 @@ module Authentik::Api
           branding_title == o.branding_title &&
           branding_logo == o.branding_logo &&
           branding_favicon == o.branding_favicon &&
-          branding_custom_css == o.branding_custom_css &&
           ui_footer_links == o.ui_footer_links &&
           ui_theme == o.ui_theme &&
           flow_authentication == o.flow_authentication &&
@@ -385,8 +334,7 @@ module Authentik::Api
           flow_unenrollment == o.flow_unenrollment &&
           flow_user_settings == o.flow_user_settings &&
           flow_device_code == o.flow_device_code &&
-          default_locale == o.default_locale &&
-          flags == o.flags
+          default_locale == o.default_locale
     end
 
     # @see the `==` method
@@ -398,7 +346,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matched_domain, branding_title, branding_logo, branding_favicon, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_locale, flags].hash
+      [matched_domain, branding_title, branding_logo, branding_favicon, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_locale].hash
     end
 
     # Builds the object from hash

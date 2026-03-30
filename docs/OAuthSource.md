@@ -27,15 +27,13 @@
 | **authorization_url** | **String** | URL the user is redirect to to conest the flow. | [optional] |
 | **access_token_url** | **String** | URL used by authentik to retrieve tokens. | [optional] |
 | **profile_url** | **String** | URL used by authentik to get user information. | [optional] |
-| **pkce** | [**PKCEMethodEnum**](PKCEMethodEnum.md) |  | [optional] |
 | **consumer_key** | **String** |  |  |
 | **callback_url** | **String** | Get OAuth Callback URL | [readonly] |
 | **additional_scopes** | **String** |  | [optional] |
 | **type** | [**SourceType**](SourceType.md) |  | [readonly] |
 | **oidc_well_known_url** | **String** |  | [optional] |
 | **oidc_jwks_url** | **String** |  | [optional] |
-| **oidc_jwks** | **Hash&lt;String, Object&gt;** |  | [optional] |
-| **authorization_code_auth_method** | [**AuthorizationCodeAuthMethodEnum**](AuthorizationCodeAuthMethodEnum.md) | How to perform authentication during an authorization_code token request flow | [optional] |
+| **oidc_jwks** | **Object** |  | [optional] |
 
 ## Example
 
@@ -66,15 +64,13 @@ instance = Authentik::Api::OAuthSource.new(
   authorization_url: null,
   access_token_url: null,
   profile_url: null,
-  pkce: null,
   consumer_key: null,
   callback_url: null,
   additional_scopes: null,
   type: null,
   oidc_well_known_url: null,
   oidc_jwks_url: null,
-  oidc_jwks: null,
-  authorization_code_auth_method: null
+  oidc_jwks: null
 )
 ```
 

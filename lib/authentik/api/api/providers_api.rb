@@ -5595,17 +5595,14 @@ module Authentik::Api
     # @option opts [String] :assertion_valid_not_on_or_after 
     # @option opts [String] :audience 
     # @option opts [String] :authentication_flow 
-    # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -5615,12 +5612,9 @@ module Authentik::Api
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
-    # @option opts [Boolean] :sign_logout_request 
     # @option opts [Boolean] :sign_response 
     # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
-    # @option opts [String] :sls_url 
     # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [PaginatedSAMLProviderList]
@@ -5636,17 +5630,14 @@ module Authentik::Api
     # @option opts [String] :assertion_valid_not_on_or_after 
     # @option opts [String] :audience 
     # @option opts [String] :authentication_flow 
-    # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -5656,12 +5647,9 @@ module Authentik::Api
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
-    # @option opts [Boolean] :sign_logout_request 
     # @option opts [Boolean] :sign_response 
     # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
-    # @option opts [String] :sls_url 
     # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [Array<(PaginatedSAMLProviderList, Integer, Hash)>] PaginatedSAMLProviderList data, response status code and response headers
@@ -5669,25 +5657,13 @@ module Authentik::Api
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_saml_list ...'
       end
-      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
-      if @api_client.config.client_side_validation && opts[:'default_name_id_policy'] && !allowable_values.include?(opts[:'default_name_id_policy'])
-        fail ArgumentError, "invalid value for \"default_name_id_policy\", must be one of #{allowable_values}"
-      end
       allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
       if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
         fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
       end
-      allowable_values = ["backchannel", "frontchannel_iframe", "frontchannel_native"]
-      if @api_client.config.client_side_validation && opts[:'logout_method'] && !allowable_values.include?(opts[:'logout_method'])
-        fail ArgumentError, "invalid value for \"logout_method\", must be one of #{allowable_values}"
-      end
       allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
       if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
         fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["post", "redirect"]
-      if @api_client.config.client_side_validation && opts[:'sls_binding'] && !allowable_values.include?(opts[:'sls_binding'])
-        fail ArgumentError, "invalid value for \"sls_binding\", must be one of #{allowable_values}"
       end
       allowable_values = ["post", "redirect"]
       if @api_client.config.client_side_validation && opts[:'sp_binding'] && !allowable_values.include?(opts[:'sp_binding'])
@@ -5703,17 +5679,14 @@ module Authentik::Api
       query_params[:'assertion_valid_not_on_or_after'] = opts[:'assertion_valid_not_on_or_after'] if !opts[:'assertion_valid_not_on_or_after'].nil?
       query_params[:'audience'] = opts[:'audience'] if !opts[:'audience'].nil?
       query_params[:'authentication_flow'] = opts[:'authentication_flow'] if !opts[:'authentication_flow'].nil?
-      query_params[:'authn_context_class_ref_mapping'] = opts[:'authn_context_class_ref_mapping'] if !opts[:'authn_context_class_ref_mapping'].nil?
       query_params[:'authorization_flow'] = opts[:'authorization_flow'] if !opts[:'authorization_flow'].nil?
       query_params[:'backchannel_application'] = opts[:'backchannel_application'] if !opts[:'backchannel_application'].nil?
-      query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
       query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
-      query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
@@ -5723,12 +5696,9 @@ module Authentik::Api
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'session_valid_not_on_or_after'] = opts[:'session_valid_not_on_or_after'] if !opts[:'session_valid_not_on_or_after'].nil?
       query_params[:'sign_assertion'] = opts[:'sign_assertion'] if !opts[:'sign_assertion'].nil?
-      query_params[:'sign_logout_request'] = opts[:'sign_logout_request'] if !opts[:'sign_logout_request'].nil?
       query_params[:'sign_response'] = opts[:'sign_response'] if !opts[:'sign_response'].nil?
       query_params[:'signature_algorithm'] = opts[:'signature_algorithm'] if !opts[:'signature_algorithm'].nil?
       query_params[:'signing_kp'] = opts[:'signing_kp'] if !opts[:'signing_kp'].nil?
-      query_params[:'sls_binding'] = opts[:'sls_binding'] if !opts[:'sls_binding'].nil?
-      query_params[:'sls_url'] = opts[:'sls_url'] if !opts[:'sls_url'].nil?
       query_params[:'sp_binding'] = opts[:'sp_binding'] if !opts[:'sp_binding'].nil?
       query_params[:'verification_kp'] = opts[:'verification_kp'] if !opts[:'verification_kp'].nil?
 

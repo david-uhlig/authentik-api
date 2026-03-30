@@ -8,14 +8,13 @@
 | **property_mappings** | **Array&lt;String&gt;** |  | [optional] |
 | **property_mappings_group** | **Array&lt;String&gt;** | Property mappings used for group creation/updating. | [optional] |
 | **delegated_subject** | **String** |  |  |
-| **credentials** | **Hash&lt;String, Object&gt;** |  |  |
+| **credentials** | **Object** |  |  |
 | **scopes** | **String** |  | [optional] |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
 | **filter_group** | **String** |  | [optional] |
 | **user_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **group_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **default_group_email_domain** | **String** |  |  |
-| **dry_run** | **Boolean** | When enabled, provider will not modify or create objects in the remote system. | [optional] |
 
 ## Example
 
@@ -33,8 +32,7 @@ instance = Authentik::Api::GoogleWorkspaceProviderRequest.new(
   filter_group: null,
   user_delete_action: null,
   group_delete_action: null,
-  default_group_email_domain: null,
-  dry_run: null
+  default_group_email_domain: null
 )
 ```
 

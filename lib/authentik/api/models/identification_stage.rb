@@ -60,9 +60,6 @@ module Authentik::Api
     # When enabled, the stage will succeed and continue even when incorrect user info is entered.
     attr_accessor :pretend_user_exists
 
-    # Show the user the 'Remember me on this device' toggle, allowing repeat users to skip straight to entering their password.
-    attr_accessor :enable_remember_me
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -83,8 +80,7 @@ module Authentik::Api
         :'passwordless_flow' => :'passwordless_flow',
         :'sources' => :'sources',
         :'show_source_labels' => :'show_source_labels',
-        :'pretend_user_exists' => :'pretend_user_exists',
-        :'enable_remember_me' => :'enable_remember_me'
+        :'pretend_user_exists' => :'pretend_user_exists'
       }
     end
 
@@ -118,8 +114,7 @@ module Authentik::Api
         :'passwordless_flow' => :'String',
         :'sources' => :'Array<String>',
         :'show_source_labels' => :'Boolean',
-        :'pretend_user_exists' => :'Boolean',
-        :'enable_remember_me' => :'Boolean'
+        :'pretend_user_exists' => :'Boolean'
       }
     end
 
@@ -238,10 +233,6 @@ module Authentik::Api
 
       if attributes.key?(:'pretend_user_exists')
         self.pretend_user_exists = attributes[:'pretend_user_exists']
-      end
-
-      if attributes.key?(:'enable_remember_me')
-        self.enable_remember_me = attributes[:'enable_remember_me']
       end
     end
 
@@ -372,8 +363,7 @@ module Authentik::Api
           passwordless_flow == o.passwordless_flow &&
           sources == o.sources &&
           show_source_labels == o.show_source_labels &&
-          pretend_user_exists == o.pretend_user_exists &&
-          enable_remember_me == o.enable_remember_me
+          pretend_user_exists == o.pretend_user_exists
     end
 
     # @see the `==` method
@@ -385,7 +375,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, user_fields, password_stage, captcha_stage, case_insensitive_matching, show_matched_user, enrollment_flow, recovery_flow, passwordless_flow, sources, show_source_labels, pretend_user_exists, enable_remember_me].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, user_fields, password_stage, captcha_stage, case_insensitive_matching, show_matched_user, enrollment_flow, recovery_flow, passwordless_flow, sources, show_source_labels, pretend_user_exists].hash
     end
 
     # Builds the object from hash

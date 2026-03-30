@@ -11,12 +11,10 @@
 | **parent** | **String** |  | [optional] |
 | **parent_name** | **String** |  | [readonly] |
 | **users** | **Array&lt;Integer&gt;** |  | [optional] |
-| **users_obj** | [**Array&lt;PartialUser&gt;**](PartialUser.md) |  | [readonly] |
+| **users_obj** | [**Array&lt;GroupMember&gt;**](GroupMember.md) |  | [readonly] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **roles** | **Array&lt;String&gt;** |  | [optional] |
 | **roles_obj** | [**Array&lt;Role&gt;**](Role.md) |  | [readonly] |
-| **children** | **Array&lt;String&gt;** |  | [optional] |
-| **children_obj** | [**Array&lt;GroupChild&gt;**](GroupChild.md) |  | [readonly] |
 
 ## Example
 
@@ -34,9 +32,7 @@ instance = Authentik::Api::Group.new(
   users_obj: null,
   attributes: null,
   roles: null,
-  roles_obj: null,
-  children: null,
-  children_obj: null
+  roles_obj: null
 )
 ```
 

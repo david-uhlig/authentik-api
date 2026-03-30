@@ -18,28 +18,6 @@ module Authentik::Api
 
     attr_accessor :last_used
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -63,7 +41,7 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'device_class' => :'DeviceClassesEnum',
+        :'device_class' => :'String',
         :'device_uid' => :'String',
         :'challenge' => :'Hash<String, Object>',
         :'last_used' => :'Time'
@@ -129,6 +107,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "device_class", device_class cannot be nil.')
       end
 
+      if @device_class.to_s.length < 1
+        invalid_properties.push('invalid value for "device_class", the character length must be greater than or equal to 1.')
+      end
+
       if @device_uid.nil?
         invalid_properties.push('invalid value for "device_uid", device_uid cannot be nil.')
       end
@@ -149,6 +131,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @device_class.nil?
+      return false if @device_class.to_s.length < 1
       return false if @device_uid.nil?
       return false if @device_uid.to_s.length < 1
       return false if @challenge.nil?
@@ -160,6 +143,10 @@ module Authentik::Api
     def device_class=(device_class)
       if device_class.nil?
         fail ArgumentError, 'device_class cannot be nil'
+      end
+
+      if device_class.to_s.length < 1
+        fail ArgumentError, 'invalid value for "device_class", the character length must be greater than or equal to 1.'
       end
 
       @device_class = device_class

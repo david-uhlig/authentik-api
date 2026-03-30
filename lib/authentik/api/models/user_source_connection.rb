@@ -18,11 +18,7 @@ module Authentik::Api
 
     attr_accessor :source_obj
 
-    attr_accessor :identifier
-
     attr_accessor :created
-
-    attr_accessor :last_updated
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -31,9 +27,7 @@ module Authentik::Api
         :'user' => :'user',
         :'source' => :'source',
         :'source_obj' => :'source_obj',
-        :'identifier' => :'identifier',
-        :'created' => :'created',
-        :'last_updated' => :'last_updated'
+        :'created' => :'created'
       }
     end
 
@@ -54,9 +48,7 @@ module Authentik::Api
         :'user' => :'Integer',
         :'source' => :'String',
         :'source_obj' => :'Source',
-        :'identifier' => :'String',
-        :'created' => :'Time',
-        :'last_updated' => :'Time'
+        :'created' => :'Time'
       }
     end
 
@@ -106,22 +98,10 @@ module Authentik::Api
         self.source_obj = nil
       end
 
-      if attributes.key?(:'identifier')
-        self.identifier = attributes[:'identifier']
-      else
-        self.identifier = nil
-      end
-
       if attributes.key?(:'created')
         self.created = attributes[:'created']
       else
         self.created = nil
-      end
-
-      if attributes.key?(:'last_updated')
-        self.last_updated = attributes[:'last_updated']
-      else
-        self.last_updated = nil
       end
     end
 
@@ -146,16 +126,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "source_obj", source_obj cannot be nil.')
       end
 
-      if @identifier.nil?
-        invalid_properties.push('invalid value for "identifier", identifier cannot be nil.')
-      end
-
       if @created.nil?
         invalid_properties.push('invalid value for "created", created cannot be nil.')
-      end
-
-      if @last_updated.nil?
-        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
       end
 
       invalid_properties
@@ -169,9 +141,7 @@ module Authentik::Api
       return false if @user.nil?
       return false if @source.nil?
       return false if @source_obj.nil?
-      return false if @identifier.nil?
       return false if @created.nil?
-      return false if @last_updated.nil?
       true
     end
 
@@ -216,16 +186,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] identifier Value to be assigned
-    def identifier=(identifier)
-      if identifier.nil?
-        fail ArgumentError, 'identifier cannot be nil'
-      end
-
-      @identifier = identifier
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] created Value to be assigned
     def created=(created)
       if created.nil?
@@ -233,16 +193,6 @@ module Authentik::Api
       end
 
       @created = created
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] last_updated Value to be assigned
-    def last_updated=(last_updated)
-      if last_updated.nil?
-        fail ArgumentError, 'last_updated cannot be nil'
-      end
-
-      @last_updated = last_updated
     end
 
     # Checks equality by comparing each attribute.
@@ -254,9 +204,7 @@ module Authentik::Api
           user == o.user &&
           source == o.source &&
           source_obj == o.source_obj &&
-          identifier == o.identifier &&
-          created == o.created &&
-          last_updated == o.last_updated
+          created == o.created
     end
 
     # @see the `==` method
@@ -268,7 +216,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, user, source, source_obj, identifier, created, last_updated].hash
+      [pk, user, source, source_obj, created].hash
     end
 
     # Builds the object from hash

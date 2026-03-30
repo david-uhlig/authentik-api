@@ -33,9 +33,6 @@ module Authentik::Api
 
     attr_accessor :default_group_email_domain
 
-    # When enabled, provider will not modify or create objects in the remote system.
-    attr_accessor :dry_run
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -71,8 +68,7 @@ module Authentik::Api
         :'filter_group' => :'filter_group',
         :'user_delete_action' => :'user_delete_action',
         :'group_delete_action' => :'group_delete_action',
-        :'default_group_email_domain' => :'default_group_email_domain',
-        :'dry_run' => :'dry_run'
+        :'default_group_email_domain' => :'default_group_email_domain'
       }
     end
 
@@ -93,20 +89,20 @@ module Authentik::Api
         :'property_mappings' => :'Array<String>',
         :'property_mappings_group' => :'Array<String>',
         :'delegated_subject' => :'String',
-        :'credentials' => :'Hash<String, Object>',
+        :'credentials' => :'Object',
         :'scopes' => :'String',
         :'exclude_users_service_account' => :'Boolean',
         :'filter_group' => :'String',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
         :'group_delete_action' => :'OutgoingSyncDeleteAction',
-        :'default_group_email_domain' => :'String',
-        :'dry_run' => :'Boolean'
+        :'default_group_email_domain' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'credentials',
         :'filter_group',
       ])
     end
@@ -152,9 +148,7 @@ module Authentik::Api
       end
 
       if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
-        end
+        self.credentials = attributes[:'credentials']
       else
         self.credentials = nil
       end
@@ -184,10 +178,6 @@ module Authentik::Api
       else
         self.default_group_email_domain = nil
       end
-
-      if attributes.key?(:'dry_run')
-        self.dry_run = attributes[:'dry_run']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -215,10 +205,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "delegated_subject", the character length must be greater than or equal to 1.')
       end
 
-      if @credentials.nil?
-        invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
-      end
-
       if !@scopes.nil? && @scopes.to_s.length < 1
         invalid_properties.push('invalid value for "scopes", the character length must be greater than or equal to 1.')
       end
@@ -243,7 +229,6 @@ module Authentik::Api
       return false if @delegated_subject.nil?
       return false if @delegated_subject.to_s.length > 254
       return false if @delegated_subject.to_s.length < 1
-      return false if @credentials.nil?
       return false if !@scopes.nil? && @scopes.to_s.length < 1
       return false if @default_group_email_domain.nil?
       return false if @default_group_email_domain.to_s.length < 1
@@ -280,16 +265,6 @@ module Authentik::Api
       end
 
       @delegated_subject = delegated_subject
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] credentials Value to be assigned
-    def credentials=(credentials)
-      if credentials.nil?
-        fail ArgumentError, 'credentials cannot be nil'
-      end
-
-      @credentials = credentials
     end
 
     # Custom attribute writer method with validation
@@ -335,8 +310,7 @@ module Authentik::Api
           filter_group == o.filter_group &&
           user_delete_action == o.user_delete_action &&
           group_delete_action == o.group_delete_action &&
-          default_group_email_domain == o.default_group_email_domain &&
-          dry_run == o.dry_run
+          default_group_email_domain == o.default_group_email_domain
     end
 
     # @see the `==` method
@@ -348,7 +322,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain, dry_run].hash
+      [name, property_mappings, property_mappings_group, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain].hash
     end
 
     # Builds the object from hash

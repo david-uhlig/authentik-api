@@ -74,10 +74,6 @@ module Authentik::Api
     # When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
     attr_accessor :encryption_kp
 
-    attr_accessor :signed_assertion
-
-    attr_accessor :signed_response
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -126,9 +122,7 @@ module Authentik::Api
         :'digest_algorithm' => :'digest_algorithm',
         :'signature_algorithm' => :'signature_algorithm',
         :'temporary_user_delete_after' => :'temporary_user_delete_after',
-        :'encryption_kp' => :'encryption_kp',
-        :'signed_assertion' => :'signed_assertion',
-        :'signed_response' => :'signed_response'
+        :'encryption_kp' => :'encryption_kp'
       }
     end
 
@@ -161,16 +155,14 @@ module Authentik::Api
         :'sso_url' => :'String',
         :'slo_url' => :'String',
         :'allow_idp_initiated' => :'Boolean',
-        :'name_id_policy' => :'SAMLNameIDPolicyEnum',
+        :'name_id_policy' => :'NameIdPolicyEnum',
         :'binding_type' => :'BindingTypeEnum',
         :'verification_kp' => :'String',
         :'signing_kp' => :'String',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'temporary_user_delete_after' => :'String',
-        :'encryption_kp' => :'String',
-        :'signed_assertion' => :'Boolean',
-        :'signed_response' => :'Boolean'
+        :'encryption_kp' => :'String'
       }
     end
 
@@ -182,7 +174,7 @@ module Authentik::Api
         :'slo_url',
         :'verification_kp',
         :'signing_kp',
-        :'encryption_kp',
+        :'encryption_kp'
       ])
     end
 
@@ -309,14 +301,6 @@ module Authentik::Api
       if attributes.key?(:'encryption_kp')
         self.encryption_kp = attributes[:'encryption_kp']
       end
-
-      if attributes.key?(:'signed_assertion')
-        self.signed_assertion = attributes[:'signed_assertion']
-      end
-
-      if attributes.key?(:'signed_response')
-        self.signed_response = attributes[:'signed_response']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -361,8 +345,16 @@ module Authentik::Api
         invalid_properties.push('invalid value for "sso_url", sso_url cannot be nil.')
       end
 
+      if @sso_url.to_s.length > 200
+        invalid_properties.push('invalid value for "sso_url", the character length must be smaller than or equal to 200.')
+      end
+
       if @sso_url.to_s.length < 1
         invalid_properties.push('invalid value for "sso_url", the character length must be greater than or equal to 1.')
+      end
+
+      if !@slo_url.nil? && @slo_url.to_s.length > 200
+        invalid_properties.push('invalid value for "slo_url", the character length must be smaller than or equal to 200.')
       end
 
       if !@temporary_user_delete_after.nil? && @temporary_user_delete_after.to_s.length < 1
@@ -385,7 +377,9 @@ module Authentik::Api
       return false if !@user_path_template.nil? && @user_path_template.to_s.length < 1
       return false if @pre_authentication_flow.nil?
       return false if @sso_url.nil?
+      return false if @sso_url.to_s.length > 200
       return false if @sso_url.to_s.length < 1
+      return false if !@slo_url.nil? && @slo_url.to_s.length > 200
       return false if !@temporary_user_delete_after.nil? && @temporary_user_delete_after.to_s.length < 1
       true
     end
@@ -458,11 +452,25 @@ module Authentik::Api
         fail ArgumentError, 'sso_url cannot be nil'
       end
 
+      if sso_url.to_s.length > 200
+        fail ArgumentError, 'invalid value for "sso_url", the character length must be smaller than or equal to 200.'
+      end
+
       if sso_url.to_s.length < 1
         fail ArgumentError, 'invalid value for "sso_url", the character length must be greater than or equal to 1.'
       end
 
       @sso_url = sso_url
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] slo_url Value to be assigned
+    def slo_url=(slo_url)
+      if !slo_url.nil? && slo_url.to_s.length > 200
+        fail ArgumentError, 'invalid value for "slo_url", the character length must be smaller than or equal to 200.'
+      end
+
+      @slo_url = slo_url
     end
 
     # Custom attribute writer method with validation
@@ -507,9 +515,7 @@ module Authentik::Api
           digest_algorithm == o.digest_algorithm &&
           signature_algorithm == o.signature_algorithm &&
           temporary_user_delete_after == o.temporary_user_delete_after &&
-          encryption_kp == o.encryption_kp &&
-          signed_assertion == o.signed_assertion &&
-          signed_response == o.signed_response
+          encryption_kp == o.encryption_kp
     end
 
     # @see the `==` method
@@ -521,7 +527,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
+      [name, slug, enabled, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp].hash
     end
 
     # Builds the object from hash

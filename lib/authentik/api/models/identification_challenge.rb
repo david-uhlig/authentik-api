@@ -40,8 +40,6 @@ module Authentik::Api
 
     attr_accessor :show_source_labels
 
-    attr_accessor :enable_remember_me
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -81,8 +79,7 @@ module Authentik::Api
         :'passwordless_url' => :'passwordless_url',
         :'primary_action' => :'primary_action',
         :'sources' => :'sources',
-        :'show_source_labels' => :'show_source_labels',
-        :'enable_remember_me' => :'enable_remember_me'
+        :'show_source_labels' => :'show_source_labels'
       }
     end
 
@@ -113,8 +110,7 @@ module Authentik::Api
         :'passwordless_url' => :'String',
         :'primary_action' => :'String',
         :'sources' => :'Array<LoginSource>',
-        :'show_source_labels' => :'Boolean',
-        :'enable_remember_me' => :'Boolean'
+        :'show_source_labels' => :'Boolean'
       }
     end
 
@@ -221,12 +217,6 @@ module Authentik::Api
       else
         self.show_source_labels = nil
       end
-
-      if attributes.key?(:'enable_remember_me')
-        self.enable_remember_me = attributes[:'enable_remember_me']
-      else
-        self.enable_remember_me = true
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -323,8 +313,7 @@ module Authentik::Api
           passwordless_url == o.passwordless_url &&
           primary_action == o.primary_action &&
           sources == o.sources &&
-          show_source_labels == o.show_source_labels &&
-          enable_remember_me == o.enable_remember_me
+          show_source_labels == o.show_source_labels
     end
 
     # @see the `==` method
@@ -336,7 +325,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flow_info, component, response_errors, user_fields, password_fields, allow_show_password, application_pre, flow_designation, captcha_stage, enroll_url, recovery_url, passwordless_url, primary_action, sources, show_source_labels, enable_remember_me].hash
+      [flow_info, component, response_errors, user_fields, password_fields, allow_show_password, application_pre, flow_designation, captcha_stage, enroll_url, recovery_url, passwordless_url, primary_action, sources, show_source_labels].hash
     end
 
     # Builds the object from hash

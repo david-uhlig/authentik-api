@@ -7,7 +7,7 @@
 | **name** | **String** | The human-readable name of this device. |  |
 | **pk** | **Integer** |  | [readonly] |
 | **phone_number** | **String** |  | [readonly] |
-| **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
+| **user** | [**GroupMember**](GroupMember.md) |  | [readonly] |
 
 ## Example
 

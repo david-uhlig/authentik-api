@@ -45,7 +45,7 @@ module Authentik::Api
         :'name' => :'String',
         :'pk' => :'Integer',
         :'phone_number' => :'String',
-        :'user' => :'PartialUser'
+        :'user' => :'GroupMember'
       }
     end
 

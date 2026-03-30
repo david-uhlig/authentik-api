@@ -6,7 +6,6 @@
 | ---- | ---- | ----------- | ----- |
 | **sync_object_model** | [**SyncObjectModelEnum**](SyncObjectModelEnum.md) |  |  |
 | **sync_object_id** | **String** |  |  |
-| **override_dry_run** | **Boolean** |  | [optional][default to false] |
 
 ## Example
 
@@ -15,8 +14,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::SyncObjectRequest.new(
   sync_object_model: null,
-  sync_object_id: null,
-  override_dry_run: null
+  sync_object_id: null
 )
 ```
 
