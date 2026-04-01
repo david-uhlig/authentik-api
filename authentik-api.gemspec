@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.summary     = "API client to talk to authentik&#39;s API."
   s.description = "API client to talk to authentik&#39;s API. Automatically generated with the OpenAPI Generator."
   s.license     = "MIT"
-  s.required_ruby_version = ">= 3.2.0"
+  s.required_ruby_version = ">= 3.3.0"
   s.metadata    = {}
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'

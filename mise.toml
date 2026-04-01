@@ -1,5 +1,5 @@
 [tools]
-ruby = "3.2"
+ruby = "3.3"
 
 [tasks."inflector:install"]
 run = "cp .openapi-generator/inflector.rb  lib/authentik/api/"
