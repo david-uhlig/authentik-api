@@ -43,6 +43,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'download_url'
       ])
     end
 
@@ -84,10 +85,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "metadata", metadata cannot be nil.')
       end
 
-      if @download_url.nil?
-        invalid_properties.push('invalid value for "download_url", download_url cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -96,7 +93,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @metadata.nil?
-      return false if @download_url.nil?
       true
     end
 
@@ -108,16 +104,6 @@ module Authentik::Api
       end
 
       @metadata = metadata
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] download_url Value to be assigned
-    def download_url=(download_url)
-      if download_url.nil?
-        fail ArgumentError, 'download_url cannot be nil'
-      end
-
-      @download_url = download_url
     end
 
     # Checks equality by comparing each attribute.

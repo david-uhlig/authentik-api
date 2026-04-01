@@ -63,6 +63,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'device_group',
+        :'device_group_obj',
         :'expires'
       ])
     end
@@ -129,10 +130,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "token_uuid", token_uuid cannot be nil.')
       end
 
-      if @device_group_obj.nil?
-        invalid_properties.push('invalid value for "device_group_obj", device_group_obj cannot be nil.')
-      end
-
       if @connector.nil?
         invalid_properties.push('invalid value for "connector", connector cannot be nil.')
       end
@@ -149,7 +146,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @token_uuid.nil?
-      return false if @device_group_obj.nil?
       return false if @connector.nil?
       return false if @name.nil?
       true
@@ -163,16 +159,6 @@ module Authentik::Api
       end
 
       @token_uuid = token_uuid
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] device_group_obj Value to be assigned
-    def device_group_obj=(device_group_obj)
-      if device_group_obj.nil?
-        fail ArgumentError, 'device_group_obj cannot be nil'
-      end
-
-      @device_group_obj = device_group_obj
     end
 
     # Custom attribute writer method with validation

@@ -599,7 +599,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AdminApi.new
-settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({enterprise_audit_include_expanded_diff: false, policies_buffered_access_view: false, flows_refresh_others: false})}) # SettingsRequest | 
+settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({enterprise_audit_include_expanded_diff: false, policies_buffered_access_view: false, flows_continuous_login: false, flows_refresh_others: false})}) # SettingsRequest | 
 
 begin
   
