@@ -46,7 +46,7 @@ Please see the auto-generated [API Readme]. Consider using the [authentik-client
 
 ## Versioning
 
-This library's versioning tracks authentik's versioning scheme of `<YYYY>.<M>.<PATCH>[<-PRERELEASE>]`, for example `2026.2.0-rc1`. Under the rare circumstance that the library itself needs an intermediate update, we add a fourth component, e.g. `2026.2.0.1-rc1`. Note: The prerelease component always appears last.
+This library's versioning tracks authentik's versioning scheme of `<YYYY>.<M>.<PATCH>[.<PRERELEASE>]`, for example `2026.2.0.rc1`. Under the rare circumstance that the library itself needs an intermediate update, we add a fourth component, e.g. `2026.2.0.1.rc1`. Note: The prerelease component always appears last.
 
 ## Changelog
 
