@@ -12,6 +12,7 @@
 | **password_fields** | **Boolean** |  |  |
 | **allow_show_password** | **Boolean** |  | [optional][default to false] |
 | **application_pre** | **String** |  | [optional] |
+| **application_pre_launch** | **String** |  | [optional] |
 | **flow_designation** | [**FlowDesignationEnum**](FlowDesignationEnum.md) |  |  |
 | **captcha_stage** | [**CaptchaChallenge**](CaptchaChallenge.md) |  | [optional] |
 | **enroll_url** | **String** |  | [optional] |
@@ -37,6 +38,7 @@ instance = Authentik::Api::IdentificationChallenge.new(
   password_fields: null,
   allow_show_password: null,
   application_pre: null,
+  application_pre_launch: null,
   flow_designation: null,
   captcha_stage: null,
   enroll_url: null,

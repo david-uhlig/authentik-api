@@ -26,6 +26,8 @@ module Authentik::Api
 
     attr_accessor :application_pre
 
+    attr_accessor :application_pre_launch
+
     attr_accessor :flow_designation
 
     attr_accessor :captcha_stage
@@ -79,6 +81,7 @@ module Authentik::Api
         :'password_fields' => :'password_fields',
         :'allow_show_password' => :'allow_show_password',
         :'application_pre' => :'application_pre',
+        :'application_pre_launch' => :'application_pre_launch',
         :'flow_designation' => :'flow_designation',
         :'captcha_stage' => :'captcha_stage',
         :'enroll_url' => :'enroll_url',
@@ -113,6 +116,7 @@ module Authentik::Api
         :'password_fields' => :'Boolean',
         :'allow_show_password' => :'Boolean',
         :'application_pre' => :'String',
+        :'application_pre_launch' => :'String',
         :'flow_designation' => :'FlowDesignationEnum',
         :'captcha_stage' => :'CaptchaChallenge',
         :'enroll_url' => :'String',
@@ -194,6 +198,10 @@ module Authentik::Api
 
       if attributes.key?(:'application_pre')
         self.application_pre = attributes[:'application_pre']
+      end
+
+      if attributes.key?(:'application_pre_launch')
+        self.application_pre_launch = attributes[:'application_pre_launch']
       end
 
       if attributes.key?(:'flow_designation')
@@ -337,6 +345,7 @@ module Authentik::Api
           password_fields == o.password_fields &&
           allow_show_password == o.allow_show_password &&
           application_pre == o.application_pre &&
+          application_pre_launch == o.application_pre_launch &&
           flow_designation == o.flow_designation &&
           captcha_stage == o.captcha_stage &&
           enroll_url == o.enroll_url &&
@@ -358,7 +367,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flow_info, component, response_errors, user_fields, pending_user_identifier, password_fields, allow_show_password, application_pre, flow_designation, captcha_stage, enroll_url, recovery_url, passwordless_url, primary_action, sources, show_source_labels, enable_remember_me, passkey_challenge].hash
+      [flow_info, component, response_errors, user_fields, pending_user_identifier, password_fields, allow_show_password, application_pre, application_pre_launch, flow_designation, captcha_stage, enroll_url, recovery_url, passwordless_url, primary_action, sources, show_source_labels, enable_remember_me, passkey_challenge].hash
     end
 
     # Builds the object from hash

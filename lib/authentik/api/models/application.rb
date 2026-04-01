@@ -131,6 +131,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'provider',
+        :'provider_obj',
         :'launch_url',
         :'meta_icon_url',
         :'meta_icon_themed_urls',
@@ -264,10 +265,6 @@ module Authentik::Api
         invalid_properties.push("invalid value for \"slug\", must conform to the pattern #{pattern}.")
       end
 
-      if @provider_obj.nil?
-        invalid_properties.push('invalid value for "provider_obj", provider_obj cannot be nil.')
-      end
-
       if @backchannel_providers_obj.nil?
         invalid_properties.push('invalid value for "backchannel_providers_obj", backchannel_providers_obj cannot be nil.')
       end
@@ -283,7 +280,6 @@ module Authentik::Api
       return false if @name.nil?
       return false if @slug.nil?
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
-      return false if @provider_obj.nil?
       return false if @backchannel_providers_obj.nil?
       true
     end
@@ -321,16 +317,6 @@ module Authentik::Api
       end
 
       @slug = slug
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] provider_obj Value to be assigned
-    def provider_obj=(provider_obj)
-      if provider_obj.nil?
-        fail ArgumentError, 'provider_obj cannot be nil'
-      end
-
-      @provider_obj = provider_obj
     end
 
     # Custom attribute writer method with validation

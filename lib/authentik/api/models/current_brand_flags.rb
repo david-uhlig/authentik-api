@@ -13,6 +13,8 @@ module Authentik::Api
 
     attr_accessor :policies_buffered_access_view
 
+    attr_accessor :flows_continuous_login
+
     attr_accessor :flows_refresh_others
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -20,6 +22,7 @@ module Authentik::Api
       {
         :'enterprise_audit_include_expanded_diff' => :'enterprise_audit_include_expanded_diff',
         :'policies_buffered_access_view' => :'policies_buffered_access_view',
+        :'flows_continuous_login' => :'flows_continuous_login',
         :'flows_refresh_others' => :'flows_refresh_others'
       }
     end
@@ -39,6 +42,7 @@ module Authentik::Api
       {
         :'enterprise_audit_include_expanded_diff' => :'Boolean',
         :'policies_buffered_access_view' => :'Boolean',
+        :'flows_continuous_login' => :'Boolean',
         :'flows_refresh_others' => :'Boolean'
       }
     end
@@ -77,6 +81,12 @@ module Authentik::Api
         self.policies_buffered_access_view = nil
       end
 
+      if attributes.key?(:'flows_continuous_login')
+        self.flows_continuous_login = attributes[:'flows_continuous_login']
+      else
+        self.flows_continuous_login = nil
+      end
+
       if attributes.key?(:'flows_refresh_others')
         self.flows_refresh_others = attributes[:'flows_refresh_others']
       else
@@ -97,6 +107,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "policies_buffered_access_view", policies_buffered_access_view cannot be nil.')
       end
 
+      if @flows_continuous_login.nil?
+        invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
+      end
+
       if @flows_refresh_others.nil?
         invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
       end
@@ -110,6 +124,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @enterprise_audit_include_expanded_diff.nil?
       return false if @policies_buffered_access_view.nil?
+      return false if @flows_continuous_login.nil?
       return false if @flows_refresh_others.nil?
       true
     end
@@ -135,6 +150,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] flows_continuous_login Value to be assigned
+    def flows_continuous_login=(flows_continuous_login)
+      if flows_continuous_login.nil?
+        fail ArgumentError, 'flows_continuous_login cannot be nil'
+      end
+
+      @flows_continuous_login = flows_continuous_login
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] flows_refresh_others Value to be assigned
     def flows_refresh_others=(flows_refresh_others)
       if flows_refresh_others.nil?
@@ -151,6 +176,7 @@ module Authentik::Api
       self.class == o.class &&
           enterprise_audit_include_expanded_diff == o.enterprise_audit_include_expanded_diff &&
           policies_buffered_access_view == o.policies_buffered_access_view &&
+          flows_continuous_login == o.flows_continuous_login &&
           flows_refresh_others == o.flows_refresh_others
     end
 
@@ -163,7 +189,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [enterprise_audit_include_expanded_diff, policies_buffered_access_view, flows_refresh_others].hash
+      [enterprise_audit_include_expanded_diff, policies_buffered_access_view, flows_continuous_login, flows_refresh_others].hash
     end
 
     # Builds the object from hash

@@ -33,6 +33,12 @@ describe Authentik::Api::PatchedSettingsRequestFlags do
     end
   end
 
+  describe 'test attribute "flows_continuous_login"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "flows_refresh_others"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
