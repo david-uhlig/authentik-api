@@ -1167,6 +1167,7 @@ describe 'SourcesApi' do
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
+  # @option opts [Boolean] :force_authn 
   # @option opts [String] :issuer 
   # @option opts [String] :managed 
   # @option opts [String] :name 

@@ -6736,6 +6736,7 @@ opts = {
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  force_authn: true, # Boolean | 
   issuer: 'issuer_example', # String | 
   managed: 'managed_example', # String | 
   name: 'name_example', # String | 
@@ -6796,6 +6797,7 @@ end
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
+| **force_authn** | **Boolean** |  | [optional] |
 | **issuer** | **String** |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
