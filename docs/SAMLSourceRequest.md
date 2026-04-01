@@ -22,6 +22,7 @@
 | **sso_url** | **String** | URL that the initial Login request is sent to. |  |
 | **slo_url** | **String** | Optional URL if your IDP supports Single-Logout. | [optional] |
 | **allow_idp_initiated** | **Boolean** | Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done. | [optional] |
+| **force_authn** | **Boolean** | When enabled, the IdP will re-authenticate the user even if a session exists. | [optional] |
 | **name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] |
 | **binding_type** | [**BindingTypeEnum**](BindingTypeEnum.md) |  | [optional] |
 | **verification_kp** | **String** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] |
@@ -57,6 +58,7 @@ instance = Authentik::Api::SAMLSourceRequest.new(
   sso_url: null,
   slo_url: null,
   allow_idp_initiated: null,
+  force_authn: null,
   name_id_policy: null,
   binding_type: null,
   verification_kp: null,

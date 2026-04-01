@@ -58,6 +58,9 @@ module Authentik::Api
     # Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done.
     attr_accessor :allow_idp_initiated
 
+    # When enabled, the IdP will re-authenticate the user even if a session exists.
+    attr_accessor :force_authn
+
     # NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
     attr_accessor :name_id_policy
 
@@ -126,6 +129,7 @@ module Authentik::Api
         :'sso_url' => :'sso_url',
         :'slo_url' => :'slo_url',
         :'allow_idp_initiated' => :'allow_idp_initiated',
+        :'force_authn' => :'force_authn',
         :'name_id_policy' => :'name_id_policy',
         :'binding_type' => :'binding_type',
         :'verification_kp' => :'verification_kp',
@@ -170,6 +174,7 @@ module Authentik::Api
         :'sso_url' => :'String',
         :'slo_url' => :'String',
         :'allow_idp_initiated' => :'Boolean',
+        :'force_authn' => :'Boolean',
         :'name_id_policy' => :'SAMLNameIDPolicyEnum',
         :'binding_type' => :'BindingTypeEnum',
         :'verification_kp' => :'String',
@@ -293,6 +298,10 @@ module Authentik::Api
 
       if attributes.key?(:'allow_idp_initiated')
         self.allow_idp_initiated = attributes[:'allow_idp_initiated']
+      end
+
+      if attributes.key?(:'force_authn')
+        self.force_authn = attributes[:'force_authn']
       end
 
       if attributes.key?(:'name_id_policy')
@@ -510,6 +519,7 @@ module Authentik::Api
           sso_url == o.sso_url &&
           slo_url == o.slo_url &&
           allow_idp_initiated == o.allow_idp_initiated &&
+          force_authn == o.force_authn &&
           name_id_policy == o.name_id_policy &&
           binding_type == o.binding_type &&
           verification_kp == o.verification_kp &&
@@ -531,7 +541,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
+      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, force_authn, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
     end
 
     # Builds the object from hash
