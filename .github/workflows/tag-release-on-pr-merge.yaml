@@ -27,9 +27,17 @@ jobs:
         with:
           cmd: yq -r ".info.version" ./.authentik/schema.yaml
 
+      - name: Get version
+        id: get-gem-version
+        env:
+          AUTHENTIK_VERSION: ${{ steps.get-authentik-version.outputs.result }}
+        run: |
+          GEM_VERSION="$(echo "$AUTHENTIK_VERSION" | tr "-" ".")"
+          echo "result=$GEM_VERSION" >> "$GITHUB_OUTPUT"
+
       - name: Create and push tag
         env:
-          TAG: v${{ steps.get-authentik-version.outputs.result }}
+          TAG: v${{ steps.get-gem-version.outputs.result }}
         run: |
           if git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "Tag '$TAG' already exists. Skipping."

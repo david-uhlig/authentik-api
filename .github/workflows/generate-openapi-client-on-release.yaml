@@ -63,7 +63,7 @@ jobs:
           command-args:
             -t ./.openapi-generator/ruby-templates
             --output="./${OPENAPI_GENERATOR_PATH}"
-            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.authentik-version }}
+            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.gem-version }}
 
       - name: Postprocessing
         run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
@@ -79,6 +79,7 @@ jobs:
             This PR updates the generated OpenAPI client to match the schema for authentik release `${{ inputs.tag-name }}`.
 
             Authentik version: `${{ needs.get-release-branch.outputs.authentik-version }}`
+            Gem version: `${{ needs.get-release-branch.outputs.gem-version }}`
 
             > Schema sourced from [goauthentik/authentik@${{ inputs.tag-name }}](https://github.com/goauthentik/authentik/blob/${{ inputs.tag-name }}/schema.yml)
           labels: release

@@ -17,11 +17,14 @@ on:
         type: string
     outputs:
       release-branch:
-        description: "The release branch name derived from the schema version."
+        description: "The release branch name derived from the schema version, e.g., 2026.2."
         value: ${{ jobs.get-release-branch.outputs.release-branch }}
       authentik-version:
-        description: "The authentik version extracted from the schema."
+        description: "The authentik version extracted from the schema, e.g., 2026.2.2-rc1."
         value: ${{ jobs.get-release-branch.outputs.authentik-version }}
+      gem-version:
+        description: "The gem version based on the authentik version, e.g., 2026.2.2.rc1"
+        value: ${{ jobs.get-release-branch.outputs.gem-version }}
 
 permissions:
   contents: write
@@ -30,8 +33,9 @@ jobs:
   get-release-branch:
     runs-on: ubuntu-latest
     outputs:
-      release-branch: ${{ steps.get-release-branch.outputs.release-branch }}
       authentik-version: ${{ steps.get-authentik-version.outputs.result }}
+      gem-version: ${{ steps.get-gem-version.outputs.result }}
+      release-branch: ${{ steps.get-release-branch.outputs.result }}
     steps:
       - name: Checkout code  # zizmor: ignore[artipacked]
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -41,7 +45,9 @@ jobs:
       - name: Download authentik's OpenAPI document
         env:
           SCHEMA_URL: ${{ inputs.schema-url }}
-        run: curl -fsSL "$SCHEMA_URL" -o ./schema.yaml
+        run: |
+          echo "Downloading $SCHEMA_URL"
+          curl -fsSL "$SCHEMA_URL" -o ./schema.yaml
 
       - name: Extract authentik version
         id: get-authentik-version
@@ -55,17 +61,25 @@ jobs:
           echo "Error: .info.version missing from schema.yaml"
           exit 1
 
+      - name: Get version
+        id: get-gem-version
+        env:
+          AUTHENTIK_VERSION: ${{ steps.get-authentik-version.outputs.result }}
+        run: |
+          GEM_VERSION="$(echo "$AUTHENTIK_VERSION" | tr "-" ".")"
+          echo "result=$GEM_VERSION" >> "$GITHUB_OUTPUT"
+
       - id: get-release-branch
         name: Get release branch name
         env:
           AUTHENTIK_VERSION: ${{ steps.get-authentik-version.outputs.result }}
         run: |
           RELEASE_BRANCH="$(echo "$AUTHENTIK_VERSION" | sed -E 's/^([0-9]{4}\.[0-9]+)(\.[0-9]+.*)?$/\1/')"
-          echo "release-branch=$RELEASE_BRANCH" >> "$GITHUB_OUTPUT"
+          echo "result=$RELEASE_BRANCH" >> "$GITHUB_OUTPUT"
 
       - name: Create release branch if missing
         env:
-          RELEASE_BRANCH: ${{ steps.get-release-branch.outputs.release-branch }}
+          RELEASE_BRANCH: ${{ steps.get-release-branch.outputs.result }}
         run: |
           if ! git switch "$RELEASE_BRANCH"; then
             git checkout -B "$RELEASE_BRANCH"

@@ -61,7 +61,7 @@ jobs:
             const filteredTags = sourceTags.filter(
               tag => tag.startsWith('version/') && 
                 !branches.includes(`${branchPrefix}${tag}`) &&
-                !tags.includes('v' + tag.replace('version/', ''))
+                !tags.includes('v' + tag.replace('version/', '').replace('-', '.'))
             );
             
             core.setOutput('tags', JSON.stringify(filteredTags));
