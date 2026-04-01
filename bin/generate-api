@@ -6,6 +6,7 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 project_base_path="$( cd "$script_dir/.." && pwd )"
 docker_mount_path="/local"
 authentik_version="$(yq -r '.info.version' "${project_base_path}/.authentik/schema.yaml")"
+gem_version=$(echo "$authentik_version" | tr "-" ".")
 output_path="${project_base_path}/tmp"
 
 if [[ -z "$authentik_version" || "$authentik_version" == "null" ]]; then
@@ -23,7 +24,7 @@ docker run --rm \
   --config ${docker_mount_path}/.openapi-generator/config.yaml \
   --input-spec ${docker_mount_path}/.authentik/schema.yaml \
   --template-dir ${docker_mount_path}/.openapi-generator/ruby-templates \
-  --additional-properties=gemVersion=${authentik_version} \
+  --additional-properties=gemVersion=${gem_version} \
   --output "${docker_mount_path}/tmp" \
   --generator-name ruby \
   > /dev/null
