@@ -10,7 +10,7 @@ additionalProperties:
   gemLicense: "MIT"
   # This generates `lib/authentik-api.rb` instead of the recommended `lib/authentik/api.rb`.
   gemName: authentik-api
-  gemRequiredRubyVersion: ">= 3.2.0"
+  gemRequiredRubyVersion: ">= 3.3.0"
   gemSummary: "API client to talk to authentik's API."
   # It doesn't generate the `Authentik` top-level module, which requires a workaround in the builder scripts.
   moduleName: "Authentik::Api"
