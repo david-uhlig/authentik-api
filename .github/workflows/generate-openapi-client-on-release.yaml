@@ -38,11 +38,15 @@ jobs:
       pull-requests: write
     needs: get-release-branch
     runs-on: ubuntu-latest
+    env:
+      TAG_NAME: ${{ inputs.tag-name }}
+      GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }}
+      RELEASE_BRANCH: ${{ needs.get-release-branch.outputs.release-branch }}
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          ref: "${{ needs.get-release-branch.outputs.release-branch }}"
+          ref: "${RELEASE_BRANCH}"
           persist-credentials: false
 
       - name: Download schema artifact
@@ -63,25 +67,40 @@ jobs:
           command-args:
             -t ./.openapi-generator/ruby-templates
             --output="./${OPENAPI_GENERATOR_PATH}"
-            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.gem-version }}
+            --additional-properties=gemVersion="${GEM_VERSION}"
 
       - name: Postprocessing
         run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
 
-      - name: Create pull request for release
-        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
-        with:
-          commit-message: "Update OpenAPI client for release ${{ inputs.tag-name }}"
-          branch: "openapi-client-update/${{ inputs.tag-name }}"
-          base: "${{ needs.get-release-branch.outputs.release-branch }}"
-          title: "OpenAPI client update for release ${{ inputs.tag-name }}"
-          body: |
-            This PR updates the generated OpenAPI client to match the schema for authentik release `${{ inputs.tag-name }}`.
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --stages --quiet || git commit -m "Update OpenAPI client for release ${TAG_NAME}"
 
-            Authentik version: `${{ needs.get-release-branch.outputs.authentik-version }}`
-            Gem version: `${{ needs.get-release-branch.outputs.gem-version }}`
+      - name: Push branch
+        run: |
+          git checkout -b openapi-client-update/"${TAG_NAME}"
+          git push origin HEAD
 
-            > Schema sourced from [goauthentik/authentik@${{ inputs.tag-name }}](https://github.com/goauthentik/authentik/blob/${{ inputs.tag-name }}/schema.yml)
-          labels: release
-          reviewers: david-uhlig
-          delete-branch: true
+      - name: Create pull request
+        env:
+          GH_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }}
+        run: |
+          gh pr create \
+            --base "${RELEASE_BRANCH}" \
+            --head "openapi-client-update/${TAG_NAME}" \
+            --title "OpenAPI client update for release ${TAG_NAME}" \
+            --label release \
+            --reviewer david-uhlig \
+            --body "$(cat <<'EOF'
+            This PR updates the generated OpenAPI client to match the schema for authentik release `${TAG_NAME}`.
+          
+            Authentik version: `${AUTHENTIK_VERSION}`
+            Gem version: `${GEM_VERSION}`
+
+            > Schema sourced from [goauthentik/authentik@${TAG_NAME}](https://github.com/goauthentik/authentik/blob/${TAG_NAME}/schema.yml)
+          EOF
+          )"        
