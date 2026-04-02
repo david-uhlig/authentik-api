@@ -229,18 +229,6 @@ describe 'FlowsApi' do
     end
   end
 
-  # unit tests for flows_instances_import_create
-  # Import flow from .yaml file
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [Boolean] :clear 
-  # @return [FlowImportResult]
-  describe 'flows_instances_import_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for flows_instances_list
   # Flow Viewset
   # @param [Hash] opts the optional parameters

@@ -21,7 +21,6 @@ All URIs are relative to */api/v3*
 | [**flows_instances_diagram_retrieve**](FlowsApi.md#flows_instances_diagram_retrieve) | **GET** /flows/instances/{slug}/diagram/ |  |
 | [**flows_instances_execute_retrieve**](FlowsApi.md#flows_instances_execute_retrieve) | **GET** /flows/instances/{slug}/execute/ |  |
 | [**flows_instances_export_retrieve**](FlowsApi.md#flows_instances_export_retrieve) | **GET** /flows/instances/{slug}/export/ |  |
-| [**flows_instances_import_create**](FlowsApi.md#flows_instances_import_create) | **POST** /flows/instances/import/ |  |
 | [**flows_instances_list**](FlowsApi.md#flows_instances_list) | **GET** /flows/instances/ |  |
 | [**flows_instances_partial_update**](FlowsApi.md#flows_instances_partial_update) | **PATCH** /flows/instances/{slug}/ |  |
 | [**flows_instances_retrieve**](FlowsApi.md#flows_instances_retrieve) | **GET** /flows/instances/{slug}/ |  |
@@ -1232,79 +1231,6 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## flows_instances_import_create
-
-> <FlowImportResult> flows_instances_import_create(opts)
-
-
-
-Import flow from .yaml file
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::FlowsApi.new
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  clear: true # Boolean | 
-}
-
-begin
-  
-  result = api_instance.flows_instances_import_create(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_import_create: #{e}"
-end
-```
-
-#### Using the flows_instances_import_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<FlowImportResult>, Integer, Hash)> flows_instances_import_create_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.flows_instances_import_create_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <FlowImportResult>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling FlowsApi->flows_instances_import_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **file** | **File** |  | [optional] |
-| **clear** | **Boolean** |  | [optional][default to false] |
-
-### Return type
-
-[**FlowImportResult**](FlowImportResult.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 

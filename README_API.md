@@ -379,7 +379,6 @@ Class | Method | HTTP request | Description
 *Authentik::Api::FlowsApi* | [**flows_instances_diagram_retrieve**](docs/FlowsApi.md#flows_instances_diagram_retrieve) | **GET** /flows/instances/{slug}/diagram/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_execute_retrieve**](docs/FlowsApi.md#flows_instances_execute_retrieve) | **GET** /flows/instances/{slug}/execute/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_export_retrieve**](docs/FlowsApi.md#flows_instances_export_retrieve) | **GET** /flows/instances/{slug}/export/ | 
-*Authentik::Api::FlowsApi* | [**flows_instances_import_create**](docs/FlowsApi.md#flows_instances_import_create) | **POST** /flows/instances/import/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_list**](docs/FlowsApi.md#flows_instances_list) | **GET** /flows/instances/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_partial_update**](docs/FlowsApi.md#flows_instances_partial_update) | **PATCH** /flows/instances/{slug}/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_retrieve**](docs/FlowsApi.md#flows_instances_retrieve) | **GET** /flows/instances/{slug}/ | 
@@ -399,6 +398,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::ManagedApi* | [**managed_blueprints_available_list**](docs/ManagedApi.md#managed_blueprints_available_list) | **GET** /managed/blueprints/available/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_create**](docs/ManagedApi.md#managed_blueprints_create) | **POST** /managed/blueprints/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_destroy**](docs/ManagedApi.md#managed_blueprints_destroy) | **DELETE** /managed/blueprints/{instance_uuid}/ | 
+*Authentik::Api::ManagedApi* | [**managed_blueprints_import_create**](docs/ManagedApi.md#managed_blueprints_import_create) | **POST** /managed/blueprints/import/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_list**](docs/ManagedApi.md#managed_blueprints_list) | **GET** /managed/blueprints/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_partial_update**](docs/ManagedApi.md#managed_blueprints_partial_update) | **PATCH** /managed/blueprints/{instance_uuid}/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_retrieve**](docs/ManagedApi.md#managed_blueprints_retrieve) | **GET** /managed/blueprints/{instance_uuid}/ | 
@@ -1274,6 +1274,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::BackendsEnum](docs/BackendsEnum.md)
  - [Authentik::Api::BindingTypeEnum](docs/BindingTypeEnum.md)
  - [Authentik::Api::BlueprintFile](docs/BlueprintFile.md)
+ - [Authentik::Api::BlueprintImportResult](docs/BlueprintImportResult.md)
  - [Authentik::Api::BlueprintInstance](docs/BlueprintInstance.md)
  - [Authentik::Api::BlueprintInstanceRequest](docs/BlueprintInstanceRequest.md)
  - [Authentik::Api::BlueprintInstanceStatusEnum](docs/BlueprintInstanceStatusEnum.md)
@@ -1396,7 +1397,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::FlowDesignationEnum](docs/FlowDesignationEnum.md)
  - [Authentik::Api::FlowDiagram](docs/FlowDiagram.md)
  - [Authentik::Api::FlowErrorChallenge](docs/FlowErrorChallenge.md)
- - [Authentik::Api::FlowImportResult](docs/FlowImportResult.md)
  - [Authentik::Api::FlowInspection](docs/FlowInspection.md)
  - [Authentik::Api::FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [Authentik::Api::FlowLayoutEnum](docs/FlowLayoutEnum.md)
