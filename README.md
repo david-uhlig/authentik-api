@@ -1,10 +1,10 @@
 # 🔓 authentik API Client
 
 [![Gem Version](http://img.shields.io/gem/v/authentik-api.svg)][gem]
-[![License: MIT](https://img.shields.io/github/license/david-uhlig/authentik-api?label=License&labelColor=343B42&color=blue)][license]
+[![Static Badge](https://img.shields.io/badge/License-MIT-blue)][license]
 [![Tests](https://github.com/david-uhlig/authentik-api/actions/workflows/main.yml/badge.svg)][tests]
 
-##  Baseline client generated directly from OpenAPI definitions
+## Baseline client generated directly from OpenAPI definitions
 
 A Ruby client for the [authentik] API; an open-source Identity Provider (IdP) and Single Sign On (SSO) platform, auto-generated using the [OpenAPI Generator].
 
