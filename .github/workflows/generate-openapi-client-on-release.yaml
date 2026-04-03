@@ -40,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TAG_NAME: ${{ inputs.tag-name }}
+      GH_TOKEN: ${{ secrets.PAT }}
       GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }}
       RELEASE_BRANCH: ${{ needs.get-release-branch.outputs.release-branch }}
     steps:
@@ -90,7 +91,6 @@ jobs:
 
       - name: Create pull request
         env:
-          GH_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
           AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }}
         run: |
           gh pr create \
