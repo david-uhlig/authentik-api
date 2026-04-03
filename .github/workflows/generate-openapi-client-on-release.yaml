@@ -56,7 +56,7 @@ jobs:
           path: ./.authentik/
 
       - name: Remove current client
-        run: rm -rf "./${OPENAPI_GENERATOR_PATH:?}"
+        run: rm -rf "./${OPENAPI_GENERATOR_PATH}"
 
       - name: Build client using OpenAPI Generator
         uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
@@ -66,8 +66,8 @@ jobs:
           openapi-file: ./.authentik/schema.yaml
           command-args:
             -t ./.openapi-generator/ruby-templates
-            --output="./${OPENAPI_GENERATOR_PATH}"
-            --additional-properties=gemVersion="${GEM_VERSION}"
+            --output="./${{ env.OPENAPI_GENERATOR_PATH }}"
+            --additional-properties=gemVersion="${{ env.GEM_VERSION }}"
 
       - name: Postprocessing
         run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
@@ -81,7 +81,7 @@ jobs:
 
       - name: Push branch
         run: |
-          git checkout -b openapi-client-update/"${TAG_NAME}"
+          git checkout -b "openapi-client-update/${TAG_NAME}"
           git push origin HEAD
 
       - name: Create pull request
