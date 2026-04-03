@@ -40,7 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TAG_NAME: ${{ inputs.tag-name }}
-      GH_TOKEN: ${{ secrets.PAT }}
       GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }}
       RELEASE_BRANCH: ${{ needs.get-release-branch.outputs.release-branch }}
     steps:
@@ -73,30 +72,25 @@ jobs:
       - name: Postprocessing
         run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
 
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --stages --quiet || git commit -m "Update OpenAPI client for release ${TAG_NAME}"
+      - name: Setup repository
+        uses: ./.github/actions/setup-repo
+        with:
+          token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
 
-      - name: Configure Git credentials
-        run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+      - name: Commit and push
+        uses: ./.github/actions/commit-and-push
+        with:
+          authentik-tag: ${{ inputs.tag-name }}
 
-      - name: Push branch
-        run: |
-          git checkout -b "openapi-client-update/${TAG_NAME}"
-          git push origin HEAD
-
-      - name: Create pull request
+      - name: Open pull request
         env:
           AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }}
+          GITHUB_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
         run: |
           gh pr create \
             --base "${RELEASE_BRANCH}" \
-            --head "openapi-client-update/${TAG_NAME}" \
-            --title "OpenAPI client update for release ${TAG_NAME}" \
+            --head $(git rev-parse --abbrev-ref HEAD) \
+            --title "OpenAPI client update for ${TAG_NAME} release" \
             --label release \
             --reviewer david-uhlig \
             --body "$(cat <<'EOF'

@@ -1,0 +1,25 @@
+name: "Commit changes and push branch"
+description: "Creates a new branch, commits, and pushes."
+
+inputs:
+  authentik-tag:
+    description: "Authentik release tag."
+    required: true
+
+runs:
+  using: "composite"
+  env:
+    TAG_NAME: ${{ inputs.authentik-tag }}
+  steps:
+    - name: Commit changes
+    - run: |
+        git add .
+        git diff --stages --quiet || git commit -m "Update OpenAPI client for ${TAG_NAME} release"
+      shell: bash
+
+    - name: Push branch
+      run: |
+        git checkout -b "openapi-client-update/${TAG_NAME}"
+        git pull
+        git push origin HEAD
+      shell: bash
