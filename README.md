@@ -29,11 +29,11 @@ If you need compatibility with a specific authentik version, choose one of the f
 
 ```ruby
 # The latest `2026.2.x` series release, excluding release candidates.
-gem "authentik-api" "~> 2026.2.0"
+gem "authentik-api", "~> 2026.2.0"
 # An exact patch version tracking your authentik instance.
-gem "authentik-api" "2026.2.1"
+gem "authentik-api", "2026.2.1"
 # To test out a release candidate, you have to specify the exact version.
-gem "authentik-api" "2026.5.0.rc1"
+gem "authentik-api", "2026.5.0.rc1"
 # If you want to incorporate the latest (unreleased) changes, you can add this 
 # repo's GitHub source. It tracks authentik's main branch. Updates daily, but 
 # only when authentik's OpenAPI schema changes.
