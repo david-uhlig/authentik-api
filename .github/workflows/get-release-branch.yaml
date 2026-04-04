@@ -5,7 +5,7 @@
 # e.g. `2026.2.0` -> `2026.2`.
 #
 # The downloaded schema is uploaded as an artifact named `schema` so that
-# subsequent jobs can reuse it without a second download.
+# later jobs can reuse it without a second download.
 name: Get release branch
 
 on:
@@ -83,7 +83,7 @@ jobs:
         run: |
           if ! git switch "$RELEASE_BRANCH"; then
             git checkout -B "$RELEASE_BRANCH"
-            git push origin "$RELEASE_BRANCH"
+            git push origin HEAD
           fi
 
       - name: Upload schema artifact

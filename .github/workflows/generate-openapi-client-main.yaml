@@ -29,13 +29,17 @@ jobs:
       pull-requests: write
     needs: get-release-branch
     runs-on: ubuntu-latest
+    env:
+      AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }} # 2026.2.0-rc1
+      GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }} # 2026.2.0.rc1
+      BASE_BRANCH: main
     steps:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          ref: main
-          persist-credentials: false
+          ref: ${{ env.BASE_BRANCH }}
           token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          persist-credentials: false
 
       - name: Download schema artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
@@ -43,51 +47,30 @@ jobs:
           name: schema
           path: ./.authentik/
 
-      - name: Remove current client
-        run: rm -rf "./${OPENAPI_GENERATOR_PATH:?}"
-
-      - name: Build client using OpenAPI Generator
-        uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
+      - name: Build OpenAPI client
+        uses: ./.github/actions/build-openapi-client
         with:
-          generator: ruby
+          output-path: ${{ env.OPENAPI_GENERATOR_PATH }}
           config-file: ./.openapi-generator/config.yaml
           openapi-file: ./.authentik/schema.yaml
-          command-args:
-            -t ./.openapi-generator/ruby-templates
-            --output="./${OPENAPI_GENERATOR_PATH}"
-            --additional-properties=gemVersion=${{ needs.get-release-branch.outputs.authentik-version }}
-
-      - name: Postprocessing
-        run: bin/postprocess-api "${OPENAPI_GENERATOR_PATH}"
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git diff --stages --quiet || git commit -m "Update OpenAPI client (nightly)"
-
-      - name: Push branch
-        run: |
-          git checkout -b openapi-client-update/nightly
-          git push origin HEAD
+          templates-dir: ./.openapi-generator/ruby-templates
+          gem-version: ${{ env.GEM_VERSION }}
 
       - name: Create pull request
-        env:
-          GH_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
-          AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }}
-        run: |
-          gh pr create \
-            --base main \
-            --head openapi-client-update/nightly \
-            --title "Nightly OpenAPI client update" \
-            --label nightly \
-            --reviewer david-uhlig \
-            --body "$(cat <<'EOF'
-          This PR updates the generated OpenAPI client to match the latest nightly schema from authentik's `main` branch.
-          
-          Authentik version: `${AUTHENTIK_VERSION}`
-          
-          > Schema sourced from [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
-          EOF
-          )"
+        id: cpr
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        with:
+          token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
+          commit-message: "Update OpenAPI client (nightly)"
+          branch: "openapi-client-update/nightly"
+          base: main
+          title: "Nightly OpenAPI client update (nightly)"
+          body: |
+            This PR updates the generated OpenAPI client to match the latest nightly schema from authentik's `main` branch.
+
+            Authentik version: `${{ env.AUTHENTIK_VERSION }}`
+
+            > Schema sourced from [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
+          labels: nightly
+          delete-branch: true
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"

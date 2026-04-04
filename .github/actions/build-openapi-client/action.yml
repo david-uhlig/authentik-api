@@ -1,0 +1,47 @@
+name: Build OpenAPI client
+
+description: Remove the current generated client, regenerate it, and postprocess the output.
+
+inputs:
+  output-path:
+    description: Path where the generated client should be written.
+    required: true
+  config-file:
+    description: OpenAPI Generator config file.
+    required: true
+  openapi-file:
+    description: OpenAPI schema file.
+    required: true
+  templates-dir:
+    description: OpenAPI Generator templates directory.
+    required: true
+  gem-version:
+    description: Gem version to pass to the generator.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Remove current client
+      shell: bash
+      run: rm -rf "./${OUTPUT_PATH}"
+      env:
+        OUTPUT_PATH: ${{ inputs.output-path }}
+
+    - name: Build client using OpenAPI Generator
+      uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
+      with:
+        generator: ruby
+        config-file: ${{ inputs.config-file }}
+        openapi-file: ${{ inputs.openapi-file }}
+        command-args: >
+          -t ${{ inputs.templates-dir }}
+          --output="./${{ inputs.output-path }}"
+          --additional-properties=gemVersion=${{ inputs.gem-version }}
+
+    - name: Postprocessing
+      shell: bash
+      run: bin/postprocess-api "${OUTPUT_PATH}"
+      env:
+        OUTPUT_PATH: ${{ inputs.output-path }}
+
