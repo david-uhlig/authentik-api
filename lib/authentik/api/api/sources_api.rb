@@ -3683,7 +3683,7 @@ module Authentik::Api
     # Kerberos Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :enabled 
-    # @option opts [KadminTypeEnum] :kadmin_type 
+    # @option opts [String] :kadmin_type KAdmin server type  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3706,7 +3706,7 @@ module Authentik::Api
     # Kerberos Source Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :enabled 
-    # @option opts [KadminTypeEnum] :kadmin_type 
+    # @option opts [String] :kadmin_type KAdmin server type  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3724,6 +3724,10 @@ module Authentik::Api
     def sources_kerberos_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_kerberos_list ...'
+      end
+      allowable_values = ["Heimdal", "MIT"]
+      if @api_client.config.client_side_validation && opts[:'kadmin_type'] && !allowable_values.include?(opts[:'kadmin_type'])
+        fail ArgumentError, "invalid value for \"kadmin_type\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/kerberos/'
@@ -4898,20 +4902,20 @@ module Authentik::Api
     # @option opts [String] :consumer_key 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [Boolean] :has_jwks Only return sources with JWKS data
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :profile_url 
     # @option opts [String] :provider_type 
     # @option opts [String] :request_token_url 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [PaginatedOAuthSourceList]
     def sources_oauth_list(opts = {})
       data, _status_code, _headers = sources_oauth_list_with_http_info(opts)
@@ -4927,24 +4931,36 @@ module Authentik::Api
     # @option opts [String] :consumer_key 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [Boolean] :has_jwks Only return sources with JWKS data
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :profile_url 
     # @option opts [String] :provider_type 
     # @option opts [String] :request_token_url 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [Array<(PaginatedOAuthSourceList, Integer, Hash)>] PaginatedOAuthSourceList data, response status code and response headers
     def sources_oauth_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_oauth_list ...'
+      end
+      allowable_values = ["identifier", "name_deny", "name_link"]
+      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
+        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["all", "any"]
+      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
+        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
+      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
+        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/oauth/'
@@ -5461,16 +5477,16 @@ module Authentik::Api
     # @option opts [String] :client_id 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [PaginatedPlexSourceList]
     def sources_plex_list(opts = {})
       data, _status_code, _headers = sources_plex_list_with_http_info(opts)
@@ -5484,20 +5500,32 @@ module Authentik::Api
     # @option opts [String] :client_id 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [Array<(PaginatedPlexSourceList, Integer, Hash)>] PaginatedPlexSourceList data, response status code and response headers
     def sources_plex_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_plex_list ...'
+      end
+      allowable_values = ["identifier", "name_deny", "name_link"]
+      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
+        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["all", "any"]
+      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
+        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
+      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
+        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/plex/'
@@ -6083,23 +6111,22 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :allow_idp_initiated 
     # @option opts [String] :authentication_flow 
-    # @option opts [BindingTypeEnum] :binding_type 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :binding_type 
+    # @option opts [String] :digest_algorithm 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [Boolean] :force_authn 
     # @option opts [String] :issuer 
     # @option opts [String] :managed 
     # @option opts [String] :name 
-    # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
+    # @option opts [String] :name_id_policy NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [Boolean] :signed_assertion 
     # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
@@ -6107,7 +6134,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [String] :sso_url 
     # @option opts [String] :temporary_user_delete_after 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @option opts [String] :verification_kp 
     # @return [PaginatedSAMLSourceList]
     def sources_saml_list(opts = {})
@@ -6119,23 +6146,22 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :allow_idp_initiated 
     # @option opts [String] :authentication_flow 
-    # @option opts [BindingTypeEnum] :binding_type 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :binding_type 
+    # @option opts [String] :digest_algorithm 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [Boolean] :force_authn 
     # @option opts [String] :issuer 
     # @option opts [String] :managed 
     # @option opts [String] :name 
-    # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
+    # @option opts [String] :name_id_policy NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [String] :pre_authentication_flow 
     # @option opts [String] :search A search term.
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [Boolean] :signed_assertion 
     # @option opts [Boolean] :signed_response 
     # @option opts [String] :signing_kp 
@@ -6143,12 +6169,36 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [String] :sso_url 
     # @option opts [String] :temporary_user_delete_after 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @option opts [String] :verification_kp 
     # @return [Array<(PaginatedSAMLSourceList, Integer, Hash)>] PaginatedSAMLSourceList data, response status code and response headers
     def sources_saml_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_saml_list ...'
+      end
+      allowable_values = ["POST", "POST_AUTO", "REDIRECT"]
+      if @api_client.config.client_side_validation && opts[:'binding_type'] && !allowable_values.include?(opts[:'binding_type'])
+        fail ArgumentError, "invalid value for \"binding_type\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
+      if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
+        fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
+      if @api_client.config.client_side_validation && opts[:'name_id_policy'] && !allowable_values.include?(opts[:'name_id_policy'])
+        fail ArgumentError, "invalid value for \"name_id_policy\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["all", "any"]
+      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
+        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
+      if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
+        fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
+      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
+        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/saml/'
@@ -6161,7 +6211,6 @@ module Authentik::Api
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
       query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
       query_params[:'enrollment_flow'] = opts[:'enrollment_flow'] if !opts[:'enrollment_flow'].nil?
-      query_params[:'force_authn'] = opts[:'force_authn'] if !opts[:'force_authn'].nil?
       query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
       query_params[:'managed'] = opts[:'managed'] if !opts[:'managed'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
@@ -8141,17 +8190,17 @@ module Authentik::Api
     # @option opts [String] :bot_username 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [Boolean] :request_message_access 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [PaginatedTelegramSourceList]
     def sources_telegram_list(opts = {})
       data, _status_code, _headers = sources_telegram_list_with_http_info(opts)
@@ -8164,21 +8213,33 @@ module Authentik::Api
     # @option opts [String] :bot_username 
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
-    # @option opts [GroupMatchingModeEnum] :group_matching_mode 
+    # @option opts [String] :group_matching_mode How the source determines if an existing group should be used or a new group created.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [Boolean] :request_message_access 
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [UserMatchingModeEnum] :user_matching_mode 
+    # @option opts [String] :user_matching_mode How the source determines if an existing user should be authenticated or a new user enrolled.  
     # @return [Array<(PaginatedTelegramSourceList, Integer, Hash)>] PaginatedTelegramSourceList data, response status code and response headers
     def sources_telegram_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SourcesApi.sources_telegram_list ...'
+      end
+      allowable_values = ["identifier", "name_deny", "name_link"]
+      if @api_client.config.client_side_validation && opts[:'group_matching_mode'] && !allowable_values.include?(opts[:'group_matching_mode'])
+        fail ArgumentError, "invalid value for \"group_matching_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["all", "any"]
+      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
+        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["email_deny", "email_link", "identifier", "username_deny", "username_link"]
+      if @api_client.config.client_side_validation && opts[:'user_matching_mode'] && !allowable_values.include?(opts[:'user_matching_mode'])
+        fail ArgumentError, "invalid value for \"user_matching_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/sources/telegram/'

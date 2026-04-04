@@ -21,6 +21,7 @@ All URIs are relative to */api/v3*
 | [**flows_instances_diagram_retrieve**](FlowsApi.md#flows_instances_diagram_retrieve) | **GET** /flows/instances/{slug}/diagram/ |  |
 | [**flows_instances_execute_retrieve**](FlowsApi.md#flows_instances_execute_retrieve) | **GET** /flows/instances/{slug}/execute/ |  |
 | [**flows_instances_export_retrieve**](FlowsApi.md#flows_instances_export_retrieve) | **GET** /flows/instances/{slug}/export/ |  |
+| [**flows_instances_import_create**](FlowsApi.md#flows_instances_import_create) | **POST** /flows/instances/import/ |  |
 | [**flows_instances_list**](FlowsApi.md#flows_instances_list) | **GET** /flows/instances/ |  |
 | [**flows_instances_partial_update**](FlowsApi.md#flows_instances_partial_update) | **PATCH** /flows/instances/{slug}/ |  |
 | [**flows_instances_retrieve**](FlowsApi.md#flows_instances_retrieve) | **GET** /flows/instances/{slug}/ |  |
@@ -188,14 +189,14 @@ api_instance = Authentik::Api::FlowsApi.new
 opts = {
   evaluate_on_plan: true, # Boolean | 
   fsb_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  invalid_response_action: Authentik::Api::InvalidResponseActionEnum::RETRY, # InvalidResponseActionEnum | 
+  invalid_response_action: 'restart', # String | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  
   order: 56, # Integer | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   policies: ['inner_example'], # Array<String> | 
-  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
+  policy_engine_mode: 'all', # String | 
   re_evaluate_policies: true, # Boolean | 
   search: 'search_example', # String | A search term.
   stage: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -235,14 +236,14 @@ end
 | ---- | ---- | ----------- | ----- |
 | **evaluate_on_plan** | **Boolean** |  | [optional] |
 | **fsb_uuid** | **String** |  | [optional] |
-| **invalid_response_action** | [**InvalidResponseActionEnum**](.md) |  | [optional] |
+| **invalid_response_action** | **String** | Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.   | [optional] |
 | **order** | **Integer** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
 | **policies** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
+| **policy_engine_mode** | **String** |  | [optional] |
 | **re_evaluate_policies** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **stage** | **String** |  | [optional] |
@@ -1234,6 +1235,79 @@ end
 - **Accept**: application/json
 
 
+## flows_instances_import_create
+
+> <FlowImportResult> flows_instances_import_create(opts)
+
+
+
+Import flow from .yaml file
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::FlowsApi.new
+opts = {
+  file: File.new('/path/to/some/file'), # File | 
+  clear: true # Boolean | 
+}
+
+begin
+  
+  result = api_instance.flows_instances_import_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling FlowsApi->flows_instances_import_create: #{e}"
+end
+```
+
+#### Using the flows_instances_import_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<FlowImportResult>, Integer, Hash)> flows_instances_import_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.flows_instances_import_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <FlowImportResult>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling FlowsApi->flows_instances_import_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **file** | **File** |  | [optional] |
+| **clear** | **Boolean** |  | [optional][default to false] |
+
+### Return type
+
+[**FlowImportResult**](FlowImportResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
+- **Accept**: application/json
+
+
 ## flows_instances_list
 
 > <PaginatedFlowList> flows_instances_list(opts)
@@ -1255,8 +1329,8 @@ end
 
 api_instance = Authentik::Api::FlowsApi.new
 opts = {
-  denied_action: Authentik::Api::DeniedActionEnum::MESSAGE_CONTINUE, # DeniedActionEnum | 
-  designation: Authentik::Api::FlowDesignationEnum::AUTHENTICATION, # FlowDesignationEnum | 
+  denied_action: 'continue', # String | Configure what should happen when a flow denies access to a user.  
+  designation: 'authentication', # String | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  
   flow_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -1297,8 +1371,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **denied_action** | [**DeniedActionEnum**](.md) |  | [optional] |
-| **designation** | [**FlowDesignationEnum**](.md) |  | [optional] |
+| **denied_action** | **String** | Configure what should happen when a flow denies access to a user.   | [optional] |
+| **designation** | **String** | Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.   | [optional] |
 | **flow_uuid** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |

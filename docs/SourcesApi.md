@@ -4192,7 +4192,7 @@ end
 api_instance = Authentik::Api::SourcesApi.new
 opts = {
   enabled: true, # Boolean | 
-  kadmin_type: Authentik::Api::KadminTypeEnum::MIT, # KadminTypeEnum | 
+  kadmin_type: 'Heimdal', # String | KAdmin server type  
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -4240,7 +4240,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **enabled** | **Boolean** |  | [optional] |
-| **kadmin_type** | [**KadminTypeEnum**](.md) |  | [optional] |
+| **kadmin_type** | **String** | KAdmin server type   | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -5473,20 +5473,20 @@ opts = {
   consumer_key: 'consumer_key_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
+  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
   has_jwks: true, # Boolean | Only return sources with JWKS data
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
+  policy_engine_mode: 'all', # String | 
   profile_url: 'profile_url_example', # String | 
   provider_type: 'provider_type_example', # String | 
   request_token_url: 'request_token_url_example', # String | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
+  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
 }
 
 begin
@@ -5527,20 +5527,20 @@ end
 | **consumer_key** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
+| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
 | **has_jwks** | **Boolean** | Only return sources with JWKS data | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
+| **policy_engine_mode** | **String** |  | [optional] |
 | **profile_url** | **String** |  | [optional] |
 | **provider_type** | **String** |  | [optional] |
 | **request_token_url** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
+| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
 
 ### Return type
 
@@ -6072,16 +6072,16 @@ opts = {
   client_id: 'client_id_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
+  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
+  policy_engine_mode: 'all', # String | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
+  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
 }
 
 begin
@@ -6120,16 +6120,16 @@ end
 | **client_id** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
+| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
+| **policy_engine_mode** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
+| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
 
 ### Return type
 
@@ -6732,23 +6732,22 @@ api_instance = Authentik::Api::SourcesApi.new
 opts = {
   allow_idp_initiated: true, # Boolean | 
   authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  binding_type: Authentik::Api::BindingTypeEnum::REDIRECT, # BindingTypeEnum | 
-  digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  binding_type: 'POST', # String | 
+  digest_algorithm: 'http://www.w3.org/2000/09/xmldsig#sha1', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  force_authn: true, # Boolean | 
   issuer: 'issuer_example', # String | 
   managed: 'managed_example', # String | 
   name: 'name_example', # String | 
-  name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
+  name_id_policy: 'urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName', # String | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.  
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
+  policy_engine_mode: 'all', # String | 
   pre_authentication_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   search: 'search_example', # String | A search term.
-  signature_algorithm: Authentik::Api::SignatureAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGRSA_SHA1, # SignatureAlgorithmEnum | 
+  signature_algorithm: 'http://www.w3.org/2000/09/xmldsig#dsa-sha1', # String | 
   signed_assertion: true, # Boolean | 
   signed_response: true, # Boolean | 
   signing_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -6756,7 +6755,7 @@ opts = {
   slug: 'slug_example', # String | 
   sso_url: 'sso_url_example', # String | 
   temporary_user_delete_after: 'temporary_user_delete_after_example', # String | 
-  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER, # UserMatchingModeEnum | 
+  user_matching_mode: 'email_deny', # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
   verification_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
 
@@ -6793,23 +6792,22 @@ end
 | ---- | ---- | ----------- | ----- |
 | **allow_idp_initiated** | **Boolean** |  | [optional] |
 | **authentication_flow** | **String** |  | [optional] |
-| **binding_type** | [**BindingTypeEnum**](.md) |  | [optional] |
-| **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **binding_type** | **String** |  | [optional] |
+| **digest_algorithm** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **force_authn** | **Boolean** |  | [optional] |
 | **issuer** | **String** |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
+| **name_id_policy** | **String** | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.   | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
+| **policy_engine_mode** | **String** |  | [optional] |
 | **pre_authentication_flow** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **signature_algorithm** | [**SignatureAlgorithmEnum**](.md) |  | [optional] |
+| **signature_algorithm** | **String** |  | [optional] |
 | **signed_assertion** | **Boolean** |  | [optional] |
 | **signed_response** | **Boolean** |  | [optional] |
 | **signing_kp** | **String** |  | [optional] |
@@ -6817,7 +6815,7 @@ end
 | **slug** | **String** |  | [optional] |
 | **sso_url** | **String** |  | [optional] |
 | **temporary_user_delete_after** | **String** |  | [optional] |
-| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
+| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
 | **verification_kp** | **String** |  | [optional] |
 
 ### Return type
@@ -8924,17 +8922,17 @@ opts = {
   bot_username: 'bot_username_example', # String | 
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  group_matching_mode: Authentik::Api::GroupMatchingModeEnum::IDENTIFIER, # GroupMatchingModeEnum | 
+  group_matching_mode: 'identifier', # String | How the source determines if an existing group should be used or a new group created.  
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  policy_engine_mode: Authentik::Api::PolicyEngineMode::ALL, # PolicyEngineMode | 
+  policy_engine_mode: 'all', # String | 
   request_message_access: true, # Boolean | 
   search: 'search_example', # String | A search term.
   slug: 'slug_example', # String | 
-  user_matching_mode: Authentik::Api::UserMatchingModeEnum::IDENTIFIER # UserMatchingModeEnum | 
+  user_matching_mode: 'email_deny' # String | How the source determines if an existing user should be authenticated or a new user enrolled.  
 }
 
 begin
@@ -8972,17 +8970,17 @@ end
 | **bot_username** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
-| **group_matching_mode** | [**GroupMatchingModeEnum**](.md) |  | [optional] |
+| **group_matching_mode** | **String** | How the source determines if an existing group should be used or a new group created.   | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **pbm_uuid** | **String** |  | [optional] |
-| **policy_engine_mode** | [**PolicyEngineMode**](.md) |  | [optional] |
+| **policy_engine_mode** | **String** |  | [optional] |
 | **request_message_access** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **user_matching_mode** | [**UserMatchingModeEnum**](.md) |  | [optional] |
+| **user_matching_mode** | **String** | How the source determines if an existing user should be authenticated or a new user enrolled.   | [optional] |
 
 ### Return type
 

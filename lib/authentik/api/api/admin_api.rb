@@ -148,7 +148,7 @@ module Authentik::Api
     # Delete file from storage backend.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
-    # @option opts [UsageEnum] :usage 
+    # @option opts [String] :usage  (default to 'media')
     # @return [nil]
     def admin_file_destroy(opts = {})
       admin_file_destroy_with_http_info(opts)
@@ -158,11 +158,15 @@ module Authentik::Api
     # Delete file from storage backend.
     # @param [Hash] opts the optional parameters
     # @option opts [String] :name 
-    # @option opts [UsageEnum] :usage 
+    # @option opts [String] :usage  (default to 'media')
     # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
     def admin_file_destroy_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_destroy ...'
+      end
+      allowable_values = ["media"]
+      if @api_client.config.client_side_validation && opts[:'usage'] && !allowable_values.include?(opts[:'usage'])
+        fail ArgumentError, "invalid value for \"usage\", must be one of #{allowable_values}"
       end
       if @api_client.config.client_side_validation && !opts[:'usage'].nil? && opts[:'usage'].to_s.length < 1
         fail ArgumentError, 'invalid value for "opts[:"usage"]" when calling AdminApi.admin_file_destroy, the character length must be greater than or equal to 1.'
@@ -214,7 +218,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :manageable_only  (default to false)
     # @option opts [String] :search A search term.
-    # @option opts [UsageEnum] :usage 
+    # @option opts [String] :usage  (default to 'media')
     # @return [Array<FileList>]
     def admin_file_list(opts = {})
       data, _status_code, _headers = admin_file_list_with_http_info(opts)
@@ -225,11 +229,15 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :manageable_only  (default to false)
     # @option opts [String] :search A search term.
-    # @option opts [UsageEnum] :usage 
+    # @option opts [String] :usage  (default to 'media')
     # @return [Array<(Array<FileList>, Integer, Hash)>] Array<FileList> data, response status code and response headers
     def admin_file_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AdminApi.admin_file_list ...'
+      end
+      allowable_values = ["media"]
+      if @api_client.config.client_side_validation && opts[:'usage'] && !allowable_values.include?(opts[:'usage'])
+        fail ArgumentError, "invalid value for \"usage\", must be one of #{allowable_values}"
       end
       if @api_client.config.client_side_validation && !opts[:'usage'].nil? && opts[:'usage'].to_s.length < 1
         fail ArgumentError, 'invalid value for "opts[:"usage"]" when calling AdminApi.admin_file_list, the character length must be greater than or equal to 1.'

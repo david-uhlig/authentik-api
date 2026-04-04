@@ -8,11 +8,14 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class UsageEnum
-    MEDIA = "media".freeze
+  class NotificationTransportModeEnum
+    LOCAL = "local".freeze
+    WEBHOOK = "webhook".freeze
+    WEBHOOK_SLACK = "webhook_slack".freeze
+    EMAIL = "email".freeze
 
     def self.all_vars
-      @all_vars ||= [MEDIA].freeze
+      @all_vars ||= [LOCAL, WEBHOOK, WEBHOOK_SLACK, EMAIL].freeze
     end
 
     # Builds the enum from string
@@ -26,8 +29,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if UsageEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #UsageEnum"
+      return value if NotificationTransportModeEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #NotificationTransportModeEnum"
     end
   end
 end

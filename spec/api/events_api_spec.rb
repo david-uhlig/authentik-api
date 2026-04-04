@@ -62,11 +62,10 @@ describe 'EventsApi' do
   # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
-  # @option opts [Array<EventActions>] :actions 
+  # @option opts [Array<String>] :actions 
   # @option opts [String] :brand_name Brand name
   # @option opts [String] :client_ip 
   # @option opts [String] :context_authorized_app Context Authorized application
-  # @option opts [String] :context_device Context Device Primary Key
   # @option opts [String] :context_model_app Context Model App
   # @option opts [String] :context_model_name Context Model Name
   # @option opts [String] :context_model_pk Context Model Primary Key
@@ -84,11 +83,10 @@ describe 'EventsApi' do
   # Event Read-Only Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
-  # @option opts [Array<EventActions>] :actions 
+  # @option opts [Array<String>] :actions 
   # @option opts [String] :brand_name Brand name
   # @option opts [String] :client_ip 
   # @option opts [String] :context_authorized_app Context Authorized application
-  # @option opts [String] :context_device Context Device Primary Key
   # @option opts [String] :context_model_app Context Model App
   # @option opts [String] :context_model_name Context Model Name
   # @option opts [String] :context_model_pk Context Model Primary Key
@@ -127,29 +125,6 @@ describe 'EventsApi' do
     end
   end
 
-  # unit tests for events_events_stats_retrieve
-  # Get event stats for specified filters and count steps
-  # @param count_steps Timedelta, format of &#39;weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2&#39;
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :action 
-  # @option opts [Array<EventActions>] :actions 
-  # @option opts [String] :brand_name Brand name
-  # @option opts [String] :client_ip 
-  # @option opts [String] :context_authorized_app Context Authorized application
-  # @option opts [String] :context_device Context Device Primary Key
-  # @option opts [String] :context_model_app Context Model App
-  # @option opts [String] :context_model_name Context Model Name
-  # @option opts [String] :context_model_pk Context Model Primary Key
-  # @option opts [String] :ordering Which field to use when ordering the results.
-  # @option opts [String] :search A search term.
-  # @option opts [String] :username Username
-  # @return [EventStats]
-  describe 'events_events_stats_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for events_events_top_per_user_list
   # Get the top_n events grouped by user count
   # @param [Hash] opts the optional parameters
@@ -178,15 +153,14 @@ describe 'EventsApi' do
   # Get event volume for specified filters and timeframe
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
-  # @option opts [Array<EventActions>] :actions 
+  # @option opts [Array<String>] :actions 
   # @option opts [String] :brand_name Brand name
   # @option opts [String] :client_ip 
   # @option opts [String] :context_authorized_app Context Authorized application
-  # @option opts [String] :context_device Context Device Primary Key
   # @option opts [String] :context_model_app Context Model App
   # @option opts [String] :context_model_name Context Model Name
   # @option opts [String] :context_model_pk Context Model Primary Key
-  # @option opts [Integer] :history_days 
+  # @option opts [Float] :history_days 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [String] :search A search term.
   # @option opts [String] :username Username
@@ -219,7 +193,7 @@ describe 'EventsApi' do
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
   # @option opts [Boolean] :seen 
-  # @option opts [SeverityEnum] :severity 
+  # @option opts [String] :severity 
   # @option opts [Integer] :user 
   # @return [PaginatedNotificationList]
   describe 'events_notifications_list test' do
@@ -315,7 +289,7 @@ describe 'EventsApi' do
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
-  # @option opts [SeverityEnum] :severity 
+  # @option opts [String] :severity Controls which severity level the created notifications will have.  
   # @return [PaginatedNotificationRuleList]
   describe 'events_rules_list test' do
     it 'should work' do
@@ -394,7 +368,7 @@ describe 'EventsApi' do
   # unit tests for events_transports_list
   # NotificationTransport Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [TransportModeEnum] :mode 
+  # @option opts [String] :mode 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.

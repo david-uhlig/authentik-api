@@ -93,12 +93,6 @@ describe Authentik::Api::AuthenticatorWebAuthnStage do
     end
   end
 
-  describe 'test attribute "hints"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "device_type_restrictions"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -106,12 +100,6 @@ describe Authentik::Api::AuthenticatorWebAuthnStage do
   end
 
   describe 'test attribute "device_type_restrictions_obj"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  describe 'test attribute "prevent_duplicate_devices"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

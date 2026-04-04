@@ -8,17 +8,13 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class TaskStatusEnum
-    QUEUED = "queued".freeze
-    CONSUMED = "consumed".freeze
-    PREPROCESS = "preprocess".freeze
-    RUNNING = "running".freeze
-    POSTPROCESS = "postprocess".freeze
-    REJECTED = "rejected".freeze
-    DONE = "done".freeze
+  class ResidentKeyRequirementEnum
+    DISCOURAGED = "discouraged".freeze
+    PREFERRED = "preferred".freeze
+    REQUIRED = "required".freeze
 
     def self.all_vars
-      @all_vars ||= [QUEUED, CONSUMED, PREPROCESS, RUNNING, POSTPROCESS, REJECTED, DONE].freeze
+      @all_vars ||= [DISCOURAGED, PREFERRED, REQUIRED].freeze
     end
 
     # Builds the enum from string
@@ -32,8 +28,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if TaskStatusEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #TaskStatusEnum"
+      return value if ResidentKeyRequirementEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #ResidentKeyRequirementEnum"
     end
   end
 end

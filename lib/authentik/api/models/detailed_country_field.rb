@@ -8,23 +8,38 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # GoogleChromeConnector Serializer
-  class PatchedGoogleChromeConnectorRequest < ApiModelBase
-    attr_accessor :connector_uuid
+  class DetailedCountryField < ApiModelBase
+    attr_accessor :code
 
     attr_accessor :name
 
-    attr_accessor :enabled
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
 
-    attr_accessor :credentials
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connector_uuid' => :'connector_uuid',
-        :'name' => :'name',
-        :'enabled' => :'enabled',
-        :'credentials' => :'credentials'
+        :'code' => :'code',
+        :'name' => :'name'
       }
     end
 
@@ -41,10 +56,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'connector_uuid' => :'String',
-        :'name' => :'String',
-        :'enabled' => :'Boolean',
-        :'credentials' => :'Hash<String, Object>'
+        :'code' => :'CountryCodeEnum',
+        :'name' => :'String'
       }
     end
 
@@ -58,34 +71,28 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::PatchedGoogleChromeConnectorRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::DetailedCountryField` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::PatchedGoogleChromeConnectorRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::DetailedCountryField`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'connector_uuid')
-        self.connector_uuid = attributes[:'connector_uuid']
+      if attributes.key?(:'code')
+        self.code = attributes[:'code']
+      else
+        self.code = nil
       end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
-      end
-
-      if attributes.key?(:'enabled')
-        self.enabled = attributes[:'enabled']
-      end
-
-      if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
-        end
+      else
+        self.name = nil
       end
     end
 
@@ -94,8 +101,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@name.nil? && @name.to_s.length < 1
-        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
+      if @code.nil?
+        invalid_properties.push('invalid value for "code", code cannot be nil.')
+      end
+
+      if @name.nil?
+        invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
       invalid_properties
@@ -105,8 +116,19 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@name.nil? && @name.to_s.length < 1
+      return false if @code.nil?
+      return false if @name.nil?
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] code Value to be assigned
+    def code=(code)
+      if code.nil?
+        fail ArgumentError, 'code cannot be nil'
+      end
+
+      @code = code
     end
 
     # Custom attribute writer method with validation
@@ -114,10 +136,6 @@ module Authentik::Api
     def name=(name)
       if name.nil?
         fail ArgumentError, 'name cannot be nil'
-      end
-
-      if name.to_s.length < 1
-        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
       end
 
       @name = name
@@ -128,10 +146,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connector_uuid == o.connector_uuid &&
-          name == o.name &&
-          enabled == o.enabled &&
-          credentials == o.credentials
+          code == o.code &&
+          name == o.name
     end
 
     # @see the `==` method
@@ -143,7 +159,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connector_uuid, name, enabled, credentials].hash
+      [code, name].hash
     end
 
     # Builds the object from hash

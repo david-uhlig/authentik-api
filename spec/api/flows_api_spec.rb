@@ -53,14 +53,14 @@ describe 'FlowsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :evaluate_on_plan 
   # @option opts [String] :fsb_uuid 
-  # @option opts [InvalidResponseActionEnum] :invalid_response_action 
+  # @option opts [String] :invalid_response_action Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  
   # @option opts [Integer] :order 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :pbm_uuid 
   # @option opts [Array<String>] :policies 
-  # @option opts [PolicyEngineMode] :policy_engine_mode 
+  # @option opts [String] :policy_engine_mode 
   # @option opts [Boolean] :re_evaluate_policies 
   # @option opts [String] :search A search term.
   # @option opts [String] :stage 
@@ -229,11 +229,23 @@ describe 'FlowsApi' do
     end
   end
 
+  # unit tests for flows_instances_import_create
+  # Import flow from .yaml file
+  # @param [Hash] opts the optional parameters
+  # @option opts [File] :file 
+  # @option opts [Boolean] :clear 
+  # @return [FlowImportResult]
+  describe 'flows_instances_import_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for flows_instances_list
   # Flow Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [DeniedActionEnum] :denied_action 
-  # @option opts [FlowDesignationEnum] :designation 
+  # @option opts [String] :denied_action Configure what should happen when a flow denies access to a user.  
+  # @option opts [String] :designation Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  
   # @option opts [String] :flow_uuid 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.

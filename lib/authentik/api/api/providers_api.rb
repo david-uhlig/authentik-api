@@ -3440,9 +3440,9 @@ module Authentik::Api
     # @option opts [String] :application 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :client_id 
-    # @option opts [ClientTypeEnum] :client_type 
+    # @option opts [String] :client_type Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  
     # @option opts [Boolean] :include_claims_in_id_token 
-    # @option opts [IssuerModeEnum] :issuer_mode 
+    # @option opts [String] :issuer_mode Configure how the issuer field of the ID Token should be filled.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3451,7 +3451,7 @@ module Authentik::Api
     # @option opts [String] :refresh_token_validity 
     # @option opts [String] :search A search term.
     # @option opts [String] :signing_key 
-    # @option opts [SubModeEnum] :sub_mode 
+    # @option opts [String] :sub_mode Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  
     # @return [PaginatedOAuth2ProviderList]
     def providers_oauth2_list(opts = {})
       data, _status_code, _headers = providers_oauth2_list_with_http_info(opts)
@@ -3465,9 +3465,9 @@ module Authentik::Api
     # @option opts [String] :application 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :client_id 
-    # @option opts [ClientTypeEnum] :client_type 
+    # @option opts [String] :client_type Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  
     # @option opts [Boolean] :include_claims_in_id_token 
-    # @option opts [IssuerModeEnum] :issuer_mode 
+    # @option opts [String] :issuer_mode Configure how the issuer field of the ID Token should be filled.  
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -3476,11 +3476,23 @@ module Authentik::Api
     # @option opts [String] :refresh_token_validity 
     # @option opts [String] :search A search term.
     # @option opts [String] :signing_key 
-    # @option opts [SubModeEnum] :sub_mode 
+    # @option opts [String] :sub_mode Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  
     # @return [Array<(PaginatedOAuth2ProviderList, Integer, Hash)>] PaginatedOAuth2ProviderList data, response status code and response headers
     def providers_oauth2_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_list ...'
+      end
+      allowable_values = ["confidential", "public"]
+      if @api_client.config.client_side_validation && opts[:'client_type'] && !allowable_values.include?(opts[:'client_type'])
+        fail ArgumentError, "invalid value for \"client_type\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["global", "per_provider"]
+      if @api_client.config.client_side_validation && opts[:'issuer_mode'] && !allowable_values.include?(opts[:'issuer_mode'])
+        fail ArgumentError, "invalid value for \"issuer_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["hashed_user_id", "user_email", "user_id", "user_upn", "user_username", "user_uuid"]
+      if @api_client.config.client_side_validation && opts[:'sub_mode'] && !allowable_values.include?(opts[:'sub_mode'])
+        fail ArgumentError, "invalid value for \"sub_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/providers/oauth2/'
@@ -5586,14 +5598,14 @@ module Authentik::Api
     # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [SAMLLogoutMethods] :logout_method 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -5604,13 +5616,12 @@ module Authentik::Api
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
     # @option opts [Boolean] :sign_logout_request 
-    # @option opts [Boolean] :sign_logout_response 
     # @option opts [Boolean] :sign_response 
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [SAMLBindingsEnum] :sls_binding 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
     # @option opts [String] :sls_url 
-    # @option opts [SAMLBindingsEnum] :sp_binding 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [PaginatedSAMLProviderList]
     def providers_saml_list(opts = {})
@@ -5628,14 +5639,14 @@ module Authentik::Api
     # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [SAMLLogoutMethods] :logout_method 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -5646,18 +5657,41 @@ module Authentik::Api
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
     # @option opts [Boolean] :sign_logout_request 
-    # @option opts [Boolean] :sign_logout_response 
     # @option opts [Boolean] :sign_response 
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [SAMLBindingsEnum] :sls_binding 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
     # @option opts [String] :sls_url 
-    # @option opts [SAMLBindingsEnum] :sp_binding 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [Array<(PaginatedSAMLProviderList, Integer, Hash)>] PaginatedSAMLProviderList data, response status code and response headers
     def providers_saml_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_saml_list ...'
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
+      if @api_client.config.client_side_validation && opts[:'default_name_id_policy'] && !allowable_values.include?(opts[:'default_name_id_policy'])
+        fail ArgumentError, "invalid value for \"default_name_id_policy\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
+      if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
+        fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["backchannel", "frontchannel_iframe", "frontchannel_native"]
+      if @api_client.config.client_side_validation && opts[:'logout_method'] && !allowable_values.include?(opts[:'logout_method'])
+        fail ArgumentError, "invalid value for \"logout_method\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
+      if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
+        fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sls_binding'] && !allowable_values.include?(opts[:'sls_binding'])
+        fail ArgumentError, "invalid value for \"sls_binding\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sp_binding'] && !allowable_values.include?(opts[:'sp_binding'])
+        fail ArgumentError, "invalid value for \"sp_binding\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/providers/saml/'
@@ -5690,7 +5724,6 @@ module Authentik::Api
       query_params[:'session_valid_not_on_or_after'] = opts[:'session_valid_not_on_or_after'] if !opts[:'session_valid_not_on_or_after'].nil?
       query_params[:'sign_assertion'] = opts[:'sign_assertion'] if !opts[:'sign_assertion'].nil?
       query_params[:'sign_logout_request'] = opts[:'sign_logout_request'] if !opts[:'sign_logout_request'].nil?
-      query_params[:'sign_logout_response'] = opts[:'sign_logout_response'] if !opts[:'sign_logout_response'].nil?
       query_params[:'sign_response'] = opts[:'sign_response'] if !opts[:'sign_response'].nil?
       query_params[:'signature_algorithm'] = opts[:'signature_algorithm'] if !opts[:'signature_algorithm'].nil?
       query_params[:'signing_kp'] = opts[:'signing_kp'] if !opts[:'signing_kp'].nil?
@@ -5737,7 +5770,7 @@ module Authentik::Api
     # @param id [Integer] A unique integer value identifying this SAML Provider.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :download 
-    # @option opts [ForceBindingEnum] :force_binding 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
     # @return [SAMLMetadata]
     def providers_saml_metadata_retrieve(id, opts = {})
       data, _status_code, _headers = providers_saml_metadata_retrieve_with_http_info(id, opts)
@@ -5748,7 +5781,7 @@ module Authentik::Api
     # @param id [Integer] A unique integer value identifying this SAML Provider.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :download 
-    # @option opts [ForceBindingEnum] :force_binding 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
     # @return [Array<(SAMLMetadata, Integer, Hash)>] SAMLMetadata data, response status code and response headers
     def providers_saml_metadata_retrieve_with_http_info(id, opts = {})
       if @api_client.config.debugging
@@ -5757,6 +5790,10 @@ module Authentik::Api
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_metadata_retrieve"
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST", "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"]
+      if @api_client.config.client_side_validation && opts[:'force_binding'] && !allowable_values.include?(opts[:'force_binding'])
+        fail ArgumentError, "invalid value for \"force_binding\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/providers/saml/{id}/metadata/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
@@ -7976,14 +8013,14 @@ module Authentik::Api
     # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [SAMLLogoutMethods] :logout_method 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -7994,13 +8031,12 @@ module Authentik::Api
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
     # @option opts [Boolean] :sign_logout_request 
-    # @option opts [Boolean] :sign_logout_response 
     # @option opts [Boolean] :sign_response 
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [SAMLBindingsEnum] :sls_binding 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
     # @option opts [String] :sls_url 
-    # @option opts [SAMLBindingsEnum] :sp_binding 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [PaginatedWSFederationProviderList]
     def providers_wsfed_list(opts = {})
@@ -8018,14 +8054,14 @@ module Authentik::Api
     # @option opts [String] :authn_context_class_ref_mapping 
     # @option opts [String] :authorization_flow 
     # @option opts [String] :backchannel_application 
-    # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+    # @option opts [String] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
-    # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [String] :digest_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer 
-    # @option opts [SAMLLogoutMethods] :logout_method 
+    # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -8036,18 +8072,41 @@ module Authentik::Api
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
     # @option opts [Boolean] :sign_logout_request 
-    # @option opts [Boolean] :sign_logout_response 
     # @option opts [Boolean] :sign_response 
-    # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+    # @option opts [String] :signature_algorithm 
     # @option opts [String] :signing_kp 
-    # @option opts [SAMLBindingsEnum] :sls_binding 
+    # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
     # @option opts [String] :sls_url 
-    # @option opts [SAMLBindingsEnum] :sp_binding 
+    # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
     # @option opts [String] :verification_kp 
     # @return [Array<(PaginatedWSFederationProviderList, Integer, Hash)>] PaginatedWSFederationProviderList data, response status code and response headers
     def providers_wsfed_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_wsfed_list ...'
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:1.1:nameid-format:X509SubjectName", "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress", "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", "urn:oasis:names:tc:SAML:2.0:nameid-format:WindowsDomainQualifiedName", "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent", "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"]
+      if @api_client.config.client_side_validation && opts[:'default_name_id_policy'] && !allowable_values.include?(opts[:'default_name_id_policy'])
+        fail ArgumentError, "invalid value for \"default_name_id_policy\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#sha1", "http://www.w3.org/2001/04/xmldsig-more#sha384", "http://www.w3.org/2001/04/xmlenc#sha256", "http://www.w3.org/2001/04/xmlenc#sha512"]
+      if @api_client.config.client_side_validation && opts[:'digest_algorithm'] && !allowable_values.include?(opts[:'digest_algorithm'])
+        fail ArgumentError, "invalid value for \"digest_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["backchannel", "frontchannel_iframe", "frontchannel_native"]
+      if @api_client.config.client_side_validation && opts[:'logout_method'] && !allowable_values.include?(opts[:'logout_method'])
+        fail ArgumentError, "invalid value for \"logout_method\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["http://www.w3.org/2000/09/xmldsig#dsa-sha1", "http://www.w3.org/2000/09/xmldsig#rsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha1", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384", "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"]
+      if @api_client.config.client_side_validation && opts[:'signature_algorithm'] && !allowable_values.include?(opts[:'signature_algorithm'])
+        fail ArgumentError, "invalid value for \"signature_algorithm\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sls_binding'] && !allowable_values.include?(opts[:'sls_binding'])
+        fail ArgumentError, "invalid value for \"sls_binding\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["post", "redirect"]
+      if @api_client.config.client_side_validation && opts[:'sp_binding'] && !allowable_values.include?(opts[:'sp_binding'])
+        fail ArgumentError, "invalid value for \"sp_binding\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/providers/wsfed/'
@@ -8080,7 +8139,6 @@ module Authentik::Api
       query_params[:'session_valid_not_on_or_after'] = opts[:'session_valid_not_on_or_after'] if !opts[:'session_valid_not_on_or_after'].nil?
       query_params[:'sign_assertion'] = opts[:'sign_assertion'] if !opts[:'sign_assertion'].nil?
       query_params[:'sign_logout_request'] = opts[:'sign_logout_request'] if !opts[:'sign_logout_request'].nil?
-      query_params[:'sign_logout_response'] = opts[:'sign_logout_response'] if !opts[:'sign_logout_response'].nil?
       query_params[:'sign_response'] = opts[:'sign_response'] if !opts[:'sign_response'].nil?
       query_params[:'signature_algorithm'] = opts[:'signature_algorithm'] if !opts[:'signature_algorithm'].nil?
       query_params[:'signing_kp'] = opts[:'signing_kp'] if !opts[:'signing_kp'].nil?
@@ -8127,7 +8185,7 @@ module Authentik::Api
     # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :download 
-    # @option opts [ForceBindingEnum] :force_binding 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
     # @return [SAMLMetadata]
     def providers_wsfed_metadata_retrieve(id, opts = {})
       data, _status_code, _headers = providers_wsfed_metadata_retrieve_with_http_info(id, opts)
@@ -8138,7 +8196,7 @@ module Authentik::Api
     # @param id [Integer] A unique integer value identifying this WS-Federation Provider.
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :download 
-    # @option opts [ForceBindingEnum] :force_binding 
+    # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
     # @return [Array<(SAMLMetadata, Integer, Hash)>] SAMLMetadata data, response status code and response headers
     def providers_wsfed_metadata_retrieve_with_http_info(id, opts = {})
       if @api_client.config.debugging
@@ -8147,6 +8205,10 @@ module Authentik::Api
       # verify the required parameter 'id' is set
       if @api_client.config.client_side_validation && id.nil?
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_metadata_retrieve"
+      end
+      allowable_values = ["urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST", "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"]
+      if @api_client.config.client_side_validation && opts[:'force_binding'] && !allowable_values.include?(opts[:'force_binding'])
+        fail ArgumentError, "invalid value for \"force_binding\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/providers/wsfed/{id}/metadata/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))

@@ -1,4 +1,4 @@
-# Authentik::Api::LangEnum
+# Authentik::Api::ConsentStageModeEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::LangEnum.new()
+instance = Authentik::Api::ConsentStageModeEnum.new()
 ```
 

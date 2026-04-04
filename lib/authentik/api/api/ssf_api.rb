@@ -15,7 +15,7 @@ module Authentik::Api
     end
     # SSFStream Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [DeliveryMethodEnum] :delivery_method 
+    # @option opts [String] :delivery_method 
     # @option opts [String] :endpoint_url 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -30,7 +30,7 @@ module Authentik::Api
 
     # SSFStream Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [DeliveryMethodEnum] :delivery_method 
+    # @option opts [String] :delivery_method 
     # @option opts [String] :endpoint_url 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -41,6 +41,10 @@ module Authentik::Api
     def ssf_streams_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SsfApi.ssf_streams_list ...'
+      end
+      allowable_values = ["https://schemas.openid.net/secevent/risc/delivery-method/poll", "https://schemas.openid.net/secevent/risc/delivery-method/push"]
+      if @api_client.config.client_side_validation && opts[:'delivery_method'] && !allowable_values.include?(opts[:'delivery_method'])
+        fail ArgumentError, "invalid value for \"delivery_method\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/ssf/streams/'

@@ -110,6 +110,8 @@ module Authentik::Api
 
       if attributes.key?(:'arch')
         self.arch = attributes[:'arch']
+      else
+        self.arch = nil
       end
     end
 
@@ -130,7 +132,11 @@ module Authentik::Api
         invalid_properties.push('invalid value for "version", the character length must be greater than or equal to 1.')
       end
 
-      if !@arch.nil? && @arch.to_s.length < 1
+      if @arch.nil?
+        invalid_properties.push('invalid value for "arch", arch cannot be nil.')
+      end
+
+      if @arch.to_s.length < 1
         invalid_properties.push('invalid value for "arch", the character length must be greater than or equal to 1.')
       end
 
@@ -144,7 +150,8 @@ module Authentik::Api
       return false if @family.nil?
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@version.nil? && @version.to_s.length < 1
-      return false if !@arch.nil? && @arch.to_s.length < 1
+      return false if @arch.nil?
+      return false if @arch.to_s.length < 1
       true
     end
 

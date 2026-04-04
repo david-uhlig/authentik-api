@@ -29,7 +29,7 @@ describe 'SsfApi' do
   # unit tests for ssf_streams_list
   # SSFStream Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [DeliveryMethodEnum] :delivery_method 
+  # @option opts [String] :delivery_method 
   # @option opts [String] :endpoint_url 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.

@@ -96,7 +96,7 @@ module Authentik::Api
         :'bound_to' => :'Integer',
         :'asns' => :'Array<Integer>',
         :'countries' => :'Array<CountryCodeEnum>',
-        :'countries_obj' => :'Array<GeoIPPolicyCountriesObjInner>',
+        :'countries_obj' => :'Array<DetailedCountryField>',
         :'check_history_distance' => :'Boolean',
         :'history_max_distance_km' => :'Integer',
         :'distance_tolerance_km' => :'Integer',

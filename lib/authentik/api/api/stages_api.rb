@@ -2136,7 +2136,7 @@ module Authentik::Api
     # @option opts [String] :account_sid 
     # @option opts [String] :auth 
     # @option opts [String] :auth_password 
-    # @option opts [AuthTypeEnum] :auth_type 
+    # @option opts [String] :auth_type 
     # @option opts [String] :configure_flow 
     # @option opts [String] :friendly_name 
     # @option opts [String] :from_number 
@@ -2145,7 +2145,7 @@ module Authentik::Api
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [ProviderEnum] :provider 
+    # @option opts [String] :provider 
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
     # @option opts [Boolean] :verify_only 
@@ -2160,7 +2160,7 @@ module Authentik::Api
     # @option opts [String] :account_sid 
     # @option opts [String] :auth 
     # @option opts [String] :auth_password 
-    # @option opts [AuthTypeEnum] :auth_type 
+    # @option opts [String] :auth_type 
     # @option opts [String] :configure_flow 
     # @option opts [String] :friendly_name 
     # @option opts [String] :from_number 
@@ -2169,7 +2169,7 @@ module Authentik::Api
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [ProviderEnum] :provider 
+    # @option opts [String] :provider 
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
     # @option opts [Boolean] :verify_only 
@@ -2177,6 +2177,14 @@ module Authentik::Api
     def stages_authenticator_sms_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_authenticator_sms_list ...'
+      end
+      allowable_values = ["basic", "bearer"]
+      if @api_client.config.client_side_validation && opts[:'auth_type'] && !allowable_values.include?(opts[:'auth_type'])
+        fail ArgumentError, "invalid value for \"auth_type\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["generic", "twilio"]
+      if @api_client.config.client_side_validation && opts[:'provider'] && !allowable_values.include?(opts[:'provider'])
+        fail ArgumentError, "invalid value for \"provider\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/authenticator/sms/'
@@ -3100,7 +3108,7 @@ module Authentik::Api
     # AuthenticatorTOTPStage Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :configure_flow 
-    # @option opts [DigitsEnum] :digits 
+    # @option opts [String] :digits 
     # @option opts [String] :friendly_name 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -3117,7 +3125,7 @@ module Authentik::Api
     # AuthenticatorTOTPStage Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :configure_flow 
-    # @option opts [DigitsEnum] :digits 
+    # @option opts [String] :digits 
     # @option opts [String] :friendly_name 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -3129,6 +3137,10 @@ module Authentik::Api
     def stages_authenticator_totp_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_authenticator_totp_list ...'
+      end
+      allowable_values = ["6", "8"]
+      if @api_client.config.client_side_validation && opts[:'digits'] && !allowable_values.include?(opts[:'digits'])
+        fail ArgumentError, "invalid value for \"digits\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/authenticator/totp/'
@@ -3572,7 +3584,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :configuration_stages 
     # @option opts [String] :name 
-    # @option opts [NotConfiguredActionEnum] :not_configured_action 
+    # @option opts [String] :not_configured_action 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -3587,7 +3599,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Array<String>] :configuration_stages 
     # @option opts [String] :name 
-    # @option opts [NotConfiguredActionEnum] :not_configured_action 
+    # @option opts [String] :not_configured_action 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -3596,6 +3608,10 @@ module Authentik::Api
     def stages_authenticator_validate_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_authenticator_validate_list ...'
+      end
+      allowable_values = ["configure", "deny", "skip"]
+      if @api_client.config.client_side_validation && opts[:'not_configured_action'] && !allowable_values.include?(opts[:'not_configured_action'])
+        fail ArgumentError, "invalid value for \"not_configured_action\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/authenticator/validate/'
@@ -4172,17 +4188,19 @@ module Authentik::Api
 
     # AuthenticatorWebAuthnStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [AuthenticatorAttachmentEnum] :authenticator_attachment 
+    # @option opts [String] :authenticator_attachment 
     # @option opts [String] :configure_flow 
     # @option opts [Array<String>] :device_type_restrictions 
+    # @option opts [String] :friendly_name 
     # @option opts [Integer] :max_attempts 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [UserVerificationEnum] :resident_key_requirement 
+    # @option opts [String] :resident_key_requirement 
     # @option opts [String] :search A search term.
-    # @option opts [UserVerificationEnum] :user_verification 
+    # @option opts [String] :stage_uuid 
+    # @option opts [String] :user_verification 
     # @return [PaginatedAuthenticatorWebAuthnStageList]
     def stages_authenticator_webauthn_list(opts = {})
       data, _status_code, _headers = stages_authenticator_webauthn_list_with_http_info(opts)
@@ -4191,21 +4209,35 @@ module Authentik::Api
 
     # AuthenticatorWebAuthnStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [AuthenticatorAttachmentEnum] :authenticator_attachment 
+    # @option opts [String] :authenticator_attachment 
     # @option opts [String] :configure_flow 
     # @option opts [Array<String>] :device_type_restrictions 
+    # @option opts [String] :friendly_name 
     # @option opts [Integer] :max_attempts 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [UserVerificationEnum] :resident_key_requirement 
+    # @option opts [String] :resident_key_requirement 
     # @option opts [String] :search A search term.
-    # @option opts [UserVerificationEnum] :user_verification 
+    # @option opts [String] :stage_uuid 
+    # @option opts [String] :user_verification 
     # @return [Array<(PaginatedAuthenticatorWebAuthnStageList, Integer, Hash)>] PaginatedAuthenticatorWebAuthnStageList data, response status code and response headers
     def stages_authenticator_webauthn_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_authenticator_webauthn_list ...'
+      end
+      allowable_values = ["cross-platform", "platform"]
+      if @api_client.config.client_side_validation && opts[:'authenticator_attachment'] && !allowable_values.include?(opts[:'authenticator_attachment'])
+        fail ArgumentError, "invalid value for \"authenticator_attachment\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["discouraged", "preferred", "required"]
+      if @api_client.config.client_side_validation && opts[:'resident_key_requirement'] && !allowable_values.include?(opts[:'resident_key_requirement'])
+        fail ArgumentError, "invalid value for \"resident_key_requirement\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["discouraged", "preferred", "required"]
+      if @api_client.config.client_side_validation && opts[:'user_verification'] && !allowable_values.include?(opts[:'user_verification'])
+        fail ArgumentError, "invalid value for \"user_verification\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/authenticator/webauthn/'
@@ -4215,6 +4247,7 @@ module Authentik::Api
       query_params[:'authenticator_attachment'] = opts[:'authenticator_attachment'] if !opts[:'authenticator_attachment'].nil?
       query_params[:'configure_flow'] = opts[:'configure_flow'] if !opts[:'configure_flow'].nil?
       query_params[:'device_type_restrictions'] = @api_client.build_collection_param(opts[:'device_type_restrictions'], :multi) if !opts[:'device_type_restrictions'].nil?
+      query_params[:'friendly_name'] = opts[:'friendly_name'] if !opts[:'friendly_name'].nil?
       query_params[:'max_attempts'] = opts[:'max_attempts'] if !opts[:'max_attempts'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
@@ -4222,6 +4255,7 @@ module Authentik::Api
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'resident_key_requirement'] = opts[:'resident_key_requirement'] if !opts[:'resident_key_requirement'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'stage_uuid'] = opts[:'stage_uuid'] if !opts[:'stage_uuid'].nil?
       query_params[:'user_verification'] = opts[:'user_verification'] if !opts[:'user_verification'].nil?
 
       # header parameters
@@ -5112,7 +5146,7 @@ module Authentik::Api
     # ConsentStage Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :consent_expire_in 
-    # @option opts [ConsentModeEnum] :mode 
+    # @option opts [String] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -5128,7 +5162,7 @@ module Authentik::Api
     # ConsentStage Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :consent_expire_in 
-    # @option opts [ConsentModeEnum] :mode 
+    # @option opts [String] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -5139,6 +5173,10 @@ module Authentik::Api
     def stages_consent_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_consent_list ...'
+      end
+      allowable_values = ["always_require", "expiring", "permanent"]
+      if @api_client.config.client_side_validation && opts[:'mode'] && !allowable_values.include?(opts[:'mode'])
+        fail ArgumentError, "invalid value for \"mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/consent/'
@@ -8210,78 +8248,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Send invitation link via email to one or more addresses
-    # @param invite_uuid [String] A UUID string identifying this Invitation.
-    # @param invitation_send_email_request [InvitationSendEmailRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def stages_invitation_invitations_send_email_create(invite_uuid, invitation_send_email_request, opts = {})
-      stages_invitation_invitations_send_email_create_with_http_info(invite_uuid, invitation_send_email_request, opts)
-      nil
-    end
-
-    # Send invitation link via email to one or more addresses
-    # @param invite_uuid [String] A UUID string identifying this Invitation.
-    # @param invitation_send_email_request [InvitationSendEmailRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def stages_invitation_invitations_send_email_create_with_http_info(invite_uuid, invitation_send_email_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: StagesApi.stages_invitation_invitations_send_email_create ...'
-      end
-      # verify the required parameter 'invite_uuid' is set
-      if @api_client.config.client_side_validation && invite_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'invite_uuid' when calling StagesApi.stages_invitation_invitations_send_email_create"
-      end
-      # verify the required parameter 'invitation_send_email_request' is set
-      if @api_client.config.client_side_validation && invitation_send_email_request.nil?
-        fail ArgumentError, "Missing the required parameter 'invitation_send_email_request' when calling StagesApi.stages_invitation_invitations_send_email_create"
-      end
-      # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/send_email/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(invitation_send_email_request)
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"StagesApi.stages_invitation_invitations_send_email_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: StagesApi#stages_invitation_invitations_send_email_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Invitation Viewset
     # @param invite_uuid [String] A UUID string identifying this Invitation.
     # @param invitation_request [InvitationRequest] 
@@ -9012,16 +8978,16 @@ module Authentik::Api
 
     # MutualTLSStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [CertAttributeEnum] :cert_attribute 
+    # @option opts [String] :cert_attribute 
     # @option opts [Array<String>] :certificate_authorities 
-    # @option opts [StageModeEnum] :mode 
+    # @option opts [String] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
-    # @option opts [UserAttributeEnum] :user_attribute 
+    # @option opts [String] :user_attribute 
     # @return [PaginatedMutualTLSStageList]
     def stages_mtls_list(opts = {})
       data, _status_code, _headers = stages_mtls_list_with_http_info(opts)
@@ -9030,20 +8996,32 @@ module Authentik::Api
 
     # MutualTLSStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [CertAttributeEnum] :cert_attribute 
+    # @option opts [String] :cert_attribute 
     # @option opts [Array<String>] :certificate_authorities 
-    # @option opts [StageModeEnum] :mode 
+    # @option opts [String] :mode 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
-    # @option opts [UserAttributeEnum] :user_attribute 
+    # @option opts [String] :user_attribute 
     # @return [Array<(PaginatedMutualTLSStageList, Integer, Hash)>] PaginatedMutualTLSStageList data, response status code and response headers
     def stages_mtls_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_mtls_list ...'
+      end
+      allowable_values = ["common_name", "email", "subject"]
+      if @api_client.config.client_side_validation && opts[:'cert_attribute'] && !allowable_values.include?(opts[:'cert_attribute'])
+        fail ArgumentError, "invalid value for \"cert_attribute\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["optional", "required"]
+      if @api_client.config.client_side_validation && opts[:'mode'] && !allowable_values.include?(opts[:'mode'])
+        fail ArgumentError, "invalid value for \"mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["email", "username"]
+      if @api_client.config.client_side_validation && opts[:'user_attribute'] && !allowable_values.include?(opts[:'user_attribute'])
+        fail ArgumentError, "invalid value for \"user_attribute\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/mtls/'
@@ -9962,7 +9940,7 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :placeholder 
     # @option opts [String] :search A search term.
-    # @option opts [PromptTypeEnum] :type 
+    # @option opts [String] :type 
     # @return [PaginatedPromptList]
     def stages_prompt_prompts_list(opts = {})
       data, _status_code, _headers = stages_prompt_prompts_list_with_http_info(opts)
@@ -9979,11 +9957,15 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :placeholder 
     # @option opts [String] :search A search term.
-    # @option opts [PromptTypeEnum] :type 
+    # @option opts [String] :type 
     # @return [Array<(PaginatedPromptList, Integer, Hash)>] PaginatedPromptList data, response status code and response headers
     def stages_prompt_prompts_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_prompt_prompts_list ...'
+      end
+      allowable_values = ["ak-locale", "checkbox", "date", "date-time", "dropdown", "email", "file", "hidden", "number", "password", "radio-button-group", "separator", "static", "text", "text_area", "text_area_read_only", "text_read_only", "username"]
+      if @api_client.config.client_side_validation && opts[:'type'] && !allowable_values.include?(opts[:'type'])
+        fail ArgumentError, "invalid value for \"type\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/prompt/prompts/'
@@ -12348,9 +12330,9 @@ module Authentik::Api
 
     # UserLoginStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [GeoipBindingEnum] :geoip_binding 
+    # @option opts [String] :geoip_binding Bind sessions created by this stage to the configured GeoIP location  
     # @option opts [String] :name 
-    # @option opts [NetworkBindingEnum] :network_binding 
+    # @option opts [String] :network_binding Bind sessions created by this stage to the configured network  
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -12368,9 +12350,9 @@ module Authentik::Api
 
     # UserLoginStage Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [GeoipBindingEnum] :geoip_binding 
+    # @option opts [String] :geoip_binding Bind sessions created by this stage to the configured GeoIP location  
     # @option opts [String] :name 
-    # @option opts [NetworkBindingEnum] :network_binding 
+    # @option opts [String] :network_binding Bind sessions created by this stage to the configured network  
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -12384,6 +12366,14 @@ module Authentik::Api
     def stages_user_login_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_user_login_list ...'
+      end
+      allowable_values = ["bind_continent", "bind_continent_country", "bind_continent_country_city", "no_binding"]
+      if @api_client.config.client_side_validation && opts[:'geoip_binding'] && !allowable_values.include?(opts[:'geoip_binding'])
+        fail ArgumentError, "invalid value for \"geoip_binding\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["bind_asn", "bind_asn_network", "bind_asn_network_ip", "no_binding"]
+      if @api_client.config.client_side_validation && opts[:'network_binding'] && !allowable_values.include?(opts[:'network_binding'])
+        fail ArgumentError, "invalid value for \"network_binding\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/user_login/'
@@ -13298,9 +13288,9 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
-    # @option opts [UserCreationModeEnum] :user_creation_mode 
+    # @option opts [String] :user_creation_mode 
     # @option opts [String] :user_path_template 
-    # @option opts [UserTypeEnum] :user_type 
+    # @option opts [String] :user_type 
     # @return [PaginatedUserWriteStageList]
     def stages_user_write_list(opts = {})
       data, _status_code, _headers = stages_user_write_list_with_http_info(opts)
@@ -13317,13 +13307,21 @@ module Authentik::Api
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :stage_uuid 
-    # @option opts [UserCreationModeEnum] :user_creation_mode 
+    # @option opts [String] :user_creation_mode 
     # @option opts [String] :user_path_template 
-    # @option opts [UserTypeEnum] :user_type 
+    # @option opts [String] :user_type 
     # @return [Array<(PaginatedUserWriteStageList, Integer, Hash)>] PaginatedUserWriteStageList data, response status code and response headers
     def stages_user_write_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: StagesApi.stages_user_write_list ...'
+      end
+      allowable_values = ["always_create", "create_when_required", "never_create"]
+      if @api_client.config.client_side_validation && opts[:'user_creation_mode'] && !allowable_values.include?(opts[:'user_creation_mode'])
+        fail ArgumentError, "invalid value for \"user_creation_mode\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["external", "internal", "internal_service_account", "service_account"]
+      if @api_client.config.client_side_validation && opts[:'user_type'] && !allowable_values.include?(opts[:'user_type'])
+        fail ArgumentError, "invalid value for \"user_type\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/stages/user_write/'

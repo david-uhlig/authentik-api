@@ -8,23 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # GoogleChromeConnector Serializer
-  class GoogleChromeConnectorRequest < ApiModelBase
-    attr_accessor :connector_uuid
+  # Logs of an attempted flow import
+  class FlowImportResult < ApiModelBase
+    attr_accessor :logs
 
-    attr_accessor :name
-
-    attr_accessor :enabled
-
-    attr_accessor :credentials
+    attr_accessor :success
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'connector_uuid' => :'connector_uuid',
-        :'name' => :'name',
-        :'enabled' => :'enabled',
-        :'credentials' => :'credentials'
+        :'logs' => :'logs',
+        :'success' => :'success'
       }
     end
 
@@ -41,10 +35,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'connector_uuid' => :'String',
-        :'name' => :'String',
-        :'enabled' => :'Boolean',
-        :'credentials' => :'Hash<String, Object>'
+        :'logs' => :'Array<LogEvent>',
+        :'success' => :'Boolean'
       }
     end
 
@@ -58,38 +50,30 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::GoogleChromeConnectorRequest` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::FlowImportResult` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::GoogleChromeConnectorRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::FlowImportResult`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'connector_uuid')
-        self.connector_uuid = attributes[:'connector_uuid']
-      end
-
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
-      end
-
-      if attributes.key?(:'enabled')
-        self.enabled = attributes[:'enabled']
-      end
-
-      if attributes.key?(:'credentials')
-        if (value = attributes[:'credentials']).is_a?(Hash)
-          self.credentials = value
+      if attributes.key?(:'logs')
+        if (value = attributes[:'logs']).is_a?(Array)
+          self.logs = value
         end
       else
-        self.credentials = nil
+        self.logs = nil
+      end
+
+      if attributes.key?(:'success')
+        self.success = attributes[:'success']
+      else
+        self.success = nil
       end
     end
 
@@ -98,16 +82,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
+      if @logs.nil?
+        invalid_properties.push('invalid value for "logs", logs cannot be nil.')
       end
 
-      if @name.to_s.length < 1
-        invalid_properties.push('invalid value for "name", the character length must be greater than or equal to 1.')
-      end
-
-      if @credentials.nil?
-        invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
+      if @success.nil?
+        invalid_properties.push('invalid value for "success", success cannot be nil.')
       end
 
       invalid_properties
@@ -117,34 +97,29 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @name.nil?
-      return false if @name.to_s.length < 1
-      return false if @credentials.nil?
+      return false if @logs.nil?
+      return false if @success.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] logs Value to be assigned
+    def logs=(logs)
+      if logs.nil?
+        fail ArgumentError, 'logs cannot be nil'
       end
 
-      if name.to_s.length < 1
-        fail ArgumentError, 'invalid value for "name", the character length must be greater than or equal to 1.'
-      end
-
-      @name = name
+      @logs = logs
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] credentials Value to be assigned
-    def credentials=(credentials)
-      if credentials.nil?
-        fail ArgumentError, 'credentials cannot be nil'
+    # @param [Object] success Value to be assigned
+    def success=(success)
+      if success.nil?
+        fail ArgumentError, 'success cannot be nil'
       end
 
-      @credentials = credentials
+      @success = success
     end
 
     # Checks equality by comparing each attribute.
@@ -152,10 +127,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          connector_uuid == o.connector_uuid &&
-          name == o.name &&
-          enabled == o.enabled &&
-          credentials == o.credentials
+          logs == o.logs &&
+          success == o.success
     end
 
     # @see the `==` method
@@ -167,7 +140,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [connector_uuid, name, enabled, credentials].hash
+      [logs, success].hash
     end
 
     # Builds the object from hash

@@ -39,14 +39,9 @@ module Authentik::Api
 
     attr_accessor :resident_key_requirement
 
-    attr_accessor :hints
-
     attr_accessor :device_type_restrictions
 
     attr_accessor :device_type_restrictions_obj
-
-    # When enabled, a given device can only be registered once.
-    attr_accessor :prevent_duplicate_devices
 
     attr_accessor :max_attempts
 
@@ -87,10 +82,8 @@ module Authentik::Api
         :'user_verification' => :'user_verification',
         :'authenticator_attachment' => :'authenticator_attachment',
         :'resident_key_requirement' => :'resident_key_requirement',
-        :'hints' => :'hints',
         :'device_type_restrictions' => :'device_type_restrictions',
         :'device_type_restrictions_obj' => :'device_type_restrictions_obj',
-        :'prevent_duplicate_devices' => :'prevent_duplicate_devices',
         :'max_attempts' => :'max_attempts'
       }
     end
@@ -119,11 +112,9 @@ module Authentik::Api
         :'friendly_name' => :'String',
         :'user_verification' => :'UserVerificationEnum',
         :'authenticator_attachment' => :'AuthenticatorAttachmentEnum',
-        :'resident_key_requirement' => :'UserVerificationEnum',
-        :'hints' => :'Array<WebAuthnHintEnum>',
+        :'resident_key_requirement' => :'ResidentKeyRequirementEnum',
         :'device_type_restrictions' => :'Array<String>',
         :'device_type_restrictions_obj' => :'Array<WebAuthnDeviceType>',
-        :'prevent_duplicate_devices' => :'Boolean',
         :'max_attempts' => :'Integer'
       }
     end
@@ -216,12 +207,6 @@ module Authentik::Api
         self.resident_key_requirement = attributes[:'resident_key_requirement']
       end
 
-      if attributes.key?(:'hints')
-        if (value = attributes[:'hints']).is_a?(Array)
-          self.hints = value
-        end
-      end
-
       if attributes.key?(:'device_type_restrictions')
         if (value = attributes[:'device_type_restrictions']).is_a?(Array)
           self.device_type_restrictions = value
@@ -234,10 +219,6 @@ module Authentik::Api
         end
       else
         self.device_type_restrictions_obj = nil
-      end
-
-      if attributes.key?(:'prevent_duplicate_devices')
-        self.prevent_duplicate_devices = attributes[:'prevent_duplicate_devices']
       end
 
       if attributes.key?(:'max_attempts')
@@ -425,10 +406,8 @@ module Authentik::Api
           user_verification == o.user_verification &&
           authenticator_attachment == o.authenticator_attachment &&
           resident_key_requirement == o.resident_key_requirement &&
-          hints == o.hints &&
           device_type_restrictions == o.device_type_restrictions &&
           device_type_restrictions_obj == o.device_type_restrictions_obj &&
-          prevent_duplicate_devices == o.prevent_duplicate_devices &&
           max_attempts == o.max_attempts
     end
 
@@ -441,7 +420,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, device_type_restrictions, device_type_restrictions_obj, prevent_duplicate_devices, max_attempts].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, device_type_restrictions, device_type_restrictions_obj, max_attempts].hash
     end
 
     # Builds the object from hash

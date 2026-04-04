@@ -62,7 +62,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'name' => :'String',
-        :'mode' => :'ConsentModeEnum',
+        :'mode' => :'ConsentStageModeEnum',
         :'consent_expire_in' => :'String'
       }
     end

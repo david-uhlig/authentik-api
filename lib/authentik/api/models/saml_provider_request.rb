@@ -68,8 +68,6 @@ module Authentik::Api
 
     attr_accessor :sign_logout_request
 
-    attr_accessor :sign_logout_response
-
     # This determines how authentik sends the response back to the Service Provider.
     attr_accessor :sp_binding
 
@@ -131,7 +129,6 @@ module Authentik::Api
         :'sign_assertion' => :'sign_assertion',
         :'sign_response' => :'sign_response',
         :'sign_logout_request' => :'sign_logout_request',
-        :'sign_logout_response' => :'sign_logout_response',
         :'sp_binding' => :'sp_binding',
         :'sls_binding' => :'sls_binding',
         :'logout_method' => :'logout_method',
@@ -175,7 +172,6 @@ module Authentik::Api
         :'sign_assertion' => :'Boolean',
         :'sign_response' => :'Boolean',
         :'sign_logout_request' => :'Boolean',
-        :'sign_logout_response' => :'Boolean',
         :'sp_binding' => :'SAMLBindingsEnum',
         :'sls_binding' => :'SAMLBindingsEnum',
         :'logout_method' => :'SAMLLogoutMethods',
@@ -308,10 +304,6 @@ module Authentik::Api
 
       if attributes.key?(:'sign_logout_request')
         self.sign_logout_request = attributes[:'sign_logout_request']
-      end
-
-      if attributes.key?(:'sign_logout_response')
-        self.sign_logout_response = attributes[:'sign_logout_response']
       end
 
       if attributes.key?(:'sp_binding')
@@ -531,7 +523,6 @@ module Authentik::Api
           sign_assertion == o.sign_assertion &&
           sign_response == o.sign_response &&
           sign_logout_request == o.sign_logout_request &&
-          sign_logout_response == o.sign_logout_response &&
           sp_binding == o.sp_binding &&
           sls_binding == o.sls_binding &&
           logout_method == o.logout_method &&
@@ -548,7 +539,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, sls_url, audience, issuer, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, sls_url, audience, issuer, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy].hash
     end
 
     # Builds the object from hash

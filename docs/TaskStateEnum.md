@@ -1,4 +1,4 @@
-# Authentik::Api::ForceBindingEnum
+# Authentik::Api::TaskStateEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::ForceBindingEnum.new()
+instance = Authentik::Api::TaskStateEnum.new()
 ```
 

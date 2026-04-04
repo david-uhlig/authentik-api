@@ -354,7 +354,7 @@ module Authentik::Api
 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :actor_name 
-    # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+    # @option opts [Array<String>] :aggregated_status 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -364,7 +364,7 @@ module Authentik::Api
     # @option opts [String] :rel_obj_id 
     # @option opts [Boolean] :rel_obj_id__isnull 
     # @option opts [String] :search A search term.
-    # @option opts [TaskStatusEnum] :state 
+    # @option opts [String] :state Task status  
     # @return [PaginatedTaskList]
     def tasks_tasks_list(opts = {})
       data, _status_code, _headers = tasks_tasks_list_with_http_info(opts)
@@ -373,7 +373,7 @@ module Authentik::Api
 
     # @param [Hash] opts the optional parameters
     # @option opts [String] :actor_name 
-    # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+    # @option opts [Array<String>] :aggregated_status 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -383,11 +383,19 @@ module Authentik::Api
     # @option opts [String] :rel_obj_id 
     # @option opts [Boolean] :rel_obj_id__isnull 
     # @option opts [String] :search A search term.
-    # @option opts [TaskStatusEnum] :state 
+    # @option opts [String] :state Task status  
     # @return [Array<(PaginatedTaskList, Integer, Hash)>] PaginatedTaskList data, response status code and response headers
     def tasks_tasks_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TasksApi.tasks_tasks_list ...'
+      end
+      allowable_values = ["consumed", "done", "error", "info", "postprocess", "preprocess", "queued", "rejected", "running", "warning"]
+      if @api_client.config.client_side_validation && opts[:'aggregated_status'] && !opts[:'aggregated_status'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"aggregated_status\", must include one of #{allowable_values}"
+      end
+      allowable_values = ["consumed", "done", "postprocess", "preprocess", "queued", "rejected", "running"]
+      if @api_client.config.client_side_validation && opts[:'state'] && !allowable_values.include?(opts[:'state'])
+        fail ArgumentError, "invalid value for \"state\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/tasks/tasks/'
@@ -632,7 +640,7 @@ module Authentik::Api
         @api_client.config.logger.debug 'Calling API: TasksApi.tasks_workers_list ...'
       end
       # resource path
-      local_var_path = '/tasks/workers/'
+      local_var_path = '/tasks/workers'
 
       # query parameters
       query_params = opts[:query_params] || {}

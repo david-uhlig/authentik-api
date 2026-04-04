@@ -1,4 +1,4 @@
-# Authentik::Api::BlueprintImportResult
+# Authentik::Api::FlowImportResult
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::BlueprintImportResult.new(
+instance = Authentik::Api::FlowImportResult.new(
   logs: null,
   success: null
 )

@@ -44,7 +44,7 @@ module Authentik::Api
         :'flow_info' => :'ContextualFlowInfo',
         :'component' => :'String',
         :'response_errors' => :'Hash<String, Array<ErrorDetail>>',
-        :'logout_urls' => :'Array<LogoutURL>'
+        :'logout_urls' => :'Array<Hash<String, Object>>'
       }
     end
 

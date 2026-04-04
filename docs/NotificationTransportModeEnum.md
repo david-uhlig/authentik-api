@@ -1,4 +1,4 @@
-# Authentik::Api::WebAuthnHintEnum
+# Authentik::Api::NotificationTransportModeEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::WebAuthnHintEnum.new()
+instance = Authentik::Api::NotificationTransportModeEnum.new()
 ```
 

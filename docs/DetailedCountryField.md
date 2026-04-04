@@ -1,10 +1,10 @@
-# Authentik::Api::GeoIPPolicyCountriesObjInner
+# Authentik::Api::DetailedCountryField
 
 ## Properties
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **code** | **String** |  |  |
+| **code** | [**CountryCodeEnum**](CountryCodeEnum.md) |  |  |
 | **name** | **String** |  |  |
 
 ## Example
@@ -12,7 +12,7 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::GeoIPPolicyCountriesObjInner.new(
+instance = Authentik::Api::DetailedCountryField.new(
   code: null,
   name: null
 )

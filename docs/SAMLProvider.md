@@ -35,7 +35,6 @@
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_response** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
-| **sign_logout_response** | **Boolean** |  | [optional] |
 | **sp_binding** | [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] |
 | **sls_binding** | [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] |
@@ -85,7 +84,6 @@ instance = Authentik::Api::SAMLProvider.new(
   sign_assertion: null,
   sign_response: null,
   sign_logout_request: null,
-  sign_logout_response: null,
   sp_binding: null,
   sls_binding: null,
   logout_method: null,

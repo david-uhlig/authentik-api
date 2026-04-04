@@ -53,7 +53,7 @@ describe 'AdminApi' do
   # Delete file from storage backend.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :name 
-  # @option opts [UsageEnum] :usage 
+  # @option opts [String] :usage 
   # @return [nil]
   describe 'admin_file_destroy test' do
     it 'should work' do
@@ -66,7 +66,7 @@ describe 'AdminApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :manageable_only 
   # @option opts [String] :search A search term.
-  # @option opts [UsageEnum] :usage 
+  # @option opts [String] :usage 
   # @return [Array<FileList>]
   describe 'admin_file_list test' do
     it 'should work' do

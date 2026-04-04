@@ -8,13 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class WebAuthnHintEnum
-    SECURITY_KEY = "security-key".freeze
-    CLIENT_DEVICE = "client-device".freeze
-    HYBRID = "hybrid".freeze
+  class TaskStateEnum
+    QUEUED = "queued".freeze
+    CONSUMED = "consumed".freeze
+    PREPROCESS = "preprocess".freeze
+    RUNNING = "running".freeze
+    POSTPROCESS = "postprocess".freeze
+    REJECTED = "rejected".freeze
+    DONE = "done".freeze
 
     def self.all_vars
-      @all_vars ||= [SECURITY_KEY, CLIENT_DEVICE, HYBRID].freeze
+      @all_vars ||= [QUEUED, CONSUMED, PREPROCESS, RUNNING, POSTPROCESS, REJECTED, DONE].freeze
     end
 
     # Builds the enum from string
@@ -28,8 +32,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if WebAuthnHintEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #WebAuthnHintEnum"
+      return value if TaskStateEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #TaskStateEnum"
     end
   end
 end
