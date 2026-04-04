@@ -8,7 +8,6 @@ All URIs are relative to */api/v3*
 | [**managed_blueprints_available_list**](ManagedApi.md#managed_blueprints_available_list) | **GET** /managed/blueprints/available/ |  |
 | [**managed_blueprints_create**](ManagedApi.md#managed_blueprints_create) | **POST** /managed/blueprints/ |  |
 | [**managed_blueprints_destroy**](ManagedApi.md#managed_blueprints_destroy) | **DELETE** /managed/blueprints/{instance_uuid}/ |  |
-| [**managed_blueprints_import_create**](ManagedApi.md#managed_blueprints_import_create) | **POST** /managed/blueprints/import/ |  |
 | [**managed_blueprints_list**](ManagedApi.md#managed_blueprints_list) | **GET** /managed/blueprints/ |  |
 | [**managed_blueprints_partial_update**](ManagedApi.md#managed_blueprints_partial_update) | **PATCH** /managed/blueprints/{instance_uuid}/ |  |
 | [**managed_blueprints_retrieve**](ManagedApi.md#managed_blueprints_retrieve) | **GET** /managed/blueprints/{instance_uuid}/ |  |
@@ -285,79 +284,6 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## managed_blueprints_import_create
-
-> <BlueprintImportResult> managed_blueprints_import_create(opts)
-
-
-
-Import blueprint from .yaml file and apply it once, without creating an instance
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::ManagedApi.new
-opts = {
-  file: File.new('/path/to/some/file'), # File | 
-  path: 'path_example' # String | 
-}
-
-begin
-  
-  result = api_instance.managed_blueprints_import_create(opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling ManagedApi->managed_blueprints_import_create: #{e}"
-end
-```
-
-#### Using the managed_blueprints_import_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<BlueprintImportResult>, Integer, Hash)> managed_blueprints_import_create_with_http_info(opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.managed_blueprints_import_create_with_http_info(opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <BlueprintImportResult>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling ManagedApi->managed_blueprints_import_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **file** | **File** |  | [optional] |
-| **path** | **String** |  | [optional] |
-
-### Return type
-
-[**BlueprintImportResult**](BlueprintImportResult.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 
 

@@ -2938,7 +2938,7 @@ opts = {
   expires: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   expiring: true, # Boolean | 
   identifier: 'identifier_example', # String | 
-  intent: Authentik::Api::IntentEnum::VERIFICATION, # IntentEnum | 
+  intent: 'api', # String | 
   managed: 'managed_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -2982,7 +2982,7 @@ end
 | **expires** | **Time** |  | [optional] |
 | **expiring** | **Boolean** |  | [optional] |
 | **identifier** | **String** |  | [optional] |
-| **intent** | [**IntentEnum**](.md) |  | [optional] |
+| **intent** | **String** |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -3962,7 +3962,7 @@ opts = {
   roles_by_name: ['inner_example'], # Array<String> | 
   roles_by_pk: ['inner_example'], # Array<String> | 
   search: 'search_example', # String | A search term.
-  type: [Authentik::Api::UserTypeEnum::INTERNAL], # Array<UserTypeEnum> | 
+  type: ['external'], # Array<String> | 
   username: 'username_example', # String | 
   uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
@@ -4021,7 +4021,7 @@ end
 | **roles_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **roles_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **type** | [**Array&lt;UserTypeEnum&gt;**](UserTypeEnum.md) |  | [optional] |
+| **type** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **username** | **String** |  | [optional] |
 | **uuid** | **String** |  | [optional] |
 
@@ -4222,7 +4222,7 @@ opts = {
   roles_by_name: ['inner_example'], # Array<String> | 
   roles_by_pk: ['inner_example'], # Array<String> | 
   search: 'search_example', # String | A search term.
-  type: [Authentik::Api::UserTypeEnum::INTERNAL], # Array<UserTypeEnum> | 
+  type: ['external'], # Array<String> | 
   username: 'username_example', # String | 
   uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
 }
@@ -4285,7 +4285,7 @@ end
 | **roles_by_name** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **roles_by_pk** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **type** | [**Array&lt;UserTypeEnum&gt;**](UserTypeEnum.md) |  | [optional] |
+| **type** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **username** | **String** |  | [optional] |
 | **uuid** | **String** |  | [optional] |
 

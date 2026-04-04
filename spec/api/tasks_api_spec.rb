@@ -91,7 +91,7 @@ describe 'TasksApi' do
   # unit tests for tasks_tasks_list
   # @param [Hash] opts the optional parameters
   # @option opts [String] :actor_name 
-  # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+  # @option opts [Array<String>] :aggregated_status 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
@@ -101,7 +101,7 @@ describe 'TasksApi' do
   # @option opts [String] :rel_obj_id 
   # @option opts [Boolean] :rel_obj_id__isnull 
   # @option opts [String] :search A search term.
-  # @option opts [TaskStatusEnum] :state 
+  # @option opts [String] :state Task status  
   # @return [PaginatedTaskList]
   describe 'tasks_tasks_list test' do
     it 'should work' do

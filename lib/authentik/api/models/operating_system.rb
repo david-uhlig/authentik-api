@@ -110,6 +110,8 @@ module Authentik::Api
 
       if attributes.key?(:'arch')
         self.arch = attributes[:'arch']
+      else
+        self.arch = nil
       end
     end
 
@@ -122,6 +124,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "family", family cannot be nil.')
       end
 
+      if @arch.nil?
+        invalid_properties.push('invalid value for "arch", arch cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -130,6 +136,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @family.nil?
+      return false if @arch.nil?
       true
     end
 
@@ -141,6 +148,16 @@ module Authentik::Api
       end
 
       @family = family
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] arch Value to be assigned
+    def arch=(arch)
+      if arch.nil?
+        fail ArgumentError, 'arch cannot be nil'
+      end
+
+      @arch = arch
     end
 
     # Checks equality by comparing each attribute.

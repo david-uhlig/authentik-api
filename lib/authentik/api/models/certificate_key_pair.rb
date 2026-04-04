@@ -100,7 +100,7 @@ module Authentik::Api
         :'cert_expiry' => :'Time',
         :'cert_subject' => :'String',
         :'private_key_available' => :'Boolean',
-        :'key_type' => :'CertificateKeyPairKeyTypeEnum',
+        :'key_type' => :'KeyTypeEnum',
         :'certificate_download_url' => :'String',
         :'private_key_download_url' => :'String',
         :'managed' => :'String'

@@ -69,18 +69,6 @@ describe 'ManagedApi' do
     end
   end
 
-  # unit tests for managed_blueprints_import_create
-  # Import blueprint from .yaml file and apply it once, without creating an instance
-  # @param [Hash] opts the optional parameters
-  # @option opts [File] :file 
-  # @option opts [String] :path 
-  # @return [BlueprintImportResult]
-  describe 'managed_blueprints_import_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for managed_blueprints_list
   # Blueprint instances
   # @param [Hash] opts the optional parameters

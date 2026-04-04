@@ -42,8 +42,6 @@ module Authentik::Api
     # Enforce user verification for WebAuthn devices.
     attr_accessor :webauthn_user_verification
 
-    attr_accessor :webauthn_hints
-
     attr_accessor :webauthn_allowed_device_types
 
     attr_accessor :webauthn_allowed_device_types_obj
@@ -85,7 +83,6 @@ module Authentik::Api
         :'configuration_stages' => :'configuration_stages',
         :'last_auth_threshold' => :'last_auth_threshold',
         :'webauthn_user_verification' => :'webauthn_user_verification',
-        :'webauthn_hints' => :'webauthn_hints',
         :'webauthn_allowed_device_types' => :'webauthn_allowed_device_types',
         :'webauthn_allowed_device_types_obj' => :'webauthn_allowed_device_types_obj'
       }
@@ -116,7 +113,6 @@ module Authentik::Api
         :'configuration_stages' => :'Array<String>',
         :'last_auth_threshold' => :'String',
         :'webauthn_user_verification' => :'UserVerificationEnum',
-        :'webauthn_hints' => :'Array<WebAuthnHintEnum>',
         :'webauthn_allowed_device_types' => :'Array<String>',
         :'webauthn_allowed_device_types_obj' => :'Array<WebAuthnDeviceType>'
       }
@@ -210,12 +206,6 @@ module Authentik::Api
 
       if attributes.key?(:'webauthn_user_verification')
         self.webauthn_user_verification = attributes[:'webauthn_user_verification']
-      end
-
-      if attributes.key?(:'webauthn_hints')
-        if (value = attributes[:'webauthn_hints']).is_a?(Array)
-          self.webauthn_hints = value
-        end
       end
 
       if attributes.key?(:'webauthn_allowed_device_types')
@@ -385,7 +375,6 @@ module Authentik::Api
           configuration_stages == o.configuration_stages &&
           last_auth_threshold == o.last_auth_threshold &&
           webauthn_user_verification == o.webauthn_user_verification &&
-          webauthn_hints == o.webauthn_hints &&
           webauthn_allowed_device_types == o.webauthn_allowed_device_types &&
           webauthn_allowed_device_types_obj == o.webauthn_allowed_device_types_obj
     end
@@ -399,7 +388,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_allowed_device_types, webauthn_allowed_device_types_obj].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_allowed_device_types, webauthn_allowed_device_types_obj].hash
     end
 
     # Builds the object from hash

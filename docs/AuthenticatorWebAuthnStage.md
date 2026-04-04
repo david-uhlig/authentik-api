@@ -15,11 +15,9 @@
 | **friendly_name** | **String** |  | [optional] |
 | **user_verification** | [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] |
 | **authenticator_attachment** | [**AuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] |
-| **resident_key_requirement** | [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] |
-| **hints** | [**Array&lt;WebAuthnHintEnum&gt;**](WebAuthnHintEnum.md) |  | [optional] |
+| **resident_key_requirement** | [**ResidentKeyRequirementEnum**](ResidentKeyRequirementEnum.md) |  | [optional] |
 | **device_type_restrictions** | **Array&lt;String&gt;** |  | [optional] |
 | **device_type_restrictions_obj** | [**Array&lt;WebAuthnDeviceType&gt;**](WebAuthnDeviceType.md) |  | [readonly] |
-| **prevent_duplicate_devices** | **Boolean** | When enabled, a given device can only be registered once. | [optional] |
 | **max_attempts** | **Integer** |  | [optional] |
 
 ## Example
@@ -40,10 +38,8 @@ instance = Authentik::Api::AuthenticatorWebAuthnStage.new(
   user_verification: null,
   authenticator_attachment: null,
   resident_key_requirement: null,
-  hints: null,
   device_type_restrictions: null,
   device_type_restrictions_obj: null,
-  prevent_duplicate_devices: null,
   max_attempts: null
 )
 ```

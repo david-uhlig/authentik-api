@@ -126,7 +126,6 @@ All URIs are relative to */api/v3*
 | [**stages_invitation_invitations_list**](StagesApi.md#stages_invitation_invitations_list) | **GET** /stages/invitation/invitations/ |  |
 | [**stages_invitation_invitations_partial_update**](StagesApi.md#stages_invitation_invitations_partial_update) | **PATCH** /stages/invitation/invitations/{invite_uuid}/ |  |
 | [**stages_invitation_invitations_retrieve**](StagesApi.md#stages_invitation_invitations_retrieve) | **GET** /stages/invitation/invitations/{invite_uuid}/ |  |
-| [**stages_invitation_invitations_send_email_create**](StagesApi.md#stages_invitation_invitations_send_email_create) | **POST** /stages/invitation/invitations/{invite_uuid}/send_email/ |  |
 | [**stages_invitation_invitations_update**](StagesApi.md#stages_invitation_invitations_update) | **PUT** /stages/invitation/invitations/{invite_uuid}/ |  |
 | [**stages_invitation_invitations_used_by_list**](StagesApi.md#stages_invitation_invitations_used_by_list) | **GET** /stages/invitation/invitations/{invite_uuid}/used_by/ |  |
 | [**stages_invitation_stages_create**](StagesApi.md#stages_invitation_stages_create) | **POST** /stages/invitation/stages/ |  |
@@ -2522,7 +2521,7 @@ opts = {
   account_sid: 'account_sid_example', # String | 
   auth: 'auth_example', # String | 
   auth_password: 'auth_password_example', # String | 
-  auth_type: Authentik::Api::AuthTypeEnum::BASIC, # AuthTypeEnum | 
+  auth_type: 'basic', # String | 
   configure_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   friendly_name: 'friendly_name_example', # String | 
   from_number: 'from_number_example', # String | 
@@ -2531,7 +2530,7 @@ opts = {
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
-  provider: Authentik::Api::ProviderEnum::TWILIO, # ProviderEnum | 
+  provider: 'generic', # String | 
   search: 'search_example', # String | A search term.
   stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   verify_only: true # Boolean | 
@@ -2571,7 +2570,7 @@ end
 | **account_sid** | **String** |  | [optional] |
 | **auth** | **String** |  | [optional] |
 | **auth_password** | **String** |  | [optional] |
-| **auth_type** | [**AuthTypeEnum**](.md) |  | [optional] |
+| **auth_type** | **String** |  | [optional] |
 | **configure_flow** | **String** |  | [optional] |
 | **friendly_name** | **String** |  | [optional] |
 | **from_number** | **String** |  | [optional] |
@@ -2580,7 +2579,7 @@ end
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **provider** | [**ProviderEnum**](.md) |  | [optional] |
+| **provider** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **stage_uuid** | **String** |  | [optional] |
 | **verify_only** | **Boolean** |  | [optional] |
@@ -3548,7 +3547,7 @@ end
 api_instance = Authentik::Api::StagesApi.new
 opts = {
   configure_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  digits: Authentik::Api::DigitsEnum::N6, # DigitsEnum | 
+  digits: '6', # String | 
   friendly_name: 'friendly_name_example', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -3590,7 +3589,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **configure_flow** | **String** |  | [optional] |
-| **digits** | [**DigitsEnum**](.md) |  | [optional] |
+| **digits** | **String** |  | [optional] |
 | **friendly_name** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
@@ -4055,7 +4054,7 @@ api_instance = Authentik::Api::StagesApi.new
 opts = {
   configuration_stages: ['inner_example'], # Array<String> | 
   name: 'name_example', # String | 
-  not_configured_action: Authentik::Api::NotConfiguredActionEnum::SKIP, # NotConfiguredActionEnum | 
+  not_configured_action: 'configure', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -4095,7 +4094,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **configuration_stages** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **not_configured_action** | [**NotConfiguredActionEnum**](.md) |  | [optional] |
+| **not_configured_action** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -4707,17 +4706,19 @@ end
 
 api_instance = Authentik::Api::StagesApi.new
 opts = {
-  authenticator_attachment: Authentik::Api::AuthenticatorAttachmentEnum::PLATFORM, # AuthenticatorAttachmentEnum | 
+  authenticator_attachment: 'cross-platform', # String | 
   configure_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   device_type_restrictions: ['inner_example'], # Array<String> | 
+  friendly_name: 'friendly_name_example', # String | 
   max_attempts: 56, # Integer | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
-  resident_key_requirement: Authentik::Api::UserVerificationEnum::REQUIRED, # UserVerificationEnum | 
+  resident_key_requirement: 'discouraged', # String | 
   search: 'search_example', # String | A search term.
-  user_verification: Authentik::Api::UserVerificationEnum::REQUIRED # UserVerificationEnum | 
+  stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  user_verification: 'discouraged' # String | 
 }
 
 begin
@@ -4751,17 +4752,19 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **authenticator_attachment** | [**AuthenticatorAttachmentEnum**](.md) |  | [optional] |
+| **authenticator_attachment** | **String** |  | [optional] |
 | **configure_flow** | **String** |  | [optional] |
 | **device_type_restrictions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
+| **friendly_name** | **String** |  | [optional] |
 | **max_attempts** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **resident_key_requirement** | [**UserVerificationEnum**](.md) |  | [optional] |
+| **resident_key_requirement** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **user_verification** | [**UserVerificationEnum**](.md) |  | [optional] |
+| **stage_uuid** | **String** |  | [optional] |
+| **user_verification** | **String** |  | [optional] |
 
 ### Return type
 
@@ -5718,7 +5721,7 @@ end
 api_instance = Authentik::Api::StagesApi.new
 opts = {
   consent_expire_in: 'consent_expire_in_example', # String | 
-  mode: Authentik::Api::ConsentModeEnum::ALWAYS_REQUIRE, # ConsentModeEnum | 
+  mode: 'always_require', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -5759,7 +5762,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **consent_expire_in** | **String** |  | [optional] |
-| **mode** | [**ConsentModeEnum**](.md) |  | [optional] |
+| **mode** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -9033,76 +9036,6 @@ end
 - **Accept**: application/json
 
 
-## stages_invitation_invitations_send_email_create
-
-> stages_invitation_invitations_send_email_create(invite_uuid, invitation_send_email_request)
-
-
-
-Send invitation link via email to one or more addresses
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::StagesApi.new
-invite_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Invitation.
-invitation_send_email_request = Authentik::Api::InvitationSendEmailRequest.new({email_addresses: [3.56]}) # InvitationSendEmailRequest | 
-
-begin
-  
-  api_instance.stages_invitation_invitations_send_email_create(invite_uuid, invitation_send_email_request)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_invitation_invitations_send_email_create: #{e}"
-end
-```
-
-#### Using the stages_invitation_invitations_send_email_create_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> stages_invitation_invitations_send_email_create_with_http_info(invite_uuid, invitation_send_email_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.stages_invitation_invitations_send_email_create_with_http_info(invite_uuid, invitation_send_email_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling StagesApi->stages_invitation_invitations_send_email_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **invite_uuid** | **String** | A UUID string identifying this Invitation. |  |
-| **invitation_send_email_request** | [**InvitationSendEmailRequest**](InvitationSendEmailRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## stages_invitation_invitations_update
 
 > <Invitation> stages_invitation_invitations_update(invite_uuid, invitation_request)
@@ -9905,16 +9838,16 @@ end
 
 api_instance = Authentik::Api::StagesApi.new
 opts = {
-  cert_attribute: Authentik::Api::CertAttributeEnum::SUBJECT, # CertAttributeEnum | 
+  cert_attribute: 'common_name', # String | 
   certificate_authorities: ['inner_example'], # Array<String> | 
-  mode: Authentik::Api::StageModeEnum::OPTIONAL, # StageModeEnum | 
+  mode: 'optional', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
   stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  user_attribute: Authentik::Api::UserAttributeEnum::USERNAME # UserAttributeEnum | 
+  user_attribute: 'email' # String | 
 }
 
 begin
@@ -9948,16 +9881,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **cert_attribute** | [**CertAttributeEnum**](.md) |  | [optional] |
+| **cert_attribute** | **String** |  | [optional] |
 | **certificate_authorities** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **mode** | [**StageModeEnum**](.md) |  | [optional] |
+| **mode** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **stage_uuid** | **String** |  | [optional] |
-| **user_attribute** | [**UserAttributeEnum**](.md) |  | [optional] |
+| **user_attribute** | **String** |  | [optional] |
 
 ### Return type
 
@@ -10925,7 +10858,7 @@ opts = {
   page_size: 56, # Integer | Number of results to return per page.
   placeholder: 'placeholder_example', # String | 
   search: 'search_example', # String | A search term.
-  type: Authentik::Api::PromptTypeEnum::TEXT # PromptTypeEnum | 
+  type: 'ak-locale' # String | 
 }
 
 begin
@@ -10967,7 +10900,7 @@ end
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **placeholder** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **type** | [**PromptTypeEnum**](.md) |  | [optional] |
+| **type** | **String** |  | [optional] |
 
 ### Return type
 
@@ -13498,9 +13431,9 @@ end
 
 api_instance = Authentik::Api::StagesApi.new
 opts = {
-  geoip_binding: Authentik::Api::GeoipBindingEnum::NO_BINDING, # GeoipBindingEnum | 
+  geoip_binding: 'bind_continent', # String | Bind sessions created by this stage to the configured GeoIP location  
   name: 'name_example', # String | 
-  network_binding: Authentik::Api::NetworkBindingEnum::NO_BINDING, # NetworkBindingEnum | 
+  network_binding: 'bind_asn', # String | Bind sessions created by this stage to the configured network  
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -13543,9 +13476,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **geoip_binding** | [**GeoipBindingEnum**](.md) |  | [optional] |
+| **geoip_binding** | **String** | Bind sessions created by this stage to the configured GeoIP location   | [optional] |
 | **name** | **String** |  | [optional] |
-| **network_binding** | [**NetworkBindingEnum**](.md) |  | [optional] |
+| **network_binding** | **String** | Bind sessions created by this stage to the configured network   | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -14518,9 +14451,9 @@ opts = {
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
   stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  user_creation_mode: Authentik::Api::UserCreationModeEnum::NEVER_CREATE, # UserCreationModeEnum | 
+  user_creation_mode: 'always_create', # String | 
   user_path_template: 'user_path_template_example', # String | 
-  user_type: Authentik::Api::UserTypeEnum::INTERNAL # UserTypeEnum | 
+  user_type: 'external' # String | 
 }
 
 begin
@@ -14562,9 +14495,9 @@ end
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **stage_uuid** | **String** |  | [optional] |
-| **user_creation_mode** | [**UserCreationModeEnum**](.md) |  | [optional] |
+| **user_creation_mode** | **String** |  | [optional] |
 | **user_path_template** | **String** |  | [optional] |
-| **user_type** | [**UserTypeEnum**](.md) |  | [optional] |
+| **user_type** | **String** |  | [optional] |
 
 ### Return type
 

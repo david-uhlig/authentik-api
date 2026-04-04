@@ -11,7 +11,7 @@
 | **cert_expiry** | **Time** | Certificate expiry date | [readonly] |
 | **cert_subject** | **String** | Certificate subject as RFC4514 string | [readonly] |
 | **private_key_available** | **Boolean** | Show if this keypair has a private key configured or not | [readonly] |
-| **key_type** | [**CertificateKeyPairKeyTypeEnum**](CertificateKeyPairKeyTypeEnum.md) | Key algorithm type detected from the certificate&#39;s public key | [readonly] |
+| **key_type** | [**KeyTypeEnum**](KeyTypeEnum.md) | Key algorithm type detected from the certificate&#39;s public key | [readonly] |
 | **certificate_download_url** | **String** | Get URL to download certificate | [readonly] |
 | **private_key_download_url** | **String** | Get URL to download private key | [readonly] |
 | **managed** | **String** | Objects that are managed by authentik. These objects are created and updated automatically. This flag only indicates that an object can be overwritten by migrations. You can still modify the objects via the API, but expect changes to be overwritten in a later update. | [readonly] |

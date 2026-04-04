@@ -1817,7 +1817,7 @@ end
 
 api_instance = Authentik::Api::PoliciesApi.new
 opts = {
-  action: Authentik::Api::EventActions::LOGIN, # EventActions | 
+  action: 'authorize_application', # String | Match created events with this action type. When left empty, all action types will be matched.  
   app: 'app_example', # String | 
   client_ip: 'client_ip_example', # String | 
   created: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -1863,7 +1863,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **action** | [**EventActions**](.md) |  | [optional] |
+| **action** | **String** | Match created events with this action type. When left empty, all action types will be matched.   | [optional] |
 | **app** | **String** |  | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **created** | **Time** |  | [optional] |

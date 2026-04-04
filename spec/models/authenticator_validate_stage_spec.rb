@@ -93,12 +93,6 @@ describe Authentik::Api::AuthenticatorValidateStage do
     end
   end
 
-  describe 'test attribute "webauthn_hints"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "webauthn_allowed_device_types"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

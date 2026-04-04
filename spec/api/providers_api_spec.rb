@@ -667,9 +667,9 @@ describe 'ProvidersApi' do
   # @option opts [String] :application 
   # @option opts [String] :authorization_flow 
   # @option opts [String] :client_id 
-  # @option opts [ClientTypeEnum] :client_type 
+  # @option opts [String] :client_type Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable  
   # @option opts [Boolean] :include_claims_in_id_token 
-  # @option opts [IssuerModeEnum] :issuer_mode 
+  # @option opts [String] :issuer_mode Configure how the issuer field of the ID Token should be filled.  
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -678,7 +678,7 @@ describe 'ProvidersApi' do
   # @option opts [String] :refresh_token_validity 
   # @option opts [String] :search A search term.
   # @option opts [String] :signing_key 
-  # @option opts [SubModeEnum] :sub_mode 
+  # @option opts [String] :sub_mode Configure what data should be used as unique User Identifier. For most cases, the default should be fine.  
   # @return [PaginatedOAuth2ProviderList]
   describe 'providers_oauth2_list test' do
     it 'should work' do
@@ -1069,14 +1069,14 @@ describe 'ProvidersApi' do
   # @option opts [String] :authn_context_class_ref_mapping 
   # @option opts [String] :authorization_flow 
   # @option opts [String] :backchannel_application 
-  # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+  # @option opts [String] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
-  # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [String] :digest_algorithm 
   # @option opts [String] :encryption_kp 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer 
-  # @option opts [SAMLLogoutMethods] :logout_method 
+  # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
   # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1087,13 +1087,12 @@ describe 'ProvidersApi' do
   # @option opts [String] :session_valid_not_on_or_after 
   # @option opts [Boolean] :sign_assertion 
   # @option opts [Boolean] :sign_logout_request 
-  # @option opts [Boolean] :sign_logout_response 
   # @option opts [Boolean] :sign_response 
-  # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+  # @option opts [String] :signature_algorithm 
   # @option opts [String] :signing_kp 
-  # @option opts [SAMLBindingsEnum] :sls_binding 
+  # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
   # @option opts [String] :sls_url 
-  # @option opts [SAMLBindingsEnum] :sp_binding 
+  # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
   # @option opts [String] :verification_kp 
   # @return [PaginatedSAMLProviderList]
   describe 'providers_saml_list test' do
@@ -1107,7 +1106,7 @@ describe 'ProvidersApi' do
   # @param id A unique integer value identifying this SAML Provider.
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :download 
-  # @option opts [ForceBindingEnum] :force_binding 
+  # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
   # @return [SAMLMetadata]
   describe 'providers_saml_metadata_retrieve test' do
     it 'should work' do
@@ -1521,14 +1520,14 @@ describe 'ProvidersApi' do
   # @option opts [String] :authn_context_class_ref_mapping 
   # @option opts [String] :authorization_flow 
   # @option opts [String] :backchannel_application 
-  # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
+  # @option opts [String] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
-  # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [String] :digest_algorithm 
   # @option opts [String] :encryption_kp 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer 
-  # @option opts [SAMLLogoutMethods] :logout_method 
+  # @option opts [String] :logout_method Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding).  
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
   # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1539,13 +1538,12 @@ describe 'ProvidersApi' do
   # @option opts [String] :session_valid_not_on_or_after 
   # @option opts [Boolean] :sign_assertion 
   # @option opts [Boolean] :sign_logout_request 
-  # @option opts [Boolean] :sign_logout_response 
   # @option opts [Boolean] :sign_response 
-  # @option opts [SignatureAlgorithmEnum] :signature_algorithm 
+  # @option opts [String] :signature_algorithm 
   # @option opts [String] :signing_kp 
-  # @option opts [SAMLBindingsEnum] :sls_binding 
+  # @option opts [String] :sls_binding This determines how authentik sends the logout response back to the Service Provider.  
   # @option opts [String] :sls_url 
-  # @option opts [SAMLBindingsEnum] :sp_binding 
+  # @option opts [String] :sp_binding This determines how authentik sends the response back to the Service Provider.  
   # @option opts [String] :verification_kp 
   # @return [PaginatedWSFederationProviderList]
   describe 'providers_wsfed_list test' do
@@ -1559,7 +1557,7 @@ describe 'ProvidersApi' do
   # @param id A unique integer value identifying this WS-Federation Provider.
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :download 
-  # @option opts [ForceBindingEnum] :force_binding 
+  # @option opts [String] :force_binding Optionally force the metadata to only include one binding.
   # @return [SAMLMetadata]
   describe 'providers_wsfed_metadata_retrieve test' do
     it 'should work' do

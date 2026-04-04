@@ -90,7 +90,7 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'flow_set' => :'Array<FlowSet>',
-        :'mode' => :'ConsentModeEnum',
+        :'mode' => :'ConsentStageModeEnum',
         :'consent_expire_in' => :'String'
       }
     end

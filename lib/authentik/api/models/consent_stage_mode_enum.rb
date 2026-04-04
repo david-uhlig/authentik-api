@@ -8,12 +8,13 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class ForceBindingEnum
-    URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_POST = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST".freeze
-    URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_REDIRECT = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect".freeze
+  class ConsentStageModeEnum
+    ALWAYS_REQUIRE = "always_require".freeze
+    PERMANENT = "permanent".freeze
+    EXPIRING = "expiring".freeze
 
     def self.all_vars
-      @all_vars ||= [URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_POST, URN_OASIS_NAMES_TC_SAML_2_0_BINDINGS_HTTP_REDIRECT].freeze
+      @all_vars ||= [ALWAYS_REQUIRE, PERMANENT, EXPIRING].freeze
     end
 
     # Builds the enum from string
@@ -27,8 +28,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if ForceBindingEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #ForceBindingEnum"
+      return value if ConsentStageModeEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #ConsentStageModeEnum"
     end
   end
 end

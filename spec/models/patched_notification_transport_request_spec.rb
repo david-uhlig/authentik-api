@@ -39,12 +39,6 @@ describe Authentik::Api::PatchedNotificationTransportRequest do
     end
   end
 
-  describe 'test attribute "webhook_ca"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "webhook_mapping_body"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

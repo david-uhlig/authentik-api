@@ -321,7 +321,7 @@ describe 'PoliciesApi' do
   # unit tests for policies_event_matcher_list
   # Event Matcher Policy Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [EventActions] :action 
+  # @option opts [String] :action Match created events with this action type. When left empty, all action types will be matched.  
   # @option opts [String] :app 
   # @option opts [String] :client_ip 
   # @option opts [Time] :created 

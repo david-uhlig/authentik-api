@@ -15,8 +15,8 @@ module Authentik::Api
     end
     # OpenApi3 schema for this API. Format can be selected via content negotiation.  - YAML: application/vnd.oai.openapi - JSON: application/vnd.oai.openapi+json
     # @param [Hash] opts the optional parameters
-    # @option opts [FormatEnum] :format 
-    # @option opts [LangEnum] :lang 
+    # @option opts [String] :format 
+    # @option opts [String] :lang 
     # @return [Hash<String, Object>]
     def schema_retrieve(opts = {})
       data, _status_code, _headers = schema_retrieve_with_http_info(opts)
@@ -25,12 +25,20 @@ module Authentik::Api
 
     # OpenApi3 schema for this API. Format can be selected via content negotiation.  - YAML: application/vnd.oai.openapi - JSON: application/vnd.oai.openapi+json
     # @param [Hash] opts the optional parameters
-    # @option opts [FormatEnum] :format 
-    # @option opts [LangEnum] :lang 
+    # @option opts [String] :format 
+    # @option opts [String] :lang 
     # @return [Array<(Hash<String, Object>, Integer, Hash)>] Hash<String, Object> data, response status code and response headers
     def schema_retrieve_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: SchemaApi.schema_retrieve ...'
+      end
+      allowable_values = ["json", "yaml"]
+      if @api_client.config.client_side_validation && opts[:'format'] && !allowable_values.include?(opts[:'format'])
+        fail ArgumentError, "invalid value for \"format\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["af", "ar", "ar-dz", "ast", "az", "be", "bg", "bn", "br", "bs", "ca", "ckb", "cs", "cy", "da", "de", "dsb", "el", "en", "en-au", "en-gb", "eo", "es", "es-ar", "es-co", "es-mx", "es-ni", "es-ve", "et", "eu", "fa", "fi", "fr", "fy", "ga", "gd", "gl", "he", "hi", "hr", "hsb", "hu", "hy", "ia", "id", "ig", "io", "is", "it", "ja", "ka", "kab", "kk", "km", "kn", "ko", "ky", "lb", "lt", "lv", "mk", "ml", "mn", "mr", "ms", "my", "nb", "ne", "nl", "nn", "os", "pa", "pl", "pt", "pt-br", "ro", "ru", "sk", "sl", "sq", "sr", "sr-latn", "sv", "sw", "ta", "te", "tg", "th", "tk", "tr", "tt", "udm", "ug", "uk", "ur", "uz", "vi", "zh-hans", "zh-hant"]
+      if @api_client.config.client_side_validation && opts[:'lang'] && !allowable_values.include?(opts[:'lang'])
+        fail ArgumentError, "invalid value for \"lang\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/schema/'

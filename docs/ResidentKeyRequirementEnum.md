@@ -1,4 +1,4 @@
-# Authentik::Api::ConsentModeEnum
+# Authentik::Api::ResidentKeyRequirementEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::ConsentModeEnum.new()
+instance = Authentik::Api::ResidentKeyRequirementEnum.new()
 ```
 

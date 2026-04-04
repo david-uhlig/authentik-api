@@ -11,7 +11,6 @@ All URIs are relative to */api/v3*
 | [**events_events_list**](EventsApi.md#events_events_list) | **GET** /events/events/ |  |
 | [**events_events_partial_update**](EventsApi.md#events_events_partial_update) | **PATCH** /events/events/{event_uuid}/ |  |
 | [**events_events_retrieve**](EventsApi.md#events_events_retrieve) | **GET** /events/events/{event_uuid}/ |  |
-| [**events_events_stats_retrieve**](EventsApi.md#events_events_stats_retrieve) | **GET** /events/events/stats/ |  |
 | [**events_events_top_per_user_list**](EventsApi.md#events_events_top_per_user_list) | **GET** /events/events/top_per_user/ |  |
 | [**events_events_update**](EventsApi.md#events_events_update) | **PUT** /events/events/{event_uuid}/ |  |
 | [**events_events_volume_list**](EventsApi.md#events_events_volume_list) | **GET** /events/events/volume/ |  |
@@ -264,11 +263,10 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  actions: [Authentik::Api::EventActions::LOGIN], # Array<EventActions> | 
+  actions: ['authorize_application'], # Array<String> | 
   brand_name: 'brand_name_example', # String | Brand name
   client_ip: 'client_ip_example', # String | 
   context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
-  context_device: 'context_device_example', # String | Context Device Primary Key
   context_model_app: 'context_model_app_example', # String | Context Model App
   context_model_name: 'context_model_name_example', # String | Context Model Name
   context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
@@ -309,11 +307,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;EventActions&gt;**](EventActions.md) |  | [optional] |
+| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **brand_name** | **String** | Brand name | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **context_authorized_app** | **String** | Context Authorized application | [optional] |
-| **context_device** | **String** | Context Device Primary Key | [optional] |
 | **context_model_app** | **String** | Context Model App | [optional] |
 | **context_model_name** | **String** | Context Model Name | [optional] |
 | **context_model_pk** | **String** | Context Model Primary Key | [optional] |
@@ -357,11 +354,10 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  actions: [Authentik::Api::EventActions::LOGIN], # Array<EventActions> | 
+  actions: ['authorize_application'], # Array<String> | 
   brand_name: 'brand_name_example', # String | Brand name
   client_ip: 'client_ip_example', # String | 
   context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
-  context_device: 'context_device_example', # String | Context Device Primary Key
   context_model_app: 'context_model_app_example', # String | Context Model App
   context_model_name: 'context_model_name_example', # String | Context Model Name
   context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
@@ -404,11 +400,10 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;EventActions&gt;**](EventActions.md) |  | [optional] |
+| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **brand_name** | **String** | Brand name | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **context_authorized_app** | **String** | Context Authorized application | [optional] |
-| **context_device** | **String** | Context Device Primary Key | [optional] |
 | **context_model_app** | **String** | Context Model App | [optional] |
 | **context_model_name** | **String** | Context Model Name | [optional] |
 | **context_model_pk** | **String** | Context Model Primary Key | [optional] |
@@ -563,101 +558,6 @@ end
 ### Return type
 
 [**Event**](Event.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## events_events_stats_retrieve
-
-> <EventStats> events_events_stats_retrieve(count_steps, opts)
-
-
-
-Get event stats for specified filters and count steps
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::EventsApi.new
-count_steps = ['inner_example'] # Array<String> | Timedelta, format of 'weeks=3;days=2;hours=3,seconds=2'
-opts = {
-  action: 'action_example', # String | 
-  actions: [Authentik::Api::EventActions::LOGIN], # Array<EventActions> | 
-  brand_name: 'brand_name_example', # String | Brand name
-  client_ip: 'client_ip_example', # String | 
-  context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
-  context_device: 'context_device_example', # String | Context Device Primary Key
-  context_model_app: 'context_model_app_example', # String | Context Model App
-  context_model_name: 'context_model_name_example', # String | Context Model Name
-  context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
-  ordering: 'ordering_example', # String | Which field to use when ordering the results.
-  search: 'search_example', # String | A search term.
-  username: 'username_example' # String | Username
-}
-
-begin
-  
-  result = api_instance.events_events_stats_retrieve(count_steps, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling EventsApi->events_events_stats_retrieve: #{e}"
-end
-```
-
-#### Using the events_events_stats_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<EventStats>, Integer, Hash)> events_events_stats_retrieve_with_http_info(count_steps, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.events_events_stats_retrieve_with_http_info(count_steps, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <EventStats>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling EventsApi->events_events_stats_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **count_steps** | [**Array&lt;String&gt;**](String.md) | Timedelta, format of &#39;weeks&#x3D;3;days&#x3D;2;hours&#x3D;3,seconds&#x3D;2&#39; |  |
-| **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;EventActions&gt;**](EventActions.md) |  | [optional] |
-| **brand_name** | **String** | Brand name | [optional] |
-| **client_ip** | **String** |  | [optional] |
-| **context_authorized_app** | **String** | Context Authorized application | [optional] |
-| **context_device** | **String** | Context Device Primary Key | [optional] |
-| **context_model_app** | **String** | Context Model App | [optional] |
-| **context_model_name** | **String** | Context Model Name | [optional] |
-| **context_model_pk** | **String** | Context Model Primary Key | [optional] |
-| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
-| **search** | **String** | A search term. | [optional] |
-| **username** | **String** | Username | [optional] |
-
-### Return type
-
-[**EventStats**](EventStats.md)
 
 ### Authorization
 
@@ -835,15 +735,14 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  actions: [Authentik::Api::EventActions::LOGIN], # Array<EventActions> | 
+  actions: ['authorize_application'], # Array<String> | 
   brand_name: 'brand_name_example', # String | Brand name
   client_ip: 'client_ip_example', # String | 
   context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
-  context_device: 'context_device_example', # String | Context Device Primary Key
   context_model_app: 'context_model_app_example', # String | Context Model App
   context_model_name: 'context_model_name_example', # String | Context Model Name
   context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
-  history_days: 56, # Integer | 
+  history_days: 8.14, # Float | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   search: 'search_example', # String | A search term.
   username: 'username_example' # String | Username
@@ -881,15 +780,14 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **actions** | [**Array&lt;EventActions&gt;**](EventActions.md) |  | [optional] |
+| **actions** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **brand_name** | **String** | Brand name | [optional] |
 | **client_ip** | **String** |  | [optional] |
 | **context_authorized_app** | **String** | Context Authorized application | [optional] |
-| **context_device** | **String** | Context Device Primary Key | [optional] |
 | **context_model_app** | **String** | Context Model App | [optional] |
 | **context_model_name** | **String** | Context Model Name | [optional] |
 | **context_model_pk** | **String** | Context Model Primary Key | [optional] |
-| **history_days** | **Integer** |  | [optional][default to 7] |
+| **history_days** | **Float** |  | [optional][default to 7] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **username** | **String** | Username | [optional] |
@@ -1005,7 +903,7 @@ opts = {
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
   seen: true, # Boolean | 
-  severity: Authentik::Api::SeverityEnum::NOTICE, # SeverityEnum | 
+  severity: 'alert', # String | 
   user: 56 # Integer | 
 }
 
@@ -1048,7 +946,7 @@ end
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **seen** | **Boolean** |  | [optional] |
-| **severity** | [**SeverityEnum**](.md) |  | [optional] |
+| **severity** | **String** |  | [optional] |
 | **user** | **Integer** |  | [optional] |
 
 ### Return type
@@ -1578,7 +1476,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
-  severity: Authentik::Api::SeverityEnum::NOTICE # SeverityEnum | 
+  severity: 'alert' # String | Controls which severity level the created notifications will have.  
 }
 
 begin
@@ -1618,7 +1516,7 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **severity** | [**SeverityEnum**](.md) |  | [optional] |
+| **severity** | **String** | Controls which severity level the created notifications will have.   | [optional] |
 
 ### Return type
 
@@ -2074,7 +1972,7 @@ end
 
 api_instance = Authentik::Api::EventsApi.new
 opts = {
-  mode: Authentik::Api::TransportModeEnum::LOCAL, # TransportModeEnum | 
+  mode: 'email', # String | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -2115,7 +2013,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **mode** | [**TransportModeEnum**](.md) |  | [optional] |
+| **mode** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |

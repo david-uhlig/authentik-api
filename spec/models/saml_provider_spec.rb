@@ -207,12 +207,6 @@ describe Authentik::Api::SAMLProvider do
     end
   end
 
-  describe 'test attribute "sign_logout_response"' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   describe 'test attribute "sp_binding"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

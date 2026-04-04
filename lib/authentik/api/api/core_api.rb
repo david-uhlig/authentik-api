@@ -2674,7 +2674,7 @@ module Authentik::Api
     # @option opts [Time] :expires 
     # @option opts [Boolean] :expiring 
     # @option opts [String] :identifier 
-    # @option opts [IntentEnum] :intent 
+    # @option opts [String] :intent 
     # @option opts [String] :managed 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2693,7 +2693,7 @@ module Authentik::Api
     # @option opts [Time] :expires 
     # @option opts [Boolean] :expiring 
     # @option opts [String] :identifier 
-    # @option opts [IntentEnum] :intent 
+    # @option opts [String] :intent 
     # @option opts [String] :managed 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2704,6 +2704,10 @@ module Authentik::Api
     def core_tokens_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_tokens_list ...'
+      end
+      allowable_values = ["api", "app_password", "recovery", "verification"]
+      if @api_client.config.client_side_validation && opts[:'intent'] && !allowable_values.include?(opts[:'intent'])
+        fail ArgumentError, "invalid value for \"intent\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/core/tokens/'
@@ -3625,7 +3629,7 @@ module Authentik::Api
     # @option opts [Array<String>] :roles_by_name 
     # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [Array<String>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [DataExport]
@@ -3659,13 +3663,17 @@ module Authentik::Api
     # @option opts [Array<String>] :roles_by_name 
     # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [Array<String>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [Array<(DataExport, Integer, Hash)>] DataExport data, response status code and response headers
     def core_users_export_create_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_users_export_create ...'
+      end
+      allowable_values = ["external", "internal", "internal_service_account", "service_account"]
+      if @api_client.config.client_side_validation && opts[:'type'] && !opts[:'type'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"type\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/core/users/export/'
@@ -3889,7 +3897,7 @@ module Authentik::Api
     # @option opts [Array<String>] :roles_by_name 
     # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [Array<String>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [PaginatedUserList]
@@ -3927,13 +3935,17 @@ module Authentik::Api
     # @option opts [Array<String>] :roles_by_name 
     # @option opts [Array<String>] :roles_by_pk 
     # @option opts [String] :search A search term.
-    # @option opts [Array<UserTypeEnum>] :type 
+    # @option opts [Array<String>] :type 
     # @option opts [String] :username 
     # @option opts [String] :uuid 
     # @return [Array<(PaginatedUserList, Integer, Hash)>] PaginatedUserList data, response status code and response headers
     def core_users_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CoreApi.core_users_list ...'
+      end
+      allowable_values = ["external", "internal", "internal_service_account", "service_account"]
+      if @api_client.config.client_side_validation && opts[:'type'] && !opts[:'type'].all? { |item| allowable_values.include?(item) }
+        fail ArgumentError, "invalid value for \"type\", must include one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/core/users/'

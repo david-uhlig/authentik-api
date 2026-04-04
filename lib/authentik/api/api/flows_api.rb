@@ -144,14 +144,14 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :evaluate_on_plan 
     # @option opts [String] :fsb_uuid 
-    # @option opts [InvalidResponseActionEnum] :invalid_response_action 
+    # @option opts [String] :invalid_response_action Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  
     # @option opts [Integer] :order 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
     # @option opts [Array<String>] :policies 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [Boolean] :re_evaluate_policies 
     # @option opts [String] :search A search term.
     # @option opts [String] :stage 
@@ -166,14 +166,14 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :evaluate_on_plan 
     # @option opts [String] :fsb_uuid 
-    # @option opts [InvalidResponseActionEnum] :invalid_response_action 
+    # @option opts [String] :invalid_response_action Configure how the flow executor should handle an invalid response to a challenge. RETRY returns the error message and a similar challenge to the executor. RESTART restarts the flow from the beginning, and RESTART_WITH_CONTEXT restarts the flow while keeping the current context.  
     # @option opts [Integer] :order 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :pbm_uuid 
     # @option opts [Array<String>] :policies 
-    # @option opts [PolicyEngineMode] :policy_engine_mode 
+    # @option opts [String] :policy_engine_mode 
     # @option opts [Boolean] :re_evaluate_policies 
     # @option opts [String] :search A search term.
     # @option opts [String] :stage 
@@ -182,6 +182,14 @@ module Authentik::Api
     def flows_bindings_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FlowsApi.flows_bindings_list ...'
+      end
+      allowable_values = ["restart", "restart_with_context", "retry"]
+      if @api_client.config.client_side_validation && opts[:'invalid_response_action'] && !allowable_values.include?(opts[:'invalid_response_action'])
+        fail ArgumentError, "invalid value for \"invalid_response_action\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["all", "any"]
+      if @api_client.config.client_side_validation && opts[:'policy_engine_mode'] && !allowable_values.include?(opts[:'policy_engine_mode'])
+        fail ArgumentError, "invalid value for \"policy_engine_mode\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/flows/bindings/'
@@ -1123,10 +1131,76 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Import flow from .yaml file
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @option opts [Boolean] :clear  (default to false)
+    # @return [FlowImportResult]
+    def flows_instances_import_create(opts = {})
+      data, _status_code, _headers = flows_instances_import_create_with_http_info(opts)
+      data
+    end
+
+    # Import flow from .yaml file
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @option opts [Boolean] :clear  (default to false)
+    # @return [Array<(FlowImportResult, Integer, Hash)>] FlowImportResult data, response status code and response headers
+    def flows_instances_import_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: FlowsApi.flows_instances_import_create ...'
+      end
+      # resource path
+      local_var_path = '/flows/instances/import/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+      form_params['clear'] = opts[:'clear'] if !opts[:'clear'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'FlowImportResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"FlowsApi.flows_instances_import_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: FlowsApi#flows_instances_import_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Flow Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [DeniedActionEnum] :denied_action 
-    # @option opts [FlowDesignationEnum] :designation 
+    # @option opts [String] :denied_action Configure what should happen when a flow denies access to a user.  
+    # @option opts [String] :designation Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  
     # @option opts [String] :flow_uuid 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1142,8 +1216,8 @@ module Authentik::Api
 
     # Flow Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [DeniedActionEnum] :denied_action 
-    # @option opts [FlowDesignationEnum] :designation 
+    # @option opts [String] :denied_action Configure what should happen when a flow denies access to a user.  
+    # @option opts [String] :designation Decides what this Flow is used for. For example, the Authentication flow is redirect to when an un-authenticated user visits authentik.  
     # @option opts [String] :flow_uuid 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1155,6 +1229,14 @@ module Authentik::Api
     def flows_instances_list_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: FlowsApi.flows_instances_list ...'
+      end
+      allowable_values = ["continue", "message", "message_continue"]
+      if @api_client.config.client_side_validation && opts[:'denied_action'] && !allowable_values.include?(opts[:'denied_action'])
+        fail ArgumentError, "invalid value for \"denied_action\", must be one of #{allowable_values}"
+      end
+      allowable_values = ["authentication", "authorization", "enrollment", "invalidation", "recovery", "stage_configuration", "unenrollment"]
+      if @api_client.config.client_side_validation && opts[:'designation'] && !allowable_values.include?(opts[:'designation'])
+        fail ArgumentError, "invalid value for \"designation\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/flows/instances/'

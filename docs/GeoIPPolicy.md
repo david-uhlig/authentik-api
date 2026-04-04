@@ -14,7 +14,7 @@
 | **bound_to** | **Integer** | Return objects policy is bound to | [readonly] |
 | **asns** | **Array&lt;Integer&gt;** |  | [optional] |
 | **countries** | [**Array&lt;CountryCodeEnum&gt;**](CountryCodeEnum.md) |  |  |
-| **countries_obj** | [**Array&lt;GeoIPPolicyCountriesObjInner&gt;**](GeoIPPolicyCountriesObjInner.md) |  | [readonly] |
+| **countries_obj** | [**Array&lt;DetailedCountryField&gt;**](DetailedCountryField.md) |  | [readonly] |
 | **check_history_distance** | **Boolean** |  | [optional] |
 | **history_max_distance_km** | **Integer** |  | [optional] |
 | **distance_tolerance_km** | **Integer** |  | [optional] |

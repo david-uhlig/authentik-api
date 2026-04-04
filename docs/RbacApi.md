@@ -617,7 +617,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::RbacApi.new
-model = 'model_example' # String | 
+model = 'authentik_blueprints.blueprintinstance' # String | 
 opts = {
   object_pk: 'object_pk_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.

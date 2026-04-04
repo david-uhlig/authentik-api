@@ -16,43 +16,19 @@ module Authentik::Api
 
     attr_accessor :response_errors
 
-    attr_accessor :provider_name
-
-    attr_accessor :is_complete
-
     attr_accessor :post_url
-
-    attr_accessor :redirect_url
-
-    attr_accessor :saml_binding
 
     attr_accessor :saml_request
 
-    attr_accessor :saml_response
+    attr_accessor :relay_state
 
-    attr_accessor :saml_relay_state
+    attr_accessor :provider_name
 
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
+    attr_accessor :binding
 
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
+    attr_accessor :redirect_url
 
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :is_complete
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -60,14 +36,13 @@ module Authentik::Api
         :'flow_info' => :'flow_info',
         :'component' => :'component',
         :'response_errors' => :'response_errors',
-        :'provider_name' => :'provider_name',
-        :'is_complete' => :'is_complete',
         :'post_url' => :'post_url',
-        :'redirect_url' => :'redirect_url',
-        :'saml_binding' => :'saml_binding',
         :'saml_request' => :'saml_request',
-        :'saml_response' => :'saml_response',
-        :'saml_relay_state' => :'saml_relay_state'
+        :'relay_state' => :'relay_state',
+        :'provider_name' => :'provider_name',
+        :'binding' => :'binding',
+        :'redirect_url' => :'redirect_url',
+        :'is_complete' => :'is_complete'
       }
     end
 
@@ -87,14 +62,13 @@ module Authentik::Api
         :'flow_info' => :'ContextualFlowInfo',
         :'component' => :'String',
         :'response_errors' => :'Hash<String, Array<ErrorDetail>>',
-        :'provider_name' => :'String',
-        :'is_complete' => :'Boolean',
         :'post_url' => :'String',
-        :'redirect_url' => :'String',
-        :'saml_binding' => :'SAMLBindingsEnum',
         :'saml_request' => :'String',
-        :'saml_response' => :'String',
-        :'saml_relay_state' => :'String'
+        :'relay_state' => :'String',
+        :'provider_name' => :'String',
+        :'binding' => :'String',
+        :'redirect_url' => :'String',
+        :'is_complete' => :'Boolean'
       }
     end
 
@@ -136,38 +110,34 @@ module Authentik::Api
         end
       end
 
-      if attributes.key?(:'provider_name')
-        self.provider_name = attributes[:'provider_name']
-      end
-
-      if attributes.key?(:'is_complete')
-        self.is_complete = attributes[:'is_complete']
-      else
-        self.is_complete = false
-      end
-
       if attributes.key?(:'post_url')
         self.post_url = attributes[:'post_url']
-      end
-
-      if attributes.key?(:'redirect_url')
-        self.redirect_url = attributes[:'redirect_url']
-      end
-
-      if attributes.key?(:'saml_binding')
-        self.saml_binding = attributes[:'saml_binding']
       end
 
       if attributes.key?(:'saml_request')
         self.saml_request = attributes[:'saml_request']
       end
 
-      if attributes.key?(:'saml_response')
-        self.saml_response = attributes[:'saml_response']
+      if attributes.key?(:'relay_state')
+        self.relay_state = attributes[:'relay_state']
       end
 
-      if attributes.key?(:'saml_relay_state')
-        self.saml_relay_state = attributes[:'saml_relay_state']
+      if attributes.key?(:'provider_name')
+        self.provider_name = attributes[:'provider_name']
+      end
+
+      if attributes.key?(:'binding')
+        self.binding = attributes[:'binding']
+      end
+
+      if attributes.key?(:'redirect_url')
+        self.redirect_url = attributes[:'redirect_url']
+      end
+
+      if attributes.key?(:'is_complete')
+        self.is_complete = attributes[:'is_complete']
+      else
+        self.is_complete = false
       end
     end
 
@@ -194,14 +164,13 @@ module Authentik::Api
           flow_info == o.flow_info &&
           component == o.component &&
           response_errors == o.response_errors &&
-          provider_name == o.provider_name &&
-          is_complete == o.is_complete &&
           post_url == o.post_url &&
-          redirect_url == o.redirect_url &&
-          saml_binding == o.saml_binding &&
           saml_request == o.saml_request &&
-          saml_response == o.saml_response &&
-          saml_relay_state == o.saml_relay_state
+          relay_state == o.relay_state &&
+          provider_name == o.provider_name &&
+          binding == o.binding &&
+          redirect_url == o.redirect_url &&
+          is_complete == o.is_complete
     end
 
     # @see the `==` method
@@ -213,7 +182,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flow_info, component, response_errors, provider_name, is_complete, post_url, redirect_url, saml_binding, saml_request, saml_response, saml_relay_state].hash
+      [flow_info, component, response_errors, post_url, saml_request, relay_state, provider_name, binding, redirect_url, is_complete].hash
     end
 
     # Builds the object from hash

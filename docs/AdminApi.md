@@ -182,7 +182,7 @@ end
 api_instance = Authentik::Api::AdminApi.new
 opts = {
   name: 'name_example', # String | 
-  usage: Authentik::Api::UsageEnum::MEDIA # UsageEnum | 
+  usage: 'media' # String | 
 }
 
 begin
@@ -216,7 +216,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** |  | [optional] |
-| **usage** | [**UsageEnum**](.md) |  | [optional] |
+| **usage** | **String** |  | [optional][default to &#39;media&#39;] |
 
 ### Return type
 
@@ -255,7 +255,7 @@ api_instance = Authentik::Api::AdminApi.new
 opts = {
   manageable_only: true, # Boolean | 
   search: 'search_example', # String | A search term.
-  usage: Authentik::Api::UsageEnum::MEDIA # UsageEnum | 
+  usage: 'media' # String | 
 }
 
 begin
@@ -291,7 +291,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **manageable_only** | **Boolean** |  | [optional][default to false] |
 | **search** | **String** | A search term. | [optional] |
-| **usage** | [**UsageEnum**](.md) |  | [optional] |
+| **usage** | **String** |  | [optional][default to &#39;media&#39;] |
 
 ### Return type
 
@@ -599,7 +599,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AdminApi.new
-settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({core_default_app_access: false, enterprise_audit_include_expanded_diff: false, flows_continuous_login: false, flows_refresh_others: false})}) # SettingsRequest | 
+settings_request = Authentik::Api::SettingsRequest.new({flags: Authentik::Api::PatchedSettingsRequestFlags.new({enterprise_audit_include_expanded_diff: false, policies_buffered_access_view: false, flows_continuous_login: false, flows_refresh_others: false})}) # SettingsRequest | 
 
 begin
   

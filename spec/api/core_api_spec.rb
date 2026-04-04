@@ -530,7 +530,7 @@ describe 'CoreApi' do
   # @option opts [Time] :expires 
   # @option opts [Boolean] :expiring 
   # @option opts [String] :identifier 
-  # @option opts [IntentEnum] :intent 
+  # @option opts [String] :intent 
   # @option opts [String] :managed 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -721,7 +721,7 @@ describe 'CoreApi' do
   # @option opts [Array<String>] :roles_by_name 
   # @option opts [Array<String>] :roles_by_pk 
   # @option opts [String] :search A search term.
-  # @option opts [Array<UserTypeEnum>] :type 
+  # @option opts [Array<String>] :type 
   # @option opts [String] :username 
   # @option opts [String] :uuid 
   # @return [DataExport]
@@ -783,7 +783,7 @@ describe 'CoreApi' do
   # @option opts [Array<String>] :roles_by_name 
   # @option opts [Array<String>] :roles_by_pk 
   # @option opts [String] :search A search term.
-  # @option opts [Array<UserTypeEnum>] :type 
+  # @option opts [Array<String>] :type 
   # @option opts [String] :username 
   # @option opts [String] :uuid 
   # @return [PaginatedUserList]
