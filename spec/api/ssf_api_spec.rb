@@ -26,6 +26,17 @@ describe 'SsfApi' do
     end
   end
 
+  # unit tests for ssf_streams_destroy
+  # SSFStream Viewset
+  # @param uuid A UUID string identifying this SSF Stream.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'ssf_streams_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for ssf_streams_list
   # SSFStream Viewset
   # @param [Hash] opts the optional parameters

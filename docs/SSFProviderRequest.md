@@ -8,6 +8,7 @@
 | **signing_key** | **String** | Key used to sign the SSF Events. |  |
 | **oidc_auth_providers** | **Array&lt;Integer&gt;** |  | [optional] |
 | **event_retention** | **String** |  | [optional] |
+| **push_verify_certificates** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = Authentik::Api::SSFProviderRequest.new(
   name: null,
   signing_key: null,
   oidc_auth_providers: null,
-  event_retention: null
+  event_retention: null,
+  push_verify_certificates: null
 )
 ```
 

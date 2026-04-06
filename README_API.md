@@ -975,6 +975,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::SourcesApi* | [**sources_user_connections_telegram_retrieve**](docs/SourcesApi.md#sources_user_connections_telegram_retrieve) | **GET** /sources/user_connections/telegram/{id}/ | 
 *Authentik::Api::SourcesApi* | [**sources_user_connections_telegram_update**](docs/SourcesApi.md#sources_user_connections_telegram_update) | **PUT** /sources/user_connections/telegram/{id}/ | 
 *Authentik::Api::SourcesApi* | [**sources_user_connections_telegram_used_by_list**](docs/SourcesApi.md#sources_user_connections_telegram_used_by_list) | **GET** /sources/user_connections/telegram/{id}/used_by/ | 
+*Authentik::Api::SsfApi* | [**ssf_streams_destroy**](docs/SsfApi.md#ssf_streams_destroy) | **DELETE** /ssf/streams/{uuid}/ | 
 *Authentik::Api::SsfApi* | [**ssf_streams_list**](docs/SsfApi.md#ssf_streams_list) | **GET** /ssf/streams/ | 
 *Authentik::Api::SsfApi* | [**ssf_streams_retrieve**](docs/SsfApi.md#ssf_streams_retrieve) | **GET** /ssf/streams/{uuid}/ | 
 *Authentik::Api::StagesApi* | [**stages_all_destroy**](docs/StagesApi.md#stages_all_destroy) | **DELETE** /stages/all/{stage_uuid}/ | 
@@ -1953,6 +1954,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::SSFProvider](docs/SSFProvider.md)
  - [Authentik::Api::SSFProviderRequest](docs/SSFProviderRequest.md)
  - [Authentik::Api::SSFStream](docs/SSFStream.md)
+ - [Authentik::Api::SSFStreamStatusEnum](docs/SSFStreamStatusEnum.md)
  - [Authentik::Api::Schedule](docs/Schedule.md)
  - [Authentik::Api::ScheduleRequest](docs/ScheduleRequest.md)
  - [Authentik::Api::ScopeMapping](docs/ScopeMapping.md)

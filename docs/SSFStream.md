@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pk** | **String** |  | [readonly] |
+| **status** | [**SSFStreamStatusEnum**](SSFStreamStatusEnum.md) |  | [optional] |
 | **provider** | **Integer** |  |  |
 | **provider_obj** | [**SSFProvider**](SSFProvider.md) |  | [readonly] |
 | **delivery_method** | [**DeliveryMethodEnum**](DeliveryMethodEnum.md) |  |  |
@@ -21,6 +22,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::SSFStream.new(
   pk: null,
+  status: null,
   provider: null,
   provider_obj: null,
   delivery_method: null,

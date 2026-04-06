@@ -11,9 +11,11 @@ module Authentik::Api
   class DeliveryMethodEnum
     HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_PUSH = "https://schemas.openid.net/secevent/risc/delivery-method/push".freeze
     HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_POLL = "https://schemas.openid.net/secevent/risc/delivery-method/poll".freeze
+    URN_IETF_RFC_8935 = "urn:ietf:rfc:8935".freeze
+    URN_IETF_RFC_8936 = "urn:ietf:rfc:8936".freeze
 
     def self.all_vars
-      @all_vars ||= [HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_PUSH, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_POLL].freeze
+      @all_vars ||= [HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_PUSH, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_RISC_DELIVERY_METHOD_POLL, URN_IETF_RFC_8935, URN_IETF_RFC_8936].freeze
     end
 
     # Builds the enum from string

@@ -4,8 +4,77 @@ All URIs are relative to */api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**ssf_streams_destroy**](SsfApi.md#ssf_streams_destroy) | **DELETE** /ssf/streams/{uuid}/ |  |
 | [**ssf_streams_list**](SsfApi.md#ssf_streams_list) | **GET** /ssf/streams/ |  |
 | [**ssf_streams_retrieve**](SsfApi.md#ssf_streams_retrieve) | **GET** /ssf/streams/{uuid}/ |  |
+
+
+## ssf_streams_destroy
+
+> ssf_streams_destroy(uuid)
+
+
+
+SSFStream Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::SsfApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this SSF Stream.
+
+begin
+  
+  api_instance.ssf_streams_destroy(uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SsfApi->ssf_streams_destroy: #{e}"
+end
+```
+
+#### Using the ssf_streams_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> ssf_streams_destroy_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.ssf_streams_destroy_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling SsfApi->ssf_streams_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this SSF Stream. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## ssf_streams_list

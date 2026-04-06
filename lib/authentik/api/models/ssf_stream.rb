@@ -12,6 +12,8 @@ module Authentik::Api
   class SSFStream < ApiModelBase
     attr_accessor :pk
 
+    attr_accessor :status
+
     attr_accessor :provider
 
     attr_accessor :provider_obj
@@ -54,6 +56,7 @@ module Authentik::Api
     def self.attribute_map
       {
         :'pk' => :'pk',
+        :'status' => :'status',
         :'provider' => :'provider',
         :'provider_obj' => :'provider_obj',
         :'delivery_method' => :'delivery_method',
@@ -79,6 +82,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'pk' => :'String',
+        :'status' => :'SSFStreamStatusEnum',
         :'provider' => :'Integer',
         :'provider_obj' => :'SSFProvider',
         :'delivery_method' => :'DeliveryMethodEnum',
@@ -117,6 +121,10 @@ module Authentik::Api
         self.pk = attributes[:'pk']
       else
         self.pk = nil
+      end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
       end
 
       if attributes.key?(:'provider')
@@ -277,6 +285,7 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           pk == o.pk &&
+          status == o.status &&
           provider == o.provider &&
           provider_obj == o.provider_obj &&
           delivery_method == o.delivery_method &&
@@ -296,7 +305,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, provider, provider_obj, delivery_method, endpoint_url, events_requested, format, aud, iss].hash
+      [pk, status, provider, provider_obj, delivery_method, endpoint_url, events_requested, format, aud, iss].hash
     end
 
     # Builds the object from hash
