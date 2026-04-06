@@ -33,9 +33,13 @@ module Authentik::Api
 
     attr_accessor :oidc_auth_providers
 
+    attr_accessor :oidc_auth_providers_obj
+
     attr_accessor :ssf_url
 
     attr_accessor :event_retention
+
+    attr_accessor :push_verify_certificates
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -49,8 +53,10 @@ module Authentik::Api
         :'signing_key' => :'signing_key',
         :'token_obj' => :'token_obj',
         :'oidc_auth_providers' => :'oidc_auth_providers',
+        :'oidc_auth_providers_obj' => :'oidc_auth_providers_obj',
         :'ssf_url' => :'ssf_url',
-        :'event_retention' => :'event_retention'
+        :'event_retention' => :'event_retention',
+        :'push_verify_certificates' => :'push_verify_certificates'
       }
     end
 
@@ -76,8 +82,10 @@ module Authentik::Api
         :'signing_key' => :'String',
         :'token_obj' => :'Token',
         :'oidc_auth_providers' => :'Array<Integer>',
+        :'oidc_auth_providers_obj' => :'Array<Provider>',
         :'ssf_url' => :'String',
-        :'event_retention' => :'String'
+        :'event_retention' => :'String',
+        :'push_verify_certificates' => :'Boolean'
       }
     end
 
@@ -158,6 +166,14 @@ module Authentik::Api
         end
       end
 
+      if attributes.key?(:'oidc_auth_providers_obj')
+        if (value = attributes[:'oidc_auth_providers_obj']).is_a?(Array)
+          self.oidc_auth_providers_obj = value
+        end
+      else
+        self.oidc_auth_providers_obj = nil
+      end
+
       if attributes.key?(:'ssf_url')
         self.ssf_url = attributes[:'ssf_url']
       else
@@ -166,6 +182,10 @@ module Authentik::Api
 
       if attributes.key?(:'event_retention')
         self.event_retention = attributes[:'event_retention']
+      end
+
+      if attributes.key?(:'push_verify_certificates')
+        self.push_verify_certificates = attributes[:'push_verify_certificates']
       end
     end
 
@@ -206,6 +226,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "token_obj", token_obj cannot be nil.')
       end
 
+      if @oidc_auth_providers_obj.nil?
+        invalid_properties.push('invalid value for "oidc_auth_providers_obj", oidc_auth_providers_obj cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -221,6 +245,7 @@ module Authentik::Api
       return false if @meta_model_name.nil?
       return false if @signing_key.nil?
       return false if @token_obj.nil?
+      return false if @oidc_auth_providers_obj.nil?
       true
     end
 
@@ -304,6 +329,16 @@ module Authentik::Api
       @token_obj = token_obj
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] oidc_auth_providers_obj Value to be assigned
+    def oidc_auth_providers_obj=(oidc_auth_providers_obj)
+      if oidc_auth_providers_obj.nil?
+        fail ArgumentError, 'oidc_auth_providers_obj cannot be nil'
+      end
+
+      @oidc_auth_providers_obj = oidc_auth_providers_obj
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -318,8 +353,10 @@ module Authentik::Api
           signing_key == o.signing_key &&
           token_obj == o.token_obj &&
           oidc_auth_providers == o.oidc_auth_providers &&
+          oidc_auth_providers_obj == o.oidc_auth_providers_obj &&
           ssf_url == o.ssf_url &&
-          event_retention == o.event_retention
+          event_retention == o.event_retention &&
+          push_verify_certificates == o.push_verify_certificates
     end
 
     # @see the `==` method
@@ -331,7 +368,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, signing_key, token_obj, oidc_auth_providers, ssf_url, event_retention].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, signing_key, token_obj, oidc_auth_providers, oidc_auth_providers_obj, ssf_url, event_retention, push_verify_certificates].hash
     end
 
     # Builds the object from hash

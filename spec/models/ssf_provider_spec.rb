@@ -75,6 +75,12 @@ describe Authentik::Api::SSFProvider do
     end
   end
 
+  describe 'test attribute "oidc_auth_providers_obj"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "ssf_url"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -82,6 +88,12 @@ describe Authentik::Api::SSFProvider do
   end
 
   describe 'test attribute "event_retention"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "push_verify_certificates"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

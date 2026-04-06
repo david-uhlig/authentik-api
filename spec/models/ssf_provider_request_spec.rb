@@ -45,4 +45,10 @@ describe Authentik::Api::SSFProviderRequest do
     end
   end
 
+  describe 'test attribute "push_verify_certificates"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

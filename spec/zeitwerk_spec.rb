@@ -1,3 +1,6 @@
+=begin
+This file is automatically copied into the gem’s spec path from the `.openapi-generator` directory. Modifications should be made in the latter directory.
+=end
 # frozen_string_literal: true
 
 RSpec.describe "Zeitwerk compliance" do
