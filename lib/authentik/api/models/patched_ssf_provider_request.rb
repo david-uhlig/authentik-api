@@ -19,13 +19,16 @@ module Authentik::Api
 
     attr_accessor :event_retention
 
+    attr_accessor :push_verify_certificates
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'signing_key' => :'signing_key',
         :'oidc_auth_providers' => :'oidc_auth_providers',
-        :'event_retention' => :'event_retention'
+        :'event_retention' => :'event_retention',
+        :'push_verify_certificates' => :'push_verify_certificates'
       }
     end
 
@@ -45,7 +48,8 @@ module Authentik::Api
         :'name' => :'String',
         :'signing_key' => :'String',
         :'oidc_auth_providers' => :'Array<Integer>',
-        :'event_retention' => :'String'
+        :'event_retention' => :'String',
+        :'push_verify_certificates' => :'Boolean'
       }
     end
 
@@ -87,6 +91,10 @@ module Authentik::Api
 
       if attributes.key?(:'event_retention')
         self.event_retention = attributes[:'event_retention']
+      end
+
+      if attributes.key?(:'push_verify_certificates')
+        self.push_verify_certificates = attributes[:'push_verify_certificates']
       end
     end
 
@@ -151,7 +159,8 @@ module Authentik::Api
           name == o.name &&
           signing_key == o.signing_key &&
           oidc_auth_providers == o.oidc_auth_providers &&
-          event_retention == o.event_retention
+          event_retention == o.event_retention &&
+          push_verify_certificates == o.push_verify_certificates
     end
 
     # @see the `==` method
@@ -163,7 +172,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, signing_key, oidc_auth_providers, event_retention].hash
+      [name, signing_key, oidc_auth_providers, event_retention, push_verify_certificates].hash
     end
 
     # Builds the object from hash

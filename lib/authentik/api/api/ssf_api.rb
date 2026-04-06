@@ -14,6 +14,67 @@ module Authentik::Api
       @api_client = api_client
     end
     # SSFStream Viewset
+    # @param uuid [String] A UUID string identifying this SSF Stream.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def ssf_streams_destroy(uuid, opts = {})
+      ssf_streams_destroy_with_http_info(uuid, opts)
+      nil
+    end
+
+    # SSFStream Viewset
+    # @param uuid [String] A UUID string identifying this SSF Stream.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def ssf_streams_destroy_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SsfApi.ssf_streams_destroy ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling SsfApi.ssf_streams_destroy"
+      end
+      # resource path
+      local_var_path = '/ssf/streams/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"SsfApi.ssf_streams_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: SsfApi#ssf_streams_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # SSFStream Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [DeliveryMethodEnum] :delivery_method 
     # @option opts [String] :endpoint_url 

@@ -13,8 +13,10 @@
 | **signing_key** | **String** | Key used to sign the SSF Events. |  |
 | **token_obj** | [**Token**](Token.md) |  | [readonly] |
 | **oidc_auth_providers** | **Array&lt;Integer&gt;** |  | [optional] |
+| **oidc_auth_providers_obj** | [**Array&lt;Provider&gt;**](Provider.md) |  | [readonly] |
 | **ssf_url** | **String** |  | [readonly] |
 | **event_retention** | **String** |  | [optional] |
+| **push_verify_certificates** | **Boolean** |  | [optional] |
 
 ## Example
 
@@ -31,8 +33,10 @@ instance = Authentik::Api::SSFProvider.new(
   signing_key: null,
   token_obj: null,
   oidc_auth_providers: null,
+  oidc_auth_providers_obj: null,
   ssf_url: null,
-  event_retention: null
+  event_retention: null,
+  push_verify_certificates: null
 )
 ```
 
