@@ -35,6 +35,7 @@ mkdir -p "${project_base_path}/lib/authentik/api"
 cp -R "${output_path}/lib/authentik-api/"* "${project_base_path}/lib/authentik/api/"
 cp "${output_path}/lib/authentik-api.rb" "${project_base_path}/lib/authentik/api.rb"
 cp "${project_base_path}/.openapi-generator/inflector.rb" "${project_base_path}/lib/authentik/api/"
+cp "${project_base_path}/.openapi-generator/zeitwerk_spec.rb" "${project_base_path}/spec/"
 
 # Update spec_helper to use the new require path.
 sed -i "s/require 'authentik-api'/require 'authentik\/api'/" "${project_base_path}/spec/spec_helper.rb"
