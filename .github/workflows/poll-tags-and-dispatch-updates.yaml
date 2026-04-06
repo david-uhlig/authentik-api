@@ -27,13 +27,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
-          fetch-depth: 0 # All history for all branches and tags.
+          fetch-depth: 0
+          fetch-tags: true
           persist-credentials: false
 
       - id: get-branches
         name: Get local branches
         run: |
-          BRANCHES=$(git branch --format='%(refname:short)' | jq -Rnc '[inputs]')
+          BRANCHES=$(git branch --remotes --format='%(refname:short)' | sed -E 's/^origin\/?//' | awk NF | jq -Rnc '[inputs]')
           echo "BRANCHES=$BRANCHES" >> "$GITHUB_ENV"
 
       - id: get-tags
@@ -48,20 +49,26 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
+            // authentik
             const owner = process.env.SOURCE_OWNER;
             const repo = process.env.SOURCE_REPO;
-            const numTags = process.env.SOURCE_LATEST_TAGS_NUM;
-            const branchPrefix = process.env.AUTO_PR_BRANCH_PREFIX;
-            const res = await github.rest.repos.listTags({owner, repo, per_page: numTags});
-            const sourceTags = res.data.map(t => t.name);
+            const lookupTagsNum = process.env.SOURCE_LATEST_TAGS_NUM;
+            const response = await github.rest.repos.listTags({owner, repo, per_page: lookupTagsNum});
+            const akTags = response.data.map(t => t.name); // e.g., `version/2026.2.2-rc2`
+            
+            // authentik-api
+            const prBranchPrefix = process.env.AUTO_PR_BRANCH_PREFIX;           
             const branches = JSON.parse(process.env.BRANCHES);
             const tags = JSON.parse(process.env.TAGS);
             
-            // Filter out source tags that already exist as tag or PR branch.
-            const filteredTags = sourceTags.filter(
-              tag => tag.startsWith('version/') && 
-                !branches.includes(`${branchPrefix}${tag}`) &&
-                !tags.includes('v' + tag.replace('version/', '').replace('-', '.'))
+            // Remove authentik tags that already exist as a tag or PR branch in this repo.
+            // authentik tag: `version/2026.2.2-rc2`
+            // branch: `openapi-client-update/version/2026.2.2-rc2`
+            // tag: `v2026.2.2.rc2`
+            const filteredTags = akTags.filter(
+              akTag => akTag.startsWith('version/') && 
+                !branches.includes(`${prBranchPrefix}${akTag}`) &&
+                !tags.includes('v' + akTag.replace('version/', '').replace('-', '.'))
             );
             
             core.setOutput('tags', JSON.stringify(filteredTags));
@@ -83,11 +90,14 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    if: ${{ needs.check-tags.outputs.tags != '[]' }}
     strategy:
       fail-fast: true
       max-parallel: 1 # Prevent race-conditions when creating the base branch, e.g. `version/2026.2`
       matrix:
         tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
+    secrets:
+      PAT: ${{ secrets.PAT }}
     uses: ./.github/workflows/generate-openapi-client-on-release.yaml
     with:
       tag-name: ${{ matrix.tag }}

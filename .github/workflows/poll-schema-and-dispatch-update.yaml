@@ -42,4 +42,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    secrets:
+      PAT: ${{ secrets.PAT }}
     uses: ./.github/workflows/generate-openapi-client-main.yaml

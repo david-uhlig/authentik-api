@@ -11,6 +11,9 @@ name: Generate OpenAPI client (main)
 on:
   workflow_dispatch:
   workflow_call:
+    secrets:
+      PAT:
+        required: true
 
 env:
   OPENAPI_GENERATOR_PATH: "tmp"

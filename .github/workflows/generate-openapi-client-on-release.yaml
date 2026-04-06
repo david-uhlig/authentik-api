@@ -20,6 +20,9 @@ on:
         description: "The authentik version tag detected by the calling workflow."
         required: true
         type: string
+    secrets:
+      PAT:
+        required: true
 
 env:
   OPENAPI_GENERATOR_PATH: "tmp"
@@ -47,7 +50,6 @@ jobs:
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           ref: ${{ env.BASE_BRANCH }}
-          token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
           persist-credentials: false
 
       - name: Download schema artifact
