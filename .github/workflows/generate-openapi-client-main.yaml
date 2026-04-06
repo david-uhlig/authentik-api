@@ -67,7 +67,7 @@ jobs:
           commit-message: "Update OpenAPI client (nightly)"
           branch: "openapi-client-update/nightly"
           base: main
-          title: "Nightly OpenAPI client update (nightly)"
+          title: "OpenAPI client update (nightly)"
           body: |
             This PR updates the generated OpenAPI client to match the latest nightly schema from authentik's `main` branch.
 
