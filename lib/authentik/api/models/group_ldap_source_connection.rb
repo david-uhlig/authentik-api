@@ -24,6 +24,8 @@ module Authentik::Api
 
     attr_accessor :last_updated
 
+    attr_accessor :group_obj
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -33,7 +35,8 @@ module Authentik::Api
         :'source_obj' => :'source_obj',
         :'identifier' => :'identifier',
         :'created' => :'created',
-        :'last_updated' => :'last_updated'
+        :'last_updated' => :'last_updated',
+        :'group_obj' => :'group_obj'
       }
     end
 
@@ -56,7 +59,8 @@ module Authentik::Api
         :'source_obj' => :'Source',
         :'identifier' => :'String',
         :'created' => :'Time',
-        :'last_updated' => :'Time'
+        :'last_updated' => :'Time',
+        :'group_obj' => :'PartialGroup'
       }
     end
 
@@ -123,6 +127,12 @@ module Authentik::Api
       else
         self.last_updated = nil
       end
+
+      if attributes.key?(:'group_obj')
+        self.group_obj = attributes[:'group_obj']
+      else
+        self.group_obj = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -158,6 +168,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
       end
 
+      if @group_obj.nil?
+        invalid_properties.push('invalid value for "group_obj", group_obj cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -172,6 +186,7 @@ module Authentik::Api
       return false if @identifier.nil?
       return false if @created.nil?
       return false if @last_updated.nil?
+      return false if @group_obj.nil?
       true
     end
 
@@ -245,6 +260,16 @@ module Authentik::Api
       @last_updated = last_updated
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] group_obj Value to be assigned
+    def group_obj=(group_obj)
+      if group_obj.nil?
+        fail ArgumentError, 'group_obj cannot be nil'
+      end
+
+      @group_obj = group_obj
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -256,7 +281,8 @@ module Authentik::Api
           source_obj == o.source_obj &&
           identifier == o.identifier &&
           created == o.created &&
-          last_updated == o.last_updated
+          last_updated == o.last_updated &&
+          group_obj == o.group_obj
     end
 
     # @see the `==` method
@@ -268,7 +294,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, group, source, source_obj, identifier, created, last_updated].hash
+      [pk, group, source, source_obj, identifier, created, last_updated, group_obj].hash
     end
 
     # Builds the object from hash

@@ -11,6 +11,7 @@
 | **identifier** | **String** |  |  |
 | **created** | **Time** |  | [readonly] |
 | **last_updated** | **Time** |  | [readonly] |
+| **user_obj** | [**PartialUser**](PartialUser.md) |  | [readonly] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Authentik::Api::UserLDAPSourceConnection.new(
   source_obj: null,
   identifier: null,
   created: null,
-  last_updated: null
+  last_updated: null,
+  user_obj: null
 )
 ```
 

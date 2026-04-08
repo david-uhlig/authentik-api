@@ -14,6 +14,8 @@ module Authentik::Api
 
     attr_accessor :url
 
+    attr_accessor :redirect_uri_type
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -40,7 +42,8 @@ module Authentik::Api
     def self.attribute_map
       {
         :'matching_mode' => :'matching_mode',
-        :'url' => :'url'
+        :'url' => :'url',
+        :'redirect_uri_type' => :'redirect_uri_type'
       }
     end
 
@@ -58,7 +61,8 @@ module Authentik::Api
     def self.openapi_types
       {
         :'matching_mode' => :'MatchingModeEnum',
-        :'url' => :'String'
+        :'url' => :'String',
+        :'redirect_uri_type' => :'RedirectUriTypeEnum'
       }
     end
 
@@ -94,6 +98,10 @@ module Authentik::Api
         self.url = attributes[:'url']
       else
         self.url = nil
+      end
+
+      if attributes.key?(:'redirect_uri_type')
+        self.redirect_uri_type = attributes[:'redirect_uri_type']
       end
     end
 
@@ -148,7 +156,8 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           matching_mode == o.matching_mode &&
-          url == o.url
+          url == o.url &&
+          redirect_uri_type == o.redirect_uri_type
     end
 
     # @see the `==` method
@@ -160,7 +169,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matching_mode, url].hash
+      [matching_mode, url, redirect_uri_type].hash
     end
 
     # Builds the object from hash
