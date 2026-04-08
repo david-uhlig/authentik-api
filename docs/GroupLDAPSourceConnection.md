@@ -11,6 +11,7 @@
 | **identifier** | **String** |  |  |
 | **created** | **Time** |  | [readonly] |
 | **last_updated** | **Time** |  | [readonly] |
+| **group_obj** | [**PartialGroup**](PartialGroup.md) |  | [readonly] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Authentik::Api::GroupLDAPSourceConnection.new(
   source_obj: null,
   identifier: null,
   created: null,
-  last_updated: null
+  last_updated: null,
+  group_obj: null
 )
 ```
 

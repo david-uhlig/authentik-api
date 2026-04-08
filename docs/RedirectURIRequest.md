@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **matching_mode** | [**MatchingModeEnum**](MatchingModeEnum.md) |  |  |
 | **url** | **String** |  |  |
+| **redirect_uri_type** | [**RedirectUriTypeEnum**](RedirectUriTypeEnum.md) |  | [optional] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'authentik-api'
 
 instance = Authentik::Api::RedirectURIRequest.new(
   matching_mode: null,
-  url: null
+  url: null,
+  redirect_uri_type: null
 )
 ```
 
