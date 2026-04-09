@@ -28,6 +28,7 @@ RSpec.describe "Zeitwerk compliance" do
       default_constants.any? { _1.match?(pattern) }
     end
 
-    expect(unused_keys).to be_empty, "Unused irregular inflections: #{unused_keys.join(", ")}"
+    expect(unused_keys)
+      .to be_empty, "Unused irregular inflections: #{unused_keys.join(", ")}"
   end
 end

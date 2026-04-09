@@ -93,6 +93,9 @@ module Authentik::Api
         :'policy',
         :'group',
         :'user',
+        :'policy_obj',
+        :'group_obj',
+        :'user_obj',
       ])
     end
 
@@ -186,18 +189,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "pk", pk cannot be nil.')
       end
 
-      if @policy_obj.nil?
-        invalid_properties.push('invalid value for "policy_obj", policy_obj cannot be nil.')
-      end
-
-      if @group_obj.nil?
-        invalid_properties.push('invalid value for "group_obj", group_obj cannot be nil.')
-      end
-
-      if @user_obj.nil?
-        invalid_properties.push('invalid value for "user_obj", user_obj cannot be nil.')
-      end
-
       if @target.nil?
         invalid_properties.push('invalid value for "target", target cannot be nil.')
       end
@@ -230,9 +221,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
-      return false if @policy_obj.nil?
-      return false if @group_obj.nil?
-      return false if @user_obj.nil?
       return false if @target.nil?
       return false if @order.nil?
       return false if @order > 2147483647
@@ -250,36 +238,6 @@ module Authentik::Api
       end
 
       @pk = pk
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] policy_obj Value to be assigned
-    def policy_obj=(policy_obj)
-      if policy_obj.nil?
-        fail ArgumentError, 'policy_obj cannot be nil'
-      end
-
-      @policy_obj = policy_obj
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] group_obj Value to be assigned
-    def group_obj=(group_obj)
-      if group_obj.nil?
-        fail ArgumentError, 'group_obj cannot be nil'
-      end
-
-      @group_obj = group_obj
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] user_obj Value to be assigned
-    def user_obj=(user_obj)
-      if user_obj.nil?
-        fail ArgumentError, 'user_obj cannot be nil'
-      end
-
-      @user_obj = user_obj
     end
 
     # Custom attribute writer method with validation
