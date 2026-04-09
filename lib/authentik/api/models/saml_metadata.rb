@@ -71,8 +71,6 @@ module Authentik::Api
 
       if attributes.key?(:'download_url')
         self.download_url = attributes[:'download_url']
-      else
-        self.download_url = nil
       end
     end
 
