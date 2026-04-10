@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **pagination** | [**Pagination**](Pagination.md) |  |  |
 | **results** | [**Array&lt;ExtraRoleObjectPermission&gt;**](ExtraRoleObjectPermission.md) |  |  |
+| **autocomplete** | **Hash&lt;String, Object&gt;** |  |  |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'authentik-api'
 
 instance = Authentik::Api::PaginatedExtraRoleObjectPermissionList.new(
   pagination: null,
-  results: null
+  results: null,
+  autocomplete: null
 )
 ```
 
