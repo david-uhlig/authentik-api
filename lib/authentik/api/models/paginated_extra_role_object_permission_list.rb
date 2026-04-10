@@ -13,11 +13,14 @@ module Authentik::Api
 
     attr_accessor :results
 
+    attr_accessor :autocomplete
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'pagination' => :'pagination',
-        :'results' => :'results'
+        :'results' => :'results',
+        :'autocomplete' => :'autocomplete'
       }
     end
 
@@ -35,7 +38,8 @@ module Authentik::Api
     def self.openapi_types
       {
         :'pagination' => :'Pagination',
-        :'results' => :'Array<ExtraRoleObjectPermission>'
+        :'results' => :'Array<ExtraRoleObjectPermission>',
+        :'autocomplete' => :'Hash<String, Object>'
       }
     end
 
@@ -74,6 +78,14 @@ module Authentik::Api
       else
         self.results = nil
       end
+
+      if attributes.key?(:'autocomplete')
+        if (value = attributes[:'autocomplete']).is_a?(Hash)
+          self.autocomplete = value
+        end
+      else
+        self.autocomplete = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -89,6 +101,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "results", results cannot be nil.')
       end
 
+      if @autocomplete.nil?
+        invalid_properties.push('invalid value for "autocomplete", autocomplete cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -98,6 +114,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pagination.nil?
       return false if @results.nil?
+      return false if @autocomplete.nil?
       true
     end
 
@@ -121,13 +138,24 @@ module Authentik::Api
       @results = results
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] autocomplete Value to be assigned
+    def autocomplete=(autocomplete)
+      if autocomplete.nil?
+        fail ArgumentError, 'autocomplete cannot be nil'
+      end
+
+      @autocomplete = autocomplete
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           pagination == o.pagination &&
-          results == o.results
+          results == o.results &&
+          autocomplete == o.autocomplete
     end
 
     # @see the `==` method
@@ -139,7 +167,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pagination, results].hash
+      [pagination, results, autocomplete].hash
     end
 
     # Builds the object from hash
