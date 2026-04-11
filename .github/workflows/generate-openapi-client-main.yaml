@@ -83,7 +83,7 @@ jobs:
         if: ${{ steps.pull-request.outputs.pull-request-number }}
         run: |
           echo "Pull Request Number - ${PULL_REQUEST_NUMBER}"
-          echo "Pull Request URL - ${PULL_REQUEST_URL}
+          echo "Pull Request URL - ${PULL_REQUEST_URL}"
         env:
           PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
           PULL_REQUEST_URL: ${{ steps.pull-request.outputs.pull-request-url }}
