@@ -60,7 +60,7 @@ jobs:
           gem-version: ${{ env.GEM_VERSION }}
 
       - name: Create pull request
-        id: cpr
+        id: pull-request
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
           token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
@@ -76,4 +76,22 @@ jobs:
             > Schema sourced from [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
           labels: nightly
           delete-branch: true
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+      - name: Check outputs
+        if: ${{ steps.pull-request.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${PULL_REQUEST_NUMBER}"
+          echo "Pull Request URL - ${PULL_REQUEST_URL}
+        env:
+          PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
+          PULL_REQUEST_URL: ${{ steps.pull-request.outputs.pull-request-url }}
+
+      - name: Enable auto-merge
+        if: ${{ steps.pull-request.outputs.pull-request-number }}
+        run: |
+          gh pr merge --rebase --auto "${PULL_REQUEST_NUMBER}"
+        env:
+          GH_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
