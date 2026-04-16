@@ -145,7 +145,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_all_destroy"
       end
       # resource path
-      local_var_path = '/policies/all/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/all/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -279,7 +279,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_all_retrieve"
       end
       # resource path
-      local_var_path = '/policies/all/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/all/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -346,7 +346,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_test_request' when calling PoliciesApi.policies_all_test_create"
       end
       # resource path
-      local_var_path = '/policies/all/{policy_uuid}/test/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/all/{policy_uuid}/test/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -467,7 +467,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_all_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/all/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/all/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -594,7 +594,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling PoliciesApi.policies_bindings_destroy"
       end
       # resource path
-      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -745,7 +745,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling PoliciesApi.policies_bindings_partial_update"
       end
       # resource path
-      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -811,7 +811,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling PoliciesApi.policies_bindings_retrieve"
       end
       # resource path
-      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -878,7 +878,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_request' when calling PoliciesApi.policies_bindings_update"
       end
       # resource path
-      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/policies/bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -944,7 +944,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling PoliciesApi.policies_bindings_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/bindings/{policy_binding_uuid}/used_by/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/policies/bindings/{policy_binding_uuid}/used_by/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1071,7 +1071,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_dummy_destroy"
       end
       # resource path
-      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1225,7 +1225,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_dummy_partial_update"
       end
       # resource path
-      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1291,7 +1291,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_dummy_retrieve"
       end
       # resource path
-      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1358,7 +1358,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'dummy_policy_request' when calling PoliciesApi.policies_dummy_update"
       end
       # resource path
-      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/dummy/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1424,7 +1424,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_dummy_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/dummy/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/dummy/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1551,7 +1551,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_event_matcher_destroy"
       end
       # resource path
-      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1604,6 +1604,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :policy_uuid 
+    # @option opts [String] :query 
     # @option opts [String] :search A search term.
     # @return [PaginatedEventMatcherPolicyList]
     def policies_event_matcher_list(opts = {})
@@ -1625,6 +1626,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :policy_uuid 
+    # @option opts [String] :query 
     # @option opts [String] :search A search term.
     # @return [Array<(PaginatedEventMatcherPolicyList, Integer, Hash)>] PaginatedEventMatcherPolicyList data, response status code and response headers
     def policies_event_matcher_list_with_http_info(opts = {})
@@ -1648,6 +1650,7 @@ module Authentik::Api
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'policy_uuid'] = opts[:'policy_uuid'] if !opts[:'policy_uuid'].nil?
+      query_params[:'query'] = opts[:'query'] if !opts[:'query'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
 
       # header parameters
@@ -1708,7 +1711,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_event_matcher_partial_update"
       end
       # resource path
-      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1774,7 +1777,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_event_matcher_retrieve"
       end
       # resource path
-      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1841,7 +1844,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'event_matcher_policy_request' when calling PoliciesApi.policies_event_matcher_update"
       end
       # resource path
-      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/event_matcher/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1907,7 +1910,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_event_matcher_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/event_matcher/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/event_matcher/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2034,7 +2037,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_expression_destroy"
       end
       # resource path
-      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2182,7 +2185,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_expression_partial_update"
       end
       # resource path
-      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2248,7 +2251,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_expression_retrieve"
       end
       # resource path
-      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2315,7 +2318,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'expression_policy_request' when calling PoliciesApi.policies_expression_update"
       end
       # resource path
-      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/expression/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2381,7 +2384,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_expression_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/expression/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/expression/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2508,7 +2511,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_geoip_destroy"
       end
       # resource path
-      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2696,7 +2699,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_geoip_partial_update"
       end
       # resource path
-      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2762,7 +2765,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_geoip_retrieve"
       end
       # resource path
-      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2829,7 +2832,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'geo_ip_policy_request' when calling PoliciesApi.policies_geoip_update"
       end
       # resource path
-      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/geoip/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2895,7 +2898,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_geoip_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/geoip/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/geoip/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3022,7 +3025,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_destroy"
       end
       # resource path
-      local_var_path = '/policies/password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3149,7 +3152,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_expiry_destroy"
       end
       # resource path
-      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3300,7 +3303,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_expiry_partial_update"
       end
       # resource path
-      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3366,7 +3369,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_expiry_retrieve"
       end
       # resource path
-      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3433,7 +3436,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'password_expiry_policy_request' when calling PoliciesApi.policies_password_expiry_update"
       end
       # resource path
-      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password_expiry/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3499,7 +3502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_expiry_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/password_expiry/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password_expiry/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3683,7 +3686,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_partial_update"
       end
       # resource path
-      local_var_path = '/policies/password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3749,7 +3752,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_retrieve"
       end
       # resource path
-      local_var_path = '/policies/password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3816,7 +3819,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'password_policy_request' when calling PoliciesApi.policies_password_update"
       end
       # resource path
-      local_var_path = '/policies/password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3882,7 +3885,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_password_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/password/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/password/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4009,7 +4012,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_reputation_destroy"
       end
       # resource path
-      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4163,7 +4166,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_reputation_partial_update"
       end
       # resource path
-      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4229,7 +4232,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_reputation_retrieve"
       end
       # resource path
-      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4290,7 +4293,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'reputation_uuid' when calling PoliciesApi.policies_reputation_scores_destroy"
       end
       # resource path
-      local_var_path = '/policies/reputation/scores/{reputation_uuid}/'.sub('{' + 'reputation_uuid' + '}', CGI.escape(reputation_uuid.to_s))
+      local_var_path = '/policies/reputation/scores/{reputation_uuid}/'.sub('{reputation_uuid}', CGI.escape(reputation_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4430,7 +4433,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'reputation_uuid' when calling PoliciesApi.policies_reputation_scores_retrieve"
       end
       # resource path
-      local_var_path = '/policies/reputation/scores/{reputation_uuid}/'.sub('{' + 'reputation_uuid' + '}', CGI.escape(reputation_uuid.to_s))
+      local_var_path = '/policies/reputation/scores/{reputation_uuid}/'.sub('{reputation_uuid}', CGI.escape(reputation_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4491,7 +4494,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'reputation_uuid' when calling PoliciesApi.policies_reputation_scores_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/reputation/scores/{reputation_uuid}/used_by/'.sub('{' + 'reputation_uuid' + '}', CGI.escape(reputation_uuid.to_s))
+      local_var_path = '/policies/reputation/scores/{reputation_uuid}/used_by/'.sub('{reputation_uuid}', CGI.escape(reputation_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4558,7 +4561,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'reputation_policy_request' when calling PoliciesApi.policies_reputation_update"
       end
       # resource path
-      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/reputation/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4624,7 +4627,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_reputation_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/reputation/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/reputation/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4751,7 +4754,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_unique_password_destroy"
       end
       # resource path
-      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4902,7 +4905,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_unique_password_partial_update"
       end
       # resource path
-      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4968,7 +4971,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_unique_password_retrieve"
       end
       # resource path
-      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5035,7 +5038,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'unique_password_policy_request' when calling PoliciesApi.policies_unique_password_update"
       end
       # resource path
-      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/unique_password/{policy_uuid}/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5101,7 +5104,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_uuid' when calling PoliciesApi.policies_unique_password_used_by_list"
       end
       # resource path
-      local_var_path = '/policies/unique_password/{policy_uuid}/used_by/'.sub('{' + 'policy_uuid' + '}', CGI.escape(policy_uuid.to_s))
+      local_var_path = '/policies/unique_password/{policy_uuid}/used_by/'.sub('{policy_uuid}', CGI.escape(policy_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

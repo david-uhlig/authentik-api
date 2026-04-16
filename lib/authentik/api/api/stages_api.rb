@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_all_destroy"
       end
       # resource path
-      local_var_path = '/stages/all/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/all/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -166,7 +166,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_all_retrieve"
       end
       # resource path
-      local_var_path = '/stages/all/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/all/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -282,7 +282,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_all_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/all/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/all/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -464,7 +464,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -525,7 +525,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_enrollment_status_create"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/enrollment_status/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/enrollment_status/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -592,7 +592,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_duo_stage_manual_device_import_request' when calling StagesApi.stages_authenticator_duo_import_device_manual_create"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/import_device_manual/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/import_device_manual/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -658,7 +658,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_import_devices_automatic_create"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/import_devices_automatic/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/import_devices_automatic/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -800,7 +800,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -866,7 +866,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -933,7 +933,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_duo_stage_request' when calling StagesApi.stages_authenticator_duo_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -999,7 +999,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_duo_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/duo/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/duo/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1126,7 +1126,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_email_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1304,7 +1304,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_email_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1370,7 +1370,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_email_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1437,7 +1437,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_email_stage_request' when calling StagesApi.stages_authenticator_email_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1503,7 +1503,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_email_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/email/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/email/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1630,7 +1630,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_endpoint_gdtc_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1766,7 +1766,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_endpoint_gdtc_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1832,7 +1832,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_endpoint_gdtc_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1899,7 +1899,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_endpoint_gdtc_stage_request' when calling StagesApi.stages_authenticator_endpoint_gdtc_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1965,7 +1965,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_endpoint_gdtc_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/endpoint_gdtc/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2092,7 +2092,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_sms_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2258,7 +2258,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_sms_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2324,7 +2324,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_sms_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2391,7 +2391,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_sms_stage_request' when calling StagesApi.stages_authenticator_sms_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/sms/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2457,7 +2457,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_sms_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/sms/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/sms/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2584,7 +2584,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_static_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2732,7 +2732,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_static_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2798,7 +2798,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_static_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2865,7 +2865,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_static_stage_request' when calling StagesApi.stages_authenticator_static_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/static/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2931,7 +2931,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_static_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/static/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/static/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3058,7 +3058,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_totp_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3203,7 +3203,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_totp_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3269,7 +3269,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_totp_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3336,7 +3336,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_totp_stage_request' when calling StagesApi.stages_authenticator_totp_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/totp/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3402,7 +3402,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_totp_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/totp/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/totp/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3529,7 +3529,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_validate_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3668,7 +3668,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_validate_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3734,7 +3734,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_validate_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3801,7 +3801,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_validate_stage_request' when calling StagesApi.stages_authenticator_validate_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/validate/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3867,7 +3867,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_validate_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/validate/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/validate/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3994,7 +3994,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_webauthn_destroy"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4131,7 +4131,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'aaguid' when calling StagesApi.stages_authenticator_webauthn_device_types_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn_device_types/{aaguid}/'.sub('{' + 'aaguid' + '}', CGI.escape(aaguid.to_s))
+      local_var_path = '/stages/authenticator/webauthn_device_types/{aaguid}/'.sub('{aaguid}', CGI.escape(aaguid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4282,7 +4282,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_webauthn_partial_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4348,7 +4348,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_webauthn_retrieve"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4415,7 +4415,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'authenticator_web_authn_stage_request' when calling StagesApi.stages_authenticator_webauthn_update"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4481,7 +4481,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_authenticator_webauthn_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/authenticator/webauthn/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4608,7 +4608,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_captcha_destroy"
       end
       # resource path
-      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4744,7 +4744,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_captcha_partial_update"
       end
       # resource path
-      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4810,7 +4810,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_captcha_retrieve"
       end
       # resource path
-      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4877,7 +4877,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'captcha_stage_request' when calling StagesApi.stages_captcha_update"
       end
       # resource path
-      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/captcha/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4943,7 +4943,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_captcha_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/captcha/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/captcha/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5070,7 +5070,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_consent_destroy"
       end
       # resource path
-      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5212,7 +5212,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_consent_partial_update"
       end
       # resource path
-      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5278,7 +5278,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_consent_retrieve"
       end
       # resource path
-      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5345,7 +5345,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'consent_stage_request' when calling StagesApi.stages_consent_update"
       end
       # resource path
-      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/consent/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5411,7 +5411,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_consent_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/consent/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/consent/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5538,7 +5538,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_deny_destroy"
       end
       # resource path
-      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5677,7 +5677,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_deny_partial_update"
       end
       # resource path
-      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5743,7 +5743,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_deny_retrieve"
       end
       # resource path
-      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5810,7 +5810,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'deny_stage_request' when calling StagesApi.stages_deny_update"
       end
       # resource path
-      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/deny/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5876,7 +5876,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_deny_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/deny/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/deny/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6003,7 +6003,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_dummy_destroy"
       end
       # resource path
-      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6142,7 +6142,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_dummy_partial_update"
       end
       # resource path
-      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6208,7 +6208,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_dummy_retrieve"
       end
       # resource path
-      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6275,7 +6275,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'dummy_stage_request' when calling StagesApi.stages_dummy_update"
       end
       # resource path
-      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/dummy/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6341,7 +6341,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_dummy_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/dummy/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/dummy/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6468,7 +6468,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_email_destroy"
       end
       # resource path
-      local_var_path = '/stages/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6637,7 +6637,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_email_partial_update"
       end
       # resource path
-      local_var_path = '/stages/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6703,7 +6703,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_email_retrieve"
       end
       # resource path
-      local_var_path = '/stages/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6825,7 +6825,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'email_stage_request' when calling StagesApi.stages_email_update"
       end
       # resource path
-      local_var_path = '/stages/email/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/email/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6891,7 +6891,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_email_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/email/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/email/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7018,7 +7018,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_destroy"
       end
       # resource path
-      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7151,7 +7151,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_partial_update"
       end
       # resource path
-      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7217,7 +7217,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_retrieve"
       end
       # resource path
-      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7284,7 +7284,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'endpoint_stage_request' when calling StagesApi.stages_endpoints_update"
       end
       # resource path
-      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/endpoints/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7350,7 +7350,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_endpoints_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/endpoints/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/endpoints/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7477,7 +7477,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_identification_destroy"
       end
       # resource path
-      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7637,7 +7637,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_identification_partial_update"
       end
       # resource path
-      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7703,7 +7703,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_identification_retrieve"
       end
       # resource path
-      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7770,7 +7770,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identification_stage_request' when calling StagesApi.stages_identification_update"
       end
       # resource path
-      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/identification/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7836,7 +7836,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_identification_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/identification/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/identification/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7963,7 +7963,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invite_uuid' when calling StagesApi.stages_invitation_invitations_destroy"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8105,7 +8105,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invite_uuid' when calling StagesApi.stages_invitation_invitations_partial_update"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8171,7 +8171,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invite_uuid' when calling StagesApi.stages_invitation_invitations_retrieve"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8238,7 +8238,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invitation_send_email_request' when calling StagesApi.stages_invitation_invitations_send_email_create"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/send_email/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/send_email/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8310,7 +8310,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invitation_request' when calling StagesApi.stages_invitation_invitations_update"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8376,7 +8376,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invite_uuid' when calling StagesApi.stages_invitation_invitations_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/invitation/invitations/{invite_uuid}/used_by/'.sub('{' + 'invite_uuid' + '}', CGI.escape(invite_uuid.to_s))
+      local_var_path = '/stages/invitation/invitations/{invite_uuid}/used_by/'.sub('{invite_uuid}', CGI.escape(invite_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8503,7 +8503,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_invitation_stages_destroy"
       end
       # resource path
-      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8645,7 +8645,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_invitation_stages_partial_update"
       end
       # resource path
-      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8711,7 +8711,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_invitation_stages_retrieve"
       end
       # resource path
-      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8778,7 +8778,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'invitation_stage_request' when calling StagesApi.stages_invitation_stages_update"
       end
       # resource path
-      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/invitation/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8844,7 +8844,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_invitation_stages_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/invitation/stages/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/invitation/stages/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8971,7 +8971,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_destroy"
       end
       # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9119,7 +9119,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_partial_update"
       end
       # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9185,7 +9185,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_retrieve"
       end
       # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9252,7 +9252,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'mutual_tls_stage_request' when calling StagesApi.stages_mtls_update"
       end
       # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/mtls/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9318,7 +9318,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_mtls_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/mtls/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/mtls/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9445,7 +9445,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_password_destroy"
       end
       # resource path
-      local_var_path = '/stages/password/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/password/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9587,7 +9587,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_password_partial_update"
       end
       # resource path
-      local_var_path = '/stages/password/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/password/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9653,7 +9653,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_password_retrieve"
       end
       # resource path
-      local_var_path = '/stages/password/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/password/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9720,7 +9720,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'password_stage_request' when calling StagesApi.stages_password_update"
       end
       # resource path
-      local_var_path = '/stages/password/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/password/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9786,7 +9786,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_password_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/password/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/password/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9913,7 +9913,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_uuid' when calling StagesApi.stages_prompt_prompts_destroy"
       end
       # resource path
-      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{' + 'prompt_uuid' + '}', CGI.escape(prompt_uuid.to_s))
+      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{prompt_uuid}', CGI.escape(prompt_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10058,7 +10058,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_uuid' when calling StagesApi.stages_prompt_prompts_partial_update"
       end
       # resource path
-      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{' + 'prompt_uuid' + '}', CGI.escape(prompt_uuid.to_s))
+      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{prompt_uuid}', CGI.escape(prompt_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10190,7 +10190,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_uuid' when calling StagesApi.stages_prompt_prompts_retrieve"
       end
       # resource path
-      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{' + 'prompt_uuid' + '}', CGI.escape(prompt_uuid.to_s))
+      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{prompt_uuid}', CGI.escape(prompt_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10257,7 +10257,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_request' when calling StagesApi.stages_prompt_prompts_update"
       end
       # resource path
-      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{' + 'prompt_uuid' + '}', CGI.escape(prompt_uuid.to_s))
+      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/'.sub('{prompt_uuid}', CGI.escape(prompt_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10323,7 +10323,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_uuid' when calling StagesApi.stages_prompt_prompts_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/used_by/'.sub('{' + 'prompt_uuid' + '}', CGI.escape(prompt_uuid.to_s))
+      local_var_path = '/stages/prompt/prompts/{prompt_uuid}/used_by/'.sub('{prompt_uuid}', CGI.escape(prompt_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10450,7 +10450,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_prompt_stages_destroy"
       end
       # resource path
-      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10592,7 +10592,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_prompt_stages_partial_update"
       end
       # resource path
-      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10658,7 +10658,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_prompt_stages_retrieve"
       end
       # resource path
-      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10725,7 +10725,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'prompt_stage_request' when calling StagesApi.stages_prompt_stages_update"
       end
       # resource path
-      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/prompt/stages/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10791,7 +10791,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_prompt_stages_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/prompt/stages/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/prompt/stages/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10918,7 +10918,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_redirect_destroy"
       end
       # resource path
-      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11051,7 +11051,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_redirect_partial_update"
       end
       # resource path
-      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11117,7 +11117,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_redirect_retrieve"
       end
       # resource path
-      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11184,7 +11184,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'redirect_stage_request' when calling StagesApi.stages_redirect_update"
       end
       # resource path
-      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/redirect/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11250,7 +11250,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_redirect_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/redirect/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/redirect/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11377,7 +11377,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_source_destroy"
       end
       # resource path
-      local_var_path = '/stages/source/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/source/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11519,7 +11519,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_source_partial_update"
       end
       # resource path
-      local_var_path = '/stages/source/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/source/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11585,7 +11585,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_source_retrieve"
       end
       # resource path
-      local_var_path = '/stages/source/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/source/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11652,7 +11652,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'source_stage_request' when calling StagesApi.stages_source_update"
       end
       # resource path
-      local_var_path = '/stages/source/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/source/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11718,7 +11718,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_source_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/source/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/source/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11845,7 +11845,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_delete_destroy"
       end
       # resource path
-      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11981,7 +11981,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_delete_partial_update"
       end
       # resource path
-      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12047,7 +12047,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_delete_retrieve"
       end
       # resource path
-      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12114,7 +12114,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_delete_stage_request' when calling StagesApi.stages_user_delete_update"
       end
       # resource path
-      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_delete/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12180,7 +12180,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_delete_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/user_delete/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_delete/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12307,7 +12307,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_login_destroy"
       end
       # resource path
-      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12461,7 +12461,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_login_partial_update"
       end
       # resource path
-      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12527,7 +12527,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_login_retrieve"
       end
       # resource path
-      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12594,7 +12594,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_login_stage_request' when calling StagesApi.stages_user_login_update"
       end
       # resource path
-      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_login/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12660,7 +12660,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_login_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/user_login/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_login/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12787,7 +12787,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_logout_destroy"
       end
       # resource path
-      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12923,7 +12923,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_logout_partial_update"
       end
       # resource path
-      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -12989,7 +12989,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_logout_retrieve"
       end
       # resource path
-      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13056,7 +13056,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_logout_stage_request' when calling StagesApi.stages_user_logout_update"
       end
       # resource path
-      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_logout/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13122,7 +13122,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_logout_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/user_logout/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_logout/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13249,7 +13249,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_write_destroy"
       end
       # resource path
-      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13400,7 +13400,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_write_partial_update"
       end
       # resource path
-      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13466,7 +13466,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_write_retrieve"
       end
       # resource path
-      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13533,7 +13533,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_write_stage_request' when calling StagesApi.stages_user_write_update"
       end
       # resource path
-      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_write/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -13599,7 +13599,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_user_write_used_by_list"
       end
       # resource path
-      local_var_path = '/stages/user_write/{stage_uuid}/used_by/'.sub('{' + 'stage_uuid' + '}', CGI.escape(stage_uuid.to_s))
+      local_var_path = '/stages/user_write/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

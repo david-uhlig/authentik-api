@@ -335,7 +335,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_agents_connectors_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -541,7 +541,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'mdm_config_request' when calling EndpointsApi.endpoints_agents_connectors_mdm_config_create"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/mdm_config/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/mdm_config/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -609,7 +609,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_agents_connectors_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -675,7 +675,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_agents_connectors_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -742,7 +742,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'agent_connector_request' when calling EndpointsApi.endpoints_agents_connectors_update"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -808,7 +808,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_agents_connectors_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/used_by/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/agents/connectors/{connector_uuid}/used_by/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -935,7 +935,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_uuid' when calling EndpointsApi.endpoints_agents_enrollment_tokens_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1071,7 +1071,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_uuid' when calling EndpointsApi.endpoints_agents_enrollment_tokens_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1137,7 +1137,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_uuid' when calling EndpointsApi.endpoints_agents_enrollment_tokens_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1204,7 +1204,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'enrollment_token_request' when calling EndpointsApi.endpoints_agents_enrollment_tokens_update"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1270,7 +1270,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_uuid' when calling EndpointsApi.endpoints_agents_enrollment_tokens_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/used_by/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/used_by/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1331,7 +1331,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_uuid' when calling EndpointsApi.endpoints_agents_enrollment_tokens_view_key_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/view_key/'.sub('{' + 'token_uuid' + '}', CGI.escape(token_uuid.to_s))
+      local_var_path = '/endpoints/agents/enrollment_tokens/{token_uuid}/view_key/'.sub('{token_uuid}', CGI.escape(token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1520,7 +1520,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_connectors_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1648,7 +1648,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_connectors_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1764,7 +1764,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_connectors_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/connectors/{connector_uuid}/used_by/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/connectors/{connector_uuid}/used_by/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1891,7 +1891,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EndpointsApi.endpoints_device_access_groups_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2027,7 +2027,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EndpointsApi.endpoints_device_access_groups_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2093,7 +2093,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EndpointsApi.endpoints_device_access_groups_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2160,7 +2160,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_access_group_request' when calling EndpointsApi.endpoints_device_access_groups_update"
       end
       # resource path
-      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2226,7 +2226,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EndpointsApi.endpoints_device_access_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/used_by/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/endpoints/device_access_groups/{pbm_uuid}/used_by/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2353,7 +2353,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling EndpointsApi.endpoints_device_bindings_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2504,7 +2504,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling EndpointsApi.endpoints_device_bindings_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2570,7 +2570,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling EndpointsApi.endpoints_device_bindings_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2637,7 +2637,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_user_binding_request' when calling EndpointsApi.endpoints_device_bindings_update"
       end
       # resource path
-      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2703,7 +2703,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'policy_binding_uuid' when calling EndpointsApi.endpoints_device_bindings_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/used_by/'.sub('{' + 'policy_binding_uuid' + '}', CGI.escape(policy_binding_uuid.to_s))
+      local_var_path = '/endpoints/device_bindings/{policy_binding_uuid}/used_by/'.sub('{policy_binding_uuid}', CGI.escape(policy_binding_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2764,7 +2764,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_uuid' when calling EndpointsApi.endpoints_devices_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{' + 'device_uuid' + '}', CGI.escape(device_uuid.to_s))
+      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{device_uuid}', CGI.escape(device_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2900,7 +2900,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_uuid' when calling EndpointsApi.endpoints_devices_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{' + 'device_uuid' + '}', CGI.escape(device_uuid.to_s))
+      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{device_uuid}', CGI.escape(device_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2966,7 +2966,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_uuid' when calling EndpointsApi.endpoints_devices_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{' + 'device_uuid' + '}', CGI.escape(device_uuid.to_s))
+      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{device_uuid}', CGI.escape(device_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3088,7 +3088,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'endpoint_device_request' when calling EndpointsApi.endpoints_devices_update"
       end
       # resource path
-      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{' + 'device_uuid' + '}', CGI.escape(device_uuid.to_s))
+      local_var_path = '/endpoints/devices/{device_uuid}/'.sub('{device_uuid}', CGI.escape(device_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3154,7 +3154,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'device_uuid' when calling EndpointsApi.endpoints_devices_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/devices/{device_uuid}/used_by/'.sub('{' + 'device_uuid' + '}', CGI.escape(device_uuid.to_s))
+      local_var_path = '/endpoints/devices/{device_uuid}/used_by/'.sub('{device_uuid}', CGI.escape(device_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3281,7 +3281,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_fleet_connectors_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3414,7 +3414,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_fleet_connectors_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3480,7 +3480,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_fleet_connectors_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3547,7 +3547,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'fleet_connector_request' when calling EndpointsApi.endpoints_fleet_connectors_update"
       end
       # resource path
-      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3613,7 +3613,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_fleet_connectors_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/used_by/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/fleet/connectors/{connector_uuid}/used_by/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3740,7 +3740,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_google_chrome_connectors_destroy"
       end
       # resource path
-      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3873,7 +3873,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_google_chrome_connectors_partial_update"
       end
       # resource path
-      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3939,7 +3939,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_google_chrome_connectors_retrieve"
       end
       # resource path
-      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4006,7 +4006,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'google_chrome_connector_request' when calling EndpointsApi.endpoints_google_chrome_connectors_update"
       end
       # resource path
-      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4072,7 +4072,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connector_uuid' when calling EndpointsApi.endpoints_google_chrome_connectors_used_by_list"
       end
       # resource path
-      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/used_by/'.sub('{' + 'connector_uuid' + '}', CGI.escape(connector_uuid.to_s))
+      local_var_path = '/endpoints/google_chrome/connectors/{connector_uuid}/used_by/'.sub('{connector_uuid}', CGI.escape(connector_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

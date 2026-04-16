@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling SsfApi.ssf_streams_destroy"
       end
       # resource path
-      local_var_path = '/ssf/streams/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/ssf/streams/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -172,7 +172,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling SsfApi.ssf_streams_retrieve"
       end
       # resource path
-      local_var_path = '/ssf/streams/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/ssf/streams/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

@@ -333,6 +333,7 @@ describe 'PoliciesApi' do
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :policy_uuid 
+  # @option opts [String] :query 
   # @option opts [String] :search A search term.
   # @return [PaginatedEventMatcherPolicyList]
   describe 'policies_event_matcher_list test' do

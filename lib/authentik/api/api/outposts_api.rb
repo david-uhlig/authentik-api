@@ -156,7 +156,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_instances_destroy"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -237,7 +237,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_instances_health_list"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/health/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/health/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -401,7 +401,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_instances_partial_update"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -467,7 +467,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_instances_retrieve"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -534,7 +534,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'outpost_request' when calling OutpostsApi.outposts_instances_update"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -600,7 +600,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_instances_used_by_list"
       end
       # resource path
-      local_var_path = '/outposts/instances/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/instances/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -663,7 +663,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling OutpostsApi.outposts_ldap_access_check"
       end
       # resource path
-      local_var_path = '/outposts/ldap/{id}/check_access/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/outposts/ldap/{id}/check_access/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -867,7 +867,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling OutpostsApi.outposts_radius_access_check"
       end
       # resource path
-      local_var_path = '/outposts/radius/{id}/check_access/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/outposts/radius/{id}/check_access/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -999,7 +999,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_all_destroy"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/all/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/all/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1130,7 +1130,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_all_retrieve"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/all/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/all/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1191,7 +1191,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_all_state_retrieve"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/all/{uuid}/state/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/all/{uuid}/state/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1307,7 +1307,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_all_used_by_list"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/all/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/all/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1434,7 +1434,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_docker_destroy"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1579,7 +1579,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_docker_partial_update"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1645,7 +1645,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_docker_retrieve"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1712,7 +1712,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'docker_service_connection_request' when calling OutpostsApi.outposts_service_connections_docker_update"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/docker/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1778,7 +1778,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_docker_used_by_list"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/docker/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/docker/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1905,7 +1905,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_kubernetes_destroy"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2041,7 +2041,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_kubernetes_partial_update"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2107,7 +2107,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_kubernetes_retrieve"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2174,7 +2174,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kubernetes_service_connection_request' when calling OutpostsApi.outposts_service_connections_kubernetes_update"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2240,7 +2240,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling OutpostsApi.outposts_service_connections_kubernetes_used_by_list"
       end
       # resource path
-      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/outposts/service_connections/kubernetes/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

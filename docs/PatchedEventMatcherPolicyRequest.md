@@ -10,6 +10,7 @@
 | **client_ip** | **String** | Matches Event&#39;s Client IP (strict matching, for network matching use an Expression Policy) | [optional] |
 | **app** | [**AppEnum**](AppEnum.md) | Match events created by selected application. When left empty, all applications are matched. | [optional] |
 | **model** | [**ModelEnum**](ModelEnum.md) | Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application&#39;s models are matched. | [optional] |
+| **query** | **String** |  | [optional] |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = Authentik::Api::PatchedEventMatcherPolicyRequest.new(
   action: null,
   client_ip: null,
   app: null,
-  model: null
+  model: null,
+  query: null
 )
 ```
 
