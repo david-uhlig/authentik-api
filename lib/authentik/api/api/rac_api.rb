@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connection_token_uuid' when calling RacApi.rac_connection_tokens_destroy"
       end
       # resource path
-      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{' + 'connection_token_uuid' + '}', CGI.escape(connection_token_uuid.to_s))
+      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{connection_token_uuid}', CGI.escape(connection_token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -174,7 +174,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connection_token_uuid' when calling RacApi.rac_connection_tokens_partial_update"
       end
       # resource path
-      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{' + 'connection_token_uuid' + '}', CGI.escape(connection_token_uuid.to_s))
+      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{connection_token_uuid}', CGI.escape(connection_token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -240,7 +240,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connection_token_uuid' when calling RacApi.rac_connection_tokens_retrieve"
       end
       # resource path
-      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{' + 'connection_token_uuid' + '}', CGI.escape(connection_token_uuid.to_s))
+      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{connection_token_uuid}', CGI.escape(connection_token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -307,7 +307,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connection_token_request' when calling RacApi.rac_connection_tokens_update"
       end
       # resource path
-      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{' + 'connection_token_uuid' + '}', CGI.escape(connection_token_uuid.to_s))
+      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/'.sub('{connection_token_uuid}', CGI.escape(connection_token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -373,7 +373,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'connection_token_uuid' when calling RacApi.rac_connection_tokens_used_by_list"
       end
       # resource path
-      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/used_by/'.sub('{' + 'connection_token_uuid' + '}', CGI.escape(connection_token_uuid.to_s))
+      local_var_path = '/rac/connection_tokens/{connection_token_uuid}/used_by/'.sub('{connection_token_uuid}', CGI.escape(connection_token_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -500,7 +500,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_destroy"
       end
       # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -639,7 +639,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_partial_update"
       end
       # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -705,7 +705,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_retrieve"
       end
       # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -772,7 +772,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'endpoint_request' when calling RacApi.rac_endpoints_update"
       end
       # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -838,7 +838,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_used_by_list"
       end
       # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/used_by/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/rac/endpoints/{pbm_uuid}/used_by/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

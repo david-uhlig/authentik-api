@@ -101,7 +101,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling CoreApi.core_application_entitlements_destroy"
       end
       # resource path
-      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -240,7 +240,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling CoreApi.core_application_entitlements_partial_update"
       end
       # resource path
-      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -306,7 +306,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling CoreApi.core_application_entitlements_retrieve"
       end
       # resource path
-      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -373,7 +373,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'application_entitlement_request' when calling CoreApi.core_application_entitlements_update"
       end
       # resource path
-      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/core/application_entitlements/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -439,7 +439,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling CoreApi.core_application_entitlements_used_by_list"
       end
       # resource path
-      local_var_path = '/core/application_entitlements/{pbm_uuid}/used_by/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/core/application_entitlements/{pbm_uuid}/used_by/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -502,7 +502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_check_access_retrieve"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/check_access/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/check_access/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -630,7 +630,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_destroy"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -787,7 +787,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_partial_update"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -853,7 +853,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_retrieve"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -920,7 +920,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'application_request' when calling CoreApi.core_applications_update"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -986,7 +986,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling CoreApi.core_applications_used_by_list"
       end
       # resource path
-      local_var_path = '/core/applications/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/core/applications/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1109,7 +1109,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling CoreApi.core_authenticated_sessions_destroy"
       end
       # resource path
-      local_var_path = '/core/authenticated_sessions/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/core/authenticated_sessions/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1246,7 +1246,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling CoreApi.core_authenticated_sessions_retrieve"
       end
       # resource path
-      local_var_path = '/core/authenticated_sessions/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/core/authenticated_sessions/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1307,7 +1307,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling CoreApi.core_authenticated_sessions_used_by_list"
       end
       # resource path
-      local_var_path = '/core/authenticated_sessions/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/core/authenticated_sessions/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1489,7 +1489,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'brand_uuid' when calling CoreApi.core_brands_destroy"
       end
       # resource path
-      local_var_path = '/core/brands/{brand_uuid}/'.sub('{' + 'brand_uuid' + '}', CGI.escape(brand_uuid.to_s))
+      local_var_path = '/core/brands/{brand_uuid}/'.sub('{brand_uuid}', CGI.escape(brand_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1664,7 +1664,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'brand_uuid' when calling CoreApi.core_brands_partial_update"
       end
       # resource path
-      local_var_path = '/core/brands/{brand_uuid}/'.sub('{' + 'brand_uuid' + '}', CGI.escape(brand_uuid.to_s))
+      local_var_path = '/core/brands/{brand_uuid}/'.sub('{brand_uuid}', CGI.escape(brand_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1730,7 +1730,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'brand_uuid' when calling CoreApi.core_brands_retrieve"
       end
       # resource path
-      local_var_path = '/core/brands/{brand_uuid}/'.sub('{' + 'brand_uuid' + '}', CGI.escape(brand_uuid.to_s))
+      local_var_path = '/core/brands/{brand_uuid}/'.sub('{brand_uuid}', CGI.escape(brand_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1797,7 +1797,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'brand_request' when calling CoreApi.core_brands_update"
       end
       # resource path
-      local_var_path = '/core/brands/{brand_uuid}/'.sub('{' + 'brand_uuid' + '}', CGI.escape(brand_uuid.to_s))
+      local_var_path = '/core/brands/{brand_uuid}/'.sub('{brand_uuid}', CGI.escape(brand_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1863,7 +1863,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'brand_uuid' when calling CoreApi.core_brands_used_by_list"
       end
       # resource path
-      local_var_path = '/core/brands/{brand_uuid}/used_by/'.sub('{' + 'brand_uuid' + '}', CGI.escape(brand_uuid.to_s))
+      local_var_path = '/core/brands/{brand_uuid}/used_by/'.sub('{brand_uuid}', CGI.escape(brand_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1930,7 +1930,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_account_request' when calling CoreApi.core_groups_add_user_create"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/add_user/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/add_user/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2062,7 +2062,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_uuid' when calling CoreApi.core_groups_destroy"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2219,7 +2219,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_uuid' when calling CoreApi.core_groups_partial_update"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2291,7 +2291,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_account_request' when calling CoreApi.core_groups_remove_user_create"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/remove_user/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/remove_user/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2365,7 +2365,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_uuid' when calling CoreApi.core_groups_retrieve"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2436,7 +2436,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_request' when calling CoreApi.core_groups_update"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2502,7 +2502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_uuid' when calling CoreApi.core_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/core/groups/{group_uuid}/used_by/'.sub('{' + 'group_uuid' + '}', CGI.escape(group_uuid.to_s))
+      local_var_path = '/core/groups/{group_uuid}/used_by/'.sub('{group_uuid}', CGI.escape(group_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2629,7 +2629,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identifier' when calling CoreApi.core_tokens_destroy"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2780,7 +2780,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identifier' when calling CoreApi.core_tokens_partial_update"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2846,7 +2846,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identifier' when calling CoreApi.core_tokens_retrieve"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2913,7 +2913,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_set_key_request' when calling CoreApi.core_tokens_set_key_create"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/set_key/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/set_key/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2985,7 +2985,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'token_request' when calling CoreApi.core_tokens_update"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3051,7 +3051,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identifier' when calling CoreApi.core_tokens_used_by_list"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/used_by/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/used_by/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3112,7 +3112,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'identifier' when calling CoreApi.core_tokens_view_key_retrieve"
       end
       # resource path
-      local_var_path = '/core/tokens/{identifier}/view_key/'.sub('{' + 'identifier' + '}', CGI.escape(identifier.to_s))
+      local_var_path = '/core/tokens/{identifier}/view_key/'.sub('{identifier}', CGI.escape(identifier.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3239,7 +3239,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_user_consent_destroy"
       end
       # resource path
-      local_var_path = '/core/user_consent/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/user_consent/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3373,7 +3373,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_user_consent_retrieve"
       end
       # resource path
-      local_var_path = '/core/user_consent/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/user_consent/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3434,7 +3434,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_user_consent_used_by_list"
       end
       # resource path
-      local_var_path = '/core/user_consent/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/user_consent/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3561,7 +3561,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_destroy"
       end
       # resource path
-      local_var_path = '/core/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3761,7 +3761,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'impersonation_request' when calling CoreApi.core_users_impersonate_create"
       end
       # resource path
-      local_var_path = '/core/users/{id}/impersonate/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/impersonate/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4084,7 +4084,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_partial_update"
       end
       # resource path
-      local_var_path = '/core/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4210,7 +4210,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_recovery_create"
       end
       # resource path
-      local_var_path = '/core/users/{id}/recovery/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/recovery/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4282,7 +4282,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_recovery_email_request' when calling CoreApi.core_users_recovery_email_create"
       end
       # resource path
-      local_var_path = '/core/users/{id}/recovery_email/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/recovery_email/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4348,7 +4348,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_retrieve"
       end
       # resource path
-      local_var_path = '/core/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4481,7 +4481,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_password_set_request' when calling CoreApi.core_users_set_password_create"
       end
       # resource path
-      local_var_path = '/core/users/{id}/set_password/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/set_password/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4553,7 +4553,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_request' when calling CoreApi.core_users_update"
       end
       # resource path
-      local_var_path = '/core/users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4619,7 +4619,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_used_by_list"
       end
       # resource path
-      local_var_path = '/core/users/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/core/users/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

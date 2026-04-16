@@ -101,7 +101,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TenantsApi.tenants_domains_destroy"
       end
       # resource path
-      local_var_path = '/tenants/domains/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tenants/domains/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -231,7 +231,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TenantsApi.tenants_domains_partial_update"
       end
       # resource path
-      local_var_path = '/tenants/domains/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tenants/domains/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -297,7 +297,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TenantsApi.tenants_domains_retrieve"
       end
       # resource path
-      local_var_path = '/tenants/domains/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tenants/domains/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -364,7 +364,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'domain_request' when calling TenantsApi.tenants_domains_update"
       end
       # resource path
-      local_var_path = '/tenants/domains/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tenants/domains/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -502,7 +502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_admin_group_request_request' when calling TenantsApi.tenants_tenants_create_admin_group_create"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/create_admin_group/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/create_admin_group/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -574,7 +574,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_recovery_key_request_request' when calling TenantsApi.tenants_tenants_create_recovery_key_create"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/create_recovery_key/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/create_recovery_key/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -640,7 +640,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_uuid' when calling TenantsApi.tenants_tenants_destroy"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -770,7 +770,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_uuid' when calling TenantsApi.tenants_tenants_partial_update"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -836,7 +836,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_uuid' when calling TenantsApi.tenants_tenants_retrieve"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -903,7 +903,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'tenant_request' when calling TenantsApi.tenants_tenants_update"
       end
       # resource path
-      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{' + 'tenant_uuid' + '}', CGI.escape(tenant_uuid.to_s))
+      local_var_path = '/tenants/tenants/{tenant_uuid}/'.sub('{tenant_uuid}', CGI.escape(tenant_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

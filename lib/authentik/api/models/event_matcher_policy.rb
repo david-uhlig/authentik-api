@@ -44,6 +44,8 @@ module Authentik::Api
     # Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
     attr_accessor :model
 
+    attr_accessor :query
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +82,8 @@ module Authentik::Api
         :'action' => :'action',
         :'client_ip' => :'client_ip',
         :'app' => :'app',
-        :'model' => :'model'
+        :'model' => :'model',
+        :'query' => :'query'
       }
     end
 
@@ -108,7 +111,8 @@ module Authentik::Api
         :'action' => :'EventActions',
         :'client_ip' => :'String',
         :'app' => :'AppEnum',
-        :'model' => :'ModelEnum'
+        :'model' => :'ModelEnum',
+        :'query' => :'String'
       }
     end
 
@@ -118,7 +122,8 @@ module Authentik::Api
         :'action',
         :'client_ip',
         :'app',
-        :'model'
+        :'model',
+        :'query'
       ])
     end
 
@@ -198,6 +203,10 @@ module Authentik::Api
 
       if attributes.key?(:'model')
         self.model = attributes[:'model']
+      end
+
+      if attributes.key?(:'query')
+        self.query = attributes[:'query']
       end
     end
 
@@ -337,7 +346,8 @@ module Authentik::Api
           action == o.action &&
           client_ip == o.client_ip &&
           app == o.app &&
-          model == o.model
+          model == o.model &&
+          query == o.query
     end
 
     # @see the `==` method
@@ -349,7 +359,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, action, client_ip, app, model].hash
+      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, action, client_ip, app, model, query].hash
     end
 
     # Builds the object from hash

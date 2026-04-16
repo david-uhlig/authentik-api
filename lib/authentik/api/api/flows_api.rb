@@ -101,7 +101,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'fsb_uuid' when calling FlowsApi.flows_bindings_destroy"
       end
       # resource path
-      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{' + 'fsb_uuid' + '}', CGI.escape(fsb_uuid.to_s))
+      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{fsb_uuid}', CGI.escape(fsb_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -261,7 +261,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'fsb_uuid' when calling FlowsApi.flows_bindings_partial_update"
       end
       # resource path
-      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{' + 'fsb_uuid' + '}', CGI.escape(fsb_uuid.to_s))
+      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{fsb_uuid}', CGI.escape(fsb_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -327,7 +327,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'fsb_uuid' when calling FlowsApi.flows_bindings_retrieve"
       end
       # resource path
-      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{' + 'fsb_uuid' + '}', CGI.escape(fsb_uuid.to_s))
+      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{fsb_uuid}', CGI.escape(fsb_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -394,7 +394,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'flow_stage_binding_request' when calling FlowsApi.flows_bindings_update"
       end
       # resource path
-      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{' + 'fsb_uuid' + '}', CGI.escape(fsb_uuid.to_s))
+      local_var_path = '/flows/bindings/{fsb_uuid}/'.sub('{fsb_uuid}', CGI.escape(fsb_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -460,7 +460,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'fsb_uuid' when calling FlowsApi.flows_bindings_used_by_list"
       end
       # resource path
-      local_var_path = '/flows/bindings/{fsb_uuid}/used_by/'.sub('{' + 'fsb_uuid' + '}', CGI.escape(fsb_uuid.to_s))
+      local_var_path = '/flows/bindings/{fsb_uuid}/used_by/'.sub('{fsb_uuid}', CGI.escape(fsb_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -527,7 +527,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'query' when calling FlowsApi.flows_executor_get"
       end
       # resource path
-      local_var_path = '/flows/executor/{flow_slug}/'.sub('{' + 'flow_slug' + '}', CGI.escape(flow_slug.to_s))
+      local_var_path = '/flows/executor/{flow_slug}/'.sub('{flow_slug}', CGI.escape(flow_slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -597,7 +597,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'query' when calling FlowsApi.flows_executor_solve"
       end
       # resource path
-      local_var_path = '/flows/executor/{flow_slug}/'.sub('{' + 'flow_slug' + '}', CGI.escape(flow_slug.to_s))
+      local_var_path = '/flows/executor/{flow_slug}/'.sub('{flow_slug}', CGI.escape(flow_slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -664,7 +664,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'flow_slug' when calling FlowsApi.flows_inspector_get"
       end
       # resource path
-      local_var_path = '/flows/inspector/{flow_slug}/'.sub('{' + 'flow_slug' + '}', CGI.escape(flow_slug.to_s))
+      local_var_path = '/flows/inspector/{flow_slug}/'.sub('{flow_slug}', CGI.escape(flow_slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -901,7 +901,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_destroy"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -962,7 +962,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_diagram_retrieve"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/diagram/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/diagram/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1023,7 +1023,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_execute_retrieve"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/execute/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/execute/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1084,7 +1084,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_export_retrieve"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/export/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/export/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1229,7 +1229,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_partial_update"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1295,7 +1295,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_retrieve"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1362,7 +1362,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'flow_request' when calling FlowsApi.flows_instances_update"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1428,7 +1428,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling FlowsApi.flows_instances_used_by_list"
       end
       # resource path
-      local_var_path = '/flows/instances/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/flows/instances/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

@@ -771,7 +771,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AdminApi.admin_version_history_retrieve"
       end
       # resource path
-      local_var_path = '/admin/version/history/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/admin/version/history/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

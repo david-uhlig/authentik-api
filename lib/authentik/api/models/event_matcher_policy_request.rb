@@ -27,6 +27,8 @@ module Authentik::Api
     # Match events created by selected model. When left empty, all models are matched. When an app is selected, all the application's models are matched.
     attr_accessor :model
 
+    attr_accessor :query
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -57,7 +59,8 @@ module Authentik::Api
         :'action' => :'action',
         :'client_ip' => :'client_ip',
         :'app' => :'app',
-        :'model' => :'model'
+        :'model' => :'model',
+        :'query' => :'query'
       }
     end
 
@@ -79,7 +82,8 @@ module Authentik::Api
         :'action' => :'EventActions',
         :'client_ip' => :'String',
         :'app' => :'AppEnum',
-        :'model' => :'ModelEnum'
+        :'model' => :'ModelEnum',
+        :'query' => :'String'
       }
     end
 
@@ -89,7 +93,8 @@ module Authentik::Api
         :'action',
         :'client_ip',
         :'app',
-        :'model'
+        :'model',
+        :'query'
       ])
     end
 
@@ -134,6 +139,10 @@ module Authentik::Api
       if attributes.key?(:'model')
         self.model = attributes[:'model']
       end
+
+      if attributes.key?(:'query')
+        self.query = attributes[:'query']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -153,6 +162,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "client_ip", the character length must be greater than or equal to 1.')
       end
 
+      if !@query.nil? && @query.to_s.length < 1
+        invalid_properties.push('invalid value for "query", the character length must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -163,6 +176,7 @@ module Authentik::Api
       return false if @name.nil?
       return false if @name.to_s.length < 1
       return false if !@client_ip.nil? && @client_ip.to_s.length < 1
+      return false if !@query.nil? && @query.to_s.length < 1
       true
     end
 
@@ -190,6 +204,16 @@ module Authentik::Api
       @client_ip = client_ip
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] query Value to be assigned
+    def query=(query)
+      if !query.nil? && query.to_s.length < 1
+        fail ArgumentError, 'invalid value for "query", the character length must be greater than or equal to 1.'
+      end
+
+      @query = query
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -200,7 +224,8 @@ module Authentik::Api
           action == o.action &&
           client_ip == o.client_ip &&
           app == o.app &&
-          model == o.model
+          model == o.model &&
+          query == o.query
     end
 
     # @see the `==` method
@@ -212,7 +237,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, execution_logging, action, client_ip, app, model].hash
+      [name, execution_logging, action, client_ip, app, model, query].hash
     end
 
     # Builds the object from hash

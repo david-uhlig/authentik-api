@@ -101,7 +101,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_initial_permissions_destroy"
       end
       # resource path
-      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -234,7 +234,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_initial_permissions_partial_update"
       end
       # resource path
-      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -300,7 +300,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_initial_permissions_retrieve"
       end
       # resource path
-      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -367,7 +367,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'initial_permissions_request' when calling RbacApi.rbac_initial_permissions_update"
       end
       # resource path
-      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/initial_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -433,7 +433,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_initial_permissions_used_by_list"
       end
       # resource path
-      local_var_path = '/rbac/initial_permissions/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/initial_permissions/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -500,7 +500,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'permission_assign_request' when calling RbacApi.rbac_permissions_assigned_by_roles_assign"
       end
       # resource path
-      local_var_path = '/rbac/permissions/assigned_by_roles/{uuid}/assign/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/permissions/assigned_by_roles/{uuid}/assign/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -645,7 +645,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_permissions_assigned_by_roles_unassign_partial_update"
       end
       # resource path
-      local_var_path = '/rbac/permissions/assigned_by_roles/{uuid}/unassign/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/permissions/assigned_by_roles/{uuid}/unassign/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -790,7 +790,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_permissions_retrieve"
       end
       # resource path
-      local_var_path = '/rbac/permissions/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/rbac/permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -927,7 +927,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_account_serializer_for_role_request' when calling RbacApi.rbac_roles_add_user_create"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/add_user/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/add_user/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1059,7 +1059,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_destroy"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1207,7 +1207,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_partial_update"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1279,7 +1279,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_account_serializer_for_role_request' when calling RbacApi.rbac_roles_remove_user_create"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/remove_user/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/remove_user/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1345,7 +1345,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_retrieve"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1412,7 +1412,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'role_request' when calling RbacApi.rbac_roles_update"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1478,7 +1478,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling RbacApi.rbac_roles_used_by_list"
       end
       # resource path
-      local_var_path = '/rbac/roles/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/rbac/roles/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

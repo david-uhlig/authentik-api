@@ -159,7 +159,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_duo_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -292,7 +292,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_duo_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -358,7 +358,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_duo_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -425,7 +425,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'duo_device_request' when calling AuthenticatorsApi.authenticators_admin_duo_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -557,7 +557,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_email_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -690,7 +690,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_email_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -756,7 +756,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_email_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -823,7 +823,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'email_device_request' when calling AuthenticatorsApi.authenticators_admin_email_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -955,7 +955,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_admin_endpoint_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1088,7 +1088,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_admin_endpoint_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1154,7 +1154,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_admin_endpoint_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1221,7 +1221,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'google_endpoint_device_request' when calling AuthenticatorsApi.authenticators_admin_endpoint_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/admin/endpoint/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1353,7 +1353,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_sms_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1486,7 +1486,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_sms_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1552,7 +1552,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_sms_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1619,7 +1619,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'sms_device_request' when calling AuthenticatorsApi.authenticators_admin_sms_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1751,7 +1751,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_static_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1884,7 +1884,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_static_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1950,7 +1950,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_static_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2017,7 +2017,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'static_device_request' when calling AuthenticatorsApi.authenticators_admin_static_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2149,7 +2149,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_totp_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2282,7 +2282,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_totp_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2348,7 +2348,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_totp_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2415,7 +2415,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'totp_device_request' when calling AuthenticatorsApi.authenticators_admin_totp_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2547,7 +2547,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_webauthn_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2680,7 +2680,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_webauthn_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2746,7 +2746,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_admin_webauthn_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2813,7 +2813,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'web_authn_device_request' when calling AuthenticatorsApi.authenticators_admin_webauthn_update"
       end
       # resource path
-      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/admin/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2934,7 +2934,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_duo_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3067,7 +3067,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_duo_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3133,7 +3133,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_duo_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3200,7 +3200,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'duo_device_request' when calling AuthenticatorsApi.authenticators_duo_update"
       end
       # resource path
-      local_var_path = '/authenticators/duo/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/duo/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3266,7 +3266,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_duo_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/duo/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/duo/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3327,7 +3327,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_email_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3460,7 +3460,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_email_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3526,7 +3526,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_email_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3593,7 +3593,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'email_device_request' when calling AuthenticatorsApi.authenticators_email_update"
       end
       # resource path
-      local_var_path = '/authenticators/email/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/email/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3659,7 +3659,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_email_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/email/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/email/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3790,7 +3790,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_endpoint_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/endpoint/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/endpoint/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3851,7 +3851,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling AuthenticatorsApi.authenticators_endpoint_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/endpoint/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/authenticators/endpoint/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3912,7 +3912,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_sms_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4045,7 +4045,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_sms_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4111,7 +4111,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_sms_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4178,7 +4178,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'sms_device_request' when calling AuthenticatorsApi.authenticators_sms_update"
       end
       # resource path
-      local_var_path = '/authenticators/sms/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/sms/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4244,7 +4244,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_sms_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/sms/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/sms/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4305,7 +4305,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_static_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4438,7 +4438,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_static_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4504,7 +4504,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_static_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4571,7 +4571,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'static_device_request' when calling AuthenticatorsApi.authenticators_static_update"
       end
       # resource path
-      local_var_path = '/authenticators/static/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/static/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4637,7 +4637,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_static_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/static/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/static/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4698,7 +4698,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_totp_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4831,7 +4831,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_totp_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4897,7 +4897,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_totp_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4964,7 +4964,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'totp_device_request' when calling AuthenticatorsApi.authenticators_totp_update"
       end
       # resource path
-      local_var_path = '/authenticators/totp/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/totp/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5030,7 +5030,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_totp_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/totp/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/totp/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5091,7 +5091,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_webauthn_destroy"
       end
       # resource path
-      local_var_path = '/authenticators/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5224,7 +5224,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_webauthn_partial_update"
       end
       # resource path
-      local_var_path = '/authenticators/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5290,7 +5290,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_webauthn_retrieve"
       end
       # resource path
-      local_var_path = '/authenticators/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5357,7 +5357,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'web_authn_device_request' when calling AuthenticatorsApi.authenticators_webauthn_update"
       end
       # resource path
-      local_var_path = '/authenticators/webauthn/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/webauthn/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5423,7 +5423,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling AuthenticatorsApi.authenticators_webauthn_used_by_list"
       end
       # resource path
-      local_var_path = '/authenticators/webauthn/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/authenticators/webauthn/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

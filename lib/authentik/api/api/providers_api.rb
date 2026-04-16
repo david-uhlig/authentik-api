@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_all_destroy"
       end
       # resource path
-      local_var_path = '/providers/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -169,7 +169,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_all_retrieve"
       end
       # resource path
-      local_var_path = '/providers/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -285,7 +285,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_all_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/all/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/all/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -412,7 +412,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_destroy"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -539,7 +539,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_groups_destroy"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -676,7 +676,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_groups_retrieve"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -737,7 +737,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_groups/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_groups/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -879,7 +879,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_partial_update"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -945,7 +945,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_retrieve"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1012,7 +1012,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'sync_object_request' when calling ProvidersApi.providers_google_workspace_sync_object_create"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/sync/object/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/sync/object/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1078,7 +1078,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_sync_status_retrieve"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/sync/status/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/sync/status/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1145,7 +1145,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'google_workspace_provider_request' when calling ProvidersApi.providers_google_workspace_update"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1211,7 +1211,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/google_workspace/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1338,7 +1338,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_users_destroy"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1475,7 +1475,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_users_retrieve"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1536,7 +1536,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_google_workspace_users_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/google_workspace_users/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/google_workspace_users/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1663,7 +1663,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ldap_destroy"
       end
       # resource path
-      local_var_path = '/providers/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1820,7 +1820,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ldap_partial_update"
       end
       # resource path
-      local_var_path = '/providers/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1886,7 +1886,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ldap_retrieve"
       end
       # resource path
-      local_var_path = '/providers/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1953,7 +1953,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'ldap_provider_request' when calling ProvidersApi.providers_ldap_update"
       end
       # resource path
-      local_var_path = '/providers/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2019,7 +2019,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ldap_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/ldap/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ldap/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2146,7 +2146,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_destroy"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2273,7 +2273,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_groups_destroy"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2410,7 +2410,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_groups_retrieve"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2471,7 +2471,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_groups/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_groups/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2610,7 +2610,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_partial_update"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2676,7 +2676,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_retrieve"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2743,7 +2743,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'sync_object_request' when calling ProvidersApi.providers_microsoft_entra_sync_object_create"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/sync/object/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/sync/object/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2809,7 +2809,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_sync_status_retrieve"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/sync/status/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/sync/status/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2876,7 +2876,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'microsoft_entra_provider_request' when calling ProvidersApi.providers_microsoft_entra_update"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2942,7 +2942,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3069,7 +3069,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_users_destroy"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3206,7 +3206,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_users_retrieve"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3267,7 +3267,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_microsoft_entra_users_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/microsoft_entra_users/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/microsoft_entra_users/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3394,7 +3394,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_destroy"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3563,7 +3563,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_partial_update"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3631,7 +3631,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_preview_user_retrieve"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/preview_user/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/preview_user/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3693,7 +3693,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_retrieve"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3754,7 +3754,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_setup_urls_retrieve"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/setup_urls/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/setup_urls/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3821,7 +3821,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'o_auth2_provider_request' when calling ProvidersApi.providers_oauth2_update"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3887,7 +3887,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_oauth2_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/oauth2/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/oauth2/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4014,7 +4014,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_proxy_destroy"
       end
       # resource path
-      local_var_path = '/providers/proxy/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/proxy/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4189,7 +4189,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_proxy_partial_update"
       end
       # resource path
-      local_var_path = '/providers/proxy/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/proxy/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4255,7 +4255,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_proxy_retrieve"
       end
       # resource path
-      local_var_path = '/providers/proxy/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/proxy/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4322,7 +4322,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'proxy_provider_request' when calling ProvidersApi.providers_proxy_update"
       end
       # resource path
-      local_var_path = '/providers/proxy/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/proxy/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4388,7 +4388,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_proxy_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/proxy/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/proxy/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4515,7 +4515,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_rac_destroy"
       end
       # resource path
-      local_var_path = '/providers/rac/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/rac/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4651,7 +4651,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_rac_partial_update"
       end
       # resource path
-      local_var_path = '/providers/rac/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/rac/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4717,7 +4717,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_rac_retrieve"
       end
       # resource path
-      local_var_path = '/providers/rac/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/rac/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4784,7 +4784,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'rac_provider_request' when calling ProvidersApi.providers_rac_update"
       end
       # resource path
-      local_var_path = '/providers/rac/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/rac/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4850,7 +4850,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_rac_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/rac/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/rac/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4977,7 +4977,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_radius_destroy"
       end
       # resource path
-      local_var_path = '/providers/radius/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/radius/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5119,7 +5119,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_radius_partial_update"
       end
       # resource path
-      local_var_path = '/providers/radius/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/radius/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5185,7 +5185,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_radius_retrieve"
       end
       # resource path
-      local_var_path = '/providers/radius/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/radius/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5252,7 +5252,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'radius_provider_request' when calling ProvidersApi.providers_radius_update"
       end
       # resource path
-      local_var_path = '/providers/radius/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/radius/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5318,7 +5318,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_radius_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/radius/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/radius/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5445,7 +5445,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_destroy"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5759,7 +5759,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_metadata_retrieve"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/metadata/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/metadata/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5824,7 +5824,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_partial_update"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5892,7 +5892,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_preview_user_retrieve"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/preview_user/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/preview_user/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5954,7 +5954,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_retrieve"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6021,7 +6021,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'saml_provider_request' when calling ProvidersApi.providers_saml_update"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6087,7 +6087,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/saml/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/saml/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6214,7 +6214,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_destroy"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6341,7 +6341,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_groups_destroy"
       end
       # resource path
-      local_var_path = '/providers/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6478,7 +6478,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_groups_retrieve"
       end
       # resource path
-      local_var_path = '/providers/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6539,7 +6539,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/scim_groups/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_groups/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6681,7 +6681,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_partial_update"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6747,7 +6747,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_retrieve"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6814,7 +6814,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'sync_object_request' when calling ProvidersApi.providers_scim_sync_object_create"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/sync/object/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/sync/object/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6880,7 +6880,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_sync_status_retrieve"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/sync/status/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/sync/status/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6947,7 +6947,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_provider_request' when calling ProvidersApi.providers_scim_update"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7013,7 +7013,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/scim/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7140,7 +7140,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_users_destroy"
       end
       # resource path
-      local_var_path = '/providers/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7277,7 +7277,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_users_retrieve"
       end
       # resource path
-      local_var_path = '/providers/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7338,7 +7338,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_scim_users_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/scim_users/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/scim_users/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7465,7 +7465,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ssf_destroy"
       end
       # resource path
-      local_var_path = '/providers/ssf/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ssf/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7601,7 +7601,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ssf_partial_update"
       end
       # resource path
-      local_var_path = '/providers/ssf/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ssf/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7667,7 +7667,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ssf_retrieve"
       end
       # resource path
-      local_var_path = '/providers/ssf/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ssf/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7734,7 +7734,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'ssf_provider_request' when calling ProvidersApi.providers_ssf_update"
       end
       # resource path
-      local_var_path = '/providers/ssf/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ssf/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7800,7 +7800,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_ssf_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/ssf/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/ssf/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7927,7 +7927,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_destroy"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8149,7 +8149,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_metadata_retrieve"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/metadata/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/metadata/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8214,7 +8214,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_partial_update"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8282,7 +8282,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_preview_user_retrieve"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/preview_user/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/preview_user/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8344,7 +8344,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_retrieve"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8411,7 +8411,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'ws_federation_provider_request' when calling ProvidersApi.providers_wsfed_update"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8477,7 +8477,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ProvidersApi.providers_wsfed_used_by_list"
       end
       # resource path
-      local_var_path = '/providers/wsfed/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/providers/wsfed/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

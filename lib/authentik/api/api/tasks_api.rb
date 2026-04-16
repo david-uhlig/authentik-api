@@ -118,7 +118,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TasksApi.tasks_schedules_partial_update"
       end
       # resource path
-      local_var_path = '/tasks/schedules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tasks/schedules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -182,7 +182,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TasksApi.tasks_schedules_retrieve"
       end
       # resource path
-      local_var_path = '/tasks/schedules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tasks/schedules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -243,7 +243,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling TasksApi.tasks_schedules_send_create"
       end
       # resource path
-      local_var_path = '/tasks/schedules/{id}/send/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tasks/schedules/{id}/send/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -308,7 +308,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'schedule_request' when calling TasksApi.tasks_schedules_update"
       end
       # resource path
-      local_var_path = '/tasks/schedules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/tasks/schedules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -461,7 +461,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'message_id' when calling TasksApi.tasks_tasks_retrieve"
       end
       # resource path
-      local_var_path = '/tasks/tasks/{message_id}/'.sub('{' + 'message_id' + '}', CGI.escape(message_id.to_s))
+      local_var_path = '/tasks/tasks/{message_id}/'.sub('{message_id}', CGI.escape(message_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -522,7 +522,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'message_id' when calling TasksApi.tasks_tasks_retry_create"
       end
       # resource path
-      local_var_path = '/tasks/tasks/{message_id}/retry/'.sub('{' + 'message_id' + '}', CGI.escape(message_id.to_s))
+      local_var_path = '/tasks/tasks/{message_id}/retry/'.sub('{message_id}', CGI.escape(message_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

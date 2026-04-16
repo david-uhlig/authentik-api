@@ -33,7 +33,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ReportsApi.reports_exports_destroy"
       end
       # resource path
-      local_var_path = '/reports/exports/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/reports/exports/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -157,7 +157,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling ReportsApi.reports_exports_retrieve"
       end
       # resource path
-      local_var_path = '/reports/exports/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/reports/exports/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_destroy"
       end
       # resource path
-      local_var_path = '/sources/all/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/all/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -175,7 +175,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_retrieve"
       end
       # resource path
-      local_var_path = '/sources/all/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/all/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -291,7 +291,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_all_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/all/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/all/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -407,7 +407,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -543,7 +543,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -609,7 +609,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -676,7 +676,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_source_connection_request' when calling SourcesApi.sources_group_connections_all_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -742,7 +742,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_all_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/all/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/all/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -869,7 +869,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_kerberos_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1005,7 +1005,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_kerberos_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1071,7 +1071,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_kerberos_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1138,7 +1138,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_kerberos_source_connection_request' when calling SourcesApi.sources_group_connections_kerberos_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1204,7 +1204,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_kerberos_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/kerberos/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/kerberos/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1331,7 +1331,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1467,7 +1467,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1533,7 +1533,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1600,7 +1600,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_ldap_source_connection_request' when calling SourcesApi.sources_group_connections_ldap_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1666,7 +1666,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_ldap_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/ldap/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/ldap/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1793,7 +1793,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_oauth_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1929,7 +1929,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_oauth_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1995,7 +1995,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_oauth_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2062,7 +2062,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_o_auth_source_connection_request' when calling SourcesApi.sources_group_connections_oauth_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2128,7 +2128,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_oauth_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/oauth/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/oauth/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2255,7 +2255,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_plex_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2391,7 +2391,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_plex_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2457,7 +2457,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_plex_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2524,7 +2524,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_plex_source_connection_request' when calling SourcesApi.sources_group_connections_plex_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2590,7 +2590,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_plex_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/plex/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/plex/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2717,7 +2717,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_saml_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2853,7 +2853,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_saml_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2919,7 +2919,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_saml_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2986,7 +2986,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_saml_source_connection_request' when calling SourcesApi.sources_group_connections_saml_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3052,7 +3052,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/saml/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/saml/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3179,7 +3179,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_destroy"
       end
       # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3315,7 +3315,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_partial_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3381,7 +3381,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_retrieve"
       end
       # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3448,7 +3448,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'group_telegram_source_connection_request' when calling SourcesApi.sources_group_connections_telegram_update"
       end
       # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3514,7 +3514,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_group_connections_telegram_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/group_connections/telegram/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/group_connections/telegram/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3641,7 +3641,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_kerberos_destroy"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3804,7 +3804,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_kerberos_partial_update"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3870,7 +3870,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_kerberos_retrieve"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3931,7 +3931,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_kerberos_sync_status_retrieve"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/sync/status/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/sync/status/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3998,7 +3998,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kerberos_source_request' when calling SourcesApi.sources_kerberos_update"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4064,7 +4064,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_kerberos_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/kerberos/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/kerberos/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4191,7 +4191,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_debug_retrieve"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/debug/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/debug/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4252,7 +4252,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_destroy"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4463,7 +4463,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_partial_update"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4529,7 +4529,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_retrieve"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4590,7 +4590,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_sync_status_retrieve"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/sync/status/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/sync/status/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4657,7 +4657,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'ldap_source_request' when calling SourcesApi.sources_ldap_update"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4723,7 +4723,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_ldap_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/ldap/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/ldap/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4850,7 +4850,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_oauth_destroy"
       end
       # resource path
-      local_var_path = '/sources/oauth/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/oauth/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5031,7 +5031,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_oauth_partial_update"
       end
       # resource path
-      local_var_path = '/sources/oauth/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/oauth/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5097,7 +5097,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_oauth_retrieve"
       end
       # resource path
-      local_var_path = '/sources/oauth/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/oauth/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5222,7 +5222,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'o_auth_source_request' when calling SourcesApi.sources_oauth_update"
       end
       # resource path
-      local_var_path = '/sources/oauth/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/oauth/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5288,7 +5288,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_oauth_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/oauth/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/oauth/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5415,7 +5415,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_plex_destroy"
       end
       # resource path
-      local_var_path = '/sources/plex/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/plex/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5578,7 +5578,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_plex_partial_update"
       end
       # resource path
-      local_var_path = '/sources/plex/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/plex/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5780,7 +5780,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_plex_retrieve"
       end
       # resource path
-      local_var_path = '/sources/plex/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/plex/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5847,7 +5847,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'plex_source_request' when calling SourcesApi.sources_plex_update"
       end
       # resource path
-      local_var_path = '/sources/plex/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/plex/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5913,7 +5913,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_plex_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/plex/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/plex/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6040,7 +6040,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_saml_destroy"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6240,7 +6240,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_saml_metadata_retrieve"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/metadata/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/metadata/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6303,7 +6303,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_saml_partial_update"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6369,7 +6369,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_saml_retrieve"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6436,7 +6436,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'saml_source_request' when calling SourcesApi.sources_saml_update"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6502,7 +6502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/saml/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/saml/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6629,7 +6629,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_scim_destroy"
       end
       # resource path
-      local_var_path = '/sources/scim/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/scim/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6756,7 +6756,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_groups_destroy"
       end
       # resource path
-      local_var_path = '/sources/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6895,7 +6895,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_groups_partial_update"
       end
       # resource path
-      local_var_path = '/sources/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6961,7 +6961,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_groups_retrieve"
       end
       # resource path
-      local_var_path = '/sources/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7028,7 +7028,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_source_group_request' when calling SourcesApi.sources_scim_groups_update"
       end
       # resource path
-      local_var_path = '/sources/scim_groups/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_groups/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7094,7 +7094,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_groups_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/scim_groups/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_groups/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7233,7 +7233,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_scim_partial_update"
       end
       # resource path
-      local_var_path = '/sources/scim/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/scim/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7299,7 +7299,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_scim_retrieve"
       end
       # resource path
-      local_var_path = '/sources/scim/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/scim/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7366,7 +7366,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_source_request' when calling SourcesApi.sources_scim_update"
       end
       # resource path
-      local_var_path = '/sources/scim/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/scim/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7432,7 +7432,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_scim_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/scim/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/scim/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7559,7 +7559,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_users_destroy"
       end
       # resource path
-      local_var_path = '/sources/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7698,7 +7698,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_users_partial_update"
       end
       # resource path
-      local_var_path = '/sources/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7764,7 +7764,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_users_retrieve"
       end
       # resource path
-      local_var_path = '/sources/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7831,7 +7831,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_source_user_request' when calling SourcesApi.sources_scim_users_update"
       end
       # resource path
-      local_var_path = '/sources/scim_users/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_users/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7897,7 +7897,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_scim_users_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/scim_users/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/scim_users/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7964,7 +7964,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'telegram_auth_request' when calling SourcesApi.sources_telegram_connect_user_create"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/connect_user/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/connect_user/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8096,7 +8096,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_destroy"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8259,7 +8259,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_partial_update"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8325,7 +8325,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_retrieve"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8392,7 +8392,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'telegram_source_request' when calling SourcesApi.sources_telegram_update"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8458,7 +8458,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'slug' when calling SourcesApi.sources_telegram_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/telegram/{slug}/used_by/'.sub('{' + 'slug' + '}', CGI.escape(slug.to_s))
+      local_var_path = '/sources/telegram/{slug}/used_by/'.sub('{slug}', CGI.escape(slug.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8519,7 +8519,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_all_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8655,7 +8655,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_all_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8721,7 +8721,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_all_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8788,7 +8788,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_source_connection_request' when calling SourcesApi.sources_user_connections_all_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/all/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/all/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8854,7 +8854,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_all_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/all/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/all/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -8981,7 +8981,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_kerberos_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9117,7 +9117,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_kerberos_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9183,7 +9183,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_kerberos_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9250,7 +9250,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_kerberos_source_connection_request' when calling SourcesApi.sources_user_connections_kerberos_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/kerberos/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9316,7 +9316,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_kerberos_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/kerberos/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/kerberos/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9443,7 +9443,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9579,7 +9579,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9645,7 +9645,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9712,7 +9712,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_ldap_source_connection_request' when calling SourcesApi.sources_user_connections_ldap_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/ldap/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9778,7 +9778,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_ldap_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/ldap/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/ldap/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -9905,7 +9905,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_oauth_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10041,7 +10041,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_oauth_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10107,7 +10107,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_oauth_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10174,7 +10174,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_o_auth_source_connection_request' when calling SourcesApi.sources_user_connections_oauth_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/oauth/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10240,7 +10240,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_oauth_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/oauth/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/oauth/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10367,7 +10367,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_plex_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10503,7 +10503,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_plex_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10569,7 +10569,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_plex_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10636,7 +10636,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_plex_source_connection_request' when calling SourcesApi.sources_user_connections_plex_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/plex/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10702,7 +10702,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_plex_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/plex/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/plex/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10829,7 +10829,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_saml_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -10965,7 +10965,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_saml_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11031,7 +11031,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_saml_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11098,7 +11098,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_saml_source_connection_request' when calling SourcesApi.sources_user_connections_saml_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/saml/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11164,7 +11164,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/saml/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/saml/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11291,7 +11291,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_destroy"
       end
       # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11427,7 +11427,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_partial_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11493,7 +11493,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_retrieve"
       end
       # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11560,7 +11560,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'user_telegram_source_connection_request' when calling SourcesApi.sources_user_connections_telegram_update"
       end
       # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/telegram/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -11626,7 +11626,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling SourcesApi.sources_user_connections_telegram_used_by_list"
       end
       # resource path
-      local_var_path = '/sources/user_connections/telegram/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/sources/user_connections/telegram/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

@@ -1829,6 +1829,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   policy_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  query: 'query_example', # String | 
   search: 'search_example' # String | A search term.
 }
 
@@ -1875,6 +1876,7 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **policy_uuid** | **String** |  | [optional] |
+| **query** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 
 ### Return type
