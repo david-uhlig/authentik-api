@@ -1370,6 +1370,468 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param apple_independent_secure_enclave_request [AppleIndependentSecureEnclaveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AppleIndependentSecureEnclave]
+    def endpoints_agents_psso_ise_create(apple_independent_secure_enclave_request, opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_create_with_http_info(apple_independent_secure_enclave_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param apple_independent_secure_enclave_request [AppleIndependentSecureEnclaveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AppleIndependentSecureEnclave, Integer, Hash)>] AppleIndependentSecureEnclave data, response status code and response headers
+    def endpoints_agents_psso_ise_create_with_http_info(apple_independent_secure_enclave_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_create ...'
+      end
+      # verify the required parameter 'apple_independent_secure_enclave_request' is set
+      if @api_client.config.client_side_validation && apple_independent_secure_enclave_request.nil?
+        fail ArgumentError, "Missing the required parameter 'apple_independent_secure_enclave_request' when calling EndpointsApi.endpoints_agents_psso_ise_create"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(apple_independent_secure_enclave_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AppleIndependentSecureEnclave'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def endpoints_agents_psso_ise_destroy(uuid, opts = {})
+      endpoints_agents_psso_ise_destroy_with_http_info(uuid, opts)
+      nil
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def endpoints_agents_psso_ise_destroy_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_destroy ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EndpointsApi.endpoints_agents_psso_ise_destroy"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :apple_enclave_key_id 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [Integer] :user 
+    # @return [PaginatedAppleIndependentSecureEnclaveList]
+    def endpoints_agents_psso_ise_list(opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_list_with_http_info(opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :apple_enclave_key_id 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [Integer] :user 
+    # @return [Array<(PaginatedAppleIndependentSecureEnclaveList, Integer, Hash)>] PaginatedAppleIndependentSecureEnclaveList data, response status code and response headers
+    def endpoints_agents_psso_ise_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_list ...'
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'apple_enclave_key_id'] = opts[:'apple_enclave_key_id'] if !opts[:'apple_enclave_key_id'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'user'] = opts[:'user'] if !opts[:'user'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedAppleIndependentSecureEnclaveList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedAppleIndependentSecureEnclaveRequest] :patched_apple_independent_secure_enclave_request 
+    # @return [AppleIndependentSecureEnclave]
+    def endpoints_agents_psso_ise_partial_update(uuid, opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_partial_update_with_http_info(uuid, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedAppleIndependentSecureEnclaveRequest] :patched_apple_independent_secure_enclave_request 
+    # @return [Array<(AppleIndependentSecureEnclave, Integer, Hash)>] AppleIndependentSecureEnclave data, response status code and response headers
+    def endpoints_agents_psso_ise_partial_update_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_partial_update ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EndpointsApi.endpoints_agents_psso_ise_partial_update"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_apple_independent_secure_enclave_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AppleIndependentSecureEnclave'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [AppleIndependentSecureEnclave]
+    def endpoints_agents_psso_ise_retrieve(uuid, opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_retrieve_with_http_info(uuid, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AppleIndependentSecureEnclave, Integer, Hash)>] AppleIndependentSecureEnclave data, response status code and response headers
+    def endpoints_agents_psso_ise_retrieve_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_retrieve ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EndpointsApi.endpoints_agents_psso_ise_retrieve"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AppleIndependentSecureEnclave'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param apple_independent_secure_enclave_request [AppleIndependentSecureEnclaveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AppleIndependentSecureEnclave]
+    def endpoints_agents_psso_ise_update(uuid, apple_independent_secure_enclave_request, opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_update_with_http_info(uuid, apple_independent_secure_enclave_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param apple_independent_secure_enclave_request [AppleIndependentSecureEnclaveRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AppleIndependentSecureEnclave, Integer, Hash)>] AppleIndependentSecureEnclave data, response status code and response headers
+    def endpoints_agents_psso_ise_update_with_http_info(uuid, apple_independent_secure_enclave_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_update ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EndpointsApi.endpoints_agents_psso_ise_update"
+      end
+      # verify the required parameter 'apple_independent_secure_enclave_request' is set
+      if @api_client.config.client_side_validation && apple_independent_secure_enclave_request.nil?
+        fail ArgumentError, "Missing the required parameter 'apple_independent_secure_enclave_request' when calling EndpointsApi.endpoints_agents_psso_ise_update"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(apple_independent_secure_enclave_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AppleIndependentSecureEnclave'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of all objects that use this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<UsedBy>]
+    def endpoints_agents_psso_ise_used_by_list(uuid, opts = {})
+      data, _status_code, _headers = endpoints_agents_psso_ise_used_by_list_with_http_info(uuid, opts)
+      data
+    end
+
+    # Get a list of all objects that use this object
+    # @param uuid [String] A UUID string identifying this Apple Independent Secure Enclave.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def endpoints_agents_psso_ise_used_by_list_with_http_info(uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_agents_psso_ise_used_by_list ...'
+      end
+      # verify the required parameter 'uuid' is set
+      if @api_client.config.client_side_validation && uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'uuid' when calling EndpointsApi.endpoints_agents_psso_ise_used_by_list"
+      end
+      # resource path
+      local_var_path = '/endpoints/agents/psso/ise/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_agents_psso_ise_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_agents_psso_ise_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param agent_psso_device_registration_request [AgentPSSODeviceRegistrationRequest] 
     # @param [Hash] opts the optional parameters
     # @return [AgentPSSODeviceRegistrationResponse]
