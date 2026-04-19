@@ -277,6 +277,13 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_enrollment_tokens_update**](docs/EndpointsApi.md#endpoints_agents_enrollment_tokens_update) | **PUT** /endpoints/agents/enrollment_tokens/{token_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_enrollment_tokens_used_by_list**](docs/EndpointsApi.md#endpoints_agents_enrollment_tokens_used_by_list) | **GET** /endpoints/agents/enrollment_tokens/{token_uuid}/used_by/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_enrollment_tokens_view_key_retrieve**](docs/EndpointsApi.md#endpoints_agents_enrollment_tokens_view_key_retrieve) | **GET** /endpoints/agents/enrollment_tokens/{token_uuid}/view_key/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_create**](docs/EndpointsApi.md#endpoints_agents_psso_ise_create) | **POST** /endpoints/agents/psso/ise/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_destroy**](docs/EndpointsApi.md#endpoints_agents_psso_ise_destroy) | **DELETE** /endpoints/agents/psso/ise/{uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_list**](docs/EndpointsApi.md#endpoints_agents_psso_ise_list) | **GET** /endpoints/agents/psso/ise/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_partial_update**](docs/EndpointsApi.md#endpoints_agents_psso_ise_partial_update) | **PATCH** /endpoints/agents/psso/ise/{uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_retrieve**](docs/EndpointsApi.md#endpoints_agents_psso_ise_retrieve) | **GET** /endpoints/agents/psso/ise/{uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_update**](docs/EndpointsApi.md#endpoints_agents_psso_ise_update) | **PUT** /endpoints/agents/psso/ise/{uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_used_by_list**](docs/EndpointsApi.md#endpoints_agents_psso_ise_used_by_list) | **GET** /endpoints/agents/psso/ise/{uuid}/used_by/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_device_create**](docs/EndpointsApi.md#endpoints_agents_psso_register_device_create) | **POST** /endpoints/agents/psso/register/device/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_user_create**](docs/EndpointsApi.md#endpoints_agents_psso_register_user_create) | **POST** /endpoints/agents/psso/register/user/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_connectors_destroy**](docs/EndpointsApi.md#endpoints_connectors_destroy) | **DELETE** /endpoints/connectors/{connector_uuid}/ | 
@@ -1222,6 +1229,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::App](docs/App.md)
  - [Authentik::Api::AppEnum](docs/AppEnum.md)
  - [Authentik::Api::AppleChallengeResponseRequest](docs/AppleChallengeResponseRequest.md)
+ - [Authentik::Api::AppleIndependentSecureEnclave](docs/AppleIndependentSecureEnclave.md)
+ - [Authentik::Api::AppleIndependentSecureEnclaveRequest](docs/AppleIndependentSecureEnclaveRequest.md)
  - [Authentik::Api::AppleLoginChallenge](docs/AppleLoginChallenge.md)
  - [Authentik::Api::Application](docs/Application.md)
  - [Authentik::Api::ApplicationEntitlement](docs/ApplicationEntitlement.md)
@@ -1559,6 +1568,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::OutpostTypeEnum](docs/OutpostTypeEnum.md)
  - [Authentik::Api::PKCEMethodEnum](docs/PKCEMethodEnum.md)
  - [Authentik::Api::PaginatedAgentConnectorList](docs/PaginatedAgentConnectorList.md)
+ - [Authentik::Api::PaginatedAppleIndependentSecureEnclaveList](docs/PaginatedAppleIndependentSecureEnclaveList.md)
  - [Authentik::Api::PaginatedApplicationEntitlementList](docs/PaginatedApplicationEntitlementList.md)
  - [Authentik::Api::PaginatedApplicationList](docs/PaginatedApplicationList.md)
  - [Authentik::Api::PaginatedAuthenticatedSessionList](docs/PaginatedAuthenticatedSessionList.md)
@@ -1724,6 +1734,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PasswordStage](docs/PasswordStage.md)
  - [Authentik::Api::PasswordStageRequest](docs/PasswordStageRequest.md)
  - [Authentik::Api::PatchedAgentConnectorRequest](docs/PatchedAgentConnectorRequest.md)
+ - [Authentik::Api::PatchedAppleIndependentSecureEnclaveRequest](docs/PatchedAppleIndependentSecureEnclaveRequest.md)
  - [Authentik::Api::PatchedApplicationEntitlementRequest](docs/PatchedApplicationEntitlementRequest.md)
  - [Authentik::Api::PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
  - [Authentik::Api::PatchedAuthenticatorDuoStageRequest](docs/PatchedAuthenticatorDuoStageRequest.md)

@@ -270,6 +270,90 @@ describe 'EndpointsApi' do
     end
   end
 
+  # unit tests for endpoints_agents_psso_ise_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param apple_independent_secure_enclave_request 
+  # @param [Hash] opts the optional parameters
+  # @return [AppleIndependentSecureEnclave]
+  describe 'endpoints_agents_psso_ise_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_destroy
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param uuid A UUID string identifying this Apple Independent Secure Enclave.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'endpoints_agents_psso_ise_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_list
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :apple_enclave_key_id 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @option opts [Integer] :user 
+  # @return [PaginatedAppleIndependentSecureEnclaveList]
+  describe 'endpoints_agents_psso_ise_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_partial_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param uuid A UUID string identifying this Apple Independent Secure Enclave.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedAppleIndependentSecureEnclaveRequest] :patched_apple_independent_secure_enclave_request 
+  # @return [AppleIndependentSecureEnclave]
+  describe 'endpoints_agents_psso_ise_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_retrieve
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param uuid A UUID string identifying this Apple Independent Secure Enclave.
+  # @param [Hash] opts the optional parameters
+  # @return [AppleIndependentSecureEnclave]
+  describe 'endpoints_agents_psso_ise_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param uuid A UUID string identifying this Apple Independent Secure Enclave.
+  # @param apple_independent_secure_enclave_request 
+  # @param [Hash] opts the optional parameters
+  # @return [AppleIndependentSecureEnclave]
+  describe 'endpoints_agents_psso_ise_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_ise_used_by_list
+  # Get a list of all objects that use this object
+  # @param uuid A UUID string identifying this Apple Independent Secure Enclave.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'endpoints_agents_psso_ise_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for endpoints_agents_psso_register_device_create
   # @param agent_psso_device_registration_request 
   # @param [Hash] opts the optional parameters

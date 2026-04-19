@@ -25,6 +25,13 @@ All URIs are relative to */api/v3*
 | [**endpoints_agents_enrollment_tokens_update**](EndpointsApi.md#endpoints_agents_enrollment_tokens_update) | **PUT** /endpoints/agents/enrollment_tokens/{token_uuid}/ |  |
 | [**endpoints_agents_enrollment_tokens_used_by_list**](EndpointsApi.md#endpoints_agents_enrollment_tokens_used_by_list) | **GET** /endpoints/agents/enrollment_tokens/{token_uuid}/used_by/ |  |
 | [**endpoints_agents_enrollment_tokens_view_key_retrieve**](EndpointsApi.md#endpoints_agents_enrollment_tokens_view_key_retrieve) | **GET** /endpoints/agents/enrollment_tokens/{token_uuid}/view_key/ |  |
+| [**endpoints_agents_psso_ise_create**](EndpointsApi.md#endpoints_agents_psso_ise_create) | **POST** /endpoints/agents/psso/ise/ |  |
+| [**endpoints_agents_psso_ise_destroy**](EndpointsApi.md#endpoints_agents_psso_ise_destroy) | **DELETE** /endpoints/agents/psso/ise/{uuid}/ |  |
+| [**endpoints_agents_psso_ise_list**](EndpointsApi.md#endpoints_agents_psso_ise_list) | **GET** /endpoints/agents/psso/ise/ |  |
+| [**endpoints_agents_psso_ise_partial_update**](EndpointsApi.md#endpoints_agents_psso_ise_partial_update) | **PATCH** /endpoints/agents/psso/ise/{uuid}/ |  |
+| [**endpoints_agents_psso_ise_retrieve**](EndpointsApi.md#endpoints_agents_psso_ise_retrieve) | **GET** /endpoints/agents/psso/ise/{uuid}/ |  |
+| [**endpoints_agents_psso_ise_update**](EndpointsApi.md#endpoints_agents_psso_ise_update) | **PUT** /endpoints/agents/psso/ise/{uuid}/ |  |
+| [**endpoints_agents_psso_ise_used_by_list**](EndpointsApi.md#endpoints_agents_psso_ise_used_by_list) | **GET** /endpoints/agents/psso/ise/{uuid}/used_by/ |  |
 | [**endpoints_agents_psso_register_device_create**](EndpointsApi.md#endpoints_agents_psso_register_device_create) | **POST** /endpoints/agents/psso/register/device/ |  |
 | [**endpoints_agents_psso_register_user_create**](EndpointsApi.md#endpoints_agents_psso_register_user_create) | **POST** /endpoints/agents/psso/register/user/ |  |
 | [**endpoints_connectors_destroy**](EndpointsApi.md#endpoints_connectors_destroy) | **DELETE** /endpoints/connectors/{connector_uuid}/ |  |
@@ -1513,6 +1520,506 @@ end
 ### Return type
 
 [**TokenView**](TokenView.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_create
+
+> <AppleIndependentSecureEnclave> endpoints_agents_psso_ise_create(apple_independent_secure_enclave_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+apple_independent_secure_enclave_request = Authentik::Api::AppleIndependentSecureEnclaveRequest.new({user: 37, apple_secure_enclave_key: 'apple_secure_enclave_key_example', apple_enclave_key_id: 'apple_enclave_key_id_example', device_type: 'device_type_example'}) # AppleIndependentSecureEnclaveRequest | 
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_create(apple_independent_secure_enclave_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_create: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AppleIndependentSecureEnclave>, Integer, Hash)> endpoints_agents_psso_ise_create_with_http_info(apple_independent_secure_enclave_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_create_with_http_info(apple_independent_secure_enclave_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AppleIndependentSecureEnclave>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **apple_independent_secure_enclave_request** | [**AppleIndependentSecureEnclaveRequest**](AppleIndependentSecureEnclaveRequest.md) |  |  |
+
+### Return type
+
+[**AppleIndependentSecureEnclave**](AppleIndependentSecureEnclave.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_destroy
+
+> endpoints_agents_psso_ise_destroy(uuid)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Apple Independent Secure Enclave.
+
+begin
+  
+  api_instance.endpoints_agents_psso_ise_destroy(uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_destroy: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> endpoints_agents_psso_ise_destroy_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_destroy_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Apple Independent Secure Enclave. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_list
+
+> <PaginatedAppleIndependentSecureEnclaveList> endpoints_agents_psso_ise_list(opts)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+opts = {
+  apple_enclave_key_id: 'apple_enclave_key_id_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  user: 56 # Integer | 
+}
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_list: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedAppleIndependentSecureEnclaveList>, Integer, Hash)> endpoints_agents_psso_ise_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedAppleIndependentSecureEnclaveList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **apple_enclave_key_id** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **user** | **Integer** |  | [optional] |
+
+### Return type
+
+[**PaginatedAppleIndependentSecureEnclaveList**](PaginatedAppleIndependentSecureEnclaveList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_partial_update
+
+> <AppleIndependentSecureEnclave> endpoints_agents_psso_ise_partial_update(uuid, opts)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Apple Independent Secure Enclave.
+opts = {
+  patched_apple_independent_secure_enclave_request: Authentik::Api::PatchedAppleIndependentSecureEnclaveRequest.new # PatchedAppleIndependentSecureEnclaveRequest | 
+}
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_partial_update(uuid, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_partial_update: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AppleIndependentSecureEnclave>, Integer, Hash)> endpoints_agents_psso_ise_partial_update_with_http_info(uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_partial_update_with_http_info(uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AppleIndependentSecureEnclave>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Apple Independent Secure Enclave. |  |
+| **patched_apple_independent_secure_enclave_request** | [**PatchedAppleIndependentSecureEnclaveRequest**](PatchedAppleIndependentSecureEnclaveRequest.md) |  | [optional] |
+
+### Return type
+
+[**AppleIndependentSecureEnclave**](AppleIndependentSecureEnclave.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_retrieve
+
+> <AppleIndependentSecureEnclave> endpoints_agents_psso_ise_retrieve(uuid)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Apple Independent Secure Enclave.
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_retrieve(uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_retrieve: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AppleIndependentSecureEnclave>, Integer, Hash)> endpoints_agents_psso_ise_retrieve_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_retrieve_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AppleIndependentSecureEnclave>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Apple Independent Secure Enclave. |  |
+
+### Return type
+
+[**AppleIndependentSecureEnclave**](AppleIndependentSecureEnclave.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_update
+
+> <AppleIndependentSecureEnclave> endpoints_agents_psso_ise_update(uuid, apple_independent_secure_enclave_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Apple Independent Secure Enclave.
+apple_independent_secure_enclave_request = Authentik::Api::AppleIndependentSecureEnclaveRequest.new({user: 37, apple_secure_enclave_key: 'apple_secure_enclave_key_example', apple_enclave_key_id: 'apple_enclave_key_id_example', device_type: 'device_type_example'}) # AppleIndependentSecureEnclaveRequest | 
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_update(uuid, apple_independent_secure_enclave_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_update: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AppleIndependentSecureEnclave>, Integer, Hash)> endpoints_agents_psso_ise_update_with_http_info(uuid, apple_independent_secure_enclave_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_update_with_http_info(uuid, apple_independent_secure_enclave_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AppleIndependentSecureEnclave>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Apple Independent Secure Enclave. |  |
+| **apple_independent_secure_enclave_request** | [**AppleIndependentSecureEnclaveRequest**](AppleIndependentSecureEnclaveRequest.md) |  |  |
+
+### Return type
+
+[**AppleIndependentSecureEnclave**](AppleIndependentSecureEnclave.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_ise_used_by_list
+
+> <Array<UsedBy>> endpoints_agents_psso_ise_used_by_list(uuid)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Apple Independent Secure Enclave.
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_ise_used_by_list(uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_used_by_list: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_ise_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> endpoints_agents_psso_ise_used_by_list_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_ise_used_by_list_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_ise_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Apple Independent Secure Enclave. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
 
 ### Authorization
 
