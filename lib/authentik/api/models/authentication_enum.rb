@@ -15,9 +15,10 @@ module Authentik::Api
     REQUIRE_SUPERUSER = "require_superuser".freeze
     REQUIRE_REDIRECT = "require_redirect".freeze
     REQUIRE_OUTPOST = "require_outpost".freeze
+    REQUIRE_TOKEN = "require_token".freeze
 
     def self.all_vars
-      @all_vars ||= [NONE, REQUIRE_AUTHENTICATED, REQUIRE_UNAUTHENTICATED, REQUIRE_SUPERUSER, REQUIRE_REDIRECT, REQUIRE_OUTPOST].freeze
+      @all_vars ||= [NONE, REQUIRE_AUTHENTICATED, REQUIRE_UNAUTHENTICATED, REQUIRE_SUPERUSER, REQUIRE_REDIRECT, REQUIRE_OUTPOST, REQUIRE_TOKEN].freeze
     end
 
     # Builds the enum from string
