@@ -1437,6 +1437,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::GoogleWorkspaceProviderRequest](docs/GoogleWorkspaceProviderRequest.md)
  - [Authentik::Api::GoogleWorkspaceProviderUser](docs/GoogleWorkspaceProviderUser.md)
  - [Authentik::Api::GoogleWorkspaceProviderUserRequest](docs/GoogleWorkspaceProviderUserRequest.md)
+ - [Authentik::Api::GrantTypesEnum](docs/GrantTypesEnum.md)
  - [Authentik::Api::Group](docs/Group.md)
  - [Authentik::Api::GroupKerberosSourceConnection](docs/GroupKerberosSourceConnection.md)
  - [Authentik::Api::GroupKerberosSourceConnectionRequest](docs/GroupKerberosSourceConnectionRequest.md)

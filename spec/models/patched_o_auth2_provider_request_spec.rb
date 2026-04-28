@@ -57,6 +57,12 @@ describe Authentik::Api::PatchedOAuth2ProviderRequest do
     end
   end
 
+  describe 'test attribute "grant_types"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "client_id"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
