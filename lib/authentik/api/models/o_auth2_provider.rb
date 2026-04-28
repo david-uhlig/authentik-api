@@ -52,6 +52,8 @@ module Authentik::Api
     # Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable
     attr_accessor :client_type
 
+    attr_accessor :grant_types
+
     attr_accessor :client_id
 
     attr_accessor :client_secret
@@ -134,6 +136,7 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'client_type' => :'client_type',
+        :'grant_types' => :'grant_types',
         :'client_id' => :'client_id',
         :'client_secret' => :'client_secret',
         :'access_code_validity' => :'access_code_validity',
@@ -181,6 +184,7 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'client_type' => :'ClientTypeEnum',
+        :'grant_types' => :'Array<GrantTypesEnum>',
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'access_code_validity' => :'String',
@@ -313,6 +317,12 @@ module Authentik::Api
 
       if attributes.key?(:'client_type')
         self.client_type = attributes[:'client_type']
+      end
+
+      if attributes.key?(:'grant_types')
+        if (value = attributes[:'grant_types']).is_a?(Array)
+          self.grant_types = value
+        end
       end
 
       if attributes.key?(:'client_id')
@@ -596,6 +606,7 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           client_type == o.client_type &&
+          grant_types == o.grant_types &&
           client_id == o.client_id &&
           client_secret == o.client_secret &&
           access_code_validity == o.access_code_validity &&
@@ -623,7 +634,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_type, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, refresh_token_threshold, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, logout_uri, logout_method, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_type, grant_types, client_id, client_secret, access_code_validity, access_token_validity, refresh_token_validity, refresh_token_threshold, include_claims_in_id_token, signing_key, encryption_key, redirect_uris, logout_uri, logout_method, sub_mode, issuer_mode, jwt_federation_sources, jwt_federation_providers].hash
     end
 
     # Builds the object from hash
