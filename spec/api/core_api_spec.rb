@@ -884,6 +884,18 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_users_set_password_hash_create
+  # Set a user&#39;s password from a pre-hashed Django password value.  Submit the Django password hash in the shared &#x60;&#x60;password&#x60;&#x60; request field.  This updates authentik&#39;s local password verifier only. It does not attempt to propagate the password change to LDAP or Kerberos because no raw password is available from the request payload.
+  # @param id A unique integer value identifying this User.
+  # @param user_password_hash_set_request 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'core_users_set_password_hash_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_users_update
   # User Viewset
   # @param id A unique integer value identifying this User.

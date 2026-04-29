@@ -4525,6 +4525,78 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # Set a user's password from a pre-hashed Django password value.  Submit the Django password hash in the shared ``password`` request field.  This updates authentik's local password verifier only. It does not attempt to propagate the password change to LDAP or Kerberos because no raw password is available from the request payload.
+    # @param id [Integer] A unique integer value identifying this User.
+    # @param user_password_hash_set_request [UserPasswordHashSetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def core_users_set_password_hash_create(id, user_password_hash_set_request, opts = {})
+      core_users_set_password_hash_create_with_http_info(id, user_password_hash_set_request, opts)
+      nil
+    end
+
+    # Set a user&#39;s password from a pre-hashed Django password value.  Submit the Django password hash in the shared &#x60;&#x60;password&#x60;&#x60; request field.  This updates authentik&#39;s local password verifier only. It does not attempt to propagate the password change to LDAP or Kerberos because no raw password is available from the request payload.
+    # @param id [Integer] A unique integer value identifying this User.
+    # @param user_password_hash_set_request [UserPasswordHashSetRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def core_users_set_password_hash_create_with_http_info(id, user_password_hash_set_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_set_password_hash_create ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling CoreApi.core_users_set_password_hash_create"
+      end
+      # verify the required parameter 'user_password_hash_set_request' is set
+      if @api_client.config.client_side_validation && user_password_hash_set_request.nil?
+        fail ArgumentError, "Missing the required parameter 'user_password_hash_set_request' when calling CoreApi.core_users_set_password_hash_create"
+      end
+      # resource path
+      local_var_path = '/core/users/{id}/set_password_hash/'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(user_password_hash_set_request)
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_set_password_hash_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_set_password_hash_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # User Viewset
     # @param id [Integer] A unique integer value identifying this User.
     # @param user_request [UserRequest] 

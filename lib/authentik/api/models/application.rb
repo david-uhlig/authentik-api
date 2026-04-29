@@ -49,6 +49,9 @@ module Authentik::Api
 
     attr_accessor :group
 
+    # Hide this application from the user's My applications page.
+    attr_accessor :meta_hide
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -90,7 +93,8 @@ module Authentik::Api
         :'meta_description' => :'meta_description',
         :'meta_publisher' => :'meta_publisher',
         :'policy_engine_mode' => :'policy_engine_mode',
-        :'group' => :'group'
+        :'group' => :'group',
+        :'meta_hide' => :'meta_hide'
       }
     end
 
@@ -123,7 +127,8 @@ module Authentik::Api
         :'meta_description' => :'String',
         :'meta_publisher' => :'String',
         :'policy_engine_mode' => :'PolicyEngineMode',
-        :'group' => :'String'
+        :'group' => :'String',
+        :'meta_hide' => :'Boolean'
       }
     end
 
@@ -241,6 +246,10 @@ module Authentik::Api
       if attributes.key?(:'group')
         self.group = attributes[:'group']
       end
+
+      if attributes.key?(:'meta_hide')
+        self.meta_hide = attributes[:'meta_hide']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -350,7 +359,8 @@ module Authentik::Api
           meta_description == o.meta_description &&
           meta_publisher == o.meta_publisher &&
           policy_engine_mode == o.policy_engine_mode &&
-          group == o.group
+          group == o.group &&
+          meta_hide == o.meta_hide
     end
 
     # @see the `==` method
@@ -362,7 +372,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_icon_url, meta_icon_themed_urls, meta_description, meta_publisher, policy_engine_mode, group].hash
+      [pk, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_icon_url, meta_icon_themed_urls, meta_description, meta_publisher, policy_engine_mode, group, meta_hide].hash
     end
 
     # Builds the object from hash
