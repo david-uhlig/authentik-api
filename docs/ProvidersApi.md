@@ -6157,7 +6157,7 @@ opts = {
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
-  issuer: 'issuer_example', # String | 
+  issuer_override: 'issuer_override_example', # String | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -6224,7 +6224,7 @@ end
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
-| **issuer** | **String** |  | [optional] |
+| **issuer_override** | **String** |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
@@ -8721,7 +8721,7 @@ opts = {
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
-  issuer: 'issuer_example', # String | 
+  issuer_override: 'issuer_override_example', # String | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -8788,7 +8788,7 @@ end
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
-| **issuer** | **String** |  | [optional] |
+| **issuer_override** | **String** |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |

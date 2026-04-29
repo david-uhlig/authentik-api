@@ -15,6 +15,7 @@
 | **meta_publisher** | **String** |  | [optional] |
 | **policy_engine_mode** | [**PolicyEngineMode**](PolicyEngineMode.md) |  | [optional] |
 | **group** | **String** |  | [optional] |
+| **meta_hide** | **Boolean** | Hide this application from the user&#39;s My applications page. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = Authentik::Api::ApplicationRequest.new(
   meta_description: null,
   meta_publisher: null,
   policy_engine_mode: null,
-  group: null
+  group: null,
+  meta_hide: null
 )
 ```
 
