@@ -230,6 +230,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CoreApi* | [**core_user_consent_list**](docs/CoreApi.md#core_user_consent_list) | **GET** /core/user_consent/ | 
 *Authentik::Api::CoreApi* | [**core_user_consent_retrieve**](docs/CoreApi.md#core_user_consent_retrieve) | **GET** /core/user_consent/{id}/ | 
 *Authentik::Api::CoreApi* | [**core_user_consent_used_by_list**](docs/CoreApi.md#core_user_consent_used_by_list) | **GET** /core/user_consent/{id}/used_by/ | 
+*Authentik::Api::CoreApi* | [**core_users_account_lockdown_create**](docs/CoreApi.md#core_users_account_lockdown_create) | **POST** /core/users/account_lockdown/ | 
 *Authentik::Api::CoreApi* | [**core_users_create**](docs/CoreApi.md#core_users_create) | **POST** /core/users/ | 
 *Authentik::Api::CoreApi* | [**core_users_destroy**](docs/CoreApi.md#core_users_destroy) | **DELETE** /core/users/{id}/ | 
 *Authentik::Api::CoreApi* | [**core_users_export_create**](docs/CoreApi.md#core_users_export_create) | **POST** /core/users/export/ | 
@@ -393,7 +394,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::FlowsApi* | [**flows_instances_update**](docs/FlowsApi.md#flows_instances_update) | **PUT** /flows/instances/{slug}/ | 
 *Authentik::Api::FlowsApi* | [**flows_instances_used_by_list**](docs/FlowsApi.md#flows_instances_used_by_list) | **GET** /flows/instances/{slug}/used_by/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_iterations_create**](docs/LifecycleApi.md#lifecycle_iterations_create) | **POST** /lifecycle/iterations/ | 
-*Authentik::Api::LifecycleApi* | [**lifecycle_iterations_latest_retrieve**](docs/LifecycleApi.md#lifecycle_iterations_latest_retrieve) | **GET** /lifecycle/iterations/latest/{content_type}/{object_id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_iterations_list_latest**](docs/LifecycleApi.md#lifecycle_iterations_list_latest) | **GET** /lifecycle/iterations/latest/{content_type}/{object_id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_iterations_list_open**](docs/LifecycleApi.md#lifecycle_iterations_list_open) | **GET** /lifecycle/iterations/open/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_reviews_create**](docs/LifecycleApi.md#lifecycle_reviews_create) | **POST** /lifecycle/reviews/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_create**](docs/LifecycleApi.md#lifecycle_rules_create) | **POST** /lifecycle/rules/ | 
@@ -986,6 +987,13 @@ Class | Method | HTTP request | Description
 *Authentik::Api::SsfApi* | [**ssf_streams_destroy**](docs/SsfApi.md#ssf_streams_destroy) | **DELETE** /ssf/streams/{uuid}/ | 
 *Authentik::Api::SsfApi* | [**ssf_streams_list**](docs/SsfApi.md#ssf_streams_list) | **GET** /ssf/streams/ | 
 *Authentik::Api::SsfApi* | [**ssf_streams_retrieve**](docs/SsfApi.md#ssf_streams_retrieve) | **GET** /ssf/streams/{uuid}/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_create**](docs/StagesApi.md#stages_account_lockdown_create) | **POST** /stages/account_lockdown/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_destroy**](docs/StagesApi.md#stages_account_lockdown_destroy) | **DELETE** /stages/account_lockdown/{stage_uuid}/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_list**](docs/StagesApi.md#stages_account_lockdown_list) | **GET** /stages/account_lockdown/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_partial_update**](docs/StagesApi.md#stages_account_lockdown_partial_update) | **PATCH** /stages/account_lockdown/{stage_uuid}/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_retrieve**](docs/StagesApi.md#stages_account_lockdown_retrieve) | **GET** /stages/account_lockdown/{stage_uuid}/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_update**](docs/StagesApi.md#stages_account_lockdown_update) | **PUT** /stages/account_lockdown/{stage_uuid}/ | 
+*Authentik::Api::StagesApi* | [**stages_account_lockdown_used_by_list**](docs/StagesApi.md#stages_account_lockdown_used_by_list) | **GET** /stages/account_lockdown/{stage_uuid}/used_by/ | 
 *Authentik::Api::StagesApi* | [**stages_all_destroy**](docs/StagesApi.md#stages_all_destroy) | **DELETE** /stages/all/{stage_uuid}/ | 
 *Authentik::Api::StagesApi* | [**stages_all_list**](docs/StagesApi.md#stages_all_list) | **GET** /stages/all/ | 
 *Authentik::Api::StagesApi* | [**stages_all_retrieve**](docs/StagesApi.md#stages_all_retrieve) | **GET** /stages/all/{stage_uuid}/ | 
@@ -1218,6 +1226,8 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Authentik::Api::AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
+ - [Authentik::Api::AccountLockdownStage](docs/AccountLockdownStage.md)
+ - [Authentik::Api::AccountLockdownStageRequest](docs/AccountLockdownStageRequest.md)
  - [Authentik::Api::AgentAuthenticationResponse](docs/AgentAuthenticationResponse.md)
  - [Authentik::Api::AgentConfig](docs/AgentConfig.md)
  - [Authentik::Api::AgentConnector](docs/AgentConnector.md)
@@ -1569,6 +1579,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::OutpostRequest](docs/OutpostRequest.md)
  - [Authentik::Api::OutpostTypeEnum](docs/OutpostTypeEnum.md)
  - [Authentik::Api::PKCEMethodEnum](docs/PKCEMethodEnum.md)
+ - [Authentik::Api::PaginatedAccountLockdownStageList](docs/PaginatedAccountLockdownStageList.md)
  - [Authentik::Api::PaginatedAgentConnectorList](docs/PaginatedAgentConnectorList.md)
  - [Authentik::Api::PaginatedAppleIndependentSecureEnclaveList](docs/PaginatedAppleIndependentSecureEnclaveList.md)
  - [Authentik::Api::PaginatedApplicationEntitlementList](docs/PaginatedApplicationEntitlementList.md)
@@ -1735,6 +1746,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PasswordPolicyRequest](docs/PasswordPolicyRequest.md)
  - [Authentik::Api::PasswordStage](docs/PasswordStage.md)
  - [Authentik::Api::PasswordStageRequest](docs/PasswordStageRequest.md)
+ - [Authentik::Api::PatchedAccountLockdownStageRequest](docs/PatchedAccountLockdownStageRequest.md)
  - [Authentik::Api::PatchedAgentConnectorRequest](docs/PatchedAgentConnectorRequest.md)
  - [Authentik::Api::PatchedAppleIndependentSecureEnclaveRequest](docs/PatchedAppleIndependentSecureEnclaveRequest.md)
  - [Authentik::Api::PatchedApplicationEntitlementRequest](docs/PatchedApplicationEntitlementRequest.md)
@@ -1922,6 +1934,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::RedirectURIRequest](docs/RedirectURIRequest.md)
  - [Authentik::Api::RedirectUriTypeEnum](docs/RedirectUriTypeEnum.md)
  - [Authentik::Api::RelatedGroup](docs/RelatedGroup.md)
+ - [Authentik::Api::RelatedRule](docs/RelatedRule.md)
  - [Authentik::Api::Reputation](docs/Reputation.md)
  - [Authentik::Api::ReputationPolicy](docs/ReputationPolicy.md)
  - [Authentik::Api::ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
@@ -2038,6 +2051,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::UsedBy](docs/UsedBy.md)
  - [Authentik::Api::UsedByActionEnum](docs/UsedByActionEnum.md)
  - [Authentik::Api::User](docs/User.md)
+ - [Authentik::Api::UserAccountLockdownRequest](docs/UserAccountLockdownRequest.md)
  - [Authentik::Api::UserAccountRequest](docs/UserAccountRequest.md)
  - [Authentik::Api::UserAccountSerializerForRoleRequest](docs/UserAccountSerializerForRoleRequest.md)
  - [Authentik::Api::UserAttributeEnum](docs/UserAttributeEnum.md)

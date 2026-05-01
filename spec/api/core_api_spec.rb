@@ -321,6 +321,7 @@ describe 'CoreApi' do
   # @option opts [String] :flow_authentication 
   # @option opts [String] :flow_device_code 
   # @option opts [String] :flow_invalidation 
+  # @option opts [String] :flow_lockdown 
   # @option opts [String] :flow_recovery 
   # @option opts [String] :flow_unenrollment 
   # @option opts [String] :flow_user_settings 
@@ -668,6 +669,17 @@ describe 'CoreApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'core_user_consent_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_users_account_lockdown_create
+  # Choose the target account, then return a flow link.
+  # @param [Hash] opts the optional parameters
+  # @option opts [UserAccountLockdownRequest] :user_account_lockdown_request 
+  # @return [Link]
+  describe 'core_users_account_lockdown_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

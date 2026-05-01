@@ -26,10 +26,13 @@ module Authentik::Api
     SEPARATOR = "separator".freeze
     HIDDEN = "hidden".freeze
     STATIC = "static".freeze
+    ALERT_INFO = "alert_info".freeze
+    ALERT_WARNING = "alert_warning".freeze
+    ALERT_DANGER = "alert_danger".freeze
     AK_LOCALE = "ak-locale".freeze
 
     def self.all_vars
-      @all_vars ||= [TEXT, TEXT_AREA, TEXT_READ_ONLY, TEXT_AREA_READ_ONLY, USERNAME, EMAIL, PASSWORD, NUMBER, CHECKBOX, RADIO_BUTTON_GROUP, DROPDOWN, DATE, DATE_TIME, FILE, SEPARATOR, HIDDEN, STATIC, AK_LOCALE].freeze
+      @all_vars ||= [TEXT, TEXT_AREA, TEXT_READ_ONLY, TEXT_AREA_READ_ONLY, USERNAME, EMAIL, PASSWORD, NUMBER, CHECKBOX, RADIO_BUTTON_GROUP, DROPDOWN, DATE, DATE_TIME, FILE, SEPARATOR, HIDDEN, STATIC, ALERT_INFO, ALERT_WARNING, ALERT_DANGER, AK_LOCALE].freeze
     end
 
     # Builds the enum from string

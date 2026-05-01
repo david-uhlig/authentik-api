@@ -1541,6 +1541,7 @@ module Authentik::Api
     # @option opts [String] :flow_authentication 
     # @option opts [String] :flow_device_code 
     # @option opts [String] :flow_invalidation 
+    # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
@@ -1568,6 +1569,7 @@ module Authentik::Api
     # @option opts [String] :flow_authentication 
     # @option opts [String] :flow_device_code 
     # @option opts [String] :flow_invalidation 
+    # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
@@ -1597,6 +1599,7 @@ module Authentik::Api
       query_params[:'flow_authentication'] = opts[:'flow_authentication'] if !opts[:'flow_authentication'].nil?
       query_params[:'flow_device_code'] = opts[:'flow_device_code'] if !opts[:'flow_device_code'].nil?
       query_params[:'flow_invalidation'] = opts[:'flow_invalidation'] if !opts[:'flow_invalidation'].nil?
+      query_params[:'flow_lockdown'] = opts[:'flow_lockdown'] if !opts[:'flow_lockdown'].nil?
       query_params[:'flow_recovery'] = opts[:'flow_recovery'] if !opts[:'flow_recovery'].nil?
       query_params[:'flow_unenrollment'] = opts[:'flow_unenrollment'] if !opts[:'flow_unenrollment'].nil?
       query_params[:'flow_user_settings'] = opts[:'flow_user_settings'] if !opts[:'flow_user_settings'].nil?
@@ -3469,6 +3472,68 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_user_consent_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Choose the target account, then return a flow link.
+    # @param [Hash] opts the optional parameters
+    # @option opts [UserAccountLockdownRequest] :user_account_lockdown_request 
+    # @return [Link]
+    def core_users_account_lockdown_create(opts = {})
+      data, _status_code, _headers = core_users_account_lockdown_create_with_http_info(opts)
+      data
+    end
+
+    # Choose the target account, then return a flow link.
+    # @param [Hash] opts the optional parameters
+    # @option opts [UserAccountLockdownRequest] :user_account_lockdown_request 
+    # @return [Array<(Link, Integer, Hash)>] Link data, response status code and response headers
+    def core_users_account_lockdown_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_account_lockdown_create ...'
+      end
+      # resource path
+      local_var_path = '/core/users/account_lockdown/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'user_account_lockdown_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Link'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_account_lockdown_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_account_lockdown_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
