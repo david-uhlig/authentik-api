@@ -40,6 +40,8 @@ module Authentik::Api
 
     attr_accessor :flow_device_code
 
+    attr_accessor :flow_lockdown
+
     attr_accessor :default_locale
 
     attr_accessor :flags
@@ -84,6 +86,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'flow_unenrollment',
         :'flow_user_settings' => :'flow_user_settings',
         :'flow_device_code' => :'flow_device_code',
+        :'flow_lockdown' => :'flow_lockdown',
         :'default_locale' => :'default_locale',
         :'flags' => :'flags'
       }
@@ -117,6 +120,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'String',
         :'flow_user_settings' => :'String',
         :'flow_device_code' => :'String',
+        :'flow_lockdown' => :'String',
         :'default_locale' => :'String',
         :'flags' => :'CurrentBrandFlags'
       }
@@ -224,6 +228,10 @@ module Authentik::Api
 
       if attributes.key?(:'flow_device_code')
         self.flow_device_code = attributes[:'flow_device_code']
+      end
+
+      if attributes.key?(:'flow_lockdown')
+        self.flow_lockdown = attributes[:'flow_lockdown']
       end
 
       if attributes.key?(:'default_locale')
@@ -409,6 +417,7 @@ module Authentik::Api
           flow_unenrollment == o.flow_unenrollment &&
           flow_user_settings == o.flow_user_settings &&
           flow_device_code == o.flow_device_code &&
+          flow_lockdown == o.flow_lockdown &&
           default_locale == o.default_locale &&
           flags == o.flags
     end
@@ -422,7 +431,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_locale, flags].hash
+      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, default_locale, flags].hash
     end
 
     # Builds the object from hash

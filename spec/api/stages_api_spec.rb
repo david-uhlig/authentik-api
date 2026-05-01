@@ -26,6 +26,95 @@ describe 'StagesApi' do
     end
   end
 
+  # unit tests for stages_account_lockdown_create
+  # AccountLockdownStage Viewset
+  # @param account_lockdown_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [AccountLockdownStage]
+  describe 'stages_account_lockdown_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_destroy
+  # AccountLockdownStage Viewset
+  # @param stage_uuid A UUID string identifying this Account Lockdown Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'stages_account_lockdown_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_list
+  # AccountLockdownStage Viewset
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :deactivate_user 
+  # @option opts [Boolean] :delete_sessions 
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [Boolean] :revoke_tokens 
+  # @option opts [String] :search A search term.
+  # @option opts [String] :self_service_completion_flow 
+  # @option opts [Boolean] :set_unusable_password 
+  # @option opts [String] :stage_uuid 
+  # @return [PaginatedAccountLockdownStageList]
+  describe 'stages_account_lockdown_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_partial_update
+  # AccountLockdownStage Viewset
+  # @param stage_uuid A UUID string identifying this Account Lockdown Stage.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedAccountLockdownStageRequest] :patched_account_lockdown_stage_request 
+  # @return [AccountLockdownStage]
+  describe 'stages_account_lockdown_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_retrieve
+  # AccountLockdownStage Viewset
+  # @param stage_uuid A UUID string identifying this Account Lockdown Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [AccountLockdownStage]
+  describe 'stages_account_lockdown_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_update
+  # AccountLockdownStage Viewset
+  # @param stage_uuid A UUID string identifying this Account Lockdown Stage.
+  # @param account_lockdown_stage_request 
+  # @param [Hash] opts the optional parameters
+  # @return [AccountLockdownStage]
+  describe 'stages_account_lockdown_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for stages_account_lockdown_used_by_list
+  # Get a list of all objects that use this object
+  # @param stage_uuid A UUID string identifying this Account Lockdown Stage.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'stages_account_lockdown_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for stages_all_destroy
   # Stage Viewset
   # @param stage_uuid A UUID string identifying this stage.
