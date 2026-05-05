@@ -12,9 +12,10 @@ module Authentik::Api
     ENABLED = "enabled".freeze
     PAUSED = "paused".freeze
     DISABLED = "disabled".freeze
+    DISABLED_DELETED = "disabled_deleted".freeze
 
     def self.all_vars
-      @all_vars ||= [ENABLED, PAUSED, DISABLED].freeze
+      @all_vars ||= [ENABLED, PAUSED, DISABLED, DISABLED_DELETED].freeze
     end
 
     # Builds the enum from string

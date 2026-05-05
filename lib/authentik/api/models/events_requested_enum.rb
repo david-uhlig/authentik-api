@@ -10,11 +10,17 @@ require 'time'
 module Authentik::Api
   class EventsRequestedEnum
     HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_REVOKED = "https://schemas.openid.net/secevent/caep/event-type/session-revoked".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_TOKEN_CLAIMS_CHANGE = "https://schemas.openid.net/secevent/caep/event-type/token-claims-change".freeze
     HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_CREDENTIAL_CHANGE = "https://schemas.openid.net/secevent/caep/event-type/credential-change".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_ASSURANCE_LEVEL_CHANGE = "https://schemas.openid.net/secevent/caep/event-type/assurance-level-change".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_DEVICE_COMPLIANCE_CHANGE = "https://schemas.openid.net/secevent/caep/event-type/device-compliance-change".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_ESTABLISHED = "https://schemas.openid.net/secevent/caep/event-type/session-established".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_PRESENTED = "https://schemas.openid.net/secevent/caep/event-type/session-presented".freeze
+    HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_RISK_LEVEL_CHANGE = "https://schemas.openid.net/secevent/caep/event-type/risk-level-change".freeze
     HTTPS___SCHEMAS_OPENID_NET_SECEVENT_SSF_EVENT_TYPE_VERIFICATION = "https://schemas.openid.net/secevent/ssf/event-type/verification".freeze
 
     def self.all_vars
-      @all_vars ||= [HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_REVOKED, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_CREDENTIAL_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_SSF_EVENT_TYPE_VERIFICATION].freeze
+      @all_vars ||= [HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_REVOKED, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_TOKEN_CLAIMS_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_CREDENTIAL_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_ASSURANCE_LEVEL_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_DEVICE_COMPLIANCE_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_ESTABLISHED, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_SESSION_PRESENTED, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_CAEP_EVENT_TYPE_RISK_LEVEL_CHANGE, HTTPS___SCHEMAS_OPENID_NET_SECEVENT_SSF_EVENT_TYPE_VERIFICATION].freeze
     end
 
     # Builds the enum from string
