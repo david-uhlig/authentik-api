@@ -13,8 +13,7 @@ module Authentik
       IRREGULAR_INFLECTIONS = {
         "OAuth2ProviderSetupUrls" => "OAuth2ProviderSetupURLs",
         "AuthenticatedSessionGeoIp" => "AuthenticatedSessionGeoIp",
-        "AuthenticatedSessionUserAgentOs" => "AuthenticatedSessionUserAgentOs",
-        "RedirectUriTypeEnum" => "RedirectUriTypeEnum"
+        "AuthenticatedSessionUserAgentOs" => "AuthenticatedSessionUserAgentOs"
       }.freeze
       INFLECTIONS = IRREGULAR_INFLECTIONS.merge(REGULAR_INFLECTIONS).freeze
       # Matches inflections followed by an upcase letter or EOL.
