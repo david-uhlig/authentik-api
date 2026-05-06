@@ -47,6 +47,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'brand',
+        :'model'
       ])
     end
 
@@ -90,16 +92,8 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @brand.nil?
-        invalid_properties.push('invalid value for "brand", brand cannot be nil.')
-      end
-
       if @family.nil?
         invalid_properties.push('invalid value for "family", family cannot be nil.')
-      end
-
-      if @model.nil?
-        invalid_properties.push('invalid value for "model", model cannot be nil.')
       end
 
       invalid_properties
@@ -109,20 +103,8 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @brand.nil?
       return false if @family.nil?
-      return false if @model.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] brand Value to be assigned
-    def brand=(brand)
-      if brand.nil?
-        fail ArgumentError, 'brand cannot be nil'
-      end
-
-      @brand = brand
     end
 
     # Custom attribute writer method with validation
@@ -133,16 +115,6 @@ module Authentik::Api
       end
 
       @family = family
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] model Value to be assigned
-    def model=(model)
-      if model.nil?
-        fail ArgumentError, 'model cannot be nil'
-      end
-
-      @model = model
     end
 
     # Checks equality by comparing each attribute.

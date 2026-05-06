@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **matching_mode** | [**MatchingModeEnum**](MatchingModeEnum.md) |  |  |
 | **url** | **String** |  |  |
-| **redirect_uri_type** | [**RedirectUriTypeEnum**](RedirectUriTypeEnum.md) |  | [optional] |
+| **redirect_uri_type** | [**RedirectURITypeEnum**](RedirectURITypeEnum.md) |  | [optional] |
 
 ## Example
 

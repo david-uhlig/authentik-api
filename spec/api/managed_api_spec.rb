@@ -74,6 +74,7 @@ describe 'ManagedApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [File] :file 
   # @option opts [String] :path 
+  # @option opts [String] :context 
   # @return [BlueprintImportResult]
   describe 'managed_blueprints_import_create test' do
     it 'should work' do

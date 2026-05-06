@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class RedirectUriTypeEnum
+  class RedirectURITypeEnum
     AUTHORIZATION = "authorization".freeze
     LOGOUT = "logout".freeze
 
@@ -27,8 +27,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if RedirectUriTypeEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #RedirectUriTypeEnum"
+      return value if RedirectURITypeEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #RedirectURITypeEnum"
     end
   end
 end
