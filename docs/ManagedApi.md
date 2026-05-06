@@ -310,7 +310,8 @@ end
 api_instance = Authentik::Api::ManagedApi.new
 opts = {
   file: File.new('/path/to/some/file'), # File | 
-  path: 'path_example' # String | 
+  path: 'path_example', # String | 
+  context: 'context_example' # String | 
 }
 
 begin
@@ -346,6 +347,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **file** | **File** |  | [optional] |
 | **path** | **String** |  | [optional] |
+| **context** | **String** |  | [optional] |
 
 ### Return type
 

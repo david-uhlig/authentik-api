@@ -1932,7 +1932,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::RedirectStageRequest](docs/RedirectStageRequest.md)
  - [Authentik::Api::RedirectURI](docs/RedirectURI.md)
  - [Authentik::Api::RedirectURIRequest](docs/RedirectURIRequest.md)
- - [Authentik::Api::RedirectUriTypeEnum](docs/RedirectUriTypeEnum.md)
+ - [Authentik::Api::RedirectURITypeEnum](docs/RedirectURITypeEnum.md)
  - [Authentik::Api::RelatedGroup](docs/RelatedGroup.md)
  - [Authentik::Api::RelatedRule](docs/RelatedRule.md)
  - [Authentik::Api::Reputation](docs/Reputation.md)

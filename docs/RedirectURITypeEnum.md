@@ -1,4 +1,4 @@
-# Authentik::Api::RedirectUriTypeEnum
+# Authentik::Api::RedirectURITypeEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::RedirectUriTypeEnum.new()
+instance = Authentik::Api::RedirectURITypeEnum.new()
 ```
 

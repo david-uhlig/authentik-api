@@ -260,6 +260,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file 
     # @option opts [String] :path 
+    # @option opts [String] :context 
     # @return [BlueprintImportResult]
     def managed_blueprints_import_create(opts = {})
       data, _status_code, _headers = managed_blueprints_import_create_with_http_info(opts)
@@ -270,6 +271,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [File] :file 
     # @option opts [String] :path 
+    # @option opts [String] :context 
     # @return [Array<(BlueprintImportResult, Integer, Hash)>] BlueprintImportResult data, response status code and response headers
     def managed_blueprints_import_create_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -299,6 +301,7 @@ module Authentik::Api
       form_params = opts[:form_params] || {}
       form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
       form_params['path'] = opts[:'path'] if !opts[:'path'].nil?
+      form_params['context'] = opts[:'context'] if !opts[:'context'].nil?
 
       # http body (model)
       post_body = opts[:debug_body]

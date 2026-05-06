@@ -55,6 +55,10 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'major',
+        :'minor',
+        :'patch',
+        :'patch_minor'
       ])
     end
 
@@ -114,22 +118,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "family", family cannot be nil.')
       end
 
-      if @major.nil?
-        invalid_properties.push('invalid value for "major", major cannot be nil.')
-      end
-
-      if @minor.nil?
-        invalid_properties.push('invalid value for "minor", minor cannot be nil.')
-      end
-
-      if @patch.nil?
-        invalid_properties.push('invalid value for "patch", patch cannot be nil.')
-      end
-
-      if @patch_minor.nil?
-        invalid_properties.push('invalid value for "patch_minor", patch_minor cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -138,10 +126,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @family.nil?
-      return false if @major.nil?
-      return false if @minor.nil?
-      return false if @patch.nil?
-      return false if @patch_minor.nil?
       true
     end
 
@@ -153,46 +137,6 @@ module Authentik::Api
       end
 
       @family = family
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] major Value to be assigned
-    def major=(major)
-      if major.nil?
-        fail ArgumentError, 'major cannot be nil'
-      end
-
-      @major = major
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] minor Value to be assigned
-    def minor=(minor)
-      if minor.nil?
-        fail ArgumentError, 'minor cannot be nil'
-      end
-
-      @minor = minor
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] patch Value to be assigned
-    def patch=(patch)
-      if patch.nil?
-        fail ArgumentError, 'patch cannot be nil'
-      end
-
-      @patch = patch
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] patch_minor Value to be assigned
-    def patch_minor=(patch_minor)
-      if patch_minor.nil?
-        fail ArgumentError, 'patch_minor cannot be nil'
-      end
-
-      @patch_minor = patch_minor
     end
 
     # Checks equality by comparing each attribute.
