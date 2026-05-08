@@ -19,6 +19,10 @@
 | **webauthn_hints** | [**Array&lt;WebAuthnHintEnum&gt;**](WebAuthnHintEnum.md) |  | [optional] |
 | **webauthn_allowed_device_types** | **Array&lt;String&gt;** |  | [optional] |
 | **webauthn_allowed_device_types_obj** | [**Array&lt;WebAuthnDeviceType&gt;**](WebAuthnDeviceType.md) |  | [readonly] |
+| **email_otp_throttling_factor** | **Float** |  | [optional] |
+| **sms_otp_throttling_factor** | **Float** |  | [optional] |
+| **totp_otp_throttling_factor** | **Float** |  | [optional] |
+| **static_otp_throttling_factor** | **Float** |  | [optional] |
 
 ## Example
 
@@ -40,7 +44,11 @@ instance = Authentik::Api::AuthenticatorValidateStage.new(
   webauthn_user_verification: null,
   webauthn_hints: null,
   webauthn_allowed_device_types: null,
-  webauthn_allowed_device_types_obj: null
+  webauthn_allowed_device_types_obj: null,
+  email_otp_throttling_factor: null,
+  sms_otp_throttling_factor: null,
+  totp_otp_throttling_factor: null,
+  static_otp_throttling_factor: null
 )
 ```
 
