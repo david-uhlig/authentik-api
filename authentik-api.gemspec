@@ -20,11 +20,11 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.required_ruby_version = ">= 3.3.0"
   s.metadata    = {
-    rubygems_mfa_required: true
+    "rubygems_mfa_required" => true
   }
 
-  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
   s.add_runtime_dependency 'ostruct'
+  s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
   s.add_runtime_dependency 'zeitwerk', '~> 2.6'
 
   s.add_development_dependency 'irb'
