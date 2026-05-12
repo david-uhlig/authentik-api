@@ -19,6 +19,7 @@
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **client_type** | [**ClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable | [optional] |
+| **grant_types** | [**Array&lt;GrantTypesEnum&gt;**](GrantTypesEnum.md) |  | [optional] |
 | **client_id** | **String** |  | [optional] |
 | **client_secret** | **String** |  | [optional] |
 | **access_code_validity** | **String** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
@@ -57,6 +58,7 @@ instance = Authentik::Api::OAuth2Provider.new(
   verbose_name_plural: null,
   meta_model_name: null,
   client_type: null,
+  grant_types: null,
   client_id: null,
   client_secret: null,
   access_code_validity: null,

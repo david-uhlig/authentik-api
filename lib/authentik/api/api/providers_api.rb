@@ -5592,7 +5592,7 @@ module Authentik::Api
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -5634,7 +5634,7 @@ module Authentik::Api
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -5678,7 +5678,7 @@ module Authentik::Api
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
-      query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
+      query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
@@ -7982,7 +7982,7 @@ module Authentik::Api
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8024,7 +8024,7 @@ module Authentik::Api
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8068,7 +8068,7 @@ module Authentik::Api
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
-      query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
+      query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?

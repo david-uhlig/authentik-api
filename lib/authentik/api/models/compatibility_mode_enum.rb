@@ -14,9 +14,10 @@ module Authentik::Api
     SLACK = "slack".freeze
     SFDC = "sfdc".freeze
     WEBEX = "webex".freeze
+    VCENTER = "vcenter".freeze
 
     def self.all_vars
-      @all_vars ||= [DEFAULT, AWS, SLACK, SFDC, WEBEX].freeze
+      @all_vars ||= [DEFAULT, AWS, SLACK, SFDC, WEBEX, VCENTER].freeze
     end
 
     # Builds the enum from string

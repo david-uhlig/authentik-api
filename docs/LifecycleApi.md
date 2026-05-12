@@ -5,7 +5,7 @@ All URIs are relative to */api/v3*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**lifecycle_iterations_create**](LifecycleApi.md#lifecycle_iterations_create) | **POST** /lifecycle/iterations/ |  |
-| [**lifecycle_iterations_latest_retrieve**](LifecycleApi.md#lifecycle_iterations_latest_retrieve) | **GET** /lifecycle/iterations/latest/{content_type}/{object_id}/ |  |
+| [**lifecycle_iterations_list_latest**](LifecycleApi.md#lifecycle_iterations_list_latest) | **GET** /lifecycle/iterations/latest/{content_type}/{object_id}/ |  |
 | [**lifecycle_iterations_list_open**](LifecycleApi.md#lifecycle_iterations_list_open) | **GET** /lifecycle/iterations/open/ |  |
 | [**lifecycle_reviews_create**](LifecycleApi.md#lifecycle_reviews_create) | **POST** /lifecycle/reviews/ |  |
 | [**lifecycle_rules_create**](LifecycleApi.md#lifecycle_rules_create) | **POST** /lifecycle/rules/ |  |
@@ -85,9 +85,9 @@ end
 - **Accept**: application/json
 
 
-## lifecycle_iterations_latest_retrieve
+## lifecycle_iterations_list_latest
 
-> <LifecycleIteration> lifecycle_iterations_latest_retrieve(content_type, obj_id)
+> <Array<LifecycleIteration>> lifecycle_iterations_list_latest(content_type, obj_id, opts)
 
 
 
@@ -107,31 +107,36 @@ end
 api_instance = Authentik::Api::LifecycleApi.new
 content_type = 'content_type_example' # String | 
 obj_id = 'obj_id_example' # String | 
+opts = {
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  search: 'search_example', # String | A search term.
+  user_is_reviewer: true # Boolean | 
+}
 
 begin
   
-  result = api_instance.lifecycle_iterations_latest_retrieve(content_type, obj_id)
+  result = api_instance.lifecycle_iterations_list_latest(content_type, obj_id, opts)
   p result
 rescue Authentik::Api::ApiError => e
-  puts "Error when calling LifecycleApi->lifecycle_iterations_latest_retrieve: #{e}"
+  puts "Error when calling LifecycleApi->lifecycle_iterations_list_latest: #{e}"
 end
 ```
 
-#### Using the lifecycle_iterations_latest_retrieve_with_http_info variant
+#### Using the lifecycle_iterations_list_latest_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<LifecycleIteration>, Integer, Hash)> lifecycle_iterations_latest_retrieve_with_http_info(content_type, obj_id)
+> <Array(<Array<LifecycleIteration>>, Integer, Hash)> lifecycle_iterations_list_latest_with_http_info(content_type, obj_id, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.lifecycle_iterations_latest_retrieve_with_http_info(content_type, obj_id)
+  data, status_code, headers = api_instance.lifecycle_iterations_list_latest_with_http_info(content_type, obj_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <LifecycleIteration>
+  p data # => <Array<LifecycleIteration>>
 rescue Authentik::Api::ApiError => e
-  puts "Error when calling LifecycleApi->lifecycle_iterations_latest_retrieve_with_http_info: #{e}"
+  puts "Error when calling LifecycleApi->lifecycle_iterations_list_latest_with_http_info: #{e}"
 end
 ```
 
@@ -141,10 +146,13 @@ end
 | ---- | ---- | ----------- | ----- |
 | **content_type** | **String** |  |  |
 | **obj_id** | **String** |  |  |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **user_is_reviewer** | **Boolean** |  | [optional] |
 
 ### Return type
 
-[**LifecycleIteration**](LifecycleIteration.md)
+[**Array&lt;LifecycleIteration&gt;**](LifecycleIteration.md)
 
 ### Authorization
 

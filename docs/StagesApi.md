@@ -4,6 +4,13 @@ All URIs are relative to */api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**stages_account_lockdown_create**](StagesApi.md#stages_account_lockdown_create) | **POST** /stages/account_lockdown/ |  |
+| [**stages_account_lockdown_destroy**](StagesApi.md#stages_account_lockdown_destroy) | **DELETE** /stages/account_lockdown/{stage_uuid}/ |  |
+| [**stages_account_lockdown_list**](StagesApi.md#stages_account_lockdown_list) | **GET** /stages/account_lockdown/ |  |
+| [**stages_account_lockdown_partial_update**](StagesApi.md#stages_account_lockdown_partial_update) | **PATCH** /stages/account_lockdown/{stage_uuid}/ |  |
+| [**stages_account_lockdown_retrieve**](StagesApi.md#stages_account_lockdown_retrieve) | **GET** /stages/account_lockdown/{stage_uuid}/ |  |
+| [**stages_account_lockdown_update**](StagesApi.md#stages_account_lockdown_update) | **PUT** /stages/account_lockdown/{stage_uuid}/ |  |
+| [**stages_account_lockdown_used_by_list**](StagesApi.md#stages_account_lockdown_used_by_list) | **GET** /stages/account_lockdown/{stage_uuid}/used_by/ |  |
 | [**stages_all_destroy**](StagesApi.md#stages_all_destroy) | **DELETE** /stages/all/{stage_uuid}/ |  |
 | [**stages_all_list**](StagesApi.md#stages_all_list) | **GET** /stages/all/ |  |
 | [**stages_all_retrieve**](StagesApi.md#stages_all_retrieve) | **GET** /stages/all/{stage_uuid}/ |  |
@@ -207,6 +214,516 @@ All URIs are relative to */api/v3*
 | [**stages_user_write_retrieve**](StagesApi.md#stages_user_write_retrieve) | **GET** /stages/user_write/{stage_uuid}/ |  |
 | [**stages_user_write_update**](StagesApi.md#stages_user_write_update) | **PUT** /stages/user_write/{stage_uuid}/ |  |
 | [**stages_user_write_used_by_list**](StagesApi.md#stages_user_write_used_by_list) | **GET** /stages/user_write/{stage_uuid}/used_by/ |  |
+
+
+## stages_account_lockdown_create
+
+> <AccountLockdownStage> stages_account_lockdown_create(account_lockdown_stage_request)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+account_lockdown_stage_request = Authentik::Api::AccountLockdownStageRequest.new({name: 'name_example'}) # AccountLockdownStageRequest | 
+
+begin
+  
+  result = api_instance.stages_account_lockdown_create(account_lockdown_stage_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_create: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountLockdownStage>, Integer, Hash)> stages_account_lockdown_create_with_http_info(account_lockdown_stage_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_create_with_http_info(account_lockdown_stage_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountLockdownStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **account_lockdown_stage_request** | [**AccountLockdownStageRequest**](AccountLockdownStageRequest.md) |  |  |
+
+### Return type
+
+[**AccountLockdownStage**](AccountLockdownStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_account_lockdown_destroy
+
+> stages_account_lockdown_destroy(stage_uuid)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Account Lockdown Stage.
+
+begin
+  
+  api_instance.stages_account_lockdown_destroy(stage_uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_destroy: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> stages_account_lockdown_destroy_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_destroy_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Account Lockdown Stage. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_account_lockdown_list
+
+> <PaginatedAccountLockdownStageList> stages_account_lockdown_list(opts)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+opts = {
+  deactivate_user: true, # Boolean | 
+  delete_sessions: true, # Boolean | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  revoke_tokens: true, # Boolean | 
+  search: 'search_example', # String | A search term.
+  self_service_completion_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  set_unusable_password: true, # Boolean | 
+  stage_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+}
+
+begin
+  
+  result = api_instance.stages_account_lockdown_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_list: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedAccountLockdownStageList>, Integer, Hash)> stages_account_lockdown_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedAccountLockdownStageList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **deactivate_user** | **Boolean** |  | [optional] |
+| **delete_sessions** | **Boolean** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **revoke_tokens** | **Boolean** |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **self_service_completion_flow** | **String** |  | [optional] |
+| **set_unusable_password** | **Boolean** |  | [optional] |
+| **stage_uuid** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedAccountLockdownStageList**](PaginatedAccountLockdownStageList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_account_lockdown_partial_update
+
+> <AccountLockdownStage> stages_account_lockdown_partial_update(stage_uuid, opts)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Account Lockdown Stage.
+opts = {
+  patched_account_lockdown_stage_request: Authentik::Api::PatchedAccountLockdownStageRequest.new # PatchedAccountLockdownStageRequest | 
+}
+
+begin
+  
+  result = api_instance.stages_account_lockdown_partial_update(stage_uuid, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_partial_update: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountLockdownStage>, Integer, Hash)> stages_account_lockdown_partial_update_with_http_info(stage_uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_partial_update_with_http_info(stage_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountLockdownStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Account Lockdown Stage. |  |
+| **patched_account_lockdown_stage_request** | [**PatchedAccountLockdownStageRequest**](PatchedAccountLockdownStageRequest.md) |  | [optional] |
+
+### Return type
+
+[**AccountLockdownStage**](AccountLockdownStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_account_lockdown_retrieve
+
+> <AccountLockdownStage> stages_account_lockdown_retrieve(stage_uuid)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Account Lockdown Stage.
+
+begin
+  
+  result = api_instance.stages_account_lockdown_retrieve(stage_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_retrieve: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountLockdownStage>, Integer, Hash)> stages_account_lockdown_retrieve_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_retrieve_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountLockdownStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Account Lockdown Stage. |  |
+
+### Return type
+
+[**AccountLockdownStage**](AccountLockdownStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## stages_account_lockdown_update
+
+> <AccountLockdownStage> stages_account_lockdown_update(stage_uuid, account_lockdown_stage_request)
+
+
+
+AccountLockdownStage Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Account Lockdown Stage.
+account_lockdown_stage_request = Authentik::Api::AccountLockdownStageRequest.new({name: 'name_example'}) # AccountLockdownStageRequest | 
+
+begin
+  
+  result = api_instance.stages_account_lockdown_update(stage_uuid, account_lockdown_stage_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_update: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AccountLockdownStage>, Integer, Hash)> stages_account_lockdown_update_with_http_info(stage_uuid, account_lockdown_stage_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_update_with_http_info(stage_uuid, account_lockdown_stage_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AccountLockdownStage>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Account Lockdown Stage. |  |
+| **account_lockdown_stage_request** | [**AccountLockdownStageRequest**](AccountLockdownStageRequest.md) |  |  |
+
+### Return type
+
+[**AccountLockdownStage**](AccountLockdownStage.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## stages_account_lockdown_used_by_list
+
+> <Array<UsedBy>> stages_account_lockdown_used_by_list(stage_uuid)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::StagesApi.new
+stage_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Account Lockdown Stage.
+
+begin
+  
+  result = api_instance.stages_account_lockdown_used_by_list(stage_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_used_by_list: #{e}"
+end
+```
+
+#### Using the stages_account_lockdown_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> stages_account_lockdown_used_by_list_with_http_info(stage_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.stages_account_lockdown_used_by_list_with_http_info(stage_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling StagesApi->stages_account_lockdown_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **stage_uuid** | **String** | A UUID string identifying this Account Lockdown Stage. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 
 ## stages_all_destroy

@@ -55,6 +55,7 @@ All URIs are relative to */api/v3*
 | [**core_user_consent_list**](CoreApi.md#core_user_consent_list) | **GET** /core/user_consent/ |  |
 | [**core_user_consent_retrieve**](CoreApi.md#core_user_consent_retrieve) | **GET** /core/user_consent/{id}/ |  |
 | [**core_user_consent_used_by_list**](CoreApi.md#core_user_consent_used_by_list) | **GET** /core/user_consent/{id}/used_by/ |  |
+| [**core_users_account_lockdown_create**](CoreApi.md#core_users_account_lockdown_create) | **POST** /core/users/account_lockdown/ |  |
 | [**core_users_create**](CoreApi.md#core_users_create) | **POST** /core/users/ |  |
 | [**core_users_destroy**](CoreApi.md#core_users_destroy) | **DELETE** /core/users/{id}/ |  |
 | [**core_users_export_create**](CoreApi.md#core_users_export_create) | **POST** /core/users/export/ |  |
@@ -69,6 +70,7 @@ All URIs are relative to */api/v3*
 | [**core_users_retrieve**](CoreApi.md#core_users_retrieve) | **GET** /core/users/{id}/ |  |
 | [**core_users_service_account_create**](CoreApi.md#core_users_service_account_create) | **POST** /core/users/service_account/ |  |
 | [**core_users_set_password_create**](CoreApi.md#core_users_set_password_create) | **POST** /core/users/{id}/set_password/ |  |
+| [**core_users_set_password_hash_create**](CoreApi.md#core_users_set_password_hash_create) | **POST** /core/users/{id}/set_password_hash/ |  |
 | [**core_users_update**](CoreApi.md#core_users_update) | **PUT** /core/users/{id}/ |  |
 | [**core_users_used_by_list**](CoreApi.md#core_users_used_by_list) | **GET** /core/users/{id}/used_by/ |  |
 
@@ -1755,6 +1757,7 @@ opts = {
   flow_authentication: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_device_code: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_invalidation: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  flow_lockdown: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_recovery: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_unenrollment: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_user_settings: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -1807,6 +1810,7 @@ end
 | **flow_authentication** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
+| **flow_lockdown** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
@@ -3781,6 +3785,77 @@ end
 - **Accept**: application/json
 
 
+## core_users_account_lockdown_create
+
+> <Link> core_users_account_lockdown_create(opts)
+
+
+
+Choose the target account, then return a flow link.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  user_account_lockdown_request: Authentik::Api::UserAccountLockdownRequest.new # UserAccountLockdownRequest | 
+}
+
+begin
+  
+  result = api_instance.core_users_account_lockdown_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_account_lockdown_create: #{e}"
+end
+```
+
+#### Using the core_users_account_lockdown_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Link>, Integer, Hash)> core_users_account_lockdown_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_account_lockdown_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Link>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_account_lockdown_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_account_lockdown_request** | [**UserAccountLockdownRequest**](UserAccountLockdownRequest.md) |  | [optional] |
+
+### Return type
+
+[**Link**](Link.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## core_users_create
 
 > <User> core_users_create(user_request)
@@ -4849,6 +4924,76 @@ end
 | ---- | ---- | ----------- | ----- |
 | **id** | **Integer** | A unique integer value identifying this User. |  |
 | **user_password_set_request** | [**UserPasswordSetRequest**](UserPasswordSetRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_users_set_password_hash_create
+
+> core_users_set_password_hash_create(id, user_password_hash_set_request)
+
+
+
+Set a user's password from a pre-hashed Django password value.  Submit the Django password hash in the shared ``password`` request field.  This updates authentik's local password verifier only. It does not attempt to propagate the password change to LDAP or Kerberos because no raw password is available from the request payload.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+id = 56 # Integer | A unique integer value identifying this User.
+user_password_hash_set_request = Authentik::Api::UserPasswordHashSetRequest.new({password: 'password_example'}) # UserPasswordHashSetRequest | 
+
+begin
+  
+  api_instance.core_users_set_password_hash_create(id, user_password_hash_set_request)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_set_password_hash_create: #{e}"
+end
+```
+
+#### Using the core_users_set_password_hash_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> core_users_set_password_hash_create_with_http_info(id, user_password_hash_set_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_set_password_hash_create_with_http_info(id, user_password_hash_set_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_set_password_hash_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this User. |  |
+| **user_password_hash_set_request** | [**UserPasswordHashSetRequest**](UserPasswordHashSetRequest.md) |  |  |
 
 ### Return type
 

@@ -62,7 +62,7 @@ module Authentik::Api
       {
         :'matching_mode' => :'MatchingModeEnum',
         :'url' => :'String',
-        :'redirect_uri_type' => :'RedirectUriTypeEnum'
+        :'redirect_uri_type' => :'RedirectURITypeEnum'
       }
     end
 

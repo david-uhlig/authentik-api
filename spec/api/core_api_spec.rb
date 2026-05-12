@@ -321,6 +321,7 @@ describe 'CoreApi' do
   # @option opts [String] :flow_authentication 
   # @option opts [String] :flow_device_code 
   # @option opts [String] :flow_invalidation 
+  # @option opts [String] :flow_lockdown 
   # @option opts [String] :flow_recovery 
   # @option opts [String] :flow_unenrollment 
   # @option opts [String] :flow_user_settings 
@@ -673,6 +674,17 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_users_account_lockdown_create
+  # Choose the target account, then return a flow link.
+  # @param [Hash] opts the optional parameters
+  # @option opts [UserAccountLockdownRequest] :user_account_lockdown_request 
+  # @return [Link]
+  describe 'core_users_account_lockdown_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_users_create
   # User Viewset
   # @param user_request 
@@ -879,6 +891,18 @@ describe 'CoreApi' do
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'core_users_set_password_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_users_set_password_hash_create
+  # Set a user&#39;s password from a pre-hashed Django password value.  Submit the Django password hash in the shared &#x60;&#x60;password&#x60;&#x60; request field.  This updates authentik&#39;s local password verifier only. It does not attempt to propagate the password change to LDAP or Kerberos because no raw password is available from the request payload.
+  # @param id A unique integer value identifying this User.
+  # @param user_password_hash_set_request 
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'core_users_set_password_hash_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -10,6 +10,7 @@
 | **invalidation_flow** | **String** | Flow used ending the session from a provider. | [optional] |
 | **property_mappings** | **Array&lt;String&gt;** |  | [optional] |
 | **client_type** | [**ClientTypeEnum**](ClientTypeEnum.md) | Confidential clients are capable of maintaining the confidentiality of their credentials. Public clients are incapable | [optional] |
+| **grant_types** | [**Array&lt;GrantTypesEnum&gt;**](GrantTypesEnum.md) |  | [optional] |
 | **client_id** | **String** |  | [optional] |
 | **client_secret** | **String** |  | [optional] |
 | **access_code_validity** | **String** | Access codes not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
@@ -39,6 +40,7 @@ instance = Authentik::Api::PatchedOAuth2ProviderRequest.new(
   invalidation_flow: null,
   property_mappings: null,
   client_type: null,
+  grant_types: null,
   client_id: null,
   client_secret: null,
   access_code_validity: null,

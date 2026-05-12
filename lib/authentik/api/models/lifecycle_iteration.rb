@@ -30,13 +30,9 @@ module Authentik::Api
 
     attr_accessor :reviews
 
+    attr_accessor :rule
+
     attr_accessor :user_can_review
-
-    attr_accessor :reviewer_groups
-
-    attr_accessor :min_reviewers
-
-    attr_accessor :reviewers
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -73,10 +69,8 @@ module Authentik::Api
         :'grace_period_end' => :'grace_period_end',
         :'next_review_date' => :'next_review_date',
         :'reviews' => :'reviews',
-        :'user_can_review' => :'user_can_review',
-        :'reviewer_groups' => :'reviewer_groups',
-        :'min_reviewers' => :'min_reviewers',
-        :'reviewers' => :'reviewers'
+        :'rule' => :'rule',
+        :'user_can_review' => :'user_can_review'
       }
     end
 
@@ -103,10 +97,8 @@ module Authentik::Api
         :'grace_period_end' => :'Time',
         :'next_review_date' => :'Time',
         :'reviews' => :'Array<Review>',
-        :'user_can_review' => :'Boolean',
-        :'reviewer_groups' => :'Array<ReviewerGroup>',
-        :'min_reviewers' => :'Integer',
-        :'reviewers' => :'Array<ReviewerUser>'
+        :'rule' => :'RelatedRule',
+        :'user_can_review' => :'Boolean'
       }
     end
 
@@ -194,32 +186,16 @@ module Authentik::Api
         self.reviews = nil
       end
 
+      if attributes.key?(:'rule')
+        self.rule = attributes[:'rule']
+      else
+        self.rule = nil
+      end
+
       if attributes.key?(:'user_can_review')
         self.user_can_review = attributes[:'user_can_review']
       else
         self.user_can_review = nil
-      end
-
-      if attributes.key?(:'reviewer_groups')
-        if (value = attributes[:'reviewer_groups']).is_a?(Array)
-          self.reviewer_groups = value
-        end
-      else
-        self.reviewer_groups = nil
-      end
-
-      if attributes.key?(:'min_reviewers')
-        self.min_reviewers = attributes[:'min_reviewers']
-      else
-        self.min_reviewers = nil
-      end
-
-      if attributes.key?(:'reviewers')
-        if (value = attributes[:'reviewers']).is_a?(Array)
-          self.reviewers = value
-        end
-      else
-        self.reviewers = nil
       end
     end
 
@@ -268,20 +244,12 @@ module Authentik::Api
         invalid_properties.push('invalid value for "reviews", reviews cannot be nil.')
       end
 
+      if @rule.nil?
+        invalid_properties.push('invalid value for "rule", rule cannot be nil.')
+      end
+
       if @user_can_review.nil?
         invalid_properties.push('invalid value for "user_can_review", user_can_review cannot be nil.')
-      end
-
-      if @reviewer_groups.nil?
-        invalid_properties.push('invalid value for "reviewer_groups", reviewer_groups cannot be nil.')
-      end
-
-      if @min_reviewers.nil?
-        invalid_properties.push('invalid value for "min_reviewers", min_reviewers cannot be nil.')
-      end
-
-      if @reviewers.nil?
-        invalid_properties.push('invalid value for "reviewers", reviewers cannot be nil.')
       end
 
       invalid_properties
@@ -301,10 +269,8 @@ module Authentik::Api
       return false if @grace_period_end.nil?
       return false if @next_review_date.nil?
       return false if @reviews.nil?
+      return false if @rule.nil?
       return false if @user_can_review.nil?
-      return false if @reviewer_groups.nil?
-      return false if @min_reviewers.nil?
-      return false if @reviewers.nil?
       true
     end
 
@@ -409,6 +375,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] rule Value to be assigned
+    def rule=(rule)
+      if rule.nil?
+        fail ArgumentError, 'rule cannot be nil'
+      end
+
+      @rule = rule
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] user_can_review Value to be assigned
     def user_can_review=(user_can_review)
       if user_can_review.nil?
@@ -416,36 +392,6 @@ module Authentik::Api
       end
 
       @user_can_review = user_can_review
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reviewer_groups Value to be assigned
-    def reviewer_groups=(reviewer_groups)
-      if reviewer_groups.nil?
-        fail ArgumentError, 'reviewer_groups cannot be nil'
-      end
-
-      @reviewer_groups = reviewer_groups
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] min_reviewers Value to be assigned
-    def min_reviewers=(min_reviewers)
-      if min_reviewers.nil?
-        fail ArgumentError, 'min_reviewers cannot be nil'
-      end
-
-      @min_reviewers = min_reviewers
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] reviewers Value to be assigned
-    def reviewers=(reviewers)
-      if reviewers.nil?
-        fail ArgumentError, 'reviewers cannot be nil'
-      end
-
-      @reviewers = reviewers
     end
 
     # Checks equality by comparing each attribute.
@@ -463,10 +409,8 @@ module Authentik::Api
           grace_period_end == o.grace_period_end &&
           next_review_date == o.next_review_date &&
           reviews == o.reviews &&
-          user_can_review == o.user_can_review &&
-          reviewer_groups == o.reviewer_groups &&
-          min_reviewers == o.min_reviewers &&
-          reviewers == o.reviewers
+          rule == o.rule &&
+          user_can_review == o.user_can_review
     end
 
     # @see the `==` method
@@ -478,7 +422,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, content_type, obj_id, object_verbose, object_admin_url, state, opened_on, grace_period_end, next_review_date, reviews, user_can_review, reviewer_groups, min_reviewers, reviewers].hash
+      [id, content_type, obj_id, object_verbose, object_admin_url, state, opened_on, grace_period_end, next_review_date, reviews, rule, user_can_review].hash
     end
 
     # Builds the object from hash

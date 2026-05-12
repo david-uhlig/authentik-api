@@ -37,6 +37,8 @@ module Authentik::Api
 
     attr_accessor :flow_device_code
 
+    attr_accessor :flow_lockdown
+
     # When set, external users will be redirected to this application after authenticating.
     attr_accessor :default_application
 
@@ -64,6 +66,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'flow_unenrollment',
         :'flow_user_settings' => :'flow_user_settings',
         :'flow_device_code' => :'flow_device_code',
+        :'flow_lockdown' => :'flow_lockdown',
         :'default_application' => :'default_application',
         :'web_certificate' => :'web_certificate',
         :'client_certificates' => :'client_certificates',
@@ -97,6 +100,7 @@ module Authentik::Api
         :'flow_unenrollment' => :'String',
         :'flow_user_settings' => :'String',
         :'flow_device_code' => :'String',
+        :'flow_lockdown' => :'String',
         :'default_application' => :'String',
         :'web_certificate' => :'String',
         :'client_certificates' => :'Array<String>',
@@ -113,6 +117,7 @@ module Authentik::Api
         :'flow_unenrollment',
         :'flow_user_settings',
         :'flow_device_code',
+        :'flow_lockdown',
         :'default_application',
         :'web_certificate',
       ])
@@ -186,6 +191,10 @@ module Authentik::Api
 
       if attributes.key?(:'flow_device_code')
         self.flow_device_code = attributes[:'flow_device_code']
+      end
+
+      if attributes.key?(:'flow_lockdown')
+        self.flow_lockdown = attributes[:'flow_lockdown']
       end
 
       if attributes.key?(:'default_application')
@@ -342,6 +351,7 @@ module Authentik::Api
           flow_unenrollment == o.flow_unenrollment &&
           flow_user_settings == o.flow_user_settings &&
           flow_device_code == o.flow_device_code &&
+          flow_lockdown == o.flow_lockdown &&
           default_application == o.default_application &&
           web_certificate == o.web_certificate &&
           client_certificates == o.client_certificates &&
@@ -357,7 +367,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, default_application, web_certificate, client_certificates, attributes].hash
+      [domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, default_application, web_certificate, client_certificates, attributes].hash
     end
 
     # Builds the object from hash

@@ -37,13 +37,16 @@ describe 'LifecycleApi' do
     end
   end
 
-  # unit tests for lifecycle_iterations_latest_retrieve
+  # unit tests for lifecycle_iterations_list_latest
   # Mixin to validate that a valid enterprise license exists before allowing to save the object
   # @param content_type 
   # @param obj_id 
   # @param [Hash] opts the optional parameters
-  # @return [LifecycleIteration]
-  describe 'lifecycle_iterations_latest_retrieve test' do
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [String] :search A search term.
+  # @option opts [Boolean] :user_is_reviewer 
+  # @return [Array<LifecycleIteration>]
+  describe 'lifecycle_iterations_list_latest test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

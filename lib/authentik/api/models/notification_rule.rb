@@ -90,6 +90,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'destination_group',
+        :'destination_group_obj',
       ])
     end
 
@@ -159,10 +160,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @destination_group_obj.nil?
-        invalid_properties.push('invalid value for "destination_group_obj", destination_group_obj cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -172,7 +169,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
       return false if @name.nil?
-      return false if @destination_group_obj.nil?
       true
     end
 
@@ -194,16 +190,6 @@ module Authentik::Api
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] destination_group_obj Value to be assigned
-    def destination_group_obj=(destination_group_obj)
-      if destination_group_obj.nil?
-        fail ArgumentError, 'destination_group_obj cannot be nil'
-      end
-
-      @destination_group_obj = destination_group_obj
     end
 
     # Checks equality by comparing each attribute.

@@ -13,6 +13,483 @@ module Authentik::Api
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # AccountLockdownStage Viewset
+    # @param account_lockdown_stage_request [AccountLockdownStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AccountLockdownStage]
+    def stages_account_lockdown_create(account_lockdown_stage_request, opts = {})
+      data, _status_code, _headers = stages_account_lockdown_create_with_http_info(account_lockdown_stage_request, opts)
+      data
+    end
+
+    # AccountLockdownStage Viewset
+    # @param account_lockdown_stage_request [AccountLockdownStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountLockdownStage, Integer, Hash)>] AccountLockdownStage data, response status code and response headers
+    def stages_account_lockdown_create_with_http_info(account_lockdown_stage_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_create ...'
+      end
+      # verify the required parameter 'account_lockdown_stage_request' is set
+      if @api_client.config.client_side_validation && account_lockdown_stage_request.nil?
+        fail ArgumentError, "Missing the required parameter 'account_lockdown_stage_request' when calling StagesApi.stages_account_lockdown_create"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(account_lockdown_stage_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountLockdownStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def stages_account_lockdown_destroy(stage_uuid, opts = {})
+      stages_account_lockdown_destroy_with_http_info(stage_uuid, opts)
+      nil
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def stages_account_lockdown_destroy_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_destroy ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_account_lockdown_destroy"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # AccountLockdownStage Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :deactivate_user 
+    # @option opts [Boolean] :delete_sessions 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Boolean] :revoke_tokens 
+    # @option opts [String] :search A search term.
+    # @option opts [String] :self_service_completion_flow 
+    # @option opts [Boolean] :set_unusable_password 
+    # @option opts [String] :stage_uuid 
+    # @return [PaginatedAccountLockdownStageList]
+    def stages_account_lockdown_list(opts = {})
+      data, _status_code, _headers = stages_account_lockdown_list_with_http_info(opts)
+      data
+    end
+
+    # AccountLockdownStage Viewset
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :deactivate_user 
+    # @option opts [Boolean] :delete_sessions 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Boolean] :revoke_tokens 
+    # @option opts [String] :search A search term.
+    # @option opts [String] :self_service_completion_flow 
+    # @option opts [Boolean] :set_unusable_password 
+    # @option opts [String] :stage_uuid 
+    # @return [Array<(PaginatedAccountLockdownStageList, Integer, Hash)>] PaginatedAccountLockdownStageList data, response status code and response headers
+    def stages_account_lockdown_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_list ...'
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'deactivate_user'] = opts[:'deactivate_user'] if !opts[:'deactivate_user'].nil?
+      query_params[:'delete_sessions'] = opts[:'delete_sessions'] if !opts[:'delete_sessions'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'revoke_tokens'] = opts[:'revoke_tokens'] if !opts[:'revoke_tokens'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'self_service_completion_flow'] = opts[:'self_service_completion_flow'] if !opts[:'self_service_completion_flow'].nil?
+      query_params[:'set_unusable_password'] = opts[:'set_unusable_password'] if !opts[:'set_unusable_password'].nil?
+      query_params[:'stage_uuid'] = opts[:'stage_uuid'] if !opts[:'stage_uuid'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedAccountLockdownStageList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedAccountLockdownStageRequest] :patched_account_lockdown_stage_request 
+    # @return [AccountLockdownStage]
+    def stages_account_lockdown_partial_update(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_account_lockdown_partial_update_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedAccountLockdownStageRequest] :patched_account_lockdown_stage_request 
+    # @return [Array<(AccountLockdownStage, Integer, Hash)>] AccountLockdownStage data, response status code and response headers
+    def stages_account_lockdown_partial_update_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_partial_update ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_account_lockdown_partial_update"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_account_lockdown_stage_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountLockdownStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [AccountLockdownStage]
+    def stages_account_lockdown_retrieve(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_account_lockdown_retrieve_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountLockdownStage, Integer, Hash)>] AccountLockdownStage data, response status code and response headers
+    def stages_account_lockdown_retrieve_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_retrieve ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_account_lockdown_retrieve"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountLockdownStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param account_lockdown_stage_request [AccountLockdownStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AccountLockdownStage]
+    def stages_account_lockdown_update(stage_uuid, account_lockdown_stage_request, opts = {})
+      data, _status_code, _headers = stages_account_lockdown_update_with_http_info(stage_uuid, account_lockdown_stage_request, opts)
+      data
+    end
+
+    # AccountLockdownStage Viewset
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param account_lockdown_stage_request [AccountLockdownStageRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountLockdownStage, Integer, Hash)>] AccountLockdownStage data, response status code and response headers
+    def stages_account_lockdown_update_with_http_info(stage_uuid, account_lockdown_stage_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_update ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_account_lockdown_update"
+      end
+      # verify the required parameter 'account_lockdown_stage_request' is set
+      if @api_client.config.client_side_validation && account_lockdown_stage_request.nil?
+        fail ArgumentError, "Missing the required parameter 'account_lockdown_stage_request' when calling StagesApi.stages_account_lockdown_update"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/{stage_uuid}/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(account_lockdown_stage_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AccountLockdownStage'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of all objects that use this object
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<UsedBy>]
+    def stages_account_lockdown_used_by_list(stage_uuid, opts = {})
+      data, _status_code, _headers = stages_account_lockdown_used_by_list_with_http_info(stage_uuid, opts)
+      data
+    end
+
+    # Get a list of all objects that use this object
+    # @param stage_uuid [String] A UUID string identifying this Account Lockdown Stage.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def stages_account_lockdown_used_by_list_with_http_info(stage_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StagesApi.stages_account_lockdown_used_by_list ...'
+      end
+      # verify the required parameter 'stage_uuid' is set
+      if @api_client.config.client_side_validation && stage_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'stage_uuid' when calling StagesApi.stages_account_lockdown_used_by_list"
+      end
+      # resource path
+      local_var_path = '/stages/account_lockdown/{stage_uuid}/used_by/'.sub('{stage_uuid}', CGI.escape(stage_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"StagesApi.stages_account_lockdown_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StagesApi#stages_account_lockdown_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Stage Viewset
     # @param stage_uuid [String] A UUID string identifying this stage.
     # @param [Hash] opts the optional parameters

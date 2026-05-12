@@ -48,6 +48,14 @@ module Authentik::Api
 
     attr_accessor :webauthn_allowed_device_types_obj
 
+    attr_accessor :email_otp_throttling_factor
+
+    attr_accessor :sms_otp_throttling_factor
+
+    attr_accessor :totp_otp_throttling_factor
+
+    attr_accessor :static_otp_throttling_factor
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -87,7 +95,11 @@ module Authentik::Api
         :'webauthn_user_verification' => :'webauthn_user_verification',
         :'webauthn_hints' => :'webauthn_hints',
         :'webauthn_allowed_device_types' => :'webauthn_allowed_device_types',
-        :'webauthn_allowed_device_types_obj' => :'webauthn_allowed_device_types_obj'
+        :'webauthn_allowed_device_types_obj' => :'webauthn_allowed_device_types_obj',
+        :'email_otp_throttling_factor' => :'email_otp_throttling_factor',
+        :'sms_otp_throttling_factor' => :'sms_otp_throttling_factor',
+        :'totp_otp_throttling_factor' => :'totp_otp_throttling_factor',
+        :'static_otp_throttling_factor' => :'static_otp_throttling_factor'
       }
     end
 
@@ -118,7 +130,11 @@ module Authentik::Api
         :'webauthn_user_verification' => :'UserVerificationEnum',
         :'webauthn_hints' => :'Array<WebAuthnHintEnum>',
         :'webauthn_allowed_device_types' => :'Array<String>',
-        :'webauthn_allowed_device_types_obj' => :'Array<WebAuthnDeviceType>'
+        :'webauthn_allowed_device_types_obj' => :'Array<WebAuthnDeviceType>',
+        :'email_otp_throttling_factor' => :'Float',
+        :'sms_otp_throttling_factor' => :'Float',
+        :'totp_otp_throttling_factor' => :'Float',
+        :'static_otp_throttling_factor' => :'Float'
       }
     end
 
@@ -230,6 +246,22 @@ module Authentik::Api
         end
       else
         self.webauthn_allowed_device_types_obj = nil
+      end
+
+      if attributes.key?(:'email_otp_throttling_factor')
+        self.email_otp_throttling_factor = attributes[:'email_otp_throttling_factor']
+      end
+
+      if attributes.key?(:'sms_otp_throttling_factor')
+        self.sms_otp_throttling_factor = attributes[:'sms_otp_throttling_factor']
+      end
+
+      if attributes.key?(:'totp_otp_throttling_factor')
+        self.totp_otp_throttling_factor = attributes[:'totp_otp_throttling_factor']
+      end
+
+      if attributes.key?(:'static_otp_throttling_factor')
+        self.static_otp_throttling_factor = attributes[:'static_otp_throttling_factor']
       end
     end
 
@@ -387,7 +419,11 @@ module Authentik::Api
           webauthn_user_verification == o.webauthn_user_verification &&
           webauthn_hints == o.webauthn_hints &&
           webauthn_allowed_device_types == o.webauthn_allowed_device_types &&
-          webauthn_allowed_device_types_obj == o.webauthn_allowed_device_types_obj
+          webauthn_allowed_device_types_obj == o.webauthn_allowed_device_types_obj &&
+          email_otp_throttling_factor == o.email_otp_throttling_factor &&
+          sms_otp_throttling_factor == o.sms_otp_throttling_factor &&
+          totp_otp_throttling_factor == o.totp_otp_throttling_factor &&
+          static_otp_throttling_factor == o.static_otp_throttling_factor
     end
 
     # @see the `==` method
@@ -399,7 +435,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_allowed_device_types, webauthn_allowed_device_types_obj].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_allowed_device_types, webauthn_allowed_device_types_obj, email_otp_throttling_factor, sms_otp_throttling_factor, totp_otp_throttling_factor, static_otp_throttling_factor].hash
     end
 
     # Builds the object from hash

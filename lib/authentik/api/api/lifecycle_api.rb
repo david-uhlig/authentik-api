@@ -83,9 +83,12 @@ module Authentik::Api
     # @param content_type [String] 
     # @param obj_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [LifecycleIteration]
-    def lifecycle_iterations_latest_retrieve(content_type, obj_id, opts = {})
-      data, _status_code, _headers = lifecycle_iterations_latest_retrieve_with_http_info(content_type, obj_id, opts)
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [Boolean] :user_is_reviewer 
+    # @return [Array<LifecycleIteration>]
+    def lifecycle_iterations_list_latest(content_type, obj_id, opts = {})
+      data, _status_code, _headers = lifecycle_iterations_list_latest_with_http_info(content_type, obj_id, opts)
       data
     end
 
@@ -93,27 +96,30 @@ module Authentik::Api
     # @param content_type [String] 
     # @param obj_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(LifecycleIteration, Integer, Hash)>] LifecycleIteration data, response status code and response headers
-    def lifecycle_iterations_latest_retrieve_with_http_info(content_type, obj_id, opts = {})
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [Boolean] :user_is_reviewer 
+    # @return [Array<(Array<LifecycleIteration>, Integer, Hash)>] Array<LifecycleIteration> data, response status code and response headers
+    def lifecycle_iterations_list_latest_with_http_info(content_type, obj_id, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: LifecycleApi.lifecycle_iterations_latest_retrieve ...'
+        @api_client.config.logger.debug 'Calling API: LifecycleApi.lifecycle_iterations_list_latest ...'
       end
       # verify the required parameter 'content_type' is set
       if @api_client.config.client_side_validation && content_type.nil?
-        fail ArgumentError, "Missing the required parameter 'content_type' when calling LifecycleApi.lifecycle_iterations_latest_retrieve"
+        fail ArgumentError, "Missing the required parameter 'content_type' when calling LifecycleApi.lifecycle_iterations_list_latest"
       end
       pattern = Regexp.new(/^[^\/]+$/)
       if @api_client.config.client_side_validation && content_type !~ pattern
-        fail ArgumentError, "invalid value for 'content_type' when calling LifecycleApi.lifecycle_iterations_latest_retrieve, must conform to the pattern #{pattern}."
+        fail ArgumentError, "invalid value for 'content_type' when calling LifecycleApi.lifecycle_iterations_list_latest, must conform to the pattern #{pattern}."
       end
 
       # verify the required parameter 'obj_id' is set
       if @api_client.config.client_side_validation && obj_id.nil?
-        fail ArgumentError, "Missing the required parameter 'obj_id' when calling LifecycleApi.lifecycle_iterations_latest_retrieve"
+        fail ArgumentError, "Missing the required parameter 'obj_id' when calling LifecycleApi.lifecycle_iterations_list_latest"
       end
       pattern = Regexp.new(/^[^\/]+$/)
       if @api_client.config.client_side_validation && obj_id !~ pattern
-        fail ArgumentError, "invalid value for 'obj_id' when calling LifecycleApi.lifecycle_iterations_latest_retrieve, must conform to the pattern #{pattern}."
+        fail ArgumentError, "invalid value for 'obj_id' when calling LifecycleApi.lifecycle_iterations_list_latest, must conform to the pattern #{pattern}."
       end
 
       # resource path
@@ -121,6 +127,9 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'user_is_reviewer'] = opts[:'user_is_reviewer'] if !opts[:'user_is_reviewer'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -134,13 +143,13 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'LifecycleIteration'
+      return_type = opts[:debug_return_type] || 'Array<LifecycleIteration>'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
 
       new_options = opts.merge(
-        :operation => :"LifecycleApi.lifecycle_iterations_latest_retrieve",
+        :operation => :"LifecycleApi.lifecycle_iterations_list_latest",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -151,7 +160,7 @@ module Authentik::Api
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: LifecycleApi#lifecycle_iterations_latest_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: LifecycleApi#lifecycle_iterations_list_latest\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

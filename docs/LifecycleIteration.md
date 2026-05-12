@@ -14,10 +14,8 @@
 | **grace_period_end** | **Time** |  | [readonly] |
 | **next_review_date** | **Time** |  | [readonly] |
 | **reviews** | [**Array&lt;Review&gt;**](Review.md) |  | [readonly] |
+| **rule** | [**RelatedRule**](RelatedRule.md) |  | [readonly] |
 | **user_can_review** | **Boolean** |  | [readonly] |
-| **reviewer_groups** | [**Array&lt;ReviewerGroup&gt;**](ReviewerGroup.md) |  | [readonly] |
-| **min_reviewers** | **Integer** |  | [readonly] |
-| **reviewers** | [**Array&lt;ReviewerUser&gt;**](ReviewerUser.md) |  | [readonly] |
 
 ## Example
 
@@ -35,10 +33,8 @@ instance = Authentik::Api::LifecycleIteration.new(
   grace_period_end: null,
   next_review_date: null,
   reviews: null,
-  user_can_review: null,
-  reviewer_groups: null,
-  min_reviewers: null,
-  reviewers: null
+  rule: null,
+  user_can_review: null
 )
 ```
 
