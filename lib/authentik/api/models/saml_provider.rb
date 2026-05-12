@@ -116,6 +116,12 @@ module Authentik::Api
     # Get Issuer/EntityID URL
     attr_accessor :url_issuer
 
+    # Get unified SAML endpoint URL (handles SSO and SLO)
+    attr_accessor :url_unified
+
+    # Get IdP-initiated SAML URL
+    attr_accessor :url_unified_init
+
     # Get SSO Post URL
     attr_accessor :url_sso_post
 
@@ -195,6 +201,8 @@ module Authentik::Api
         :'default_name_id_policy' => :'default_name_id_policy',
         :'url_download_metadata' => :'url_download_metadata',
         :'url_issuer' => :'url_issuer',
+        :'url_unified' => :'url_unified',
+        :'url_unified_init' => :'url_unified_init',
         :'url_sso_post' => :'url_sso_post',
         :'url_sso_redirect' => :'url_sso_redirect',
         :'url_sso_init' => :'url_sso_init',
@@ -255,6 +263,8 @@ module Authentik::Api
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
         :'url_download_metadata' => :'String',
         :'url_issuer' => :'String',
+        :'url_unified' => :'String',
+        :'url_unified_init' => :'String',
         :'url_sso_post' => :'String',
         :'url_sso_redirect' => :'String',
         :'url_sso_init' => :'String',
@@ -483,6 +493,18 @@ module Authentik::Api
         self.url_issuer = nil
       end
 
+      if attributes.key?(:'url_unified')
+        self.url_unified = attributes[:'url_unified']
+      else
+        self.url_unified = nil
+      end
+
+      if attributes.key?(:'url_unified_init')
+        self.url_unified_init = attributes[:'url_unified_init']
+      else
+        self.url_unified_init = nil
+      end
+
       if attributes.key?(:'url_sso_post')
         self.url_sso_post = attributes[:'url_sso_post']
       else
@@ -563,6 +585,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "url_issuer", url_issuer cannot be nil.')
       end
 
+      if @url_unified.nil?
+        invalid_properties.push('invalid value for "url_unified", url_unified cannot be nil.')
+      end
+
+      if @url_unified_init.nil?
+        invalid_properties.push('invalid value for "url_unified_init", url_unified_init cannot be nil.')
+      end
+
       if @url_sso_post.nil?
         invalid_properties.push('invalid value for "url_sso_post", url_sso_post cannot be nil.')
       end
@@ -601,6 +631,8 @@ module Authentik::Api
       return false if @acs_url.nil?
       return false if @url_download_metadata.nil?
       return false if @url_issuer.nil?
+      return false if @url_unified.nil?
+      return false if @url_unified_init.nil?
       return false if @url_sso_post.nil?
       return false if @url_sso_redirect.nil?
       return false if @url_sso_init.nil?
@@ -720,6 +752,26 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] url_unified Value to be assigned
+    def url_unified=(url_unified)
+      if url_unified.nil?
+        fail ArgumentError, 'url_unified cannot be nil'
+      end
+
+      @url_unified = url_unified
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] url_unified_init Value to be assigned
+    def url_unified_init=(url_unified_init)
+      if url_unified_init.nil?
+        fail ArgumentError, 'url_unified_init cannot be nil'
+      end
+
+      @url_unified_init = url_unified_init
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] url_sso_post Value to be assigned
     def url_sso_post=(url_sso_post)
       if url_sso_post.nil?
@@ -813,6 +865,8 @@ module Authentik::Api
           default_name_id_policy == o.default_name_id_policy &&
           url_download_metadata == o.url_download_metadata &&
           url_issuer == o.url_issuer &&
+          url_unified == o.url_unified &&
+          url_unified_init == o.url_unified_init &&
           url_sso_post == o.url_sso_post &&
           url_sso_redirect == o.url_sso_redirect &&
           url_sso_init == o.url_sso_init &&
@@ -829,7 +883,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
     end
 
     # Builds the object from hash
