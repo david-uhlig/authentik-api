@@ -43,6 +43,8 @@
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] |
 | **url_download_metadata** | **String** | Get metadata download URL | [readonly] |
 | **url_issuer** | **String** | Get Issuer/EntityID URL | [readonly] |
+| **url_unified** | **String** | Get unified SAML endpoint URL (handles SSO and SLO) | [readonly] |
+| **url_unified_init** | **String** | Get IdP-initiated SAML URL | [readonly] |
 | **url_sso_post** | **String** | Get SSO Post URL | [readonly] |
 | **url_sso_redirect** | **String** | Get SSO Redirect URL | [readonly] |
 | **url_sso_init** | **String** | Get SSO IDP-Initiated URL | [readonly] |
@@ -94,6 +96,8 @@ instance = Authentik::Api::SAMLProvider.new(
   default_name_id_policy: null,
   url_download_metadata: null,
   url_issuer: null,
+  url_unified: null,
+  url_unified_init: null,
   url_sso_post: null,
   url_sso_redirect: null,
   url_sso_init: null,
