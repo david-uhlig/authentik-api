@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - main
-
   pull_request:
 
 permissions:
   contents: read
 
 jobs:
-  build:
+  rake-on-ruby-matrix:
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }}
     strategy:
