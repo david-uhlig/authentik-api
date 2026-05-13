@@ -156,7 +156,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'event_uuid' when calling EventsApi.events_events_destroy"
       end
       # resource path
-      local_var_path = '/events/events/{event_uuid}/'.sub('{' + 'event_uuid' + '}', CGI.escape(event_uuid.to_s))
+      local_var_path = '/events/events/{event_uuid}/'.sub('{event_uuid}', CGI.escape(event_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -409,7 +409,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'event_uuid' when calling EventsApi.events_events_partial_update"
       end
       # resource path
-      local_var_path = '/events/events/{event_uuid}/'.sub('{' + 'event_uuid' + '}', CGI.escape(event_uuid.to_s))
+      local_var_path = '/events/events/{event_uuid}/'.sub('{event_uuid}', CGI.escape(event_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -475,7 +475,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'event_uuid' when calling EventsApi.events_events_retrieve"
       end
       # resource path
-      local_var_path = '/events/events/{event_uuid}/'.sub('{' + 'event_uuid' + '}', CGI.escape(event_uuid.to_s))
+      local_var_path = '/events/events/{event_uuid}/'.sub('{event_uuid}', CGI.escape(event_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -603,7 +603,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'event_request' when calling EventsApi.events_events_update"
       end
       # resource path
-      local_var_path = '/events/events/{event_uuid}/'.sub('{' + 'event_uuid' + '}', CGI.escape(event_uuid.to_s))
+      local_var_path = '/events/events/{event_uuid}/'.sub('{event_uuid}', CGI.escape(event_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -764,7 +764,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_notifications_destroy"
       end
       # resource path
-      local_var_path = '/events/notifications/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/notifications/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -971,7 +971,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_notifications_partial_update"
       end
       # resource path
-      local_var_path = '/events/notifications/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/notifications/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1037,7 +1037,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_notifications_retrieve"
       end
       # resource path
-      local_var_path = '/events/notifications/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/notifications/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1100,7 +1100,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_notifications_update"
       end
       # resource path
-      local_var_path = '/events/notifications/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/notifications/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1166,7 +1166,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_notifications_used_by_list"
       end
       # resource path
-      local_var_path = '/events/notifications/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/notifications/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1293,7 +1293,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EventsApi.events_rules_destroy"
       end
       # resource path
-      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1436,7 +1436,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EventsApi.events_rules_partial_update"
       end
       # resource path
-      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1502,7 +1502,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EventsApi.events_rules_retrieve"
       end
       # resource path
-      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1569,7 +1569,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'notification_rule_request' when calling EventsApi.events_rules_update"
       end
       # resource path
-      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/events/rules/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1635,7 +1635,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling EventsApi.events_rules_used_by_list"
       end
       # resource path
-      local_var_path = '/events/rules/{pbm_uuid}/used_by/'.sub('{' + 'pbm_uuid' + '}', CGI.escape(pbm_uuid.to_s))
+      local_var_path = '/events/rules/{pbm_uuid}/used_by/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1762,7 +1762,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_transports_destroy"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1908,7 +1908,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_transports_partial_update"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1974,7 +1974,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_transports_retrieve"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2035,7 +2035,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_transports_test_create"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/test/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/test/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2102,7 +2102,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'notification_transport_request' when calling EventsApi.events_transports_update"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2168,7 +2168,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'uuid' when calling EventsApi.events_transports_used_by_list"
       end
       # resource path
-      local_var_path = '/events/transports/{uuid}/used_by/'.sub('{' + 'uuid' + '}', CGI.escape(uuid.to_s))
+      local_var_path = '/events/transports/{uuid}/used_by/'.sub('{uuid}', CGI.escape(uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

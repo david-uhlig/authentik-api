@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_all_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/all/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/all/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -172,7 +172,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_all_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/all/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/all/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -237,7 +237,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_all_test_create"
       end
       # resource path
-      local_var_path = '/propertymappings/all/{pm_uuid}/test/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/all/{pm_uuid}/test/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -359,7 +359,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_all_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/all/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/all/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -486,7 +486,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_notification_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -619,7 +619,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_notification_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -685,7 +685,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_notification_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -752,7 +752,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'notification_webhook_mapping_request' when calling PropertymappingsApi.propertymappings_notification_update"
       end
       # resource path
-      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/notification/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -818,7 +818,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_notification_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/notification/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/notification/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -945,7 +945,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_google_workspace_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1087,7 +1087,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_google_workspace_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1153,7 +1153,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_google_workspace_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1220,7 +1220,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'google_workspace_provider_mapping_request' when calling PropertymappingsApi.propertymappings_provider_google_workspace_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1286,7 +1286,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_google_workspace_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/google_workspace/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1413,7 +1413,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_microsoft_entra_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1555,7 +1555,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_microsoft_entra_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1621,7 +1621,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_microsoft_entra_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1688,7 +1688,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'microsoft_entra_provider_mapping_request' when calling PropertymappingsApi.propertymappings_provider_microsoft_entra_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1754,7 +1754,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_microsoft_entra_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/microsoft_entra/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -1881,7 +1881,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_rac_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2017,7 +2017,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_rac_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2083,7 +2083,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_rac_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2150,7 +2150,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'rac_property_mapping_request' when calling PropertymappingsApi.propertymappings_provider_rac_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2216,7 +2216,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_rac_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/rac/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2343,7 +2343,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_radius_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2482,7 +2482,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_radius_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2548,7 +2548,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_radius_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2615,7 +2615,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'radius_provider_property_mapping_request' when calling PropertymappingsApi.propertymappings_provider_radius_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2681,7 +2681,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_radius_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/radius/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2808,7 +2808,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_saml_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -2953,7 +2953,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_saml_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3019,7 +3019,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_saml_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3086,7 +3086,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'saml_property_mapping_request' when calling PropertymappingsApi.propertymappings_provider_saml_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3152,7 +3152,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/saml/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3279,7 +3279,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scim_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3418,7 +3418,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scim_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3484,7 +3484,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scim_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3551,7 +3551,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_mapping_request' when calling PropertymappingsApi.propertymappings_provider_scim_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3617,7 +3617,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scim_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scim/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3744,7 +3744,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scope_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3886,7 +3886,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scope_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -3952,7 +3952,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scope_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4019,7 +4019,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scope_mapping_request' when calling PropertymappingsApi.propertymappings_provider_scope_update"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4085,7 +4085,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_provider_scope_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/provider/scope/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4212,7 +4212,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_kerberos_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4351,7 +4351,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_kerberos_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4417,7 +4417,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_kerberos_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4484,7 +4484,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kerberos_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_kerberos_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4550,7 +4550,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_kerberos_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/kerberos/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4677,7 +4677,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_ldap_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4816,7 +4816,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_ldap_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4882,7 +4882,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_ldap_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -4949,7 +4949,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'ldap_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_ldap_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5015,7 +5015,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_ldap_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/ldap/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5142,7 +5142,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_oauth_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5281,7 +5281,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_oauth_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5347,7 +5347,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_oauth_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5414,7 +5414,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'o_auth_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_oauth_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5480,7 +5480,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_oauth_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/oauth/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5607,7 +5607,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_plex_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5746,7 +5746,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_plex_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5812,7 +5812,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_plex_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5879,7 +5879,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'plex_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_plex_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/plex/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -5945,7 +5945,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_plex_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/plex/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/plex/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6072,7 +6072,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_saml_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6211,7 +6211,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_saml_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6277,7 +6277,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_saml_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6344,7 +6344,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'saml_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_saml_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/saml/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6410,7 +6410,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_saml_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/saml/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/saml/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6537,7 +6537,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_scim_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6676,7 +6676,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_scim_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6742,7 +6742,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_scim_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6809,7 +6809,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'scim_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_scim_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/scim/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -6875,7 +6875,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_scim_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/scim/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/scim/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7002,7 +7002,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_telegram_destroy"
       end
       # resource path
-      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7141,7 +7141,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_telegram_partial_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7207,7 +7207,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_telegram_retrieve"
       end
       # resource path
-      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7274,7 +7274,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'telegram_source_property_mapping_request' when calling PropertymappingsApi.propertymappings_source_telegram_update"
       end
       # resource path
-      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -7340,7 +7340,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'pm_uuid' when calling PropertymappingsApi.propertymappings_source_telegram_used_by_list"
       end
       # resource path
-      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/used_by/'.sub('{' + 'pm_uuid' + '}', CGI.escape(pm_uuid.to_s))
+      local_var_path = '/propertymappings/source/telegram/{pm_uuid}/used_by/'.sub('{pm_uuid}', CGI.escape(pm_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

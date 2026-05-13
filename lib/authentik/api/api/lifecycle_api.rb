@@ -117,7 +117,7 @@ module Authentik::Api
       end
 
       # resource path
-      local_var_path = '/lifecycle/iterations/latest/{content_type}/{object_id}/'.sub('{' + 'content_type' + '}', CGI.escape(content_type.to_s)).sub('{' + 'object_id' + '}', CGI.escape(obj_id.to_s))
+      local_var_path = '/lifecycle/iterations/latest/{content_type}/{object_id}/'.sub('{content_type}', CGI.escape(content_type.to_s)).sub('{object_id}', CGI.escape(obj_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -376,7 +376,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling LifecycleApi.lifecycle_rules_destroy"
       end
       # resource path
-      local_var_path = '/lifecycle/rules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/lifecycle/rules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -505,7 +505,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling LifecycleApi.lifecycle_rules_partial_update"
       end
       # resource path
-      local_var_path = '/lifecycle/rules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/lifecycle/rules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -569,7 +569,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling LifecycleApi.lifecycle_rules_retrieve"
       end
       # resource path
-      local_var_path = '/lifecycle/rules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/lifecycle/rules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -634,7 +634,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'lifecycle_rule_request' when calling LifecycleApi.lifecycle_rules_update"
       end
       # resource path
-      local_var_path = '/lifecycle/rules/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/lifecycle/rules/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

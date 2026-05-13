@@ -101,7 +101,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_destroy"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -313,7 +313,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_partial_update"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -379,7 +379,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_retrieve"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -446,7 +446,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'certificate_key_pair_request' when calling CryptoApi.crypto_certificatekeypairs_update"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -512,7 +512,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_used_by_list"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/used_by/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/used_by/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -575,7 +575,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_view_certificate_retrieve"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/view_certificate/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/view_certificate/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -639,7 +639,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'kp_uuid' when calling CryptoApi.crypto_certificatekeypairs_view_private_key_retrieve"
       end
       # resource path
-      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/view_private_key/'.sub('{' + 'kp_uuid' + '}', CGI.escape(kp_uuid.to_s))
+      local_var_path = '/crypto/certificatekeypairs/{kp_uuid}/view_private_key/'.sub('{kp_uuid}', CGI.escape(kp_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
