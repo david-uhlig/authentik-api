@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'instance_uuid' when calling ManagedApi.managed_blueprints_apply_create"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/apply/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/apply/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -217,7 +217,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'instance_uuid' when calling ManagedApi.managed_blueprints_destroy"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -353,7 +353,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'instance_uuid' when calling ManagedApi.managed_blueprints_partial_update"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -419,7 +419,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'instance_uuid' when calling ManagedApi.managed_blueprints_retrieve"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -486,7 +486,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'blueprint_instance_request' when calling ManagedApi.managed_blueprints_update"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -552,7 +552,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'instance_uuid' when calling ManagedApi.managed_blueprints_used_by_list"
       end
       # resource path
-      local_var_path = '/managed/blueprints/{instance_uuid}/used_by/'.sub('{' + 'instance_uuid' + '}', CGI.escape(instance_uuid.to_s))
+      local_var_path = '/managed/blueprints/{instance_uuid}/used_by/'.sub('{instance_uuid}', CGI.escape(instance_uuid.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}

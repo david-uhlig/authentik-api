@@ -35,7 +35,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_access_tokens_destroy"
       end
       # resource path
-      local_var_path = '/oauth2/access_tokens/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/access_tokens/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -169,7 +169,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_access_tokens_retrieve"
       end
       # resource path
-      local_var_path = '/oauth2/access_tokens/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/access_tokens/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -230,7 +230,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_access_tokens_used_by_list"
       end
       # resource path
-      local_var_path = '/oauth2/access_tokens/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/access_tokens/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -291,7 +291,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_authorization_codes_destroy"
       end
       # resource path
-      local_var_path = '/oauth2/authorization_codes/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/authorization_codes/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -425,7 +425,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_authorization_codes_retrieve"
       end
       # resource path
-      local_var_path = '/oauth2/authorization_codes/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/authorization_codes/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -486,7 +486,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_authorization_codes_used_by_list"
       end
       # resource path
-      local_var_path = '/oauth2/authorization_codes/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/authorization_codes/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -547,7 +547,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_refresh_tokens_destroy"
       end
       # resource path
-      local_var_path = '/oauth2/refresh_tokens/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/refresh_tokens/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -681,7 +681,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_refresh_tokens_retrieve"
       end
       # resource path
-      local_var_path = '/oauth2/refresh_tokens/{id}/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/refresh_tokens/{id}/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -742,7 +742,7 @@ module Authentik::Api
         fail ArgumentError, "Missing the required parameter 'id' when calling Oauth2Api.oauth2_refresh_tokens_used_by_list"
       end
       # resource path
-      local_var_path = '/oauth2/refresh_tokens/{id}/used_by/'.sub('{' + 'id' + '}', CGI.escape(id.to_s))
+      local_var_path = '/oauth2/refresh_tokens/{id}/used_by/'.sub('{id}', CGI.escape(id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
