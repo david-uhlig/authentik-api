@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pk** | **Integer** |  | [readonly] |
-| **provider** | [**Provider**](Provider.md) |  |  |
+| **provider** | [**OAuth2Provider**](OAuth2Provider.md) |  |  |
 | **user** | [**User**](User.md) |  |  |
 | **is_expired** | **Boolean** | Check if token is expired yet. | [readonly] |
 | **expires** | **Time** |  | [optional] |

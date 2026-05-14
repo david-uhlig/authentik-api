@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **metadata** | **String** |  |  |
-| **download_url** | **String** |  | [optional] |
+| **metadata** | **String** |  | [readonly] |
+| **download_url** | **String** |  | [readonly] |
 
 ## Example
 

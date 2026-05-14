@@ -49,7 +49,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'pk' => :'Integer',
-        :'provider' => :'Provider',
+        :'provider' => :'OAuth2Provider',
         :'user' => :'User',
         :'is_expired' => :'Boolean',
         :'expires' => :'Time',
