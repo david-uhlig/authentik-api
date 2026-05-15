@@ -12,6 +12,7 @@
 | **application_name** | **String** |  | [optional] |
 | **application_launch_url** | **String** |  | [optional] |
 | **invalidation_flow_url** | **String** |  | [optional] |
+| **overview_url** | **String** |  | [optional] |
 | **brand_name** | **String** |  |  |
 
 ## Example
@@ -28,6 +29,7 @@ instance = Authentik::Api::SessionEndChallenge.new(
   application_name: null,
   application_launch_url: null,
   invalidation_flow_url: null,
+  overview_url: null,
   brand_name: null
 )
 ```

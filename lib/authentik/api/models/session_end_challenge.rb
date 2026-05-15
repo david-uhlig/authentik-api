@@ -26,6 +26,8 @@ module Authentik::Api
 
     attr_accessor :invalidation_flow_url
 
+    attr_accessor :overview_url
+
     attr_accessor :brand_name
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -39,6 +41,7 @@ module Authentik::Api
         :'application_name' => :'application_name',
         :'application_launch_url' => :'application_launch_url',
         :'invalidation_flow_url' => :'invalidation_flow_url',
+        :'overview_url' => :'overview_url',
         :'brand_name' => :'brand_name'
       }
     end
@@ -64,6 +67,7 @@ module Authentik::Api
         :'application_name' => :'String',
         :'application_launch_url' => :'String',
         :'invalidation_flow_url' => :'String',
+        :'overview_url' => :'String',
         :'brand_name' => :'String'
       }
     end
@@ -128,6 +132,10 @@ module Authentik::Api
 
       if attributes.key?(:'invalidation_flow_url')
         self.invalidation_flow_url = attributes[:'invalidation_flow_url']
+      end
+
+      if attributes.key?(:'overview_url')
+        self.overview_url = attributes[:'overview_url']
       end
 
       if attributes.key?(:'brand_name')
@@ -210,6 +218,7 @@ module Authentik::Api
           application_name == o.application_name &&
           application_launch_url == o.application_launch_url &&
           invalidation_flow_url == o.invalidation_flow_url &&
+          overview_url == o.overview_url &&
           brand_name == o.brand_name
     end
 
@@ -222,7 +231,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flow_info, component, response_errors, pending_user, pending_user_avatar, application_name, application_launch_url, invalidation_flow_url, brand_name].hash
+      [flow_info, component, response_errors, pending_user, pending_user_avatar, application_name, application_launch_url, invalidation_flow_url, overview_url, brand_name].hash
     end
 
     # Builds the object from hash
