@@ -53,6 +53,14 @@ module Authentik::Api
     # Additional OAuth parameters, such as grant_type
     attr_accessor :auth_oauth_params
 
+    attr_accessor :auth_oauth_token_last_updated
+
+    attr_accessor :auth_oauth_token_expires
+
+    attr_accessor :auth_oauth_url_callback
+
+    attr_accessor :auth_oauth_url_start
+
     # Alter authentik behavior for vendor-specific SCIM implementations.
     attr_accessor :compatibility_mode
 
@@ -114,6 +122,10 @@ module Authentik::Api
         :'auth_mode' => :'auth_mode',
         :'auth_oauth' => :'auth_oauth',
         :'auth_oauth_params' => :'auth_oauth_params',
+        :'auth_oauth_token_last_updated' => :'auth_oauth_token_last_updated',
+        :'auth_oauth_token_expires' => :'auth_oauth_token_expires',
+        :'auth_oauth_url_callback' => :'auth_oauth_url_callback',
+        :'auth_oauth_url_start' => :'auth_oauth_url_start',
         :'compatibility_mode' => :'compatibility_mode',
         :'service_provider_config_cache_timeout' => :'service_provider_config_cache_timeout',
         :'exclude_users_service_account' => :'exclude_users_service_account',
@@ -153,6 +165,10 @@ module Authentik::Api
         :'auth_mode' => :'SCIMAuthenticationModeEnum',
         :'auth_oauth' => :'String',
         :'auth_oauth_params' => :'Hash<String, Object>',
+        :'auth_oauth_token_last_updated' => :'Time',
+        :'auth_oauth_token_expires' => :'Time',
+        :'auth_oauth_url_callback' => :'String',
+        :'auth_oauth_url_start' => :'String',
         :'compatibility_mode' => :'CompatibilityModeEnum',
         :'service_provider_config_cache_timeout' => :'String',
         :'exclude_users_service_account' => :'Boolean',
@@ -169,6 +185,10 @@ module Authentik::Api
         :'assigned_backchannel_application_slug',
         :'assigned_backchannel_application_name',
         :'auth_oauth',
+        :'auth_oauth_token_last_updated',
+        :'auth_oauth_token_expires',
+        :'auth_oauth_url_callback',
+        :'auth_oauth_url_start',
       ])
     end
 
@@ -274,6 +294,30 @@ module Authentik::Api
         if (value = attributes[:'auth_oauth_params']).is_a?(Hash)
           self.auth_oauth_params = value
         end
+      end
+
+      if attributes.key?(:'auth_oauth_token_last_updated')
+        self.auth_oauth_token_last_updated = attributes[:'auth_oauth_token_last_updated']
+      else
+        self.auth_oauth_token_last_updated = nil
+      end
+
+      if attributes.key?(:'auth_oauth_token_expires')
+        self.auth_oauth_token_expires = attributes[:'auth_oauth_token_expires']
+      else
+        self.auth_oauth_token_expires = nil
+      end
+
+      if attributes.key?(:'auth_oauth_url_callback')
+        self.auth_oauth_url_callback = attributes[:'auth_oauth_url_callback']
+      else
+        self.auth_oauth_url_callback = nil
+      end
+
+      if attributes.key?(:'auth_oauth_url_start')
+        self.auth_oauth_url_start = attributes[:'auth_oauth_url_start']
+      else
+        self.auth_oauth_url_start = nil
       end
 
       if attributes.key?(:'compatibility_mode')
@@ -476,6 +520,10 @@ module Authentik::Api
           auth_mode == o.auth_mode &&
           auth_oauth == o.auth_oauth &&
           auth_oauth_params == o.auth_oauth_params &&
+          auth_oauth_token_last_updated == o.auth_oauth_token_last_updated &&
+          auth_oauth_token_expires == o.auth_oauth_token_expires &&
+          auth_oauth_url_callback == o.auth_oauth_url_callback &&
+          auth_oauth_url_start == o.auth_oauth_url_start &&
           compatibility_mode == o.compatibility_mode &&
           service_provider_config_cache_timeout == o.service_provider_config_cache_timeout &&
           exclude_users_service_account == o.exclude_users_service_account &&
@@ -494,7 +542,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, auth_oauth_token_last_updated, auth_oauth_token_expires, auth_oauth_url_callback, auth_oauth_url_start, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
     end
 
     # Builds the object from hash
