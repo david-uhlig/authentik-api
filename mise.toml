@@ -1,9 +1,24 @@
 [tools]
 ruby = "3.3"
 
+[tasks.ci]
+description = "Run all CI tasks"
+run = [
+    { task = "rake:spec" },
+    { task = "zizmor" }
+]
+
 [tasks."inflector:install"]
 run = "cp .openapi-generator/inflector.rb  lib/authentik/api/"
 
 [tasks."rake:spec"]
 depends = ["inflector:install"]
 run = "bundle exec rake spec"
+
+[tasks.zizmor]
+description = "Static analysis for GitHub Actions."
+run = "zizmor ./.github"
+
+[tasks."zizmor:fix"]
+description = "Run zizmor and auto fix."
+run = "zizmor --fix=all ./.github"
