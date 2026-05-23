@@ -1,0 +1,42 @@
+# Releases the gem to RubyGems.
+#
+# Automatically triggered when a PR labeled `release` merges into a release
+# branch. When manually triggered, it releases the branch specified in the
+# `branch-name` input.
+name: Release to RubyGems
+
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch:
+    inputs:
+      branch-name:
+        description: "Release branch to publish from (e.g., 2026.2)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  tag-release:
+    if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release'))
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.branch-name || github.event.pull_request.base.ref }}
+    steps:
+      - name: Checkout release branch  # zizmor: ignore[artipacked]
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: ${{ env.RELEASE_BRANCH }}
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        with:
+          bundler-cache: true # zizmor: ignore[cache-poisoning]
+          ruby-version: ruby
+
+      - name: Release to RubyGems
+        uses: rubygems/release-gem@6317d8d1f7e28c24d28f6eff169ea854948bd9f7 # v1.2.0
