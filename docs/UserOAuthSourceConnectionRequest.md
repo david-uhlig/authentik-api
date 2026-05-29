@@ -4,7 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **user** | **Integer** |  |  |
 | **source** | **String** |  |  |
 | **identifier** | **String** |  |  |
 | **access_token** | **String** |  | [optional] |
@@ -16,7 +15,6 @@
 require 'authentik-api'
 
 instance = Authentik::Api::UserOAuthSourceConnectionRequest.new(
-  user: null,
   source: null,
   identifier: null,
   access_token: null,

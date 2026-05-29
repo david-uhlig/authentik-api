@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pk** | **Integer** |  | [readonly] |
-| **group** | **String** |  |  |
+| **group** | **String** |  | [readonly] |
 | **source** | **String** |  |  |
 | **source_obj** | [**Source**](Source.md) |  | [readonly] |
 | **identifier** | **String** |  |  |

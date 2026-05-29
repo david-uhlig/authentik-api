@@ -10,8 +10,6 @@ require 'time'
 module Authentik::Api
   # User source connection
   class UserPlexSourceConnectionRequest < ApiModelBase
-    attr_accessor :user
-
     attr_accessor :source
 
     attr_accessor :identifier
@@ -21,7 +19,6 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'user' => :'user',
         :'source' => :'source',
         :'identifier' => :'identifier',
         :'plex_token' => :'plex_token'
@@ -41,7 +38,6 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'user' => :'Integer',
         :'source' => :'String',
         :'identifier' => :'String',
         :'plex_token' => :'String'
@@ -70,12 +66,6 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'user')
-        self.user = attributes[:'user']
-      else
-        self.user = nil
-      end
-
       if attributes.key?(:'source')
         self.source = attributes[:'source']
       else
@@ -100,10 +90,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @user.nil?
-        invalid_properties.push('invalid value for "user", user cannot be nil.')
-      end
-
       if @source.nil?
         invalid_properties.push('invalid value for "source", source cannot be nil.')
       end
@@ -131,23 +117,12 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @user.nil?
       return false if @source.nil?
       return false if @identifier.nil?
       return false if @identifier.to_s.length < 1
       return false if @plex_token.nil?
       return false if @plex_token.to_s.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] user Value to be assigned
-    def user=(user)
-      if user.nil?
-        fail ArgumentError, 'user cannot be nil'
-      end
-
-      @user = user
     end
 
     # Custom attribute writer method with validation
@@ -193,7 +168,6 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          user == o.user &&
           source == o.source &&
           identifier == o.identifier &&
           plex_token == o.plex_token
@@ -208,7 +182,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, source, identifier, plex_token].hash
+      [source, identifier, plex_token].hash
     end
 
     # Builds the object from hash
