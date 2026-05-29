@@ -10,8 +10,6 @@ require 'time'
 module Authentik::Api
   # Group Source Connection
   class GroupLDAPSourceConnectionRequest < ApiModelBase
-    attr_accessor :group
-
     attr_accessor :source
 
     attr_accessor :identifier
@@ -19,7 +17,6 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'group' => :'group',
         :'source' => :'source',
         :'identifier' => :'identifier'
       }
@@ -38,7 +35,6 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'group' => :'String',
         :'source' => :'String',
         :'identifier' => :'String'
       }
@@ -66,12 +62,6 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'group')
-        self.group = attributes[:'group']
-      else
-        self.group = nil
-      end
-
       if attributes.key?(:'source')
         self.source = attributes[:'source']
       else
@@ -90,10 +80,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @group.nil?
-        invalid_properties.push('invalid value for "group", group cannot be nil.')
-      end
-
       if @source.nil?
         invalid_properties.push('invalid value for "source", source cannot be nil.')
       end
@@ -113,21 +99,10 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @group.nil?
       return false if @source.nil?
       return false if @identifier.nil?
       return false if @identifier.to_s.length < 1
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] group Value to be assigned
-    def group=(group)
-      if group.nil?
-        fail ArgumentError, 'group cannot be nil'
-      end
-
-      @group = group
     end
 
     # Custom attribute writer method with validation
@@ -159,7 +134,6 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          group == o.group &&
           source == o.source &&
           identifier == o.identifier
     end
@@ -173,7 +147,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [group, source, identifier].hash
+      [source, identifier].hash
     end
 
     # Builds the object from hash
