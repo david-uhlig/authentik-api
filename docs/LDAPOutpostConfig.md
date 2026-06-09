@@ -9,7 +9,7 @@
 | **base_dn** | **String** | DN under which objects are accessible. | [optional] |
 | **bind_flow_slug** | **String** |  |  |
 | **unbind_flow_slug** | **String** | Get slug for unbind flow, defaulting to brand&#39;s default flow. | [readonly] |
-| **application_slug** | **String** | Prioritise backchannel slug over direct application slug | [readonly] |
+| **application_slug** | **String** | Prioritize backchannel slug over direct application slug | [readonly] |
 | **certificate** | **String** |  | [optional] |
 | **tls_server_name** | **String** |  | [optional] |
 | **uid_start_number** | **Integer** | The start for uidNumbers, this number is added to the user.pk to make sure that the numbers aren&#39;t too low for POSIX users. Default is 2000 to ensure that we don&#39;t collide with local users uidNumber | [optional] |
