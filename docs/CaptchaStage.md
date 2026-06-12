@@ -14,6 +14,7 @@
 | **public_key** | **String** | Public key, acquired your captcha Provider. |  |
 | **js_url** | **String** |  | [optional] |
 | **api_url** | **String** |  | [optional] |
+| **request_content_type** | [**RequestContentTypeEnum**](RequestContentTypeEnum.md) |  | [optional] |
 | **interactive** | **Boolean** |  | [optional] |
 | **score_min_threshold** | **Float** |  | [optional] |
 | **score_max_threshold** | **Float** |  | [optional] |
@@ -35,6 +36,7 @@ instance = Authentik::Api::CaptchaStage.new(
   public_key: null,
   js_url: null,
   api_url: null,
+  request_content_type: null,
   interactive: null,
   score_min_threshold: null,
   score_max_threshold: null,
