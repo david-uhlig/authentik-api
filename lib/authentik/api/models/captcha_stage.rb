@@ -35,6 +35,8 @@ module Authentik::Api
 
     attr_accessor :api_url
 
+    attr_accessor :request_content_type
+
     attr_accessor :interactive
 
     attr_accessor :score_min_threshold
@@ -43,6 +45,28 @@ module Authentik::Api
 
     # When enabled and the received captcha score is outside of the given threshold, the stage will show an error message. When not enabled, the flow will continue, but the data from the captcha will be available in the context for policy decisions
     attr_accessor :error_on_invalid_score
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -57,6 +81,7 @@ module Authentik::Api
         :'public_key' => :'public_key',
         :'js_url' => :'js_url',
         :'api_url' => :'api_url',
+        :'request_content_type' => :'request_content_type',
         :'interactive' => :'interactive',
         :'score_min_threshold' => :'score_min_threshold',
         :'score_max_threshold' => :'score_max_threshold',
@@ -87,6 +112,7 @@ module Authentik::Api
         :'public_key' => :'String',
         :'js_url' => :'String',
         :'api_url' => :'String',
+        :'request_content_type' => :'RequestContentTypeEnum',
         :'interactive' => :'Boolean',
         :'score_min_threshold' => :'Float',
         :'score_max_threshold' => :'Float',
@@ -172,6 +198,10 @@ module Authentik::Api
 
       if attributes.key?(:'api_url')
         self.api_url = attributes[:'api_url']
+      end
+
+      if attributes.key?(:'request_content_type')
+        self.request_content_type = attributes[:'request_content_type']
       end
 
       if attributes.key?(:'interactive')
@@ -341,6 +371,7 @@ module Authentik::Api
           public_key == o.public_key &&
           js_url == o.js_url &&
           api_url == o.api_url &&
+          request_content_type == o.request_content_type &&
           interactive == o.interactive &&
           score_min_threshold == o.score_min_threshold &&
           score_max_threshold == o.score_max_threshold &&
@@ -356,7 +387,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, public_key, js_url, api_url, interactive, score_min_threshold, score_max_threshold, error_on_invalid_score].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, public_key, js_url, api_url, request_content_type, interactive, score_min_threshold, score_max_threshold, error_on_invalid_score].hash
     end
 
     # Builds the object from hash

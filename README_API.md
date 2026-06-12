@@ -1938,6 +1938,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::Reputation](docs/Reputation.md)
  - [Authentik::Api::ReputationPolicy](docs/ReputationPolicy.md)
  - [Authentik::Api::ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
+ - [Authentik::Api::RequestContentTypeEnum](docs/RequestContentTypeEnum.md)
  - [Authentik::Api::Review](docs/Review.md)
  - [Authentik::Api::ReviewRequest](docs/ReviewRequest.md)
  - [Authentik::Api::ReviewerGroup](docs/ReviewerGroup.md)
