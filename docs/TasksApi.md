@@ -398,7 +398,7 @@ end
 api_instance = Authentik::Api::TasksApi.new
 opts = {
   actor_name: 'actor_name_example', # String | 
-  aggregated_status: [Authentik::Api::TaskAggregatedStatusEnum::QUEUED], # Array<TaskAggregatedStatusEnum> | 
+  aggregated_status: [Authentik::Api::TaskAggregatedStatusEnum::WAITING_FOR_DEPENDENCIES], # Array<TaskAggregatedStatusEnum> | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -408,7 +408,7 @@ opts = {
   rel_obj_id: 'rel_obj_id_example', # String | 
   rel_obj_id__isnull: true, # Boolean | 
   search: 'search_example', # String | A search term.
-  state: Authentik::Api::TaskStatusEnum::QUEUED # TaskStatusEnum | 
+  state: Authentik::Api::TaskStatusEnum::WAITING_FOR_DEPENDENCIES # TaskStatusEnum | 
 }
 
 begin
