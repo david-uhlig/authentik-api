@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [readonly] |
 | **iteration** | **String** |  |  |
-| **reviewer** | [**ReviewerUser**](ReviewerUser.md) |  | [readonly] |
+| **reviewer** | [**PartialUser**](PartialUser.md) |  | [readonly] |
 | **timestamp** | **Time** |  | [readonly] |
 | **note** | **String** |  | [optional] |
 
