@@ -1941,8 +1941,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::RequestContentTypeEnum](docs/RequestContentTypeEnum.md)
  - [Authentik::Api::Review](docs/Review.md)
  - [Authentik::Api::ReviewRequest](docs/ReviewRequest.md)
- - [Authentik::Api::ReviewerGroup](docs/ReviewerGroup.md)
- - [Authentik::Api::ReviewerUser](docs/ReviewerUser.md)
  - [Authentik::Api::Role](docs/Role.md)
  - [Authentik::Api::RoleAssignedObjectPermission](docs/RoleAssignedObjectPermission.md)
  - [Authentik::Api::RoleModelPermission](docs/RoleModelPermission.md)

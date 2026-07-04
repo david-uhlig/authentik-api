@@ -46,7 +46,7 @@ module Authentik::Api
       {
         :'id' => :'String',
         :'iteration' => :'String',
-        :'reviewer' => :'ReviewerUser',
+        :'reviewer' => :'PartialUser',
         :'timestamp' => :'Time',
         :'note' => :'String'
       }
