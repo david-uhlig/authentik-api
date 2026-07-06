@@ -46,9 +46,9 @@ module Authentik::Api
       {
         :'id' => :'String',
         :'name' => :'String',
-        :'reviewer_groups' => :'Array<ReviewerGroup>',
+        :'reviewer_groups' => :'Array<PartialGroup>',
         :'min_reviewers' => :'Integer',
-        :'reviewers' => :'Array<ReviewerUser>'
+        :'reviewers' => :'Array<PartialUser>'
       }
     end
 

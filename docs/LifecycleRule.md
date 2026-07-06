@@ -11,11 +11,11 @@
 | **interval** | **String** |  | [optional] |
 | **grace_period** | **String** |  | [optional] |
 | **reviewer_groups** | **Array&lt;String&gt;** |  | [optional] |
-| **reviewer_groups_obj** | [**Array&lt;ReviewerGroup&gt;**](ReviewerGroup.md) |  | [readonly] |
+| **reviewer_groups_obj** | [**Array&lt;PartialGroup&gt;**](PartialGroup.md) |  | [readonly] |
 | **min_reviewers** | **Integer** |  | [optional] |
 | **min_reviewers_is_per_group** | **Boolean** |  | [optional] |
 | **reviewers** | **Array&lt;String&gt;** |  |  |
-| **reviewers_obj** | [**Array&lt;ReviewerUser&gt;**](ReviewerUser.md) |  | [readonly] |
+| **reviewers_obj** | [**Array&lt;PartialUser&gt;**](PartialUser.md) |  | [readonly] |
 | **notification_transports** | **Array&lt;String&gt;** | Select which transports should be used to notify the reviewers. If none are selected, the notification will only be shown in the authentik UI. | [optional] |
 | **target_verbose** | **String** |  | [readonly] |
 
