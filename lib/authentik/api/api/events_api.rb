@@ -613,7 +613,18 @@ module Authentik::Api
     # Get the top_n events grouped by user count
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Integer] :top_n 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [Integer] :top_n  (default to 15)
+    # @option opts [String] :username Username
     # @return [Array<EventTopPerUser>]
     def events_events_top_per_user_list(opts = {})
       data, _status_code, _headers = events_events_top_per_user_list_with_http_info(opts)
@@ -623,7 +634,18 @@ module Authentik::Api
     # Get the top_n events grouped by user count
     # @param [Hash] opts the optional parameters
     # @option opts [String] :action 
-    # @option opts [Integer] :top_n 
+    # @option opts [Array<EventActions>] :actions 
+    # @option opts [String] :brand_name Brand name
+    # @option opts [String] :client_ip 
+    # @option opts [String] :context_authorized_app Context Authorized application
+    # @option opts [String] :context_device Context Device Primary Key
+    # @option opts [String] :context_model_app Context Model App
+    # @option opts [String] :context_model_name Context Model Name
+    # @option opts [String] :context_model_pk Context Model Primary Key
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [String] :search A search term.
+    # @option opts [Integer] :top_n  (default to 15)
+    # @option opts [String] :username Username
     # @return [Array<(Array<EventTopPerUser>, Integer, Hash)>] Array<EventTopPerUser> data, response status code and response headers
     def events_events_top_per_user_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -635,7 +657,18 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'action'] = opts[:'action'] if !opts[:'action'].nil?
+      query_params[:'actions'] = @api_client.build_collection_param(opts[:'actions'], :multi) if !opts[:'actions'].nil?
+      query_params[:'brand_name'] = opts[:'brand_name'] if !opts[:'brand_name'].nil?
+      query_params[:'client_ip'] = opts[:'client_ip'] if !opts[:'client_ip'].nil?
+      query_params[:'context_authorized_app'] = opts[:'context_authorized_app'] if !opts[:'context_authorized_app'].nil?
+      query_params[:'context_device'] = opts[:'context_device'] if !opts[:'context_device'].nil?
+      query_params[:'context_model_app'] = opts[:'context_model_app'] if !opts[:'context_model_app'].nil?
+      query_params[:'context_model_name'] = opts[:'context_model_name'] if !opts[:'context_model_name'].nil?
+      query_params[:'context_model_pk'] = opts[:'context_model_pk'] if !opts[:'context_model_pk'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'top_n'] = opts[:'top_n'] if !opts[:'top_n'].nil?
+      query_params[:'username'] = opts[:'username'] if !opts[:'username'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
