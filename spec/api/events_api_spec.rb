@@ -154,7 +154,18 @@ describe 'EventsApi' do
   # Get the top_n events grouped by user count
   # @param [Hash] opts the optional parameters
   # @option opts [String] :action 
+  # @option opts [Array<EventActions>] :actions 
+  # @option opts [String] :brand_name Brand name
+  # @option opts [String] :client_ip 
+  # @option opts [String] :context_authorized_app Context Authorized application
+  # @option opts [String] :context_device Context Device Primary Key
+  # @option opts [String] :context_model_app Context Model App
+  # @option opts [String] :context_model_name Context Model Name
+  # @option opts [String] :context_model_pk Context Model Primary Key
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [String] :search A search term.
   # @option opts [Integer] :top_n 
+  # @option opts [String] :username Username
   # @return [Array<EventTopPerUser>]
   describe 'events_events_top_per_user_list test' do
     it 'should work' do
