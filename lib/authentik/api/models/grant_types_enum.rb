@@ -16,9 +16,10 @@ module Authentik::Api
     CLIENT_CREDENTIALS = "client_credentials".freeze
     PASSWORD = "password".freeze
     URN_IETF_PARAMS_OAUTH_GRANT_TYPE_DEVICE_CODE = "urn:ietf:params:oauth:grant-type:device_code".freeze
+    URN_IETF_PARAMS_OAUTH_GRANT_TYPE_TOKEN_EXCHANGE = "urn:ietf:params:oauth:grant-type:token-exchange".freeze
 
     def self.all_vars
-      @all_vars ||= [AUTHORIZATION_CODE, IMPLICIT, HYBRID, REFRESH_TOKEN, CLIENT_CREDENTIALS, PASSWORD, URN_IETF_PARAMS_OAUTH_GRANT_TYPE_DEVICE_CODE].freeze
+      @all_vars ||= [AUTHORIZATION_CODE, IMPLICIT, HYBRID, REFRESH_TOKEN, CLIENT_CREDENTIALS, PASSWORD, URN_IETF_PARAMS_OAUTH_GRANT_TYPE_DEVICE_CODE, URN_IETF_PARAMS_OAUTH_GRANT_TYPE_TOKEN_EXCHANGE].freeze
     end
 
     # Builds the enum from string
