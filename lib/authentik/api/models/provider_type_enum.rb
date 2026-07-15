@@ -9,9 +9,9 @@ require 'time'
 
 module Authentik::Api
   class ProviderTypeEnum
+    OPENIDCONNECT = "openidconnect".freeze
     APPLE = "apple".freeze
     DISCORD = "discord".freeze
-    OPENIDCONNECT = "openidconnect".freeze
     ENTRAID = "entraid".freeze
     FACEBOOK = "facebook".freeze
     GITHUB = "github".freeze
@@ -27,7 +27,7 @@ module Authentik::Api
     WECHAT = "wechat".freeze
 
     def self.all_vars
-      @all_vars ||= [APPLE, DISCORD, OPENIDCONNECT, ENTRAID, FACEBOOK, GITHUB, GITLAB, GOOGLE, MAILCOW, OKTA, PATREON, REDDIT, SLACK, TWITCH, TWITTER, WECHAT].freeze
+      @all_vars ||= [OPENIDCONNECT, APPLE, DISCORD, ENTRAID, FACEBOOK, GITHUB, GITLAB, GOOGLE, MAILCOW, OKTA, PATREON, REDDIT, SLACK, TWITCH, TWITTER, WECHAT].freeze
     end
 
     # Builds the enum from string
