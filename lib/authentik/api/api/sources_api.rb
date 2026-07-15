@@ -6088,7 +6088,7 @@ module Authentik::Api
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [Boolean] :force_authn 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
@@ -6124,7 +6124,7 @@ module Authentik::Api
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [Boolean] :force_authn 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
@@ -6162,7 +6162,7 @@ module Authentik::Api
       query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
       query_params[:'enrollment_flow'] = opts[:'enrollment_flow'] if !opts[:'enrollment_flow'].nil?
       query_params[:'force_authn'] = opts[:'force_authn'] if !opts[:'force_authn'].nil?
-      query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
+      query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
       query_params[:'managed'] = opts[:'managed'] if !opts[:'managed'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_policy'] = opts[:'name_id_policy'] if !opts[:'name_id_policy'].nil?

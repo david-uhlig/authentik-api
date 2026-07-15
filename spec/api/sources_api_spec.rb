@@ -1168,7 +1168,7 @@ describe 'SourcesApi' do
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
   # @option opts [Boolean] :force_authn 
-  # @option opts [String] :issuer 
+  # @option opts [String] :issuer_override 
   # @option opts [String] :managed 
   # @option opts [String] :name 
   # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 

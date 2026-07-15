@@ -153,7 +153,13 @@ describe Authentik::Api::SAMLSource do
     end
   end
 
-  describe 'test attribute "issuer"' do
+  describe 'test attribute "issuer_override"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "url_issuer"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

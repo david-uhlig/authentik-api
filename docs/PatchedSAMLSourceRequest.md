@@ -18,7 +18,7 @@
 | **icon** | **String** |  | [optional] |
 | **group_matching_mode** | [**GroupMatchingModeEnum**](GroupMatchingModeEnum.md) | How the source determines if an existing group should be used or a new group created. | [optional] |
 | **pre_authentication_flow** | **String** | Flow used before authentication. | [optional] |
-| **issuer** | **String** | Also known as Entity ID. Defaults the Metadata URL. | [optional] |
+| **issuer_override** | **String** | Also known as Entity ID. Defaults to the Metadata URL. | [optional] |
 | **sso_url** | **String** | URL that the initial Login request is sent to. | [optional] |
 | **slo_url** | **String** | Optional URL if your IDP supports Single-Logout. | [optional] |
 | **allow_idp_initiated** | **Boolean** | Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done. | [optional] |
@@ -54,7 +54,7 @@ instance = Authentik::Api::PatchedSAMLSourceRequest.new(
   icon: null,
   group_matching_mode: null,
   pre_authentication_flow: null,
-  issuer: null,
+  issuer_override: null,
   sso_url: null,
   slo_url: null,
   allow_idp_initiated: null,
