@@ -5328,7 +5328,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::APPLE, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
+o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::OPENIDCONNECT, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
 
 begin
   
@@ -5790,7 +5790,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 slug = 'slug_example' # String | 
-o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::APPLE, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
+o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::OPENIDCONNECT, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
 
 begin
   

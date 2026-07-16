@@ -18,13 +18,16 @@ module Authentik::Api
 
     attr_accessor :to
 
+    attr_accessor :final_redirect
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'flow_info' => :'flow_info',
         :'component' => :'component',
         :'response_errors' => :'response_errors',
-        :'to' => :'to'
+        :'to' => :'to',
+        :'final_redirect' => :'final_redirect'
       }
     end
 
@@ -44,7 +47,8 @@ module Authentik::Api
         :'flow_info' => :'ContextualFlowInfo',
         :'component' => :'String',
         :'response_errors' => :'Hash<String, Array<ErrorDetail>>',
-        :'to' => :'String'
+        :'to' => :'String',
+        :'final_redirect' => :'Boolean'
       }
     end
 
@@ -91,6 +95,12 @@ module Authentik::Api
       else
         self.to = nil
       end
+
+      if attributes.key?(:'final_redirect')
+        self.final_redirect = attributes[:'final_redirect']
+      else
+        self.final_redirect = false
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -131,7 +141,8 @@ module Authentik::Api
           flow_info == o.flow_info &&
           component == o.component &&
           response_errors == o.response_errors &&
-          to == o.to
+          to == o.to &&
+          final_redirect == o.final_redirect
     end
 
     # @see the `==` method
@@ -143,7 +154,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flow_info, component, response_errors, to].hash
+      [flow_info, component, response_errors, to, final_redirect].hash
     end
 
     # Builds the object from hash
