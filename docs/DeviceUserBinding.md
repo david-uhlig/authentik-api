@@ -17,6 +17,8 @@
 | **order** | **Integer** |  |  |
 | **timeout** | **Integer** | Timeout after which Policy execution is terminated. | [optional] |
 | **failure_result** | **Boolean** | Result if the Policy execution fails. | [optional] |
+| **expires** | **Time** |  | [readonly] |
+| **expiring** | **Boolean** |  | [readonly] |
 | **is_primary** | **Boolean** |  | [optional] |
 | **connector** | **String** |  | [readonly] |
 | **connector_obj** | [**Connector**](Connector.md) |  | [readonly] |
@@ -40,6 +42,8 @@ instance = Authentik::Api::DeviceUserBinding.new(
   order: null,
   timeout: null,
   failure_result: null,
+  expires: null,
+  expiring: null,
   is_primary: null,
   connector: null,
   connector_obj: null

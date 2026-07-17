@@ -17,6 +17,8 @@
 | **order** | **Integer** |  |  |
 | **timeout** | **Integer** | Timeout after which Policy execution is terminated. | [optional] |
 | **failure_result** | **Boolean** | Result if the Policy execution fails. | [optional] |
+| **expires** | **Time** |  | [readonly] |
+| **expiring** | **Boolean** |  | [readonly] |
 
 ## Example
 
@@ -36,7 +38,9 @@ instance = Authentik::Api::PolicyBinding.new(
   enabled: null,
   order: null,
   timeout: null,
-  failure_result: null
+  failure_result: null,
+  expires: null,
+  expiring: null
 )
 ```
 
