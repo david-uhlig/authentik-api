@@ -8,6 +8,7 @@
 | **app_label** | **String** |  | [readonly] |
 | **model** | **String** |  | [readonly] |
 | **verbose_name_plural** | **String** |  | [readonly] |
+| **fully_qualified_model** | **String** |  | [readonly] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = Authentik::Api::ContentType.new(
   id: null,
   app_label: null,
   model: null,
-  verbose_name_plural: null
+  verbose_name_plural: null,
+  fully_qualified_model: null
 )
 ```
 
