@@ -502,6 +502,74 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_object_attributes_create
+  # @param object_attribute_request 
+  # @param [Hash] opts the optional parameters
+  # @return [ObjectAttribute]
+  describe 'core_object_attributes_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_object_attributes_destroy
+  # @param attribute_id A UUID string identifying this Object Attribute.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'core_object_attributes_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_object_attributes_list
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :enabled 
+  # @option opts [String] :object_type__app_label 
+  # @option opts [String] :object_type__model 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedObjectAttributeList]
+  describe 'core_object_attributes_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_object_attributes_partial_update
+  # @param attribute_id A UUID string identifying this Object Attribute.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedObjectAttributeRequest] :patched_object_attribute_request 
+  # @return [ObjectAttribute]
+  describe 'core_object_attributes_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_object_attributes_retrieve
+  # @param attribute_id A UUID string identifying this Object Attribute.
+  # @param [Hash] opts the optional parameters
+  # @return [ObjectAttribute]
+  describe 'core_object_attributes_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_object_attributes_update
+  # @param attribute_id A UUID string identifying this Object Attribute.
+  # @param object_attribute_request 
+  # @param [Hash] opts the optional parameters
+  # @return [ObjectAttribute]
+  describe 'core_object_attributes_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_tokens_create
   # Token Viewset
   # @param token_request 

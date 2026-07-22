@@ -8,25 +8,19 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class ContentType < ApiModelBase
-    attr_accessor :id
+  class PaginatedObjectAttributeList < ApiModelBase
+    attr_accessor :pagination
 
-    attr_accessor :app_label
+    attr_accessor :results
 
-    attr_accessor :model
-
-    attr_accessor :verbose_name_plural
-
-    attr_accessor :fully_qualified_model
+    attr_accessor :autocomplete
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'app_label' => :'app_label',
-        :'model' => :'model',
-        :'verbose_name_plural' => :'verbose_name_plural',
-        :'fully_qualified_model' => :'fully_qualified_model'
+        :'pagination' => :'pagination',
+        :'results' => :'results',
+        :'autocomplete' => :'autocomplete'
       }
     end
 
@@ -43,11 +37,9 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'Integer',
-        :'app_label' => :'String',
-        :'model' => :'String',
-        :'verbose_name_plural' => :'String',
-        :'fully_qualified_model' => :'String'
+        :'pagination' => :'Pagination',
+        :'results' => :'Array<ObjectAttribute>',
+        :'autocomplete' => :'Hash<String, Object>'
       }
     end
 
@@ -61,46 +53,38 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::ContentType` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::PaginatedObjectAttributeList` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::ContentType`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::PaginatedObjectAttributeList`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
+      if attributes.key?(:'pagination')
+        self.pagination = attributes[:'pagination']
       else
-        self.id = nil
+        self.pagination = nil
       end
 
-      if attributes.key?(:'app_label')
-        self.app_label = attributes[:'app_label']
+      if attributes.key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
+        end
       else
-        self.app_label = nil
+        self.results = nil
       end
 
-      if attributes.key?(:'model')
-        self.model = attributes[:'model']
+      if attributes.key?(:'autocomplete')
+        if (value = attributes[:'autocomplete']).is_a?(Hash)
+          self.autocomplete = value
+        end
       else
-        self.model = nil
-      end
-
-      if attributes.key?(:'verbose_name_plural')
-        self.verbose_name_plural = attributes[:'verbose_name_plural']
-      else
-        self.verbose_name_plural = nil
-      end
-
-      if attributes.key?(:'fully_qualified_model')
-        self.fully_qualified_model = attributes[:'fully_qualified_model']
-      else
-        self.fully_qualified_model = nil
+        self.autocomplete = nil
       end
     end
 
@@ -109,24 +93,16 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
+      if @pagination.nil?
+        invalid_properties.push('invalid value for "pagination", pagination cannot be nil.')
       end
 
-      if @app_label.nil?
-        invalid_properties.push('invalid value for "app_label", app_label cannot be nil.')
+      if @results.nil?
+        invalid_properties.push('invalid value for "results", results cannot be nil.')
       end
 
-      if @model.nil?
-        invalid_properties.push('invalid value for "model", model cannot be nil.')
-      end
-
-      if @verbose_name_plural.nil?
-        invalid_properties.push('invalid value for "verbose_name_plural", verbose_name_plural cannot be nil.')
-      end
-
-      if @fully_qualified_model.nil?
-        invalid_properties.push('invalid value for "fully_qualified_model", fully_qualified_model cannot be nil.')
+      if @autocomplete.nil?
+        invalid_properties.push('invalid value for "autocomplete", autocomplete cannot be nil.')
       end
 
       invalid_properties
@@ -136,62 +112,40 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @id.nil?
-      return false if @app_label.nil?
-      return false if @model.nil?
-      return false if @verbose_name_plural.nil?
-      return false if @fully_qualified_model.nil?
+      return false if @pagination.nil?
+      return false if @results.nil?
+      return false if @autocomplete.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] id Value to be assigned
-    def id=(id)
-      if id.nil?
-        fail ArgumentError, 'id cannot be nil'
+    # @param [Object] pagination Value to be assigned
+    def pagination=(pagination)
+      if pagination.nil?
+        fail ArgumentError, 'pagination cannot be nil'
       end
 
-      @id = id
+      @pagination = pagination
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] app_label Value to be assigned
-    def app_label=(app_label)
-      if app_label.nil?
-        fail ArgumentError, 'app_label cannot be nil'
+    # @param [Object] results Value to be assigned
+    def results=(results)
+      if results.nil?
+        fail ArgumentError, 'results cannot be nil'
       end
 
-      @app_label = app_label
+      @results = results
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] model Value to be assigned
-    def model=(model)
-      if model.nil?
-        fail ArgumentError, 'model cannot be nil'
+    # @param [Object] autocomplete Value to be assigned
+    def autocomplete=(autocomplete)
+      if autocomplete.nil?
+        fail ArgumentError, 'autocomplete cannot be nil'
       end
 
-      @model = model
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] verbose_name_plural Value to be assigned
-    def verbose_name_plural=(verbose_name_plural)
-      if verbose_name_plural.nil?
-        fail ArgumentError, 'verbose_name_plural cannot be nil'
-      end
-
-      @verbose_name_plural = verbose_name_plural
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] fully_qualified_model Value to be assigned
-    def fully_qualified_model=(fully_qualified_model)
-      if fully_qualified_model.nil?
-        fail ArgumentError, 'fully_qualified_model cannot be nil'
-      end
-
-      @fully_qualified_model = fully_qualified_model
+      @autocomplete = autocomplete
     end
 
     # Checks equality by comparing each attribute.
@@ -199,11 +153,9 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          app_label == o.app_label &&
-          model == o.model &&
-          verbose_name_plural == o.verbose_name_plural &&
-          fully_qualified_model == o.fully_qualified_model
+          pagination == o.pagination &&
+          results == o.results &&
+          autocomplete == o.autocomplete
     end
 
     # @see the `==` method
@@ -215,7 +167,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, app_label, model, verbose_name_plural, fully_qualified_model].hash
+      [pagination, results, autocomplete].hash
     end
 
     # Builds the object from hash

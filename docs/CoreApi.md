@@ -41,6 +41,12 @@ All URIs are relative to */api/v3*
 | [**core_groups_retrieve**](CoreApi.md#core_groups_retrieve) | **GET** /core/groups/{group_uuid}/ |  |
 | [**core_groups_update**](CoreApi.md#core_groups_update) | **PUT** /core/groups/{group_uuid}/ |  |
 | [**core_groups_used_by_list**](CoreApi.md#core_groups_used_by_list) | **GET** /core/groups/{group_uuid}/used_by/ |  |
+| [**core_object_attributes_create**](CoreApi.md#core_object_attributes_create) | **POST** /core/object_attributes/ |  |
+| [**core_object_attributes_destroy**](CoreApi.md#core_object_attributes_destroy) | **DELETE** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_list**](CoreApi.md#core_object_attributes_list) | **GET** /core/object_attributes/ |  |
+| [**core_object_attributes_partial_update**](CoreApi.md#core_object_attributes_partial_update) | **PATCH** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_retrieve**](CoreApi.md#core_object_attributes_retrieve) | **GET** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_update**](CoreApi.md#core_object_attributes_update) | **PUT** /core/object_attributes/{attribute_id}/ |  |
 | [**core_tokens_create**](CoreApi.md#core_tokens_create) | **POST** /core/tokens/ |  |
 | [**core_tokens_destroy**](CoreApi.md#core_tokens_destroy) | **DELETE** /core/tokens/{identifier}/ |  |
 | [**core_tokens_list**](CoreApi.md#core_tokens_list) | **GET** /core/tokens/ |  |
@@ -2777,6 +2783,427 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_create
+
+> <ObjectAttribute> core_object_attributes_create(object_attribute_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+object_attribute_request = Authentik::Api::ObjectAttributeRequest.new({object_type: 'object_type_example', key: 'key_example', label: 'label_example', type: Authentik::Api::ObjectAttributeTypeEnum::TEXT}) # ObjectAttributeRequest | 
+
+begin
+  
+  result = api_instance.core_object_attributes_create(object_attribute_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_create: #{e}"
+end
+```
+
+#### Using the core_object_attributes_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_create_with_http_info(object_attribute_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_create_with_http_info(object_attribute_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **object_attribute_request** | [**ObjectAttributeRequest**](ObjectAttributeRequest.md) |  |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_object_attributes_destroy
+
+> core_object_attributes_destroy(attribute_id)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+
+begin
+  
+  api_instance.core_object_attributes_destroy(attribute_id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_destroy: #{e}"
+end
+```
+
+#### Using the core_object_attributes_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> core_object_attributes_destroy_with_http_info(attribute_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_destroy_with_http_info(attribute_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_list
+
+> <PaginatedObjectAttributeList> core_object_attributes_list(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  enabled: true, # Boolean | 
+  object_type__app_label: 'object_type__app_label_example', # String | 
+  object_type__model: 'object_type__model_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.core_object_attributes_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_list: #{e}"
+end
+```
+
+#### Using the core_object_attributes_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedObjectAttributeList>, Integer, Hash)> core_object_attributes_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedObjectAttributeList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enabled** | **Boolean** |  | [optional] |
+| **object_type__app_label** | **String** |  | [optional] |
+| **object_type__model** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedObjectAttributeList**](PaginatedObjectAttributeList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_partial_update
+
+> <ObjectAttribute> core_object_attributes_partial_update(attribute_id, opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+opts = {
+  patched_object_attribute_request: Authentik::Api::PatchedObjectAttributeRequest.new # PatchedObjectAttributeRequest | 
+}
+
+begin
+  
+  result = api_instance.core_object_attributes_partial_update(attribute_id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_partial_update: #{e}"
+end
+```
+
+#### Using the core_object_attributes_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_partial_update_with_http_info(attribute_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_partial_update_with_http_info(attribute_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+| **patched_object_attribute_request** | [**PatchedObjectAttributeRequest**](PatchedObjectAttributeRequest.md) |  | [optional] |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_object_attributes_retrieve
+
+> <ObjectAttribute> core_object_attributes_retrieve(attribute_id)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+
+begin
+  
+  result = api_instance.core_object_attributes_retrieve(attribute_id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_retrieve: #{e}"
+end
+```
+
+#### Using the core_object_attributes_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_retrieve_with_http_info(attribute_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_retrieve_with_http_info(attribute_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_update
+
+> <ObjectAttribute> core_object_attributes_update(attribute_id, object_attribute_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+object_attribute_request = Authentik::Api::ObjectAttributeRequest.new({object_type: 'object_type_example', key: 'key_example', label: 'label_example', type: Authentik::Api::ObjectAttributeTypeEnum::TEXT}) # ObjectAttributeRequest | 
+
+begin
+  
+  result = api_instance.core_object_attributes_update(attribute_id, object_attribute_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_update: #{e}"
+end
+```
+
+#### Using the core_object_attributes_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_update_with_http_info(attribute_id, object_attribute_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_update_with_http_info(attribute_id, object_attribute_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+| **object_attribute_request** | [**ObjectAttributeRequest**](ObjectAttributeRequest.md) |  |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

@@ -87,6 +87,7 @@ describe 'AdminApi' do
   # unit tests for admin_models_list
   # Read-only view list all installed models
   # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :filter_has_attributes 
   # @return [Array<App>]
   describe 'admin_models_list test' do
     it 'should work' do
