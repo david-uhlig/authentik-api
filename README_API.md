@@ -1992,6 +1992,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::SSFProviderRequest](docs/SSFProviderRequest.md)
  - [Authentik::Api::SSFStream](docs/SSFStream.md)
  - [Authentik::Api::SSFStreamStatusEnum](docs/SSFStreamStatusEnum.md)
+ - [Authentik::Api::SamlVersionEnum](docs/SamlVersionEnum.md)
  - [Authentik::Api::Schedule](docs/Schedule.md)
  - [Authentik::Api::ScheduleRequest](docs/ScheduleRequest.md)
  - [Authentik::Api::ScopeMapping](docs/ScopeMapping.md)
@@ -2125,6 +2126,17 @@ Class | Method | HTTP request | Description
 
 Authentication schemes defined for the API:
 ### authentik
+
+- **Type**: Bearer authentication
+
+### authentik_device_auth
+
+
+### authentik_device_enroll
+
+- **Type**: Bearer authentication
+
+### authentik_device_federation
 
 - **Type**: Bearer authentication
 

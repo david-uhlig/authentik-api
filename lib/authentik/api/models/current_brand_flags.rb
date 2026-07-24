@@ -9,7 +9,7 @@ require 'time'
 
 module Authentik::Api
   class CurrentBrandFlags < ApiModelBase
-    # Configure if applications without any policy/group/user bindings should be accessible to any user.
+    # Applications with no policies bound can be accessed by any user.
     attr_accessor :core_default_app_access
 
     # Include additional information in audit logs, may incur a performance penalty.
