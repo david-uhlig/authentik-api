@@ -147,6 +147,12 @@ describe Authentik::Api::WSFederationProvider do
     end
   end
 
+  describe 'test attribute "saml_version"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "digest_algorithm"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -196,6 +202,12 @@ describe Authentik::Api::WSFederationProvider do
   end
 
   describe 'test attribute "url_wsfed"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "url_issuer"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

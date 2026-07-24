@@ -42,6 +42,9 @@ module Authentik::Api
     # Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate.
     attr_accessor :authn_context_class_ref_mapping
 
+    # SAML assertion version to issue in the security token. Microsoft Entra ID and classic ADFS-style relying parties typically require SAML 1.1.
+    attr_accessor :saml_version
+
     attr_accessor :digest_algorithm
 
     attr_accessor :signature_algorithm
@@ -95,6 +98,7 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'session_valid_not_on_or_after',
         :'name_id_mapping' => :'name_id_mapping',
         :'authn_context_class_ref_mapping' => :'authn_context_class_ref_mapping',
+        :'saml_version' => :'saml_version',
         :'digest_algorithm' => :'digest_algorithm',
         :'signature_algorithm' => :'signature_algorithm',
         :'signing_kp' => :'signing_kp',
@@ -130,6 +134,7 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'String',
         :'name_id_mapping' => :'String',
         :'authn_context_class_ref_mapping' => :'String',
+        :'saml_version' => :'SamlVersionEnum',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'signing_kp' => :'String',
@@ -225,6 +230,10 @@ module Authentik::Api
 
       if attributes.key?(:'authn_context_class_ref_mapping')
         self.authn_context_class_ref_mapping = attributes[:'authn_context_class_ref_mapping']
+      end
+
+      if attributes.key?(:'saml_version')
+        self.saml_version = attributes[:'saml_version']
       end
 
       if attributes.key?(:'digest_algorithm')
@@ -447,6 +456,7 @@ module Authentik::Api
           session_valid_not_on_or_after == o.session_valid_not_on_or_after &&
           name_id_mapping == o.name_id_mapping &&
           authn_context_class_ref_mapping == o.authn_context_class_ref_mapping &&
+          saml_version == o.saml_version &&
           digest_algorithm == o.digest_algorithm &&
           signature_algorithm == o.signature_algorithm &&
           signing_kp == o.signing_kp &&
@@ -465,7 +475,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, sign_assertion, sign_logout_request, default_name_id_policy].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, saml_version, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, sign_assertion, sign_logout_request, default_name_id_policy].hash
     end
 
     # Builds the object from hash

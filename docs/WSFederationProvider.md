@@ -25,6 +25,7 @@
 | **session_valid_not_on_or_after** | **String** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
 | **name_id_mapping** | **String** | Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered | [optional] |
 | **authn_context_class_ref_mapping** | **String** | Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate. | [optional] |
+| **saml_version** | [**SamlVersionEnum**](SamlVersionEnum.md) | SAML assertion version to issue in the security token. Microsoft Entra ID and classic ADFS-style relying parties typically require SAML 1.1. | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] |
 | **signature_algorithm** | [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] |
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] |
@@ -34,6 +35,7 @@
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] |
 | **url_download_metadata** | **String** | Get metadata download URL | [readonly] |
 | **url_wsfed** | **String** | Get WS-Fed url | [readonly] |
+| **url_issuer** | **String** | Get Issuer/EntityID URL | [readonly] |
 
 ## Example
 
@@ -62,6 +64,7 @@ instance = Authentik::Api::WSFederationProvider.new(
   session_valid_not_on_or_after: null,
   name_id_mapping: null,
   authn_context_class_ref_mapping: null,
+  saml_version: null,
   digest_algorithm: null,
   signature_algorithm: null,
   signing_kp: null,
@@ -70,7 +73,8 @@ instance = Authentik::Api::WSFederationProvider.new(
   sign_logout_request: null,
   default_name_id_policy: null,
   url_download_metadata: null,
-  url_wsfed: null
+  url_wsfed: null,
+  url_issuer: null
 )
 ```
 

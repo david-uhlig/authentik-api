@@ -2139,6 +2139,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2184,7 +2185,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2209,6 +2210,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2253,7 +2255,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2278,6 +2280,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2321,7 +2324,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2346,6 +2349,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2416,7 +2420,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2441,6 +2445,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2489,7 +2494,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2514,6 +2519,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2559,7 +2565,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2584,6 +2590,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2638,7 +2645,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2663,6 +2670,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2709,7 +2717,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2734,6 +2742,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2778,7 +2787,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4229,6 +4238,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4275,7 +4285,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4300,6 +4310,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4344,7 +4355,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4369,6 +4380,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4412,7 +4424,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4437,6 +4449,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4533,7 +4546,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4558,6 +4571,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4603,7 +4617,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4628,6 +4642,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4668,7 +4683,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4693,6 +4708,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4797,7 +4813,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4822,6 +4838,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4863,7 +4880,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4888,6 +4905,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4936,7 +4954,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4961,6 +4979,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5007,7 +5026,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5032,6 +5051,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5080,7 +5100,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5105,6 +5125,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5150,7 +5171,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5175,6 +5196,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5219,7 +5241,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5244,6 +5266,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5288,7 +5311,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5313,6 +5336,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5358,7 +5382,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5383,6 +5407,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5428,7 +5453,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5453,6 +5478,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5499,7 +5525,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5524,6 +5550,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5568,7 +5595,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
