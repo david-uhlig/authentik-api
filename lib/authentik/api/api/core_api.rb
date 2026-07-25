@@ -1958,7 +1958,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_add_user_create",
@@ -2024,7 +2024,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_create",
@@ -2085,7 +2085,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_destroy",
@@ -2179,7 +2179,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'PaginatedGroupList'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_list",
@@ -2247,7 +2247,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_partial_update",
@@ -2319,7 +2319,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_remove_user_create",
@@ -2392,7 +2392,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_retrieve",
@@ -2464,7 +2464,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_update",
@@ -2525,7 +2525,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Array<UsedBy>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_used_by_list",
@@ -3911,7 +3911,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Link'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_account_lockdown_create",
@@ -3977,7 +3977,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_create",
@@ -4038,7 +4038,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_destroy",
@@ -4171,7 +4171,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'DataExport'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_export_create",
@@ -4243,7 +4243,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_impersonate_create",
@@ -4298,7 +4298,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_impersonate_end_retrieve",
@@ -4443,7 +4443,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'PaginatedUserList'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_list",
@@ -4498,7 +4498,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'SessionUser'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_me_retrieve",
@@ -4566,7 +4566,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_partial_update",
@@ -4624,7 +4624,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'UserPath'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_paths_retrieve",
@@ -4692,7 +4692,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Link'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_recovery_create",
@@ -4764,7 +4764,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_recovery_email_create",
@@ -4825,7 +4825,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_retrieve",
@@ -4891,7 +4891,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'UserServiceAccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_service_account_create",
@@ -4963,7 +4963,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_set_password_create",
@@ -5035,7 +5035,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_set_password_hash_create",
@@ -5107,7 +5107,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_update",
@@ -5168,7 +5168,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Array<UsedBy>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_used_by_list",

@@ -7990,6 +7990,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
+    # @option opts [SamlVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
@@ -8032,6 +8033,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
+    # @option opts [SamlVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
@@ -8076,6 +8078,7 @@ module Authentik::Api
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'property_mappings'] = @api_client.build_collection_param(opts[:'property_mappings'], :multi) if !opts[:'property_mappings'].nil?
+      query_params[:'saml_version'] = opts[:'saml_version'] if !opts[:'saml_version'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'session_valid_not_on_or_after'] = opts[:'session_valid_not_on_or_after'] if !opts[:'session_valid_not_on_or_after'].nil?
       query_params[:'sign_assertion'] = opts[:'sign_assertion'] if !opts[:'sign_assertion'].nil?

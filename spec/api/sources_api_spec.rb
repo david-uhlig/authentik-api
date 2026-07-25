@@ -838,6 +838,7 @@ describe 'SourcesApi' do
   # @option opts [String] :slug 
   # @option opts [Boolean] :sni 
   # @option opts [Boolean] :start_tls 
+  # @option opts [Boolean] :sync_group_hierarchy 
   # @option opts [Boolean] :sync_groups 
   # @option opts [String] :sync_parent_group 
   # @option opts [Boolean] :sync_users 

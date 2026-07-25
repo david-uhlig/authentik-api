@@ -13,6 +13,9 @@ module Authentik::Api
     # Configure how authentik should show avatars for users.
     attr_accessor :avatars
 
+    # Configure the base URL under which this authentik instance is reachable, e.g. https://authentik.company
+    attr_accessor :base_url
+
     # Enable the ability for users to change their name.
     attr_accessor :default_user_change_name
 
@@ -60,6 +63,7 @@ module Authentik::Api
     def self.attribute_map
       {
         :'avatars' => :'avatars',
+        :'base_url' => :'base_url',
         :'default_user_change_name' => :'default_user_change_name',
         :'default_user_change_email' => :'default_user_change_email',
         :'default_user_change_username' => :'default_user_change_username',
@@ -92,6 +96,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'avatars' => :'String',
+        :'base_url' => :'String',
         :'default_user_change_name' => :'Boolean',
         :'default_user_change_email' => :'Boolean',
         :'default_user_change_username' => :'Boolean',
@@ -135,6 +140,10 @@ module Authentik::Api
 
       if attributes.key?(:'avatars')
         self.avatars = attributes[:'avatars']
+      end
+
+      if attributes.key?(:'base_url')
+        self.base_url = attributes[:'base_url']
       end
 
       if attributes.key?(:'default_user_change_name')
@@ -209,6 +218,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "avatars", the character length must be greater than or equal to 1.')
       end
 
+      if !@base_url.nil? && @base_url.to_s.length > 200
+        invalid_properties.push('invalid value for "base_url", the character length must be smaller than or equal to 200.')
+      end
+
       if !@event_retention.nil? && @event_retention.to_s.length < 1
         invalid_properties.push('invalid value for "event_retention", the character length must be greater than or equal to 1.')
       end
@@ -269,6 +282,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@avatars.nil? && @avatars.to_s.length < 1
+      return false if !@base_url.nil? && @base_url.to_s.length > 200
       return false if !@event_retention.nil? && @event_retention.to_s.length < 1
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit < -2147483648
@@ -297,6 +311,20 @@ module Authentik::Api
       end
 
       @avatars = avatars
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] base_url Value to be assigned
+    def base_url=(base_url)
+      if base_url.nil?
+        fail ArgumentError, 'base_url cannot be nil'
+      end
+
+      if base_url.to_s.length > 200
+        fail ArgumentError, 'invalid value for "base_url", the character length must be smaller than or equal to 200.'
+      end
+
+      @base_url = base_url
     end
 
     # Custom attribute writer method with validation
@@ -433,6 +461,7 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           avatars == o.avatars &&
+          base_url == o.base_url &&
           default_user_change_name == o.default_user_change_name &&
           default_user_change_email == o.default_user_change_email &&
           default_user_change_username == o.default_user_change_username &&
@@ -459,7 +488,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [avatars, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, reputation_lower_limit, reputation_upper_limit, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length, pagination_default_page_size, pagination_max_page_size, flags].hash
+      [avatars, base_url, default_user_change_name, default_user_change_email, default_user_change_username, event_retention, reputation_lower_limit, reputation_upper_limit, footer_links, gdpr_compliance, impersonation, impersonation_require_reason, default_token_duration, default_token_length, pagination_default_page_size, pagination_max_page_size, flags].hash
     end
 
     # Builds the object from hash

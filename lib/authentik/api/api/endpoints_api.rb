@@ -49,7 +49,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'AgentConfig'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_connectors_agent_config_retrieve",
@@ -111,7 +111,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'AgentTokenResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_federation']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_connectors_auth_fed_create",
@@ -166,7 +166,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'AgentAuthenticationResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_connectors_auth_ia_create",
@@ -228,7 +228,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_connectors_check_in_create",
@@ -421,7 +421,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'AgentTokenResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_enroll']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_connectors_enroll_create",
@@ -1877,7 +1877,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'AgentPSSODeviceRegistrationResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_psso_register_device_create",
@@ -1941,7 +1941,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'UserSelf'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || []
+      auth_names = opts[:debug_auth_names] || ['authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"EndpointsApi.endpoints_agents_psso_register_user_create",
