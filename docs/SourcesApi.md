@@ -4871,6 +4871,7 @@ opts = {
   slug: 'slug_example', # String | 
   sni: true, # Boolean | 
   start_tls: true, # Boolean | 
+  sync_group_hierarchy: true, # Boolean | 
   sync_groups: true, # Boolean | 
   sync_parent_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   sync_users: true, # Boolean | 
@@ -4935,6 +4936,7 @@ end
 | **slug** | **String** |  | [optional] |
 | **sni** | **Boolean** |  | [optional] |
 | **start_tls** | **Boolean** |  | [optional] |
+| **sync_group_hierarchy** | **Boolean** |  | [optional] |
 | **sync_groups** | **Boolean** |  | [optional] |
 | **sync_parent_group** | **String** |  | [optional] |
 | **sync_users** | **Boolean** |  | [optional] |

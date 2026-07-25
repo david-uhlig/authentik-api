@@ -4317,6 +4317,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
+    # @option opts [Boolean] :sync_group_hierarchy 
     # @option opts [Boolean] :sync_groups 
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
@@ -4356,6 +4357,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
+    # @option opts [Boolean] :sync_group_hierarchy 
     # @option opts [Boolean] :sync_groups 
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
@@ -4397,6 +4399,7 @@ module Authentik::Api
       query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
       query_params[:'sni'] = opts[:'sni'] if !opts[:'sni'].nil?
       query_params[:'start_tls'] = opts[:'start_tls'] if !opts[:'start_tls'].nil?
+      query_params[:'sync_group_hierarchy'] = opts[:'sync_group_hierarchy'] if !opts[:'sync_group_hierarchy'].nil?
       query_params[:'sync_groups'] = opts[:'sync_groups'] if !opts[:'sync_groups'].nil?
       query_params[:'sync_parent_group'] = opts[:'sync_parent_group'] if !opts[:'sync_parent_group'].nil?
       query_params[:'sync_users'] = opts[:'sync_users'] if !opts[:'sync_users'].nil?

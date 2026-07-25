@@ -27,6 +27,12 @@ describe Authentik::Api::PatchedSettingsRequest do
     end
   end
 
+  describe 'test attribute "base_url"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "default_user_change_name"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
