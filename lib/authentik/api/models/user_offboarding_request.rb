@@ -8,18 +8,51 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class CurrentBrandFlags < ApiModelBase
-    # Upon successful authentication, re-start authentication in other open tabs.
-    attr_accessor :flows_continuous_login
+  # Mixin to validate that a valid enterprise license exists before allowing to save the object
+  class UserOffboardingRequest < ApiModelBase
+    attr_accessor :user
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
+    # Absolute time at which the offboarding action is executed.
+    attr_accessor :scheduled_at
+
+    attr_accessor :action
+
+    # Revoke all of the user's sessions when offboarding.
+    attr_accessor :revoke_sessions
+
+    # Revoke all of the user's tokens when offboarding.
+    attr_accessor :revoke_tokens
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'user' => :'user',
+        :'scheduled_at' => :'scheduled_at',
+        :'action' => :'action',
+        :'revoke_sessions' => :'revoke_sessions',
+        :'revoke_tokens' => :'revoke_tokens'
       }
     end
 
@@ -36,8 +69,11 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'user' => :'Integer',
+        :'scheduled_at' => :'Time',
+        :'action' => :'OffboardingActionEnum',
+        :'revoke_sessions' => :'Boolean',
+        :'revoke_tokens' => :'Boolean'
       }
     end
 
@@ -51,28 +87,40 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::CurrentBrandFlags` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::UserOffboardingRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::CurrentBrandFlags`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::UserOffboardingRequest`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'flows_continuous_login')
-        self.flows_continuous_login = attributes[:'flows_continuous_login']
+      if attributes.key?(:'user')
+        self.user = attributes[:'user']
       else
-        self.flows_continuous_login = nil
+        self.user = nil
       end
 
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
+      if attributes.key?(:'scheduled_at')
+        self.scheduled_at = attributes[:'scheduled_at']
       else
-        self.flows_refresh_others = nil
+        self.scheduled_at = nil
+      end
+
+      if attributes.key?(:'action')
+        self.action = attributes[:'action']
+      end
+
+      if attributes.key?(:'revoke_sessions')
+        self.revoke_sessions = attributes[:'revoke_sessions']
+      end
+
+      if attributes.key?(:'revoke_tokens')
+        self.revoke_tokens = attributes[:'revoke_tokens']
       end
     end
 
@@ -81,12 +129,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @flows_continuous_login.nil?
-        invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
+      if @user.nil?
+        invalid_properties.push('invalid value for "user", user cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
+      if @scheduled_at.nil?
+        invalid_properties.push('invalid value for "scheduled_at", scheduled_at cannot be nil.')
       end
 
       invalid_properties
@@ -96,29 +144,29 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
+      return false if @user.nil?
+      return false if @scheduled_at.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_continuous_login Value to be assigned
-    def flows_continuous_login=(flows_continuous_login)
-      if flows_continuous_login.nil?
-        fail ArgumentError, 'flows_continuous_login cannot be nil'
+    # @param [Object] user Value to be assigned
+    def user=(user)
+      if user.nil?
+        fail ArgumentError, 'user cannot be nil'
       end
 
-      @flows_continuous_login = flows_continuous_login
+      @user = user
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
+    # @param [Object] scheduled_at Value to be assigned
+    def scheduled_at=(scheduled_at)
+      if scheduled_at.nil?
+        fail ArgumentError, 'scheduled_at cannot be nil'
       end
 
-      @flows_refresh_others = flows_refresh_others
+      @scheduled_at = scheduled_at
     end
 
     # Checks equality by comparing each attribute.
@@ -126,8 +174,11 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          user == o.user &&
+          scheduled_at == o.scheduled_at &&
+          action == o.action &&
+          revoke_sessions == o.revoke_sessions &&
+          revoke_tokens == o.revoke_tokens
     end
 
     # @see the `==` method
@@ -139,7 +190,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flows_continuous_login, flows_refresh_others].hash
+      [user, scheduled_at, action, revoke_sessions, revoke_tokens].hash
     end
 
     # Builds the object from hash

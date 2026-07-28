@@ -14,6 +14,10 @@ All URIs are relative to */api/v3*
 | [**lifecycle_rules_partial_update**](LifecycleApi.md#lifecycle_rules_partial_update) | **PATCH** /lifecycle/rules/{id}/ |  |
 | [**lifecycle_rules_retrieve**](LifecycleApi.md#lifecycle_rules_retrieve) | **GET** /lifecycle/rules/{id}/ |  |
 | [**lifecycle_rules_update**](LifecycleApi.md#lifecycle_rules_update) | **PUT** /lifecycle/rules/{id}/ |  |
+| [**lifecycle_user_offboarding_create**](LifecycleApi.md#lifecycle_user_offboarding_create) | **POST** /lifecycle/user_offboarding/ |  |
+| [**lifecycle_user_offboarding_destroy**](LifecycleApi.md#lifecycle_user_offboarding_destroy) | **DELETE** /lifecycle/user_offboarding/{id}/ |  |
+| [**lifecycle_user_offboarding_list**](LifecycleApi.md#lifecycle_user_offboarding_list) | **GET** /lifecycle/user_offboarding/ |  |
+| [**lifecycle_user_offboarding_retrieve**](LifecycleApi.md#lifecycle_user_offboarding_retrieve) | **GET** /lifecycle/user_offboarding/{id}/ |  |
 
 
 ## lifecycle_iterations_create
@@ -726,5 +730,288 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_offboarding_create
+
+> <UserOffboarding> lifecycle_user_offboarding_create(user_offboarding_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+user_offboarding_request = Authentik::Api::UserOffboardingRequest.new({user: 37, scheduled_at: Time.now}) # UserOffboardingRequest | 
+
+begin
+  
+  result = api_instance.lifecycle_user_offboarding_create(user_offboarding_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_create: #{e}"
+end
+```
+
+#### Using the lifecycle_user_offboarding_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserOffboarding>, Integer, Hash)> lifecycle_user_offboarding_create_with_http_info(user_offboarding_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_offboarding_create_with_http_info(user_offboarding_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserOffboarding>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_offboarding_request** | [**UserOffboardingRequest**](UserOffboardingRequest.md) |  |  |
+
+### Return type
+
+[**UserOffboarding**](UserOffboarding.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_offboarding_destroy
+
+> lifecycle_user_offboarding_destroy(id)
+
+
+
+Cancel a pending offboarding instead of deleting the record.  The row is retained (as `CANCELED`) so the offboarding stays visible in the audit history; deletion would erase who scheduled and cancelled it. You cannot cancel an offboarding that targets you.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Offboarding.
+
+begin
+  
+  api_instance.lifecycle_user_offboarding_destroy(id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_destroy: #{e}"
+end
+```
+
+#### Using the lifecycle_user_offboarding_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> lifecycle_user_offboarding_destroy_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_offboarding_destroy_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Offboarding. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_offboarding_list
+
+> <PaginatedUserOffboardingList> lifecycle_user_offboarding_list(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+opts = {
+  action: Authentik::Api::OffboardingActionEnum::DEACTIVATE, # OffboardingActionEnum | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  status: Authentik::Api::OffboardingStatusEnum::PENDING, # OffboardingStatusEnum | 
+  user__uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
+}
+
+begin
+  
+  result = api_instance.lifecycle_user_offboarding_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_list: #{e}"
+end
+```
+
+#### Using the lifecycle_user_offboarding_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedUserOffboardingList>, Integer, Hash)> lifecycle_user_offboarding_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_offboarding_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedUserOffboardingList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | [**OffboardingActionEnum**](.md) |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **status** | [**OffboardingStatusEnum**](.md) |  | [optional] |
+| **user__uuid** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedUserOffboardingList**](PaginatedUserOffboardingList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_offboarding_retrieve
+
+> <UserOffboarding> lifecycle_user_offboarding_retrieve(id)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Offboarding.
+
+begin
+  
+  result = api_instance.lifecycle_user_offboarding_retrieve(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_retrieve: #{e}"
+end
+```
+
+#### Using the lifecycle_user_offboarding_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserOffboarding>, Integer, Hash)> lifecycle_user_offboarding_retrieve_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_offboarding_retrieve_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserOffboarding>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_offboarding_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Offboarding. |  |
+
+### Return type
+
+[**UserOffboarding**](UserOffboarding.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 

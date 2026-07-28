@@ -144,4 +144,51 @@ describe 'LifecycleApi' do
     end
   end
 
+  # unit tests for lifecycle_user_offboarding_create
+  # @param user_offboarding_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserOffboarding]
+  describe 'lifecycle_user_offboarding_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_offboarding_destroy
+  # Cancel a pending offboarding instead of deleting the record.  The row is retained (as &#x60;CANCELED&#x60;) so the offboarding stays visible in the audit history; deletion would erase who scheduled and cancelled it. You cannot cancel an offboarding that targets you.
+  # @param id A UUID string identifying this User Offboarding.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'lifecycle_user_offboarding_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_offboarding_list
+  # @param [Hash] opts the optional parameters
+  # @option opts [OffboardingActionEnum] :action 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @option opts [OffboardingStatusEnum] :status 
+  # @option opts [String] :user__uuid 
+  # @return [PaginatedUserOffboardingList]
+  describe 'lifecycle_user_offboarding_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_offboarding_retrieve
+  # @param id A UUID string identifying this User Offboarding.
+  # @param [Hash] opts the optional parameters
+  # @return [UserOffboarding]
+  describe 'lifecycle_user_offboarding_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

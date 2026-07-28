@@ -8,18 +8,19 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class CurrentBrandFlags < ApiModelBase
-    # Upon successful authentication, re-start authentication in other open tabs.
-    attr_accessor :flows_continuous_login
+  class PaginatedUserOffboardingList < ApiModelBase
+    attr_accessor :pagination
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
+    attr_accessor :results
+
+    attr_accessor :autocomplete
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'pagination' => :'pagination',
+        :'results' => :'results',
+        :'autocomplete' => :'autocomplete'
       }
     end
 
@@ -36,8 +37,9 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'pagination' => :'Pagination',
+        :'results' => :'Array<UserOffboarding>',
+        :'autocomplete' => :'Hash<String, Object>'
       }
     end
 
@@ -51,28 +53,38 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::CurrentBrandFlags` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::PaginatedUserOffboardingList` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::CurrentBrandFlags`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::PaginatedUserOffboardingList`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'flows_continuous_login')
-        self.flows_continuous_login = attributes[:'flows_continuous_login']
+      if attributes.key?(:'pagination')
+        self.pagination = attributes[:'pagination']
       else
-        self.flows_continuous_login = nil
+        self.pagination = nil
       end
 
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
+      if attributes.key?(:'results')
+        if (value = attributes[:'results']).is_a?(Array)
+          self.results = value
+        end
       else
-        self.flows_refresh_others = nil
+        self.results = nil
+      end
+
+      if attributes.key?(:'autocomplete')
+        if (value = attributes[:'autocomplete']).is_a?(Hash)
+          self.autocomplete = value
+        end
+      else
+        self.autocomplete = nil
       end
     end
 
@@ -81,12 +93,16 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @flows_continuous_login.nil?
-        invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
+      if @pagination.nil?
+        invalid_properties.push('invalid value for "pagination", pagination cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
+      if @results.nil?
+        invalid_properties.push('invalid value for "results", results cannot be nil.')
+      end
+
+      if @autocomplete.nil?
+        invalid_properties.push('invalid value for "autocomplete", autocomplete cannot be nil.')
       end
 
       invalid_properties
@@ -96,29 +112,40 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
+      return false if @pagination.nil?
+      return false if @results.nil?
+      return false if @autocomplete.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_continuous_login Value to be assigned
-    def flows_continuous_login=(flows_continuous_login)
-      if flows_continuous_login.nil?
-        fail ArgumentError, 'flows_continuous_login cannot be nil'
+    # @param [Object] pagination Value to be assigned
+    def pagination=(pagination)
+      if pagination.nil?
+        fail ArgumentError, 'pagination cannot be nil'
       end
 
-      @flows_continuous_login = flows_continuous_login
+      @pagination = pagination
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
+    # @param [Object] results Value to be assigned
+    def results=(results)
+      if results.nil?
+        fail ArgumentError, 'results cannot be nil'
       end
 
-      @flows_refresh_others = flows_refresh_others
+      @results = results
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] autocomplete Value to be assigned
+    def autocomplete=(autocomplete)
+      if autocomplete.nil?
+        fail ArgumentError, 'autocomplete cannot be nil'
+      end
+
+      @autocomplete = autocomplete
     end
 
     # Checks equality by comparing each attribute.
@@ -126,8 +153,9 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          pagination == o.pagination &&
+          results == o.results &&
+          autocomplete == o.autocomplete
     end
 
     # @see the `==` method
@@ -139,7 +167,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flows_continuous_login, flows_refresh_others].hash
+      [pagination, results, autocomplete].hash
     end
 
     # Builds the object from hash
