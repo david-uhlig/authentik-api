@@ -409,6 +409,10 @@ Class | Method | HTTP request | Description
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_partial_update**](docs/LifecycleApi.md#lifecycle_rules_partial_update) | **PATCH** /lifecycle/rules/{id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_retrieve**](docs/LifecycleApi.md#lifecycle_rules_retrieve) | **GET** /lifecycle/rules/{id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_update**](docs/LifecycleApi.md#lifecycle_rules_update) | **PUT** /lifecycle/rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_create**](docs/LifecycleApi.md#lifecycle_user_offboarding_create) | **POST** /lifecycle/user_offboarding/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_destroy**](docs/LifecycleApi.md#lifecycle_user_offboarding_destroy) | **DELETE** /lifecycle/user_offboarding/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_list**](docs/LifecycleApi.md#lifecycle_user_offboarding_list) | **GET** /lifecycle/user_offboarding/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_retrieve**](docs/LifecycleApi.md#lifecycle_user_offboarding_retrieve) | **GET** /lifecycle/user_offboarding/{id}/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_apply_create**](docs/ManagedApi.md#managed_blueprints_apply_create) | **POST** /managed/blueprints/{instance_uuid}/apply/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_available_list**](docs/ManagedApi.md#managed_blueprints_available_list) | **GET** /managed/blueprints/available/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_create**](docs/ManagedApi.md#managed_blueprints_create) | **POST** /managed/blueprints/ | 
@@ -1578,6 +1582,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::ObjectAttribute](docs/ObjectAttribute.md)
  - [Authentik::Api::ObjectAttributeRequest](docs/ObjectAttributeRequest.md)
  - [Authentik::Api::ObjectAttributeTypeEnum](docs/ObjectAttributeTypeEnum.md)
+ - [Authentik::Api::OffboardingActionEnum](docs/OffboardingActionEnum.md)
+ - [Authentik::Api::OffboardingStatusEnum](docs/OffboardingStatusEnum.md)
  - [Authentik::Api::OpenIDConnectConfiguration](docs/OpenIDConnectConfiguration.md)
  - [Authentik::Api::OperatingSystem](docs/OperatingSystem.md)
  - [Authentik::Api::OperatingSystemRequest](docs/OperatingSystemRequest.md)
@@ -1737,6 +1743,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedUserLoginStageList](docs/PaginatedUserLoginStageList.md)
  - [Authentik::Api::PaginatedUserLogoutStageList](docs/PaginatedUserLogoutStageList.md)
  - [Authentik::Api::PaginatedUserOAuthSourceConnectionList](docs/PaginatedUserOAuthSourceConnectionList.md)
+ - [Authentik::Api::PaginatedUserOffboardingList](docs/PaginatedUserOffboardingList.md)
  - [Authentik::Api::PaginatedUserPlexSourceConnectionList](docs/PaginatedUserPlexSourceConnectionList.md)
  - [Authentik::Api::PaginatedUserSAMLSourceConnectionList](docs/PaginatedUserSAMLSourceConnectionList.md)
  - [Authentik::Api::PaginatedUserSourceConnectionList](docs/PaginatedUserSourceConnectionList.md)
@@ -2084,6 +2091,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::UserMatchingModeEnum](docs/UserMatchingModeEnum.md)
  - [Authentik::Api::UserOAuthSourceConnection](docs/UserOAuthSourceConnection.md)
  - [Authentik::Api::UserOAuthSourceConnectionRequest](docs/UserOAuthSourceConnectionRequest.md)
+ - [Authentik::Api::UserOffboarding](docs/UserOffboarding.md)
+ - [Authentik::Api::UserOffboardingRequest](docs/UserOffboardingRequest.md)
  - [Authentik::Api::UserPasswordHashSetRequest](docs/UserPasswordHashSetRequest.md)
  - [Authentik::Api::UserPasswordSetRequest](docs/UserPasswordSetRequest.md)
  - [Authentik::Api::UserPath](docs/UserPath.md)
