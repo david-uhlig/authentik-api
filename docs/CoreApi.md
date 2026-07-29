@@ -8,6 +8,7 @@ All URIs are relative to */api/v3*
 | [**core_application_entitlements_destroy**](CoreApi.md#core_application_entitlements_destroy) | **DELETE** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_list**](CoreApi.md#core_application_entitlements_list) | **GET** /core/application_entitlements/ |  |
 | [**core_application_entitlements_partial_update**](CoreApi.md#core_application_entitlements_partial_update) | **PATCH** /core/application_entitlements/{pbm_uuid}/ |  |
+| [**core_application_entitlements_requestable_list**](CoreApi.md#core_application_entitlements_requestable_list) | **GET** /core/application_entitlements/requestable/ |  |
 | [**core_application_entitlements_retrieve**](CoreApi.md#core_application_entitlements_retrieve) | **GET** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_update**](CoreApi.md#core_application_entitlements_update) | **PUT** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_used_by_list**](CoreApi.md#core_application_entitlements_used_by_list) | **GET** /core/application_entitlements/{pbm_uuid}/used_by/ |  |
@@ -16,6 +17,7 @@ All URIs are relative to */api/v3*
 | [**core_applications_destroy**](CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ |  |
 | [**core_applications_list**](CoreApi.md#core_applications_list) | **GET** /core/applications/ |  |
 | [**core_applications_partial_update**](CoreApi.md#core_applications_partial_update) | **PATCH** /core/applications/{slug}/ |  |
+| [**core_applications_requestable_list**](CoreApi.md#core_applications_requestable_list) | **GET** /core/applications/requestable/ |  |
 | [**core_applications_retrieve**](CoreApi.md#core_applications_retrieve) | **GET** /core/applications/{slug}/ |  |
 | [**core_applications_update**](CoreApi.md#core_applications_update) | **PUT** /core/applications/{slug}/ |  |
 | [**core_applications_used_by_list**](CoreApi.md#core_applications_used_by_list) | **GET** /core/applications/{slug}/used_by/ |  |
@@ -371,6 +373,89 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_application_entitlements_requestable_list
+
+> <PaginatedRequestableTargetList> core_application_entitlements_requestable_list(opts)
+
+
+
+List application entitlements which the current user can request access to
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.core_application_entitlements_requestable_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_application_entitlements_requestable_list: #{e}"
+end
+```
+
+#### Using the core_application_entitlements_requestable_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedRequestableTargetList>, Integer, Hash)> core_application_entitlements_requestable_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_application_entitlements_requestable_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedRequestableTargetList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_application_entitlements_requestable_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **pbm_uuid** | **String** |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedRequestableTargetList**](PaginatedRequestableTargetList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -958,6 +1043,95 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_applications_requestable_list
+
+> <PaginatedApplicationList> core_applications_requestable_list(opts)
+
+
+
+List applications which the current user can request access to
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  group: 'group_example', # String | 
+  meta_description: 'meta_description_example', # String | 
+  meta_launch_url: 'meta_launch_url_example', # String | 
+  meta_publisher: 'meta_publisher_example', # String | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  slug: 'slug_example' # String | 
+}
+
+begin
+  
+  result = api_instance.core_applications_requestable_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_requestable_list: #{e}"
+end
+```
+
+#### Using the core_applications_requestable_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedApplicationList>, Integer, Hash)> core_applications_requestable_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_applications_requestable_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedApplicationList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_requestable_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **group** | **String** |  | [optional] |
+| **meta_description** | **String** |  | [optional] |
+| **meta_launch_url** | **String** |  | [optional] |
+| **meta_publisher** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **slug** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedApplicationList**](PaginatedApplicationList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1765,6 +1939,7 @@ opts = {
   flow_invalidation: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_lockdown: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_recovery: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  flow_request: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_unenrollment: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_user_settings: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
@@ -1818,6 +1993,7 @@ end
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |

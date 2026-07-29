@@ -284,6 +284,82 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # List application entitlements which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :app 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :pbm_uuid 
+    # @option opts [String] :search A search term.
+    # @return [PaginatedRequestableTargetList]
+    def core_application_entitlements_requestable_list(opts = {})
+      data, _status_code, _headers = core_application_entitlements_requestable_list_with_http_info(opts)
+      data
+    end
+
+    # List application entitlements which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :app 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :pbm_uuid 
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedRequestableTargetList, Integer, Hash)>] PaginatedRequestableTargetList data, response status code and response headers
+    def core_application_entitlements_requestable_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_application_entitlements_requestable_list ...'
+      end
+      # resource path
+      local_var_path = '/core/application_entitlements/requestable/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'pbm_uuid'] = opts[:'pbm_uuid'] if !opts[:'pbm_uuid'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedRequestableTargetList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_application_entitlements_requestable_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_application_entitlements_requestable_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # ApplicationEntitlement Viewset
     # @param pbm_uuid [String] A UUID string identifying this Application Entitlement.
     # @param [Hash] opts the optional parameters
@@ -827,6 +903,91 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_applications_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List applications which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [PaginatedApplicationList]
+    def core_applications_requestable_list(opts = {})
+      data, _status_code, _headers = core_applications_requestable_list_with_http_info(opts)
+      data
+    end
+
+    # List applications which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
+    def core_applications_requestable_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_requestable_list ...'
+      end
+      # resource path
+      local_var_path = '/core/applications/requestable/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
+      query_params[:'meta_description'] = opts[:'meta_description'] if !opts[:'meta_description'].nil?
+      query_params[:'meta_launch_url'] = opts[:'meta_launch_url'] if !opts[:'meta_launch_url'].nil?
+      query_params[:'meta_publisher'] = opts[:'meta_publisher'] if !opts[:'meta_publisher'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedApplicationList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_applications_requestable_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_applications_requestable_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1543,6 +1704,7 @@ module Authentik::Api
     # @option opts [String] :flow_invalidation 
     # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
+    # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1571,6 +1733,7 @@ module Authentik::Api
     # @option opts [String] :flow_invalidation 
     # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
+    # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
     # @option opts [String] :ordering Which field to use when ordering the results.
@@ -1601,6 +1764,7 @@ module Authentik::Api
       query_params[:'flow_invalidation'] = opts[:'flow_invalidation'] if !opts[:'flow_invalidation'].nil?
       query_params[:'flow_lockdown'] = opts[:'flow_lockdown'] if !opts[:'flow_lockdown'].nil?
       query_params[:'flow_recovery'] = opts[:'flow_recovery'] if !opts[:'flow_recovery'].nil?
+      query_params[:'flow_request'] = opts[:'flow_request'] if !opts[:'flow_request'].nil?
       query_params[:'flow_unenrollment'] = opts[:'flow_unenrollment'] if !opts[:'flow_unenrollment'].nil?
       query_params[:'flow_user_settings'] = opts[:'flow_user_settings'] if !opts[:'flow_user_settings'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
