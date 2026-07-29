@@ -18,6 +18,7 @@
 | **flow_user_settings** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **default_application** | **String** | When set, external users will be redirected to this application after authenticating. | [optional] |
 | **web_certificate** | **String** | Web Certificate used by the authentik Core webserver. | [optional] |
 | **client_certificates** | **Array&lt;String&gt;** | Certificates used for client authentication. | [optional] |
@@ -43,6 +44,7 @@ instance = Authentik::Api::BrandRequest.new(
   flow_user_settings: null,
   flow_device_code: null,
   flow_lockdown: null,
+  flow_request: null,
   default_application: null,
   web_certificate: null,
   client_certificates: null,

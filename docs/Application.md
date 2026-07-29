@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **pk** | **String** |  | [readonly] |
+| **pbm_uuid** | **String** |  | [readonly] |
 | **name** | **String** | Application&#39;s display Name. |  |
 | **slug** | **String** | Internal application name, used in URLs. |  |
 | **provider** | **Integer** |  | [optional] |
@@ -30,6 +31,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::Application.new(
   pk: null,
+  pbm_uuid: null,
   name: null,
   slug: null,
   provider: null,

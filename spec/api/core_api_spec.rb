@@ -77,6 +77,23 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_application_entitlements_requestable_list
+  # List application entitlements which the current user can request access to
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :app 
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :pbm_uuid 
+  # @option opts [String] :search A search term.
+  # @return [PaginatedRequestableTargetList]
+  describe 'core_application_entitlements_requestable_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_application_entitlements_retrieve
   # ApplicationEntitlement Viewset
   # @param pbm_uuid A UUID string identifying this Application Entitlement.
@@ -175,6 +192,26 @@ describe 'CoreApi' do
   # @option opts [PatchedApplicationRequest] :patched_application_request 
   # @return [Application]
   describe 'core_applications_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_applications_requestable_list
+  # List applications which the current user can request access to
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :group 
+  # @option opts [String] :meta_description 
+  # @option opts [String] :meta_launch_url 
+  # @option opts [String] :meta_publisher 
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @option opts [String] :slug 
+  # @return [PaginatedApplicationList]
+  describe 'core_applications_requestable_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -323,6 +360,7 @@ describe 'CoreApi' do
   # @option opts [String] :flow_invalidation 
   # @option opts [String] :flow_lockdown 
   # @option opts [String] :flow_recovery 
+  # @option opts [String] :flow_request 
   # @option opts [String] :flow_unenrollment 
   # @option opts [String] :flow_user_settings 
   # @option opts [String] :ordering Which field to use when ordering the results.

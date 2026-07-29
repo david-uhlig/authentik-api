@@ -20,6 +20,7 @@
 | **flow_user_settings** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **default_locale** | **String** |  | [readonly] |
 | **flags** | [**CurrentBrandFlags**](CurrentBrandFlags.md) |  |  |
 
@@ -45,6 +46,7 @@ instance = Authentik::Api::CurrentBrand.new(
   flow_user_settings: null,
   flow_device_code: null,
   flow_lockdown: null,
+  flow_request: null,
   default_locale: null,
   flags: null
 )

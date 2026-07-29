@@ -183,6 +183,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CoreApi* | [**core_application_entitlements_destroy**](docs/CoreApi.md#core_application_entitlements_destroy) | **DELETE** /core/application_entitlements/{pbm_uuid}/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_list**](docs/CoreApi.md#core_application_entitlements_list) | **GET** /core/application_entitlements/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_partial_update**](docs/CoreApi.md#core_application_entitlements_partial_update) | **PATCH** /core/application_entitlements/{pbm_uuid}/ | 
+*Authentik::Api::CoreApi* | [**core_application_entitlements_requestable_list**](docs/CoreApi.md#core_application_entitlements_requestable_list) | **GET** /core/application_entitlements/requestable/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_retrieve**](docs/CoreApi.md#core_application_entitlements_retrieve) | **GET** /core/application_entitlements/{pbm_uuid}/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_update**](docs/CoreApi.md#core_application_entitlements_update) | **PUT** /core/application_entitlements/{pbm_uuid}/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_used_by_list**](docs/CoreApi.md#core_application_entitlements_used_by_list) | **GET** /core/application_entitlements/{pbm_uuid}/used_by/ | 
@@ -191,6 +192,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CoreApi* | [**core_applications_destroy**](docs/CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ | 
 *Authentik::Api::CoreApi* | [**core_applications_list**](docs/CoreApi.md#core_applications_list) | **GET** /core/applications/ | 
 *Authentik::Api::CoreApi* | [**core_applications_partial_update**](docs/CoreApi.md#core_applications_partial_update) | **PATCH** /core/applications/{slug}/ | 
+*Authentik::Api::CoreApi* | [**core_applications_requestable_list**](docs/CoreApi.md#core_applications_requestable_list) | **GET** /core/applications/requestable/ | 
 *Authentik::Api::CoreApi* | [**core_applications_retrieve**](docs/CoreApi.md#core_applications_retrieve) | **GET** /core/applications/{slug}/ | 
 *Authentik::Api::CoreApi* | [**core_applications_update**](docs/CoreApi.md#core_applications_update) | **PUT** /core/applications/{slug}/ | 
 *Authentik::Api::CoreApi* | [**core_applications_used_by_list**](docs/CoreApi.md#core_applications_used_by_list) | **GET** /core/applications/{slug}/used_by/ | 
@@ -819,6 +821,34 @@ Class | Method | HTTP request | Description
 *Authentik::Api::ReportsApi* | [**reports_exports_destroy**](docs/ReportsApi.md#reports_exports_destroy) | **DELETE** /reports/exports/{id}/ | 
 *Authentik::Api::ReportsApi* | [**reports_exports_list**](docs/ReportsApi.md#reports_exports_list) | **GET** /reports/exports/ | 
 *Authentik::Api::ReportsApi* | [**reports_exports_retrieve**](docs/ReportsApi.md#reports_exports_retrieve) | **GET** /reports/exports/{id}/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_create**](docs/RequestsApi.md#requests_grant_requests_create) | **POST** /requests/grant-requests/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_destroy**](docs/RequestsApi.md#requests_grant_requests_destroy) | **DELETE** /requests/grant-requests/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_fulfill_partial_update**](docs/RequestsApi.md#requests_grant_requests_fulfill_partial_update) | **PATCH** /requests/grant-requests/{uuid}/fulfill/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_list**](docs/RequestsApi.md#requests_grant_requests_list) | **GET** /requests/grant-requests/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_pending_review_list**](docs/RequestsApi.md#requests_grant_requests_pending_review_list) | **GET** /requests/grant-requests/pending_review/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_retrieve**](docs/RequestsApi.md#requests_grant_requests_retrieve) | **GET** /requests/grant-requests/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_revoke_destroy**](docs/RequestsApi.md#requests_grant_requests_revoke_destroy) | **DELETE** /requests/grant-requests/{uuid}/revoke/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_create**](docs/RequestsApi.md#requests_rule_bindings_create) | **POST** /requests/rule-bindings/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_destroy**](docs/RequestsApi.md#requests_rule_bindings_destroy) | **DELETE** /requests/rule-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_list**](docs/RequestsApi.md#requests_rule_bindings_list) | **GET** /requests/rule-bindings/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_partial_update**](docs/RequestsApi.md#requests_rule_bindings_partial_update) | **PATCH** /requests/rule-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_retrieve**](docs/RequestsApi.md#requests_rule_bindings_retrieve) | **GET** /requests/rule-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_update**](docs/RequestsApi.md#requests_rule_bindings_update) | **PUT** /requests/rule-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_bindings_used_by_list**](docs/RequestsApi.md#requests_rule_bindings_used_by_list) | **GET** /requests/rule-bindings/{uuid}/used_by/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_create**](docs/RequestsApi.md#requests_rule_child_bindings_create) | **POST** /requests/rule-child-bindings/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_destroy**](docs/RequestsApi.md#requests_rule_child_bindings_destroy) | **DELETE** /requests/rule-child-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_list**](docs/RequestsApi.md#requests_rule_child_bindings_list) | **GET** /requests/rule-child-bindings/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_partial_update**](docs/RequestsApi.md#requests_rule_child_bindings_partial_update) | **PATCH** /requests/rule-child-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_retrieve**](docs/RequestsApi.md#requests_rule_child_bindings_retrieve) | **GET** /requests/rule-child-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_update**](docs/RequestsApi.md#requests_rule_child_bindings_update) | **PUT** /requests/rule-child-bindings/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rule_child_bindings_used_by_list**](docs/RequestsApi.md#requests_rule_child_bindings_used_by_list) | **GET** /requests/rule-child-bindings/{uuid}/used_by/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_create**](docs/RequestsApi.md#requests_rules_create) | **POST** /requests/rules/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_destroy**](docs/RequestsApi.md#requests_rules_destroy) | **DELETE** /requests/rules/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_list**](docs/RequestsApi.md#requests_rules_list) | **GET** /requests/rules/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_partial_update**](docs/RequestsApi.md#requests_rules_partial_update) | **PATCH** /requests/rules/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_retrieve**](docs/RequestsApi.md#requests_rules_retrieve) | **GET** /requests/rules/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_update**](docs/RequestsApi.md#requests_rules_update) | **PUT** /requests/rules/{uuid}/ | 
+*Authentik::Api::RequestsApi* | [**requests_rules_used_by_list**](docs/RequestsApi.md#requests_rules_used_by_list) | **GET** /requests/rules/{uuid}/used_by/ | 
 *Authentik::Api::RootApi* | [**root_config_retrieve**](docs/RootApi.md#root_config_retrieve) | **GET** /root/config/ | 
 *Authentik::Api::SchemaApi* | [**schema_retrieve**](docs/SchemaApi.md#schema_retrieve) | **GET** /schema/ | 
 *Authentik::Api::SourcesApi* | [**sources_all_destroy**](docs/SourcesApi.md#sources_all_destroy) | **DELETE** /sources/all/{slug}/ | 
@@ -1458,6 +1488,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::GoogleWorkspaceProviderRequest](docs/GoogleWorkspaceProviderRequest.md)
  - [Authentik::Api::GoogleWorkspaceProviderUser](docs/GoogleWorkspaceProviderUser.md)
  - [Authentik::Api::GoogleWorkspaceProviderUserRequest](docs/GoogleWorkspaceProviderUserRequest.md)
+ - [Authentik::Api::GrantRequest](docs/GrantRequest.md)
+ - [Authentik::Api::GrantRequestCreateRequest](docs/GrantRequestCreateRequest.md)
  - [Authentik::Api::GrantTypesEnum](docs/GrantTypesEnum.md)
  - [Authentik::Api::Group](docs/Group.md)
  - [Authentik::Api::GroupKerberosSourceConnection](docs/GroupKerberosSourceConnection.md)
@@ -1559,6 +1591,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::NetworkRequest](docs/NetworkRequest.md)
  - [Authentik::Api::NotConfiguredActionEnum](docs/NotConfiguredActionEnum.md)
  - [Authentik::Api::Notification](docs/Notification.md)
+ - [Authentik::Api::NotificationModeEnum](docs/NotificationModeEnum.md)
  - [Authentik::Api::NotificationRequest](docs/NotificationRequest.md)
  - [Authentik::Api::NotificationRule](docs/NotificationRule.md)
  - [Authentik::Api::NotificationRuleRequest](docs/NotificationRuleRequest.md)
@@ -1645,6 +1678,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedGoogleWorkspaceProviderList](docs/PaginatedGoogleWorkspaceProviderList.md)
  - [Authentik::Api::PaginatedGoogleWorkspaceProviderMappingList](docs/PaginatedGoogleWorkspaceProviderMappingList.md)
  - [Authentik::Api::PaginatedGoogleWorkspaceProviderUserList](docs/PaginatedGoogleWorkspaceProviderUserList.md)
+ - [Authentik::Api::PaginatedGrantRequestList](docs/PaginatedGrantRequestList.md)
  - [Authentik::Api::PaginatedGroupKerberosSourceConnectionList](docs/PaginatedGroupKerberosSourceConnectionList.md)
  - [Authentik::Api::PaginatedGroupLDAPSourceConnectionList](docs/PaginatedGroupLDAPSourceConnectionList.md)
  - [Authentik::Api::PaginatedGroupList](docs/PaginatedGroupList.md)
@@ -1703,6 +1737,10 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedRedirectStageList](docs/PaginatedRedirectStageList.md)
  - [Authentik::Api::PaginatedReputationList](docs/PaginatedReputationList.md)
  - [Authentik::Api::PaginatedReputationPolicyList](docs/PaginatedReputationPolicyList.md)
+ - [Authentik::Api::PaginatedRequestRuleBindingList](docs/PaginatedRequestRuleBindingList.md)
+ - [Authentik::Api::PaginatedRequestRuleChildBindingList](docs/PaginatedRequestRuleChildBindingList.md)
+ - [Authentik::Api::PaginatedRequestRuleList](docs/PaginatedRequestRuleList.md)
+ - [Authentik::Api::PaginatedRequestableTargetList](docs/PaginatedRequestableTargetList.md)
  - [Authentik::Api::PaginatedRoleAssignedObjectPermissionList](docs/PaginatedRoleAssignedObjectPermissionList.md)
  - [Authentik::Api::PaginatedRoleList](docs/PaginatedRoleList.md)
  - [Authentik::Api::PaginatedSAMLPropertyMappingList](docs/PaginatedSAMLPropertyMappingList.md)
@@ -1807,6 +1845,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedGoogleEndpointDeviceRequest](docs/PatchedGoogleEndpointDeviceRequest.md)
  - [Authentik::Api::PatchedGoogleWorkspaceProviderMappingRequest](docs/PatchedGoogleWorkspaceProviderMappingRequest.md)
  - [Authentik::Api::PatchedGoogleWorkspaceProviderRequest](docs/PatchedGoogleWorkspaceProviderRequest.md)
+ - [Authentik::Api::PatchedGrantRequestFulfillRequest](docs/PatchedGrantRequestFulfillRequest.md)
  - [Authentik::Api::PatchedGroupKerberosSourceConnectionRequest](docs/PatchedGroupKerberosSourceConnectionRequest.md)
  - [Authentik::Api::PatchedGroupLDAPSourceConnectionRequest](docs/PatchedGroupLDAPSourceConnectionRequest.md)
  - [Authentik::Api::PatchedGroupOAuthSourceConnectionRequest](docs/PatchedGroupOAuthSourceConnectionRequest.md)
@@ -1855,6 +1894,9 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedRadiusProviderRequest](docs/PatchedRadiusProviderRequest.md)
  - [Authentik::Api::PatchedRedirectStageRequest](docs/PatchedRedirectStageRequest.md)
  - [Authentik::Api::PatchedReputationPolicyRequest](docs/PatchedReputationPolicyRequest.md)
+ - [Authentik::Api::PatchedRequestRuleBindingRequest](docs/PatchedRequestRuleBindingRequest.md)
+ - [Authentik::Api::PatchedRequestRuleChildBindingRequest](docs/PatchedRequestRuleChildBindingRequest.md)
+ - [Authentik::Api::PatchedRequestRuleRequest](docs/PatchedRequestRuleRequest.md)
  - [Authentik::Api::PatchedRoleRequest](docs/PatchedRoleRequest.md)
  - [Authentik::Api::PatchedSAMLPropertyMappingRequest](docs/PatchedSAMLPropertyMappingRequest.md)
  - [Authentik::Api::PatchedSAMLProviderRequest](docs/PatchedSAMLProviderRequest.md)
@@ -1953,10 +1995,19 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::RedirectURITypeEnum](docs/RedirectURITypeEnum.md)
  - [Authentik::Api::RelatedGroup](docs/RelatedGroup.md)
  - [Authentik::Api::RelatedRule](docs/RelatedRule.md)
+ - [Authentik::Api::RelatedTarget](docs/RelatedTarget.md)
  - [Authentik::Api::Reputation](docs/Reputation.md)
  - [Authentik::Api::ReputationPolicy](docs/ReputationPolicy.md)
  - [Authentik::Api::ReputationPolicyRequest](docs/ReputationPolicyRequest.md)
  - [Authentik::Api::RequestContentTypeEnum](docs/RequestContentTypeEnum.md)
+ - [Authentik::Api::RequestRule](docs/RequestRule.md)
+ - [Authentik::Api::RequestRuleBinding](docs/RequestRuleBinding.md)
+ - [Authentik::Api::RequestRuleBindingRequest](docs/RequestRuleBindingRequest.md)
+ - [Authentik::Api::RequestRuleChildBinding](docs/RequestRuleChildBinding.md)
+ - [Authentik::Api::RequestRuleChildBindingRequest](docs/RequestRuleChildBindingRequest.md)
+ - [Authentik::Api::RequestRuleRequest](docs/RequestRuleRequest.md)
+ - [Authentik::Api::RequestStatus](docs/RequestStatus.md)
+ - [Authentik::Api::RequestableTarget](docs/RequestableTarget.md)
  - [Authentik::Api::Review](docs/Review.md)
  - [Authentik::Api::ReviewRequest](docs/ReviewRequest.md)
  - [Authentik::Api::Role](docs/Role.md)

@@ -12,6 +12,8 @@ module Authentik::Api
   class Application < ApiModelBase
     attr_accessor :pk
 
+    attr_accessor :pbm_uuid
+
     # Application's display Name.
     attr_accessor :name
 
@@ -78,6 +80,7 @@ module Authentik::Api
     def self.attribute_map
       {
         :'pk' => :'pk',
+        :'pbm_uuid' => :'pbm_uuid',
         :'name' => :'name',
         :'slug' => :'slug',
         :'provider' => :'provider',
@@ -112,6 +115,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'pk' => :'String',
+        :'pbm_uuid' => :'String',
         :'name' => :'String',
         :'slug' => :'String',
         :'provider' => :'Integer',
@@ -163,6 +167,12 @@ module Authentik::Api
         self.pk = attributes[:'pk']
       else
         self.pk = nil
+      end
+
+      if attributes.key?(:'pbm_uuid')
+        self.pbm_uuid = attributes[:'pbm_uuid']
+      else
+        self.pbm_uuid = nil
       end
 
       if attributes.key?(:'name')
@@ -261,6 +271,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "pk", pk cannot be nil.')
       end
 
+      if @pbm_uuid.nil?
+        invalid_properties.push('invalid value for "pbm_uuid", pbm_uuid cannot be nil.')
+      end
+
       if @name.nil?
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
@@ -286,6 +300,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
+      return false if @pbm_uuid.nil?
       return false if @name.nil?
       return false if @slug.nil?
       return false if @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
@@ -301,6 +316,16 @@ module Authentik::Api
       end
 
       @pk = pk
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] pbm_uuid Value to be assigned
+    def pbm_uuid=(pbm_uuid)
+      if pbm_uuid.nil?
+        fail ArgumentError, 'pbm_uuid cannot be nil'
+      end
+
+      @pbm_uuid = pbm_uuid
     end
 
     # Custom attribute writer method with validation
@@ -344,6 +369,7 @@ module Authentik::Api
       return true if self.equal?(o)
       self.class == o.class &&
           pk == o.pk &&
+          pbm_uuid == o.pbm_uuid &&
           name == o.name &&
           slug == o.slug &&
           provider == o.provider &&
@@ -372,7 +398,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_icon_url, meta_icon_themed_urls, meta_description, meta_publisher, policy_engine_mode, group, meta_hide].hash
+      [pk, pbm_uuid, name, slug, provider, provider_obj, backchannel_providers, backchannel_providers_obj, launch_url, open_in_new_tab, meta_launch_url, meta_icon, meta_icon_url, meta_icon_themed_urls, meta_description, meta_publisher, policy_engine_mode, group, meta_hide].hash
     end
 
     # Builds the object from hash
