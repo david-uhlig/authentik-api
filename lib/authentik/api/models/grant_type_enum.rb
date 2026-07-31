@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class GrantTypesEnum
+  class GrantTypeEnum
     AUTHORIZATION_CODE = "authorization_code".freeze
     IMPLICIT = "implicit".freeze
     HYBRID = "hybrid".freeze
@@ -33,8 +33,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if GrantTypesEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #GrantTypesEnum"
+      return value if GrantTypeEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #GrantTypeEnum"
     end
   end
 end

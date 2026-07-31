@@ -29,6 +29,8 @@ module Authentik::Api
 
     attr_accessor :flow_authentication
 
+    attr_accessor :flow_user_switch
+
     attr_accessor :flow_invalidation
 
     attr_accessor :flow_recovery
@@ -66,6 +68,7 @@ module Authentik::Api
         :'branding_custom_css' => :'branding_custom_css',
         :'branding_default_flow_background' => :'branding_default_flow_background',
         :'flow_authentication' => :'flow_authentication',
+        :'flow_user_switch' => :'flow_user_switch',
         :'flow_invalidation' => :'flow_invalidation',
         :'flow_recovery' => :'flow_recovery',
         :'flow_unenrollment' => :'flow_unenrollment',
@@ -102,6 +105,7 @@ module Authentik::Api
         :'branding_custom_css' => :'String',
         :'branding_default_flow_background' => :'String',
         :'flow_authentication' => :'String',
+        :'flow_user_switch' => :'String',
         :'flow_invalidation' => :'String',
         :'flow_recovery' => :'String',
         :'flow_unenrollment' => :'String',
@@ -120,6 +124,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'flow_authentication',
+        :'flow_user_switch',
         :'flow_invalidation',
         :'flow_recovery',
         :'flow_unenrollment',
@@ -186,6 +191,10 @@ module Authentik::Api
 
       if attributes.key?(:'flow_authentication')
         self.flow_authentication = attributes[:'flow_authentication']
+      end
+
+      if attributes.key?(:'flow_user_switch')
+        self.flow_user_switch = attributes[:'flow_user_switch']
       end
 
       if attributes.key?(:'flow_invalidation')
@@ -296,6 +305,7 @@ module Authentik::Api
           branding_custom_css == o.branding_custom_css &&
           branding_default_flow_background == o.branding_default_flow_background &&
           flow_authentication == o.flow_authentication &&
+          flow_user_switch == o.flow_user_switch &&
           flow_invalidation == o.flow_invalidation &&
           flow_recovery == o.flow_recovery &&
           flow_unenrollment == o.flow_unenrollment &&
@@ -318,7 +328,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [brand_uuid, domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_application, web_certificate, client_certificates, attributes].hash
+      [brand_uuid, domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_application, web_certificate, client_certificates, attributes].hash
     end
 
     # Builds the object from hash

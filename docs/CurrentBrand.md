@@ -14,6 +14,7 @@
 | **ui_footer_links** | [**Array&lt;FooterLink&gt;**](FooterLink.md) |  | [readonly] |
 | **ui_theme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] |
 | **flow_authentication** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
@@ -40,6 +41,7 @@ instance = Authentik::Api::CurrentBrand.new(
   ui_footer_links: null,
   ui_theme: null,
   flow_authentication: null,
+  flow_user_switch: null,
   flow_invalidation: null,
   flow_recovery: null,
   flow_unenrollment: null,

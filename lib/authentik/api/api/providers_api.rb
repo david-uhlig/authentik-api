@@ -3372,6 +3372,404 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param o_auth2_dynamic_client_registration_request [OAuth2DynamicClientRegistrationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [OAuth2DynamicClientRegistration]
+    def providers_oauth2_dcr_create(o_auth2_dynamic_client_registration_request, opts = {})
+      data, _status_code, _headers = providers_oauth2_dcr_create_with_http_info(o_auth2_dynamic_client_registration_request, opts)
+      data
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param o_auth2_dynamic_client_registration_request [OAuth2DynamicClientRegistrationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OAuth2DynamicClientRegistration, Integer, Hash)>] OAuth2DynamicClientRegistration data, response status code and response headers
+    def providers_oauth2_dcr_create_with_http_info(o_auth2_dynamic_client_registration_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_create ...'
+      end
+      # verify the required parameter 'o_auth2_dynamic_client_registration_request' is set
+      if @api_client.config.client_side_validation && o_auth2_dynamic_client_registration_request.nil?
+        fail ArgumentError, "Missing the required parameter 'o_auth2_dynamic_client_registration_request' when calling ProvidersApi.providers_oauth2_dcr_create"
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(o_auth2_dynamic_client_registration_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OAuth2DynamicClientRegistration'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def providers_oauth2_dcr_destroy(pbm_uuid, opts = {})
+      providers_oauth2_dcr_destroy_with_http_info(pbm_uuid, opts)
+      nil
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def providers_oauth2_dcr_destroy_with_http_info(pbm_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_destroy ...'
+      end
+      # verify the required parameter 'pbm_uuid' is set
+      if @api_client.config.client_side_validation && pbm_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling ProvidersApi.providers_oauth2_dcr_destroy"
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Integer] :provider 
+    # @option opts [String] :search A search term.
+    # @return [PaginatedOAuth2DynamicClientRegistrationList]
+    def providers_oauth2_dcr_list(opts = {})
+      data, _status_code, _headers = providers_oauth2_dcr_list_with_http_info(opts)
+      data
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [Integer] :provider 
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedOAuth2DynamicClientRegistrationList, Integer, Hash)>] PaginatedOAuth2DynamicClientRegistrationList data, response status code and response headers
+    def providers_oauth2_dcr_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_list ...'
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'provider'] = opts[:'provider'] if !opts[:'provider'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedOAuth2DynamicClientRegistrationList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedOAuth2DynamicClientRegistrationRequest] :patched_o_auth2_dynamic_client_registration_request 
+    # @return [OAuth2DynamicClientRegistration]
+    def providers_oauth2_dcr_partial_update(pbm_uuid, opts = {})
+      data, _status_code, _headers = providers_oauth2_dcr_partial_update_with_http_info(pbm_uuid, opts)
+      data
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedOAuth2DynamicClientRegistrationRequest] :patched_o_auth2_dynamic_client_registration_request 
+    # @return [Array<(OAuth2DynamicClientRegistration, Integer, Hash)>] OAuth2DynamicClientRegistration data, response status code and response headers
+    def providers_oauth2_dcr_partial_update_with_http_info(pbm_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_partial_update ...'
+      end
+      # verify the required parameter 'pbm_uuid' is set
+      if @api_client.config.client_side_validation && pbm_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling ProvidersApi.providers_oauth2_dcr_partial_update"
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_o_auth2_dynamic_client_registration_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OAuth2DynamicClientRegistration'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @return [OAuth2DynamicClientRegistration]
+    def providers_oauth2_dcr_retrieve(pbm_uuid, opts = {})
+      data, _status_code, _headers = providers_oauth2_dcr_retrieve_with_http_info(pbm_uuid, opts)
+      data
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OAuth2DynamicClientRegistration, Integer, Hash)>] OAuth2DynamicClientRegistration data, response status code and response headers
+    def providers_oauth2_dcr_retrieve_with_http_info(pbm_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_retrieve ...'
+      end
+      # verify the required parameter 'pbm_uuid' is set
+      if @api_client.config.client_side_validation && pbm_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling ProvidersApi.providers_oauth2_dcr_retrieve"
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OAuth2DynamicClientRegistration'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param o_auth2_dynamic_client_registration_request [OAuth2DynamicClientRegistrationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [OAuth2DynamicClientRegistration]
+    def providers_oauth2_dcr_update(pbm_uuid, o_auth2_dynamic_client_registration_request, opts = {})
+      data, _status_code, _headers = providers_oauth2_dcr_update_with_http_info(pbm_uuid, o_auth2_dynamic_client_registration_request, opts)
+      data
+    end
+
+    # OAuth2 Dynamic Client Registration configuration ViewSet
+    # @param pbm_uuid [String] A UUID string identifying this OAuth2 Dynamic Client Registration.
+    # @param o_auth2_dynamic_client_registration_request [OAuth2DynamicClientRegistrationRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(OAuth2DynamicClientRegistration, Integer, Hash)>] OAuth2DynamicClientRegistration data, response status code and response headers
+    def providers_oauth2_dcr_update_with_http_info(pbm_uuid, o_auth2_dynamic_client_registration_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ProvidersApi.providers_oauth2_dcr_update ...'
+      end
+      # verify the required parameter 'pbm_uuid' is set
+      if @api_client.config.client_side_validation && pbm_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling ProvidersApi.providers_oauth2_dcr_update"
+      end
+      # verify the required parameter 'o_auth2_dynamic_client_registration_request' is set
+      if @api_client.config.client_side_validation && o_auth2_dynamic_client_registration_request.nil?
+        fail ArgumentError, "Missing the required parameter 'o_auth2_dynamic_client_registration_request' when calling ProvidersApi.providers_oauth2_dcr_update"
+      end
+      # resource path
+      local_var_path = '/providers/oauth2-dcr/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(o_auth2_dynamic_client_registration_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'OAuth2DynamicClientRegistration'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ProvidersApi.providers_oauth2_dcr_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ProvidersApi#providers_oauth2_dcr_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # OAuth2Provider Viewset
     # @param id [Integer] A unique integer value identifying this OAuth2/OpenID Provider.
     # @param [Hash] opts the optional parameters

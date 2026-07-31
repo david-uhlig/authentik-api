@@ -8,20 +8,14 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Response for the /user/me endpoint, returns the currently active user (as `user` property) and, if this user is being impersonated, the original user in the `original` property.
-  class SessionUser < ApiModelBase
-    attr_accessor :user
-
-    attr_accessor :original
-
-    attr_accessor :users
+  # Redirect returned after planning a user switch.
+  class UserSwitchResponse < ApiModelBase
+    attr_accessor :redirect
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'user' => :'user',
-        :'original' => :'original',
-        :'users' => :'users'
+        :'redirect' => :'redirect'
       }
     end
 
@@ -38,9 +32,7 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'user' => :'UserSelf',
-        :'original' => :'UserSelf',
-        :'users' => :'Array<UserSelf>'
+        :'redirect' => :'String'
       }
     end
 
@@ -54,34 +46,22 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::SessionUser` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::UserSwitchResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::SessionUser`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::UserSwitchResponse`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'user')
-        self.user = attributes[:'user']
+      if attributes.key?(:'redirect')
+        self.redirect = attributes[:'redirect']
       else
-        self.user = nil
-      end
-
-      if attributes.key?(:'original')
-        self.original = attributes[:'original']
-      end
-
-      if attributes.key?(:'users')
-        if (value = attributes[:'users']).is_a?(Array)
-          self.users = value
-        end
-      else
-        self.users = nil
+        self.redirect = nil
       end
     end
 
@@ -90,12 +70,8 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @user.nil?
-        invalid_properties.push('invalid value for "user", user cannot be nil.')
-      end
-
-      if @users.nil?
-        invalid_properties.push('invalid value for "users", users cannot be nil.')
+      if @redirect.nil?
+        invalid_properties.push('invalid value for "redirect", redirect cannot be nil.')
       end
 
       invalid_properties
@@ -105,29 +81,18 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @user.nil?
-      return false if @users.nil?
+      return false if @redirect.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] user Value to be assigned
-    def user=(user)
-      if user.nil?
-        fail ArgumentError, 'user cannot be nil'
+    # @param [Object] redirect Value to be assigned
+    def redirect=(redirect)
+      if redirect.nil?
+        fail ArgumentError, 'redirect cannot be nil'
       end
 
-      @user = user
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] users Value to be assigned
-    def users=(users)
-      if users.nil?
-        fail ArgumentError, 'users cannot be nil'
-      end
-
-      @users = users
+      @redirect = redirect
     end
 
     # Checks equality by comparing each attribute.
@@ -135,9 +100,7 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          user == o.user &&
-          original == o.original &&
-          users == o.users
+          redirect == o.redirect
     end
 
     # @see the `==` method
@@ -149,7 +112,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, original, users].hash
+      [redirect].hash
     end
 
     # Builds the object from hash

@@ -363,6 +363,7 @@ describe 'CoreApi' do
   # @option opts [String] :flow_request 
   # @option opts [String] :flow_unenrollment 
   # @option opts [String] :flow_user_settings 
+  # @option opts [String] :flow_user_switch 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
@@ -1009,6 +1010,18 @@ describe 'CoreApi' do
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'core_users_set_password_hash_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for core_users_switch_create
+  # Start browser user switching.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :_next 
+  # @option opts [UserSwitchRequest] :user_switch_request 
+  # @return [UserSwitchResponse]
+  describe 'core_users_switch_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
