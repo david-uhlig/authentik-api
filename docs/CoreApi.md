@@ -79,6 +79,7 @@ All URIs are relative to */api/v3*
 | [**core_users_service_account_create**](CoreApi.md#core_users_service_account_create) | **POST** /core/users/service_account/ |  |
 | [**core_users_set_password_create**](CoreApi.md#core_users_set_password_create) | **POST** /core/users/{id}/set_password/ |  |
 | [**core_users_set_password_hash_create**](CoreApi.md#core_users_set_password_hash_create) | **POST** /core/users/{id}/set_password_hash/ |  |
+| [**core_users_switch_create**](CoreApi.md#core_users_switch_create) | **POST** /core/users/switch/ |  |
 | [**core_users_update**](CoreApi.md#core_users_update) | **PUT** /core/users/{id}/ |  |
 | [**core_users_used_by_list**](CoreApi.md#core_users_used_by_list) | **GET** /core/users/{id}/used_by/ |  |
 
@@ -1942,6 +1943,7 @@ opts = {
   flow_request: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_unenrollment: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_user_settings: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  flow_user_switch: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -1996,6 +1998,7 @@ end
 | **flow_request** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -5626,6 +5629,80 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_users_switch_create
+
+> <UserSwitchResponse> core_users_switch_create(opts)
+
+
+
+Start browser user switching.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  _next: '_next_example', # String | 
+  user_switch_request: Authentik::Api::UserSwitchRequest.new # UserSwitchRequest | 
+}
+
+begin
+  
+  result = api_instance.core_users_switch_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_switch_create: #{e}"
+end
+```
+
+#### Using the core_users_switch_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserSwitchResponse>, Integer, Hash)> core_users_switch_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_switch_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserSwitchResponse>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_switch_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_next** | **String** |  | [optional] |
+| **user_switch_request** | [**UserSwitchRequest**](UserSwitchRequest.md) |  | [optional] |
+
+### Return type
+
+[**UserSwitchResponse**](UserSwitchResponse.md)
 
 ### Authorization
 

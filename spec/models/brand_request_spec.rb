@@ -69,6 +69,12 @@ describe Authentik::Api::BrandRequest do
     end
   end
 
+  describe 'test attribute "flow_user_switch"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "flow_invalidation"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

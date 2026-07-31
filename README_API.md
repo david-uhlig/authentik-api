@@ -254,6 +254,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CoreApi* | [**core_users_service_account_create**](docs/CoreApi.md#core_users_service_account_create) | **POST** /core/users/service_account/ | 
 *Authentik::Api::CoreApi* | [**core_users_set_password_create**](docs/CoreApi.md#core_users_set_password_create) | **POST** /core/users/{id}/set_password/ | 
 *Authentik::Api::CoreApi* | [**core_users_set_password_hash_create**](docs/CoreApi.md#core_users_set_password_hash_create) | **POST** /core/users/{id}/set_password_hash/ | 
+*Authentik::Api::CoreApi* | [**core_users_switch_create**](docs/CoreApi.md#core_users_switch_create) | **POST** /core/users/switch/ | 
 *Authentik::Api::CoreApi* | [**core_users_update**](docs/CoreApi.md#core_users_update) | **PUT** /core/users/{id}/ | 
 *Authentik::Api::CoreApi* | [**core_users_used_by_list**](docs/CoreApi.md#core_users_used_by_list) | **GET** /core/users/{id}/used_by/ | 
 *Authentik::Api::CryptoApi* | [**crypto_certificatekeypairs_create**](docs/CryptoApi.md#crypto_certificatekeypairs_create) | **POST** /crypto/certificatekeypairs/ | 
@@ -709,6 +710,12 @@ Class | Method | HTTP request | Description
 *Authentik::Api::ProvidersApi* | [**providers_microsoft_entra_users_retrieve**](docs/ProvidersApi.md#providers_microsoft_entra_users_retrieve) | **GET** /providers/microsoft_entra_users/{id}/ | 
 *Authentik::Api::ProvidersApi* | [**providers_microsoft_entra_users_used_by_list**](docs/ProvidersApi.md#providers_microsoft_entra_users_used_by_list) | **GET** /providers/microsoft_entra_users/{id}/used_by/ | 
 *Authentik::Api::ProvidersApi* | [**providers_oauth2_create**](docs/ProvidersApi.md#providers_oauth2_create) | **POST** /providers/oauth2/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_create**](docs/ProvidersApi.md#providers_oauth2_dcr_create) | **POST** /providers/oauth2-dcr/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_destroy**](docs/ProvidersApi.md#providers_oauth2_dcr_destroy) | **DELETE** /providers/oauth2-dcr/{pbm_uuid}/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_list**](docs/ProvidersApi.md#providers_oauth2_dcr_list) | **GET** /providers/oauth2-dcr/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_partial_update**](docs/ProvidersApi.md#providers_oauth2_dcr_partial_update) | **PATCH** /providers/oauth2-dcr/{pbm_uuid}/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_retrieve**](docs/ProvidersApi.md#providers_oauth2_dcr_retrieve) | **GET** /providers/oauth2-dcr/{pbm_uuid}/ | 
+*Authentik::Api::ProvidersApi* | [**providers_oauth2_dcr_update**](docs/ProvidersApi.md#providers_oauth2_dcr_update) | **PUT** /providers/oauth2-dcr/{pbm_uuid}/ | 
 *Authentik::Api::ProvidersApi* | [**providers_oauth2_destroy**](docs/ProvidersApi.md#providers_oauth2_destroy) | **DELETE** /providers/oauth2/{id}/ | 
 *Authentik::Api::ProvidersApi* | [**providers_oauth2_list**](docs/ProvidersApi.md#providers_oauth2_list) | **GET** /providers/oauth2/ | 
 *Authentik::Api::ProvidersApi* | [**providers_oauth2_partial_update**](docs/ProvidersApi.md#providers_oauth2_partial_update) | **PATCH** /providers/oauth2/{id}/ | 
@@ -1490,7 +1497,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::GoogleWorkspaceProviderUserRequest](docs/GoogleWorkspaceProviderUserRequest.md)
  - [Authentik::Api::GrantRequest](docs/GrantRequest.md)
  - [Authentik::Api::GrantRequestCreateRequest](docs/GrantRequestCreateRequest.md)
- - [Authentik::Api::GrantTypesEnum](docs/GrantTypesEnum.md)
+ - [Authentik::Api::GrantTypeEnum](docs/GrantTypeEnum.md)
  - [Authentik::Api::Group](docs/Group.md)
  - [Authentik::Api::GroupKerberosSourceConnection](docs/GroupKerberosSourceConnection.md)
  - [Authentik::Api::GroupKerberosSourceConnectionRequest](docs/GroupKerberosSourceConnectionRequest.md)
@@ -1600,6 +1607,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::NotificationTransportTest](docs/NotificationTransportTest.md)
  - [Authentik::Api::NotificationWebhookMapping](docs/NotificationWebhookMapping.md)
  - [Authentik::Api::NotificationWebhookMappingRequest](docs/NotificationWebhookMappingRequest.md)
+ - [Authentik::Api::OAuth2DynamicClientRegistration](docs/OAuth2DynamicClientRegistration.md)
+ - [Authentik::Api::OAuth2DynamicClientRegistrationRequest](docs/OAuth2DynamicClientRegistrationRequest.md)
  - [Authentik::Api::OAuth2Provider](docs/OAuth2Provider.md)
  - [Authentik::Api::OAuth2ProviderLogoutMethodEnum](docs/OAuth2ProviderLogoutMethodEnum.md)
  - [Authentik::Api::OAuth2ProviderRequest](docs/OAuth2ProviderRequest.md)
@@ -1710,6 +1719,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedNotificationRuleList](docs/PaginatedNotificationRuleList.md)
  - [Authentik::Api::PaginatedNotificationTransportList](docs/PaginatedNotificationTransportList.md)
  - [Authentik::Api::PaginatedNotificationWebhookMappingList](docs/PaginatedNotificationWebhookMappingList.md)
+ - [Authentik::Api::PaginatedOAuth2DynamicClientRegistrationList](docs/PaginatedOAuth2DynamicClientRegistrationList.md)
  - [Authentik::Api::PaginatedOAuth2ProviderList](docs/PaginatedOAuth2ProviderList.md)
  - [Authentik::Api::PaginatedOAuthSourceList](docs/PaginatedOAuthSourceList.md)
  - [Authentik::Api::PaginatedOAuthSourcePropertyMappingList](docs/PaginatedOAuthSourcePropertyMappingList.md)
@@ -1873,6 +1883,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedNotificationRuleRequest](docs/PatchedNotificationRuleRequest.md)
  - [Authentik::Api::PatchedNotificationTransportRequest](docs/PatchedNotificationTransportRequest.md)
  - [Authentik::Api::PatchedNotificationWebhookMappingRequest](docs/PatchedNotificationWebhookMappingRequest.md)
+ - [Authentik::Api::PatchedOAuth2DynamicClientRegistrationRequest](docs/PatchedOAuth2DynamicClientRegistrationRequest.md)
  - [Authentik::Api::PatchedOAuth2ProviderRequest](docs/PatchedOAuth2ProviderRequest.md)
  - [Authentik::Api::PatchedOAuthSourcePropertyMappingRequest](docs/PatchedOAuthSourcePropertyMappingRequest.md)
  - [Authentik::Api::PatchedOAuthSourceRequest](docs/PatchedOAuthSourceRequest.md)
@@ -2162,6 +2173,9 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::UserSetting](docs/UserSetting.md)
  - [Authentik::Api::UserSourceConnection](docs/UserSourceConnection.md)
  - [Authentik::Api::UserSourceConnectionRequest](docs/UserSourceConnectionRequest.md)
+ - [Authentik::Api::UserSwitchActionEnum](docs/UserSwitchActionEnum.md)
+ - [Authentik::Api::UserSwitchRequest](docs/UserSwitchRequest.md)
+ - [Authentik::Api::UserSwitchResponse](docs/UserSwitchResponse.md)
  - [Authentik::Api::UserTelegramSourceConnection](docs/UserTelegramSourceConnection.md)
  - [Authentik::Api::UserTelegramSourceConnectionRequest](docs/UserTelegramSourceConnectionRequest.md)
  - [Authentik::Api::UserTypeEnum](docs/UserTypeEnum.md)

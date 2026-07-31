@@ -648,6 +648,78 @@ describe 'ProvidersApi' do
     end
   end
 
+  # unit tests for providers_oauth2_dcr_create
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param o_auth2_dynamic_client_registration_request 
+  # @param [Hash] opts the optional parameters
+  # @return [OAuth2DynamicClientRegistration]
+  describe 'providers_oauth2_dcr_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_oauth2_dcr_destroy
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param pbm_uuid A UUID string identifying this OAuth2 Dynamic Client Registration.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'providers_oauth2_dcr_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_oauth2_dcr_list
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [Integer] :provider 
+  # @option opts [String] :search A search term.
+  # @return [PaginatedOAuth2DynamicClientRegistrationList]
+  describe 'providers_oauth2_dcr_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_oauth2_dcr_partial_update
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param pbm_uuid A UUID string identifying this OAuth2 Dynamic Client Registration.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedOAuth2DynamicClientRegistrationRequest] :patched_o_auth2_dynamic_client_registration_request 
+  # @return [OAuth2DynamicClientRegistration]
+  describe 'providers_oauth2_dcr_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_oauth2_dcr_retrieve
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param pbm_uuid A UUID string identifying this OAuth2 Dynamic Client Registration.
+  # @param [Hash] opts the optional parameters
+  # @return [OAuth2DynamicClientRegistration]
+  describe 'providers_oauth2_dcr_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for providers_oauth2_dcr_update
+  # OAuth2 Dynamic Client Registration configuration ViewSet
+  # @param pbm_uuid A UUID string identifying this OAuth2 Dynamic Client Registration.
+  # @param o_auth2_dynamic_client_registration_request 
+  # @param [Hash] opts the optional parameters
+  # @return [OAuth2DynamicClientRegistration]
+  describe 'providers_oauth2_dcr_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for providers_oauth2_destroy
   # OAuth2Provider Viewset
   # @param id A unique integer value identifying this OAuth2/OpenID Provider.

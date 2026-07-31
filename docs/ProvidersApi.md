@@ -55,6 +55,12 @@ All URIs are relative to */api/v3*
 | [**providers_microsoft_entra_users_retrieve**](ProvidersApi.md#providers_microsoft_entra_users_retrieve) | **GET** /providers/microsoft_entra_users/{id}/ |  |
 | [**providers_microsoft_entra_users_used_by_list**](ProvidersApi.md#providers_microsoft_entra_users_used_by_list) | **GET** /providers/microsoft_entra_users/{id}/used_by/ |  |
 | [**providers_oauth2_create**](ProvidersApi.md#providers_oauth2_create) | **POST** /providers/oauth2/ |  |
+| [**providers_oauth2_dcr_create**](ProvidersApi.md#providers_oauth2_dcr_create) | **POST** /providers/oauth2-dcr/ |  |
+| [**providers_oauth2_dcr_destroy**](ProvidersApi.md#providers_oauth2_dcr_destroy) | **DELETE** /providers/oauth2-dcr/{pbm_uuid}/ |  |
+| [**providers_oauth2_dcr_list**](ProvidersApi.md#providers_oauth2_dcr_list) | **GET** /providers/oauth2-dcr/ |  |
+| [**providers_oauth2_dcr_partial_update**](ProvidersApi.md#providers_oauth2_dcr_partial_update) | **PATCH** /providers/oauth2-dcr/{pbm_uuid}/ |  |
+| [**providers_oauth2_dcr_retrieve**](ProvidersApi.md#providers_oauth2_dcr_retrieve) | **GET** /providers/oauth2-dcr/{pbm_uuid}/ |  |
+| [**providers_oauth2_dcr_update**](ProvidersApi.md#providers_oauth2_dcr_update) | **PUT** /providers/oauth2-dcr/{pbm_uuid}/ |  |
 | [**providers_oauth2_destroy**](ProvidersApi.md#providers_oauth2_destroy) | **DELETE** /providers/oauth2/{id}/ |  |
 | [**providers_oauth2_list**](ProvidersApi.md#providers_oauth2_list) | **GET** /providers/oauth2/ |  |
 | [**providers_oauth2_partial_update**](ProvidersApi.md#providers_oauth2_partial_update) | **PATCH** /providers/oauth2/{id}/ |  |
@@ -3774,6 +3780,435 @@ end
 ### Return type
 
 [**OAuth2Provider**](OAuth2Provider.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_create
+
+> <OAuth2DynamicClientRegistration> providers_oauth2_dcr_create(o_auth2_dynamic_client_registration_request)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+o_auth2_dynamic_client_registration_request = Authentik::Api::OAuth2DynamicClientRegistrationRequest.new({provider: 37}) # OAuth2DynamicClientRegistrationRequest | 
+
+begin
+  
+  result = api_instance.providers_oauth2_dcr_create(o_auth2_dynamic_client_registration_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_create: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OAuth2DynamicClientRegistration>, Integer, Hash)> providers_oauth2_dcr_create_with_http_info(o_auth2_dynamic_client_registration_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_create_with_http_info(o_auth2_dynamic_client_registration_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OAuth2DynamicClientRegistration>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **o_auth2_dynamic_client_registration_request** | [**OAuth2DynamicClientRegistrationRequest**](OAuth2DynamicClientRegistrationRequest.md) |  |  |
+
+### Return type
+
+[**OAuth2DynamicClientRegistration**](OAuth2DynamicClientRegistration.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_destroy
+
+> providers_oauth2_dcr_destroy(pbm_uuid)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this OAuth2 Dynamic Client Registration.
+
+begin
+  
+  api_instance.providers_oauth2_dcr_destroy(pbm_uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_destroy: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> providers_oauth2_dcr_destroy_with_http_info(pbm_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_destroy_with_http_info(pbm_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbm_uuid** | **String** | A UUID string identifying this OAuth2 Dynamic Client Registration. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_list
+
+> <PaginatedOAuth2DynamicClientRegistrationList> providers_oauth2_dcr_list(opts)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+opts = {
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  provider: 56, # Integer | 
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.providers_oauth2_dcr_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_list: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedOAuth2DynamicClientRegistrationList>, Integer, Hash)> providers_oauth2_dcr_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedOAuth2DynamicClientRegistrationList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **provider** | **Integer** |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedOAuth2DynamicClientRegistrationList**](PaginatedOAuth2DynamicClientRegistrationList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_partial_update
+
+> <OAuth2DynamicClientRegistration> providers_oauth2_dcr_partial_update(pbm_uuid, opts)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this OAuth2 Dynamic Client Registration.
+opts = {
+  patched_o_auth2_dynamic_client_registration_request: Authentik::Api::PatchedOAuth2DynamicClientRegistrationRequest.new # PatchedOAuth2DynamicClientRegistrationRequest | 
+}
+
+begin
+  
+  result = api_instance.providers_oauth2_dcr_partial_update(pbm_uuid, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_partial_update: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OAuth2DynamicClientRegistration>, Integer, Hash)> providers_oauth2_dcr_partial_update_with_http_info(pbm_uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_partial_update_with_http_info(pbm_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OAuth2DynamicClientRegistration>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbm_uuid** | **String** | A UUID string identifying this OAuth2 Dynamic Client Registration. |  |
+| **patched_o_auth2_dynamic_client_registration_request** | [**PatchedOAuth2DynamicClientRegistrationRequest**](PatchedOAuth2DynamicClientRegistrationRequest.md) |  | [optional] |
+
+### Return type
+
+[**OAuth2DynamicClientRegistration**](OAuth2DynamicClientRegistration.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_retrieve
+
+> <OAuth2DynamicClientRegistration> providers_oauth2_dcr_retrieve(pbm_uuid)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this OAuth2 Dynamic Client Registration.
+
+begin
+  
+  result = api_instance.providers_oauth2_dcr_retrieve(pbm_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_retrieve: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OAuth2DynamicClientRegistration>, Integer, Hash)> providers_oauth2_dcr_retrieve_with_http_info(pbm_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_retrieve_with_http_info(pbm_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OAuth2DynamicClientRegistration>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbm_uuid** | **String** | A UUID string identifying this OAuth2 Dynamic Client Registration. |  |
+
+### Return type
+
+[**OAuth2DynamicClientRegistration**](OAuth2DynamicClientRegistration.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## providers_oauth2_dcr_update
+
+> <OAuth2DynamicClientRegistration> providers_oauth2_dcr_update(pbm_uuid, o_auth2_dynamic_client_registration_request)
+
+
+
+OAuth2 Dynamic Client Registration configuration ViewSet
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ProvidersApi.new
+pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this OAuth2 Dynamic Client Registration.
+o_auth2_dynamic_client_registration_request = Authentik::Api::OAuth2DynamicClientRegistrationRequest.new({provider: 37}) # OAuth2DynamicClientRegistrationRequest | 
+
+begin
+  
+  result = api_instance.providers_oauth2_dcr_update(pbm_uuid, o_auth2_dynamic_client_registration_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_update: #{e}"
+end
+```
+
+#### Using the providers_oauth2_dcr_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<OAuth2DynamicClientRegistration>, Integer, Hash)> providers_oauth2_dcr_update_with_http_info(pbm_uuid, o_auth2_dynamic_client_registration_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.providers_oauth2_dcr_update_with_http_info(pbm_uuid, o_auth2_dynamic_client_registration_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <OAuth2DynamicClientRegistration>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ProvidersApi->providers_oauth2_dcr_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **pbm_uuid** | **String** | A UUID string identifying this OAuth2 Dynamic Client Registration. |  |
+| **o_auth2_dynamic_client_registration_request** | [**OAuth2DynamicClientRegistrationRequest**](OAuth2DynamicClientRegistrationRequest.md) |  |  |
+
+### Return type
+
+[**OAuth2DynamicClientRegistration**](OAuth2DynamicClientRegistration.md)
 
 ### Authorization
 

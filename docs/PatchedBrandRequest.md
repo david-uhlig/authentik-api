@@ -12,6 +12,7 @@
 | **branding_custom_css** | **String** |  | [optional] |
 | **branding_default_flow_background** | **String** |  | [optional] |
 | **flow_authentication** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ instance = Authentik::Api::PatchedBrandRequest.new(
   branding_custom_css: null,
   branding_default_flow_background: null,
   flow_authentication: null,
+  flow_user_switch: null,
   flow_invalidation: null,
   flow_recovery: null,
   flow_unenrollment: null,

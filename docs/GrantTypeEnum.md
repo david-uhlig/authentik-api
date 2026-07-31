@@ -1,4 +1,4 @@
-# Authentik::Api::GrantTypesEnum
+# Authentik::Api::GrantTypeEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::GrantTypesEnum.new()
+instance = Authentik::Api::GrantTypeEnum.new()
 ```
 

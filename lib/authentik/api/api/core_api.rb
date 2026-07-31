@@ -1707,6 +1707,7 @@ module Authentik::Api
     # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
+    # @option opts [String] :flow_user_switch 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -1736,6 +1737,7 @@ module Authentik::Api
     # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
+    # @option opts [String] :flow_user_switch 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -1767,6 +1769,7 @@ module Authentik::Api
       query_params[:'flow_request'] = opts[:'flow_request'] if !opts[:'flow_request'].nil?
       query_params[:'flow_unenrollment'] = opts[:'flow_unenrollment'] if !opts[:'flow_unenrollment'].nil?
       query_params[:'flow_user_settings'] = opts[:'flow_user_settings'] if !opts[:'flow_user_settings'].nil?
+      query_params[:'flow_user_switch'] = opts[:'flow_user_switch'] if !opts[:'flow_user_switch'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
@@ -5214,6 +5217,71 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_users_set_password_hash_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Start browser user switching.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_next 
+    # @option opts [UserSwitchRequest] :user_switch_request 
+    # @return [UserSwitchResponse]
+    def core_users_switch_create(opts = {})
+      data, _status_code, _headers = core_users_switch_create_with_http_info(opts)
+      data
+    end
+
+    # Start browser user switching.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_next 
+    # @option opts [UserSwitchRequest] :user_switch_request 
+    # @return [Array<(UserSwitchResponse, Integer, Hash)>] UserSwitchResponse data, response status code and response headers
+    def core_users_switch_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_switch_create ...'
+      end
+      # resource path
+      local_var_path = '/core/users/switch/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'next'] = opts[:'_next'] if !opts[:'_next'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'user_switch_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserSwitchResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_switch_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_switch_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

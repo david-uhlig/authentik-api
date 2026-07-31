@@ -9,6 +9,7 @@
 | **name** | **String** | User&#39;s display name. |  |
 | **is_active** | **Boolean** | Designates whether this user should be treated as active. Unselect this instead of deleting accounts. | [readonly] |
 | **is_superuser** | **Boolean** |  | [readonly] |
+| **is_current** | **Boolean** | Return whether this user owns the current browser session. | [readonly] |
 | **groups** | [**Array&lt;UserSelfGroups&gt;**](UserSelfGroups.md) |  | [readonly] |
 | **roles** | [**Array&lt;UserSelfRoles&gt;**](UserSelfRoles.md) |  | [readonly] |
 | **email** | **String** |  | [optional] |
@@ -29,6 +30,7 @@ instance = Authentik::Api::UserSelf.new(
   name: null,
   is_active: null,
   is_superuser: null,
+  is_current: null,
   groups: null,
   roles: null,
   email: null,

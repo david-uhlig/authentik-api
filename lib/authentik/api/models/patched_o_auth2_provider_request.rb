@@ -140,7 +140,7 @@ module Authentik::Api
         :'invalidation_flow' => :'String',
         :'property_mappings' => :'Array<String>',
         :'client_type' => :'ClientTypeEnum',
-        :'grant_types' => :'Array<GrantTypesEnum>',
+        :'grant_types' => :'Array<GrantTypeEnum>',
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'access_code_validity' => :'String',
