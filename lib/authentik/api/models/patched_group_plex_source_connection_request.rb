@@ -10,8 +10,6 @@ require 'time'
 module Authentik::Api
   # Group Source Connection
   class PatchedGroupPlexSourceConnectionRequest < ApiModelBase
-    attr_accessor :group
-
     attr_accessor :source
 
     attr_accessor :identifier
@@ -19,7 +17,6 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'group' => :'group',
         :'source' => :'source',
         :'identifier' => :'identifier'
       }
@@ -38,7 +35,6 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'group' => :'String',
         :'source' => :'String',
         :'identifier' => :'String'
       }
@@ -65,10 +61,6 @@ module Authentik::Api
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'group')
-        self.group = attributes[:'group']
-      end
 
       if attributes.key?(:'source')
         self.source = attributes[:'source']
@@ -118,7 +110,6 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          group == o.group &&
           source == o.source &&
           identifier == o.identifier
     end
@@ -132,7 +123,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [group, source, identifier].hash
+      [source, identifier].hash
     end
 
     # Builds the object from hash

@@ -100,6 +100,9 @@ module Authentik::Api
     # When to trigger sync for outgoing providers
     attr_accessor :sync_outgoing_trigger_mode
 
+    # Sync group parentage/hierarchy from LDAP directories.
+    attr_accessor :sync_group_hierarchy
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -159,7 +162,8 @@ module Authentik::Api
         :'sync_parent_group' => :'sync_parent_group',
         :'lookup_groups_from_user' => :'lookup_groups_from_user',
         :'delete_not_found_objects' => :'delete_not_found_objects',
-        :'sync_outgoing_trigger_mode' => :'sync_outgoing_trigger_mode'
+        :'sync_outgoing_trigger_mode' => :'sync_outgoing_trigger_mode',
+        :'sync_group_hierarchy' => :'sync_group_hierarchy'
       }
     end
 
@@ -210,7 +214,8 @@ module Authentik::Api
         :'sync_parent_group' => :'String',
         :'lookup_groups_from_user' => :'Boolean',
         :'delete_not_found_objects' => :'Boolean',
-        :'sync_outgoing_trigger_mode' => :'SyncOutgoingTriggerModeEnum'
+        :'sync_outgoing_trigger_mode' => :'SyncOutgoingTriggerModeEnum',
+        :'sync_group_hierarchy' => :'Boolean'
       }
     end
 
@@ -383,6 +388,10 @@ module Authentik::Api
 
       if attributes.key?(:'sync_outgoing_trigger_mode')
         self.sync_outgoing_trigger_mode = attributes[:'sync_outgoing_trigger_mode']
+      end
+
+      if attributes.key?(:'sync_group_hierarchy')
+        self.sync_group_hierarchy = attributes[:'sync_group_hierarchy']
       end
     end
 
@@ -641,7 +650,8 @@ module Authentik::Api
           sync_parent_group == o.sync_parent_group &&
           lookup_groups_from_user == o.lookup_groups_from_user &&
           delete_not_found_objects == o.delete_not_found_objects &&
-          sync_outgoing_trigger_mode == o.sync_outgoing_trigger_mode
+          sync_outgoing_trigger_mode == o.sync_outgoing_trigger_mode &&
+          sync_group_hierarchy == o.sync_group_hierarchy
     end
 
     # @see the `==` method
@@ -653,7 +663,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, bind_password, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode].hash
+      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, bind_password, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode, sync_group_hierarchy].hash
     end
 
     # Builds the object from hash

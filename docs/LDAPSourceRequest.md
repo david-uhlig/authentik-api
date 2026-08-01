@@ -39,6 +39,7 @@
 | **lookup_groups_from_user** | **Boolean** | Lookup group membership based on a user attribute instead of a group attribute. This allows nested group resolution on systems like FreeIPA and Active Directory | [optional] |
 | **delete_not_found_objects** | **Boolean** | Delete authentik users and groups which were previously supplied by this source, but are now missing from it. | [optional] |
 | **sync_outgoing_trigger_mode** | [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] |
+| **sync_group_hierarchy** | **Boolean** | Sync group parentage/hierarchy from LDAP directories. | [optional] |
 
 ## Example
 
@@ -80,7 +81,8 @@ instance = Authentik::Api::LDAPSourceRequest.new(
   sync_parent_group: null,
   lookup_groups_from_user: null,
   delete_not_found_objects: null,
-  sync_outgoing_trigger_mode: null
+  sync_outgoing_trigger_mode: null,
+  sync_group_hierarchy: null
 )
 ```
 

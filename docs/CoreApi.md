@@ -8,6 +8,7 @@ All URIs are relative to */api/v3*
 | [**core_application_entitlements_destroy**](CoreApi.md#core_application_entitlements_destroy) | **DELETE** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_list**](CoreApi.md#core_application_entitlements_list) | **GET** /core/application_entitlements/ |  |
 | [**core_application_entitlements_partial_update**](CoreApi.md#core_application_entitlements_partial_update) | **PATCH** /core/application_entitlements/{pbm_uuid}/ |  |
+| [**core_application_entitlements_requestable_list**](CoreApi.md#core_application_entitlements_requestable_list) | **GET** /core/application_entitlements/requestable/ |  |
 | [**core_application_entitlements_retrieve**](CoreApi.md#core_application_entitlements_retrieve) | **GET** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_update**](CoreApi.md#core_application_entitlements_update) | **PUT** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_used_by_list**](CoreApi.md#core_application_entitlements_used_by_list) | **GET** /core/application_entitlements/{pbm_uuid}/used_by/ |  |
@@ -16,6 +17,7 @@ All URIs are relative to */api/v3*
 | [**core_applications_destroy**](CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ |  |
 | [**core_applications_list**](CoreApi.md#core_applications_list) | **GET** /core/applications/ |  |
 | [**core_applications_partial_update**](CoreApi.md#core_applications_partial_update) | **PATCH** /core/applications/{slug}/ |  |
+| [**core_applications_requestable_list**](CoreApi.md#core_applications_requestable_list) | **GET** /core/applications/requestable/ |  |
 | [**core_applications_retrieve**](CoreApi.md#core_applications_retrieve) | **GET** /core/applications/{slug}/ |  |
 | [**core_applications_update**](CoreApi.md#core_applications_update) | **PUT** /core/applications/{slug}/ |  |
 | [**core_applications_used_by_list**](CoreApi.md#core_applications_used_by_list) | **GET** /core/applications/{slug}/used_by/ |  |
@@ -41,6 +43,12 @@ All URIs are relative to */api/v3*
 | [**core_groups_retrieve**](CoreApi.md#core_groups_retrieve) | **GET** /core/groups/{group_uuid}/ |  |
 | [**core_groups_update**](CoreApi.md#core_groups_update) | **PUT** /core/groups/{group_uuid}/ |  |
 | [**core_groups_used_by_list**](CoreApi.md#core_groups_used_by_list) | **GET** /core/groups/{group_uuid}/used_by/ |  |
+| [**core_object_attributes_create**](CoreApi.md#core_object_attributes_create) | **POST** /core/object_attributes/ |  |
+| [**core_object_attributes_destroy**](CoreApi.md#core_object_attributes_destroy) | **DELETE** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_list**](CoreApi.md#core_object_attributes_list) | **GET** /core/object_attributes/ |  |
+| [**core_object_attributes_partial_update**](CoreApi.md#core_object_attributes_partial_update) | **PATCH** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_retrieve**](CoreApi.md#core_object_attributes_retrieve) | **GET** /core/object_attributes/{attribute_id}/ |  |
+| [**core_object_attributes_update**](CoreApi.md#core_object_attributes_update) | **PUT** /core/object_attributes/{attribute_id}/ |  |
 | [**core_tokens_create**](CoreApi.md#core_tokens_create) | **POST** /core/tokens/ |  |
 | [**core_tokens_destroy**](CoreApi.md#core_tokens_destroy) | **DELETE** /core/tokens/{identifier}/ |  |
 | [**core_tokens_list**](CoreApi.md#core_tokens_list) | **GET** /core/tokens/ |  |
@@ -71,6 +79,7 @@ All URIs are relative to */api/v3*
 | [**core_users_service_account_create**](CoreApi.md#core_users_service_account_create) | **POST** /core/users/service_account/ |  |
 | [**core_users_set_password_create**](CoreApi.md#core_users_set_password_create) | **POST** /core/users/{id}/set_password/ |  |
 | [**core_users_set_password_hash_create**](CoreApi.md#core_users_set_password_hash_create) | **POST** /core/users/{id}/set_password_hash/ |  |
+| [**core_users_switch_create**](CoreApi.md#core_users_switch_create) | **POST** /core/users/switch/ |  |
 | [**core_users_update**](CoreApi.md#core_users_update) | **PUT** /core/users/{id}/ |  |
 | [**core_users_used_by_list**](CoreApi.md#core_users_used_by_list) | **GET** /core/users/{id}/used_by/ |  |
 
@@ -365,6 +374,89 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_application_entitlements_requestable_list
+
+> <PaginatedRequestableTargetList> core_application_entitlements_requestable_list(opts)
+
+
+
+List application entitlements which the current user can request access to
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.core_application_entitlements_requestable_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_application_entitlements_requestable_list: #{e}"
+end
+```
+
+#### Using the core_application_entitlements_requestable_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedRequestableTargetList>, Integer, Hash)> core_application_entitlements_requestable_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_application_entitlements_requestable_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedRequestableTargetList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_application_entitlements_requestable_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **pbm_uuid** | **String** |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedRequestableTargetList**](PaginatedRequestableTargetList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -952,6 +1044,95 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_applications_requestable_list
+
+> <PaginatedApplicationList> core_applications_requestable_list(opts)
+
+
+
+List applications which the current user can request access to
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  group: 'group_example', # String | 
+  meta_description: 'meta_description_example', # String | 
+  meta_launch_url: 'meta_launch_url_example', # String | 
+  meta_publisher: 'meta_publisher_example', # String | 
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  slug: 'slug_example' # String | 
+}
+
+begin
+  
+  result = api_instance.core_applications_requestable_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_requestable_list: #{e}"
+end
+```
+
+#### Using the core_applications_requestable_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedApplicationList>, Integer, Hash)> core_applications_requestable_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_applications_requestable_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedApplicationList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_requestable_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **group** | **String** |  | [optional] |
+| **meta_description** | **String** |  | [optional] |
+| **meta_launch_url** | **String** |  | [optional] |
+| **meta_publisher** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **slug** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedApplicationList**](PaginatedApplicationList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -1759,8 +1940,10 @@ opts = {
   flow_invalidation: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_lockdown: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_recovery: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  flow_request: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_unenrollment: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   flow_user_settings: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  flow_user_switch: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -1812,8 +1995,10 @@ end
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -2133,6 +2318,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2178,7 +2364,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2203,6 +2389,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2247,7 +2434,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2272,6 +2459,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2315,7 +2503,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2340,6 +2528,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2410,7 +2599,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2435,6 +2624,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2483,7 +2673,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2508,6 +2698,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2553,7 +2744,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2578,6 +2769,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2632,7 +2824,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2657,6 +2849,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2703,7 +2896,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2728,6 +2921,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -2772,11 +2966,432 @@ end
 
 ### Authorization
 
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_create
+
+> <ObjectAttribute> core_object_attributes_create(object_attribute_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+object_attribute_request = Authentik::Api::ObjectAttributeRequest.new({object_type: 'object_type_example', key: 'key_example', label: 'label_example', type: Authentik::Api::ObjectAttributeTypeEnum::TEXT}) # ObjectAttributeRequest | 
+
+begin
+  
+  result = api_instance.core_object_attributes_create(object_attribute_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_create: #{e}"
+end
+```
+
+#### Using the core_object_attributes_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_create_with_http_info(object_attribute_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_create_with_http_info(object_attribute_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **object_attribute_request** | [**ObjectAttributeRequest**](ObjectAttributeRequest.md) |  |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_object_attributes_destroy
+
+> core_object_attributes_destroy(attribute_id)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+
+begin
+  
+  api_instance.core_object_attributes_destroy(attribute_id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_destroy: #{e}"
+end
+```
+
+#### Using the core_object_attributes_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> core_object_attributes_destroy_with_http_info(attribute_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_destroy_with_http_info(attribute_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
 [authentik](../README.md#authentik)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_list
+
+> <PaginatedObjectAttributeList> core_object_attributes_list(opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  enabled: true, # Boolean | 
+  object_type__app_label: 'object_type__app_label_example', # String | 
+  object_type__model: 'object_type__model_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.core_object_attributes_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_list: #{e}"
+end
+```
+
+#### Using the core_object_attributes_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedObjectAttributeList>, Integer, Hash)> core_object_attributes_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedObjectAttributeList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **enabled** | **Boolean** |  | [optional] |
+| **object_type__app_label** | **String** |  | [optional] |
+| **object_type__model** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedObjectAttributeList**](PaginatedObjectAttributeList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_partial_update
+
+> <ObjectAttribute> core_object_attributes_partial_update(attribute_id, opts)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+opts = {
+  patched_object_attribute_request: Authentik::Api::PatchedObjectAttributeRequest.new # PatchedObjectAttributeRequest | 
+}
+
+begin
+  
+  result = api_instance.core_object_attributes_partial_update(attribute_id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_partial_update: #{e}"
+end
+```
+
+#### Using the core_object_attributes_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_partial_update_with_http_info(attribute_id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_partial_update_with_http_info(attribute_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+| **patched_object_attribute_request** | [**PatchedObjectAttributeRequest**](PatchedObjectAttributeRequest.md) |  | [optional] |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_object_attributes_retrieve
+
+> <ObjectAttribute> core_object_attributes_retrieve(attribute_id)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+
+begin
+  
+  result = api_instance.core_object_attributes_retrieve(attribute_id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_retrieve: #{e}"
+end
+```
+
+#### Using the core_object_attributes_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_retrieve_with_http_info(attribute_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_retrieve_with_http_info(attribute_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## core_object_attributes_update
+
+> <ObjectAttribute> core_object_attributes_update(attribute_id, object_attribute_request)
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+attribute_id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Object Attribute.
+object_attribute_request = Authentik::Api::ObjectAttributeRequest.new({object_type: 'object_type_example', key: 'key_example', label: 'label_example', type: Authentik::Api::ObjectAttributeTypeEnum::TEXT}) # ObjectAttributeRequest | 
+
+begin
+  
+  result = api_instance.core_object_attributes_update(attribute_id, object_attribute_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_update: #{e}"
+end
+```
+
+#### Using the core_object_attributes_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ObjectAttribute>, Integer, Hash)> core_object_attributes_update_with_http_info(attribute_id, object_attribute_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_object_attributes_update_with_http_info(attribute_id, object_attribute_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ObjectAttribute>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_object_attributes_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **attribute_id** | **String** | A UUID string identifying this Object Attribute. |  |
+| **object_attribute_request** | [**ObjectAttributeRequest**](ObjectAttributeRequest.md) |  |  |
+
+### Return type
+
+[**ObjectAttribute**](ObjectAttribute.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -3802,6 +4417,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -3848,7 +4464,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -3873,6 +4489,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -3917,7 +4534,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -3942,6 +4559,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -3985,7 +4603,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4010,6 +4628,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4106,7 +4725,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4131,6 +4750,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4176,7 +4796,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4201,6 +4821,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4241,7 +4862,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4266,6 +4887,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4370,7 +4992,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4395,6 +5017,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4436,7 +5059,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4461,6 +5084,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4509,7 +5133,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4534,6 +5158,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4580,7 +5205,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4605,6 +5230,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4653,7 +5279,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4678,6 +5304,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4723,7 +5350,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4748,6 +5375,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4792,7 +5420,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4817,6 +5445,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4861,7 +5490,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4886,6 +5515,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -4931,7 +5561,7 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -4956,6 +5586,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5001,7 +5632,81 @@ nil (empty response body)
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## core_users_switch_create
+
+> <UserSwitchResponse> core_users_switch_create(opts)
+
+
+
+Start browser user switching.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  _next: '_next_example', # String | 
+  user_switch_request: Authentik::Api::UserSwitchRequest.new # UserSwitchRequest | 
+}
+
+begin
+  
+  result = api_instance.core_users_switch_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_switch_create: #{e}"
+end
+```
+
+#### Using the core_users_switch_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserSwitchResponse>, Integer, Hash)> core_users_switch_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_users_switch_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserSwitchResponse>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_users_switch_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **_next** | **String** |  | [optional] |
+| **user_switch_request** | [**UserSwitchRequest**](UserSwitchRequest.md) |  | [optional] |
+
+### Return type
+
+[**UserSwitchResponse**](UserSwitchResponse.md)
+
+### Authorization
+
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5026,6 +5731,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5072,7 +5778,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -5097,6 +5803,7 @@ require 'authentik-api'
 Authentik::Api.configure do |config|
   # Configure Bearer authorization: authentik
   config.access_token = 'YOUR_BEARER_TOKEN'
+
 end
 
 api_instance = Authentik::Api::CoreApi.new
@@ -5141,7 +5848,7 @@ end
 
 ### Authorization
 
-[authentik](../README.md#authentik)
+[authentik](../README.md#authentik), [authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 

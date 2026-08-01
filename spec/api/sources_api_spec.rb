@@ -838,6 +838,7 @@ describe 'SourcesApi' do
   # @option opts [String] :slug 
   # @option opts [Boolean] :sni 
   # @option opts [Boolean] :start_tls 
+  # @option opts [Boolean] :sync_group_hierarchy 
   # @option opts [Boolean] :sync_groups 
   # @option opts [String] :sync_parent_group 
   # @option opts [Boolean] :sync_users 
@@ -1168,7 +1169,7 @@ describe 'SourcesApi' do
   # @option opts [Boolean] :enabled 
   # @option opts [String] :enrollment_flow 
   # @option opts [Boolean] :force_authn 
-  # @option opts [String] :issuer 
+  # @option opts [String] :issuer_override 
   # @option opts [String] :managed 
   # @option opts [String] :name 
   # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 

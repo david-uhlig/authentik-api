@@ -23,6 +23,9 @@ module Authentik::Api
 
     attr_accessor :is_superuser
 
+    # Return whether this user owns the current browser session.
+    attr_accessor :is_current
+
     attr_accessor :groups
 
     attr_accessor :roles
@@ -72,6 +75,7 @@ module Authentik::Api
         :'name' => :'name',
         :'is_active' => :'is_active',
         :'is_superuser' => :'is_superuser',
+        :'is_current' => :'is_current',
         :'groups' => :'groups',
         :'roles' => :'roles',
         :'email' => :'email',
@@ -101,6 +105,7 @@ module Authentik::Api
         :'name' => :'String',
         :'is_active' => :'Boolean',
         :'is_superuser' => :'Boolean',
+        :'is_current' => :'Boolean',
         :'groups' => :'Array<UserSelfGroups>',
         :'roles' => :'Array<UserSelfRoles>',
         :'email' => :'String',
@@ -162,6 +167,12 @@ module Authentik::Api
         self.is_superuser = attributes[:'is_superuser']
       else
         self.is_superuser = nil
+      end
+
+      if attributes.key?(:'is_current')
+        self.is_current = attributes[:'is_current']
+      else
+        self.is_current = nil
       end
 
       if attributes.key?(:'groups')
@@ -251,6 +262,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "is_superuser", is_superuser cannot be nil.')
       end
 
+      if @is_current.nil?
+        invalid_properties.push('invalid value for "is_current", is_current cannot be nil.')
+      end
+
       if @groups.nil?
         invalid_properties.push('invalid value for "groups", groups cannot be nil.')
       end
@@ -293,6 +308,7 @@ module Authentik::Api
       return false if @name.nil?
       return false if @is_active.nil?
       return false if @is_superuser.nil?
+      return false if @is_current.nil?
       return false if @groups.nil?
       return false if @roles.nil?
       return false if !@email.nil? && @email.to_s.length > 254
@@ -360,6 +376,16 @@ module Authentik::Api
       end
 
       @is_superuser = is_superuser
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] is_current Value to be assigned
+    def is_current=(is_current)
+      if is_current.nil?
+        fail ArgumentError, 'is_current cannot be nil'
+      end
+
+      @is_current = is_current
     end
 
     # Custom attribute writer method with validation
@@ -446,6 +472,7 @@ module Authentik::Api
           name == o.name &&
           is_active == o.is_active &&
           is_superuser == o.is_superuser &&
+          is_current == o.is_current &&
           groups == o.groups &&
           roles == o.roles &&
           email == o.email &&
@@ -465,7 +492,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, is_superuser, groups, roles, email, avatar, uid, settings, type, system_permissions].hash
+      [pk, username, name, is_active, is_superuser, is_current, groups, roles, email, avatar, uid, settings, type, system_permissions].hash
     end
 
     # Builds the object from hash

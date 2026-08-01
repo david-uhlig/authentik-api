@@ -14,11 +14,14 @@ module Authentik::Api
 
     attr_accessor :original
 
+    attr_accessor :users
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'user' => :'user',
-        :'original' => :'original'
+        :'original' => :'original',
+        :'users' => :'users'
       }
     end
 
@@ -36,7 +39,8 @@ module Authentik::Api
     def self.openapi_types
       {
         :'user' => :'UserSelf',
-        :'original' => :'UserSelf'
+        :'original' => :'UserSelf',
+        :'users' => :'Array<UserSelf>'
       }
     end
 
@@ -71,6 +75,14 @@ module Authentik::Api
       if attributes.key?(:'original')
         self.original = attributes[:'original']
       end
+
+      if attributes.key?(:'users')
+        if (value = attributes[:'users']).is_a?(Array)
+          self.users = value
+        end
+      else
+        self.users = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -82,6 +94,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "user", user cannot be nil.')
       end
 
+      if @users.nil?
+        invalid_properties.push('invalid value for "users", users cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -90,6 +106,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @user.nil?
+      return false if @users.nil?
       true
     end
 
@@ -103,13 +120,24 @@ module Authentik::Api
       @user = user
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] users Value to be assigned
+    def users=(users)
+      if users.nil?
+        fail ArgumentError, 'users cannot be nil'
+      end
+
+      @users = users
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           user == o.user &&
-          original == o.original
+          original == o.original &&
+          users == o.users
     end
 
     # @see the `==` method
@@ -121,7 +149,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, original].hash
+      [user, original, users].hash
     end
 
     # Builds the object from hash

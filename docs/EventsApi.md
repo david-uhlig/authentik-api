@@ -691,7 +691,18 @@ end
 api_instance = Authentik::Api::EventsApi.new
 opts = {
   action: 'action_example', # String | 
-  top_n: 56 # Integer | 
+  actions: [Authentik::Api::EventActions::LOGIN], # Array<EventActions> | 
+  brand_name: 'brand_name_example', # String | Brand name
+  client_ip: 'client_ip_example', # String | 
+  context_authorized_app: 'context_authorized_app_example', # String | Context Authorized application
+  context_device: 'context_device_example', # String | Context Device Primary Key
+  context_model_app: 'context_model_app_example', # String | Context Model App
+  context_model_name: 'context_model_name_example', # String | Context Model Name
+  context_model_pk: 'context_model_pk_example', # String | Context Model Primary Key
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  search: 'search_example', # String | A search term.
+  top_n: 56, # Integer | 
+  username: 'username_example' # String | Username
 }
 
 begin
@@ -726,7 +737,18 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | **String** |  | [optional] |
-| **top_n** | **Integer** |  | [optional] |
+| **actions** | [**Array&lt;EventActions&gt;**](EventActions.md) |  | [optional] |
+| **brand_name** | **String** | Brand name | [optional] |
+| **client_ip** | **String** |  | [optional] |
+| **context_authorized_app** | **String** | Context Authorized application | [optional] |
+| **context_device** | **String** | Context Device Primary Key | [optional] |
+| **context_model_app** | **String** | Context Model App | [optional] |
+| **context_model_name** | **String** | Context Model Name | [optional] |
+| **context_model_pk** | **String** | Context Model Primary Key | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **top_n** | **Integer** |  | [optional][default to 15] |
+| **username** | **String** | Username | [optional] |
 
 ### Return type
 

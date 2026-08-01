@@ -914,7 +914,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this group source connection.
-group_source_connection_request = Authentik::Api::GroupSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupSourceConnectionRequest | 
+group_source_connection_request = Authentik::Api::GroupSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupSourceConnectionRequest | 
 
 begin
   
@@ -1053,7 +1053,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_kerberos_source_connection_request = Authentik::Api::GroupKerberosSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupKerberosSourceConnectionRequest | 
+group_kerberos_source_connection_request = Authentik::Api::GroupKerberosSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupKerberosSourceConnectionRequest | 
 
 begin
   
@@ -1414,7 +1414,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group Kerberos Source Connection.
-group_kerberos_source_connection_request = Authentik::Api::GroupKerberosSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupKerberosSourceConnectionRequest | 
+group_kerberos_source_connection_request = Authentik::Api::GroupKerberosSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupKerberosSourceConnectionRequest | 
 
 begin
   
@@ -1553,7 +1553,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
+group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
 
 begin
   
@@ -1914,7 +1914,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group LDAP Source Connection.
-group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
+group_ldap_source_connection_request = Authentik::Api::GroupLDAPSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupLDAPSourceConnectionRequest | 
 
 begin
   
@@ -2053,7 +2053,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_o_auth_source_connection_request = Authentik::Api::GroupOAuthSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupOAuthSourceConnectionRequest | 
+group_o_auth_source_connection_request = Authentik::Api::GroupOAuthSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupOAuthSourceConnectionRequest | 
 
 begin
   
@@ -2414,7 +2414,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group OAuth Source Connection.
-group_o_auth_source_connection_request = Authentik::Api::GroupOAuthSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupOAuthSourceConnectionRequest | 
+group_o_auth_source_connection_request = Authentik::Api::GroupOAuthSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupOAuthSourceConnectionRequest | 
 
 begin
   
@@ -2553,7 +2553,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_plex_source_connection_request = Authentik::Api::GroupPlexSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupPlexSourceConnectionRequest | 
+group_plex_source_connection_request = Authentik::Api::GroupPlexSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupPlexSourceConnectionRequest | 
 
 begin
   
@@ -2914,7 +2914,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group Plex Source Connection.
-group_plex_source_connection_request = Authentik::Api::GroupPlexSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupPlexSourceConnectionRequest | 
+group_plex_source_connection_request = Authentik::Api::GroupPlexSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupPlexSourceConnectionRequest | 
 
 begin
   
@@ -3053,7 +3053,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_saml_source_connection_request = Authentik::Api::GroupSAMLSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupSAMLSourceConnectionRequest | 
+group_saml_source_connection_request = Authentik::Api::GroupSAMLSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupSAMLSourceConnectionRequest | 
 
 begin
   
@@ -3414,7 +3414,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group SAML Source Connection.
-group_saml_source_connection_request = Authentik::Api::GroupSAMLSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupSAMLSourceConnectionRequest | 
+group_saml_source_connection_request = Authentik::Api::GroupSAMLSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupSAMLSourceConnectionRequest | 
 
 begin
   
@@ -3553,7 +3553,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
+group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
 
 begin
   
@@ -3914,7 +3914,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this Group Telegram Source Connection.
-group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({group: 'group_example', source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
+group_telegram_source_connection_request = Authentik::Api::GroupTelegramSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # GroupTelegramSourceConnectionRequest | 
 
 begin
   
@@ -4871,6 +4871,7 @@ opts = {
   slug: 'slug_example', # String | 
   sni: true, # Boolean | 
   start_tls: true, # Boolean | 
+  sync_group_hierarchy: true, # Boolean | 
   sync_groups: true, # Boolean | 
   sync_parent_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   sync_users: true, # Boolean | 
@@ -4935,6 +4936,7 @@ end
 | **slug** | **String** |  | [optional] |
 | **sni** | **Boolean** |  | [optional] |
 | **start_tls** | **Boolean** |  | [optional] |
+| **sync_group_hierarchy** | **Boolean** |  | [optional] |
 | **sync_groups** | **Boolean** |  | [optional] |
 | **sync_parent_group** | **String** |  | [optional] |
 | **sync_users** | **Boolean** |  | [optional] |
@@ -5328,7 +5330,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::APPLE, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
+o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::OPENIDCONNECT, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
 
 begin
   
@@ -5790,7 +5792,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 slug = 'slug_example' # String | 
-o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::APPLE, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
+o_auth_source_request = Authentik::Api::OAuthSourceRequest.new({name: 'name_example', slug: 'slug_example', provider_type: Authentik::Api::ProviderTypeEnum::OPENIDCONNECT, consumer_key: 'consumer_key_example', consumer_secret: 'consumer_secret_example'}) # OAuthSourceRequest | 
 
 begin
   
@@ -6737,7 +6739,7 @@ opts = {
   enabled: true, # Boolean | 
   enrollment_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   force_authn: true, # Boolean | 
-  issuer: 'issuer_example', # String | 
+  issuer_override: 'issuer_override_example', # String | 
   managed: 'managed_example', # String | 
   name: 'name_example', # String | 
   name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
@@ -6798,7 +6800,7 @@ end
 | **enabled** | **Boolean** |  | [optional] |
 | **enrollment_flow** | **String** |  | [optional] |
 | **force_authn** | **Boolean** |  | [optional] |
-| **issuer** | **String** |  | [optional] |
+| **issuer_override** | **String** |  | [optional] |
 | **managed** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
@@ -9592,7 +9594,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this user source connection.
-user_source_connection_request = Authentik::Api::UserSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserSourceConnectionRequest | 
+user_source_connection_request = Authentik::Api::UserSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserSourceConnectionRequest | 
 
 begin
   
@@ -9731,7 +9733,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_kerberos_source_connection_request = Authentik::Api::UserKerberosSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserKerberosSourceConnectionRequest | 
+user_kerberos_source_connection_request = Authentik::Api::UserKerberosSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserKerberosSourceConnectionRequest | 
 
 begin
   
@@ -10092,7 +10094,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User Kerberos Source Connection.
-user_kerberos_source_connection_request = Authentik::Api::UserKerberosSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserKerberosSourceConnectionRequest | 
+user_kerberos_source_connection_request = Authentik::Api::UserKerberosSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserKerberosSourceConnectionRequest | 
 
 begin
   
@@ -10231,7 +10233,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
+user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
 
 begin
   
@@ -10592,7 +10594,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User LDAP Source Connection.
-user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
+user_ldap_source_connection_request = Authentik::Api::UserLDAPSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserLDAPSourceConnectionRequest | 
 
 begin
   
@@ -10731,7 +10733,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_o_auth_source_connection_request = Authentik::Api::UserOAuthSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserOAuthSourceConnectionRequest | 
+user_o_auth_source_connection_request = Authentik::Api::UserOAuthSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserOAuthSourceConnectionRequest | 
 
 begin
   
@@ -11092,7 +11094,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User OAuth Source Connection.
-user_o_auth_source_connection_request = Authentik::Api::UserOAuthSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserOAuthSourceConnectionRequest | 
+user_o_auth_source_connection_request = Authentik::Api::UserOAuthSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserOAuthSourceConnectionRequest | 
 
 begin
   
@@ -11231,7 +11233,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_plex_source_connection_request = Authentik::Api::UserPlexSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example', plex_token: 'plex_token_example'}) # UserPlexSourceConnectionRequest | 
+user_plex_source_connection_request = Authentik::Api::UserPlexSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example', plex_token: 'plex_token_example'}) # UserPlexSourceConnectionRequest | 
 
 begin
   
@@ -11592,7 +11594,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User Plex Source Connection.
-user_plex_source_connection_request = Authentik::Api::UserPlexSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example', plex_token: 'plex_token_example'}) # UserPlexSourceConnectionRequest | 
+user_plex_source_connection_request = Authentik::Api::UserPlexSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example', plex_token: 'plex_token_example'}) # UserPlexSourceConnectionRequest | 
 
 begin
   
@@ -11731,7 +11733,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_saml_source_connection_request = Authentik::Api::UserSAMLSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserSAMLSourceConnectionRequest | 
+user_saml_source_connection_request = Authentik::Api::UserSAMLSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserSAMLSourceConnectionRequest | 
 
 begin
   
@@ -12092,7 +12094,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User SAML Source Connection.
-user_saml_source_connection_request = Authentik::Api::UserSAMLSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserSAMLSourceConnectionRequest | 
+user_saml_source_connection_request = Authentik::Api::UserSAMLSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserSAMLSourceConnectionRequest | 
 
 begin
   
@@ -12231,7 +12233,7 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::SourcesApi.new
-user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
+user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
 
 begin
   
@@ -12592,7 +12594,7 @@ end
 
 api_instance = Authentik::Api::SourcesApi.new
 id = 56 # Integer | A unique integer value identifying this User Telegram Source Connection.
-user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({user: 37, source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
+user_telegram_source_connection_request = Authentik::Api::UserTelegramSourceConnectionRequest.new({source: 'source_example', identifier: 'identifier_example'}) # UserTelegramSourceConnectionRequest | 
 
 begin
   

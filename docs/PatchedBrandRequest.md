@@ -12,12 +12,14 @@
 | **branding_custom_css** | **String** |  | [optional] |
 | **branding_default_flow_background** | **String** |  | [optional] |
 | **flow_authentication** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **default_application** | **String** | When set, external users will be redirected to this application after authenticating. | [optional] |
 | **web_certificate** | **String** | Web Certificate used by the authentik Core webserver. | [optional] |
 | **client_certificates** | **Array&lt;String&gt;** | Certificates used for client authentication. | [optional] |
@@ -37,12 +39,14 @@ instance = Authentik::Api::PatchedBrandRequest.new(
   branding_custom_css: null,
   branding_default_flow_background: null,
   flow_authentication: null,
+  flow_user_switch: null,
   flow_invalidation: null,
   flow_recovery: null,
   flow_unenrollment: null,
   flow_user_settings: null,
   flow_device_code: null,
   flow_lockdown: null,
+  flow_request: null,
   default_application: null,
   web_certificate: null,
   client_certificates: null,

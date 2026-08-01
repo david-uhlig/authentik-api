@@ -460,22 +460,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "provider_type", provider_type cannot be nil.')
       end
 
-      if !@request_token_url.nil? && @request_token_url.to_s.length > 255
-        invalid_properties.push('invalid value for "request_token_url", the character length must be smaller than or equal to 255.')
-      end
-
-      if !@authorization_url.nil? && @authorization_url.to_s.length > 255
-        invalid_properties.push('invalid value for "authorization_url", the character length must be smaller than or equal to 255.')
-      end
-
-      if !@access_token_url.nil? && @access_token_url.to_s.length > 255
-        invalid_properties.push('invalid value for "access_token_url", the character length must be smaller than or equal to 255.')
-      end
-
-      if !@profile_url.nil? && @profile_url.to_s.length > 255
-        invalid_properties.push('invalid value for "profile_url", the character length must be smaller than or equal to 255.')
-      end
-
       if @consumer_key.nil?
         invalid_properties.push('invalid value for "consumer_key", consumer_key cannot be nil.')
       end
@@ -504,10 +488,6 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @provider_type.nil?
-      return false if !@request_token_url.nil? && @request_token_url.to_s.length > 255
-      return false if !@authorization_url.nil? && @authorization_url.to_s.length > 255
-      return false if !@access_token_url.nil? && @access_token_url.to_s.length > 255
-      return false if !@profile_url.nil? && @profile_url.to_s.length > 255
       return false if @consumer_key.nil?
       return false if @callback_url.nil?
       return false if @type.nil?
@@ -597,46 +577,6 @@ module Authentik::Api
       end
 
       @provider_type = provider_type
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] request_token_url Value to be assigned
-    def request_token_url=(request_token_url)
-      if !request_token_url.nil? && request_token_url.to_s.length > 255
-        fail ArgumentError, 'invalid value for "request_token_url", the character length must be smaller than or equal to 255.'
-      end
-
-      @request_token_url = request_token_url
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] authorization_url Value to be assigned
-    def authorization_url=(authorization_url)
-      if !authorization_url.nil? && authorization_url.to_s.length > 255
-        fail ArgumentError, 'invalid value for "authorization_url", the character length must be smaller than or equal to 255.'
-      end
-
-      @authorization_url = authorization_url
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] access_token_url Value to be assigned
-    def access_token_url=(access_token_url)
-      if !access_token_url.nil? && access_token_url.to_s.length > 255
-        fail ArgumentError, 'invalid value for "access_token_url", the character length must be smaller than or equal to 255.'
-      end
-
-      @access_token_url = access_token_url
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] profile_url Value to be assigned
-    def profile_url=(profile_url)
-      if !profile_url.nil? && profile_url.to_s.length > 255
-        fail ArgumentError, 'invalid value for "profile_url", the character length must be smaller than or equal to 255.'
-      end
-
-      @profile_url = profile_url
     end
 
     # Custom attribute writer method with validation

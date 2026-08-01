@@ -30,6 +30,8 @@ module Authentik::Api
 
     attr_accessor :flow_authentication
 
+    attr_accessor :flow_user_switch
+
     attr_accessor :flow_invalidation
 
     attr_accessor :flow_recovery
@@ -41,6 +43,8 @@ module Authentik::Api
     attr_accessor :flow_device_code
 
     attr_accessor :flow_lockdown
+
+    attr_accessor :flow_request
 
     attr_accessor :default_locale
 
@@ -81,12 +85,14 @@ module Authentik::Api
         :'ui_footer_links' => :'ui_footer_links',
         :'ui_theme' => :'ui_theme',
         :'flow_authentication' => :'flow_authentication',
+        :'flow_user_switch' => :'flow_user_switch',
         :'flow_invalidation' => :'flow_invalidation',
         :'flow_recovery' => :'flow_recovery',
         :'flow_unenrollment' => :'flow_unenrollment',
         :'flow_user_settings' => :'flow_user_settings',
         :'flow_device_code' => :'flow_device_code',
         :'flow_lockdown' => :'flow_lockdown',
+        :'flow_request' => :'flow_request',
         :'default_locale' => :'default_locale',
         :'flags' => :'flags'
       }
@@ -115,12 +121,14 @@ module Authentik::Api
         :'ui_footer_links' => :'Array<FooterLink>',
         :'ui_theme' => :'UiThemeEnum',
         :'flow_authentication' => :'String',
+        :'flow_user_switch' => :'String',
         :'flow_invalidation' => :'String',
         :'flow_recovery' => :'String',
         :'flow_unenrollment' => :'String',
         :'flow_user_settings' => :'String',
         :'flow_device_code' => :'String',
         :'flow_lockdown' => :'String',
+        :'flow_request' => :'String',
         :'default_locale' => :'String',
         :'flags' => :'CurrentBrandFlags'
       }
@@ -210,6 +218,10 @@ module Authentik::Api
         self.flow_authentication = attributes[:'flow_authentication']
       end
 
+      if attributes.key?(:'flow_user_switch')
+        self.flow_user_switch = attributes[:'flow_user_switch']
+      end
+
       if attributes.key?(:'flow_invalidation')
         self.flow_invalidation = attributes[:'flow_invalidation']
       end
@@ -232,6 +244,10 @@ module Authentik::Api
 
       if attributes.key?(:'flow_lockdown')
         self.flow_lockdown = attributes[:'flow_lockdown']
+      end
+
+      if attributes.key?(:'flow_request')
+        self.flow_request = attributes[:'flow_request']
       end
 
       if attributes.key?(:'default_locale')
@@ -412,12 +428,14 @@ module Authentik::Api
           ui_footer_links == o.ui_footer_links &&
           ui_theme == o.ui_theme &&
           flow_authentication == o.flow_authentication &&
+          flow_user_switch == o.flow_user_switch &&
           flow_invalidation == o.flow_invalidation &&
           flow_recovery == o.flow_recovery &&
           flow_unenrollment == o.flow_unenrollment &&
           flow_user_settings == o.flow_user_settings &&
           flow_device_code == o.flow_device_code &&
           flow_lockdown == o.flow_lockdown &&
+          flow_request == o.flow_request &&
           default_locale == o.default_locale &&
           flags == o.flags
     end
@@ -431,7 +449,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, default_locale, flags].hash
+      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_locale, flags].hash
     end
 
     # Builds the object from hash

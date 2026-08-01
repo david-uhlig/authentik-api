@@ -336,6 +336,7 @@ module Authentik::Api
 
     # Read-only view list all installed models
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :filter_has_attributes 
     # @return [Array<App>]
     def admin_models_list(opts = {})
       data, _status_code, _headers = admin_models_list_with_http_info(opts)
@@ -344,6 +345,7 @@ module Authentik::Api
 
     # Read-only view list all installed models
     # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :filter_has_attributes 
     # @return [Array<(Array<App>, Integer, Hash)>] Array<App> data, response status code and response headers
     def admin_models_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -354,6 +356,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'filter_has_attributes'] = opts[:'filter_has_attributes'] if !opts[:'filter_has_attributes'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

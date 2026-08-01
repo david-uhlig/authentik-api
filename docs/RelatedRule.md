@@ -6,9 +6,9 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **name** | **String** |  |  |
-| **reviewer_groups** | [**Array&lt;ReviewerGroup&gt;**](ReviewerGroup.md) |  | [readonly] |
+| **reviewer_groups** | [**Array&lt;PartialGroup&gt;**](PartialGroup.md) |  | [readonly] |
 | **min_reviewers** | **Integer** |  | [readonly] |
-| **reviewers** | [**Array&lt;ReviewerUser&gt;**](ReviewerUser.md) |  | [readonly] |
+| **reviewers** | [**Array&lt;PartialUser&gt;**](PartialUser.md) |  | [readonly] |
 
 ## Example
 

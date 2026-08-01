@@ -4317,6 +4317,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
+    # @option opts [Boolean] :sync_group_hierarchy 
     # @option opts [Boolean] :sync_groups 
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
@@ -4356,6 +4357,7 @@ module Authentik::Api
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
+    # @option opts [Boolean] :sync_group_hierarchy 
     # @option opts [Boolean] :sync_groups 
     # @option opts [String] :sync_parent_group 
     # @option opts [Boolean] :sync_users 
@@ -4397,6 +4399,7 @@ module Authentik::Api
       query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
       query_params[:'sni'] = opts[:'sni'] if !opts[:'sni'].nil?
       query_params[:'start_tls'] = opts[:'start_tls'] if !opts[:'start_tls'].nil?
+      query_params[:'sync_group_hierarchy'] = opts[:'sync_group_hierarchy'] if !opts[:'sync_group_hierarchy'].nil?
       query_params[:'sync_groups'] = opts[:'sync_groups'] if !opts[:'sync_groups'].nil?
       query_params[:'sync_parent_group'] = opts[:'sync_parent_group'] if !opts[:'sync_parent_group'].nil?
       query_params[:'sync_users'] = opts[:'sync_users'] if !opts[:'sync_users'].nil?
@@ -6088,7 +6091,7 @@ module Authentik::Api
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [Boolean] :force_authn 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
@@ -6124,7 +6127,7 @@ module Authentik::Api
     # @option opts [Boolean] :enabled 
     # @option opts [String] :enrollment_flow 
     # @option opts [Boolean] :force_authn 
-    # @option opts [String] :issuer 
+    # @option opts [String] :issuer_override 
     # @option opts [String] :managed 
     # @option opts [String] :name 
     # @option opts [SAMLNameIDPolicyEnum] :name_id_policy 
@@ -6162,7 +6165,7 @@ module Authentik::Api
       query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
       query_params[:'enrollment_flow'] = opts[:'enrollment_flow'] if !opts[:'enrollment_flow'].nil?
       query_params[:'force_authn'] = opts[:'force_authn'] if !opts[:'force_authn'].nil?
-      query_params[:'issuer'] = opts[:'issuer'] if !opts[:'issuer'].nil?
+      query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
       query_params[:'managed'] = opts[:'managed'] if !opts[:'managed'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_policy'] = opts[:'name_id_policy'] if !opts[:'name_id_policy'].nil?

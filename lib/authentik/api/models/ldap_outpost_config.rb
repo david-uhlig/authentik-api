@@ -22,7 +22,7 @@ module Authentik::Api
     # Get slug for unbind flow, defaulting to brand's default flow.
     attr_accessor :unbind_flow_slug
 
-    # Prioritise backchannel slug over direct application slug
+    # Prioritize backchannel slug over direct application slug
     attr_accessor :application_slug
 
     attr_accessor :certificate

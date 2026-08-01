@@ -39,6 +39,10 @@ module Authentik::Api
     # Result if the Policy execution fails.
     attr_accessor :failure_result
 
+    attr_accessor :expires
+
+    attr_accessor :expiring
+
     attr_accessor :is_primary
 
     attr_accessor :connector
@@ -61,6 +65,8 @@ module Authentik::Api
         :'order' => :'order',
         :'timeout' => :'timeout',
         :'failure_result' => :'failure_result',
+        :'expires' => :'expires',
+        :'expiring' => :'expiring',
         :'is_primary' => :'is_primary',
         :'connector' => :'connector',
         :'connector_obj' => :'connector_obj'
@@ -93,6 +99,8 @@ module Authentik::Api
         :'order' => :'Integer',
         :'timeout' => :'Integer',
         :'failure_result' => :'Boolean',
+        :'expires' => :'Time',
+        :'expiring' => :'Boolean',
         :'is_primary' => :'Boolean',
         :'connector' => :'String',
         :'connector_obj' => :'Connector'
@@ -108,6 +116,7 @@ module Authentik::Api
         :'policy_obj',
         :'group_obj',
         :'user_obj',
+        :'expires',
         :'connector',
       ])
     end
@@ -192,6 +201,18 @@ module Authentik::Api
         self.failure_result = attributes[:'failure_result']
       end
 
+      if attributes.key?(:'expires')
+        self.expires = attributes[:'expires']
+      else
+        self.expires = nil
+      end
+
+      if attributes.key?(:'expiring')
+        self.expiring = attributes[:'expiring']
+      else
+        self.expiring = nil
+      end
+
       if attributes.key?(:'is_primary')
         self.is_primary = attributes[:'is_primary']
       end
@@ -242,6 +263,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "timeout", must be greater than or equal to 0.')
       end
 
+      if @expiring.nil?
+        invalid_properties.push('invalid value for "expiring", expiring cannot be nil.')
+      end
+
       if @connector_obj.nil?
         invalid_properties.push('invalid value for "connector_obj", connector_obj cannot be nil.')
       end
@@ -260,6 +285,7 @@ module Authentik::Api
       return false if @order < -2147483648
       return false if !@timeout.nil? && @timeout > 2147483647
       return false if !@timeout.nil? && @timeout < 0
+      return false if @expiring.nil?
       return false if @connector_obj.nil?
       true
     end
@@ -321,6 +347,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] expiring Value to be assigned
+    def expiring=(expiring)
+      if expiring.nil?
+        fail ArgumentError, 'expiring cannot be nil'
+      end
+
+      @expiring = expiring
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] connector_obj Value to be assigned
     def connector_obj=(connector_obj)
       if connector_obj.nil?
@@ -348,6 +384,8 @@ module Authentik::Api
           order == o.order &&
           timeout == o.timeout &&
           failure_result == o.failure_result &&
+          expires == o.expires &&
+          expiring == o.expiring &&
           is_primary == o.is_primary &&
           connector == o.connector &&
           connector_obj == o.connector_obj
@@ -362,7 +400,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result, is_primary, connector, connector_obj].hash
+      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result, expires, expiring, is_primary, connector, connector_obj].hash
     end
 
     # Builds the object from hash
