@@ -12,7 +12,6 @@
 | **resident_key_requirement** | [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] |
 | **hints** | [**Array&lt;WebAuthnHintEnum&gt;**](WebAuthnHintEnum.md) |  | [optional] |
 | **device_type_restrictions** | **Array&lt;String&gt;** |  | [optional] |
-| **prevent_duplicate_devices** | **Boolean** | When enabled, a given device can only be registered once. | [optional] |
 | **max_attempts** | **Integer** |  | [optional] |
 
 ## Example
@@ -29,7 +28,6 @@ instance = Authentik::Api::PatchedAuthenticatorWebAuthnStageRequest.new(
   resident_key_requirement: null,
   hints: null,
   device_type_restrictions: null,
-  prevent_duplicate_devices: null,
   max_attempts: null
 )
 ```

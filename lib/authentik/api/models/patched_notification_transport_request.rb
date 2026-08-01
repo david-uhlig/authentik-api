@@ -16,7 +16,7 @@ module Authentik::Api
 
     attr_accessor :webhook_url
 
-    # When set, the selected ceritifcate is used to validate the certificate of the webhook server.
+    # When set, the selected certificate is used to validate the certificate of the webhook server.
     attr_accessor :webhook_ca
 
     # Customize the body of the request. Mapping should return data that is JSON-serializable.

@@ -284,6 +284,82 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # List application entitlements which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :app 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :pbm_uuid 
+    # @option opts [String] :search A search term.
+    # @return [PaginatedRequestableTargetList]
+    def core_application_entitlements_requestable_list(opts = {})
+      data, _status_code, _headers = core_application_entitlements_requestable_list_with_http_info(opts)
+      data
+    end
+
+    # List application entitlements which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :app 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :pbm_uuid 
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedRequestableTargetList, Integer, Hash)>] PaginatedRequestableTargetList data, response status code and response headers
+    def core_application_entitlements_requestable_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_application_entitlements_requestable_list ...'
+      end
+      # resource path
+      local_var_path = '/core/application_entitlements/requestable/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'pbm_uuid'] = opts[:'pbm_uuid'] if !opts[:'pbm_uuid'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedRequestableTargetList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_application_entitlements_requestable_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_application_entitlements_requestable_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # ApplicationEntitlement Viewset
     # @param pbm_uuid [String] A UUID string identifying this Application Entitlement.
     # @param [Hash] opts the optional parameters
@@ -827,6 +903,91 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_applications_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # List applications which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [PaginatedApplicationList]
+    def core_applications_requestable_list(opts = {})
+      data, _status_code, _headers = core_applications_requestable_list_with_http_info(opts)
+      data
+    end
+
+    # List applications which the current user can request access to
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
+    def core_applications_requestable_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_requestable_list ...'
+      end
+      # resource path
+      local_var_path = '/core/applications/requestable/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
+      query_params[:'meta_description'] = opts[:'meta_description'] if !opts[:'meta_description'].nil?
+      query_params[:'meta_launch_url'] = opts[:'meta_launch_url'] if !opts[:'meta_launch_url'].nil?
+      query_params[:'meta_publisher'] = opts[:'meta_publisher'] if !opts[:'meta_publisher'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedApplicationList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_applications_requestable_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_applications_requestable_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -1543,8 +1704,10 @@ module Authentik::Api
     # @option opts [String] :flow_invalidation 
     # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
+    # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
+    # @option opts [String] :flow_user_switch 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -1571,8 +1734,10 @@ module Authentik::Api
     # @option opts [String] :flow_invalidation 
     # @option opts [String] :flow_lockdown 
     # @option opts [String] :flow_recovery 
+    # @option opts [String] :flow_request 
     # @option opts [String] :flow_unenrollment 
     # @option opts [String] :flow_user_settings 
+    # @option opts [String] :flow_user_switch 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -1601,8 +1766,10 @@ module Authentik::Api
       query_params[:'flow_invalidation'] = opts[:'flow_invalidation'] if !opts[:'flow_invalidation'].nil?
       query_params[:'flow_lockdown'] = opts[:'flow_lockdown'] if !opts[:'flow_lockdown'].nil?
       query_params[:'flow_recovery'] = opts[:'flow_recovery'] if !opts[:'flow_recovery'].nil?
+      query_params[:'flow_request'] = opts[:'flow_request'] if !opts[:'flow_request'].nil?
       query_params[:'flow_unenrollment'] = opts[:'flow_unenrollment'] if !opts[:'flow_unenrollment'].nil?
       query_params[:'flow_user_settings'] = opts[:'flow_user_settings'] if !opts[:'flow_user_settings'].nil?
+      query_params[:'flow_user_switch'] = opts[:'flow_user_switch'] if !opts[:'flow_user_switch'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
@@ -1958,7 +2125,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_add_user_create",
@@ -2024,7 +2191,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_create",
@@ -2085,7 +2252,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_destroy",
@@ -2179,7 +2346,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'PaginatedGroupList'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_list",
@@ -2247,7 +2414,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_partial_update",
@@ -2319,7 +2486,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_remove_user_create",
@@ -2392,7 +2559,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_retrieve",
@@ -2464,7 +2631,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Group'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_update",
@@ -2525,7 +2692,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Array<UsedBy>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_groups_used_by_list",
@@ -2540,6 +2707,398 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_groups_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param object_attribute_request [ObjectAttributeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [ObjectAttribute]
+    def core_object_attributes_create(object_attribute_request, opts = {})
+      data, _status_code, _headers = core_object_attributes_create_with_http_info(object_attribute_request, opts)
+      data
+    end
+
+    # @param object_attribute_request [ObjectAttributeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ObjectAttribute, Integer, Hash)>] ObjectAttribute data, response status code and response headers
+    def core_object_attributes_create_with_http_info(object_attribute_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_create ...'
+      end
+      # verify the required parameter 'object_attribute_request' is set
+      if @api_client.config.client_side_validation && object_attribute_request.nil?
+        fail ArgumentError, "Missing the required parameter 'object_attribute_request' when calling CoreApi.core_object_attributes_create"
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(object_attribute_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ObjectAttribute'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def core_object_attributes_destroy(attribute_id, opts = {})
+      core_object_attributes_destroy_with_http_info(attribute_id, opts)
+      nil
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def core_object_attributes_destroy_with_http_info(attribute_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_destroy ...'
+      end
+      # verify the required parameter 'attribute_id' is set
+      if @api_client.config.client_side_validation && attribute_id.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_id' when calling CoreApi.core_object_attributes_destroy"
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/{attribute_id}/'.sub('{attribute_id}', CGI.escape(attribute_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :enabled 
+    # @option opts [String] :object_type__app_label 
+    # @option opts [String] :object_type__model 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [PaginatedObjectAttributeList]
+    def core_object_attributes_list(opts = {})
+      data, _status_code, _headers = core_object_attributes_list_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :enabled 
+    # @option opts [String] :object_type__app_label 
+    # @option opts [String] :object_type__model 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedObjectAttributeList, Integer, Hash)>] PaginatedObjectAttributeList data, response status code and response headers
+    def core_object_attributes_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_list ...'
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'enabled'] = opts[:'enabled'] if !opts[:'enabled'].nil?
+      query_params[:'object_type__app_label'] = opts[:'object_type__app_label'] if !opts[:'object_type__app_label'].nil?
+      query_params[:'object_type__model'] = opts[:'object_type__model'] if !opts[:'object_type__model'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedObjectAttributeList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedObjectAttributeRequest] :patched_object_attribute_request 
+    # @return [ObjectAttribute]
+    def core_object_attributes_partial_update(attribute_id, opts = {})
+      data, _status_code, _headers = core_object_attributes_partial_update_with_http_info(attribute_id, opts)
+      data
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedObjectAttributeRequest] :patched_object_attribute_request 
+    # @return [Array<(ObjectAttribute, Integer, Hash)>] ObjectAttribute data, response status code and response headers
+    def core_object_attributes_partial_update_with_http_info(attribute_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_partial_update ...'
+      end
+      # verify the required parameter 'attribute_id' is set
+      if @api_client.config.client_side_validation && attribute_id.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_id' when calling CoreApi.core_object_attributes_partial_update"
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/{attribute_id}/'.sub('{attribute_id}', CGI.escape(attribute_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_object_attribute_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ObjectAttribute'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @return [ObjectAttribute]
+    def core_object_attributes_retrieve(attribute_id, opts = {})
+      data, _status_code, _headers = core_object_attributes_retrieve_with_http_info(attribute_id, opts)
+      data
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ObjectAttribute, Integer, Hash)>] ObjectAttribute data, response status code and response headers
+    def core_object_attributes_retrieve_with_http_info(attribute_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_retrieve ...'
+      end
+      # verify the required parameter 'attribute_id' is set
+      if @api_client.config.client_side_validation && attribute_id.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_id' when calling CoreApi.core_object_attributes_retrieve"
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/{attribute_id}/'.sub('{attribute_id}', CGI.escape(attribute_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ObjectAttribute'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param object_attribute_request [ObjectAttributeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [ObjectAttribute]
+    def core_object_attributes_update(attribute_id, object_attribute_request, opts = {})
+      data, _status_code, _headers = core_object_attributes_update_with_http_info(attribute_id, object_attribute_request, opts)
+      data
+    end
+
+    # @param attribute_id [String] A UUID string identifying this Object Attribute.
+    # @param object_attribute_request [ObjectAttributeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ObjectAttribute, Integer, Hash)>] ObjectAttribute data, response status code and response headers
+    def core_object_attributes_update_with_http_info(attribute_id, object_attribute_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_object_attributes_update ...'
+      end
+      # verify the required parameter 'attribute_id' is set
+      if @api_client.config.client_side_validation && attribute_id.nil?
+        fail ArgumentError, "Missing the required parameter 'attribute_id' when calling CoreApi.core_object_attributes_update"
+      end
+      # verify the required parameter 'object_attribute_request' is set
+      if @api_client.config.client_side_validation && object_attribute_request.nil?
+        fail ArgumentError, "Missing the required parameter 'object_attribute_request' when calling CoreApi.core_object_attributes_update"
+      end
+      # resource path
+      local_var_path = '/core/object_attributes/{attribute_id}/'.sub('{attribute_id}', CGI.escape(attribute_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(object_attribute_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'ObjectAttribute'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_object_attributes_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_object_attributes_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -3519,7 +4078,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Link'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_account_lockdown_create",
@@ -3585,7 +4144,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_create",
@@ -3646,7 +4205,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_destroy",
@@ -3779,7 +4338,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'DataExport'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_export_create",
@@ -3851,7 +4410,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_impersonate_create",
@@ -3906,7 +4465,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_impersonate_end_retrieve",
@@ -4051,7 +4610,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'PaginatedUserList'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_list",
@@ -4106,7 +4665,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'SessionUser'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_me_retrieve",
@@ -4174,7 +4733,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_partial_update",
@@ -4232,7 +4791,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'UserPath'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_paths_retrieve",
@@ -4300,7 +4859,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Link'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_recovery_create",
@@ -4372,7 +4931,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_recovery_email_create",
@@ -4433,7 +4992,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_retrieve",
@@ -4499,7 +5058,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'UserServiceAccountResponse'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_service_account_create",
@@ -4571,7 +5130,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_set_password_create",
@@ -4643,7 +5202,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type]
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_set_password_hash_create",
@@ -4658,6 +5217,71 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: CoreApi#core_users_set_password_hash_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Start browser user switching.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_next 
+    # @option opts [UserSwitchRequest] :user_switch_request 
+    # @return [UserSwitchResponse]
+    def core_users_switch_create(opts = {})
+      data, _status_code, _headers = core_users_switch_create_with_http_info(opts)
+      data
+    end
+
+    # Start browser user switching.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :_next 
+    # @option opts [UserSwitchRequest] :user_switch_request 
+    # @return [Array<(UserSwitchResponse, Integer, Hash)>] UserSwitchResponse data, response status code and response headers
+    def core_users_switch_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_users_switch_create ...'
+      end
+      # resource path
+      local_var_path = '/core/users/switch/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'next'] = opts[:'_next'] if !opts[:'_next'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'user_switch_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'UserSwitchResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_users_switch_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_users_switch_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -4715,7 +5339,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'User'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_update",
@@ -4776,7 +5400,7 @@ module Authentik::Api
       return_type = opts[:debug_return_type] || 'Array<UsedBy>'
 
       # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
+      auth_names = opts[:debug_auth_names] || ['authentik', 'authentik_device_auth']
 
       new_options = opts.merge(
         :operation => :"CoreApi.core_users_used_by_list",

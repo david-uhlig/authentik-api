@@ -8,6 +8,7 @@
 | **component** | **String** |  | [optional][default to &#39;xak-flow-redirect&#39;] |
 | **response_errors** | **Hash&lt;String, Array&lt;ErrorDetail&gt;&gt;** |  | [optional] |
 | **to** | **String** |  |  |
+| **final_redirect** | **Boolean** |  | [optional][default to false] |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = Authentik::Api::RedirectChallenge.new(
   flow_info: null,
   component: null,
   response_errors: null,
-  to: null
+  to: null,
+  final_redirect: null
 )
 ```
 

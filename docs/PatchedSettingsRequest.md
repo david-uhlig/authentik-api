@@ -5,6 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **avatars** | **String** | Configure how authentik should show avatars for users. | [optional] |
+| **base_url** | **String** | Configure the base URL under which this authentik instance is reachable, e.g. https://authentik.company | [optional] |
 | **default_user_change_name** | **Boolean** | Enable the ability for users to change their name. | [optional] |
 | **default_user_change_email** | **Boolean** | Enable the ability for users to change their email address. | [optional] |
 | **default_user_change_username** | **Boolean** | Enable the ability for users to change their username. | [optional] |
@@ -28,6 +29,7 @@ require 'authentik-api'
 
 instance = Authentik::Api::PatchedSettingsRequest.new(
   avatars: null,
+  base_url: null,
   default_user_change_name: null,
   default_user_change_email: null,
   default_user_change_username: null,

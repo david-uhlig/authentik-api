@@ -7,7 +7,7 @@
 | **name** | **String** |  | [optional] |
 | **mode** | [**TransportModeEnum**](TransportModeEnum.md) |  | [optional] |
 | **webhook_url** | **String** |  | [optional] |
-| **webhook_ca** | **String** | When set, the selected ceritifcate is used to validate the certificate of the webhook server. | [optional] |
+| **webhook_ca** | **String** | When set, the selected certificate is used to validate the certificate of the webhook server. | [optional] |
 | **webhook_mapping_body** | **String** | Customize the body of the request. Mapping should return data that is JSON-serializable. | [optional] |
 | **webhook_mapping_headers** | **String** | Configure additional headers to be sent. Mapping should return a dictionary of key-value pairs | [optional] |
 | **email_subject_prefix** | **String** |  | [optional] |

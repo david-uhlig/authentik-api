@@ -378,7 +378,7 @@ end
 
 ## admin_models_list
 
-> <Array<App>> admin_models_list
+> <Array<App>> admin_models_list(opts)
 
 
 
@@ -396,10 +396,13 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::AdminApi.new
+opts = {
+  filter_has_attributes: true # Boolean | 
+}
 
 begin
   
-  result = api_instance.admin_models_list
+  result = api_instance.admin_models_list(opts)
   p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling AdminApi->admin_models_list: #{e}"
@@ -410,12 +413,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Array<App>>, Integer, Hash)> admin_models_list_with_http_info
+> <Array(<Array<App>>, Integer, Hash)> admin_models_list_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.admin_models_list_with_http_info
+  data, status_code, headers = api_instance.admin_models_list_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <Array<App>>
@@ -426,7 +429,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **filter_has_attributes** | **Boolean** |  | [optional] |
 
 ### Return type
 

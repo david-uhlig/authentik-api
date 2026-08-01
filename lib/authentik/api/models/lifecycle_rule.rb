@@ -101,11 +101,11 @@ module Authentik::Api
         :'interval' => :'String',
         :'grace_period' => :'String',
         :'reviewer_groups' => :'Array<String>',
-        :'reviewer_groups_obj' => :'Array<ReviewerGroup>',
+        :'reviewer_groups_obj' => :'Array<PartialGroup>',
         :'min_reviewers' => :'Integer',
         :'min_reviewers_is_per_group' => :'Boolean',
         :'reviewers' => :'Array<String>',
-        :'reviewers_obj' => :'Array<ReviewerUser>',
+        :'reviewers_obj' => :'Array<PartialUser>',
         :'notification_transports' => :'Array<String>',
         :'target_verbose' => :'String'
       }

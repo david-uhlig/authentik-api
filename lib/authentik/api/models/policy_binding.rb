@@ -39,6 +39,10 @@ module Authentik::Api
     # Result if the Policy execution fails.
     attr_accessor :failure_result
 
+    attr_accessor :expires
+
+    attr_accessor :expiring
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -54,7 +58,9 @@ module Authentik::Api
         :'enabled' => :'enabled',
         :'order' => :'order',
         :'timeout' => :'timeout',
-        :'failure_result' => :'failure_result'
+        :'failure_result' => :'failure_result',
+        :'expires' => :'expires',
+        :'expiring' => :'expiring'
       }
     end
 
@@ -83,7 +89,9 @@ module Authentik::Api
         :'enabled' => :'Boolean',
         :'order' => :'Integer',
         :'timeout' => :'Integer',
-        :'failure_result' => :'Boolean'
+        :'failure_result' => :'Boolean',
+        :'expires' => :'Time',
+        :'expiring' => :'Boolean'
       }
     end
 
@@ -96,6 +104,7 @@ module Authentik::Api
         :'policy_obj',
         :'group_obj',
         :'user_obj',
+        :'expires',
       ])
     end
 
@@ -178,6 +187,18 @@ module Authentik::Api
       if attributes.key?(:'failure_result')
         self.failure_result = attributes[:'failure_result']
       end
+
+      if attributes.key?(:'expires')
+        self.expires = attributes[:'expires']
+      else
+        self.expires = nil
+      end
+
+      if attributes.key?(:'expiring')
+        self.expiring = attributes[:'expiring']
+      else
+        self.expiring = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -213,6 +234,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "timeout", must be greater than or equal to 0.')
       end
 
+      if @expiring.nil?
+        invalid_properties.push('invalid value for "expiring", expiring cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -227,6 +252,7 @@ module Authentik::Api
       return false if @order < -2147483648
       return false if !@timeout.nil? && @timeout > 2147483647
       return false if !@timeout.nil? && @timeout < 0
+      return false if @expiring.nil?
       true
     end
 
@@ -286,6 +312,16 @@ module Authentik::Api
       @timeout = timeout
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] expiring Value to be assigned
+    def expiring=(expiring)
+      if expiring.nil?
+        fail ArgumentError, 'expiring cannot be nil'
+      end
+
+      @expiring = expiring
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -303,7 +339,9 @@ module Authentik::Api
           enabled == o.enabled &&
           order == o.order &&
           timeout == o.timeout &&
-          failure_result == o.failure_result
+          failure_result == o.failure_result &&
+          expires == o.expires &&
+          expiring == o.expiring
     end
 
     # @see the `==` method
@@ -315,7 +353,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result].hash
+      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result, expires, expiring].hash
     end
 
     # Builds the object from hash

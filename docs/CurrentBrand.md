@@ -14,12 +14,14 @@
 | **ui_footer_links** | [**Array&lt;FooterLink&gt;**](FooterLink.md) |  | [readonly] |
 | **ui_theme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] |
 | **flow_authentication** | **String** |  | [optional] |
+| **flow_user_switch** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
 | **flow_recovery** | **String** |  | [optional] |
 | **flow_unenrollment** | **String** |  | [optional] |
 | **flow_user_settings** | **String** |  | [optional] |
 | **flow_device_code** | **String** |  | [optional] |
 | **flow_lockdown** | **String** |  | [optional] |
+| **flow_request** | **String** |  | [optional] |
 | **default_locale** | **String** |  | [readonly] |
 | **flags** | [**CurrentBrandFlags**](CurrentBrandFlags.md) |  |  |
 
@@ -39,12 +41,14 @@ instance = Authentik::Api::CurrentBrand.new(
   ui_footer_links: null,
   ui_theme: null,
   flow_authentication: null,
+  flow_user_switch: null,
   flow_invalidation: null,
   flow_recovery: null,
   flow_unenrollment: null,
   flow_user_settings: null,
   flow_device_code: null,
   flow_lockdown: null,
+  flow_request: null,
   default_locale: null,
   flags: null
 )

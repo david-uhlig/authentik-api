@@ -4,7 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **group** | **String** |  |  |
 | **source** | **String** |  |  |
 | **identifier** | **String** |  |  |
 
@@ -14,7 +13,6 @@
 require 'authentik-api'
 
 instance = Authentik::Api::GroupLDAPSourceConnectionRequest.new(
-  group: null,
   source: null,
   identifier: null
 )

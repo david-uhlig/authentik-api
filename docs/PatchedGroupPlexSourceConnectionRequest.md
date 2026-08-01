@@ -4,7 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **group** | **String** |  | [optional] |
 | **source** | **String** |  | [optional] |
 | **identifier** | **String** |  | [optional] |
 
@@ -14,7 +13,6 @@
 require 'authentik-api'
 
 instance = Authentik::Api::PatchedGroupPlexSourceConnectionRequest.new(
-  group: null,
   source: null,
   identifier: null
 )

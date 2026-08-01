@@ -10,8 +10,6 @@ require 'time'
 module Authentik::Api
   # User source connection
   class PatchedUserOAuthSourceConnectionRequest < ApiModelBase
-    attr_accessor :user
-
     attr_accessor :source
 
     attr_accessor :identifier
@@ -23,7 +21,6 @@ module Authentik::Api
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'user' => :'user',
         :'source' => :'source',
         :'identifier' => :'identifier',
         :'access_token' => :'access_token',
@@ -44,7 +41,6 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'user' => :'Integer',
         :'source' => :'String',
         :'identifier' => :'String',
         :'access_token' => :'String',
@@ -74,10 +70,6 @@ module Authentik::Api
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'user')
-        self.user = attributes[:'user']
-      end
 
       if attributes.key?(:'source')
         self.source = attributes[:'source']
@@ -135,7 +127,6 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          user == o.user &&
           source == o.source &&
           identifier == o.identifier &&
           access_token == o.access_token &&
@@ -151,7 +142,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [user, source, identifier, access_token, expires].hash
+      [source, identifier, access_token, expires].hash
     end
 
     # Builds the object from hash

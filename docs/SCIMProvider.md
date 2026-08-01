@@ -20,6 +20,10 @@
 | **auth_mode** | [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] |
 | **auth_oauth** | **String** | OAuth Source used for authentication | [optional] |
 | **auth_oauth_params** | **Hash&lt;String, Object&gt;** | Additional OAuth parameters, such as grant_type | [optional] |
+| **auth_oauth_token_last_updated** | **Time** |  | [readonly] |
+| **auth_oauth_token_expires** | **Time** |  | [readonly] |
+| **auth_oauth_url_callback** | **String** |  | [readonly] |
+| **auth_oauth_url_start** | **String** |  | [readonly] |
 | **compatibility_mode** | [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] |
 | **service_provider_config_cache_timeout** | **String** | Cache duration for ServiceProviderConfig responses. Set minutes&#x3D;0 to disable. | [optional] |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
@@ -50,6 +54,10 @@ instance = Authentik::Api::SCIMProvider.new(
   auth_mode: null,
   auth_oauth: null,
   auth_oauth_params: null,
+  auth_oauth_token_last_updated: null,
+  auth_oauth_token_expires: null,
+  auth_oauth_url_callback: null,
+  auth_oauth_url_start: null,
   compatibility_mode: null,
   service_provider_config_cache_timeout: null,
   exclude_users_service_account: null,

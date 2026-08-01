@@ -67,8 +67,11 @@ module Authentik::Api
     # Flow used before authentication.
     attr_accessor :pre_authentication_flow
 
-    # Also known as Entity ID. Defaults the Metadata URL.
-    attr_accessor :issuer
+    # Also known as Entity ID. Defaults to the Metadata URL.
+    attr_accessor :issuer_override
+
+    # Get the resolved Issuer, falling back to the metadata URL when unset
+    attr_accessor :url_issuer
 
     # URL that the initial Login request is sent to.
     attr_accessor :sso_url
@@ -154,7 +157,8 @@ module Authentik::Api
         :'icon_themed_urls' => :'icon_themed_urls',
         :'group_matching_mode' => :'group_matching_mode',
         :'pre_authentication_flow' => :'pre_authentication_flow',
-        :'issuer' => :'issuer',
+        :'issuer_override' => :'issuer_override',
+        :'url_issuer' => :'url_issuer',
         :'sso_url' => :'sso_url',
         :'slo_url' => :'slo_url',
         :'allow_idp_initiated' => :'allow_idp_initiated',
@@ -207,7 +211,8 @@ module Authentik::Api
         :'icon_themed_urls' => :'ThemedUrls',
         :'group_matching_mode' => :'GroupMatchingModeEnum',
         :'pre_authentication_flow' => :'String',
-        :'issuer' => :'String',
+        :'issuer_override' => :'String',
+        :'url_issuer' => :'String',
         :'sso_url' => :'String',
         :'slo_url' => :'String',
         :'allow_idp_initiated' => :'Boolean',
@@ -369,8 +374,14 @@ module Authentik::Api
         self.pre_authentication_flow = nil
       end
 
-      if attributes.key?(:'issuer')
-        self.issuer = attributes[:'issuer']
+      if attributes.key?(:'issuer_override')
+        self.issuer_override = attributes[:'issuer_override']
+      end
+
+      if attributes.key?(:'url_issuer')
+        self.url_issuer = attributes[:'url_issuer']
+      else
+        self.url_issuer = nil
       end
 
       if attributes.key?(:'sso_url')
@@ -478,6 +489,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "pre_authentication_flow", pre_authentication_flow cannot be nil.')
       end
 
+      if @url_issuer.nil?
+        invalid_properties.push('invalid value for "url_issuer", url_issuer cannot be nil.')
+      end
+
       if @sso_url.nil?
         invalid_properties.push('invalid value for "sso_url", sso_url cannot be nil.')
       end
@@ -499,6 +514,7 @@ module Authentik::Api
       return false if @meta_model_name.nil?
       return false if @icon_url.nil?
       return false if @pre_authentication_flow.nil?
+      return false if @url_issuer.nil?
       return false if @sso_url.nil?
       true
     end
@@ -599,6 +615,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] url_issuer Value to be assigned
+    def url_issuer=(url_issuer)
+      if url_issuer.nil?
+        fail ArgumentError, 'url_issuer cannot be nil'
+      end
+
+      @url_issuer = url_issuer
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] sso_url Value to be assigned
     def sso_url=(sso_url)
       if sso_url.nil?
@@ -635,7 +661,8 @@ module Authentik::Api
           icon_themed_urls == o.icon_themed_urls &&
           group_matching_mode == o.group_matching_mode &&
           pre_authentication_flow == o.pre_authentication_flow &&
-          issuer == o.issuer &&
+          issuer_override == o.issuer_override &&
+          url_issuer == o.url_issuer &&
           sso_url == o.sso_url &&
           slo_url == o.slo_url &&
           allow_idp_initiated == o.allow_idp_initiated &&
@@ -661,7 +688,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, group_matching_mode, pre_authentication_flow, issuer, sso_url, slo_url, allow_idp_initiated, force_authn, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, group_matching_mode, pre_authentication_flow, issuer_override, url_issuer, sso_url, slo_url, allow_idp_initiated, force_authn, name_id_policy, binding_type, verification_kp, signing_kp, digest_algorithm, signature_algorithm, temporary_user_delete_after, encryption_kp, signed_assertion, signed_response].hash
     end
 
     # Builds the object from hash

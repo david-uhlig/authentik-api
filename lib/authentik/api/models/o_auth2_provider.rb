@@ -184,7 +184,7 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'client_type' => :'ClientTypeEnum',
-        :'grant_types' => :'Array<GrantTypesEnum>',
+        :'grant_types' => :'Array<GrantTypeEnum>',
         :'client_id' => :'String',
         :'client_secret' => :'String',
         :'access_code_validity' => :'String',

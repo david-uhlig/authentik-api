@@ -68,6 +68,9 @@ module Authentik::Api
     # Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate.
     attr_accessor :authn_context_class_ref_mapping
 
+    # SAML assertion version to issue in the security token. Microsoft Entra ID and classic ADFS-style relying parties typically require SAML 1.1.
+    attr_accessor :saml_version
+
     attr_accessor :digest_algorithm
 
     attr_accessor :signature_algorithm
@@ -89,6 +92,9 @@ module Authentik::Api
 
     # Get WS-Fed url
     attr_accessor :url_wsfed
+
+    # Get Issuer/EntityID URL
+    attr_accessor :url_issuer
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -136,6 +142,7 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'session_valid_not_on_or_after',
         :'name_id_mapping' => :'name_id_mapping',
         :'authn_context_class_ref_mapping' => :'authn_context_class_ref_mapping',
+        :'saml_version' => :'saml_version',
         :'digest_algorithm' => :'digest_algorithm',
         :'signature_algorithm' => :'signature_algorithm',
         :'signing_kp' => :'signing_kp',
@@ -144,7 +151,8 @@ module Authentik::Api
         :'sign_logout_request' => :'sign_logout_request',
         :'default_name_id_policy' => :'default_name_id_policy',
         :'url_download_metadata' => :'url_download_metadata',
-        :'url_wsfed' => :'url_wsfed'
+        :'url_wsfed' => :'url_wsfed',
+        :'url_issuer' => :'url_issuer'
       }
     end
 
@@ -182,6 +190,7 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'String',
         :'name_id_mapping' => :'String',
         :'authn_context_class_ref_mapping' => :'String',
+        :'saml_version' => :'SamlVersionEnum',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'signing_kp' => :'String',
@@ -190,7 +199,8 @@ module Authentik::Api
         :'sign_logout_request' => :'Boolean',
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
         :'url_download_metadata' => :'String',
-        :'url_wsfed' => :'String'
+        :'url_wsfed' => :'String',
+        :'url_issuer' => :'String'
       }
     end
 
@@ -339,6 +349,10 @@ module Authentik::Api
         self.authn_context_class_ref_mapping = attributes[:'authn_context_class_ref_mapping']
       end
 
+      if attributes.key?(:'saml_version')
+        self.saml_version = attributes[:'saml_version']
+      end
+
       if attributes.key?(:'digest_algorithm')
         self.digest_algorithm = attributes[:'digest_algorithm']
       end
@@ -377,6 +391,12 @@ module Authentik::Api
         self.url_wsfed = attributes[:'url_wsfed']
       else
         self.url_wsfed = nil
+      end
+
+      if attributes.key?(:'url_issuer')
+        self.url_issuer = attributes[:'url_issuer']
+      else
+        self.url_issuer = nil
       end
     end
 
@@ -433,6 +453,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "url_wsfed", url_wsfed cannot be nil.')
       end
 
+      if @url_issuer.nil?
+        invalid_properties.push('invalid value for "url_issuer", url_issuer cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -452,6 +476,7 @@ module Authentik::Api
       return false if @wtrealm.nil?
       return false if @url_download_metadata.nil?
       return false if @url_wsfed.nil?
+      return false if @url_issuer.nil?
       true
     end
 
@@ -575,6 +600,16 @@ module Authentik::Api
       @url_wsfed = url_wsfed
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] url_issuer Value to be assigned
+    def url_issuer=(url_issuer)
+      if url_issuer.nil?
+        fail ArgumentError, 'url_issuer cannot be nil'
+      end
+
+      @url_issuer = url_issuer
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -601,6 +636,7 @@ module Authentik::Api
           session_valid_not_on_or_after == o.session_valid_not_on_or_after &&
           name_id_mapping == o.name_id_mapping &&
           authn_context_class_ref_mapping == o.authn_context_class_ref_mapping &&
+          saml_version == o.saml_version &&
           digest_algorithm == o.digest_algorithm &&
           signature_algorithm == o.signature_algorithm &&
           signing_kp == o.signing_kp &&
@@ -609,7 +645,8 @@ module Authentik::Api
           sign_logout_request == o.sign_logout_request &&
           default_name_id_policy == o.default_name_id_policy &&
           url_download_metadata == o.url_download_metadata &&
-          url_wsfed == o.url_wsfed
+          url_wsfed == o.url_wsfed &&
+          url_issuer == o.url_issuer
     end
 
     # @see the `==` method
@@ -621,7 +658,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, sign_assertion, sign_logout_request, default_name_id_policy, url_download_metadata, url_wsfed].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, saml_version, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, sign_assertion, sign_logout_request, default_name_id_policy, url_download_metadata, url_wsfed, url_issuer].hash
     end
 
     # Builds the object from hash

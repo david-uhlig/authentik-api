@@ -9,6 +9,7 @@ require 'time'
 
 module Authentik::Api
   class TaskStatusEnum
+    WAITING_FOR_DEPENDENCIES = "waiting_for_dependencies".freeze
     QUEUED = "queued".freeze
     CONSUMED = "consumed".freeze
     PREPROCESS = "preprocess".freeze
@@ -18,7 +19,7 @@ module Authentik::Api
     DONE = "done".freeze
 
     def self.all_vars
-      @all_vars ||= [QUEUED, CONSUMED, PREPROCESS, RUNNING, POSTPROCESS, REJECTED, DONE].freeze
+      @all_vars ||= [WAITING_FOR_DEPENDENCIES, QUEUED, CONSUMED, PREPROCESS, RUNNING, POSTPROCESS, REJECTED, DONE].freeze
     end
 
     # Builds the enum from string

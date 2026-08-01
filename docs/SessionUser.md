@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **user** | [**UserSelf**](UserSelf.md) |  |  |
 | **original** | [**UserSelf**](UserSelf.md) |  | [optional] |
+| **users** | [**Array&lt;UserSelf&gt;**](UserSelf.md) |  |  |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'authentik-api'
 
 instance = Authentik::Api::SessionUser.new(
   user: null,
-  original: null
+  original: null,
+  users: null
 )
 ```
 

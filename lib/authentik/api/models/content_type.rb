@@ -17,13 +17,16 @@ module Authentik::Api
 
     attr_accessor :verbose_name_plural
 
+    attr_accessor :fully_qualified_model
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'app_label' => :'app_label',
         :'model' => :'model',
-        :'verbose_name_plural' => :'verbose_name_plural'
+        :'verbose_name_plural' => :'verbose_name_plural',
+        :'fully_qualified_model' => :'fully_qualified_model'
       }
     end
 
@@ -43,7 +46,8 @@ module Authentik::Api
         :'id' => :'Integer',
         :'app_label' => :'String',
         :'model' => :'String',
-        :'verbose_name_plural' => :'String'
+        :'verbose_name_plural' => :'String',
+        :'fully_qualified_model' => :'String'
       }
     end
 
@@ -92,6 +96,12 @@ module Authentik::Api
       else
         self.verbose_name_plural = nil
       end
+
+      if attributes.key?(:'fully_qualified_model')
+        self.fully_qualified_model = attributes[:'fully_qualified_model']
+      else
+        self.fully_qualified_model = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -115,6 +125,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "verbose_name_plural", verbose_name_plural cannot be nil.')
       end
 
+      if @fully_qualified_model.nil?
+        invalid_properties.push('invalid value for "fully_qualified_model", fully_qualified_model cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -126,6 +140,7 @@ module Authentik::Api
       return false if @app_label.nil?
       return false if @model.nil?
       return false if @verbose_name_plural.nil?
+      return false if @fully_qualified_model.nil?
       true
     end
 
@@ -169,6 +184,16 @@ module Authentik::Api
       @verbose_name_plural = verbose_name_plural
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] fully_qualified_model Value to be assigned
+    def fully_qualified_model=(fully_qualified_model)
+      if fully_qualified_model.nil?
+        fail ArgumentError, 'fully_qualified_model cannot be nil'
+      end
+
+      @fully_qualified_model = fully_qualified_model
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -177,7 +202,8 @@ module Authentik::Api
           id == o.id &&
           app_label == o.app_label &&
           model == o.model &&
-          verbose_name_plural == o.verbose_name_plural
+          verbose_name_plural == o.verbose_name_plural &&
+          fully_qualified_model == o.fully_qualified_model
     end
 
     # @see the `==` method
@@ -189,7 +215,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, app_label, model, verbose_name_plural].hash
+      [id, app_label, model, verbose_name_plural, fully_qualified_model].hash
     end
 
     # Builds the object from hash

@@ -33,6 +33,9 @@ module Authentik::Api
     # Get the FQDN configured on the embedded outpost
     attr_accessor :embedded_outpost_host
 
+    # Configured external base URL. Can be empty
+    attr_accessor :base_url
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -43,7 +46,8 @@ module Authentik::Api
         :'brand' => :'brand',
         :'server_time' => :'server_time',
         :'embedded_outpost_disabled' => :'embedded_outpost_disabled',
-        :'embedded_outpost_host' => :'embedded_outpost_host'
+        :'embedded_outpost_host' => :'embedded_outpost_host',
+        :'base_url' => :'base_url'
       }
     end
 
@@ -67,7 +71,8 @@ module Authentik::Api
         :'brand' => :'String',
         :'server_time' => :'Time',
         :'embedded_outpost_disabled' => :'Boolean',
-        :'embedded_outpost_host' => :'String'
+        :'embedded_outpost_host' => :'String',
+        :'base_url' => :'String'
       }
     end
 
@@ -142,6 +147,12 @@ module Authentik::Api
       else
         self.embedded_outpost_host = nil
       end
+
+      if attributes.key?(:'base_url')
+        self.base_url = attributes[:'base_url']
+      else
+        self.base_url = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -181,6 +192,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "embedded_outpost_host", embedded_outpost_host cannot be nil.')
       end
 
+      if @base_url.nil?
+        invalid_properties.push('invalid value for "base_url", base_url cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -196,6 +211,7 @@ module Authentik::Api
       return false if @server_time.nil?
       return false if @embedded_outpost_disabled.nil?
       return false if @embedded_outpost_host.nil?
+      return false if @base_url.nil?
       true
     end
 
@@ -279,6 +295,16 @@ module Authentik::Api
       @embedded_outpost_host = embedded_outpost_host
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] base_url Value to be assigned
+    def base_url=(base_url)
+      if base_url.nil?
+        fail ArgumentError, 'base_url cannot be nil'
+      end
+
+      @base_url = base_url
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -291,7 +317,8 @@ module Authentik::Api
           brand == o.brand &&
           server_time == o.server_time &&
           embedded_outpost_disabled == o.embedded_outpost_disabled &&
-          embedded_outpost_host == o.embedded_outpost_host
+          embedded_outpost_host == o.embedded_outpost_host &&
+          base_url == o.base_url
     end
 
     # @see the `==` method
@@ -303,7 +330,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [http_headers, http_host, http_is_secure, runtime, brand, server_time, embedded_outpost_disabled, embedded_outpost_host].hash
+      [http_headers, http_host, http_is_secure, runtime, brand, server_time, embedded_outpost_disabled, embedded_outpost_host, base_url].hash
     end
 
     # Builds the object from hash

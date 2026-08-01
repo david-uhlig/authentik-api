@@ -4,7 +4,6 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **user** | **Integer** |  | [optional] |
 | **source** | **String** |  | [optional] |
 | **identifier** | **String** |  | [optional] |
 | **plex_token** | **String** |  | [optional] |
@@ -15,7 +14,6 @@
 require 'authentik-api'
 
 instance = Authentik::Api::PatchedUserPlexSourceConnectionRequest.new(
-  user: null,
   source: null,
   identifier: null,
   plex_token: null
