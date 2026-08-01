@@ -69,6 +69,12 @@ describe Authentik::Api::Brand do
     end
   end
 
+  describe 'test attribute "branding_map_tiles"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "flow_authentication"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

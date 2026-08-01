@@ -12,6 +12,7 @@
 | **branding_favicon** | **String** |  | [optional] |
 | **branding_custom_css** | **String** |  | [optional] |
 | **branding_default_flow_background** | **String** |  | [optional] |
+| **branding_map_tiles** | **String** | URL template for the vector tile source used by the events map. Supports XYZ templates with {z}, {x} and {y} placeholders, or pmtiles:// archive URLs. When empty, the frontend uses the bundled hexworld basemap. This value is part of the brand information served to unauthenticated clients; do not embed API keys or other credentials in it. | [optional] |
 | **flow_authentication** | **String** |  | [optional] |
 | **flow_user_switch** | **String** |  | [optional] |
 | **flow_invalidation** | **String** |  | [optional] |
@@ -40,6 +41,7 @@ instance = Authentik::Api::Brand.new(
   branding_favicon: null,
   branding_custom_css: null,
   branding_default_flow_background: null,
+  branding_map_tiles: null,
   flow_authentication: null,
   flow_user_switch: null,
   flow_invalidation: null,
