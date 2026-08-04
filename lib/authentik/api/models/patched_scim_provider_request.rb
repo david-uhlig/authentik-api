@@ -47,6 +47,9 @@ module Authentik::Api
     # Timeout for synchronization of a single page
     attr_accessor :sync_page_timeout
 
+    # When enabled, authentik will attempt to discover existing resources in the remote system.
+    attr_accessor :discovery_enabled
+
     # Group filters used to define sync-scope for groups.
     attr_accessor :group_filters
 
@@ -92,6 +95,7 @@ module Authentik::Api
         :'exclude_users_service_account' => :'exclude_users_service_account',
         :'sync_page_size' => :'sync_page_size',
         :'sync_page_timeout' => :'sync_page_timeout',
+        :'discovery_enabled' => :'discovery_enabled',
         :'group_filters' => :'group_filters',
         :'dry_run' => :'dry_run'
       }
@@ -124,6 +128,7 @@ module Authentik::Api
         :'exclude_users_service_account' => :'Boolean',
         :'sync_page_size' => :'Integer',
         :'sync_page_timeout' => :'String',
+        :'discovery_enabled' => :'Boolean',
         :'group_filters' => :'Array<String>',
         :'dry_run' => :'Boolean'
       }
@@ -212,6 +217,10 @@ module Authentik::Api
 
       if attributes.key?(:'sync_page_timeout')
         self.sync_page_timeout = attributes[:'sync_page_timeout']
+      end
+
+      if attributes.key?(:'discovery_enabled')
+        self.discovery_enabled = attributes[:'discovery_enabled']
       end
 
       if attributes.key?(:'group_filters')
@@ -363,6 +372,7 @@ module Authentik::Api
           exclude_users_service_account == o.exclude_users_service_account &&
           sync_page_size == o.sync_page_size &&
           sync_page_timeout == o.sync_page_timeout &&
+          discovery_enabled == o.discovery_enabled &&
           group_filters == o.group_filters &&
           dry_run == o.dry_run
     end
@@ -376,7 +386,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
+      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, discovery_enabled, group_filters, dry_run].hash
     end
 
     # Builds the object from hash
