@@ -34,6 +34,9 @@ module Authentik::Api
     # Controls the number of objects synced in a single task
     attr_accessor :sync_page_size
 
+    # When enabled, authentik will attempt to discover existing resources in the remote system.
+    attr_accessor :discovery_enabled
+
     # Timeout for synchronization of a single page
     attr_accessor :sync_page_timeout
 
@@ -76,6 +79,7 @@ module Authentik::Api
         :'user_delete_action' => :'user_delete_action',
         :'group_delete_action' => :'group_delete_action',
         :'sync_page_size' => :'sync_page_size',
+        :'discovery_enabled' => :'discovery_enabled',
         :'sync_page_timeout' => :'sync_page_timeout',
         :'dry_run' => :'dry_run'
       }
@@ -105,6 +109,7 @@ module Authentik::Api
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
         :'group_delete_action' => :'OutgoingSyncDeleteAction',
         :'sync_page_size' => :'Integer',
+        :'discovery_enabled' => :'Boolean',
         :'sync_page_timeout' => :'String',
         :'dry_run' => :'Boolean'
       }
@@ -187,6 +192,10 @@ module Authentik::Api
 
       if attributes.key?(:'sync_page_size')
         self.sync_page_size = attributes[:'sync_page_size']
+      end
+
+      if attributes.key?(:'discovery_enabled')
+        self.discovery_enabled = attributes[:'discovery_enabled']
       end
 
       if attributes.key?(:'sync_page_timeout')
@@ -372,6 +381,7 @@ module Authentik::Api
           user_delete_action == o.user_delete_action &&
           group_delete_action == o.group_delete_action &&
           sync_page_size == o.sync_page_size &&
+          discovery_enabled == o.discovery_enabled &&
           sync_page_timeout == o.sync_page_timeout &&
           dry_run == o.dry_run
     end
@@ -385,7 +395,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, sync_page_timeout, dry_run].hash
+      [name, property_mappings, property_mappings_group, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, discovery_enabled, sync_page_timeout, dry_run].hash
     end
 
     # Builds the object from hash
