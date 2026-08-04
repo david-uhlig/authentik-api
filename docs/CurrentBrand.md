@@ -11,6 +11,7 @@
 | **branding_favicon** | **String** |  |  |
 | **branding_favicon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [readonly] |
 | **branding_custom_css** | **String** |  |  |
+| **branding_map_tiles** | **String** |  |  |
 | **ui_footer_links** | [**Array&lt;FooterLink&gt;**](FooterLink.md) |  | [readonly] |
 | **ui_theme** | [**UiThemeEnum**](UiThemeEnum.md) |  | [readonly] |
 | **flow_authentication** | **String** |  | [optional] |
@@ -38,6 +39,7 @@ instance = Authentik::Api::CurrentBrand.new(
   branding_favicon: null,
   branding_favicon_themed_urls: null,
   branding_custom_css: null,
+  branding_map_tiles: null,
   ui_footer_links: null,
   ui_theme: null,
   flow_authentication: null,

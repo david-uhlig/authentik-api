@@ -25,6 +25,9 @@ module Authentik::Api
 
     attr_accessor :branding_default_flow_background
 
+    # URL template for the vector tile source used by the events map. Supports XYZ templates with {z}, {x} and {y} placeholders, or pmtiles:// archive URLs. When empty, the frontend uses the bundled hexworld basemap. This value is part of the brand information served to unauthenticated clients; do not embed API keys or other credentials in it.
+    attr_accessor :branding_map_tiles
+
     attr_accessor :flow_authentication
 
     attr_accessor :flow_user_switch
@@ -64,6 +67,7 @@ module Authentik::Api
         :'branding_favicon' => :'branding_favicon',
         :'branding_custom_css' => :'branding_custom_css',
         :'branding_default_flow_background' => :'branding_default_flow_background',
+        :'branding_map_tiles' => :'branding_map_tiles',
         :'flow_authentication' => :'flow_authentication',
         :'flow_user_switch' => :'flow_user_switch',
         :'flow_invalidation' => :'flow_invalidation',
@@ -100,6 +104,7 @@ module Authentik::Api
         :'branding_favicon' => :'String',
         :'branding_custom_css' => :'String',
         :'branding_default_flow_background' => :'String',
+        :'branding_map_tiles' => :'String',
         :'flow_authentication' => :'String',
         :'flow_user_switch' => :'String',
         :'flow_invalidation' => :'String',
@@ -175,6 +180,10 @@ module Authentik::Api
 
       if attributes.key?(:'branding_default_flow_background')
         self.branding_default_flow_background = attributes[:'branding_default_flow_background']
+      end
+
+      if attributes.key?(:'branding_map_tiles')
+        self.branding_map_tiles = attributes[:'branding_map_tiles']
       end
 
       if attributes.key?(:'flow_authentication')
@@ -356,6 +365,7 @@ module Authentik::Api
           branding_favicon == o.branding_favicon &&
           branding_custom_css == o.branding_custom_css &&
           branding_default_flow_background == o.branding_default_flow_background &&
+          branding_map_tiles == o.branding_map_tiles &&
           flow_authentication == o.flow_authentication &&
           flow_user_switch == o.flow_user_switch &&
           flow_invalidation == o.flow_invalidation &&
@@ -380,7 +390,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_application, web_certificate, client_certificates, attributes].hash
+      [domain, default, branding_title, branding_logo, branding_favicon, branding_custom_css, branding_default_flow_background, branding_map_tiles, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_application, web_certificate, client_certificates, attributes].hash
     end
 
     # Builds the object from hash
