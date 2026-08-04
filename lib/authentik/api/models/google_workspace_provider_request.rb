@@ -42,6 +42,9 @@ module Authentik::Api
     # When enabled, provider will not modify or create objects in the remote system.
     attr_accessor :dry_run
 
+    # When enabled, authentik will attempt to discover existing resources in the remote system.
+    attr_accessor :discovery_enabled
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -80,7 +83,8 @@ module Authentik::Api
         :'default_group_email_domain' => :'default_group_email_domain',
         :'sync_page_size' => :'sync_page_size',
         :'sync_page_timeout' => :'sync_page_timeout',
-        :'dry_run' => :'dry_run'
+        :'dry_run' => :'dry_run',
+        :'discovery_enabled' => :'discovery_enabled'
       }
     end
 
@@ -110,7 +114,8 @@ module Authentik::Api
         :'default_group_email_domain' => :'String',
         :'sync_page_size' => :'Integer',
         :'sync_page_timeout' => :'String',
-        :'dry_run' => :'Boolean'
+        :'dry_run' => :'Boolean',
+        :'discovery_enabled' => :'Boolean'
       }
     end
 
@@ -205,6 +210,10 @@ module Authentik::Api
 
       if attributes.key?(:'dry_run')
         self.dry_run = attributes[:'dry_run']
+      end
+
+      if attributes.key?(:'discovery_enabled')
+        self.discovery_enabled = attributes[:'discovery_enabled']
       end
     end
 
@@ -403,7 +412,8 @@ module Authentik::Api
           default_group_email_domain == o.default_group_email_domain &&
           sync_page_size == o.sync_page_size &&
           sync_page_timeout == o.sync_page_timeout &&
-          dry_run == o.dry_run
+          dry_run == o.dry_run &&
+          discovery_enabled == o.discovery_enabled
     end
 
     # @see the `==` method
@@ -415,7 +425,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain, sync_page_size, sync_page_timeout, dry_run].hash
+      [name, property_mappings, property_mappings_group, delegated_subject, credentials, scopes, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, default_group_email_domain, sync_page_size, sync_page_timeout, dry_run, discovery_enabled].hash
     end
 
     # Builds the object from hash

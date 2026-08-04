@@ -41704,6 +41704,10 @@ components:
           type: boolean
           description: When enabled, provider will not modify or create objects in
             the remote system.
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
       required:
       - assigned_backchannel_application_name
       - assigned_backchannel_application_slug
@@ -41884,6 +41888,10 @@ components:
           type: boolean
           description: When enabled, provider will not modify or create objects in
             the remote system.
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
       required:
       - credentials
       - default_group_email_domain
@@ -44757,6 +44765,10 @@ components:
           maximum: 2147483647
           minimum: 1
           description: Controls the number of objects synced in a single task
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         sync_page_timeout:
           type: string
           description: Timeout for synchronization of a single page
@@ -44931,6 +44943,10 @@ components:
           maximum: 2147483647
           minimum: 1
           description: Controls the number of objects synced in a single task
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         sync_page_timeout:
           type: string
           minLength: 1
@@ -44997,6 +45013,7 @@ components:
       - authentik_core.applicationentitlement
       - authentik_core.token
       - authentik_core.objectattribute
+      - authentik_core.actor
       - authentik_crypto.certificatekeypair
       - authentik_endpoints.deviceuserbinding
       - authentik_endpoints.deviceaccessgroup
@@ -45989,8 +46006,13 @@ components:
         jwks:
           type: string
           readOnly: true
+        dcr_registration:
+          type: string
+          readOnly: true
+          nullable: true
       required:
       - authorize
+      - dcr_registration
       - issuer
       - jwks
       - logout
@@ -50874,6 +50896,10 @@ components:
           type: boolean
           description: When enabled, provider will not modify or create objects in
             the remote system.
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
     PatchedGrantRequestFulfillRequest:
       type: object
       description: Base serializer class which doesn't implement create/update methods
@@ -51585,6 +51611,10 @@ components:
           maximum: 2147483647
           minimum: 1
           description: Controls the number of objects synced in a single task
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         sync_page_timeout:
           type: string
           minLength: 1
@@ -53046,6 +53076,10 @@ components:
           type: string
           minLength: 1
           description: Timeout for synchronization of a single page
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         group_filters:
           type: array
           items:
@@ -57380,6 +57414,10 @@ components:
         sync_page_timeout:
           type: string
           description: Timeout for synchronization of a single page
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         group_filters:
           type: array
           items:
@@ -57509,6 +57547,10 @@ components:
           type: string
           minLength: 1
           description: Timeout for synchronization of a single page
+        discovery_enabled:
+          type: boolean
+          description: When enabled, authentik will attempt to discover existing resources
+            in the remote system.
         group_filters:
           type: array
           items:

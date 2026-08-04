@@ -105,4 +105,10 @@ describe Authentik::Api::GoogleWorkspaceProviderRequest do
     end
   end
 
+  describe 'test attribute "discovery_enabled"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end
