@@ -24,6 +24,8 @@ module Authentik::Api
 
     attr_accessor :branding_custom_css
 
+    attr_accessor :branding_map_tiles
+
     attr_accessor :ui_footer_links
 
     attr_accessor :ui_theme
@@ -82,6 +84,7 @@ module Authentik::Api
         :'branding_favicon' => :'branding_favicon',
         :'branding_favicon_themed_urls' => :'branding_favicon_themed_urls',
         :'branding_custom_css' => :'branding_custom_css',
+        :'branding_map_tiles' => :'branding_map_tiles',
         :'ui_footer_links' => :'ui_footer_links',
         :'ui_theme' => :'ui_theme',
         :'flow_authentication' => :'flow_authentication',
@@ -118,6 +121,7 @@ module Authentik::Api
         :'branding_favicon' => :'String',
         :'branding_favicon_themed_urls' => :'ThemedUrls',
         :'branding_custom_css' => :'String',
+        :'branding_map_tiles' => :'String',
         :'ui_footer_links' => :'Array<FooterLink>',
         :'ui_theme' => :'UiThemeEnum',
         :'flow_authentication' => :'String',
@@ -198,6 +202,12 @@ module Authentik::Api
         self.branding_custom_css = attributes[:'branding_custom_css']
       else
         self.branding_custom_css = nil
+      end
+
+      if attributes.key?(:'branding_map_tiles')
+        self.branding_map_tiles = attributes[:'branding_map_tiles']
+      else
+        self.branding_map_tiles = nil
       end
 
       if attributes.key?(:'ui_footer_links')
@@ -288,6 +298,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "branding_custom_css", branding_custom_css cannot be nil.')
       end
 
+      if @branding_map_tiles.nil?
+        invalid_properties.push('invalid value for "branding_map_tiles", branding_map_tiles cannot be nil.')
+      end
+
       if @ui_footer_links.nil?
         invalid_properties.push('invalid value for "ui_footer_links", ui_footer_links cannot be nil.')
       end
@@ -316,6 +330,7 @@ module Authentik::Api
       return false if @branding_logo.nil?
       return false if @branding_favicon.nil?
       return false if @branding_custom_css.nil?
+      return false if @branding_map_tiles.nil?
       return false if @ui_footer_links.nil?
       return false if @ui_theme.nil?
       return false if @default_locale.nil?
@@ -374,6 +389,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] branding_map_tiles Value to be assigned
+    def branding_map_tiles=(branding_map_tiles)
+      if branding_map_tiles.nil?
+        fail ArgumentError, 'branding_map_tiles cannot be nil'
+      end
+
+      @branding_map_tiles = branding_map_tiles
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] ui_footer_links Value to be assigned
     def ui_footer_links=(ui_footer_links)
       if ui_footer_links.nil?
@@ -425,6 +450,7 @@ module Authentik::Api
           branding_favicon == o.branding_favicon &&
           branding_favicon_themed_urls == o.branding_favicon_themed_urls &&
           branding_custom_css == o.branding_custom_css &&
+          branding_map_tiles == o.branding_map_tiles &&
           ui_footer_links == o.ui_footer_links &&
           ui_theme == o.ui_theme &&
           flow_authentication == o.flow_authentication &&
@@ -449,7 +475,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, ui_footer_links, ui_theme, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_locale, flags].hash
+      [matched_domain, branding_title, branding_logo, branding_logo_themed_urls, branding_favicon, branding_favicon_themed_urls, branding_custom_css, branding_map_tiles, ui_footer_links, ui_theme, flow_authentication, flow_user_switch, flow_invalidation, flow_recovery, flow_unenrollment, flow_user_settings, flow_device_code, flow_lockdown, flow_request, default_locale, flags].hash
     end
 
     # Builds the object from hash
