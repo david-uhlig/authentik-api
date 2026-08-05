@@ -25,6 +25,7 @@
 | **sync_page_size** | **Integer** | Controls the number of objects synced in a single task | [optional] |
 | **sync_page_timeout** | **String** | Timeout for synchronization of a single page | [optional] |
 | **dry_run** | **Boolean** | When enabled, provider will not modify or create objects in the remote system. | [optional] |
+| **discovery_enabled** | **Boolean** | When enabled, authentik will attempt to discover existing resources in the remote system. | [optional] |
 
 ## Example
 
@@ -52,7 +53,8 @@ instance = Authentik::Api::GoogleWorkspaceProvider.new(
   default_group_email_domain: null,
   sync_page_size: null,
   sync_page_timeout: null,
-  dry_run: null
+  dry_run: null,
+  discovery_enabled: null
 )
 ```
 

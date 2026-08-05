@@ -11,6 +11,7 @@
 | **provider_info** | **String** |  | [readonly] |
 | **logout** | **String** |  | [readonly] |
 | **jwks** | **String** |  | [readonly] |
+| **dcr_registration** | **String** |  | [readonly] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Authentik::Api::OAuth2ProviderSetupURLs.new(
   user_info: null,
   provider_info: null,
   logout: null,
-  jwks: null
+  jwks: null,
+  dcr_registration: null
 )
 ```
 
