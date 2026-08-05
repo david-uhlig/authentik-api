@@ -22,6 +22,7 @@
 | **user_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **group_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **sync_page_size** | **Integer** | Controls the number of objects synced in a single task | [optional] |
+| **discovery_enabled** | **Boolean** | When enabled, authentik will attempt to discover existing resources in the remote system. | [optional] |
 | **sync_page_timeout** | **String** | Timeout for synchronization of a single page | [optional] |
 | **dry_run** | **Boolean** | When enabled, provider will not modify or create objects in the remote system. | [optional] |
 
@@ -49,6 +50,7 @@ instance = Authentik::Api::MicrosoftEntraProvider.new(
   user_delete_action: null,
   group_delete_action: null,
   sync_page_size: null,
+  discovery_enabled: null,
   sync_page_timeout: null,
   dry_run: null
 )

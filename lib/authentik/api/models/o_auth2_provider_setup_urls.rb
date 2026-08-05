@@ -24,6 +24,8 @@ module Authentik::Api
 
     attr_accessor :jwks
 
+    attr_accessor :dcr_registration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -33,7 +35,8 @@ module Authentik::Api
         :'user_info' => :'user_info',
         :'provider_info' => :'provider_info',
         :'logout' => :'logout',
-        :'jwks' => :'jwks'
+        :'jwks' => :'jwks',
+        :'dcr_registration' => :'dcr_registration'
       }
     end
 
@@ -56,13 +59,15 @@ module Authentik::Api
         :'user_info' => :'String',
         :'provider_info' => :'String',
         :'logout' => :'String',
-        :'jwks' => :'String'
+        :'jwks' => :'String',
+        :'dcr_registration' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'dcr_registration'
       ])
     end
 
@@ -122,6 +127,12 @@ module Authentik::Api
         self.jwks = attributes[:'jwks']
       else
         self.jwks = nil
+      end
+
+      if attributes.key?(:'dcr_registration')
+        self.dcr_registration = attributes[:'dcr_registration']
+      else
+        self.dcr_registration = nil
       end
     end
 
@@ -256,7 +267,8 @@ module Authentik::Api
           user_info == o.user_info &&
           provider_info == o.provider_info &&
           logout == o.logout &&
-          jwks == o.jwks
+          jwks == o.jwks &&
+          dcr_registration == o.dcr_registration
     end
 
     # @see the `==` method
@@ -268,7 +280,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [issuer, authorize, token, user_info, provider_info, logout, jwks].hash
+      [issuer, authorize, token, user_info, provider_info, logout, jwks, dcr_registration].hash
     end
 
     # Builds the object from hash

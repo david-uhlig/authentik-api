@@ -87,6 +87,12 @@ describe Authentik::Api::MicrosoftEntraProviderRequest do
     end
   end
 
+  describe 'test attribute "discovery_enabled"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "sync_page_timeout"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
