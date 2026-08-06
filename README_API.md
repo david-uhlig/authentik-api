@@ -96,6 +96,12 @@ Class | Method | HTTP request | Description
 *Authentik::Api::AdminApi* | [**admin_version_history_list**](docs/AdminApi.md#admin_version_history_list) | **GET** /admin/version/history/ | 
 *Authentik::Api::AdminApi* | [**admin_version_history_retrieve**](docs/AdminApi.md#admin_version_history_retrieve) | **GET** /admin/version/history/{id}/ | 
 *Authentik::Api::AdminApi* | [**admin_version_retrieve**](docs/AdminApi.md#admin_version_retrieve) | **GET** /admin/version/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_create**](docs/AgentsApi.md#agents_agents_create) | **POST** /agents/agents/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_destroy**](docs/AgentsApi.md#agents_agents_destroy) | **DELETE** /agents/agents/{id}/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_list**](docs/AgentsApi.md#agents_agents_list) | **GET** /agents/agents/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_partial_update**](docs/AgentsApi.md#agents_agents_partial_update) | **PATCH** /agents/agents/{id}/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_retrieve**](docs/AgentsApi.md#agents_agents_retrieve) | **GET** /agents/agents/{id}/ | 
+*Authentik::Api::AgentsApi* | [**agents_agents_update**](docs/AgentsApi.md#agents_agents_update) | **PUT** /agents/agents/{id}/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_admin_all_list**](docs/AuthenticatorsApi.md#authenticators_admin_all_list) | **GET** /authenticators/admin/all/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_admin_duo_create**](docs/AuthenticatorsApi.md#authenticators_admin_duo_create) | **POST** /authenticators/admin/duo/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_admin_duo_destroy**](docs/AuthenticatorsApi.md#authenticators_admin_duo_destroy) | **DELETE** /authenticators/admin/duo/{id}/ | 
@@ -1275,13 +1281,17 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
  - [Authentik::Api::AccountLockdownStage](docs/AccountLockdownStage.md)
  - [Authentik::Api::AccountLockdownStageRequest](docs/AccountLockdownStageRequest.md)
+ - [Authentik::Api::Agent](docs/Agent.md)
  - [Authentik::Api::AgentAuthenticationResponse](docs/AgentAuthenticationResponse.md)
  - [Authentik::Api::AgentConfig](docs/AgentConfig.md)
  - [Authentik::Api::AgentConnector](docs/AgentConnector.md)
  - [Authentik::Api::AgentConnectorRequest](docs/AgentConnectorRequest.md)
+ - [Authentik::Api::AgentCreateRequest](docs/AgentCreateRequest.md)
+ - [Authentik::Api::AgentCreated](docs/AgentCreated.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationRequest](docs/AgentPSSODeviceRegistrationRequest.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationResponse](docs/AgentPSSODeviceRegistrationResponse.md)
  - [Authentik::Api::AgentPSSOUserRegistrationRequest](docs/AgentPSSOUserRegistrationRequest.md)
+ - [Authentik::Api::AgentRequest](docs/AgentRequest.md)
  - [Authentik::Api::AgentTokenResponse](docs/AgentTokenResponse.md)
  - [Authentik::Api::AlgEnum](docs/AlgEnum.md)
  - [Authentik::Api::App](docs/App.md)
@@ -1638,6 +1648,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PKCEMethodEnum](docs/PKCEMethodEnum.md)
  - [Authentik::Api::PaginatedAccountLockdownStageList](docs/PaginatedAccountLockdownStageList.md)
  - [Authentik::Api::PaginatedAgentConnectorList](docs/PaginatedAgentConnectorList.md)
+ - [Authentik::Api::PaginatedAgentList](docs/PaginatedAgentList.md)
  - [Authentik::Api::PaginatedAppleIndependentSecureEnclaveList](docs/PaginatedAppleIndependentSecureEnclaveList.md)
  - [Authentik::Api::PaginatedApplicationEntitlementList](docs/PaginatedApplicationEntitlementList.md)
  - [Authentik::Api::PaginatedApplicationList](docs/PaginatedApplicationList.md)
@@ -1813,6 +1824,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PasswordStageRequest](docs/PasswordStageRequest.md)
  - [Authentik::Api::PatchedAccountLockdownStageRequest](docs/PatchedAccountLockdownStageRequest.md)
  - [Authentik::Api::PatchedAgentConnectorRequest](docs/PatchedAgentConnectorRequest.md)
+ - [Authentik::Api::PatchedAgentRequest](docs/PatchedAgentRequest.md)
  - [Authentik::Api::PatchedAppleIndependentSecureEnclaveRequest](docs/PatchedAppleIndependentSecureEnclaveRequest.md)
  - [Authentik::Api::PatchedApplicationEntitlementRequest](docs/PatchedApplicationEntitlementRequest.md)
  - [Authentik::Api::PatchedApplicationRequest](docs/PatchedApplicationRequest.md)
@@ -1958,6 +1970,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PlexSourceRequest](docs/PlexSourceRequest.md)
  - [Authentik::Api::PlexTokenRedeemRequest](docs/PlexTokenRedeemRequest.md)
  - [Authentik::Api::Policy](docs/Policy.md)
+ - [Authentik::Api::PolicyBehaviorEnum](docs/PolicyBehaviorEnum.md)
  - [Authentik::Api::PolicyBinding](docs/PolicyBinding.md)
  - [Authentik::Api::PolicyBindingRequest](docs/PolicyBindingRequest.md)
  - [Authentik::Api::PolicyEngineMode](docs/PolicyEngineMode.md)
