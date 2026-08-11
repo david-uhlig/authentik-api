@@ -4,6 +4,7 @@ All URIs are relative to */api/v3*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**requests_grant_requests_agent_create**](RequestsApi.md#requests_grant_requests_agent_create) | **POST** /requests/grant-requests/agent/ |  |
 | [**requests_grant_requests_create**](RequestsApi.md#requests_grant_requests_create) | **POST** /requests/grant-requests/ |  |
 | [**requests_grant_requests_destroy**](RequestsApi.md#requests_grant_requests_destroy) | **DELETE** /requests/grant-requests/{uuid}/ |  |
 | [**requests_grant_requests_fulfill_partial_update**](RequestsApi.md#requests_grant_requests_fulfill_partial_update) | **PATCH** /requests/grant-requests/{uuid}/fulfill/ |  |
@@ -32,6 +33,75 @@ All URIs are relative to */api/v3*
 | [**requests_rules_retrieve**](RequestsApi.md#requests_rules_retrieve) | **GET** /requests/rules/{uuid}/ |  |
 | [**requests_rules_update**](RequestsApi.md#requests_rules_update) | **PUT** /requests/rules/{uuid}/ |  |
 | [**requests_rules_used_by_list**](RequestsApi.md#requests_rules_used_by_list) | **GET** /requests/rules/{uuid}/used_by/ |  |
+
+
+## requests_grant_requests_agent_create
+
+> <AgentGrantRequestCreated> requests_grant_requests_agent_create(agent_grant_request_create_request)
+
+
+
+Delegate access an agent's owner already holds to the agent, time-boxed. Unlike `create` this persists the request directly instead of returning a flow link -- an agent authenticates with an API token and has no browser to run a flow in, so no justification is ever collected. That is why the agent may only ask for what its owner already has: the owner's approval is then the whole decision, and no reviewer is asked to judge a request with nothing in it. The returned `fulfill_url` is what the agent hands to its owner so they can act on it.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::RequestsApi.new
+agent_grant_request_create_request = Authentik::Api::AgentGrantRequestCreateRequest.new({pbms: ['pbms_example']}) # AgentGrantRequestCreateRequest | 
+
+begin
+  
+  result = api_instance.requests_grant_requests_agent_create(agent_grant_request_create_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling RequestsApi->requests_grant_requests_agent_create: #{e}"
+end
+```
+
+#### Using the requests_grant_requests_agent_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentGrantRequestCreated>, Integer, Hash)> requests_grant_requests_agent_create_with_http_info(agent_grant_request_create_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.requests_grant_requests_agent_create_with_http_info(agent_grant_request_create_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentGrantRequestCreated>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling RequestsApi->requests_grant_requests_agent_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **agent_grant_request_create_request** | [**AgentGrantRequestCreateRequest**](AgentGrantRequestCreateRequest.md) |  |  |
+
+### Return type
+
+[**AgentGrantRequestCreated**](AgentGrantRequestCreated.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## requests_grant_requests_create
@@ -256,6 +326,7 @@ end
 
 api_instance = Authentik::Api::RequestsApi.new
 opts = {
+  agent_owner: 56, # Integer | 
   created_by: 56, # Integer | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -295,6 +366,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **agent_owner** | **Integer** |  | [optional] |
 | **created_by** | **Integer** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -337,6 +409,7 @@ end
 
 api_instance = Authentik::Api::RequestsApi.new
 opts = {
+  agent_owner: 56, # Integer | 
   created_by: 56, # Integer | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -376,6 +449,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
+| **agent_owner** | **Integer** |  | [optional] |
 | **created_by** | **Integer** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
