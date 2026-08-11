@@ -13,6 +13,72 @@ module Authentik::Api
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Delegate access an agent's owner already holds to the agent, time-boxed. Unlike `create` this persists the request directly instead of returning a flow link -- an agent authenticates with an API token and has no browser to run a flow in, so no justification is ever collected. That is why the agent may only ask for what its owner already has: the owner's approval is then the whole decision, and no reviewer is asked to judge a request with nothing in it. The returned `fulfill_url` is what the agent hands to its owner so they can act on it.
+    # @param agent_grant_request_create_request [AgentGrantRequestCreateRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [AgentGrantRequestCreated]
+    def requests_grant_requests_agent_create(agent_grant_request_create_request, opts = {})
+      data, _status_code, _headers = requests_grant_requests_agent_create_with_http_info(agent_grant_request_create_request, opts)
+      data
+    end
+
+    # Delegate access an agent&#39;s owner already holds to the agent, time-boxed. Unlike &#x60;create&#x60; this persists the request directly instead of returning a flow link -- an agent authenticates with an API token and has no browser to run a flow in, so no justification is ever collected. That is why the agent may only ask for what its owner already has: the owner&#39;s approval is then the whole decision, and no reviewer is asked to judge a request with nothing in it. The returned &#x60;fulfill_url&#x60; is what the agent hands to its owner so they can act on it.
+    # @param agent_grant_request_create_request [AgentGrantRequestCreateRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AgentGrantRequestCreated, Integer, Hash)>] AgentGrantRequestCreated data, response status code and response headers
+    def requests_grant_requests_agent_create_with_http_info(agent_grant_request_create_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RequestsApi.requests_grant_requests_agent_create ...'
+      end
+      # verify the required parameter 'agent_grant_request_create_request' is set
+      if @api_client.config.client_side_validation && agent_grant_request_create_request.nil?
+        fail ArgumentError, "Missing the required parameter 'agent_grant_request_create_request' when calling RequestsApi.requests_grant_requests_agent_create"
+      end
+      # resource path
+      local_var_path = '/requests/grant-requests/agent/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(agent_grant_request_create_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'AgentGrantRequestCreated'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RequestsApi.requests_grant_requests_agent_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RequestsApi#requests_grant_requests_agent_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # @param grant_request_create_request [GrantRequestCreateRequest] 
     # @param [Hash] opts the optional parameters
     # @return [Link]
@@ -203,6 +269,7 @@ module Authentik::Api
     end
 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :agent_owner 
     # @option opts [Integer] :created_by 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -216,6 +283,7 @@ module Authentik::Api
     end
 
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :agent_owner 
     # @option opts [Integer] :created_by 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -232,6 +300,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'agent_owner'] = opts[:'agent_owner'] if !opts[:'agent_owner'].nil?
       query_params[:'created_by'] = opts[:'created_by'] if !opts[:'created_by'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -275,6 +344,7 @@ module Authentik::Api
 
     # List pending grant requests the current user is eligible to review.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :agent_owner 
     # @option opts [Integer] :created_by 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -289,6 +359,7 @@ module Authentik::Api
 
     # List pending grant requests the current user is eligible to review.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :agent_owner 
     # @option opts [Integer] :created_by 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -305,6 +376,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'agent_owner'] = opts[:'agent_owner'] if !opts[:'agent_owner'].nil?
       query_params[:'created_by'] = opts[:'created_by'] if !opts[:'created_by'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

@@ -834,6 +834,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::ReportsApi* | [**reports_exports_destroy**](docs/ReportsApi.md#reports_exports_destroy) | **DELETE** /reports/exports/{id}/ | 
 *Authentik::Api::ReportsApi* | [**reports_exports_list**](docs/ReportsApi.md#reports_exports_list) | **GET** /reports/exports/ | 
 *Authentik::Api::ReportsApi* | [**reports_exports_retrieve**](docs/ReportsApi.md#reports_exports_retrieve) | **GET** /reports/exports/{id}/ | 
+*Authentik::Api::RequestsApi* | [**requests_grant_requests_agent_create**](docs/RequestsApi.md#requests_grant_requests_agent_create) | **POST** /requests/grant-requests/agent/ | 
 *Authentik::Api::RequestsApi* | [**requests_grant_requests_create**](docs/RequestsApi.md#requests_grant_requests_create) | **POST** /requests/grant-requests/ | 
 *Authentik::Api::RequestsApi* | [**requests_grant_requests_destroy**](docs/RequestsApi.md#requests_grant_requests_destroy) | **DELETE** /requests/grant-requests/{uuid}/ | 
 *Authentik::Api::RequestsApi* | [**requests_grant_requests_fulfill_partial_update**](docs/RequestsApi.md#requests_grant_requests_fulfill_partial_update) | **PATCH** /requests/grant-requests/{uuid}/fulfill/ | 
@@ -1288,6 +1289,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::AgentConnectorRequest](docs/AgentConnectorRequest.md)
  - [Authentik::Api::AgentCreateRequest](docs/AgentCreateRequest.md)
  - [Authentik::Api::AgentCreated](docs/AgentCreated.md)
+ - [Authentik::Api::AgentGrantRequestCreateRequest](docs/AgentGrantRequestCreateRequest.md)
+ - [Authentik::Api::AgentGrantRequestCreated](docs/AgentGrantRequestCreated.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationRequest](docs/AgentPSSODeviceRegistrationRequest.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationResponse](docs/AgentPSSODeviceRegistrationResponse.md)
  - [Authentik::Api::AgentPSSOUserRegistrationRequest](docs/AgentPSSOUserRegistrationRequest.md)

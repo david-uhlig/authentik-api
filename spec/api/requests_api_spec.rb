@@ -26,6 +26,17 @@ describe 'RequestsApi' do
     end
   end
 
+  # unit tests for requests_grant_requests_agent_create
+  # Delegate access an agent&#39;s owner already holds to the agent, time-boxed. Unlike &#x60;create&#x60; this persists the request directly instead of returning a flow link -- an agent authenticates with an API token and has no browser to run a flow in, so no justification is ever collected. That is why the agent may only ask for what its owner already has: the owner&#39;s approval is then the whole decision, and no reviewer is asked to judge a request with nothing in it. The returned &#x60;fulfill_url&#x60; is what the agent hands to its owner so they can act on it.
+  # @param agent_grant_request_create_request 
+  # @param [Hash] opts the optional parameters
+  # @return [AgentGrantRequestCreated]
+  describe 'requests_grant_requests_agent_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for requests_grant_requests_create
   # @param grant_request_create_request 
   # @param [Hash] opts the optional parameters
@@ -59,6 +70,7 @@ describe 'RequestsApi' do
 
   # unit tests for requests_grant_requests_list
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :agent_owner 
   # @option opts [Integer] :created_by 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -75,6 +87,7 @@ describe 'RequestsApi' do
   # unit tests for requests_grant_requests_pending_review_list
   # List pending grant requests the current user is eligible to review.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :agent_owner 
   # @option opts [Integer] :created_by 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
