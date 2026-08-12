@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :revoked_by
 
+    attr_accessor :agent_owner
+
     attr_accessor :is_active
 
     attr_accessor :expires
@@ -62,6 +64,7 @@ module Authentik::Api
         :'requester_data' => :'requester_data',
         :'fulfiller_data' => :'fulfiller_data',
         :'revoked_by' => :'revoked_by',
+        :'agent_owner' => :'agent_owner',
         :'is_active' => :'is_active',
         :'expires' => :'expires',
         :'status' => :'status',
@@ -89,6 +92,7 @@ module Authentik::Api
         :'requester_data' => :'Hash<String, Object>',
         :'fulfiller_data' => :'Hash<String, Object>',
         :'revoked_by' => :'PartialUser',
+        :'agent_owner' => :'PartialUser',
         :'is_active' => :'Boolean',
         :'expires' => :'Time',
         :'status' => :'RequestStatus',
@@ -151,6 +155,12 @@ module Authentik::Api
         self.revoked_by = nil
       end
 
+      if attributes.key?(:'agent_owner')
+        self.agent_owner = attributes[:'agent_owner']
+      else
+        self.agent_owner = nil
+      end
+
       if attributes.key?(:'is_active')
         self.is_active = attributes[:'is_active']
       else
@@ -205,6 +215,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "revoked_by", revoked_by cannot be nil.')
       end
 
+      if @agent_owner.nil?
+        invalid_properties.push('invalid value for "agent_owner", agent_owner cannot be nil.')
+      end
+
       if @is_active.nil?
         invalid_properties.push('invalid value for "is_active", is_active cannot be nil.')
       end
@@ -231,6 +245,7 @@ module Authentik::Api
       return false if @created.nil?
       return false if @created_by.nil?
       return false if @revoked_by.nil?
+      return false if @agent_owner.nil?
       return false if @is_active.nil?
       return false if @status.nil?
       return false if @targets.nil?
@@ -266,6 +281,16 @@ module Authentik::Api
       end
 
       @revoked_by = revoked_by
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] agent_owner Value to be assigned
+    def agent_owner=(agent_owner)
+      if agent_owner.nil?
+        fail ArgumentError, 'agent_owner cannot be nil'
+      end
+
+      @agent_owner = agent_owner
     end
 
     # Custom attribute writer method with validation
@@ -318,6 +343,7 @@ module Authentik::Api
           requester_data == o.requester_data &&
           fulfiller_data == o.fulfiller_data &&
           revoked_by == o.revoked_by &&
+          agent_owner == o.agent_owner &&
           is_active == o.is_active &&
           expires == o.expires &&
           status == o.status &&
@@ -335,7 +361,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [created, created_by, requester_data, fulfiller_data, revoked_by, is_active, expires, status, targets, target_objs, uuid].hash
+      [created, created_by, requester_data, fulfiller_data, revoked_by, agent_owner, is_active, expires, status, targets, target_objs, uuid].hash
     end
 
     # Builds the object from hash

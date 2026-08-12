@@ -16,9 +16,11 @@ module Authentik::Api
     CAN_IMPERSONATE = "can_impersonate".freeze
     CAN_DEBUG = "can_debug".freeze
     IS_ENTERPRISE = "is_enterprise".freeze
+    CAN_REQUEST = "can_request".freeze
+    CAN_AGENT_SELF_SERVICE = "can_agent_self_service".freeze
 
     def self.all_vars
-      @all_vars ||= [CAN_SAVE_MEDIA, CAN_SAVE_REPORTS, CAN_GEO_IP, CAN_ASN, CAN_IMPERSONATE, CAN_DEBUG, IS_ENTERPRISE].freeze
+      @all_vars ||= [CAN_SAVE_MEDIA, CAN_SAVE_REPORTS, CAN_GEO_IP, CAN_ASN, CAN_IMPERSONATE, CAN_DEBUG, IS_ENTERPRISE, CAN_REQUEST, CAN_AGENT_SELF_SERVICE].freeze
     end
 
     # Builds the enum from string
