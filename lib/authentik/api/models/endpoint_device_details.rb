@@ -84,6 +84,7 @@ module Authentik::Api
       Set.new([
         :'access_group',
         :'expires',
+        :'facts',
       ])
     end
 
@@ -185,10 +186,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @facts.nil?
-        invalid_properties.push('invalid value for "facts", facts cannot be nil.')
-      end
-
       if @connections_obj.nil?
         invalid_properties.push('invalid value for "connections_obj", connections_obj cannot be nil.')
       end
@@ -210,7 +207,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pbm_uuid.nil?
       return false if @name.nil?
-      return false if @facts.nil?
       return false if @connections_obj.nil?
       return false if @policies.nil?
       return false if @connections.nil?
@@ -235,16 +231,6 @@ module Authentik::Api
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] facts Value to be assigned
-    def facts=(facts)
-      if facts.nil?
-        fail ArgumentError, 'facts cannot be nil'
-      end
-
-      @facts = facts
     end
 
     # Custom attribute writer method with validation
