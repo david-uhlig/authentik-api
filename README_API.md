@@ -2035,6 +2035,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::RequestRuleRequest](docs/RequestRuleRequest.md)
  - [Authentik::Api::RequestStatus](docs/RequestStatus.md)
  - [Authentik::Api::RequestableTarget](docs/RequestableTarget.md)
+ - [Authentik::Api::ResumeOnMatchFailuresEnum](docs/ResumeOnMatchFailuresEnum.md)
  - [Authentik::Api::Review](docs/Review.md)
  - [Authentik::Api::ReviewRequest](docs/ReviewRequest.md)
  - [Authentik::Api::Role](docs/Role.md)
