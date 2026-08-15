@@ -105,6 +105,8 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'revoked_by',
+        :'agent_owner',
         :'expires',
       ])
     end
@@ -211,14 +213,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "created_by", created_by cannot be nil.')
       end
 
-      if @revoked_by.nil?
-        invalid_properties.push('invalid value for "revoked_by", revoked_by cannot be nil.')
-      end
-
-      if @agent_owner.nil?
-        invalid_properties.push('invalid value for "agent_owner", agent_owner cannot be nil.')
-      end
-
       if @is_active.nil?
         invalid_properties.push('invalid value for "is_active", is_active cannot be nil.')
       end
@@ -244,8 +238,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @created.nil?
       return false if @created_by.nil?
-      return false if @revoked_by.nil?
-      return false if @agent_owner.nil?
       return false if @is_active.nil?
       return false if @status.nil?
       return false if @targets.nil?
@@ -271,26 +263,6 @@ module Authentik::Api
       end
 
       @created_by = created_by
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] revoked_by Value to be assigned
-    def revoked_by=(revoked_by)
-      if revoked_by.nil?
-        fail ArgumentError, 'revoked_by cannot be nil'
-      end
-
-      @revoked_by = revoked_by
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] agent_owner Value to be assigned
-    def agent_owner=(agent_owner)
-      if agent_owner.nil?
-        fail ArgumentError, 'agent_owner cannot be nil'
-      end
-
-      @agent_owner = agent_owner
     end
 
     # Custom attribute writer method with validation
