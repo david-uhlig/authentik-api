@@ -132,6 +132,7 @@ module Authentik::Api
 
     # Mixin to add a used_by endpoint to return a list of all objects using this object
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :login_hint 
     # @return [AgentAuthenticationResponse]
     def endpoints_agents_connectors_auth_ia_create(opts = {})
       data, _status_code, _headers = endpoints_agents_connectors_auth_ia_create_with_http_info(opts)
@@ -140,6 +141,7 @@ module Authentik::Api
 
     # Mixin to add a used_by endpoint to return a list of all objects using this object
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :login_hint 
     # @return [Array<(AgentAuthenticationResponse, Integer, Hash)>] AgentAuthenticationResponse data, response status code and response headers
     def endpoints_agents_connectors_auth_ia_create_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -150,6 +152,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'login_hint'] = opts[:'login_hint'] if !opts[:'login_hint'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

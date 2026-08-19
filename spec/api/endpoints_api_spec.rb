@@ -50,6 +50,7 @@ describe 'EndpointsApi' do
   # unit tests for endpoints_agents_connectors_auth_ia_create
   # Mixin to add a used_by endpoint to return a list of all objects using this object
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :login_hint 
   # @return [AgentAuthenticationResponse]
   describe 'endpoints_agents_connectors_auth_ia_create test' do
     it 'should work' do
