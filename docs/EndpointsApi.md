@@ -211,7 +211,7 @@ end
 
 ## endpoints_agents_connectors_auth_ia_create
 
-> <AgentAuthenticationResponse> endpoints_agents_connectors_auth_ia_create
+> <AgentAuthenticationResponse> endpoints_agents_connectors_auth_ia_create(opts)
 
 
 
@@ -227,10 +227,13 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::EndpointsApi.new
+opts = {
+  login_hint: 'login_hint_example' # String | 
+}
 
 begin
   
-  result = api_instance.endpoints_agents_connectors_auth_ia_create
+  result = api_instance.endpoints_agents_connectors_auth_ia_create(opts)
   p result
 rescue Authentik::Api::ApiError => e
   puts "Error when calling EndpointsApi->endpoints_agents_connectors_auth_ia_create: #{e}"
@@ -241,12 +244,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<AgentAuthenticationResponse>, Integer, Hash)> endpoints_agents_connectors_auth_ia_create_with_http_info
+> <Array(<AgentAuthenticationResponse>, Integer, Hash)> endpoints_agents_connectors_auth_ia_create_with_http_info(opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.endpoints_agents_connectors_auth_ia_create_with_http_info
+  data, status_code, headers = api_instance.endpoints_agents_connectors_auth_ia_create_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <AgentAuthenticationResponse>
@@ -257,7 +260,9 @@ end
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **login_hint** | **String** |  | [optional] |
 
 ### Return type
 
