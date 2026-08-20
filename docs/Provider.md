@@ -7,8 +7,8 @@
 | **pk** | **Integer** |  | [readonly] |
 | **name** | **String** |  |  |
 | **authentication_flow** | **String** | Flow used for authentication when the associated application is accessed by an un-authenticated user. | [optional] |
-| **authorization_flow** | **String** | Flow used when authorizing this provider. |  |
-| **invalidation_flow** | **String** | Flow used ending the session from a provider. |  |
+| **authorization_flow** | **String** | Flow used when authorizing this provider. | [optional] |
+| **invalidation_flow** | **String** | Flow used ending the session from a provider. | [optional] |
 | **property_mappings** | **Array&lt;String&gt;** |  | [optional] |
 | **component** | **String** | Get object component so that we know how to edit the object | [readonly] |
 | **assigned_application_slug** | **String** | Internal application name, used in URLs. | [readonly] |
