@@ -103,6 +103,8 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'authentication_flow',
+        :'authorization_flow',
+        :'invalidation_flow',
         :'assigned_application_slug',
         :'assigned_application_name',
         :'assigned_backchannel_application_slug',
@@ -144,14 +146,10 @@ module Authentik::Api
 
       if attributes.key?(:'authorization_flow')
         self.authorization_flow = attributes[:'authorization_flow']
-      else
-        self.authorization_flow = nil
       end
 
       if attributes.key?(:'invalidation_flow')
         self.invalidation_flow = attributes[:'invalidation_flow']
-      else
-        self.invalidation_flow = nil
       end
 
       if attributes.key?(:'property_mappings')
@@ -222,14 +220,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "name", name cannot be nil.')
       end
 
-      if @authorization_flow.nil?
-        invalid_properties.push('invalid value for "authorization_flow", authorization_flow cannot be nil.')
-      end
-
-      if @invalidation_flow.nil?
-        invalid_properties.push('invalid value for "invalidation_flow", invalidation_flow cannot be nil.')
-      end
-
       if @component.nil?
         invalid_properties.push('invalid value for "component", component cannot be nil.')
       end
@@ -255,8 +245,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @pk.nil?
       return false if @name.nil?
-      return false if @authorization_flow.nil?
-      return false if @invalidation_flow.nil?
       return false if @component.nil?
       return false if @verbose_name.nil?
       return false if @verbose_name_plural.nil?
@@ -282,26 +270,6 @@ module Authentik::Api
       end
 
       @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] authorization_flow Value to be assigned
-    def authorization_flow=(authorization_flow)
-      if authorization_flow.nil?
-        fail ArgumentError, 'authorization_flow cannot be nil'
-      end
-
-      @authorization_flow = authorization_flow
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] invalidation_flow Value to be assigned
-    def invalidation_flow=(invalidation_flow)
-      if invalidation_flow.nil?
-        fail ArgumentError, 'invalidation_flow cannot be nil'
-      end
-
-      @invalidation_flow = invalidation_flow
     end
 
     # Custom attribute writer method with validation
