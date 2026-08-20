@@ -17,12 +17,16 @@ module Authentik::Api
     # Amount of time a user can take to return from the source to continue the flow (Format: hours=-1;minutes=-2;seconds=-3)
     attr_accessor :resume_timeout
 
+    # Source matching failure reasons for which the flow should resume.
+    attr_accessor :resume_on_match_failures
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'name' => :'name',
         :'source' => :'source',
-        :'resume_timeout' => :'resume_timeout'
+        :'resume_timeout' => :'resume_timeout',
+        :'resume_on_match_failures' => :'resume_on_match_failures'
       }
     end
 
@@ -41,7 +45,8 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'source' => :'String',
-        :'resume_timeout' => :'String'
+        :'resume_timeout' => :'String',
+        :'resume_on_match_failures' => :'Array<ResumeOnMatchFailuresEnum>'
       }
     end
 
@@ -77,6 +82,12 @@ module Authentik::Api
 
       if attributes.key?(:'resume_timeout')
         self.resume_timeout = attributes[:'resume_timeout']
+      end
+
+      if attributes.key?(:'resume_on_match_failures')
+        if (value = attributes[:'resume_on_match_failures']).is_a?(Array)
+          self.resume_on_match_failures = value
+        end
       end
     end
 
@@ -140,7 +151,8 @@ module Authentik::Api
       self.class == o.class &&
           name == o.name &&
           source == o.source &&
-          resume_timeout == o.resume_timeout
+          resume_timeout == o.resume_timeout &&
+          resume_on_match_failures == o.resume_on_match_failures
     end
 
     # @see the `==` method
@@ -152,7 +164,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, source, resume_timeout].hash
+      [name, source, resume_timeout, resume_on_match_failures].hash
     end
 
     # Builds the object from hash
