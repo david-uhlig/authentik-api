@@ -9,6 +9,7 @@
 | **background_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [optional] |
 | **cancel_url** | **String** |  |  |
 | **layout** | [**ContextualFlowInfoLayoutEnum**](ContextualFlowInfoLayoutEnum.md) |  |  |
+| **messages** | [**Array&lt;FlowMessage&gt;**](FlowMessage.md) |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = Authentik::Api::ContextualFlowInfo.new(
   background: null,
   background_themed_urls: null,
   cancel_url: null,
-  layout: null
+  layout: null,
+  messages: null
 )
 ```
 
