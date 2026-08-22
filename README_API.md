@@ -1481,6 +1481,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::FlowInspection](docs/FlowInspection.md)
  - [Authentik::Api::FlowInspectorPlan](docs/FlowInspectorPlan.md)
  - [Authentik::Api::FlowLayoutEnum](docs/FlowLayoutEnum.md)
+ - [Authentik::Api::FlowMessage](docs/FlowMessage.md)
+ - [Authentik::Api::FlowMessageLevelEnum](docs/FlowMessageLevelEnum.md)
  - [Authentik::Api::FlowRequest](docs/FlowRequest.md)
  - [Authentik::Api::FlowSet](docs/FlowSet.md)
  - [Authentik::Api::FlowStageBinding](docs/FlowStageBinding.md)

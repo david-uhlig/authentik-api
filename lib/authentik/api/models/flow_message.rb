@@ -8,14 +8,39 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class CurrentBrandFlags < ApiModelBase
-    # Upon successful authentication, re-start authentication in other open tabs.
-    attr_accessor :flows_continuous_login
+  # Serializer for a django.contrib.messages message
+  class FlowMessage < ApiModelBase
+    attr_accessor :level
+
+    attr_accessor :message
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'flows_continuous_login' => :'flows_continuous_login'
+        :'level' => :'level',
+        :'message' => :'message'
       }
     end
 
@@ -32,7 +57,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'flows_continuous_login' => :'Boolean'
+        :'level' => :'FlowMessageLevelEnum',
+        :'message' => :'String'
       }
     end
 
@@ -46,22 +72,28 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::CurrentBrandFlags` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::FlowMessage` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::CurrentBrandFlags`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::FlowMessage`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'flows_continuous_login')
-        self.flows_continuous_login = attributes[:'flows_continuous_login']
+      if attributes.key?(:'level')
+        self.level = attributes[:'level']
       else
-        self.flows_continuous_login = nil
+        self.level = nil
+      end
+
+      if attributes.key?(:'message')
+        self.message = attributes[:'message']
+      else
+        self.message = nil
       end
     end
 
@@ -70,8 +102,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @flows_continuous_login.nil?
-        invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
+      if @level.nil?
+        invalid_properties.push('invalid value for "level", level cannot be nil.')
+      end
+
+      if @message.nil?
+        invalid_properties.push('invalid value for "message", message cannot be nil.')
       end
 
       invalid_properties
@@ -81,18 +117,29 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @flows_continuous_login.nil?
+      return false if @level.nil?
+      return false if @message.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_continuous_login Value to be assigned
-    def flows_continuous_login=(flows_continuous_login)
-      if flows_continuous_login.nil?
-        fail ArgumentError, 'flows_continuous_login cannot be nil'
+    # @param [Object] level Value to be assigned
+    def level=(level)
+      if level.nil?
+        fail ArgumentError, 'level cannot be nil'
       end
 
-      @flows_continuous_login = flows_continuous_login
+      @level = level
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] message Value to be assigned
+    def message=(message)
+      if message.nil?
+        fail ArgumentError, 'message cannot be nil'
+      end
+
+      @message = message
     end
 
     # Checks equality by comparing each attribute.
@@ -100,7 +147,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          flows_continuous_login == o.flows_continuous_login
+          level == o.level &&
+          message == o.message
     end
 
     # @see the `==` method
@@ -112,7 +160,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flows_continuous_login].hash
+      [level, message].hash
     end
 
     # Builds the object from hash

@@ -18,16 +18,12 @@ module Authentik::Api
     # Upon successful authentication, re-start authentication in other open tabs.
     attr_accessor :flows_continuous_login
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'core_default_app_access' => :'core_default_app_access',
         :'enterprise_audit_include_expanded_diff' => :'enterprise_audit_include_expanded_diff',
-        :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'flows_continuous_login' => :'flows_continuous_login'
       }
     end
 
@@ -46,8 +42,7 @@ module Authentik::Api
       {
         :'core_default_app_access' => :'Boolean',
         :'enterprise_audit_include_expanded_diff' => :'Boolean',
-        :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'flows_continuous_login' => :'Boolean'
       }
     end
 
@@ -90,12 +85,6 @@ module Authentik::Api
       else
         self.flows_continuous_login = nil
       end
-
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
-      else
-        self.flows_refresh_others = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -115,10 +104,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -129,7 +114,6 @@ module Authentik::Api
       return false if @core_default_app_access.nil?
       return false if @enterprise_audit_include_expanded_diff.nil?
       return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
       true
     end
 
@@ -163,16 +147,6 @@ module Authentik::Api
       @flows_continuous_login = flows_continuous_login
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
-      end
-
-      @flows_refresh_others = flows_refresh_others
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -180,8 +154,7 @@ module Authentik::Api
       self.class == o.class &&
           core_default_app_access == o.core_default_app_access &&
           enterprise_audit_include_expanded_diff == o.enterprise_audit_include_expanded_diff &&
-          flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          flows_continuous_login == o.flows_continuous_login
     end
 
     # @see the `==` method
@@ -193,7 +166,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [core_default_app_access, enterprise_audit_include_expanded_diff, flows_continuous_login, flows_refresh_others].hash
+      [core_default_app_access, enterprise_audit_include_expanded_diff, flows_continuous_login].hash
     end
 
     # Builds the object from hash
