@@ -9164,7 +9164,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   property_mappings: ['inner_example'], # Array<String> | 
-  saml_version: Authentik::Api::SamlVersionEnum::N1_1, # SamlVersionEnum | 
+  saml_version: Authentik::Api::WSFedSAMLVersionEnum::N1_1, # WSFedSAMLVersionEnum | 
   search: 'search_example', # String | A search term.
   session_valid_not_on_or_after: 'session_valid_not_on_or_after_example', # String | 
   sign_assertion: true, # Boolean | 
@@ -9232,7 +9232,7 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **property_mappings** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **saml_version** | [**SamlVersionEnum**](.md) |  | [optional] |
+| **saml_version** | [**WSFedSAMLVersionEnum**](.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **session_valid_not_on_or_after** | **String** |  | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |

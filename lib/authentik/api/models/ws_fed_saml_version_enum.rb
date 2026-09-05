@@ -8,7 +8,7 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  class SamlVersionEnum
+  class WSFedSAMLVersionEnum
     N1_1 = "1.1".freeze
     N2_0 = "2.0".freeze
 
@@ -27,8 +27,8 @@ module Authentik::Api
     # @param [String] The enum value in the form of the string
     # @return [String] The enum value
     def build_from_hash(value)
-      return value if SamlVersionEnum.all_vars.include?(value)
-      raise "Invalid ENUM value #{value} for class #SamlVersionEnum"
+      return value if WSFedSAMLVersionEnum.all_vars.include?(value)
+      raise "Invalid ENUM value #{value} for class #WSFedSAMLVersionEnum"
     end
   end
 end

@@ -1,4 +1,4 @@
-# Authentik::Api::SamlVersionEnum
+# Authentik::Api::WSFedSAMLVersionEnum
 
 ## Properties
 
@@ -10,6 +10,6 @@
 ```ruby
 require 'authentik-api'
 
-instance = Authentik::Api::SamlVersionEnum.new()
+instance = Authentik::Api::WSFedSAMLVersionEnum.new()
 ```
 

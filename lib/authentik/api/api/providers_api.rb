@@ -8388,7 +8388,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
-    # @option opts [SamlVersionEnum] :saml_version 
+    # @option opts [WSFedSAMLVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
@@ -8431,7 +8431,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
-    # @option opts [SamlVersionEnum] :saml_version 
+    # @option opts [WSFedSAMLVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
