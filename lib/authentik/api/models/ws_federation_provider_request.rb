@@ -134,7 +134,7 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'String',
         :'name_id_mapping' => :'String',
         :'authn_context_class_ref_mapping' => :'String',
-        :'saml_version' => :'SamlVersionEnum',
+        :'saml_version' => :'WSFedSAMLVersionEnum',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'signing_kp' => :'String',
