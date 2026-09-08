@@ -32,6 +32,10 @@ module Authentik::Api
     # Return objects policy is bound to
     attr_accessor :bound_to
 
+    attr_accessor :last_updated
+
+    attr_accessor :created
+
     attr_accessor :days
 
     attr_accessor :deny_only
@@ -47,6 +51,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'bound_to' => :'bound_to',
+        :'last_updated' => :'last_updated',
+        :'created' => :'created',
         :'days' => :'days',
         :'deny_only' => :'deny_only'
       }
@@ -73,6 +79,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'bound_to' => :'Integer',
+        :'last_updated' => :'Time',
+        :'created' => :'Time',
         :'days' => :'Integer',
         :'deny_only' => :'Boolean'
       }
@@ -146,6 +154,18 @@ module Authentik::Api
         self.bound_to = nil
       end
 
+      if attributes.key?(:'last_updated')
+        self.last_updated = attributes[:'last_updated']
+      else
+        self.last_updated = nil
+      end
+
+      if attributes.key?(:'created')
+        self.created = attributes[:'created']
+      else
+        self.created = nil
+      end
+
       if attributes.key?(:'days')
         self.days = attributes[:'days']
       else
@@ -190,6 +210,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "bound_to", bound_to cannot be nil.')
       end
 
+      if @last_updated.nil?
+        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
+      end
+
+      if @created.nil?
+        invalid_properties.push('invalid value for "created", created cannot be nil.')
+      end
+
       if @days.nil?
         invalid_properties.push('invalid value for "days", days cannot be nil.')
       end
@@ -216,6 +244,8 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @bound_to.nil?
+      return false if @last_updated.nil?
+      return false if @created.nil?
       return false if @days.nil?
       return false if @days > 2147483647
       return false if @days < -2147483648
@@ -293,6 +323,26 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] last_updated Value to be assigned
+    def last_updated=(last_updated)
+      if last_updated.nil?
+        fail ArgumentError, 'last_updated cannot be nil'
+      end
+
+      @last_updated = last_updated
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] created Value to be assigned
+    def created=(created)
+      if created.nil?
+        fail ArgumentError, 'created cannot be nil'
+      end
+
+      @created = created
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] days Value to be assigned
     def days=(days)
       if days.nil?
@@ -323,6 +373,8 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           bound_to == o.bound_to &&
+          last_updated == o.last_updated &&
+          created == o.created &&
           days == o.days &&
           deny_only == o.deny_only
     end
@@ -336,7 +388,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, days, deny_only].hash
+      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, last_updated, created, days, deny_only].hash
     end
 
     # Builds the object from hash

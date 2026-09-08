@@ -12,6 +12,8 @@
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **bound_to** | **Integer** | Return objects policy is bound to | [readonly] |
+| **last_updated** | **Time** |  | [readonly] |
+| **created** | **Time** |  | [readonly] |
 | **password_field** | **String** | Field key to check, field keys defined in Prompt stages are available. | [optional] |
 | **amount_digits** | **Integer** |  | [optional] |
 | **amount_uppercase** | **Integer** |  | [optional] |
@@ -40,6 +42,8 @@ instance = Authentik::Api::PasswordPolicy.new(
   verbose_name_plural: null,
   meta_model_name: null,
   bound_to: null,
+  last_updated: null,
+  created: null,
   password_field: null,
   amount_digits: null,
   amount_uppercase: null,

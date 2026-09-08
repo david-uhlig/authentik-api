@@ -32,6 +32,10 @@ module Authentik::Api
     # Return objects policy is bound to
     attr_accessor :bound_to
 
+    attr_accessor :last_updated
+
+    attr_accessor :created
+
     attr_accessor :asns
 
     attr_accessor :countries
@@ -61,6 +65,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'bound_to' => :'bound_to',
+        :'last_updated' => :'last_updated',
+        :'created' => :'created',
         :'asns' => :'asns',
         :'countries' => :'countries',
         :'countries_obj' => :'countries_obj',
@@ -94,6 +100,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'bound_to' => :'Integer',
+        :'last_updated' => :'Time',
+        :'created' => :'Time',
         :'asns' => :'Array<Integer>',
         :'countries' => :'Array<CountryCodeEnum>',
         :'countries_obj' => :'Array<GeoIPPolicyCountriesObjInner>',
@@ -172,6 +180,18 @@ module Authentik::Api
         self.bound_to = attributes[:'bound_to']
       else
         self.bound_to = nil
+      end
+
+      if attributes.key?(:'last_updated')
+        self.last_updated = attributes[:'last_updated']
+      else
+        self.last_updated = nil
+      end
+
+      if attributes.key?(:'created')
+        self.created = attributes[:'created']
+      else
+        self.created = nil
       end
 
       if attributes.key?(:'asns')
@@ -254,6 +274,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "bound_to", bound_to cannot be nil.')
       end
 
+      if @last_updated.nil?
+        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
+      end
+
+      if @created.nil?
+        invalid_properties.push('invalid value for "created", created cannot be nil.')
+      end
+
       if @countries.nil?
         invalid_properties.push('invalid value for "countries", countries cannot be nil.')
       end
@@ -312,6 +340,8 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @bound_to.nil?
+      return false if @last_updated.nil?
+      return false if @created.nil?
       return false if @countries.nil?
       return false if @countries.length > 249
       return false if @countries_obj.nil?
@@ -394,6 +424,26 @@ module Authentik::Api
       end
 
       @bound_to = bound_to
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] last_updated Value to be assigned
+    def last_updated=(last_updated)
+      if last_updated.nil?
+        fail ArgumentError, 'last_updated cannot be nil'
+      end
+
+      @last_updated = last_updated
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] created Value to be assigned
+    def created=(created)
+      if created.nil?
+        fail ArgumentError, 'created cannot be nil'
+      end
+
+      @created = created
     end
 
     # Custom attribute writer method with validation
@@ -505,6 +555,8 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           bound_to == o.bound_to &&
+          last_updated == o.last_updated &&
+          created == o.created &&
           asns == o.asns &&
           countries == o.countries &&
           countries_obj == o.countries_obj &&
@@ -525,7 +577,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, asns, countries, countries_obj, check_history_distance, history_max_distance_km, distance_tolerance_km, history_login_count, check_impossible_travel, impossible_tolerance_km].hash
+      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, last_updated, created, asns, countries, countries_obj, check_history_distance, history_max_distance_km, distance_tolerance_km, history_login_count, check_impossible_travel, impossible_tolerance_km].hash
     end
 
     # Builds the object from hash

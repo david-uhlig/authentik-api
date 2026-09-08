@@ -32,6 +32,10 @@ module Authentik::Api
     # Return objects policy is bound to
     attr_accessor :bound_to
 
+    attr_accessor :last_updated
+
+    attr_accessor :created
+
     attr_accessor :expression
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -45,6 +49,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'bound_to' => :'bound_to',
+        :'last_updated' => :'last_updated',
+        :'created' => :'created',
         :'expression' => :'expression'
       }
     end
@@ -70,6 +76,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'bound_to' => :'Integer',
+        :'last_updated' => :'Time',
+        :'created' => :'Time',
         :'expression' => :'String'
       }
     end
@@ -142,6 +150,18 @@ module Authentik::Api
         self.bound_to = nil
       end
 
+      if attributes.key?(:'last_updated')
+        self.last_updated = attributes[:'last_updated']
+      else
+        self.last_updated = nil
+      end
+
+      if attributes.key?(:'created')
+        self.created = attributes[:'created']
+      else
+        self.created = nil
+      end
+
       if attributes.key?(:'expression')
         self.expression = attributes[:'expression']
       else
@@ -182,6 +202,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "bound_to", bound_to cannot be nil.')
       end
 
+      if @last_updated.nil?
+        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
+      end
+
+      if @created.nil?
+        invalid_properties.push('invalid value for "created", created cannot be nil.')
+      end
+
       if @expression.nil?
         invalid_properties.push('invalid value for "expression", expression cannot be nil.')
       end
@@ -200,6 +228,8 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @bound_to.nil?
+      return false if @last_updated.nil?
+      return false if @created.nil?
       return false if @expression.nil?
       true
     end
@@ -275,6 +305,26 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] last_updated Value to be assigned
+    def last_updated=(last_updated)
+      if last_updated.nil?
+        fail ArgumentError, 'last_updated cannot be nil'
+      end
+
+      @last_updated = last_updated
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] created Value to be assigned
+    def created=(created)
+      if created.nil?
+        fail ArgumentError, 'created cannot be nil'
+      end
+
+      @created = created
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] expression Value to be assigned
     def expression=(expression)
       if expression.nil?
@@ -297,6 +347,8 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           bound_to == o.bound_to &&
+          last_updated == o.last_updated &&
+          created == o.created &&
           expression == o.expression
     end
 
@@ -309,7 +361,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, expression].hash
+      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, last_updated, created, expression].hash
     end
 
     # Builds the object from hash
