@@ -32,6 +32,10 @@ module Authentik::Api
     # Return objects policy is bound to
     attr_accessor :bound_to
 
+    attr_accessor :last_updated
+
+    attr_accessor :created
+
     attr_accessor :result
 
     attr_accessor :wait_min
@@ -49,6 +53,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'bound_to' => :'bound_to',
+        :'last_updated' => :'last_updated',
+        :'created' => :'created',
         :'result' => :'result',
         :'wait_min' => :'wait_min',
         :'wait_max' => :'wait_max'
@@ -76,6 +82,8 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'bound_to' => :'Integer',
+        :'last_updated' => :'Time',
+        :'created' => :'Time',
         :'result' => :'Boolean',
         :'wait_min' => :'Integer',
         :'wait_max' => :'Integer'
@@ -150,6 +158,18 @@ module Authentik::Api
         self.bound_to = nil
       end
 
+      if attributes.key?(:'last_updated')
+        self.last_updated = attributes[:'last_updated']
+      else
+        self.last_updated = nil
+      end
+
+      if attributes.key?(:'created')
+        self.created = attributes[:'created']
+      else
+        self.created = nil
+      end
+
       if attributes.key?(:'result')
         self.result = attributes[:'result']
       end
@@ -196,6 +216,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "bound_to", bound_to cannot be nil.')
       end
 
+      if @last_updated.nil?
+        invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
+      end
+
+      if @created.nil?
+        invalid_properties.push('invalid value for "created", created cannot be nil.')
+      end
+
       if !@wait_min.nil? && @wait_min > 2147483647
         invalid_properties.push('invalid value for "wait_min", must be smaller than or equal to 2147483647.')
       end
@@ -226,6 +254,8 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @bound_to.nil?
+      return false if @last_updated.nil?
+      return false if @created.nil?
       return false if !@wait_min.nil? && @wait_min > 2147483647
       return false if !@wait_min.nil? && @wait_min < -2147483648
       return false if !@wait_max.nil? && @wait_max > 2147483647
@@ -304,6 +334,26 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] last_updated Value to be assigned
+    def last_updated=(last_updated)
+      if last_updated.nil?
+        fail ArgumentError, 'last_updated cannot be nil'
+      end
+
+      @last_updated = last_updated
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] created Value to be assigned
+    def created=(created)
+      if created.nil?
+        fail ArgumentError, 'created cannot be nil'
+      end
+
+      @created = created
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] wait_min Value to be assigned
     def wait_min=(wait_min)
       if wait_min.nil?
@@ -352,6 +402,8 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           bound_to == o.bound_to &&
+          last_updated == o.last_updated &&
+          created == o.created &&
           result == o.result &&
           wait_min == o.wait_min &&
           wait_max == o.wait_max
@@ -366,7 +418,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, result, wait_min, wait_max].hash
+      [pk, name, execution_logging, component, verbose_name, verbose_name_plural, meta_model_name, bound_to, last_updated, created, result, wait_min, wait_max].hash
     end
 
     # Builds the object from hash
