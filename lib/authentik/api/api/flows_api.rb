@@ -940,7 +940,7 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Return diagram for flow with slug `slug`, in the format used by flowchart.js
+    # Return the graph of flow with slug `slug`, for the client to render
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [FlowDiagram]
@@ -949,7 +949,7 @@ module Authentik::Api
       data
     end
 
-    # Return diagram for flow with slug &#x60;slug&#x60;, in the format used by flowchart.js
+    # Return the graph of flow with slug &#x60;slug&#x60;, for the client to render
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
     # @return [Array<(FlowDiagram, Integer, Hash)>] FlowDiagram data, response status code and response headers

@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **diagram** | **String** |  | [readonly] |
+| **nodes** | [**Array&lt;DiagramNode&gt;**](DiagramNode.md) |  | [readonly] |
+| **edges** | [**Array&lt;DiagramEdge&gt;**](DiagramEdge.md) |  | [readonly] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'authentik-api'
 
 instance = Authentik::Api::FlowDiagram.new(
-  diagram: null
+  nodes: null,
+  edges: null
 )
 ```
 
