@@ -9,16 +9,41 @@ require 'time'
 
 module Authentik::Api
   # Base serializer class which doesn't implement create/update methods
-  class FlowDiagram < ApiModelBase
-    attr_accessor :nodes
+  class DiagramEdge < ApiModelBase
+    attr_accessor :origin
 
-    attr_accessor :edges
+    attr_accessor :target
+
+    attr_accessor :type
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'nodes' => :'nodes',
-        :'edges' => :'edges'
+        :'origin' => :'origin',
+        :'target' => :'target',
+        :'type' => :'type'
       }
     end
 
@@ -35,8 +60,9 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'nodes' => :'Array<DiagramNode>',
-        :'edges' => :'Array<DiagramEdge>'
+        :'origin' => :'String',
+        :'target' => :'String',
+        :'type' => :'DiagramEdgeTypeEnum'
       }
     end
 
@@ -50,32 +76,34 @@ module Authentik::Api
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::FlowDiagram` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `Authentik::Api::DiagramEdge` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       acceptable_attribute_map = self.class.acceptable_attribute_map
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!acceptable_attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::FlowDiagram`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `Authentik::Api::DiagramEdge`. Please check the name to make sure it's valid. List of attributes: " + acceptable_attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'nodes')
-        if (value = attributes[:'nodes']).is_a?(Array)
-          self.nodes = value
-        end
+      if attributes.key?(:'origin')
+        self.origin = attributes[:'origin']
       else
-        self.nodes = nil
+        self.origin = nil
       end
 
-      if attributes.key?(:'edges')
-        if (value = attributes[:'edges']).is_a?(Array)
-          self.edges = value
-        end
+      if attributes.key?(:'target')
+        self.target = attributes[:'target']
       else
-        self.edges = nil
+        self.target = nil
+      end
+
+      if attributes.key?(:'type')
+        self.type = attributes[:'type']
+      else
+        self.type = nil
       end
     end
 
@@ -84,12 +112,16 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @nodes.nil?
-        invalid_properties.push('invalid value for "nodes", nodes cannot be nil.')
+      if @origin.nil?
+        invalid_properties.push('invalid value for "origin", origin cannot be nil.')
       end
 
-      if @edges.nil?
-        invalid_properties.push('invalid value for "edges", edges cannot be nil.')
+      if @target.nil?
+        invalid_properties.push('invalid value for "target", target cannot be nil.')
+      end
+
+      if @type.nil?
+        invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
       invalid_properties
@@ -99,29 +131,40 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @nodes.nil?
-      return false if @edges.nil?
+      return false if @origin.nil?
+      return false if @target.nil?
+      return false if @type.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] nodes Value to be assigned
-    def nodes=(nodes)
-      if nodes.nil?
-        fail ArgumentError, 'nodes cannot be nil'
+    # @param [Object] origin Value to be assigned
+    def origin=(origin)
+      if origin.nil?
+        fail ArgumentError, 'origin cannot be nil'
       end
 
-      @nodes = nodes
+      @origin = origin
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] edges Value to be assigned
-    def edges=(edges)
-      if edges.nil?
-        fail ArgumentError, 'edges cannot be nil'
+    # @param [Object] target Value to be assigned
+    def target=(target)
+      if target.nil?
+        fail ArgumentError, 'target cannot be nil'
       end
 
-      @edges = edges
+      @target = target
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] type Value to be assigned
+    def type=(type)
+      if type.nil?
+        fail ArgumentError, 'type cannot be nil'
+      end
+
+      @type = type
     end
 
     # Checks equality by comparing each attribute.
@@ -129,8 +172,9 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          nodes == o.nodes &&
-          edges == o.edges
+          origin == o.origin &&
+          target == o.target &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -142,7 +186,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [nodes, edges].hash
+      [origin, target, type].hash
     end
 
     # Builds the object from hash
