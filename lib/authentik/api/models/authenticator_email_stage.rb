@@ -42,8 +42,6 @@ module Authentik::Api
 
     attr_accessor :username
 
-    attr_accessor :password
-
     attr_accessor :use_tls
 
     attr_accessor :use_ssl
@@ -75,7 +73,6 @@ module Authentik::Api
         :'host' => :'host',
         :'port' => :'port',
         :'username' => :'username',
-        :'password' => :'password',
         :'use_tls' => :'use_tls',
         :'use_ssl' => :'use_ssl',
         :'timeout' => :'timeout',
@@ -112,7 +109,6 @@ module Authentik::Api
         :'host' => :'String',
         :'port' => :'Integer',
         :'username' => :'String',
-        :'password' => :'String',
         :'use_tls' => :'Boolean',
         :'use_ssl' => :'Boolean',
         :'timeout' => :'Integer',
@@ -212,10 +208,6 @@ module Authentik::Api
 
       if attributes.key?(:'username')
         self.username = attributes[:'username']
-      end
-
-      if attributes.key?(:'password')
-        self.password = attributes[:'password']
       end
 
       if attributes.key?(:'use_tls')
@@ -460,7 +452,6 @@ module Authentik::Api
           host == o.host &&
           port == o.port &&
           username == o.username &&
-          password == o.password &&
           use_tls == o.use_tls &&
           use_ssl == o.use_ssl &&
           timeout == o.timeout &&
@@ -479,7 +470,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, use_global_settings, host, port, username, password, use_tls, use_ssl, timeout, from_address, subject, token_expiry, template].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, use_global_settings, host, port, username, use_tls, use_ssl, timeout, from_address, subject, token_expiry, template].hash
     end
 
     # Builds the object from hash

@@ -42,9 +42,6 @@ module Authentik::Api
 
     attr_accessor :verify_certificates
 
-    # Authentication token
-    attr_accessor :token
-
     attr_accessor :auth_mode
 
     # OAuth Source used for authentication
@@ -118,7 +115,6 @@ module Authentik::Api
         :'meta_model_name' => :'meta_model_name',
         :'url' => :'url',
         :'verify_certificates' => :'verify_certificates',
-        :'token' => :'token',
         :'auth_mode' => :'auth_mode',
         :'auth_oauth' => :'auth_oauth',
         :'auth_oauth_params' => :'auth_oauth_params',
@@ -161,7 +157,6 @@ module Authentik::Api
         :'meta_model_name' => :'String',
         :'url' => :'String',
         :'verify_certificates' => :'Boolean',
-        :'token' => :'String',
         :'auth_mode' => :'SCIMAuthenticationModeEnum',
         :'auth_oauth' => :'String',
         :'auth_oauth_params' => :'Hash<String, Object>',
@@ -276,10 +271,6 @@ module Authentik::Api
 
       if attributes.key?(:'verify_certificates')
         self.verify_certificates = attributes[:'verify_certificates']
-      end
-
-      if attributes.key?(:'token')
-        self.token = attributes[:'token']
       end
 
       if attributes.key?(:'auth_mode')
@@ -516,7 +507,6 @@ module Authentik::Api
           meta_model_name == o.meta_model_name &&
           url == o.url &&
           verify_certificates == o.verify_certificates &&
-          token == o.token &&
           auth_mode == o.auth_mode &&
           auth_oauth == o.auth_oauth &&
           auth_oauth_params == o.auth_oauth_params &&
@@ -542,7 +532,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, auth_oauth_token_last_updated, auth_oauth_token_expires, auth_oauth_url_callback, auth_oauth_url_start, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, auth_mode, auth_oauth, auth_oauth_params, auth_oauth_token_last_updated, auth_oauth_token_expires, auth_oauth_url_callback, auth_oauth_url_start, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, group_filters, dry_run].hash
     end
 
     # Builds the object from hash
