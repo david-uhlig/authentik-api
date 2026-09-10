@@ -39,10 +39,6 @@ module Authentik::Api
 
     attr_accessor :account_sid
 
-    attr_accessor :auth
-
-    attr_accessor :auth_password
-
     attr_accessor :auth_type
 
     # When enabled, the Phone number is only used during enrollment to verify the users authenticity. Only a hash of the phone number is saved to ensure it is not reused in the future.
@@ -88,8 +84,6 @@ module Authentik::Api
         :'provider' => :'provider',
         :'from_number' => :'from_number',
         :'account_sid' => :'account_sid',
-        :'auth' => :'auth',
-        :'auth_password' => :'auth_password',
         :'auth_type' => :'auth_type',
         :'verify_only' => :'verify_only',
         :'mapping' => :'mapping'
@@ -121,8 +115,6 @@ module Authentik::Api
         :'provider' => :'ProviderEnum',
         :'from_number' => :'String',
         :'account_sid' => :'String',
-        :'auth' => :'String',
-        :'auth_password' => :'String',
         :'auth_type' => :'AuthTypeEnum',
         :'verify_only' => :'Boolean',
         :'mapping' => :'String'
@@ -223,16 +215,6 @@ module Authentik::Api
         self.account_sid = nil
       end
 
-      if attributes.key?(:'auth')
-        self.auth = attributes[:'auth']
-      else
-        self.auth = nil
-      end
-
-      if attributes.key?(:'auth_password')
-        self.auth_password = attributes[:'auth_password']
-      end
-
       if attributes.key?(:'auth_type')
         self.auth_type = attributes[:'auth_type']
       end
@@ -291,10 +273,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "account_sid", account_sid cannot be nil.')
       end
 
-      if @auth.nil?
-        invalid_properties.push('invalid value for "auth", auth cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -312,7 +290,6 @@ module Authentik::Api
       return false if @provider.nil?
       return false if @from_number.nil?
       return false if @account_sid.nil?
-      return false if @auth.nil?
       true
     end
 
@@ -416,16 +393,6 @@ module Authentik::Api
       @account_sid = account_sid
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] auth Value to be assigned
-    def auth=(auth)
-      if auth.nil?
-        fail ArgumentError, 'auth cannot be nil'
-      end
-
-      @auth = auth
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -443,8 +410,6 @@ module Authentik::Api
           provider == o.provider &&
           from_number == o.from_number &&
           account_sid == o.account_sid &&
-          auth == o.auth &&
-          auth_password == o.auth_password &&
           auth_type == o.auth_type &&
           verify_only == o.verify_only &&
           mapping == o.mapping
@@ -459,7 +424,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, provider, from_number, account_sid, auth, auth_password, auth_type, verify_only, mapping].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, provider, from_number, account_sid, auth_type, verify_only, mapping].hash
     end
 
     # Builds the object from hash
