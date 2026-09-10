@@ -11,6 +11,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 12 1 * *" # First of every month at noon UTC.
+      timezone: "Europe/Berlin"
 
 permissions:
   contents: write
