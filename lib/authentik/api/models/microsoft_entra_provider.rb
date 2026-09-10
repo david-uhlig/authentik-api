@@ -39,8 +39,6 @@ module Authentik::Api
 
     attr_accessor :client_id
 
-    attr_accessor :client_secret
-
     attr_accessor :tenant_id
 
     attr_accessor :exclude_users_service_account
@@ -99,7 +97,6 @@ module Authentik::Api
         :'verbose_name_plural' => :'verbose_name_plural',
         :'meta_model_name' => :'meta_model_name',
         :'client_id' => :'client_id',
-        :'client_secret' => :'client_secret',
         :'tenant_id' => :'tenant_id',
         :'exclude_users_service_account' => :'exclude_users_service_account',
         :'filter_group' => :'filter_group',
@@ -136,7 +133,6 @@ module Authentik::Api
         :'verbose_name_plural' => :'String',
         :'meta_model_name' => :'String',
         :'client_id' => :'String',
-        :'client_secret' => :'String',
         :'tenant_id' => :'String',
         :'exclude_users_service_account' => :'Boolean',
         :'filter_group' => :'String',
@@ -240,12 +236,6 @@ module Authentik::Api
         self.client_id = nil
       end
 
-      if attributes.key?(:'client_secret')
-        self.client_secret = attributes[:'client_secret']
-      else
-        self.client_secret = nil
-      end
-
       if attributes.key?(:'tenant_id')
         self.tenant_id = attributes[:'tenant_id']
       else
@@ -318,10 +308,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "client_id", client_id cannot be nil.')
       end
 
-      if @client_secret.nil?
-        invalid_properties.push('invalid value for "client_secret", client_secret cannot be nil.')
-      end
-
       if @tenant_id.nil?
         invalid_properties.push('invalid value for "tenant_id", tenant_id cannot be nil.')
       end
@@ -348,7 +334,6 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @client_id.nil?
-      return false if @client_secret.nil?
       return false if @tenant_id.nil?
       return false if !@sync_page_size.nil? && @sync_page_size > 2147483647
       return false if !@sync_page_size.nil? && @sync_page_size < 1
@@ -426,16 +411,6 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] client_secret Value to be assigned
-    def client_secret=(client_secret)
-      if client_secret.nil?
-        fail ArgumentError, 'client_secret cannot be nil'
-      end
-
-      @client_secret = client_secret
-    end
-
-    # Custom attribute writer method with validation
     # @param [Object] tenant_id Value to be assigned
     def tenant_id=(tenant_id)
       if tenant_id.nil?
@@ -479,7 +454,6 @@ module Authentik::Api
           verbose_name_plural == o.verbose_name_plural &&
           meta_model_name == o.meta_model_name &&
           client_id == o.client_id &&
-          client_secret == o.client_secret &&
           tenant_id == o.tenant_id &&
           exclude_users_service_account == o.exclude_users_service_account &&
           filter_group == o.filter_group &&
@@ -500,7 +474,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, client_secret, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, discovery_enabled, sync_page_timeout, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, discovery_enabled, sync_page_timeout, dry_run].hash
     end
 
     # Builds the object from hash

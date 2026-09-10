@@ -17,7 +17,6 @@
 | **host** | **String** |  | [optional] |
 | **port** | **Integer** |  | [optional] |
 | **username** | **String** |  | [optional] |
-| **password** | **String** |  | [optional] |
 | **use_tls** | **Boolean** |  | [optional] |
 | **use_ssl** | **Boolean** |  | [optional] |
 | **timeout** | **Integer** |  | [optional] |
@@ -45,7 +44,6 @@ instance = Authentik::Api::AuthenticatorEmailStage.new(
   host: null,
   port: null,
   username: null,
-  password: null,
   use_tls: null,
   use_ssl: null,
   timeout: null,
