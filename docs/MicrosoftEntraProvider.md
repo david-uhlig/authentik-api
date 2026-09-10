@@ -15,7 +15,6 @@
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **client_id** | **String** |  |  |
-| **client_secret** | **String** |  |  |
 | **tenant_id** | **String** |  |  |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
 | **filter_group** | **String** |  | [optional] |
@@ -42,7 +41,6 @@ instance = Authentik::Api::MicrosoftEntraProvider.new(
   verbose_name_plural: null,
   meta_model_name: null,
   client_id: null,
-  client_secret: null,
   tenant_id: null,
   exclude_users_service_account: null,
   filter_group: null,

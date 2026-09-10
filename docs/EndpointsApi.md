@@ -89,6 +89,9 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 
@@ -129,7 +132,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -150,6 +153,11 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik_device_federation
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 device = 'device_example' # String | 
@@ -193,7 +201,7 @@ end
 
 ### Authorization
 
-No authorization required
+[authentik_device_federation](../README.md#authentik_device_federation)
 
 ### HTTP request headers
 
@@ -214,6 +222,9 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 
@@ -254,7 +265,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -275,6 +286,9 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 opts = {
@@ -319,7 +333,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -477,6 +491,11 @@ Mixin to add a used_by endpoint to return a list of all objects using this objec
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik_device_enroll
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 enroll_request = Authentik::Api::EnrollRequest.new({device_serial: 'device_serial_example', device_name: 'device_name_example'}) # EnrollRequest | 
@@ -520,7 +539,7 @@ end
 
 ### Authorization
 
-No authorization required
+[authentik_device_enroll](../README.md#authentik_device_enroll)
 
 ### HTTP request headers
 
@@ -2042,6 +2061,9 @@ end
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 agent_psso_device_registration_request = Authentik::Api::AgentPSSODeviceRegistrationRequest.new({device_signing_key: 'device_signing_key_example', device_encryption_key: 'device_encryption_key_example', sign_key_id: 'sign_key_id_example', enc_key_id: 'enc_key_id_example'}) # AgentPSSODeviceRegistrationRequest | 
@@ -2085,7 +2107,7 @@ end
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
@@ -2104,6 +2126,9 @@ No authorization required
 ```ruby
 require 'time'
 require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
 
 api_instance = Authentik::Api::EndpointsApi.new
 agent_psso_user_registration_request = Authentik::Api::AgentPSSOUserRegistrationRequest.new({user_auth: 'user_auth_example', user_secure_enclave_key: 'user_secure_enclave_key_example', enclave_key_id: 'enclave_key_id_example'}) # AgentPSSOUserRegistrationRequest | 
@@ -2147,7 +2172,7 @@ end
 
 ### Authorization
 
-No authorization required
+[authentik_device_auth](../README.md#authentik_device_auth)
 
 ### HTTP request headers
 
