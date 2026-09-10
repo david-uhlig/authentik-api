@@ -16,7 +16,6 @@
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **url** | **String** | Base URL to SCIM requests, usually ends in /v2 |  |
 | **verify_certificates** | **Boolean** |  | [optional] |
-| **token** | **String** | Authentication token | [optional] |
 | **auth_mode** | [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] |
 | **auth_oauth** | **String** | OAuth Source used for authentication | [optional] |
 | **auth_oauth_params** | **Hash&lt;String, Object&gt;** | Additional OAuth parameters, such as grant_type | [optional] |
@@ -51,7 +50,6 @@ instance = Authentik::Api::SCIMProvider.new(
   meta_model_name: null,
   url: null,
   verify_certificates: null,
-  token: null,
   auth_mode: null,
   auth_oauth: null,
   auth_oauth_params: null,

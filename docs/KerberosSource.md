@@ -31,10 +31,8 @@
 | **sync_users** | **Boolean** | Sync users from Kerberos into authentik | [optional] |
 | **sync_users_password** | **Boolean** | When a user changes their password, sync it back to Kerberos | [optional] |
 | **sync_principal** | **String** | Principal to authenticate to kadmin for sync. | [optional] |
-| **sync_ccache** | **String** | Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual | [optional] |
 | **connectivity** | **Hash&lt;String, String&gt;** | Get cached source connectivity | [readonly] |
 | **spnego_server_name** | **String** | Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname | [optional] |
-| **spnego_ccache** | **String** | Credential cache to use for SPNEGO in form type:residual | [optional] |
 | **password_login_update_internal_password** | **Boolean** | If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend | [optional] |
 | **sync_outgoing_trigger_mode** | [**SyncOutgoingTriggerModeEnum**](SyncOutgoingTriggerModeEnum.md) | When to trigger sync for outgoing providers | [optional] |
 
@@ -71,10 +69,8 @@ instance = Authentik::Api::KerberosSource.new(
   sync_users: null,
   sync_users_password: null,
   sync_principal: null,
-  sync_ccache: null,
   connectivity: null,
   spnego_server_name: null,
-  spnego_ccache: null,
   password_login_update_internal_password: null,
   sync_outgoing_trigger_mode: null
 )
