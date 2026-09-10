@@ -22,7 +22,7 @@ jobs:
   get-release-branch:
     permissions:
       contents: write
-    uses: ./.github/workflows/get-release-branch.yaml
+    uses: $/.github/workflows/get-release-branch.yaml
     with:
       schema-url: "https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml"
 
@@ -51,7 +51,7 @@ jobs:
           path: ./.authentik/
 
       - name: Build OpenAPI client
-        uses: ./.github/actions/build-openapi-client
+        uses: $/.github/actions/build-openapi-client
         with:
           output-path: ${{ env.OPENAPI_GENERATOR_PATH }}
           config-file: ./.openapi-generator/config.yaml

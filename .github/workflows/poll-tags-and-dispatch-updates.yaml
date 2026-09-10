@@ -105,6 +105,6 @@ jobs:
         tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
     secrets:
       PAT: ${{ secrets.PAT }}
-    uses: ./.github/workflows/generate-openapi-client-on-release.yaml
+    uses: $/.github/workflows/generate-openapi-client-on-release.yaml
     with:
       tag-name: ${{ matrix.tag }}
