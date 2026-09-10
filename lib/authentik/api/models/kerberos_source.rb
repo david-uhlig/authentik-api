@@ -82,17 +82,11 @@ module Authentik::Api
     # Principal to authenticate to kadmin for sync.
     attr_accessor :sync_principal
 
-    # Credentials cache to authenticate to kadmin for sync. Must be in the form TYPE:residual
-    attr_accessor :sync_ccache
-
     # Get cached source connectivity
     attr_accessor :connectivity
 
     # Force the use of a specific server name for SPNEGO. Must be in the form HTTP@hostname
     attr_accessor :spnego_server_name
-
-    # Credential cache to use for SPNEGO in form type:residual
-    attr_accessor :spnego_ccache
 
     # If enabled, the authentik-stored password will be updated upon login with the Kerberos password backend
     attr_accessor :password_login_update_internal_password
@@ -152,10 +146,8 @@ module Authentik::Api
         :'sync_users' => :'sync_users',
         :'sync_users_password' => :'sync_users_password',
         :'sync_principal' => :'sync_principal',
-        :'sync_ccache' => :'sync_ccache',
         :'connectivity' => :'connectivity',
         :'spnego_server_name' => :'spnego_server_name',
-        :'spnego_ccache' => :'spnego_ccache',
         :'password_login_update_internal_password' => :'password_login_update_internal_password',
         :'sync_outgoing_trigger_mode' => :'sync_outgoing_trigger_mode'
       }
@@ -201,10 +193,8 @@ module Authentik::Api
         :'sync_users' => :'Boolean',
         :'sync_users_password' => :'Boolean',
         :'sync_principal' => :'String',
-        :'sync_ccache' => :'String',
         :'connectivity' => :'Hash<String, String>',
         :'spnego_server_name' => :'String',
-        :'spnego_ccache' => :'String',
         :'password_login_update_internal_password' => :'Boolean',
         :'sync_outgoing_trigger_mode' => :'SyncOutgoingTriggerModeEnum'
       }
@@ -371,10 +361,6 @@ module Authentik::Api
         self.sync_principal = attributes[:'sync_principal']
       end
 
-      if attributes.key?(:'sync_ccache')
-        self.sync_ccache = attributes[:'sync_ccache']
-      end
-
       if attributes.key?(:'connectivity')
         if (value = attributes[:'connectivity']).is_a?(Hash)
           self.connectivity = value
@@ -385,10 +371,6 @@ module Authentik::Api
 
       if attributes.key?(:'spnego_server_name')
         self.spnego_server_name = attributes[:'spnego_server_name']
-      end
-
-      if attributes.key?(:'spnego_ccache')
-        self.spnego_ccache = attributes[:'spnego_ccache']
       end
 
       if attributes.key?(:'password_login_update_internal_password')
@@ -593,10 +575,8 @@ module Authentik::Api
           sync_users == o.sync_users &&
           sync_users_password == o.sync_users_password &&
           sync_principal == o.sync_principal &&
-          sync_ccache == o.sync_ccache &&
           connectivity == o.connectivity &&
           spnego_server_name == o.spnego_server_name &&
-          spnego_ccache == o.spnego_ccache &&
           password_login_update_internal_password == o.password_login_update_internal_password &&
           sync_outgoing_trigger_mode == o.sync_outgoing_trigger_mode
     end
@@ -610,7 +590,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, group_matching_mode, realm, krb5_conf, kadmin_type, sync_users, sync_users_password, sync_principal, sync_ccache, connectivity, spnego_server_name, spnego_ccache, password_login_update_internal_password, sync_outgoing_trigger_mode].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, group_matching_mode, realm, krb5_conf, kadmin_type, sync_users, sync_users_password, sync_principal, connectivity, spnego_server_name, password_login_update_internal_password, sync_outgoing_trigger_mode].hash
     end
 
     # Builds the object from hash
