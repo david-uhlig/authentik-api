@@ -27,6 +27,8 @@ module Authentik::Api
 
     attr_accessor :attributes
 
+    attr_accessor :primary_binding_obj
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -38,7 +40,8 @@ module Authentik::Api
         :'expiring' => :'expiring',
         :'expires' => :'expires',
         :'facts' => :'facts',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'primary_binding_obj' => :'primary_binding_obj'
       }
     end
 
@@ -63,7 +66,8 @@ module Authentik::Api
         :'expiring' => :'Boolean',
         :'expires' => :'Time',
         :'facts' => :'DeviceFactSnapshot',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Hash<String, Object>',
+        :'primary_binding_obj' => :'DeviceUserBinding'
       }
     end
 
@@ -73,6 +77,7 @@ module Authentik::Api
         :'access_group',
         :'expires',
         :'facts',
+        :'primary_binding_obj'
       ])
     end
 
@@ -135,6 +140,12 @@ module Authentik::Api
           self.attributes = value
         end
       end
+
+      if attributes.key?(:'primary_binding_obj')
+        self.primary_binding_obj = attributes[:'primary_binding_obj']
+      else
+        self.primary_binding_obj = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -195,7 +206,8 @@ module Authentik::Api
           expiring == o.expiring &&
           expires == o.expires &&
           facts == o.facts &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          primary_binding_obj == o.primary_binding_obj
     end
 
     # @see the `==` method
@@ -207,7 +219,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes].hash
+      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes, primary_binding_obj].hash
     end
 
     # Builds the object from hash
