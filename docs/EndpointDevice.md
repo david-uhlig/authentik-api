@@ -13,6 +13,7 @@
 | **expires** | **Time** |  | [optional] |
 | **facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **primary_binding_obj** | [**DeviceUserBinding**](DeviceUserBinding.md) |  | [readonly] |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = Authentik::Api::EndpointDevice.new(
   expiring: null,
   expires: null,
   facts: null,
-  attributes: null
+  attributes: null,
+  primary_binding_obj: null
 )
 ```
 

@@ -13,6 +13,7 @@
 | **expires** | **Time** |  | [optional] |
 | **facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **primary_binding_obj** | [**DeviceUserBinding**](DeviceUserBinding.md) |  | [readonly] |
 | **connections_obj** | [**Array&lt;DeviceConnection&gt;**](DeviceConnection.md) |  |  |
 | **policies** | **Array&lt;String&gt;** |  | [readonly] |
 | **connections** | **Array&lt;String&gt;** |  | [readonly] |
@@ -32,6 +33,7 @@ instance = Authentik::Api::EndpointDeviceDetails.new(
   expires: null,
   facts: null,
   attributes: null,
+  primary_binding_obj: null,
   connections_obj: null,
   policies: null,
   connections: null
