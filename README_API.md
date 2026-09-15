@@ -432,6 +432,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::ManagedApi* | [**managed_blueprints_retrieve**](docs/ManagedApi.md#managed_blueprints_retrieve) | **GET** /managed/blueprints/{instance_uuid}/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_update**](docs/ManagedApi.md#managed_blueprints_update) | **PUT** /managed/blueprints/{instance_uuid}/ | 
 *Authentik::Api::ManagedApi* | [**managed_blueprints_used_by_list**](docs/ManagedApi.md#managed_blueprints_used_by_list) | **GET** /managed/blueprints/{instance_uuid}/used_by/ | 
+*Authentik::Api::ManagedApi* | [**managed_blueprints_validate_create**](docs/ManagedApi.md#managed_blueprints_validate_create) | **POST** /managed/blueprints/validate/ | 
 *Authentik::Api::Oauth2Api* | [**oauth2_access_tokens_destroy**](docs/Oauth2Api.md#oauth2_access_tokens_destroy) | **DELETE** /oauth2/access_tokens/{id}/ | 
 *Authentik::Api::Oauth2Api* | [**oauth2_access_tokens_list**](docs/Oauth2Api.md#oauth2_access_tokens_list) | **GET** /oauth2/access_tokens/ | 
 *Authentik::Api::Oauth2Api* | [**oauth2_access_tokens_retrieve**](docs/Oauth2Api.md#oauth2_access_tokens_retrieve) | **GET** /oauth2/access_tokens/{id}/ | 
