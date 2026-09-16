@@ -4314,6 +4314,7 @@ module Authentik::Api
     # @option opts [String] :peer_certificate 
     # @option opts [String] :search A search term.
     # @option opts [String] :server_uri 
+    # @option opts [ServiceBindMethodEnum] :service_bind_method 
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
@@ -4354,6 +4355,7 @@ module Authentik::Api
     # @option opts [String] :peer_certificate 
     # @option opts [String] :search A search term.
     # @option opts [String] :server_uri 
+    # @option opts [ServiceBindMethodEnum] :service_bind_method 
     # @option opts [String] :slug 
     # @option opts [Boolean] :sni 
     # @option opts [Boolean] :start_tls 
@@ -4396,6 +4398,7 @@ module Authentik::Api
       query_params[:'peer_certificate'] = opts[:'peer_certificate'] if !opts[:'peer_certificate'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'server_uri'] = opts[:'server_uri'] if !opts[:'server_uri'].nil?
+      query_params[:'service_bind_method'] = opts[:'service_bind_method'] if !opts[:'service_bind_method'].nil?
       query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
       query_params[:'sni'] = opts[:'sni'] if !opts[:'sni'].nil?
       query_params[:'start_tls'] = opts[:'start_tls'] if !opts[:'start_tls'].nil?

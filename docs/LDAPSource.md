@@ -28,6 +28,7 @@
 | **peer_certificate** | **String** | Optionally verify the LDAP Server&#39;s Certificate against the CA Chain in this keypair. | [optional] |
 | **client_certificate** | **String** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] |
 | **bind_cn** | **String** |  | [optional] |
+| **service_bind_method** | [**ServiceBindMethodEnum**](ServiceBindMethodEnum.md) | Authentication method used for LDAP synchronization and writeback. | [optional] |
 | **start_tls** | **Boolean** |  | [optional] |
 | **sni** | **Boolean** |  | [optional] |
 | **base_dn** | **String** |  |  |
@@ -79,6 +80,7 @@ instance = Authentik::Api::LDAPSource.new(
   peer_certificate: null,
   client_certificate: null,
   bind_cn: null,
+  service_bind_method: null,
   start_tls: null,
   sni: null,
   base_dn: null,

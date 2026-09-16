@@ -4868,6 +4868,7 @@ opts = {
   peer_certificate: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   search: 'search_example', # String | A search term.
   server_uri: 'server_uri_example', # String | 
+  service_bind_method: Authentik::Api::ServiceBindMethodEnum::SIMPLE, # ServiceBindMethodEnum | 
   slug: 'slug_example', # String | 
   sni: true, # Boolean | 
   start_tls: true, # Boolean | 
@@ -4933,6 +4934,7 @@ end
 | **peer_certificate** | **String** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **server_uri** | **String** |  | [optional] |
+| **service_bind_method** | [**ServiceBindMethodEnum**](.md) |  | [optional] |
 | **slug** | **String** |  | [optional] |
 | **sni** | **Boolean** |  | [optional] |
 | **start_tls** | **Boolean** |  | [optional] |
