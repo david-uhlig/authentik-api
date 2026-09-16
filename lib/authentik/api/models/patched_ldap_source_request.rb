@@ -52,6 +52,9 @@ module Authentik::Api
 
     attr_accessor :bind_password
 
+    # Authentication method used for LDAP synchronization and writeback.
+    attr_accessor :service_bind_method
+
     attr_accessor :start_tls
 
     attr_accessor :sni
@@ -145,6 +148,7 @@ module Authentik::Api
         :'client_certificate' => :'client_certificate',
         :'bind_cn' => :'bind_cn',
         :'bind_password' => :'bind_password',
+        :'service_bind_method' => :'service_bind_method',
         :'start_tls' => :'start_tls',
         :'sni' => :'sni',
         :'base_dn' => :'base_dn',
@@ -197,6 +201,7 @@ module Authentik::Api
         :'client_certificate' => :'String',
         :'bind_cn' => :'String',
         :'bind_password' => :'String',
+        :'service_bind_method' => :'ServiceBindMethodEnum',
         :'start_tls' => :'Boolean',
         :'sni' => :'Boolean',
         :'base_dn' => :'String',
@@ -316,6 +321,10 @@ module Authentik::Api
 
       if attributes.key?(:'bind_password')
         self.bind_password = attributes[:'bind_password']
+      end
+
+      if attributes.key?(:'service_bind_method')
+        self.service_bind_method = attributes[:'service_bind_method']
       end
 
       if attributes.key?(:'start_tls')
@@ -633,6 +642,7 @@ module Authentik::Api
           client_certificate == o.client_certificate &&
           bind_cn == o.bind_cn &&
           bind_password == o.bind_password &&
+          service_bind_method == o.service_bind_method &&
           start_tls == o.start_tls &&
           sni == o.sni &&
           base_dn == o.base_dn &&
@@ -663,7 +673,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, bind_password, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode, sync_group_hierarchy].hash
+      [name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, policy_engine_mode, user_matching_mode, user_path_template, icon, server_uri, peer_certificate, client_certificate, bind_cn, bind_password, service_bind_method, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode, sync_group_hierarchy].hash
     end
 
     # Builds the object from hash

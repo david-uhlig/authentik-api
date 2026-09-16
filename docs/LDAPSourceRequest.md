@@ -21,6 +21,7 @@
 | **client_certificate** | **String** | Client certificate to authenticate against the LDAP Server&#39;s Certificate. | [optional] |
 | **bind_cn** | **String** |  | [optional] |
 | **bind_password** | **String** |  | [optional] |
+| **service_bind_method** | [**ServiceBindMethodEnum**](ServiceBindMethodEnum.md) | Authentication method used for LDAP synchronization and writeback. | [optional] |
 | **start_tls** | **Boolean** |  | [optional] |
 | **sni** | **Boolean** |  | [optional] |
 | **base_dn** | **String** |  |  |
@@ -64,6 +65,7 @@ instance = Authentik::Api::LDAPSourceRequest.new(
   client_certificate: null,
   bind_cn: null,
   bind_password: null,
+  service_bind_method: null,
   start_tls: null,
   sni: null,
   base_dn: null,

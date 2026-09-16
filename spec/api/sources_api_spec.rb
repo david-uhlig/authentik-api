@@ -835,6 +835,7 @@ describe 'SourcesApi' do
   # @option opts [String] :peer_certificate 
   # @option opts [String] :search A search term.
   # @option opts [String] :server_uri 
+  # @option opts [ServiceBindMethodEnum] :service_bind_method 
   # @option opts [String] :slug 
   # @option opts [Boolean] :sni 
   # @option opts [Boolean] :start_tls 

@@ -2090,6 +2090,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::ScopeMapping](docs/ScopeMapping.md)
  - [Authentik::Api::ScopeMappingRequest](docs/ScopeMappingRequest.md)
  - [Authentik::Api::SelectableStage](docs/SelectableStage.md)
+ - [Authentik::Api::ServiceBindMethodEnum](docs/ServiceBindMethodEnum.md)
  - [Authentik::Api::ServiceConnection](docs/ServiceConnection.md)
  - [Authentik::Api::ServiceConnectionState](docs/ServiceConnectionState.md)
  - [Authentik::Api::SessionEndChallenge](docs/SessionEndChallenge.md)
