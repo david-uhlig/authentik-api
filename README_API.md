@@ -273,6 +273,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CryptoApi* | [**crypto_certificatekeypairs_used_by_list**](docs/CryptoApi.md#crypto_certificatekeypairs_used_by_list) | **GET** /crypto/certificatekeypairs/{kp_uuid}/used_by/ | 
 *Authentik::Api::CryptoApi* | [**crypto_certificatekeypairs_view_certificate_retrieve**](docs/CryptoApi.md#crypto_certificatekeypairs_view_certificate_retrieve) | **GET** /crypto/certificatekeypairs/{kp_uuid}/view_certificate/ | 
 *Authentik::Api::CryptoApi* | [**crypto_certificatekeypairs_view_private_key_retrieve**](docs/CryptoApi.md#crypto_certificatekeypairs_view_private_key_retrieve) | **GET** /crypto/certificatekeypairs/{kp_uuid}/view_private_key/ | 
+*Authentik::Api::DebugApi* | [**debug_log_create**](docs/DebugApi.md#debug_log_create) | **POST** /debug/log/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_connectors_agent_config_retrieve**](docs/EndpointsApi.md#endpoints_agents_connectors_agent_config_retrieve) | **GET** /endpoints/agents/connectors/agent_config/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_connectors_auth_fed_create**](docs/EndpointsApi.md#endpoints_agents_connectors_auth_fed_create) | **POST** /endpoints/agents/connectors/auth_fed/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_connectors_auth_ia_create**](docs/EndpointsApi.md#endpoints_agents_connectors_auth_ia_create) | **POST** /endpoints/agents/connectors/auth_ia/ | 
@@ -2090,6 +2091,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::ScopeMapping](docs/ScopeMapping.md)
  - [Authentik::Api::ScopeMappingRequest](docs/ScopeMappingRequest.md)
  - [Authentik::Api::SelectableStage](docs/SelectableStage.md)
+ - [Authentik::Api::ServerLogRequest](docs/ServerLogRequest.md)
  - [Authentik::Api::ServiceBindMethodEnum](docs/ServiceBindMethodEnum.md)
  - [Authentik::Api::ServiceConnection](docs/ServiceConnection.md)
  - [Authentik::Api::ServiceConnectionState](docs/ServiceConnectionState.md)
