@@ -29,6 +29,6 @@ RSpec.describe "Zeitwerk compliance" do
     end
 
     expect(unused_keys)
-      .to be_empty, "Unused irregular inflections: #{unused_keys.join(', ')}"
+      .to be_empty, "Unused irregular inflections: #{unused_keys.join(", ")}"
   end
 end
