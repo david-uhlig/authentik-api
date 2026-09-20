@@ -1,4 +1,5 @@
 [tools]
+actionlint = "latest"
 ruby = "3.3"
 
 [tasks.ci]
@@ -6,11 +7,16 @@ description = "Run all CI tasks"
 run = [
     { task = "rake:standard" },
     { task = "rake:spec" },
-    { task = "zizmor" }
+    { task = "zizmor" },
+    { task = "actionlint" }
 ]
 
 [tasks."inflector:install"]
 run = "cp .openapi-generator/inflector.rb  lib/authentik/api/"
+
+[tasks.actionlint]
+description = "Static analysis for GitHub Actions."
+run = "actionlint"
 
 [tasks."rake:spec"]
 depends = ["inflector:install"]
