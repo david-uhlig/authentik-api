@@ -28,10 +28,10 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'zeitwerk', '~> 2.6'
 
   s.add_development_dependency 'irb'
-  s.add_development_dependency 'rspec', '~> 3.6', '>= 3.6.0'
+  s.add_development_dependency 'rspec', '~> 3.6'
 
   # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
+  # The `git ls-files -z` loads all files that have been added to git.
   gemspec = File.basename(__FILE__)
   s.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
     ls.readlines("\x0", chomp: true).reject do |f|
