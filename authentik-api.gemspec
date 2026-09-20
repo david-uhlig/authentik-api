@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'irb'
   s.add_development_dependency 'rspec', '~> 3.6'
+  s.add_development_dependency 'standard', '~> 1.56'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads all files that have been added to git.
