@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gemspec
 
 group :development, :test do
-  gem 'rake', '~> 13.4.2'
-  gem 'pry-byebug'
+  gem "rake", "~> 13.4.2"
+  gem "pry-byebug"
 end
