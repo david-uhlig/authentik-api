@@ -21,24 +21,26 @@ else
   output_path="${project_base_path}/tmp"
 fi
 
-rm -rf "${project_base_path}"/{docs,spec}
-cp -r "${output_path}"/{docs,spec} "${project_base_path}"/
+## Update the docs, specs, and other files.
+rm -rf "${project_base_path}/"{docs,spec}
+cp -r "${output_path}/"{docs,spec} "${project_base_path}/"
 cp "${output_path}/README.md" "${project_base_path}/README_API.md"
 cp "${output_path}/.openapi-generator/VERSION" "${project_base_path}/VERSION"
+cp "${output_path}/authentik-api.gemspec" "${project_base_path}/authentik-api.gemspec"
 
-# Restructure lib/ for Zeitwerk-based loading.
-# The generator outputs into lib/authentik-api/, move everything into
-# lib/authentik/api as suggested per conventions.
-rm -rf "${project_base_path}/lib"
+## Restructure the auto-generated `lib/` for Zeitwerk-based loading.
+# The convention asks for the directory structure to be `lib/authentik/api`,
+# while the generator outputs into `lib/authentik-api`.
+rm -rf "${project_base_path}/lib" # Remove files from the previous version.
 mkdir -p "${project_base_path}/lib/authentik/api"
-
 cp -R "${output_path}/lib/authentik-api/"* "${project_base_path}/lib/authentik/api/"
 cp "${output_path}/lib/authentik-api.rb" "${project_base_path}/lib/authentik/api.rb"
-cp "${project_base_path}/.openapi-generator/inflector.rb" "${project_base_path}/lib/authentik/api/"
-cp "${project_base_path}/.openapi-generator/zeitwerk_spec.rb" "${project_base_path}/spec/"
-
 # Update spec_helper to use the new require path.
 sed -i "s/require 'authentik-api'/require 'authentik\/api'/" "${project_base_path}/spec/spec_helper.rb"
 
-# Clean up.
+## Restore Zeitwerk configuration and specs.
+cp "${project_base_path}/.openapi-generator/inflector.rb" "${project_base_path}/lib/authentik/api/"
+cp "${project_base_path}/.openapi-generator/zeitwerk_spec.rb" "${project_base_path}/spec/"
+
+## Remove generated files.
 rm -rf "${output_path}"

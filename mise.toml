@@ -4,6 +4,7 @@ ruby = "3.3"
 [tasks.ci]
 description = "Run all CI tasks"
 run = [
+    { task = "rake:standard" },
     { task = "rake:spec" },
     { task = "zizmor" }
 ]
@@ -14,6 +15,15 @@ run = "cp .openapi-generator/inflector.rb  lib/authentik/api/"
 [tasks."rake:spec"]
 depends = ["inflector:install"]
 run = "bundle exec rake spec"
+
+[tasks."rake:standard"]
+depends = ["inflector:install"]
+description = "Run standard code style checks."
+run = "bundle exec rake standard"
+
+[tasks."rake:standard:fix"]
+description = "Run standard and auto fix."
+run = "bundle exec rake standard:fix"
 
 [tasks.zizmor]
 description = "Static analysis for GitHub Actions."
