@@ -11,6 +11,8 @@
 | **verify_certificates** | **Boolean** |  | [optional] |
 | **token** | **String** | Authentication token | [optional] |
 | **auth_mode** | [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] |
+| **auth_basic_user** | **String** | Username used for Basic authentication | [optional] |
+| **auth_basic_password** | **String** | Password used for Basic authentication | [optional] |
 | **auth_oauth** | **String** | OAuth Source used for authentication | [optional] |
 | **auth_oauth_params** | **Hash&lt;String, Object&gt;** | Additional OAuth parameters, such as grant_type | [optional] |
 | **compatibility_mode** | [**CompatibilityModeEnum**](CompatibilityModeEnum.md) | Alter authentik behavior for vendor-specific SCIM implementations. | [optional] |
@@ -35,6 +37,8 @@ instance = Authentik::Api::SCIMProviderRequest.new(
   verify_certificates: null,
   token: null,
   auth_mode: null,
+  auth_basic_user: null,
+  auth_basic_password: null,
   auth_oauth: null,
   auth_oauth_params: null,
   compatibility_mode: null,

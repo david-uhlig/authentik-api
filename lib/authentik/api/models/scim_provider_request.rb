@@ -27,6 +27,12 @@ module Authentik::Api
 
     attr_accessor :auth_mode
 
+    # Username used for Basic authentication
+    attr_accessor :auth_basic_user
+
+    # Password used for Basic authentication
+    attr_accessor :auth_basic_password
+
     # OAuth Source used for authentication
     attr_accessor :auth_oauth
 
@@ -88,6 +94,8 @@ module Authentik::Api
         :'verify_certificates' => :'verify_certificates',
         :'token' => :'token',
         :'auth_mode' => :'auth_mode',
+        :'auth_basic_user' => :'auth_basic_user',
+        :'auth_basic_password' => :'auth_basic_password',
         :'auth_oauth' => :'auth_oauth',
         :'auth_oauth_params' => :'auth_oauth_params',
         :'compatibility_mode' => :'compatibility_mode',
@@ -121,6 +129,8 @@ module Authentik::Api
         :'verify_certificates' => :'Boolean',
         :'token' => :'String',
         :'auth_mode' => :'SCIMAuthenticationModeEnum',
+        :'auth_basic_user' => :'String',
+        :'auth_basic_password' => :'String',
         :'auth_oauth' => :'String',
         :'auth_oauth_params' => :'Hash<String, Object>',
         :'compatibility_mode' => :'CompatibilityModeEnum',
@@ -191,6 +201,14 @@ module Authentik::Api
 
       if attributes.key?(:'auth_mode')
         self.auth_mode = attributes[:'auth_mode']
+      end
+
+      if attributes.key?(:'auth_basic_user')
+        self.auth_basic_user = attributes[:'auth_basic_user']
+      end
+
+      if attributes.key?(:'auth_basic_password')
+        self.auth_basic_password = attributes[:'auth_basic_password']
       end
 
       if attributes.key?(:'auth_oauth')
@@ -379,6 +397,8 @@ module Authentik::Api
           verify_certificates == o.verify_certificates &&
           token == o.token &&
           auth_mode == o.auth_mode &&
+          auth_basic_user == o.auth_basic_user &&
+          auth_basic_password == o.auth_basic_password &&
           auth_oauth == o.auth_oauth &&
           auth_oauth_params == o.auth_oauth_params &&
           compatibility_mode == o.compatibility_mode &&
@@ -400,7 +420,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, discovery_enabled, group_filters, dry_run].hash
+      [name, property_mappings, property_mappings_group, url, verify_certificates, token, auth_mode, auth_basic_user, auth_basic_password, auth_oauth, auth_oauth_params, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, discovery_enabled, group_filters, dry_run].hash
     end
 
     # Builds the object from hash
