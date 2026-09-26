@@ -10,6 +10,7 @@
 | **jwks_endpoint** | **String** |  |  |
 | **audience** | **String** |  |  |
 | **nonce_endpoint** | **String** |  |  |
+| **authorization_endpoint** | **String** |  |  |
 
 ## Example
 
@@ -22,7 +23,8 @@ instance = Authentik::Api::AgentPSSODeviceRegistrationResponse.new(
   token_endpoint: null,
   jwks_endpoint: null,
   audience: null,
-  nonce_endpoint: null
+  nonce_endpoint: null,
+  authorization_endpoint: null
 )
 ```
 
