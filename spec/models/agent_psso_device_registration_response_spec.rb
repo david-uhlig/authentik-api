@@ -57,4 +57,10 @@ describe Authentik::Api::AgentPSSODeviceRegistrationResponse do
     end
   end
 
+  describe 'test attribute "authorization_endpoint"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end
