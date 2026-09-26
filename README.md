@@ -2,7 +2,7 @@
 
 [![Gem Version](http://img.shields.io/gem/v/authentik-api.svg)][gem]
 [![Static Badge](https://img.shields.io/badge/License-MIT-blue)][license]
-[![Tests](https://github.com/david-uhlig/authentik-api/actions/workflows/main.yml/badge.svg)][tests]
+[![Tests](https://github.com/david-uhlig/authentik-api/actions/workflows/ci.yml/badge.svg)][tests]
 
 ## Baseline client generated directly from OpenAPI definitions
 
