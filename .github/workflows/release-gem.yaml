@@ -3,7 +3,7 @@
 # Automatically triggered when a PR labeled `release` merges into a release
 # branch. When manually triggered, it releases the branch specified in the
 # `branch-name` input.
-name: Release to RubyGems
+name: Release gem to RubyGems
 
 on:
   pull_request:

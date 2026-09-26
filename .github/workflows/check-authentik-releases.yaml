@@ -3,11 +3,11 @@
 # When new tags are found:
 # * Compares against known tags (a branch with the same name exists).
 # * Dispatches builder workflows for unknown tags.
-name: Poll tags and dispatch builders
+name: Check authentik for new tags (releases)
 
 on:
   schedule:
-    - cron: "15 6 * * *"
+    - cron: '15 6 * * *'
       timezone: "Europe/Berlin"
   workflow_dispatch:
 
@@ -15,8 +15,8 @@ env:
   SOURCE_OWNER: goauthentik
   SOURCE_REPO: authentik
   SOURCE_LATEST_TAGS_NUM: 20
-  SOURCE_MIN_VERSION: "2026.2.2"
-  AUTO_PR_BRANCH_PREFIX: "openapi-client-update/"
+  SOURCE_MIN_VERSION: "2026.5.0"
+  AUTO_PR_BRANCH_PREFIX: "actions/release/"
 
 jobs:
   check-tags:
@@ -72,7 +72,7 @@ jobs:
             
             // Remove authentik tags that already exist as a tag or PR branch in this repo.
             // authentik tag: `version/2026.2.2-rc2`
-            // branch: `openapi-client-update/version/2026.2.2-rc2`
+            // branch: `actions/release/version/2026.2.2-rc2`
             // tag: `v2026.2.2.rc2`
             akTags = akTags
               .filter(t => !branches.includes(`${prBranchPrefix}${t}`))
@@ -93,7 +93,7 @@ jobs:
             echo "JSON"
           } >> "$GITHUB_OUTPUT"
 
-  dispatch-update:
+  update-client:
     needs: check-tags
     permissions:
       contents: write
@@ -106,6 +106,6 @@ jobs:
         tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
     secrets:
       PAT: ${{ secrets.PAT }}
-    uses: $/.github/workflows/generate-openapi-client-on-release.yaml
+    uses: $/.github/workflows/update-openapi-client-on-release.yaml
     with:
       tag-name: ${{ matrix.tag }}

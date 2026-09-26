@@ -6,7 +6,7 @@
 #
 # The downloaded schema is uploaded as an artifact named `schema` so that
 # later jobs can reuse it without a second download.
-name: Get release branch
+name: Prepare release branch
 
 on:
   workflow_call:
@@ -18,24 +18,24 @@ on:
     outputs:
       release-branch:
         description: "The release branch name derived from the schema version, e.g., 2026.2."
-        value: ${{ jobs.get-release-branch.outputs.release-branch }}
+        value: ${{ jobs.prepare-release-branch.outputs.release-branch }}
       authentik-version:
         description: "The authentik version extracted from the schema, e.g., 2026.2.2-rc1."
-        value: ${{ jobs.get-release-branch.outputs.authentik-version }}
+        value: ${{ jobs.prepare-release-branch.outputs.authentik-version }}
       gem-version:
         description: "The gem version based on the authentik version, e.g., 2026.2.2.rc1"
-        value: ${{ jobs.get-release-branch.outputs.gem-version }}
+        value: ${{ jobs.prepare-release-branch.outputs.gem-version }}
 
 permissions:
   contents: write
 
 jobs:
-  get-release-branch:
+  prepare-release-branch:
     runs-on: ubuntu-latest
     outputs:
       authentik-version: ${{ steps.get-authentik-version.outputs.result }}
       gem-version: ${{ steps.get-gem-version.outputs.result }}
-      release-branch: ${{ steps.get-release-branch.outputs.result }}
+      release-branch: ${{ steps.prepare-release-branch.outputs.result }}
     steps:
       - name: Checkout code  # zizmor: ignore[artipacked]
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -69,7 +69,7 @@ jobs:
           GEM_VERSION="$(echo "$AUTHENTIK_VERSION" | tr "-" ".")"
           echo "result=$GEM_VERSION" >> "$GITHUB_OUTPUT"
 
-      - id: get-release-branch
+      - id: prepare-release-branch
         name: Get release branch name
         env:
           AUTHENTIK_VERSION: ${{ steps.get-authentik-version.outputs.result }}
@@ -79,7 +79,7 @@ jobs:
 
       - name: Create release branch if missing
         env:
-          RELEASE_BRANCH: ${{ steps.get-release-branch.outputs.result }}
+          RELEASE_BRANCH: ${{ steps.prepare-release-branch.outputs.result }}
         run: |
           if ! git switch "$RELEASE_BRANCH"; then
             git checkout -B "$RELEASE_BRANCH"

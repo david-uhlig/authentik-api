@@ -1,4 +1,6 @@
-name: Ruby
+# Runs Ruby tests and style checks across supported Ruby versions and lints
+# GitHub Actions workflows.
+name: Ruby Tests and Workflow Linting
 
 on:
   push:
@@ -12,7 +14,7 @@ permissions:
 jobs:
   rake-on-ruby-matrix:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Ruby ${{ matrix.ruby }} (Test & Lint)
     strategy:
       matrix:
         ruby: ["3.3", "3.4", "4.0"]
@@ -35,6 +37,7 @@ jobs:
         run: bundle exec rake
 
   lint-actions:
+    name: GitHub Actions (Lint & vulnerability checks)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

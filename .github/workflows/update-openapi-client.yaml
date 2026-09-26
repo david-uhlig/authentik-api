@@ -5,8 +5,8 @@
 # Detection logic for changes is in `poll-schema-and-dispatch-updates.yaml`.
 # This workflow runs regardless of changes.
 #
-# Keep this file in "sync" with `generate-openapi-client-on-release.yaml`.
-name: Generate OpenAPI client (main)
+# Keep this file in "sync" with `update-openapi-client-on-release.yaml`.
+name: Update OpenAPI client
 
 on:
   workflow_dispatch:
@@ -19,10 +19,10 @@ env:
   OPENAPI_GENERATOR_PATH: "tmp"
 
 jobs:
-  get-release-branch:
+  prepare-release-branch:
     permissions:
       contents: write
-    uses: $/.github/workflows/get-release-branch.yaml
+    uses: $/.github/workflows/prepare-release-branch.yaml
     with:
       schema-url: "https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml"
 
@@ -30,11 +30,11 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    needs: get-release-branch
+    needs: prepare-release-branch
     runs-on: ubuntu-latest
     env:
-      AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }} # 2026.2.0-rc1
-      GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }} # 2026.2.0.rc1
+      AUTHENTIK_VERSION: ${{ needs.prepare-release-branch.outputs.authentik-version }} # 2026.2.0-rc1
+      GEM_VERSION: ${{ needs.prepare-release-branch.outputs.gem-version }} # 2026.2.0.rc1
       BASE_BRANCH: main
     steps:
       - name: Checkout code
@@ -64,16 +64,17 @@ jobs:
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
-          commit-message: "Update OpenAPI client (nightly)"
-          branch: "openapi-client-update/nightly"
+          commit-message: "Update OpenAPI client"
+          branch: "actions/nightly-update"
           base: main
-          title: "OpenAPI client update (nightly)"
+          title: "Nightly update"
           body: |
-            This PR updates the generated OpenAPI client to match the latest nightly schema from authentik's `main` branch.
+            This automatic update includes changes from the latest upstream `main` branch schema updates.
 
             Authentik version: `${{ env.AUTHENTIK_VERSION }}`
-
-            > Schema sourced from [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
+            Schema source: [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
+            
+            Please review the generated changes before merging.
           labels: nightly
           delete-branch: true
           committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"

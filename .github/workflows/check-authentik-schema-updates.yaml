@@ -1,11 +1,11 @@
-# Monitors the `goauthentik/authentik` repository for `schema.yml` updates.
-#
-# When an update is found, it dispatches an OpenAPI client update workflow.
-name: Poll schema.yml and dispatch builder
+# Checks daily for changes to authentik's OpenAPI schema and dispatches the
+# client-generation workflow when an update is detected.
+name: Check authentik schema for updates
 
 on:
   schedule:
-    - cron: "0 6 * * *" # Every day at 6AM UTC.
+    # Daily at 6:00.
+    - cron: '0 6 * * *'
       timezone: "Europe/Berlin"
   workflow_dispatch:
 
@@ -16,19 +16,21 @@ jobs:
       contents: read
 
     outputs:
-      schema-updated: ${{ steps.schema-diff.outputs.updated }}
+      update-required: ${{ steps.schema-diff.outputs.updated }}
 
     steps:
-      - name: Checkout code
+      - name: Checkout `.authentik/schema.yaml`
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          sparse-checkout: .authentik/schema.yaml
+          sparse-checkout-cone-mode: false
           persist-credentials: false
 
       # Curl Options: Fail on HTTP errors; silent; show error on failure; follow redirects.
-      - name: Fetch authentik's OpenAPI document
+      - name: Fetch upstream `schema.yml`
         run: curl -fsSL https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml -o /tmp/schema.yaml
 
-      - name: Check for schema updates
+      - name: Compare upstream `schema.yml` with local copy
         id: schema-diff
         run: |
           if diff -q /tmp/schema.yaml ./.authentik/schema.yaml; then
@@ -37,12 +39,12 @@ jobs:
             echo "updated=true" >> "$GITHUB_OUTPUT"
           fi
 
-  dispatch-update:
+  update-client:
     needs: check-schema
-    if: needs.check-schema.outputs.schema-updated == 'true'
+    if: needs.check-schema.outputs.update-required == 'true'
     permissions:
       contents: write
       pull-requests: write
     secrets:
       PAT: ${{ secrets.PAT }}
-    uses: $/.github/workflows/generate-openapi-client-main.yaml
+    uses: $/.github/workflows/update-openapi-client.yaml

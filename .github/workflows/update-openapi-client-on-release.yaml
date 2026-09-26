@@ -4,8 +4,8 @@
 # 2. Tag release.
 # 3. Publish gem.
 #
-# Keep this file in "sync" with `generate-openapi-client-main.yaml`.
-name: Generate OpenAPI client (authentik release)
+# Keep this file in "sync" with `update-openapi-client.yaml`.
+name: Update OpenAPI client (new release)
 
 on:
   workflow_dispatch:
@@ -28,10 +28,10 @@ env:
   OPENAPI_GENERATOR_PATH: "tmp"
 
 jobs:
-  get-release-branch:
+  prepare-release-branch:
     permissions:
       contents: write
-    uses: $/.github/workflows/get-release-branch.yaml
+    uses: $/.github/workflows/prepare-release-branch.yaml
     with:
       schema-url: "https://raw.githubusercontent.com/goauthentik/authentik/${{ inputs.tag-name }}/schema.yml"
 
@@ -39,12 +39,12 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    needs: get-release-branch
+    needs: prepare-release-branch
     runs-on: ubuntu-latest
     env:
-      AUTHENTIK_VERSION: ${{ needs.get-release-branch.outputs.authentik-version }} # 2026.2.0-rc1
-      GEM_VERSION: ${{ needs.get-release-branch.outputs.gem-version }} # 2026.2.0.rc1
-      BASE_BRANCH: ${{ needs.get-release-branch.outputs.release-branch }} # 2026.2
+      AUTHENTIK_VERSION: ${{ needs.prepare-release-branch.outputs.authentik-version }} # 2026.2.0-rc1
+      GEM_VERSION: ${{ needs.prepare-release-branch.outputs.gem-version }} # 2026.2.0.rc1
+      BASE_BRANCH: ${{ needs.prepare-release-branch.outputs.release-branch }} # 2026.2
     steps:
       - name: Checkout release branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -72,17 +72,18 @@ jobs:
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
-          commit-message: "Update OpenAPI client (${{ env.AUTHENTIK_VERSION }})"
-          branch: "openapi-client-update/version/${{ env.AUTHENTIK_VERSION }}"
-          base: "${{ needs.get-release-branch.outputs.release-branch }}"
-          title: "OpenAPI client update (${{ env.AUTHENTIK_VERSION }})"
+          commit-message: "Update OpenAPI client (${ env.AUTHENTIK_VERSION })"
+          branch: "actions/release/version/${{ env.AUTHENTIK_VERSION }}"
+          base: "${{ needs.prepare-release-branch.outputs.release-branch }}"
+          title: "Update for authentik release ${{ env.AUTHENTIK_VERSION }}"
           body: |
-            This PR updates the generated OpenAPI client to match the schema for authentik release `${{ env.AUTHENTIK_VERSION }}`.
+            This automatic update includes changes from the authentik release `${{ env.AUTHENTIK_VERSION }}`.
   
             Authentik version: `${{ env.AUTHENTIK_VERSION }}`
+            Schema source: [goauthentik/authentik@version/${{ env.AUTHENTIK_VERSION }}](https://github.com/goauthentik/authentik/blob/version/${{ env.AUTHENTIK_VERSION }}/schema.yml)
             Gem version: `${{ env.GEM_VERSION }}`
             
-            > Schema sourced from [goauthentik/authentik@version/${{ env.AUTHENTIK_VERSION }}](https://github.com/goauthentik/authentik/blob/version/${{ env.AUTHENTIK_VERSION }}/schema.yml)
+            Please review the generated changes before merging.
           labels: release
           delete-branch: true
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
