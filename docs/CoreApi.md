@@ -243,6 +243,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  for_user: 'for_user_example', # String | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -283,6 +284,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
+| **for_user** | **String** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -399,6 +401,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  for_user: 'for_user_example', # String | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -439,6 +442,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
+| **for_user** | **String** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -2533,7 +2537,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   include_children: true, # Boolean | 
   include_inherited_roles: true, # Boolean | 
   include_parents: true, # Boolean | 
@@ -2579,7 +2582,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **include_children** | **Boolean** |  | [optional][default to false] |
 | **include_inherited_roles** | **Boolean** |  | [optional][default to false] |
 | **include_parents** | **Boolean** |  | [optional][default to false] |
@@ -4633,7 +4635,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -4692,7 +4693,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **date_joined** | **Time** |  | [optional] |
 | **date_joined__gt** | **Time** |  | [optional] |
 | **date_joined__lt** | **Time** |  | [optional] |
@@ -4892,7 +4892,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -4955,7 +4954,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **date_joined** | **Time** |  | [optional] |
 | **date_joined__gt** | **Time** |  | [optional] |
 | **date_joined__lt** | **Time** |  | [optional] |
