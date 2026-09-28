@@ -143,6 +143,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -158,6 +159,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -175,6 +177,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -287,6 +290,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -302,6 +306,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -319,6 +324,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -2273,7 +2279,6 @@ module Authentik::Api
 
     # Group Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_inherited_roles  (default to false)
     # @option opts [Boolean] :include_parents  (default to false)
@@ -2294,7 +2299,6 @@ module Authentik::Api
 
     # Group Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_inherited_roles  (default to false)
     # @option opts [Boolean] :include_parents  (default to false)
@@ -2317,7 +2321,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
       query_params[:'include_inherited_roles'] = opts[:'include_inherited_roles'] if !opts[:'include_inherited_roles'].nil?
       query_params[:'include_parents'] = opts[:'include_parents'] if !opts[:'include_parents'].nil?
@@ -4226,7 +4229,6 @@ module Authentik::Api
 
     # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4260,7 +4262,6 @@ module Authentik::Api
 
     # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4296,7 +4297,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
       query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
       query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?
@@ -4486,7 +4486,6 @@ module Authentik::Api
 
     # User Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4524,7 +4523,6 @@ module Authentik::Api
 
     # User Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4564,7 +4562,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
       query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
       query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?
