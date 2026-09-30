@@ -1,5 +1,5 @@
 [tools]
-actionlint = "latest"
+"github:kjanat/actionlint" = "latest"
 ruby = "3.3"
 
 [tasks.ci]
