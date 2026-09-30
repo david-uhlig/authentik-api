@@ -50,11 +50,41 @@ module Authentik::Api
 
     attr_accessor :outpost_set
 
+    # Only devices in this access group can be accessed through this provider. When left empty, every device the user has access to can be accessed.
+    attr_accessor :access_group
+
+    # Maximum concurrent connections to a single device. Can be set to -1 to disable the limit.
+    attr_accessor :maximum_connections
+
+    attr_accessor :auth_mode
+
     # Determines how long a session lasts. Default of 0 means that the sessions lasts until the browser is closed. (Format: hours=-1;minutes=-2;seconds=-3)
     attr_accessor :connection_expiry
 
     # When set to true, connection tokens will be deleted upon disconnect.
     attr_accessor :delete_token_on_disconnect
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -74,6 +104,9 @@ module Authentik::Api
         :'meta_model_name' => :'meta_model_name',
         :'settings' => :'settings',
         :'outpost_set' => :'outpost_set',
+        :'access_group' => :'access_group',
+        :'maximum_connections' => :'maximum_connections',
+        :'auth_mode' => :'auth_mode',
         :'connection_expiry' => :'connection_expiry',
         :'delete_token_on_disconnect' => :'delete_token_on_disconnect'
       }
@@ -107,6 +140,9 @@ module Authentik::Api
         :'meta_model_name' => :'String',
         :'settings' => :'Hash<String, Object>',
         :'outpost_set' => :'Array<String>',
+        :'access_group' => :'String',
+        :'maximum_connections' => :'Integer',
+        :'auth_mode' => :'RACProviderAuthModeEnum',
         :'connection_expiry' => :'String',
         :'delete_token_on_disconnect' => :'Boolean'
       }
@@ -120,6 +156,7 @@ module Authentik::Api
         :'assigned_application_name',
         :'assigned_backchannel_application_slug',
         :'assigned_backchannel_application_name',
+        :'access_group',
       ])
     end
 
@@ -239,6 +276,18 @@ module Authentik::Api
         self.outpost_set = nil
       end
 
+      if attributes.key?(:'access_group')
+        self.access_group = attributes[:'access_group']
+      end
+
+      if attributes.key?(:'maximum_connections')
+        self.maximum_connections = attributes[:'maximum_connections']
+      end
+
+      if attributes.key?(:'auth_mode')
+        self.auth_mode = attributes[:'auth_mode']
+      end
+
       if attributes.key?(:'connection_expiry')
         self.connection_expiry = attributes[:'connection_expiry']
       end
@@ -285,6 +334,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "outpost_set", outpost_set cannot be nil.')
       end
 
+      if !@maximum_connections.nil? && @maximum_connections > 2147483647
+        invalid_properties.push('invalid value for "maximum_connections", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@maximum_connections.nil? && @maximum_connections < -2147483648
+        invalid_properties.push('invalid value for "maximum_connections", must be greater than or equal to -2147483648.')
+      end
+
       invalid_properties
     end
 
@@ -300,6 +357,8 @@ module Authentik::Api
       return false if @verbose_name_plural.nil?
       return false if @meta_model_name.nil?
       return false if @outpost_set.nil?
+      return false if !@maximum_connections.nil? && @maximum_connections > 2147483647
+      return false if !@maximum_connections.nil? && @maximum_connections < -2147483648
       true
     end
 
@@ -383,6 +442,24 @@ module Authentik::Api
       @outpost_set = outpost_set
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] maximum_connections Value to be assigned
+    def maximum_connections=(maximum_connections)
+      if maximum_connections.nil?
+        fail ArgumentError, 'maximum_connections cannot be nil'
+      end
+
+      if maximum_connections > 2147483647
+        fail ArgumentError, 'invalid value for "maximum_connections", must be smaller than or equal to 2147483647.'
+      end
+
+      if maximum_connections < -2147483648
+        fail ArgumentError, 'invalid value for "maximum_connections", must be greater than or equal to -2147483648.'
+      end
+
+      @maximum_connections = maximum_connections
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -403,6 +480,9 @@ module Authentik::Api
           meta_model_name == o.meta_model_name &&
           settings == o.settings &&
           outpost_set == o.outpost_set &&
+          access_group == o.access_group &&
+          maximum_connections == o.maximum_connections &&
+          auth_mode == o.auth_mode &&
           connection_expiry == o.connection_expiry &&
           delete_token_on_disconnect == o.delete_token_on_disconnect
     end
@@ -416,7 +496,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, settings, outpost_set, connection_expiry, delete_token_on_disconnect].hash
+      [pk, name, authentication_flow, authorization_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, settings, outpost_set, access_group, maximum_connections, auth_mode, connection_expiry, delete_token_on_disconnect].hash
     end
 
     # Builds the object from hash

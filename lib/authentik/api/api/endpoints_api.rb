@@ -3208,6 +3208,72 @@ module Authentik::Api
     end
 
     # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [EndpointDevice]
+    def endpoints_devices_create(endpoint_device_request, opts = {})
+      data, _status_code, _headers = endpoints_devices_create_with_http_info(endpoint_device_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param endpoint_device_request [EndpointDeviceRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EndpointDevice, Integer, Hash)>] EndpointDevice data, response status code and response headers
+    def endpoints_devices_create_with_http_info(endpoint_device_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EndpointsApi.endpoints_devices_create ...'
+      end
+      # verify the required parameter 'endpoint_device_request' is set
+      if @api_client.config.client_side_validation && endpoint_device_request.nil?
+        fail ArgumentError, "Missing the required parameter 'endpoint_device_request' when calling EndpointsApi.endpoints_devices_create"
+      end
+      # resource path
+      local_var_path = '/endpoints/devices/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_device_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EndpointDevice'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EndpointsApi.endpoints_devices_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EndpointsApi#endpoints_devices_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
     # @param device_uuid [String] A UUID string identifying this Device.
     # @param [Hash] opts the optional parameters
     # @return [nil]

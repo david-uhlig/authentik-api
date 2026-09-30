@@ -40,7 +40,7 @@ describe 'RacApi' do
   # unit tests for rac_connection_tokens_list
   # ConnectionToken Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :endpoint 
+  # @option opts [String] :device 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
@@ -100,86 +100,17 @@ describe 'RacApi' do
     end
   end
 
-  # unit tests for rac_endpoints_create
-  # Endpoint Viewset
-  # @param endpoint_request 
+  # unit tests for rac_devices_list
+  # List devices accessible through a RAC provider
+  # @param provider 
   # @param [Hash] opts the optional parameters
-  # @return [Endpoint]
-  describe 'rac_endpoints_create test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_destroy
-  # Endpoint Viewset
-  # @param pbm_uuid A UUID string identifying this RAC Endpoint.
-  # @param [Hash] opts the optional parameters
-  # @return [nil]
-  describe 'rac_endpoints_destroy test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_list
-  # List accessible endpoints
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
-  # @option opts [Integer] :provider 
   # @option opts [String] :search A search term.
   # @option opts [Boolean] :superuser_full_list 
-  # @return [PaginatedEndpointList]
-  describe 'rac_endpoints_list test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_partial_update
-  # Endpoint Viewset
-  # @param pbm_uuid A UUID string identifying this RAC Endpoint.
-  # @param [Hash] opts the optional parameters
-  # @option opts [PatchedEndpointRequest] :patched_endpoint_request 
-  # @return [Endpoint]
-  describe 'rac_endpoints_partial_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_retrieve
-  # Endpoint Viewset
-  # @param pbm_uuid A UUID string identifying this RAC Endpoint.
-  # @param [Hash] opts the optional parameters
-  # @return [Endpoint]
-  describe 'rac_endpoints_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_update
-  # Endpoint Viewset
-  # @param pbm_uuid A UUID string identifying this RAC Endpoint.
-  # @param endpoint_request 
-  # @param [Hash] opts the optional parameters
-  # @return [Endpoint]
-  describe 'rac_endpoints_update test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
-  # unit tests for rac_endpoints_used_by_list
-  # Get a list of all objects that use this object
-  # @param pbm_uuid A UUID string identifying this RAC Endpoint.
-  # @param [Hash] opts the optional parameters
-  # @return [Array<UsedBy>]
-  describe 'rac_endpoints_used_by_list test' do
+  # @return [PaginatedRACDeviceList]
+  describe 'rac_devices_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

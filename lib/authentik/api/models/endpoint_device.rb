@@ -29,6 +29,8 @@ module Authentik::Api
 
     attr_accessor :primary_binding_obj
 
+    attr_accessor :rac
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -41,7 +43,8 @@ module Authentik::Api
         :'expires' => :'expires',
         :'facts' => :'facts',
         :'attributes' => :'attributes',
-        :'primary_binding_obj' => :'primary_binding_obj'
+        :'primary_binding_obj' => :'primary_binding_obj',
+        :'rac' => :'rac'
       }
     end
 
@@ -67,7 +70,8 @@ module Authentik::Api
         :'expires' => :'Time',
         :'facts' => :'DeviceFactSnapshot',
         :'attributes' => :'Hash<String, Object>',
-        :'primary_binding_obj' => :'DeviceUserBinding'
+        :'primary_binding_obj' => :'DeviceUserBinding',
+        :'rac' => :'RACConnectionOverride'
       }
     end
 
@@ -77,7 +81,8 @@ module Authentik::Api
         :'access_group',
         :'expires',
         :'facts',
-        :'primary_binding_obj'
+        :'primary_binding_obj',
+        :'rac'
       ])
     end
 
@@ -156,6 +161,12 @@ module Authentik::Api
       else
         self.primary_binding_obj = nil
       end
+
+      if attributes.key?(:'rac')
+        self.rac = attributes[:'rac']
+      else
+        self.rac = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -217,7 +228,8 @@ module Authentik::Api
           expires == o.expires &&
           facts == o.facts &&
           attributes == o.attributes &&
-          primary_binding_obj == o.primary_binding_obj
+          primary_binding_obj == o.primary_binding_obj &&
+          rac == o.rac
     end
 
     # @see the `==` method
@@ -229,7 +241,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes, primary_binding_obj].hash
+      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes, primary_binding_obj, rac].hash
     end
 
     # Builds the object from hash

@@ -323,6 +323,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EndpointsApi* | [**endpoints_device_bindings_retrieve**](docs/EndpointsApi.md#endpoints_device_bindings_retrieve) | **GET** /endpoints/device_bindings/{policy_binding_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_device_bindings_update**](docs/EndpointsApi.md#endpoints_device_bindings_update) | **PUT** /endpoints/device_bindings/{policy_binding_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_device_bindings_used_by_list**](docs/EndpointsApi.md#endpoints_device_bindings_used_by_list) | **GET** /endpoints/device_bindings/{policy_binding_uuid}/used_by/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_devices_create**](docs/EndpointsApi.md#endpoints_devices_create) | **POST** /endpoints/devices/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_devices_destroy**](docs/EndpointsApi.md#endpoints_devices_destroy) | **DELETE** /endpoints/devices/{device_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_devices_list**](docs/EndpointsApi.md#endpoints_devices_list) | **GET** /endpoints/devices/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_devices_partial_update**](docs/EndpointsApi.md#endpoints_devices_partial_update) | **PATCH** /endpoints/devices/{device_uuid}/ | 
@@ -346,7 +347,6 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EndpointsApi* | [**endpoints_google_chrome_connectors_used_by_list**](docs/EndpointsApi.md#endpoints_google_chrome_connectors_used_by_list) | **GET** /endpoints/google_chrome/connectors/{connector_uuid}/used_by/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_create**](docs/EnterpriseApi.md#enterprise_license_create) | **POST** /enterprise/license/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_destroy**](docs/EnterpriseApi.md#enterprise_license_destroy) | **DELETE** /enterprise/license/{license_uuid}/ | 
-*Authentik::Api::EnterpriseApi* | [**enterprise_license_forecast_retrieve**](docs/EnterpriseApi.md#enterprise_license_forecast_retrieve) | **GET** /enterprise/license/forecast/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_install_id_retrieve**](docs/EnterpriseApi.md#enterprise_license_install_id_retrieve) | **GET** /enterprise/license/install_id/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_list**](docs/EnterpriseApi.md#enterprise_license_list) | **GET** /enterprise/license/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_partial_update**](docs/EnterpriseApi.md#enterprise_license_partial_update) | **PATCH** /enterprise/license/{license_uuid}/ | 
@@ -354,6 +354,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_summary_retrieve**](docs/EnterpriseApi.md#enterprise_license_summary_retrieve) | **GET** /enterprise/license/summary/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_update**](docs/EnterpriseApi.md#enterprise_license_update) | **PUT** /enterprise/license/{license_uuid}/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_used_by_list**](docs/EnterpriseApi.md#enterprise_license_used_by_list) | **GET** /enterprise/license/{license_uuid}/used_by/ | 
+*Authentik::Api::EnterpriseApi* | [**enterprise_license_user_counts_retrieve**](docs/EnterpriseApi.md#enterprise_license_user_counts_retrieve) | **GET** /enterprise/license/user_counts/ | 
 *Authentik::Api::EventsApi* | [**events_events_actions_list**](docs/EventsApi.md#events_events_actions_list) | **GET** /events/events/actions/ | 
 *Authentik::Api::EventsApi* | [**events_events_create**](docs/EventsApi.md#events_events_create) | **POST** /events/events/ | 
 *Authentik::Api::EventsApi* | [**events_events_destroy**](docs/EventsApi.md#events_events_destroy) | **DELETE** /events/events/{event_uuid}/ | 
@@ -804,13 +805,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::RacApi* | [**rac_connection_tokens_retrieve**](docs/RacApi.md#rac_connection_tokens_retrieve) | **GET** /rac/connection_tokens/{connection_token_uuid}/ | 
 *Authentik::Api::RacApi* | [**rac_connection_tokens_update**](docs/RacApi.md#rac_connection_tokens_update) | **PUT** /rac/connection_tokens/{connection_token_uuid}/ | 
 *Authentik::Api::RacApi* | [**rac_connection_tokens_used_by_list**](docs/RacApi.md#rac_connection_tokens_used_by_list) | **GET** /rac/connection_tokens/{connection_token_uuid}/used_by/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_create**](docs/RacApi.md#rac_endpoints_create) | **POST** /rac/endpoints/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_destroy**](docs/RacApi.md#rac_endpoints_destroy) | **DELETE** /rac/endpoints/{pbm_uuid}/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_list**](docs/RacApi.md#rac_endpoints_list) | **GET** /rac/endpoints/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_partial_update**](docs/RacApi.md#rac_endpoints_partial_update) | **PATCH** /rac/endpoints/{pbm_uuid}/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_retrieve**](docs/RacApi.md#rac_endpoints_retrieve) | **GET** /rac/endpoints/{pbm_uuid}/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_update**](docs/RacApi.md#rac_endpoints_update) | **PUT** /rac/endpoints/{pbm_uuid}/ | 
-*Authentik::Api::RacApi* | [**rac_endpoints_used_by_list**](docs/RacApi.md#rac_endpoints_used_by_list) | **GET** /rac/endpoints/{pbm_uuid}/used_by/ | 
+*Authentik::Api::RacApi* | [**rac_devices_list**](docs/RacApi.md#rac_devices_list) | **GET** /rac/devices/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_create**](docs/RbacApi.md#rbac_initial_permissions_create) | **POST** /rbac/initial_permissions/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_destroy**](docs/RbacApi.md#rbac_initial_permissions_destroy) | **DELETE** /rbac/initial_permissions/{id}/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_list**](docs/RbacApi.md#rbac_initial_permissions_list) | **GET** /rbac/initial_permissions/ | 
@@ -1263,20 +1258,6 @@ Class | Method | HTTP request | Description
 *Authentik::Api::TasksApi* | [**tasks_tasks_retry_create**](docs/TasksApi.md#tasks_tasks_retry_create) | **POST** /tasks/tasks/{message_id}/retry/ | 
 *Authentik::Api::TasksApi* | [**tasks_tasks_status_retrieve**](docs/TasksApi.md#tasks_tasks_status_retrieve) | **GET** /tasks/tasks/status/ | 
 *Authentik::Api::TasksApi* | [**tasks_workers_list**](docs/TasksApi.md#tasks_workers_list) | **GET** /tasks/workers/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_create**](docs/TenantsApi.md#tenants_domains_create) | **POST** /tenants/domains/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_destroy**](docs/TenantsApi.md#tenants_domains_destroy) | **DELETE** /tenants/domains/{id}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_list**](docs/TenantsApi.md#tenants_domains_list) | **GET** /tenants/domains/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_partial_update**](docs/TenantsApi.md#tenants_domains_partial_update) | **PATCH** /tenants/domains/{id}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_retrieve**](docs/TenantsApi.md#tenants_domains_retrieve) | **GET** /tenants/domains/{id}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_domains_update**](docs/TenantsApi.md#tenants_domains_update) | **PUT** /tenants/domains/{id}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_create**](docs/TenantsApi.md#tenants_tenants_create) | **POST** /tenants/tenants/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_create_admin_group_create**](docs/TenantsApi.md#tenants_tenants_create_admin_group_create) | **POST** /tenants/tenants/{tenant_uuid}/create_admin_group/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_create_recovery_key_create**](docs/TenantsApi.md#tenants_tenants_create_recovery_key_create) | **POST** /tenants/tenants/{tenant_uuid}/create_recovery_key/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_destroy**](docs/TenantsApi.md#tenants_tenants_destroy) | **DELETE** /tenants/tenants/{tenant_uuid}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_list**](docs/TenantsApi.md#tenants_tenants_list) | **GET** /tenants/tenants/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_partial_update**](docs/TenantsApi.md#tenants_tenants_partial_update) | **PATCH** /tenants/tenants/{tenant_uuid}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_retrieve**](docs/TenantsApi.md#tenants_tenants_retrieve) | **GET** /tenants/tenants/{tenant_uuid}/ | 
-*Authentik::Api::TenantsApi* | [**tenants_tenants_update**](docs/TenantsApi.md#tenants_tenants_update) | **PUT** /tenants/tenants/{tenant_uuid}/ | 
 
 
 ## Documentation for Models
@@ -1430,8 +1411,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::DiskRequest](docs/DiskRequest.md)
  - [Authentik::Api::DockerServiceConnection](docs/DockerServiceConnection.md)
  - [Authentik::Api::DockerServiceConnectionRequest](docs/DockerServiceConnectionRequest.md)
- - [Authentik::Api::Domain](docs/Domain.md)
- - [Authentik::Api::DomainRequest](docs/DomainRequest.md)
  - [Authentik::Api::DummyChallenge](docs/DummyChallenge.md)
  - [Authentik::Api::DummyChallengeResponseRequest](docs/DummyChallengeResponseRequest.md)
  - [Authentik::Api::DummyPolicy](docs/DummyPolicy.md)
@@ -1448,14 +1427,11 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::EmailDeviceRequest](docs/EmailDeviceRequest.md)
  - [Authentik::Api::EmailStage](docs/EmailStage.md)
  - [Authentik::Api::EmailStageRequest](docs/EmailStageRequest.md)
- - [Authentik::Api::Endpoint](docs/Endpoint.md)
  - [Authentik::Api::EndpointAgentChallenge](docs/EndpointAgentChallenge.md)
  - [Authentik::Api::EndpointAgentChallengeResponseRequest](docs/EndpointAgentChallengeResponseRequest.md)
- - [Authentik::Api::EndpointAuthModeEnum](docs/EndpointAuthModeEnum.md)
  - [Authentik::Api::EndpointDevice](docs/EndpointDevice.md)
  - [Authentik::Api::EndpointDeviceDetails](docs/EndpointDeviceDetails.md)
  - [Authentik::Api::EndpointDeviceRequest](docs/EndpointDeviceRequest.md)
- - [Authentik::Api::EndpointRequest](docs/EndpointRequest.md)
  - [Authentik::Api::EndpointStage](docs/EndpointStage.md)
  - [Authentik::Api::EndpointStageRequest](docs/EndpointStageRequest.md)
  - [Authentik::Api::EnrollRequest](docs/EnrollRequest.md)
@@ -1578,11 +1554,12 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::LastTaskStatusEnum](docs/LastTaskStatusEnum.md)
  - [Authentik::Api::License](docs/License.md)
  - [Authentik::Api::LicenseFlagsEnum](docs/LicenseFlagsEnum.md)
- - [Authentik::Api::LicenseForecast](docs/LicenseForecast.md)
  - [Authentik::Api::LicenseRequest](docs/LicenseRequest.md)
  - [Authentik::Api::LicenseStatusEnum](docs/LicenseStatusEnum.md)
  - [Authentik::Api::LicenseSummary](docs/LicenseSummary.md)
  - [Authentik::Api::LicenseSummaryStatusEnum](docs/LicenseSummaryStatusEnum.md)
+ - [Authentik::Api::LicenseUserCountRange](docs/LicenseUserCountRange.md)
+ - [Authentik::Api::LicenseUserCounts](docs/LicenseUserCounts.md)
  - [Authentik::Api::LifecycleIteration](docs/LifecycleIteration.md)
  - [Authentik::Api::LifecycleIterationRequest](docs/LifecycleIterationRequest.md)
  - [Authentik::Api::LifecycleIterationStateEnum](docs/LifecycleIterationStateEnum.md)
@@ -1684,14 +1661,12 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedDeviceAccessGroupList](docs/PaginatedDeviceAccessGroupList.md)
  - [Authentik::Api::PaginatedDeviceUserBindingList](docs/PaginatedDeviceUserBindingList.md)
  - [Authentik::Api::PaginatedDockerServiceConnectionList](docs/PaginatedDockerServiceConnectionList.md)
- - [Authentik::Api::PaginatedDomainList](docs/PaginatedDomainList.md)
  - [Authentik::Api::PaginatedDummyPolicyList](docs/PaginatedDummyPolicyList.md)
  - [Authentik::Api::PaginatedDummyStageList](docs/PaginatedDummyStageList.md)
  - [Authentik::Api::PaginatedDuoDeviceList](docs/PaginatedDuoDeviceList.md)
  - [Authentik::Api::PaginatedEmailDeviceList](docs/PaginatedEmailDeviceList.md)
  - [Authentik::Api::PaginatedEmailStageList](docs/PaginatedEmailStageList.md)
  - [Authentik::Api::PaginatedEndpointDeviceList](docs/PaginatedEndpointDeviceList.md)
- - [Authentik::Api::PaginatedEndpointList](docs/PaginatedEndpointList.md)
  - [Authentik::Api::PaginatedEndpointStageList](docs/PaginatedEndpointStageList.md)
  - [Authentik::Api::PaginatedEnrollmentTokenList](docs/PaginatedEnrollmentTokenList.md)
  - [Authentik::Api::PaginatedEventList](docs/PaginatedEventList.md)
@@ -1761,6 +1736,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedProviderList](docs/PaginatedProviderList.md)
  - [Authentik::Api::PaginatedProxyOutpostConfigList](docs/PaginatedProxyOutpostConfigList.md)
  - [Authentik::Api::PaginatedProxyProviderList](docs/PaginatedProxyProviderList.md)
+ - [Authentik::Api::PaginatedRACDeviceList](docs/PaginatedRACDeviceList.md)
  - [Authentik::Api::PaginatedRACPropertyMappingList](docs/PaginatedRACPropertyMappingList.md)
  - [Authentik::Api::PaginatedRACProviderList](docs/PaginatedRACProviderList.md)
  - [Authentik::Api::PaginatedRadiusOutpostConfigList](docs/PaginatedRadiusOutpostConfigList.md)
@@ -1801,7 +1777,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedTaskList](docs/PaginatedTaskList.md)
  - [Authentik::Api::PaginatedTelegramSourceList](docs/PaginatedTelegramSourceList.md)
  - [Authentik::Api::PaginatedTelegramSourcePropertyMappingList](docs/PaginatedTelegramSourcePropertyMappingList.md)
- - [Authentik::Api::PaginatedTenantList](docs/PaginatedTenantList.md)
  - [Authentik::Api::PaginatedTokenList](docs/PaginatedTokenList.md)
  - [Authentik::Api::PaginatedTokenModelList](docs/PaginatedTokenModelList.md)
  - [Authentik::Api::PaginatedUniquePasswordPolicyList](docs/PaginatedUniquePasswordPolicyList.md)
@@ -1857,14 +1832,12 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedDeviceAccessGroupRequest](docs/PatchedDeviceAccessGroupRequest.md)
  - [Authentik::Api::PatchedDeviceUserBindingRequest](docs/PatchedDeviceUserBindingRequest.md)
  - [Authentik::Api::PatchedDockerServiceConnectionRequest](docs/PatchedDockerServiceConnectionRequest.md)
- - [Authentik::Api::PatchedDomainRequest](docs/PatchedDomainRequest.md)
  - [Authentik::Api::PatchedDummyPolicyRequest](docs/PatchedDummyPolicyRequest.md)
  - [Authentik::Api::PatchedDummyStageRequest](docs/PatchedDummyStageRequest.md)
  - [Authentik::Api::PatchedDuoDeviceRequest](docs/PatchedDuoDeviceRequest.md)
  - [Authentik::Api::PatchedEmailDeviceRequest](docs/PatchedEmailDeviceRequest.md)
  - [Authentik::Api::PatchedEmailStageRequest](docs/PatchedEmailStageRequest.md)
  - [Authentik::Api::PatchedEndpointDeviceRequest](docs/PatchedEndpointDeviceRequest.md)
- - [Authentik::Api::PatchedEndpointRequest](docs/PatchedEndpointRequest.md)
  - [Authentik::Api::PatchedEndpointStageRequest](docs/PatchedEndpointStageRequest.md)
  - [Authentik::Api::PatchedEnrollmentTokenRequest](docs/PatchedEnrollmentTokenRequest.md)
  - [Authentik::Api::PatchedEventMatcherPolicyRequest](docs/PatchedEventMatcherPolicyRequest.md)
@@ -1953,7 +1926,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedTOTPDeviceRequest](docs/PatchedTOTPDeviceRequest.md)
  - [Authentik::Api::PatchedTelegramSourcePropertyMappingRequest](docs/PatchedTelegramSourcePropertyMappingRequest.md)
  - [Authentik::Api::PatchedTelegramSourceRequest](docs/PatchedTelegramSourceRequest.md)
- - [Authentik::Api::PatchedTenantRequest](docs/PatchedTenantRequest.md)
  - [Authentik::Api::PatchedTokenRequest](docs/PatchedTokenRequest.md)
  - [Authentik::Api::PatchedUniquePasswordPolicyRequest](docs/PatchedUniquePasswordPolicyRequest.md)
  - [Authentik::Api::PatchedUserDeleteStageRequest](docs/PatchedUserDeleteStageRequest.md)
@@ -2010,9 +1982,14 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::ProxyOutpostConfig](docs/ProxyOutpostConfig.md)
  - [Authentik::Api::ProxyProvider](docs/ProxyProvider.md)
  - [Authentik::Api::ProxyProviderRequest](docs/ProxyProviderRequest.md)
+ - [Authentik::Api::RACConnectionOverride](docs/RACConnectionOverride.md)
+ - [Authentik::Api::RACConnectionOverrideRequest](docs/RACConnectionOverrideRequest.md)
+ - [Authentik::Api::RACDevice](docs/RACDevice.md)
+ - [Authentik::Api::RACDeviceProtocol](docs/RACDeviceProtocol.md)
  - [Authentik::Api::RACPropertyMapping](docs/RACPropertyMapping.md)
  - [Authentik::Api::RACPropertyMappingRequest](docs/RACPropertyMappingRequest.md)
  - [Authentik::Api::RACProvider](docs/RACProvider.md)
+ - [Authentik::Api::RACProviderAuthModeEnum](docs/RACProviderAuthModeEnum.md)
  - [Authentik::Api::RACProviderRequest](docs/RACProviderRequest.md)
  - [Authentik::Api::RadiusCheckAccess](docs/RadiusCheckAccess.md)
  - [Authentik::Api::RadiusOutpostConfig](docs/RadiusOutpostConfig.md)
@@ -2134,11 +2111,6 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::TelegramSourcePropertyMapping](docs/TelegramSourcePropertyMapping.md)
  - [Authentik::Api::TelegramSourcePropertyMappingRequest](docs/TelegramSourcePropertyMappingRequest.md)
  - [Authentik::Api::TelegramSourceRequest](docs/TelegramSourceRequest.md)
- - [Authentik::Api::Tenant](docs/Tenant.md)
- - [Authentik::Api::TenantAdminGroupRequestRequest](docs/TenantAdminGroupRequestRequest.md)
- - [Authentik::Api::TenantRecoveryKeyRequestRequest](docs/TenantRecoveryKeyRequestRequest.md)
- - [Authentik::Api::TenantRecoveryKeyResponse](docs/TenantRecoveryKeyResponse.md)
- - [Authentik::Api::TenantRequest](docs/TenantRequest.md)
  - [Authentik::Api::ThemedUrls](docs/ThemedUrls.md)
  - [Authentik::Api::Token](docs/Token.md)
  - [Authentik::Api::TokenModel](docs/TokenModel.md)

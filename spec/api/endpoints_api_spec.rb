@@ -605,6 +605,17 @@ describe 'EndpointsApi' do
     end
   end
 
+  # unit tests for endpoints_devices_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param endpoint_device_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointDevice]
+  describe 'endpoints_devices_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for endpoints_devices_destroy
   # Mixin to add a used_by endpoint to return a list of all objects using this object
   # @param device_uuid A UUID string identifying this Device.

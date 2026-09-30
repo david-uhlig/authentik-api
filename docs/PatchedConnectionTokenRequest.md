@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **pk** | **String** |  | [optional] |
 | **provider** | **Integer** |  | [optional] |
-| **endpoint** | **String** |  | [optional] |
+| **device** | **String** |  | [optional] |
 
 ## Example
 
@@ -16,7 +16,7 @@ require 'authentik-api'
 instance = Authentik::Api::PatchedConnectionTokenRequest.new(
   pk: null,
   provider: null,
-  endpoint: null
+  device: null
 )
 ```
 

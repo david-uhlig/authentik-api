@@ -10,13 +10,7 @@ All URIs are relative to */api/v3*
 | [**rac_connection_tokens_retrieve**](RacApi.md#rac_connection_tokens_retrieve) | **GET** /rac/connection_tokens/{connection_token_uuid}/ |  |
 | [**rac_connection_tokens_update**](RacApi.md#rac_connection_tokens_update) | **PUT** /rac/connection_tokens/{connection_token_uuid}/ |  |
 | [**rac_connection_tokens_used_by_list**](RacApi.md#rac_connection_tokens_used_by_list) | **GET** /rac/connection_tokens/{connection_token_uuid}/used_by/ |  |
-| [**rac_endpoints_create**](RacApi.md#rac_endpoints_create) | **POST** /rac/endpoints/ |  |
-| [**rac_endpoints_destroy**](RacApi.md#rac_endpoints_destroy) | **DELETE** /rac/endpoints/{pbm_uuid}/ |  |
-| [**rac_endpoints_list**](RacApi.md#rac_endpoints_list) | **GET** /rac/endpoints/ |  |
-| [**rac_endpoints_partial_update**](RacApi.md#rac_endpoints_partial_update) | **PATCH** /rac/endpoints/{pbm_uuid}/ |  |
-| [**rac_endpoints_retrieve**](RacApi.md#rac_endpoints_retrieve) | **GET** /rac/endpoints/{pbm_uuid}/ |  |
-| [**rac_endpoints_update**](RacApi.md#rac_endpoints_update) | **PUT** /rac/endpoints/{pbm_uuid}/ |  |
-| [**rac_endpoints_used_by_list**](RacApi.md#rac_endpoints_used_by_list) | **GET** /rac/endpoints/{pbm_uuid}/used_by/ |  |
+| [**rac_devices_list**](RacApi.md#rac_devices_list) | **GET** /rac/devices/ |  |
 
 
 ## rac_connection_tokens_destroy
@@ -108,7 +102,7 @@ end
 
 api_instance = Authentik::Api::RacApi.new
 opts = {
-  endpoint: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  device: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -148,7 +142,7 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **endpoint** | **String** |  | [optional] |
+| **device** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
@@ -333,7 +327,7 @@ end
 
 api_instance = Authentik::Api::RacApi.new
 connection_token_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Connection token.
-connection_token_request = Authentik::Api::ConnectionTokenRequest.new({provider: 37, endpoint: 'endpoint_example'}) # ConnectionTokenRequest | 
+connection_token_request = Authentik::Api::ConnectionTokenRequest.new({provider: 37, device: 'device_example'}) # ConnectionTokenRequest | 
 
 begin
   
@@ -452,82 +446,13 @@ end
 - **Accept**: application/json
 
 
-## rac_endpoints_create
+## rac_devices_list
 
-> <Endpoint> rac_endpoints_create(endpoint_request)
-
-
-
-Endpoint Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
-endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::EndpointAuthModeEnum::STATIC}) # EndpointRequest | 
-
-begin
-  
-  result = api_instance.rac_endpoints_create(endpoint_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_create: #{e}"
-end
-```
-
-#### Using the rac_endpoints_create_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Endpoint>, Integer, Hash)> rac_endpoints_create_with_http_info(endpoint_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_create_with_http_info(endpoint_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Endpoint>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_create_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **endpoint_request** | [**EndpointRequest**](EndpointRequest.md) |  |  |
-
-### Return type
-
-[**Endpoint**](Endpoint.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## rac_endpoints_destroy
-
-> rac_endpoints_destroy(pbm_uuid)
+> <PaginatedRACDeviceList> rac_devices_list(provider, opts)
 
 
 
-Endpoint Viewset
+List devices accessible through a RAC provider
 
 ### Examples
 
@@ -541,108 +466,39 @@ Authentik::Api.configure do |config|
 end
 
 api_instance = Authentik::Api::RacApi.new
-pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-
-begin
-  
-  api_instance.rac_endpoints_destroy(pbm_uuid)
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_destroy: #{e}"
-end
-```
-
-#### Using the rac_endpoints_destroy_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> rac_endpoints_destroy_with_http_info(pbm_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_destroy_with_http_info(pbm_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_destroy_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbm_uuid** | **String** | A UUID string identifying this RAC Endpoint. |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## rac_endpoints_list
-
-> <PaginatedEndpointList> rac_endpoints_list(opts)
-
-
-
-List accessible endpoints
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
+provider = 56 # Integer | 
 opts = {
-  name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
-  provider: 56, # Integer | 
   search: 'search_example', # String | A search term.
   superuser_full_list: true # Boolean | 
 }
 
 begin
   
-  result = api_instance.rac_endpoints_list(opts)
+  result = api_instance.rac_devices_list(provider, opts)
   p result
 rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_list: #{e}"
+  puts "Error when calling RacApi->rac_devices_list: #{e}"
 end
 ```
 
-#### Using the rac_endpoints_list_with_http_info variant
+#### Using the rac_devices_list_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<PaginatedEndpointList>, Integer, Hash)> rac_endpoints_list_with_http_info(opts)
+> <Array(<PaginatedRACDeviceList>, Integer, Hash)> rac_devices_list_with_http_info(provider, opts)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.rac_endpoints_list_with_http_info(opts)
+  data, status_code, headers = api_instance.rac_devices_list_with_http_info(provider, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <PaginatedEndpointList>
+  p data # => <PaginatedRACDeviceList>
 rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_list_with_http_info: #{e}"
+  puts "Error when calling RacApi->rac_devices_list_with_http_info: #{e}"
 end
 ```
 
@@ -650,299 +506,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **name** | **String** |  | [optional] |
+| **provider** | **Integer** |  |  |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
-| **provider** | **Integer** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **superuser_full_list** | **Boolean** |  | [optional] |
 
 ### Return type
 
-[**PaginatedEndpointList**](PaginatedEndpointList.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## rac_endpoints_partial_update
-
-> <Endpoint> rac_endpoints_partial_update(pbm_uuid, opts)
-
-
-
-Endpoint Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
-pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-opts = {
-  patched_endpoint_request: Authentik::Api::PatchedEndpointRequest.new # PatchedEndpointRequest | 
-}
-
-begin
-  
-  result = api_instance.rac_endpoints_partial_update(pbm_uuid, opts)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_partial_update: #{e}"
-end
-```
-
-#### Using the rac_endpoints_partial_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Endpoint>, Integer, Hash)> rac_endpoints_partial_update_with_http_info(pbm_uuid, opts)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_partial_update_with_http_info(pbm_uuid, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Endpoint>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_partial_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbm_uuid** | **String** | A UUID string identifying this RAC Endpoint. |  |
-| **patched_endpoint_request** | [**PatchedEndpointRequest**](PatchedEndpointRequest.md) |  | [optional] |
-
-### Return type
-
-[**Endpoint**](Endpoint.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## rac_endpoints_retrieve
-
-> <Endpoint> rac_endpoints_retrieve(pbm_uuid)
-
-
-
-Endpoint Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
-pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-
-begin
-  
-  result = api_instance.rac_endpoints_retrieve(pbm_uuid)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_retrieve: #{e}"
-end
-```
-
-#### Using the rac_endpoints_retrieve_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Endpoint>, Integer, Hash)> rac_endpoints_retrieve_with_http_info(pbm_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_retrieve_with_http_info(pbm_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Endpoint>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_retrieve_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbm_uuid** | **String** | A UUID string identifying this RAC Endpoint. |  |
-
-### Return type
-
-[**Endpoint**](Endpoint.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## rac_endpoints_update
-
-> <Endpoint> rac_endpoints_update(pbm_uuid, endpoint_request)
-
-
-
-Endpoint Viewset
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
-pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-endpoint_request = Authentik::Api::EndpointRequest.new({name: 'name_example', provider: 37, protocol: Authentik::Api::ProtocolEnum::RDP, host: 'host_example', auth_mode: Authentik::Api::EndpointAuthModeEnum::STATIC}) # EndpointRequest | 
-
-begin
-  
-  result = api_instance.rac_endpoints_update(pbm_uuid, endpoint_request)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_update: #{e}"
-end
-```
-
-#### Using the rac_endpoints_update_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Endpoint>, Integer, Hash)> rac_endpoints_update_with_http_info(pbm_uuid, endpoint_request)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_update_with_http_info(pbm_uuid, endpoint_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Endpoint>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_update_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbm_uuid** | **String** | A UUID string identifying this RAC Endpoint. |  |
-| **endpoint_request** | [**EndpointRequest**](EndpointRequest.md) |  |  |
-
-### Return type
-
-[**Endpoint**](Endpoint.md)
-
-### Authorization
-
-[authentik](../README.md#authentik)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## rac_endpoints_used_by_list
-
-> <Array<UsedBy>> rac_endpoints_used_by_list(pbm_uuid)
-
-
-
-Get a list of all objects that use this object
-
-### Examples
-
-```ruby
-require 'time'
-require 'authentik-api'
-# setup authorization
-Authentik::Api.configure do |config|
-  # Configure Bearer authorization: authentik
-  config.access_token = 'YOUR_BEARER_TOKEN'
-end
-
-api_instance = Authentik::Api::RacApi.new
-pbm_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this RAC Endpoint.
-
-begin
-  
-  result = api_instance.rac_endpoints_used_by_list(pbm_uuid)
-  p result
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_used_by_list: #{e}"
-end
-```
-
-#### Using the rac_endpoints_used_by_list_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<Array<UsedBy>>, Integer, Hash)> rac_endpoints_used_by_list_with_http_info(pbm_uuid)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.rac_endpoints_used_by_list_with_http_info(pbm_uuid)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <Array<UsedBy>>
-rescue Authentik::Api::ApiError => e
-  puts "Error when calling RacApi->rac_endpoints_used_by_list_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **pbm_uuid** | **String** | A UUID string identifying this RAC Endpoint. |  |
-
-### Return type
-
-[**Array&lt;UsedBy&gt;**](UsedBy.md)
+[**PaginatedRACDeviceList**](PaginatedRACDeviceList.md)
 
 ### Authorization
 
