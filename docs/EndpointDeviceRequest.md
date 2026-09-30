@@ -11,6 +11,7 @@
 | **expiring** | **Boolean** |  | [optional] |
 | **expires** | **Time** |  | [optional] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **rac** | [**RACConnectionOverrideRequest**](RACConnectionOverrideRequest.md) |  |  |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = Authentik::Api::EndpointDeviceRequest.new(
   access_group_obj: null,
   expiring: null,
   expires: null,
-  attributes: null
+  attributes: null,
+  rac: null
 )
 ```
 

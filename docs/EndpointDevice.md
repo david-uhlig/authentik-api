@@ -14,6 +14,7 @@
 | **facts** | [**DeviceFactSnapshot**](DeviceFactSnapshot.md) |  | [readonly] |
 | **attributes** | **Hash&lt;String, Object&gt;** |  | [optional] |
 | **primary_binding_obj** | [**DeviceUserBinding**](DeviceUserBinding.md) |  | [readonly] |
+| **rac** | [**RACConnectionOverride**](RACConnectionOverride.md) |  |  |
 
 ## Example
 
@@ -30,7 +31,8 @@ instance = Authentik::Api::EndpointDevice.new(
   expires: null,
   facts: null,
   attributes: null,
-  primary_binding_obj: null
+  primary_binding_obj: null,
+  rac: null
 )
 ```
 

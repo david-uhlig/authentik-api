@@ -29,6 +29,8 @@ module Authentik::Api
 
     attr_accessor :primary_binding_obj
 
+    attr_accessor :rac
+
     attr_accessor :connections_obj
 
     attr_accessor :policies
@@ -48,6 +50,7 @@ module Authentik::Api
         :'facts' => :'facts',
         :'attributes' => :'attributes',
         :'primary_binding_obj' => :'primary_binding_obj',
+        :'rac' => :'rac',
         :'connections_obj' => :'connections_obj',
         :'policies' => :'policies',
         :'connections' => :'connections'
@@ -77,6 +80,7 @@ module Authentik::Api
         :'facts' => :'DeviceFactSnapshot',
         :'attributes' => :'Hash<String, Object>',
         :'primary_binding_obj' => :'DeviceUserBinding',
+        :'rac' => :'RACConnectionOverride',
         :'connections_obj' => :'Array<DeviceConnection>',
         :'policies' => :'Array<String>',
         :'connections' => :'Array<String>'
@@ -90,6 +94,7 @@ module Authentik::Api
         :'expires',
         :'facts',
         :'primary_binding_obj',
+        :'rac',
       ])
     end
 
@@ -167,6 +172,12 @@ module Authentik::Api
         self.primary_binding_obj = attributes[:'primary_binding_obj']
       else
         self.primary_binding_obj = nil
+      end
+
+      if attributes.key?(:'rac')
+        self.rac = attributes[:'rac']
+      else
+        self.rac = nil
       end
 
       if attributes.key?(:'connections_obj')
@@ -299,6 +310,7 @@ module Authentik::Api
           facts == o.facts &&
           attributes == o.attributes &&
           primary_binding_obj == o.primary_binding_obj &&
+          rac == o.rac &&
           connections_obj == o.connections_obj &&
           policies == o.policies &&
           connections == o.connections
@@ -313,7 +325,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes, primary_binding_obj, connections_obj, policies, connections].hash
+      [device_uuid, pbm_uuid, name, access_group, access_group_obj, expiring, expires, facts, attributes, primary_binding_obj, rac, connections_obj, policies, connections].hash
     end
 
     # Builds the object from hash

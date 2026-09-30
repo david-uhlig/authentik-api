@@ -53,6 +53,7 @@ All URIs are relative to */api/v3*
 | [**endpoints_device_bindings_retrieve**](EndpointsApi.md#endpoints_device_bindings_retrieve) | **GET** /endpoints/device_bindings/{policy_binding_uuid}/ |  |
 | [**endpoints_device_bindings_update**](EndpointsApi.md#endpoints_device_bindings_update) | **PUT** /endpoints/device_bindings/{policy_binding_uuid}/ |  |
 | [**endpoints_device_bindings_used_by_list**](EndpointsApi.md#endpoints_device_bindings_used_by_list) | **GET** /endpoints/device_bindings/{policy_binding_uuid}/used_by/ |  |
+| [**endpoints_devices_create**](EndpointsApi.md#endpoints_devices_create) | **POST** /endpoints/devices/ |  |
 | [**endpoints_devices_destroy**](EndpointsApi.md#endpoints_devices_destroy) | **DELETE** /endpoints/devices/{device_uuid}/ |  |
 | [**endpoints_devices_list**](EndpointsApi.md#endpoints_devices_list) | **GET** /endpoints/devices/ |  |
 | [**endpoints_devices_partial_update**](EndpointsApi.md#endpoints_devices_partial_update) | **PATCH** /endpoints/devices/{device_uuid}/ |  |
@@ -3544,6 +3545,75 @@ end
 - **Accept**: application/json
 
 
+## endpoints_devices_create
+
+> <EndpointDevice> endpoints_devices_create(endpoint_device_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+endpoint_device_request = Authentik::Api::EndpointDeviceRequest.new({name: 'name_example', rac: Authentik::Api::RACConnectionOverrideRequest.new({host: 'host_example', protocol: Authentik::Api::ProtocolEnum::RDP})}) # EndpointDeviceRequest | 
+
+begin
+  
+  result = api_instance.endpoints_devices_create(endpoint_device_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_devices_create: #{e}"
+end
+```
+
+#### Using the endpoints_devices_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EndpointDevice>, Integer, Hash)> endpoints_devices_create_with_http_info(endpoint_device_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_devices_create_with_http_info(endpoint_device_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EndpointDevice>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_devices_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **endpoint_device_request** | [**EndpointDeviceRequest**](EndpointDeviceRequest.md) |  |  |
+
+### Return type
+
+[**EndpointDevice**](EndpointDevice.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## endpoints_devices_destroy
 
 > endpoints_devices_destroy(device_uuid)
@@ -3922,7 +3992,7 @@ end
 
 api_instance = Authentik::Api::EndpointsApi.new
 device_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Device.
-endpoint_device_request = Authentik::Api::EndpointDeviceRequest.new({name: 'name_example'}) # EndpointDeviceRequest | 
+endpoint_device_request = Authentik::Api::EndpointDeviceRequest.new({name: 'name_example', rac: Authentik::Api::RACConnectionOverrideRequest.new({host: 'host_example', protocol: Authentik::Api::ProtocolEnum::RDP})}) # EndpointDeviceRequest | 
 
 begin
   

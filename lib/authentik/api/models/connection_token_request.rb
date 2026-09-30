@@ -14,14 +14,14 @@ module Authentik::Api
 
     attr_accessor :provider
 
-    attr_accessor :endpoint
+    attr_accessor :device
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'pk' => :'pk',
         :'provider' => :'provider',
-        :'endpoint' => :'endpoint'
+        :'device' => :'device'
       }
     end
 
@@ -40,7 +40,7 @@ module Authentik::Api
       {
         :'pk' => :'String',
         :'provider' => :'Integer',
-        :'endpoint' => :'String'
+        :'device' => :'String'
       }
     end
 
@@ -86,10 +86,10 @@ module Authentik::Api
         self.provider = nil
       end
 
-      if attributes.key?(:'endpoint')
-        self.endpoint = attributes[:'endpoint']
+      if attributes.key?(:'device')
+        self.device = attributes[:'device']
       else
-        self.endpoint = nil
+        self.device = nil
       end
     end
 
@@ -102,8 +102,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "provider", provider cannot be nil.')
       end
 
-      if @endpoint.nil?
-        invalid_properties.push('invalid value for "endpoint", endpoint cannot be nil.')
+      if @device.nil?
+        invalid_properties.push('invalid value for "device", device cannot be nil.')
       end
 
       invalid_properties
@@ -114,7 +114,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @provider.nil?
-      return false if @endpoint.nil?
+      return false if @device.nil?
       true
     end
 
@@ -129,13 +129,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] endpoint Value to be assigned
-    def endpoint=(endpoint)
-      if endpoint.nil?
-        fail ArgumentError, 'endpoint cannot be nil'
+    # @param [Object] device Value to be assigned
+    def device=(device)
+      if device.nil?
+        fail ArgumentError, 'device cannot be nil'
       end
 
-      @endpoint = endpoint
+      @device = device
     end
 
     # Checks equality by comparing each attribute.
@@ -145,7 +145,7 @@ module Authentik::Api
       self.class == o.class &&
           pk == o.pk &&
           provider == o.provider &&
-          endpoint == o.endpoint
+          device == o.device
     end
 
     # @see the `==` method
@@ -157,7 +157,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, provider, endpoint].hash
+      [pk, provider, device].hash
     end
 
     # Builds the object from hash

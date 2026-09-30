@@ -23,6 +23,8 @@ module Authentik::Api
 
     attr_accessor :attributes
 
+    attr_accessor :rac
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -32,7 +34,8 @@ module Authentik::Api
         :'access_group_obj' => :'access_group_obj',
         :'expiring' => :'expiring',
         :'expires' => :'expires',
-        :'attributes' => :'attributes'
+        :'attributes' => :'attributes',
+        :'rac' => :'rac'
       }
     end
 
@@ -55,7 +58,8 @@ module Authentik::Api
         :'access_group_obj' => :'DeviceAccessGroupRequest',
         :'expiring' => :'Boolean',
         :'expires' => :'Time',
-        :'attributes' => :'Hash<String, Object>'
+        :'attributes' => :'Hash<String, Object>',
+        :'rac' => :'RACConnectionOverrideRequest'
       }
     end
 
@@ -64,6 +68,7 @@ module Authentik::Api
       Set.new([
         :'access_group',
         :'expires',
+        :'rac'
       ])
     end
 
@@ -124,6 +129,12 @@ module Authentik::Api
           self.attributes = value
         end
       end
+
+      if attributes.key?(:'rac')
+        self.rac = attributes[:'rac']
+      else
+        self.rac = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -176,7 +187,8 @@ module Authentik::Api
           access_group_obj == o.access_group_obj &&
           expiring == o.expiring &&
           expires == o.expires &&
-          attributes == o.attributes
+          attributes == o.attributes &&
+          rac == o.rac
     end
 
     # @see the `==` method
@@ -188,7 +200,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [device_uuid, name, access_group, access_group_obj, expiring, expires, attributes].hash
+      [device_uuid, name, access_group, access_group_obj, expiring, expires, attributes, rac].hash
     end
 
     # Builds the object from hash

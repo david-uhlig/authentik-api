@@ -7,8 +7,8 @@
 | **pk** | **String** |  | [optional] |
 | **provider** | **Integer** |  |  |
 | **provider_obj** | [**RACProvider**](RACProvider.md) |  | [readonly] |
-| **endpoint** | **String** |  |  |
-| **endpoint_obj** | [**Endpoint**](Endpoint.md) |  | [readonly] |
+| **device** | **String** |  |  |
+| **device_name** | **String** |  | [readonly] |
 | **user** | [**PartialUser**](PartialUser.md) |  | [readonly] |
 
 ## Example
@@ -20,8 +20,8 @@ instance = Authentik::Api::ConnectionToken.new(
   pk: null,
   provider: null,
   provider_obj: null,
-  endpoint: null,
-  endpoint_obj: null,
+  device: null,
+  device_name: null,
   user: null
 )
 ```

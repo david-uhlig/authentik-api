@@ -76,7 +76,7 @@ module Authentik::Api
 
     # ConnectionToken Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :endpoint 
+    # @option opts [String] :device 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -91,7 +91,7 @@ module Authentik::Api
 
     # ConnectionToken Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :endpoint 
+    # @option opts [String] :device 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -108,7 +108,7 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'endpoint'] = opts[:'endpoint'] if !opts[:'endpoint'].nil?
+      query_params[:'device'] = opts[:'device'] if !opts[:'device'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
@@ -412,172 +412,46 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Endpoint Viewset
-    # @param endpoint_request [EndpointRequest] 
+    # List devices accessible through a RAC provider
+    # @param provider [Integer] 
     # @param [Hash] opts the optional parameters
-    # @return [Endpoint]
-    def rac_endpoints_create(endpoint_request, opts = {})
-      data, _status_code, _headers = rac_endpoints_create_with_http_info(endpoint_request, opts)
-      data
-    end
-
-    # Endpoint Viewset
-    # @param endpoint_request [EndpointRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Endpoint, Integer, Hash)>] Endpoint data, response status code and response headers
-    def rac_endpoints_create_with_http_info(endpoint_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_create ...'
-      end
-      # verify the required parameter 'endpoint_request' is set
-      if @api_client.config.client_side_validation && endpoint_request.nil?
-        fail ArgumentError, "Missing the required parameter 'endpoint_request' when calling RacApi.rac_endpoints_create"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Endpoint'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_create",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def rac_endpoints_destroy(pbm_uuid, opts = {})
-      rac_endpoints_destroy_with_http_info(pbm_uuid, opts)
-      nil
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
-    def rac_endpoints_destroy_with_http_info(pbm_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_destroy ...'
-      end
-      # verify the required parameter 'pbm_uuid' is set
-      if @api_client.config.client_side_validation && pbm_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_destroy"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type]
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_destroy",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # List accessible endpoints
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [Integer] :provider 
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :superuser_full_list 
-    # @return [PaginatedEndpointList]
-    def rac_endpoints_list(opts = {})
-      data, _status_code, _headers = rac_endpoints_list_with_http_info(opts)
+    # @return [PaginatedRACDeviceList]
+    def rac_devices_list(provider, opts = {})
+      data, _status_code, _headers = rac_devices_list_with_http_info(provider, opts)
       data
     end
 
-    # List accessible endpoints
+    # List devices accessible through a RAC provider
+    # @param provider [Integer] 
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
-    # @option opts [Integer] :provider 
     # @option opts [String] :search A search term.
     # @option opts [Boolean] :superuser_full_list 
-    # @return [Array<(PaginatedEndpointList, Integer, Hash)>] PaginatedEndpointList data, response status code and response headers
-    def rac_endpoints_list_with_http_info(opts = {})
+    # @return [Array<(PaginatedRACDeviceList, Integer, Hash)>] PaginatedRACDeviceList data, response status code and response headers
+    def rac_devices_list_with_http_info(provider, opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_list ...'
+        @api_client.config.logger.debug 'Calling API: RacApi.rac_devices_list ...'
+      end
+      # verify the required parameter 'provider' is set
+      if @api_client.config.client_side_validation && provider.nil?
+        fail ArgumentError, "Missing the required parameter 'provider' when calling RacApi.rac_devices_list"
       end
       # resource path
-      local_var_path = '/rac/endpoints/'
+      local_var_path = '/rac/devices/'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'provider'] = provider
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
-      query_params[:'provider'] = opts[:'provider'] if !opts[:'provider'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'superuser_full_list'] = opts[:'superuser_full_list'] if !opts[:'superuser_full_list'].nil?
 
@@ -593,13 +467,13 @@ module Authentik::Api
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'PaginatedEndpointList'
+      return_type = opts[:debug_return_type] || 'PaginatedRACDeviceList'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['authentik']
 
       new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_list",
+        :operation => :"RacApi.rac_devices_list",
         :header_params => header_params,
         :query_params => query_params,
         :form_params => form_params,
@@ -610,269 +484,7 @@ module Authentik::Api
 
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedEndpointRequest] :patched_endpoint_request 
-    # @return [Endpoint]
-    def rac_endpoints_partial_update(pbm_uuid, opts = {})
-      data, _status_code, _headers = rac_endpoints_partial_update_with_http_info(pbm_uuid, opts)
-      data
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @option opts [PatchedEndpointRequest] :patched_endpoint_request 
-    # @return [Array<(Endpoint, Integer, Hash)>] Endpoint data, response status code and response headers
-    def rac_endpoints_partial_update_with_http_info(pbm_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_partial_update ...'
-      end
-      # verify the required parameter 'pbm_uuid' is set
-      if @api_client.config.client_side_validation && pbm_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_partial_update"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_endpoint_request'])
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Endpoint'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_partial_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Endpoint]
-    def rac_endpoints_retrieve(pbm_uuid, opts = {})
-      data, _status_code, _headers = rac_endpoints_retrieve_with_http_info(pbm_uuid, opts)
-      data
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Endpoint, Integer, Hash)>] Endpoint data, response status code and response headers
-    def rac_endpoints_retrieve_with_http_info(pbm_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_retrieve ...'
-      end
-      # verify the required parameter 'pbm_uuid' is set
-      if @api_client.config.client_side_validation && pbm_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_retrieve"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Endpoint'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param endpoint_request [EndpointRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Endpoint]
-    def rac_endpoints_update(pbm_uuid, endpoint_request, opts = {})
-      data, _status_code, _headers = rac_endpoints_update_with_http_info(pbm_uuid, endpoint_request, opts)
-      data
-    end
-
-    # Endpoint Viewset
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param endpoint_request [EndpointRequest] 
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Endpoint, Integer, Hash)>] Endpoint data, response status code and response headers
-    def rac_endpoints_update_with_http_info(pbm_uuid, endpoint_request, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_update ...'
-      end
-      # verify the required parameter 'pbm_uuid' is set
-      if @api_client.config.client_side_validation && pbm_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_update"
-      end
-      # verify the required parameter 'endpoint_request' is set
-      if @api_client.config.client_side_validation && endpoint_request.nil?
-        fail ArgumentError, "Missing the required parameter 'endpoint_request' when calling RacApi.rac_endpoints_update"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-      # HTTP header 'Content-Type'
-      content_type = @api_client.select_header_content_type(['application/json'])
-      if !content_type.nil?
-          header_params['Content-Type'] = content_type
-      end
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body] || @api_client.object_to_http_body(endpoint_request)
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Endpoint'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_update",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # Get a list of all objects that use this object
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<UsedBy>]
-    def rac_endpoints_used_by_list(pbm_uuid, opts = {})
-      data, _status_code, _headers = rac_endpoints_used_by_list_with_http_info(pbm_uuid, opts)
-      data
-    end
-
-    # Get a list of all objects that use this object
-    # @param pbm_uuid [String] A UUID string identifying this RAC Endpoint.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
-    def rac_endpoints_used_by_list_with_http_info(pbm_uuid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: RacApi.rac_endpoints_used_by_list ...'
-      end
-      # verify the required parameter 'pbm_uuid' is set
-      if @api_client.config.client_side_validation && pbm_uuid.nil?
-        fail ArgumentError, "Missing the required parameter 'pbm_uuid' when calling RacApi.rac_endpoints_used_by_list"
-      end
-      # resource path
-      local_var_path = '/rac/endpoints/{pbm_uuid}/used_by/'.sub('{pbm_uuid}', CGI.escape(pbm_uuid.to_s))
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"RacApi.rac_endpoints_used_by_list",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: RacApi#rac_endpoints_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+        @api_client.config.logger.debug "API called: RacApi#rac_devices_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
