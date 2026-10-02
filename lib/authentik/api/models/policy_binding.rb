@@ -31,6 +31,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # Execute the policy but ignore its result.
+    attr_accessor :dry_run
+
     attr_accessor :order
 
     # Timeout after which Policy execution is terminated.
@@ -56,6 +59,7 @@ module Authentik::Api
         :'target' => :'target',
         :'negate' => :'negate',
         :'enabled' => :'enabled',
+        :'dry_run' => :'dry_run',
         :'order' => :'order',
         :'timeout' => :'timeout',
         :'failure_result' => :'failure_result',
@@ -87,6 +91,7 @@ module Authentik::Api
         :'target' => :'String',
         :'negate' => :'Boolean',
         :'enabled' => :'Boolean',
+        :'dry_run' => :'Boolean',
         :'order' => :'Integer',
         :'timeout' => :'Integer',
         :'failure_result' => :'Boolean',
@@ -182,6 +187,10 @@ module Authentik::Api
 
       if attributes.key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'dry_run')
+        self.dry_run = attributes[:'dry_run']
       end
 
       if attributes.key?(:'order')
@@ -347,6 +356,7 @@ module Authentik::Api
           target == o.target &&
           negate == o.negate &&
           enabled == o.enabled &&
+          dry_run == o.dry_run &&
           order == o.order &&
           timeout == o.timeout &&
           failure_result == o.failure_result &&
@@ -363,7 +373,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result, expires, expiring].hash
+      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, dry_run, order, timeout, failure_result, expires, expiring].hash
     end
 
     # Builds the object from hash
