@@ -1,7 +1,14 @@
-# Monitors the `goauthentik/authentik` repository for new tags.
+# Monitors the `goauthentik/authentik` repository for new release tags.
+#
+# Covers every `version/X.Y.Z[-suffix]` tag at or above `SOURCE_MIN_VERSION`:
+# * Final releases, e.g., `version/2026.5.0`, `version/2026.5.3`.
+# * Release candidates of minor releases, e.g., `version/2026.8.0-rc1`.
+# * Release candidates of patch releases, e.g., `version/2026.5.3-rc1`.
 #
 # When new tags are found:
-# * Compares against known tags (a branch with the same name exists).
+# * Skips tags that are already known, i.e., a PR branch
+#   (`actions/release/version/2026.5.3-rc1`) or a gem tag (`v2026.5.3.rc1`)
+#   exists in this repository.
 # * Dispatches builder workflows for unknown tags.
 name: Check authentik for new tags (releases)
 
@@ -14,7 +21,9 @@ on:
 env:
   SOURCE_OWNER: goauthentik
   SOURCE_REPO: authentik
-  SOURCE_LATEST_TAGS_NUM: 20
+  # Number of most recent upstream tags to inspect. Keep generous: RCs and
+  # patch releases of several release lines can arrive between two runs.
+  SOURCE_LATEST_TAGS_NUM: 50
   SOURCE_MIN_VERSION: "2026.5.0"
   AUTO_PR_BRANCH_PREFIX: "actions/release/"
 
@@ -62,11 +71,24 @@ jobs:
             const branches = JSON.parse(process.env.BRANCHES);
             const tags = JSON.parse(process.env.TAGS);
             
+            // Compare major.minor.patch numerically; a string comparison would
+            // sort `2026.11.0` before `2026.5.0`. The pre-release suffix is
+            // ignored, so RCs of any minor or patch release at or above the
+            // minimum are included (e.g., `2026.5.0-rc1`, `2026.5.3-rc1`).
+            const toNums = v => v.split('-')[0].split('.').map(Number);
+            const compare = (a, b) => {
+              for (let i = 0; i < 3; i++) {
+                if (a[i] !== b[i]) return a[i] - b[i];
+              }
+              return 0;
+            };
+            const minVersion = toNums(process.env.SOURCE_MIN_VERSION);
+
             let akTags = response
               .data
               .map(t => t.name) // e.g., `version/2026.2.2-rc2`
-              .filter(t => t.startsWith('version/'))
-              .filter(t => t >= `version/${process.env.SOURCE_MIN_VERSION}`);
+              .filter(t => /^version\/\d+\.\d+\.\d+(-.+)?$/.test(t))
+              .filter(t => compare(toNums(t.replace('version/', '')), minVersion) >= 0);
             core.info(`Found ${akTags.length} authentik tags >= ${process.env.SOURCE_MIN_VERSION}`);
             core.info(akTags.join(', '));
             

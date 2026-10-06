@@ -10,12 +10,13 @@ name: Check Ruby EOL
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 12 1 * *" # First of every month at noon UTC.
+    - cron: "0 12 1 * *" # First of every month at noon Berlin time.
       timezone: "Europe/Berlin"
 
+# The pull request is created with the PAT, so `GITHUB_TOKEN` only needs read
+# access.
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
   check-ruby-eol:
@@ -98,10 +99,50 @@ jobs:
           # mise.toml  (ruby = "3.2")
           sed -i "s/ruby = \"[0-9]*\.[0-9]*/ruby = \"$NEW_RUBY_VERSION/" mise.toml
 
+      - name: Update .standard.yml
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        env:
+          NEW_RUBY_VERSION: ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}
+        run: |
+          # .standard.yml  (ruby_version: 3.2)
+          sed -i "s/^ruby_version: .*/ruby_version: $NEW_RUBY_VERSION/" .standard.yml
+
+      - name: Update CI test matrix
+        if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
+        env:
+          NEW_RUBY_VERSION: ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}
+        run: |
+          # ci.yml  (ruby: ["3.2", "3.3", "3.4"])
+          # Drop versions below the new minimum and make sure the minimum itself
+          # is tested.
+          python3 - <<'PY'
+          import os, re
+
+          new = os.environ["NEW_RUBY_VERSION"]
+          key = lambda v: tuple(map(int, v.split(".")))
+          path = ".github/workflows/ci.yml"
+
+          def bump(match):
+              versions = [v for v in re.findall(r'"([0-9.]+)"', match.group(2)) if key(v) >= key(new)]
+              if new not in versions:
+                  versions.insert(0, new)
+              return match.group(1) + "[" + ", ".join(f'"{v}"' for v in versions) + "]"
+
+          with open(path) as f:
+              text, count = re.subn(r'^(\s*ruby: )\[(.*)\]$', bump, f.read(), count=1, flags=re.M)
+          if count != 1:
+              raise SystemExit(f"Ruby matrix not found in {path}")
+          with open(path, "w") as f:
+              f.write(text)
+          PY
+
       - name: Create pull request
         if: steps.check-if-ruby-eol.outputs.is_eol == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
+          # Separate token so CI runs on the PR. Needs workflow write access
+          # because the PR updates ci.yml.
+          token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
           commit-message: "Bump Ruby version requirement to ${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}"
           branch: "ruby-eol-bump/${{ steps.check-if-ruby-eol.outputs.new_ruby_version }}"
           base: main
@@ -116,6 +157,7 @@ jobs:
             - `.openapi-generator/config.yaml`
             - `mise.toml`
             - `.standard.yml`
+            - `.github/workflows/ci.yml` (test matrix)
 
             > EOL data sourced from [endoflife.date](https://endoflife.date/ruby)
           reviewers: david-uhlig

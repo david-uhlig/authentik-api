@@ -2,7 +2,8 @@
 #
 # Automatically triggered when a PR labeled `release` merges into a release
 # branch. When manually triggered, it releases the branch specified in the
-# `branch-name` input.
+# `branch-name` input. Fails if the branch is not a release branch (e.g.,
+# `main`).
 name: Release gem to RubyGems
 
 on:
@@ -26,6 +27,15 @@ jobs:
     env:
       RELEASE_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.branch-name || github.event.pull_request.base.ref }}
     steps:
+      # Only release branches (e.g., `2026.2`) may be published, never `main`
+      # or feature branches.
+      - name: Validate release branch
+        run: |
+          if [[ ! "$RELEASE_BRANCH" =~ ^[0-9]{4}\.[0-9]+$ ]]; then
+            echo "::error::'$RELEASE_BRANCH' is not a release branch (expected e.g. 2026.2)."
+            exit 1
+          fi
+
       - name: Checkout release branch  # zizmor: ignore[artipacked]
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

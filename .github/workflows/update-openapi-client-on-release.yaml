@@ -55,7 +55,7 @@ jobs:
       - name: Download schema artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: schema
+          name: ${{ needs.prepare-release-branch.outputs.schema-artifact }}
           path: ./.authentik/
 
       - name: Build OpenAPI client
@@ -68,11 +68,11 @@ jobs:
           gem-version: ${{ env.GEM_VERSION }}
 
       - name: Create pull request for release
-        id: cpr
+        id: pull-request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
           token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
-          commit-message: "Update OpenAPI client (${ env.AUTHENTIK_VERSION })"
+          commit-message: "Update OpenAPI client (${{ env.AUTHENTIK_VERSION }})"
           branch: "actions/release/version/${{ env.AUTHENTIK_VERSION }}"
           base: "${{ needs.prepare-release-branch.outputs.release-branch }}"
           title: "Update for authentik release ${{ env.AUTHENTIK_VERSION }}"
@@ -80,10 +80,20 @@ jobs:
             This automatic update includes changes from the authentik release `${{ env.AUTHENTIK_VERSION }}`.
   
             Authentik version: `${{ env.AUTHENTIK_VERSION }}`
-            Schema source: [goauthentik/authentik@version/${{ env.AUTHENTIK_VERSION }}](https://github.com/goauthentik/authentik/blob/version/${{ env.AUTHENTIK_VERSION }}/schema.yml)
+            Schema source: [goauthentik/authentik@${{ inputs.tag-name }}](https://github.com/goauthentik/authentik/blob/${{ inputs.tag-name }}/schema.yml)
             Gem version: `${{ env.GEM_VERSION }}`
             
             Please review the generated changes before merging.
           labels: release
           delete-branch: true
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+      - name: Check outputs
+        if: ${{ steps.pull-request.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${PULL_REQUEST_NUMBER}"
+          echo "Pull Request URL - ${PULL_REQUEST_URL}"
+        env:
+          PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
+          PULL_REQUEST_URL: ${{ steps.pull-request.outputs.pull-request-url }}

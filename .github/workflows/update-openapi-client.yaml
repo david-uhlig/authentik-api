@@ -2,7 +2,7 @@
 #
 # Review the PR and merge into `main`.
 #
-# Detection logic for changes is in `poll-schema-and-dispatch-updates.yaml`.
+# Detection logic for changes is in `check-authentik-schema-updates.yaml`.
 # This workflow runs regardless of changes.
 #
 # Keep this file in "sync" with `update-openapi-client-on-release.yaml`.
@@ -41,13 +41,12 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ env.BASE_BRANCH }}
-          token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
           persist-credentials: false
 
       - name: Download schema artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: schema
+          name: ${{ needs.prepare-release-branch.outputs.schema-artifact }}
           path: ./.authentik/
 
       - name: Build OpenAPI client
