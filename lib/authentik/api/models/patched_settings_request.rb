@@ -226,6 +226,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "avatars", the character length must be greater than or equal to 1.')
       end
 
+      if !@base_url.nil? && @base_url.to_s.length < 1
+        invalid_properties.push('invalid value for "base_url", the character length must be greater than or equal to 1.')
+      end
+
       if !@event_retention.nil? && @event_retention.to_s.length < 1
         invalid_properties.push('invalid value for "event_retention", the character length must be greater than or equal to 1.')
       end
@@ -282,6 +286,7 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if !@avatars.nil? && @avatars.to_s.length < 1
+      return false if !@base_url.nil? && @base_url.to_s.length < 1
       return false if !@event_retention.nil? && @event_retention.to_s.length < 1
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit < -2147483648
@@ -309,6 +314,20 @@ module Authentik::Api
       end
 
       @avatars = avatars
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] base_url Value to be assigned
+    def base_url=(base_url)
+      if base_url.nil?
+        fail ArgumentError, 'base_url cannot be nil'
+      end
+
+      if base_url.to_s.length < 1
+        fail ArgumentError, 'invalid value for "base_url", the character length must be greater than or equal to 1.'
+      end
+
+      @base_url = base_url
     end
 
     # Custom attribute writer method with validation
