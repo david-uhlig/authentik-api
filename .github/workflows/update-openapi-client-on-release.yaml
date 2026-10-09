@@ -37,9 +37,6 @@ on:
       PAT:
         required: true
 
-env:
-  OPENAPI_GENERATOR_PATH: "tmp"
-
 jobs:
   fetch-schema:
     permissions:
@@ -153,10 +150,6 @@ jobs:
         if: env.NEW_LINE == 'true'
         uses: $/.github/actions/build-openapi-client
         with:
-          output-path: ${{ env.OPENAPI_GENERATOR_PATH }}
-          config-file: ./.openapi-generator/config.yaml
-          openapi-file: ./.authentik/schema.yaml
-          templates-dir: ./.openapi-generator/ruby-templates
           gem-version: ${{ env.BASE_VERSION }}
 
       - name: Commit tooling from main
@@ -183,10 +176,6 @@ jobs:
       - name: Build OpenAPI client
         uses: $/.github/actions/build-openapi-client
         with:
-          output-path: ${{ env.OPENAPI_GENERATOR_PATH }}
-          config-file: ./.openapi-generator/config.yaml
-          openapi-file: ./.authentik/schema.yaml
-          templates-dir: ./.openapi-generator/ruby-templates
           gem-version: ${{ env.GEM_VERSION }}
 
       - name: Write pull request body
