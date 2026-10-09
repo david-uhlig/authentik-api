@@ -70,7 +70,7 @@ To regenerate the underlying OpenAPI client manually run `bin/generate-api`. Thi
 The release process is described in [RELEASING.md](RELEASING.md).
 
 > [!IMPORTANT]
-> **Backports:** changes merged into `main` don't reach existing release branches. To ship a fix on a release branch, label its PR with `backport <branch>` (e.g. `backport 2026.8`), before or after merging. A backport PR into that branch is opened automatically. Backport fixes only, nothing that could break users pinned to the branch (e.g. `~> 2026.8.0`); a minimum Ruby version bump, for example, waits for the next minor version. Merging a backport doesn't publish a gem: run the "Prepare revision release" workflow or wait for the next authentik release.
+> **Backports:** changes merged into `main` don't reach existing release branches. To ship a fix on a release branch, label its PR with `backport <branch>` (e.g. `backport 2026.8`), before or after merging. A backport PR into that branch is opened automatically. Backport fixes only, nothing that could break users pinned to the branch (e.g. `~> 2026.8.0`); a minimum Ruby version bump, for example, waits for the next minor version. Merging a backport doesn't publish a gem: run the "Prepare release" workflow with the branch as `target` or wait for the next authentik release.
 
 ## Contributing
 

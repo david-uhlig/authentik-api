@@ -4,8 +4,8 @@
 # manually with `force` to regenerate from the current schema anyway, e.g.
 # after a template change. The PR is merged automatically once CI passes.
 #
-# Release lines (e.g., `2026.11`) are handled by
-# `update-openapi-client-on-release.yaml`, never by this workflow.
+# Release lines (e.g., `2026.11`) are handled by `prepare-release.yml`, never
+# by this workflow.
 name: Update OpenAPI client (nightly)
 
 on:

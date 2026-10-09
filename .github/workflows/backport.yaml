@@ -3,8 +3,7 @@
 # Label a pull request with `backport <release line>`, e.g., `backport 2026.8`,
 # before or after merging it. Once it is merged, this workflow cherry-picks its
 # commits onto the release line and opens a pull request there. The labels are
-# created together with the release line by
-# `update-openapi-client-on-release.yaml`.
+# created together with the release line by `prepare-release.yml`.
 #
 # Backport fixes only: anything that would break users pinned to, e.g.,
 # `~> 2026.8.0` (like a minimum Ruby version bump) waits for the next minor
@@ -54,7 +53,7 @@ jobs:
           pull_description: |-
             Backport of #${pull_number} to the `${target_branch}` release line.
 
-            Merging this does not publish a gem. Run the "Prepare revision release" workflow afterwards, or wait for the next authentik release of this line.
+            Merging this does not publish a gem. Run the "Prepare release" workflow with the release line as `target` afterwards, or wait for the next authentik release of this line.
 
       # The action only comments on the pull request when a cherry-pick
       # conflicts. Fail the run as well, so the failed backport is noticed.

@@ -24,7 +24,9 @@ The revision always comes last, so RubyGems sorts `2026.11.0.rc1 < 2026.11.0.rc1
 
 ## authentik releases
 
-`check-authentik-releases.yaml` looks for new authentik tags daily and runs `update-openapi-client-on-release.yaml` for each. That workflow opens a PR labeled `release` into the release line. Review it and merge it; `release-gem.yaml` then tags and publishes the gem.
+**Prepare release** (`prepare-release.yml`) looks for new authentik tags daily and opens a PR labeled `release` into the release line. Review it and merge it; `release-gem.yaml` then tags and publishes the gem. What to build is decided by `.github/scripts/release_plan.rb`.
+
+To build a specific release, e.g. one that was skipped, run **Prepare release** manually with the authentik version as `target`, e.g. `2026.11.0-rc2`. With `dry-run`, it only prints what it would do.
 
 ### First release of a minor version
 
@@ -42,7 +44,7 @@ Later releases of a line are regenerated on the release line with the line's own
 
 ### Several releases at once
 
-Each release line has at most one open release PR, so release PRs never conflict. If authentik publishes several releases of a line before they are processed (e.g. `2026.11.0-rc1` and `-rc2`), they are queued and built oldest first. Once a release PR is merged and the gem is published, `release-gem.yaml` runs the release check again, which opens the PR for the next queued release. Different lines (e.g. `2026.8.4` and `2026.5.8`) are processed side by side.
+Each release line has at most one open release PR, so release PRs never conflict. If authentik publishes several releases of a line before they are processed (e.g. `2026.11.0-rc1` and `-rc2`), they are queued and built oldest first. Once a release PR is merged and the gem is published, **Prepare release** runs again and opens the PR for the next queued release. Different lines (e.g. `2026.8.4` and `2026.5.8`) are processed side by side.
 
 Releases at or below a line's latest gem release are never built, even if they are missing (e.g. `2026.5.1`).
 
@@ -59,7 +61,7 @@ Only backport changes that can't break users pinned to the line (e.g. `~> 2026.8
 
 ## Revision releases
 
-Merging a backport does not publish anything. To release it without waiting for the next authentik release of that line, run **Prepare revision release** (`prepare-revision-release.yaml`) with the release line, e.g. `2026.8`. It regenerates the client with the next revision as the gem version (`2026.8.3` → `2026.8.3.1`) and opens a PR labeled `release`. Merging that PR publishes the gem.
+Merging a backport does not publish anything. To release it without waiting for the next authentik release of that line, run **Prepare release** (`prepare-release.yml`) with the release line as `target`, e.g. `2026.8`. It regenerates the client with the next revision as the gem version (`2026.8.3` → `2026.8.3.1`) and opens a PR labeled `release`. Merging that PR publishes the gem.
 
 The next authentik release of the line drops the revision again (`2026.8.4`).
 
