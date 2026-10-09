@@ -119,11 +119,12 @@ jobs:
     needs: check-tags
     permissions:
       contents: write
+      issues: write # Backport labels for new release lines.
       pull-requests: write
     if: ${{ needs.check-tags.outputs.tags != '[]' }}
     strategy:
       fail-fast: true
-      max-parallel: 1 # Prevent race-conditions when creating the base branch, e.g. `version/2026.2`
+      max-parallel: 1 # Prevent race conditions when creating a release line, e.g. `2026.2`.
       matrix:
         tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
     secrets:
