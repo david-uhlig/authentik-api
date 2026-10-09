@@ -34,7 +34,8 @@ jobs:
         with:
           token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
 
-      - name: Create backport pull requests
+      - id: backport
+        name: Create backport pull requests
         uses: korthout/backport-action@8560fb503c275d433c56f05a2f64850093baa9f7 # v4.7.0
         with:
           github_token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
@@ -44,3 +45,14 @@ jobs:
             Backport of #${pull_number} to the `${target_branch}` release line.
 
             Merging this does not publish a gem. Run the "Prepare revision release" workflow afterwards, or wait for the next authentik release of this line.
+
+      # The action only comments on the pull request when a cherry-pick
+      # conflicts. Fail the run as well, so the failed backport is noticed.
+      - name: Check backport result
+        if: steps.backport.outputs.was_successful == 'false'
+        env:
+          RESULTS: ${{ steps.backport.outputs.was_successful_by_target }}
+        run: |
+          echo "::error::Backport failed for: $(grep '=false$' <<< "$RESULTS" | sed 's/=false$//' | paste -sd ' ')"
+          echo "See the comment on the pull request for how to backport it manually."
+          exit 1
