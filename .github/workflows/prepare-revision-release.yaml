@@ -20,9 +20,6 @@ on:
         required: true
         type: string
 
-env:
-  OPENAPI_GENERATOR_PATH: "tmp"
-
 jobs:
   build-client:
     permissions:
@@ -73,10 +70,6 @@ jobs:
       - name: Build OpenAPI client
         uses: $/.github/actions/build-openapi-client
         with:
-          output-path: ${{ env.OPENAPI_GENERATOR_PATH }}
-          config-file: ./.openapi-generator/config.yaml
-          openapi-file: ./.authentik/schema.yaml
-          templates-dir: ./.openapi-generator/ruby-templates
           gem-version: ${{ env.GEM_VERSION }}
 
       - name: Write pull request body

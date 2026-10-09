@@ -1,44 +1,75 @@
-#!/bin/bash -e
-# Auto generates the authentik OpenAPI client for `../.authentik/schema.yaml`.
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Generates the authentik OpenAPI client from `.authentik/schema.yaml`.
 #
-# Uses the official OpenAPI Generator Docker container for the generation process.
-# The image version is pinned in `../.openapi-generator/Dockerfile`.
+# Uses the official OpenAPI Generator Docker image, pinned in
+# `.openapi-generator/Dockerfile`, then restructures its output for this
+# project, e.g. `lib/authentik-api/` becomes `lib/authentik/api/` for Zeitwerk.
 #
 # The gem version defaults to the schema's `.info.version` (`-` replaced by `.`).
 # Set `GEM_VERSION` to override it, e.g. for a revision release:
 #   GEM_VERSION=2026.8.3.1 bin/generate-api
-script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-project_base_path="$( cd "$script_dir/.." && pwd )"
-docker_mount_path="/local"
-authentik_version="$(yq -r '.info.version' "${project_base_path}/.authentik/schema.yaml")"
-gem_version="${GEM_VERSION:-$(echo "$authentik_version" | tr "-" ".")}"
-generator_image="$(sed -nE 's|^FROM (openapitools/openapi-generator-cli:[^ ]+).*$|\1|p' "${project_base_path}/.openapi-generator/Dockerfile")"
-output_path="${project_base_path}/tmp"
+#
+# The workflows run this script on every release line, so keep its interface
+# (no arguments, `GEM_VERSION`) stable.
 
-if [[ -z "$authentik_version" || "$authentik_version" == "null" ]]; then
-  echo "Error: Authentik version (.info.version) not found in ${project_base_path}/.authentik/schema.yaml" >&2
-  exit 1
-fi
+require "fileutils"
+require "yaml"
 
-if [[ -z "$generator_image" ]]; then
-  echo "Error: OpenAPI Generator image not found in ${project_base_path}/.openapi-generator/Dockerfile" >&2
-  exit 1
-fi
+ROOT = File.expand_path("..", __dir__)
+OUTPUT = File.join(ROOT, "tmp")
+MOUNT = "/local"
 
-# Cleanup previously generated files.
-rm -rf "${output_path}"
+def root(path) = File.join(ROOT, path)
 
-# Generate API into temp path.
-docker run --rm \
-  --user "$(id -u)":"$(id -g)" \
-  -v ${project_base_path}:${docker_mount_path} "${generator_image}" generate \
-  --config ${docker_mount_path}/.openapi-generator/config.yaml \
-  --input-spec ${docker_mount_path}/.authentik/schema.yaml \
-  --template-dir ${docker_mount_path}/.openapi-generator/ruby-templates \
-  --additional-properties=gemVersion=${gem_version} \
-  --output "${docker_mount_path}/tmp" \
-  --generator-name ruby \
-  > /dev/null
+def output(path) = File.join(OUTPUT, path)
 
-# Postprocess.
-"${script_dir}/postprocess-api" "${output_path}"
+schema = root(".authentik/schema.yaml")
+authentik_version = YAML.safe_load_file(schema).dig("info", "version").to_s
+abort "Error: Authentik version (.info.version) not found in #{schema}" if authentik_version.empty?
+
+gem_version = ENV["GEM_VERSION"].to_s
+gem_version = authentik_version.tr("-", ".") if gem_version.empty?
+
+dockerfile = root(".openapi-generator/Dockerfile")
+image = File.read(dockerfile)[%r{^FROM (openapitools/openapi-generator-cli:\S+)}, 1]
+abort "Error: OpenAPI Generator image not found in #{dockerfile}" unless image
+
+## Generate the client into `tmp/`.
+FileUtils.rm_rf(OUTPUT)
+system(
+  "docker", "run", "--rm",
+  "--user", "#{Process.uid}:#{Process.gid}",
+  "--volume", "#{ROOT}:#{MOUNT}",
+  image, "generate",
+  "--config", "#{MOUNT}/.openapi-generator/config.yaml",
+  "--input-spec", "#{MOUNT}/.authentik/schema.yaml",
+  "--template-dir", "#{MOUNT}/.openapi-generator/ruby-templates",
+  "--additional-properties=gemVersion=#{gem_version}",
+  "--output", "#{MOUNT}/tmp",
+  "--generator-name", "ruby",
+  out: File::NULL, exception: true
+)
+
+## Update the docs, specs, and other files.
+FileUtils.rm_rf([root("docs"), root("spec")])
+FileUtils.cp_r([output("docs"), output("spec")], ROOT)
+FileUtils.cp(output("README.md"), root("README_API.md"))
+FileUtils.cp(output(".openapi-generator/VERSION"), root("VERSION"))
+FileUtils.cp(output("authentik-api.gemspec"), root("authentik-api.gemspec"))
+
+## Restructure `lib/` for Zeitwerk: the generator outputs `lib/authentik-api/`,
+## while the convention asks for `lib/authentik/api/`.
+FileUtils.rm_rf(root("lib"))
+FileUtils.mkdir_p(root("lib/authentik/api"))
+FileUtils.cp_r(Dir.glob(output("lib/authentik-api/*")), root("lib/authentik/api"))
+FileUtils.cp(output("lib/authentik-api.rb"), root("lib/authentik/api.rb"))
+spec_helper = root("spec/spec_helper.rb")
+File.write(spec_helper, File.read(spec_helper).gsub("require 'authentik-api'", "require 'authentik/api'"))
+
+## Restore the Zeitwerk configuration and specs.
+FileUtils.cp(root(".openapi-generator/inflector.rb"), root("lib/authentik/api/"))
+FileUtils.cp(root(".openapi-generator/zeitwerk_spec.rb"), root("spec/"))
+
+FileUtils.rm_rf(OUTPUT)
