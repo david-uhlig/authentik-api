@@ -1,9 +1,9 @@
 # Releases the gem to RubyGems.
 #
 # Automatically triggered when a PR labeled `release` merges into a release
-# branch. These PRs are opened by `update-openapi-client-on-release.yaml`
-# (authentik releases) and `prepare-revision-release.yaml` (revision releases).
-# When manually triggered, it releases the branch specified in the
+# branch. These PRs are opened by `prepare-release.yml`, which also runs again
+# after each release to open the next queued release PR. Release lines run
+# their own copy of this workflow. When manually triggered, it releases the branch specified in the
 # `branch-name` input. Fails if the branch is not a release branch (e.g.,
 # `main`).
 #
@@ -22,7 +22,6 @@ on:
         type: string
 
 permissions:
-  actions: write # Start the release check for the next queued release.
   contents: write
   id-token: write
 
@@ -56,10 +55,3 @@ jobs:
 
       - name: Release to RubyGems
         uses: rubygems/release-gem@7f9650160c1a4e7989fdc9855807bdbd421d8b6b # v1.4.1
-
-      # Release PRs are queued per release line. Check right away for the next
-      # one instead of waiting for the daily run.
-      - name: Build next queued release
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run check-authentik-releases.yaml --repo "$GITHUB_REPOSITORY" --ref main

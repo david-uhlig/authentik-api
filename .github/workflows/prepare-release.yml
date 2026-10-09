@@ -1,0 +1,170 @@
+# Opens release PRs into release lines. Merging one publishes the gem via
+# `release-gem.yaml`. See RELEASING.md.
+#
+# Every authentik minor version has a release line branch in this repository,
+# e.g. `2026.11`. `.github/scripts/release_plan.rb` decides what to build:
+# * Daily, and after each gem release: new authentik releases (finals and
+#   release candidates), queued per release line. A line has at most one open
+#   release PR, for its oldest unreleased version.
+# * Manually with `target`:
+#   * An authentik version, e.g. `2026.11.0-rc1`: that release, bypassing the
+#     queue.
+#   * A release line, e.g. `2026.8`: a revision release (`2026.8.3` becomes
+#     `2026.8.3.1`), e.g. to ship a backported fix.
+#   * Empty: the same as the daily run.
+#   With `dry-run`, only prints the plan.
+#
+# The first release of a line (e.g. `2026.11.0-rc1`) creates the line from the
+# previous release tag (e.g. `v2026.8.3`), together with its
+# `backport <line>` label. Its PR has two commits that are best reviewed
+# separately:
+# 1. Adopt tooling from main: `main`'s tooling, regenerated from the previous
+#    release's schema. Shows the tooling changes only.
+# 2. Update OpenAPI client: regenerated from the new schema. Shows the API
+#    changes only.
+# Later releases of a line are regenerated with the line's own tooling.
+name: Prepare release
+
+on:
+  schedule:
+    - cron: '15 6 * * *'
+      timezone: "Europe/Berlin"
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "authentik version (e.g. 2026.11.0-rc1) or release line for a revision (e.g. 2026.8). Empty: new authentik releases."
+        required: false
+        type: string
+      dry-run:
+        description: "Only print the plan"
+        type: boolean
+        default: false
+  # Builds the next queued release of a line right after the previous one is
+  # published. Release lines run their own copy of the release workflow, which
+  # is named "Release to RubyGems" on older lines. Only runs `main`'s code.
+  workflow_run: # zizmor: ignore[dangerous-triggers]
+    workflows: ["Release gem to RubyGems", "Release to RubyGems"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Create release line branches.
+      issues: write # Create backport labels.
+    outputs:
+      releases: ${{ steps.plan.outputs.releases }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: ruby
+
+      - name: Plan release PRs
+        id: plan
+        env:
+          TARGET: ${{ inputs.target }}
+          DRY_RUN: ${{ inputs.dry-run || false }}
+          GH_TOKEN: ${{ github.token }}
+        run: .github/scripts/release_plan.rb
+
+  prepare:
+    needs: plan
+    if: needs.plan.outputs.releases != '[]' && !inputs.dry-run
+    name: ${{ matrix.title }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJSON(needs.plan.outputs.releases) }}
+    env:
+      GEM_VERSION: ${{ matrix.gem_version }}
+    steps:
+      - name: Checkout release line
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ matrix.line }}
+          fetch-depth: 0 # `main` is needed for a new release line.
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: ruby
+
+      # Replaces the whole tree with `main`'s, except for the schema of the
+      # previous release, and regenerates that release with it. Files deleted
+      # on `main` are deleted here, too.
+      - name: Adopt tooling from main
+        if: matrix.new_line
+        env:
+          MAIN_SHA: ${{ matrix.main_sha }}
+          BASE_VERSION: ${{ matrix.base_version }}
+        run: |
+          git restore --source="$MAIN_SHA" --staged --worktree -- .
+          git restore --source=HEAD --staged --worktree -- .authentik/schema.yaml
+          GEM_VERSION="$BASE_VERSION" bin/generate-api
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Tooling on main is unchanged since $BASE_VERSION."
+            exit 0
+          fi
+          git \
+            -c user.name="github-actions[bot]" \
+            -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit \
+            -m "Adopt tooling from main (${MAIN_SHA::7})" \
+            -m "Regenerates $BASE_VERSION with the tooling from main@$MAIN_SHA, so that the next commit only contains API changes."
+
+      - name: Fetch schema
+        if: matrix.schema_url
+        env:
+          SCHEMA_URL: ${{ matrix.schema_url }}
+          AUTHENTIK_VERSION: ${{ matrix.authentik_version }}
+        run: |
+          curl -fsSL "$SCHEMA_URL" -o .authentik/schema.yaml
+          version=$(ruby -ryaml -e 'puts YAML.safe_load_file(".authentik/schema.yaml").dig("info", "version")')
+          if [[ "$version" != "$AUTHENTIK_VERSION" ]]; then
+            echo "::error::The schema of $AUTHENTIK_VERSION has the version '$version'."
+            exit 1
+          fi
+
+      - name: Generate client
+        run: bin/generate-api
+
+      # Separate token so CI runs on the PR. Needs workflow write access
+      # because a new release line adopts the workflows from main.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          commit-message: ${{ matrix.commit_message }}
+          branch: ${{ matrix.branch }}
+          base: ${{ matrix.line }}
+          title: ${{ matrix.title }}
+          body: ${{ matrix.body }}
+          labels: release
+          delete-branch: true
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
