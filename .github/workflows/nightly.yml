@@ -1,0 +1,100 @@
+# Regenerates the client on `main` from the schema on authentik's `main` branch.
+#
+# Runs daily and only opens a PR when the upstream schema changed. Run it
+# manually with `force` to regenerate from the current schema anyway, e.g.
+# after a template change. The PR is merged automatically once CI passes.
+#
+# Release lines (e.g., `2026.11`) are handled by
+# `update-openapi-client-on-release.yaml`, never by this workflow.
+name: Update OpenAPI client (nightly)
+
+on:
+  schedule:
+    - cron: '48 5 * * *' # Daily at 05:48.
+      timezone: "Europe/Berlin"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Regenerate even if the schema is unchanged"
+        type: boolean
+        default: false
+
+# The pull request is created with a GitHub App token, so `GITHUB_TOKEN` only
+# needs read access.
+permissions:
+  contents: read
+
+jobs:
+  update-client:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Fetch upstream schema
+        id: schema
+        env:
+          FORCE: ${{ inputs.force || false }}
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/goauthentik/authentik/main/schema.yml -o .authentik/schema.yaml
+          if git diff --quiet -- .authentik/schema.yaml && [[ "$FORCE" != "true" ]]; then
+            echo "Schema is unchanged."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Ruby
+        if: steps.schema.outputs.changed == 'true'
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: ruby
+
+      - name: Generate client
+        if: steps.schema.outputs.changed == 'true'
+        run: |
+          bin/generate-api
+          echo "AUTHENTIK_VERSION=$(ruby -ryaml -e 'puts YAML.safe_load_file(".authentik/schema.yaml").dig("info", "version")')" >> "$GITHUB_ENV"
+
+      # Separate token so CI runs on the PR.
+      - name: Create GitHub App token
+        if: steps.schema.outputs.changed == 'true'
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+
+      - name: Create pull request
+        if: steps.schema.outputs.changed == 'true'
+        id: pull-request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          commit-message: "Update OpenAPI client"
+          branch: "actions/nightly-update"
+          base: main
+          title: "Nightly update"
+          body: |
+            This automatic update includes changes from the latest upstream `main` branch schema updates.
+
+            Authentik version: `${{ env.AUTHENTIK_VERSION }}`
+            Schema source: [goauthentik/authentik@main](https://github.com/goauthentik/authentik/blob/main/schema.yml)
+
+            Please review the generated changes before merging.
+          labels: nightly
+          delete-branch: true
+          committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+          author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
+
+      - name: Enable auto-merge
+        if: steps.pull-request.outputs.pull-request-number
+        run: gh pr merge --rebase --auto "$PULL_REQUEST_NUMBER"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
