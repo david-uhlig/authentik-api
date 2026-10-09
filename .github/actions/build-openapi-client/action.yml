@@ -28,10 +28,28 @@ runs:
       env:
         OUTPUT_PATH: ${{ inputs.output-path }}
 
+    # The generator version is pinned per branch in `.openapi-generator/Dockerfile`.
+    # Release lines cut before the pin existed fall back to `latest`.
+    - name: Read pinned OpenAPI Generator version
+      id: generator
+      shell: bash
+      run: |
+        tag=""
+        if [[ -f .openapi-generator/Dockerfile ]]; then
+          tag=$(sed -nE 's|^FROM openapitools/openapi-generator-cli:([^ ]+).*$|\1|p' .openapi-generator/Dockerfile)
+        fi
+        if [[ -z "$tag" ]]; then
+          echo "::warning::No pinned OpenAPI Generator version in .openapi-generator/Dockerfile, using 'latest'."
+          tag=latest
+        fi
+        echo "Using OpenAPI Generator $tag"
+        echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
     - name: Build client using OpenAPI Generator
       uses: openapi-generators/openapitools-generator-action@b729d184e6b3459572c37c0e37f88a832e69b552 # v1.5.0
       with:
         generator: ruby
+        generator-tag: ${{ steps.generator.outputs.tag }}
         config-file: ${{ inputs.config-file }}
         openapi-file: ${{ inputs.openapi-file }}
         command-args: >
