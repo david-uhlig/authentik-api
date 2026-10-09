@@ -46,5 +46,5 @@ jobs:
       contents: write
       pull-requests: write
     secrets:
-      PAT: ${{ secrets.PAT }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
     uses: $/.github/workflows/update-openapi-client.yaml

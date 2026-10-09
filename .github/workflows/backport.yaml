@@ -27,18 +27,28 @@ jobs:
       (github.event.action == 'closed' || startsWith(github.event.label.name, 'backport '))
     runs-on: ubuntu-latest
     steps:
-      # The PAT pushes the cherry-picked commits, which may touch workflow
-      # files, and opens the pull request so that CI runs on it.
+      # The app token pushes the cherry-picked commits, which may touch
+      # workflow files, and opens the pull request so that CI runs on it.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+
       - name: Checkout code  # zizmor: ignore[artipacked]
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          token: ${{ steps.app-token.outputs.token }}
 
       - id: backport
         name: Create backport pull requests
         uses: korthout/backport-action@8560fb503c275d433c56f05a2f64850093baa9f7 # v4.7.0
         with:
-          github_token: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          github_token: ${{ steps.app-token.outputs.token }}
           label_pattern: ^backport ([0-9]{4}\.[0-9]+)$
           pull_title: "[${target_branch}] ${pull_title}"
           pull_description: |-

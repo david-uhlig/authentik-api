@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      PAT:
+      APP_PRIVATE_KEY:
         required: true
 
 jobs:
@@ -52,11 +52,21 @@ jobs:
         with:
           gem-version: ${{ env.GEM_VERSION }}
 
+      # Separate token so CI runs on the PR.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+
       - name: Create pull request
         id: pull-request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: "Update OpenAPI client"
           branch: "actions/nightly-update"
           base: main
@@ -87,5 +97,5 @@ jobs:
         run: |
           gh pr merge --rebase --auto "${PULL_REQUEST_NUMBER}"
         env:
-          GH_TOKEN: ${{ secrets.PAT }} # zizmor: ignore[secrets-outside-env]
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           PULL_REQUEST_NUMBER: ${{ steps.pull-request.outputs.pull-request-number }}
