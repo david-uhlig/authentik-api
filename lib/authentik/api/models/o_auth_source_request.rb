@@ -302,8 +302,6 @@ module Authentik::Api
 
       if attributes.key?(:'consumer_secret')
         self.consumer_secret = attributes[:'consumer_secret']
-      else
-        self.consumer_secret = nil
       end
 
       if attributes.key?(:'additional_scopes')
@@ -371,14 +369,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "consumer_key", the character length must be greater than or equal to 1.')
       end
 
-      if @consumer_secret.nil?
-        invalid_properties.push('invalid value for "consumer_secret", consumer_secret cannot be nil.')
-      end
-
-      if @consumer_secret.to_s.length < 1
-        invalid_properties.push('invalid value for "consumer_secret", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -395,8 +385,6 @@ module Authentik::Api
       return false if @provider_type.nil?
       return false if @consumer_key.nil?
       return false if @consumer_key.to_s.length < 1
-      return false if @consumer_secret.nil?
-      return false if @consumer_secret.to_s.length < 1
       true
     end
 
@@ -469,20 +457,6 @@ module Authentik::Api
       end
 
       @consumer_key = consumer_key
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] consumer_secret Value to be assigned
-    def consumer_secret=(consumer_secret)
-      if consumer_secret.nil?
-        fail ArgumentError, 'consumer_secret cannot be nil'
-      end
-
-      if consumer_secret.to_s.length < 1
-        fail ArgumentError, 'invalid value for "consumer_secret", the character length must be greater than or equal to 1.'
-      end
-
-      @consumer_secret = consumer_secret
     end
 
     # Checks equality by comparing each attribute.
