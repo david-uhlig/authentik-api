@@ -51,3 +51,18 @@ jobs:
         uses: zizmorcore/zizmor-action@cc914d7f3750a2d13d75c7f184a1060aa0e9d482 # v0.6.4
         with:
           advanced-security: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@14594264cd68ce8a2345dd349bc3d138a4ef85c8 # v1.327.0
+        with:
+          ruby-version: ruby
+          bundler-cache: true
+
+      # `rake spec` and `rake standard` skip `.github/`, so the workflow scripts
+      # are checked here. Their specs live outside `spec/`, which
+      # `bin/generate-api` replaces.
+      - name: Test workflow scripts
+        run: bundle exec rspec .github/scripts/spec
+
+      - name: Run standard code style checks on workflow scripts
+        run: bundle exec standardrb .github/scripts
