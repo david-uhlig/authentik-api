@@ -42,7 +42,11 @@ Later releases of a line are regenerated on the release line with the line's own
 
 ### Several releases at once
 
-If a single run finds several releases of the same line (e.g. `2026.11.0-rc1` and `-rc2`), each gets its own PR against the same base. Merge them in version order. The later PRs then conflict; delete their branch (`actions/release/version/<version>`) and the next daily run recreates the PR on top of the merged one. You can also run "Update OpenAPI client (new release)" manually with the tag, e.g. `version/2026.11.0-rc2`.
+Each release line has at most one open release PR, so release PRs never conflict. If authentik publishes several releases of a line before they are processed (e.g. `2026.11.0-rc1` and `-rc2`), they are queued and built oldest first. Once a release PR is merged and the gem is published, `release-gem.yaml` runs the release check again, which opens the PR for the next queued release. Different lines (e.g. `2026.8.4` and `2026.5.8`) are processed side by side.
+
+Releases at or below a line's latest gem release are never built, even if they are missing (e.g. `2026.5.1`).
+
+A line stays blocked while a release PR branch (`actions/release/version/<version>`) exists. If you close a release PR without merging it, delete its branch to unblock the line.
 
 ## Tooling changes
 
