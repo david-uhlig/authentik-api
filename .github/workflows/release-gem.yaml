@@ -1,9 +1,14 @@
 # Releases the gem to RubyGems.
 #
 # Automatically triggered when a PR labeled `release` merges into a release
-# branch. When manually triggered, it releases the branch specified in the
+# branch. These PRs are opened by `update-openapi-client-on-release.yaml`
+# (authentik releases) and `prepare-revision-release.yaml` (revision releases).
+# When manually triggered, it releases the branch specified in the
 # `branch-name` input. Fails if the branch is not a release branch (e.g.,
 # `main`).
+#
+# Publishes the version in `lib/authentik/api/version.rb` and tags it as
+# `v<version>`.
 name: Release gem to RubyGems
 
 on:

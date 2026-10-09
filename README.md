@@ -46,7 +46,11 @@ Please see the auto-generated [API Readme]. Consider using the [authentik-client
 
 ## Versioning
 
-This library's versioning tracks authentik's versioning scheme of `<YYYY>.<M>.<PATCH>[.<PRERELEASE>]`, for example `2026.2.0.rc1`. Under the rare circumstance that the library itself needs an intermediate update, we add a fourth component, e.g. `2026.2.0.1.rc1`. Note: The prerelease component always appears last.
+This library's versioning tracks authentik's versioning scheme of `<YYYY>.<M>.<PATCH>[.<PRERELEASE>]`. authentik `2026.2.0` is released as `2026.2.0`, the release candidate `2026.2.0-rc1` as `2026.2.0.rc1`.
+
+Under the rare circumstance that the library itself needs an update between two authentik releases, we append a revision number: `2026.2.0.1`, `2026.2.0.2`, and so on. For a release candidate, the revision comes after the prerelease component, e.g. `2026.2.0.rc1.1`. RubyGems sorts a revision after the version it revises and before the next authentik release, so `~> 2026.2.0` picks up revisions, too.
+
+The `main` branch tracks authentik's `main` branch. Each authentik minor version has a release branch (e.g. `2026.2`) that all gem releases of that minor version are published from. See [RELEASING.md](RELEASING.md) for details.
 
 ## Changelog
 
@@ -61,7 +65,12 @@ Project structure:
 * In `.openapi-generator/` you will find configuration and template overwrites for the OpenAPI generator, and a [Zeitwerk] inflector to handle loading unconventional class names.
 * GitHub workflows in `.github/workflows` detect upstream releases, changes on the `schema.yml`, and auto-generate OpenAPI Generator clients. 
 
-To regenerate the underlying OpenAPI client manually run `bin/generate-api`. This requires Docker to be installed on your system.
+To regenerate the underlying OpenAPI client manually run `bin/generate-api`. This requires Docker to be installed on your system. The OpenAPI Generator version is pinned in `.openapi-generator/Dockerfile`.
+
+The release process is described in [RELEASING.md](RELEASING.md).
+
+> [!IMPORTANT]
+> **Backports:** changes merged into `main` don't reach existing release branches. To ship a fix on a release branch, label its PR with `backport <branch>` (e.g. `backport 2026.8`), before or after merging. A backport PR into that branch is opened automatically. Backport fixes only, nothing that could break users pinned to the branch (e.g. `~> 2026.8.0`); a minimum Ruby version bump, for example, waits for the next minor version. Merging a backport doesn't publish a gem: run the "Prepare revision release" workflow or wait for the next authentik release.
 
 ## Contributing
 

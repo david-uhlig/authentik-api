@@ -16,6 +16,14 @@ updates:
     cooldown:
       default-days: 7
 
+  # The OpenAPI Generator version pinned in `.openapi-generator/Dockerfile`.
+  - package-ecosystem: docker
+    directory: "/.openapi-generator"
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+
   - package-ecosystem: bundler
     directory: "/"
     groups:
