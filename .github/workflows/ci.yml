@@ -1,5 +1,10 @@
 # Runs Ruby tests and style checks across supported Ruby versions and lints
 # GitHub Actions workflows.
+#
+# The tested Ruby versions are every maintained CRuby release from the
+# gemspec's minimum Ruby version up, so the matrix follows new Ruby releases
+# and end-of-life bumps by itself. Branch protection requires only the
+# "CI passed" check, which succeeds when all other jobs do.
 name: Ruby Tests and Workflow Linting
 
 on:
@@ -12,12 +17,48 @@ permissions:
   contents: read
 
 jobs:
+  minimum-ruby-version:
+    name: Read minimum Ruby version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.read.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          sparse-checkout: authentik-api.gemspec
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      # e.g. `s.required_ruby_version = ">= 3.3.0"` → `3.3`
+      - name: Read minimum Ruby version from the gemspec
+        id: read
+        run: |
+          version=$(sed -nE 's/.*required_ruby_version = ">= ([0-9]+\.[0-9]+).*/\1/p' authentik-api.gemspec)
+          if [[ -z "$version" ]]; then
+            echo "::error::required_ruby_version not found in authentik-api.gemspec."
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+  # Maintained CRuby versions from https://cache.ruby-lang.org/pub/misc/ci_versions/cruby.json,
+  # from the minimum up. Includes the minimum even if it is end-of-life.
+  ruby-versions:
+    needs: minimum-ruby-version
+    uses: ruby/actions/.github/workflows/ruby_versions.yml@45f3750e656aa8f2d99910c02124f9e25d36b0db # master (2026-09-15)
+    with:
+      engine: cruby
+      min_version: ${{ fromJSON(needs.minimum-ruby-version.outputs.version) }}
+
   rake-on-ruby-matrix:
+    needs: ruby-versions
     runs-on: ubuntu-latest
     name: Ruby ${{ matrix.ruby }} (Test & Lint)
     strategy:
+      fail-fast: false
       matrix:
-        ruby: ["3.3", "3.4", "4.0"]
+        ruby: ${{ fromJSON(needs.ruby-versions.outputs.versions) }}
+        exclude:
+          - ruby: head
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -30,10 +71,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Run standard code style checks
-        run: bundle exec rake standard
-
-      - name: Run the default task
+      - name: Run standard and the specs
         run: bundle exec rake
 
   lint-actions:
@@ -66,3 +104,16 @@ jobs:
 
       - name: Run standard code style checks on workflow scripts
         run: bundle exec standardrb .github/scripts
+
+  # The only required status check. The Ruby jobs' names change with the
+  # matrix, so they can't be required individually.
+  ci-passed:
+    name: CI passed
+    if: always()
+    needs: [minimum-ruby-version, ruby-versions, rake-on-ruby-matrix, lint-actions]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check that all jobs succeeded
+        uses: re-actors/alls-green@b5b5b37504aa4183270bd3d855c52a67f212be35 # v1.3.0
+        with:
+          jobs: ${{ toJSON(needs) }}

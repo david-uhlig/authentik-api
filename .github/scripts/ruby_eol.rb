@@ -5,8 +5,8 @@
 #
 # Reads the current minimum (major.minor) from the gemspec and looks it up on
 # https://endoflife.date/ruby. If it is end-of-life, bumps it to the oldest
-# still-supported Ruby release in every file that pins it, and drops older
-# versions from the CI test matrix.
+# still-supported Ruby release in every file that pins it. The CI test matrix
+# follows the gemspec by itself.
 #
 # Usage: .github/scripts/ruby_eol.rb
 #
@@ -29,8 +29,6 @@ module RubyEol
     "mise.toml" => [/^(ruby = ")[\d.]+/, ->(v) { "\\1#{v}" }],
     ".standard.yml" => [/^(ruby_version: ).*$/, ->(v) { "\\1#{v}" }]
   }.freeze
-  CI_WORKFLOW = ".github/workflows/ci.yml"
-  CI_MATRIX = /^(\s*ruby: )\[(.*)\]$/
 
   module_function
 
@@ -64,29 +62,13 @@ module RubyEol
     PINS.each do |file, (pattern, replacement)|
       edit(root, file) { |text| replace_once(text, file, pattern, replacement.call(new_version)) }
     end
-    edit(root, CI_WORKFLOW) { |text| bump_matrix(text, new_version) }
-  end
-
-  # Drops versions below `new_version` from the matrix and makes sure
-  # `new_version` itself is tested.
-  def bump_matrix(text, new_version)
-    minimum = Gem::Version.new(new_version)
-    replace_once(text, CI_WORKFLOW, CI_MATRIX, lambda do |match|
-      versions = match[2].scan(/"([\d.]+)"/).flatten.select { |v| Gem::Version.new(v) >= minimum }
-      versions.unshift(new_version) unless versions.include?(new_version)
-      "#{match[1]}[#{versions.map { |v| %("#{v}") }.join(", ")}]"
-    end)
   end
 
   def replace_once(text, file, pattern, replacement)
     count = text.scan(pattern).size
     raise "Expected one match for #{pattern.inspect} in #{file}, found #{count}" unless count == 1
 
-    if replacement.respond_to?(:call)
-      text.sub(pattern) { replacement.call(Regexp.last_match) }
-    else
-      text.sub(pattern, replacement)
-    end
+    text.sub(pattern, replacement)
   end
 
   def edit(root, file)

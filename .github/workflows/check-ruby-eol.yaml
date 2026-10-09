@@ -39,8 +39,7 @@ jobs:
         id: eol
         run: .github/scripts/ruby_eol.rb
 
-      # Separate token so CI runs on the PR. Needs workflow write access
-      # because the PR updates ci.yml.
+      # Separate token so CI runs on the PR.
       - name: Create GitHub App token
         if: steps.eol.outputs.new-version
         id: app-token
@@ -50,7 +49,6 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
           permission-contents: write
           permission-pull-requests: write
-          permission-workflows: write
 
       - name: Create pull request
         if: steps.eol.outputs.new-version
@@ -71,7 +69,8 @@ jobs:
             - `.openapi-generator/config.yaml`
             - `mise.toml`
             - `.standard.yml`
-            - `.github/workflows/ci.yml` (test matrix)
+
+            The CI test matrix follows the gemspec, so it drops Ruby ${{ steps.eol.outputs.current-version }} by itself.
 
             > EOL data sourced from [endoflife.date](https://endoflife.date/ruby)
           reviewers: david-uhlig

@@ -58,12 +58,11 @@ RSpec.describe RubyEol do
 
     def read(file) = File.read(File.join(@root, file))
 
-    it "bumps every pin and the CI matrix" do
+    it "bumps every pin" do
       write("authentik-api.gemspec", %(  s.required_ruby_version = ">= 3.3.0"\n))
       write(".openapi-generator/config.yaml", %(  gemRequiredRubyVersion: ">= 3.3.0"\n))
       write("mise.toml", %([tools]\nruby = "3.3"\n))
       write(".standard.yml", "parallel: true\nruby_version: 3.3\n")
-      write(".github/workflows/ci.yml", %(        ruby: ["3.3", "3.4", "4.0"]\n))
 
       expect(described_class.current_version(@root)).to eq("3.3")
       described_class.update_files(@root, "3.4")
@@ -72,13 +71,6 @@ RSpec.describe RubyEol do
       expect(read(".openapi-generator/config.yaml")).to eq(%(  gemRequiredRubyVersion: ">= 3.4.0"\n))
       expect(read("mise.toml")).to eq(%([tools]\nruby = "3.4"\n))
       expect(read(".standard.yml")).to eq("parallel: true\nruby_version: 3.4\n")
-      expect(read(".github/workflows/ci.yml")).to eq(%(        ruby: ["3.4", "4.0"]\n))
-    end
-  end
-
-  describe ".bump_matrix" do
-    it "adds the new minimum when it is missing" do
-      expect(described_class.bump_matrix(%(ruby: ["3.2", "4.0"]), "3.4")).to eq(%(ruby: ["3.4", "4.0"]))
     end
   end
 
