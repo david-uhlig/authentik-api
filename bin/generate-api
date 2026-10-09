@@ -2,15 +2,26 @@
 # Auto generates the authentik OpenAPI client for `../.authentik/schema.yaml`.
 #
 # Uses the official OpenAPI Generator Docker container for the generation process.
+# The image version is pinned in `../.openapi-generator/Dockerfile`.
+#
+# The gem version defaults to the schema's `.info.version` (`-` replaced by `.`).
+# Set `GEM_VERSION` to override it, e.g. for a revision release:
+#   GEM_VERSION=2026.8.3.1 bin/generate-api
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 project_base_path="$( cd "$script_dir/.." && pwd )"
 docker_mount_path="/local"
 authentik_version="$(yq -r '.info.version' "${project_base_path}/.authentik/schema.yaml")"
-gem_version=$(echo "$authentik_version" | tr "-" ".")
+gem_version="${GEM_VERSION:-$(echo "$authentik_version" | tr "-" ".")}"
+generator_image="$(sed -nE 's|^FROM (openapitools/openapi-generator-cli:[^ ]+).*$|\1|p' "${project_base_path}/.openapi-generator/Dockerfile")"
 output_path="${project_base_path}/tmp"
 
 if [[ -z "$authentik_version" || "$authentik_version" == "null" ]]; then
   echo "Error: Authentik version (.info.version) not found in ${project_base_path}/.authentik/schema.yaml" >&2
+  exit 1
+fi
+
+if [[ -z "$generator_image" ]]; then
+  echo "Error: OpenAPI Generator image not found in ${project_base_path}/.openapi-generator/Dockerfile" >&2
   exit 1
 fi
 
@@ -20,7 +31,7 @@ rm -rf "${output_path}"
 # Generate API into temp path.
 docker run --rm \
   --user "$(id -u)":"$(id -g)" \
-  -v ${project_base_path}:${docker_mount_path} openapitools/openapi-generator-cli generate \
+  -v ${project_base_path}:${docker_mount_path} "${generator_image}" generate \
   --config ${docker_mount_path}/.openapi-generator/config.yaml \
   --input-spec ${docker_mount_path}/.authentik/schema.yaml \
   --template-dir ${docker_mount_path}/.openapi-generator/ruby-templates \
