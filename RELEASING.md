@@ -69,4 +69,10 @@ The generator version is pinned per branch in `.openapi-generator/Dockerfile`. D
 
 ## Requirements
 
-The workflows need a repository secret `PAT`: a personal access token that can push to this repository (including workflow files) and open PRs. For a fine-grained token: *Contents*, *Pull requests*, and *Workflows* read and write. For a classic token: the `repo` and `workflow` scopes. Changes pushed and PRs opened with the default `GITHUB_TOKEN` don't trigger CI.
+The workflows push branches and open PRs with a GitHub App token, because changes pushed and PRs opened with the default `GITHUB_TOKEN` don't trigger CI. Set it up once:
+
+1. Create a GitHub App (no webhook needed) with the repository permissions *Contents*, *Pull requests*, and *Workflows* read and write, and install it on this repository.
+2. Add the app's Client ID as the repository variable `APP_CLIENT_ID`.
+3. Generate a private key for the app and add it as the repository secret `APP_PRIVATE_KEY`.
+
+Each job creates a short-lived installation token with `actions/create-github-app-token`, limited to the permissions it needs.

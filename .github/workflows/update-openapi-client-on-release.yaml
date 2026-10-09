@@ -34,7 +34,7 @@ on:
         required: true
         type: string
     secrets:
-      PAT:
+      APP_PRIVATE_KEY:
         required: true
 
 jobs:
@@ -198,11 +198,23 @@ jobs:
             echo "Please review the generated changes before merging."
           } > "$RUNNER_TEMP/pull-request-body.md"
 
+      # Separate token so CI runs on the PR. Needs workflow write access
+      # because a new release line adopts the workflows from main.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+
       - name: Create pull request for release
         id: pull-request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         with:
-          token: ${{ secrets.PAT }} # Need separate token to trigger workflows. # zizmor: ignore[secrets-outside-env]
+          token: ${{ steps.app-token.outputs.token }}
           commit-message: "Update OpenAPI client (${{ env.AUTHENTIK_VERSION }})"
           branch: "actions/release/version/${{ env.AUTHENTIK_VERSION }}"
           base: ${{ env.BASE_BRANCH }}

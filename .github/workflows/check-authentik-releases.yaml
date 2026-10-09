@@ -169,7 +169,7 @@ jobs:
       matrix:
         tag: ${{ fromJSON(needs.check-tags.outputs.tags) }}
     secrets:
-      PAT: ${{ secrets.PAT }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
     uses: $/.github/workflows/update-openapi-client-on-release.yaml
     with:
       tag-name: ${{ matrix.tag }}
