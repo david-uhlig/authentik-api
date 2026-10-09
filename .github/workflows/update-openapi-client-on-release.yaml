@@ -17,7 +17,7 @@
 # 1. Review the PR and merge.
 # 2. `release-gem.yaml` tags the release and publishes the gem.
 #
-# Keep this file in "sync" with `update-openapi-client.yaml`.
+# Keep this file in "sync" with `nightly.yml`.
 name: Update OpenAPI client (new release)
 
 on:
