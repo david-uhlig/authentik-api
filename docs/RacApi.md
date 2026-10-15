@@ -471,8 +471,7 @@ opts = {
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
-  search: 'search_example', # String | A search term.
-  superuser_full_list: true # Boolean | 
+  search: 'search_example' # String | A search term.
 }
 
 begin
@@ -511,7 +510,6 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
-| **superuser_full_list** | **Boolean** |  | [optional] |
 
 ### Return type
 
