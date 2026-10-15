@@ -419,7 +419,6 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [Boolean] :superuser_full_list 
     # @return [PaginatedRACDeviceList]
     def rac_devices_list(provider, opts = {})
       data, _status_code, _headers = rac_devices_list_with_http_info(provider, opts)
@@ -433,7 +432,6 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
-    # @option opts [Boolean] :superuser_full_list 
     # @return [Array<(PaginatedRACDeviceList, Integer, Hash)>] PaginatedRACDeviceList data, response status code and response headers
     def rac_devices_list_with_http_info(provider, opts = {})
       if @api_client.config.debugging
@@ -453,7 +451,6 @@ module Authentik::Api
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
-      query_params[:'superuser_full_list'] = opts[:'superuser_full_list'] if !opts[:'superuser_full_list'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

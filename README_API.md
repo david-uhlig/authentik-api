@@ -193,6 +193,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::CoreApi* | [**core_application_entitlements_retrieve**](docs/CoreApi.md#core_application_entitlements_retrieve) | **GET** /core/application_entitlements/{pbm_uuid}/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_update**](docs/CoreApi.md#core_application_entitlements_update) | **PUT** /core/application_entitlements/{pbm_uuid}/ | 
 *Authentik::Api::CoreApi* | [**core_application_entitlements_used_by_list**](docs/CoreApi.md#core_application_entitlements_used_by_list) | **GET** /core/application_entitlements/{pbm_uuid}/used_by/ | 
+*Authentik::Api::CoreApi* | [**core_applications_accessible_list**](docs/CoreApi.md#core_applications_accessible_list) | **GET** /core/applications/@accessible/ | 
 *Authentik::Api::CoreApi* | [**core_applications_check_access_retrieve**](docs/CoreApi.md#core_applications_check_access_retrieve) | **GET** /core/applications/{slug}/check_access/ | 
 *Authentik::Api::CoreApi* | [**core_applications_create**](docs/CoreApi.md#core_applications_create) | **POST** /core/applications/ | 
 *Authentik::Api::CoreApi* | [**core_applications_destroy**](docs/CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ | 
