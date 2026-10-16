@@ -14,9 +14,12 @@ module Authentik::Api
     DSA = "dsa".freeze
     ED25519 = "ed25519".freeze
     ED448 = "ed448".freeze
+    MLDSA44 = "mldsa44".freeze
+    MLDSA65 = "mldsa65".freeze
+    MLDSA87 = "mldsa87".freeze
 
     def self.all_vars
-      @all_vars ||= [RSA, EC, DSA, ED25519, ED448].freeze
+      @all_vars ||= [RSA, EC, DSA, ED25519, ED448, MLDSA44, MLDSA65, MLDSA87].freeze
     end
 
     # Builds the enum from string

@@ -2126,6 +2126,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::UiThemeEnum](docs/UiThemeEnum.md)
  - [Authentik::Api::UniquePasswordPolicy](docs/UniquePasswordPolicy.md)
  - [Authentik::Api::UniquePasswordPolicyRequest](docs/UniquePasswordPolicyRequest.md)
+ - [Authentik::Api::UpdateVersionInfo](docs/UpdateVersionInfo.md)
+ - [Authentik::Api::UpdateVersionReason](docs/UpdateVersionReason.md)
  - [Authentik::Api::UsageEnum](docs/UsageEnum.md)
  - [Authentik::Api::UsedBy](docs/UsedBy.md)
  - [Authentik::Api::UsedByActionEnum](docs/UsedByActionEnum.md)
