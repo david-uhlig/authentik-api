@@ -84,7 +84,7 @@ module Authentik::Api
         :'identifier' => :'String',
         :'intent' => :'IntentEnum',
         :'user' => :'Integer',
-        :'user_obj' => :'User',
+        :'user_obj' => :'PartialUser',
         :'description' => :'String',
         :'expires' => :'Time',
         :'expiring' => :'Boolean'

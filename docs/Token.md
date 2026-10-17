@@ -9,7 +9,7 @@
 | **identifier** | **String** |  |  |
 | **intent** | [**IntentEnum**](IntentEnum.md) |  | [optional] |
 | **user** | **Integer** |  | [optional] |
-| **user_obj** | [**User**](User.md) |  | [readonly] |
+| **user_obj** | [**PartialUser**](PartialUser.md) |  | [readonly] |
 | **description** | **String** |  | [optional] |
 | **expires** | **Time** |  | [optional] |
 | **expiring** | **Boolean** |  | [optional] |
