@@ -5987,6 +5987,7 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
@@ -6029,6 +6030,7 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
@@ -6073,6 +6075,7 @@ module Authentik::Api
       query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
       query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
+      query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
@@ -8377,6 +8380,7 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
@@ -8420,6 +8424,7 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
@@ -8465,6 +8470,7 @@ module Authentik::Api
       query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
       query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
+      query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?

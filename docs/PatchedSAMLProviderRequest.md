@@ -23,6 +23,7 @@
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] |
 | **verification_kp** | **String** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] |
 | **encryption_kp** | **String** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](EncryptionAlgorithmEnum.md) | Block cipher used to encrypt the assertion. | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_response** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
@@ -58,6 +59,7 @@ instance = Authentik::Api::PatchedSAMLProviderRequest.new(
   signing_kp: null,
   verification_kp: null,
   encryption_kp: null,
+  encryption_algorithm: null,
   sign_assertion: null,
   sign_response: null,
   sign_logout_request: null,
