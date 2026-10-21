@@ -13,6 +13,7 @@
 | **embedded_outpost_disabled** | **Boolean** | Whether the embedded outpost is disabled | [readonly] |
 | **embedded_outpost_host** | **String** | Get the FQDN configured on the embedded outpost | [readonly] |
 | **base_url** | **String** | Configured external base URL. Can be empty | [readonly] |
+| **postgresql** | [**SystemInfoPostgresql**](SystemInfoPostgresql.md) |  |  |
 
 ## Example
 
@@ -28,7 +29,8 @@ instance = Authentik::Api::SystemInfo.new(
   server_time: null,
   embedded_outpost_disabled: null,
   embedded_outpost_host: null,
-  base_url: null
+  base_url: null,
+  postgresql: null
 )
 ```
 

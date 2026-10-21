@@ -6589,6 +6589,7 @@ opts = {
   default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   default_relay_state: 'default_relay_state_example', # String | 
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
@@ -6656,6 +6657,7 @@ end
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
@@ -9153,6 +9155,7 @@ opts = {
   default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   default_relay_state: 'default_relay_state_example', # String | 
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
@@ -9221,6 +9224,7 @@ end
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |

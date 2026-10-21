@@ -30,6 +30,7 @@
 | **signature_algorithm** | [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] |
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] |
 | **encryption_kp** | **String** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](EncryptionAlgorithmEnum.md) | Block cipher used to encrypt the assertion. | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] |
@@ -69,6 +70,7 @@ instance = Authentik::Api::WSFederationProvider.new(
   signature_algorithm: null,
   signing_kp: null,
   encryption_kp: null,
+  encryption_algorithm: null,
   sign_assertion: null,
   sign_logout_request: null,
   default_name_id_policy: null,

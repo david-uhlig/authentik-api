@@ -1144,6 +1144,7 @@ describe 'ProvidersApi' do
   # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
@@ -1596,6 +1597,7 @@ describe 'ProvidersApi' do
   # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 

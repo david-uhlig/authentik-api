@@ -88,6 +88,9 @@ module Authentik::Api
     # When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
     attr_accessor :encryption_kp
 
+    # Block cipher used to encrypt the assertion.
+    attr_accessor :encryption_algorithm
+
     attr_accessor :sign_assertion
 
     attr_accessor :sign_response
@@ -190,6 +193,7 @@ module Authentik::Api
         :'signing_kp' => :'signing_kp',
         :'verification_kp' => :'verification_kp',
         :'encryption_kp' => :'encryption_kp',
+        :'encryption_algorithm' => :'encryption_algorithm',
         :'sign_assertion' => :'sign_assertion',
         :'sign_response' => :'sign_response',
         :'sign_logout_request' => :'sign_logout_request',
@@ -252,6 +256,7 @@ module Authentik::Api
         :'signing_kp' => :'String',
         :'verification_kp' => :'String',
         :'encryption_kp' => :'String',
+        :'encryption_algorithm' => :'EncryptionAlgorithmEnum',
         :'sign_assertion' => :'Boolean',
         :'sign_response' => :'Boolean',
         :'sign_logout_request' => :'Boolean',
@@ -453,6 +458,10 @@ module Authentik::Api
 
       if attributes.key?(:'encryption_kp')
         self.encryption_kp = attributes[:'encryption_kp']
+      end
+
+      if attributes.key?(:'encryption_algorithm')
+        self.encryption_algorithm = attributes[:'encryption_algorithm']
       end
 
       if attributes.key?(:'sign_assertion')
@@ -864,6 +873,7 @@ module Authentik::Api
           signing_kp == o.signing_kp &&
           verification_kp == o.verification_kp &&
           encryption_kp == o.encryption_kp &&
+          encryption_algorithm == o.encryption_algorithm &&
           sign_assertion == o.sign_assertion &&
           sign_response == o.sign_response &&
           sign_logout_request == o.sign_logout_request &&
@@ -893,7 +903,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
     end
 
     # Builds the object from hash
