@@ -20,6 +20,10 @@ module Authentik::Api
 
     attr_accessor :cache_timeout_policies
 
+    attr_accessor :cache_timeout_brands
+
+    attr_accessor :cache_timeout_system_settings
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -27,7 +31,9 @@ module Authentik::Api
         :'capabilities' => :'capabilities',
         :'cache_timeout' => :'cache_timeout',
         :'cache_timeout_flows' => :'cache_timeout_flows',
-        :'cache_timeout_policies' => :'cache_timeout_policies'
+        :'cache_timeout_policies' => :'cache_timeout_policies',
+        :'cache_timeout_brands' => :'cache_timeout_brands',
+        :'cache_timeout_system_settings' => :'cache_timeout_system_settings'
       }
     end
 
@@ -48,7 +54,9 @@ module Authentik::Api
         :'capabilities' => :'Array<CapabilitiesEnum>',
         :'cache_timeout' => :'Integer',
         :'cache_timeout_flows' => :'Integer',
-        :'cache_timeout_policies' => :'Integer'
+        :'cache_timeout_policies' => :'Integer',
+        :'cache_timeout_brands' => :'Integer',
+        :'cache_timeout_system_settings' => :'Integer'
       }
     end
 
@@ -115,6 +123,18 @@ module Authentik::Api
       else
         self.cache_timeout_policies = nil
       end
+
+      if attributes.key?(:'cache_timeout_brands')
+        self.cache_timeout_brands = attributes[:'cache_timeout_brands']
+      else
+        self.cache_timeout_brands = nil
+      end
+
+      if attributes.key?(:'cache_timeout_system_settings')
+        self.cache_timeout_system_settings = attributes[:'cache_timeout_system_settings']
+      else
+        self.cache_timeout_system_settings = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -142,6 +162,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "cache_timeout_policies", cache_timeout_policies cannot be nil.')
       end
 
+      if @cache_timeout_brands.nil?
+        invalid_properties.push('invalid value for "cache_timeout_brands", cache_timeout_brands cannot be nil.')
+      end
+
+      if @cache_timeout_system_settings.nil?
+        invalid_properties.push('invalid value for "cache_timeout_system_settings", cache_timeout_system_settings cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -154,6 +182,8 @@ module Authentik::Api
       return false if @cache_timeout.nil?
       return false if @cache_timeout_flows.nil?
       return false if @cache_timeout_policies.nil?
+      return false if @cache_timeout_brands.nil?
+      return false if @cache_timeout_system_settings.nil?
       true
     end
 
@@ -207,6 +237,26 @@ module Authentik::Api
       @cache_timeout_policies = cache_timeout_policies
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] cache_timeout_brands Value to be assigned
+    def cache_timeout_brands=(cache_timeout_brands)
+      if cache_timeout_brands.nil?
+        fail ArgumentError, 'cache_timeout_brands cannot be nil'
+      end
+
+      @cache_timeout_brands = cache_timeout_brands
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] cache_timeout_system_settings Value to be assigned
+    def cache_timeout_system_settings=(cache_timeout_system_settings)
+      if cache_timeout_system_settings.nil?
+        fail ArgumentError, 'cache_timeout_system_settings cannot be nil'
+      end
+
+      @cache_timeout_system_settings = cache_timeout_system_settings
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -216,7 +266,9 @@ module Authentik::Api
           capabilities == o.capabilities &&
           cache_timeout == o.cache_timeout &&
           cache_timeout_flows == o.cache_timeout_flows &&
-          cache_timeout_policies == o.cache_timeout_policies
+          cache_timeout_policies == o.cache_timeout_policies &&
+          cache_timeout_brands == o.cache_timeout_brands &&
+          cache_timeout_system_settings == o.cache_timeout_system_settings
     end
 
     # @see the `==` method
@@ -228,7 +280,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [error_reporting, capabilities, cache_timeout, cache_timeout_flows, cache_timeout_policies].hash
+      [error_reporting, capabilities, cache_timeout, cache_timeout_flows, cache_timeout_policies, cache_timeout_brands, cache_timeout_system_settings].hash
     end
 
     # Builds the object from hash
