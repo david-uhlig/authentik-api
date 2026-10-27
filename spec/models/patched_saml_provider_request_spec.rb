@@ -195,4 +195,10 @@ describe Authentik::Api::PatchedSAMLProviderRequest do
     end
   end
 
+  describe 'test attribute "jwt_federation_providers"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

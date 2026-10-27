@@ -87,6 +87,9 @@ module Authentik::Api
 
     attr_accessor :default_name_id_policy
 
+    # OAuth2 providers which can exchange their JWTs for a SAML Response of this provider via token exchange.
+    attr_accessor :jwt_federation_providers
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -140,7 +143,8 @@ module Authentik::Api
         :'sls_binding' => :'sls_binding',
         :'logout_method' => :'logout_method',
         :'default_relay_state' => :'default_relay_state',
-        :'default_name_id_policy' => :'default_name_id_policy'
+        :'default_name_id_policy' => :'default_name_id_policy',
+        :'jwt_federation_providers' => :'jwt_federation_providers'
       }
     end
 
@@ -185,7 +189,8 @@ module Authentik::Api
         :'sls_binding' => :'SAMLBindingsEnum',
         :'logout_method' => :'SAMLLogoutMethods',
         :'default_relay_state' => :'String',
-        :'default_name_id_policy' => :'SAMLNameIDPolicyEnum'
+        :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
+        :'jwt_federation_providers' => :'Array<Integer>'
       }
     end
 
@@ -351,6 +356,12 @@ module Authentik::Api
 
       if attributes.key?(:'default_name_id_policy')
         self.default_name_id_policy = attributes[:'default_name_id_policy']
+      end
+
+      if attributes.key?(:'jwt_federation_providers')
+        if (value = attributes[:'jwt_federation_providers']).is_a?(Array)
+          self.jwt_federation_providers = value
+        end
       end
     end
 
@@ -537,7 +548,8 @@ module Authentik::Api
           sls_binding == o.sls_binding &&
           logout_method == o.logout_method &&
           default_relay_state == o.default_relay_state &&
-          default_name_id_policy == o.default_name_id_policy
+          default_name_id_policy == o.default_name_id_policy &&
+          jwt_federation_providers == o.jwt_federation_providers
     end
 
     # @see the `==` method
@@ -549,7 +561,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy].hash
+      [name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, jwt_federation_providers].hash
     end
 
     # Builds the object from hash
