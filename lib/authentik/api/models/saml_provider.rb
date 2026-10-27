@@ -113,6 +113,9 @@ module Authentik::Api
 
     attr_accessor :default_name_id_policy
 
+    # OAuth2 providers which can exchange their JWTs for a SAML Response of this provider via token exchange.
+    attr_accessor :jwt_federation_providers
+
     # Get metadata download URL
     attr_accessor :url_download_metadata
 
@@ -203,6 +206,7 @@ module Authentik::Api
         :'logout_method' => :'logout_method',
         :'default_relay_state' => :'default_relay_state',
         :'default_name_id_policy' => :'default_name_id_policy',
+        :'jwt_federation_providers' => :'jwt_federation_providers',
         :'url_download_metadata' => :'url_download_metadata',
         :'url_issuer' => :'url_issuer',
         :'url_unified' => :'url_unified',
@@ -266,6 +270,7 @@ module Authentik::Api
         :'logout_method' => :'SAMLLogoutMethods',
         :'default_relay_state' => :'String',
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
+        :'jwt_federation_providers' => :'Array<Integer>',
         :'url_download_metadata' => :'String',
         :'url_issuer' => :'String',
         :'url_unified' => :'String',
@@ -498,6 +503,12 @@ module Authentik::Api
 
       if attributes.key?(:'default_name_id_policy')
         self.default_name_id_policy = attributes[:'default_name_id_policy']
+      end
+
+      if attributes.key?(:'jwt_federation_providers')
+        if (value = attributes[:'jwt_federation_providers']).is_a?(Array)
+          self.jwt_federation_providers = value
+        end
       end
 
       if attributes.key?(:'url_download_metadata')
@@ -883,6 +894,7 @@ module Authentik::Api
           logout_method == o.logout_method &&
           default_relay_state == o.default_relay_state &&
           default_name_id_policy == o.default_name_id_policy &&
+          jwt_federation_providers == o.jwt_federation_providers &&
           url_download_metadata == o.url_download_metadata &&
           url_issuer == o.url_issuer &&
           url_unified == o.url_unified &&
@@ -903,7 +915,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, jwt_federation_providers, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
     end
 
     # Builds the object from hash

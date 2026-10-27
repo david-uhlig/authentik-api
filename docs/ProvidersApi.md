@@ -6594,6 +6594,7 @@ opts = {
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
+  jwt_federation_providers: [37], # Array<Integer> | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -6662,6 +6663,7 @@ end
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |
+| **jwt_federation_providers** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
@@ -9160,6 +9162,7 @@ opts = {
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
+  jwt_federation_providers: [37], # Array<Integer> | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -9229,6 +9232,7 @@ end
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |
+| **jwt_federation_providers** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |

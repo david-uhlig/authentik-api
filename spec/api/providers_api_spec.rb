@@ -1149,6 +1149,7 @@ describe 'ProvidersApi' do
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
+  # @option opts [Array<Integer>] :jwt_federation_providers 
   # @option opts [SAMLLogoutMethods] :logout_method 
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
@@ -1602,6 +1603,7 @@ describe 'ProvidersApi' do
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
+  # @option opts [Array<Integer>] :jwt_federation_providers 
   # @option opts [SAMLLogoutMethods] :logout_method 
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 

@@ -5992,6 +5992,7 @@ module Authentik::Api
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -6035,6 +6036,7 @@ module Authentik::Api
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -6080,6 +6082,7 @@ module Authentik::Api
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
+      query_params[:'jwt_federation_providers'] = @api_client.build_collection_param(opts[:'jwt_federation_providers'], :multi) if !opts[:'jwt_federation_providers'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
@@ -8385,6 +8388,7 @@ module Authentik::Api
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8429,6 +8433,7 @@ module Authentik::Api
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8475,6 +8480,7 @@ module Authentik::Api
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
+      query_params[:'jwt_federation_providers'] = @api_client.build_collection_param(opts[:'jwt_federation_providers'], :multi) if !opts[:'jwt_federation_providers'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
