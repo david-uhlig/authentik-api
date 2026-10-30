@@ -454,6 +454,7 @@ Class | Method | HTTP request | Description
 *Authentik::Api::OutpostsApi* | [**outposts_instances_health_list**](docs/OutpostsApi.md#outposts_instances_health_list) | **GET** /outposts/instances/{uuid}/health/ | 
 *Authentik::Api::OutpostsApi* | [**outposts_instances_list**](docs/OutpostsApi.md#outposts_instances_list) | **GET** /outposts/instances/ | 
 *Authentik::Api::OutpostsApi* | [**outposts_instances_partial_update**](docs/OutpostsApi.md#outposts_instances_partial_update) | **PATCH** /outposts/instances/{uuid}/ | 
+*Authentik::Api::OutpostsApi* | [**outposts_instances_rebuild_permissions_create**](docs/OutpostsApi.md#outposts_instances_rebuild_permissions_create) | **POST** /outposts/instances/{uuid}/rebuild_permissions/ | 
 *Authentik::Api::OutpostsApi* | [**outposts_instances_retrieve**](docs/OutpostsApi.md#outposts_instances_retrieve) | **GET** /outposts/instances/{uuid}/ | 
 *Authentik::Api::OutpostsApi* | [**outposts_instances_update**](docs/OutpostsApi.md#outposts_instances_update) | **PUT** /outposts/instances/{uuid}/ | 
 *Authentik::Api::OutpostsApi* | [**outposts_instances_used_by_list**](docs/OutpostsApi.md#outposts_instances_used_by_list) | **GET** /outposts/instances/{uuid}/used_by/ | 

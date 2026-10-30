@@ -10,6 +10,7 @@ All URIs are relative to */api/v3*
 | [**outposts_instances_health_list**](OutpostsApi.md#outposts_instances_health_list) | **GET** /outposts/instances/{uuid}/health/ |  |
 | [**outposts_instances_list**](OutpostsApi.md#outposts_instances_list) | **GET** /outposts/instances/ |  |
 | [**outposts_instances_partial_update**](OutpostsApi.md#outposts_instances_partial_update) | **PATCH** /outposts/instances/{uuid}/ |  |
+| [**outposts_instances_rebuild_permissions_create**](OutpostsApi.md#outposts_instances_rebuild_permissions_create) | **POST** /outposts/instances/{uuid}/rebuild_permissions/ |  |
 | [**outposts_instances_retrieve**](OutpostsApi.md#outposts_instances_retrieve) | **GET** /outposts/instances/{uuid}/ |  |
 | [**outposts_instances_update**](OutpostsApi.md#outposts_instances_update) | **PUT** /outposts/instances/{uuid}/ |  |
 | [**outposts_instances_used_by_list**](OutpostsApi.md#outposts_instances_used_by_list) | **GET** /outposts/instances/{uuid}/used_by/ |  |
@@ -497,6 +498,74 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## outposts_instances_rebuild_permissions_create
+
+> outposts_instances_rebuild_permissions_create(uuid)
+
+
+
+Delete and recreate all permissions of the outpost's service account
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::OutpostsApi.new
+uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Outpost.
+
+begin
+  
+  api_instance.outposts_instances_rebuild_permissions_create(uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling OutpostsApi->outposts_instances_rebuild_permissions_create: #{e}"
+end
+```
+
+#### Using the outposts_instances_rebuild_permissions_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> outposts_instances_rebuild_permissions_create_with_http_info(uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.outposts_instances_rebuild_permissions_create_with_http_info(uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling OutpostsApi->outposts_instances_rebuild_permissions_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **uuid** | **String** | A UUID string identifying this Outpost. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
