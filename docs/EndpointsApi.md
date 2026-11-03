@@ -33,6 +33,8 @@ All URIs are relative to */api/v3*
 | [**endpoints_agents_psso_ise_update**](EndpointsApi.md#endpoints_agents_psso_ise_update) | **PUT** /endpoints/agents/psso/ise/{uuid}/ |  |
 | [**endpoints_agents_psso_ise_used_by_list**](EndpointsApi.md#endpoints_agents_psso_ise_used_by_list) | **GET** /endpoints/agents/psso/ise/{uuid}/used_by/ |  |
 | [**endpoints_agents_psso_register_device_create**](EndpointsApi.md#endpoints_agents_psso_register_device_create) | **POST** /endpoints/agents/psso/register/device/ |  |
+| [**endpoints_agents_psso_register_device_destroy**](EndpointsApi.md#endpoints_agents_psso_register_device_destroy) | **DELETE** /endpoints/agents/psso/register/device/ |  |
+| [**endpoints_agents_psso_register_device_retrieve**](EndpointsApi.md#endpoints_agents_psso_register_device_retrieve) | **GET** /endpoints/agents/psso/register/device/ |  |
 | [**endpoints_agents_psso_register_user_create**](EndpointsApi.md#endpoints_agents_psso_register_user_create) | **POST** /endpoints/agents/psso/register/user/ |  |
 | [**endpoints_connectors_destroy**](EndpointsApi.md#endpoints_connectors_destroy) | **DELETE** /endpoints/connectors/{connector_uuid}/ |  |
 | [**endpoints_connectors_list**](EndpointsApi.md#endpoints_connectors_list) | **GET** /endpoints/connectors/ |  |
@@ -2118,6 +2120,131 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_register_device_destroy
+
+> endpoints_agents_psso_register_device_destroy
+
+
+
+Clear this device's Platform SSO registration, used when the configuration profile is removed from the device. The device stays enrolled otherwise.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+
+begin
+  
+  api_instance.endpoints_agents_psso_register_device_destroy
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_register_device_destroy: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_register_device_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> endpoints_agents_psso_register_device_destroy_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_register_device_destroy_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_register_device_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik_device_auth](../README.md#authentik_device_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_agents_psso_register_device_retrieve
+
+> <AgentPSSODeviceState> endpoints_agents_psso_register_device_retrieve
+
+
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+
+begin
+  
+  result = api_instance.endpoints_agents_psso_register_device_retrieve
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_register_device_retrieve: #{e}"
+end
+```
+
+#### Using the endpoints_agents_psso_register_device_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<AgentPSSODeviceState>, Integer, Hash)> endpoints_agents_psso_register_device_retrieve_with_http_info
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_agents_psso_register_device_retrieve_with_http_info
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <AgentPSSODeviceState>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_agents_psso_register_device_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AgentPSSODeviceState**](AgentPSSODeviceState.md)
+
+### Authorization
+
+[authentik_device_auth](../README.md#authentik_device_auth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
