@@ -161,6 +161,8 @@ Class | Method | HTTP request | Description
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_endpoint_list**](docs/AuthenticatorsApi.md#authenticators_endpoint_list) | **GET** /authenticators/endpoint/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_endpoint_retrieve**](docs/AuthenticatorsApi.md#authenticators_endpoint_retrieve) | **GET** /authenticators/endpoint/{uuid}/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_endpoint_used_by_list**](docs/AuthenticatorsApi.md#authenticators_endpoint_used_by_list) | **GET** /authenticators/endpoint/{uuid}/used_by/ | 
+*Authentik::Api::AuthenticatorsApi* | [**authenticators_password_lock_create**](docs/AuthenticatorsApi.md#authenticators_password_lock_create) | **POST** /authenticators/password/{id}/lock/ | 
+*Authentik::Api::AuthenticatorsApi* | [**authenticators_password_unlock_create**](docs/AuthenticatorsApi.md#authenticators_password_unlock_create) | **POST** /authenticators/password/{id}/unlock/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_sms_destroy**](docs/AuthenticatorsApi.md#authenticators_sms_destroy) | **DELETE** /authenticators/sms/{id}/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_sms_list**](docs/AuthenticatorsApi.md#authenticators_sms_list) | **GET** /authenticators/sms/ | 
 *Authentik::Api::AuthenticatorsApi* | [**authenticators_sms_partial_update**](docs/AuthenticatorsApi.md#authenticators_sms_partial_update) | **PATCH** /authenticators/sms/{id}/ | 
@@ -304,6 +306,8 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_update**](docs/EndpointsApi.md#endpoints_agents_psso_ise_update) | **PUT** /endpoints/agents/psso/ise/{uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_ise_used_by_list**](docs/EndpointsApi.md#endpoints_agents_psso_ise_used_by_list) | **GET** /endpoints/agents/psso/ise/{uuid}/used_by/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_device_create**](docs/EndpointsApi.md#endpoints_agents_psso_register_device_create) | **POST** /endpoints/agents/psso/register/device/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_device_destroy**](docs/EndpointsApi.md#endpoints_agents_psso_register_device_destroy) | **DELETE** /endpoints/agents/psso/register/device/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_device_retrieve**](docs/EndpointsApi.md#endpoints_agents_psso_register_device_retrieve) | **GET** /endpoints/agents/psso/register/device/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_agents_psso_register_user_create**](docs/EndpointsApi.md#endpoints_agents_psso_register_user_create) | **POST** /endpoints/agents/psso/register/user/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_connectors_destroy**](docs/EndpointsApi.md#endpoints_connectors_destroy) | **DELETE** /endpoints/connectors/{connector_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_connectors_list**](docs/EndpointsApi.md#endpoints_connectors_list) | **GET** /endpoints/connectors/ | 
@@ -1278,6 +1282,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::AgentGrantRequestCreated](docs/AgentGrantRequestCreated.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationRequest](docs/AgentPSSODeviceRegistrationRequest.md)
  - [Authentik::Api::AgentPSSODeviceRegistrationResponse](docs/AgentPSSODeviceRegistrationResponse.md)
+ - [Authentik::Api::AgentPSSODeviceState](docs/AgentPSSODeviceState.md)
+ - [Authentik::Api::AgentPSSODeviceStateUser](docs/AgentPSSODeviceStateUser.md)
  - [Authentik::Api::AgentPSSOUserRegistrationRequest](docs/AgentPSSOUserRegistrationRequest.md)
  - [Authentik::Api::AgentRequest](docs/AgentRequest.md)
  - [Authentik::Api::AgentTokenResponse](docs/AgentTokenResponse.md)

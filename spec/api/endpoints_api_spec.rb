@@ -365,6 +365,25 @@ describe 'EndpointsApi' do
     end
   end
 
+  # unit tests for endpoints_agents_psso_register_device_destroy
+  # Clear this device&#39;s Platform SSO registration, used when the configuration profile is removed from the device. The device stays enrolled otherwise.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'endpoints_agents_psso_register_device_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_register_device_retrieve
+  # @param [Hash] opts the optional parameters
+  # @return [AgentPSSODeviceState]
+  describe 'endpoints_agents_psso_register_device_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for endpoints_agents_psso_register_user_create
   # @param agent_psso_user_registration_request 
   # @param [Hash] opts the optional parameters
