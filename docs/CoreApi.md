@@ -244,7 +244,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  for_user: 'for_user_example', # String | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
+  for_user: 56, # Integer | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -285,7 +285,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
-| **for_user** | **String** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
+| **for_user** | **Integer** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -402,7 +402,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
-  for_user: 'for_user_example', # String | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
+  for_user: 56, # Integer | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -443,7 +443,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
-| **for_user** | **String** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
+| **for_user** | **Integer** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |

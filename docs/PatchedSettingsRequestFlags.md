@@ -7,6 +7,7 @@
 | **core_default_app_access** | **Boolean** | Applications with no policies bound can be accessed by any user. |  |
 | **enterprise_audit_include_expanded_diff** | **Boolean** | Include additional information in audit logs, may incur a performance penalty. |  |
 | **flows_continuous_login** | **Boolean** | Upon successful authentication, re-start authentication in other open tabs. |  |
+| **rbac_custom_permissions** | **Boolean** | Let permission checks decide API access. While enabled, every API request costs an additional database query. |  |
 
 ## Example
 
@@ -16,7 +17,8 @@ require 'authentik-api'
 instance = Authentik::Api::PatchedSettingsRequestFlags.new(
   core_default_app_access: null,
   enterprise_audit_include_expanded_diff: null,
-  flows_continuous_login: null
+  flows_continuous_login: null,
+  rbac_custom_permissions: null
 )
 ```
 

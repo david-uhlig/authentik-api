@@ -9,6 +9,7 @@
 | **title** | **String** |  |  |
 | **configure_url** | **String** |  | [optional] |
 | **icon_url** | **String** |  | [optional] |
+| **icon_themed_urls** | [**ThemedUrls**](ThemedUrls.md) |  | [optional] |
 
 ## Example
 
@@ -20,7 +21,8 @@ instance = Authentik::Api::UserSetting.new(
   component: null,
   title: null,
   configure_url: null,
-  icon_url: null
+  icon_url: null,
+  icon_themed_urls: null
 )
 ```
 
