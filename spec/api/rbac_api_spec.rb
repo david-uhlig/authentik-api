@@ -26,6 +26,87 @@ describe 'RbacApi' do
     end
   end
 
+  # unit tests for rbac_custom_permissions_create
+  # Custom permissions
+  # @param custom_permission_request 
+  # @param [Hash] opts the optional parameters
+  # @return [CustomPermission]
+  describe 'rbac_custom_permissions_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_custom_permissions_destroy
+  # Custom permissions
+  # @param id A unique integer value identifying this Custom permission.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'rbac_custom_permissions_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_custom_permissions_list
+  # Custom permissions
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :codename 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedCustomPermissionList]
+  describe 'rbac_custom_permissions_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_custom_permissions_partial_update
+  # Custom permissions
+  # @param id A unique integer value identifying this Custom permission.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedCustomPermissionRequest] :patched_custom_permission_request 
+  # @return [CustomPermission]
+  describe 'rbac_custom_permissions_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_custom_permissions_retrieve
+  # Custom permissions
+  # @param id A unique integer value identifying this Custom permission.
+  # @param [Hash] opts the optional parameters
+  # @return [CustomPermission]
+  describe 'rbac_custom_permissions_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_custom_permissions_update
+  # Custom permissions
+  # @param id A unique integer value identifying this Custom permission.
+  # @param custom_permission_request 
+  # @param [Hash] opts the optional parameters
+  # @return [CustomPermission]
+  describe 'rbac_custom_permissions_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_endpoints_list
+  # @param [Hash] opts the optional parameters
+  # @return [Array<Endpoint>]
+  describe 'rbac_endpoints_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for rbac_initial_permissions_create
   # InitialPermissions viewset
   # @param initial_permissions_request 
@@ -104,6 +185,89 @@ describe 'RbacApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'rbac_initial_permissions_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param permission_check_request 
+  # @param [Hash] opts the optional parameters
+  # @return [PermissionCheck]
+  describe 'rbac_permission_checks_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_destroy
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param check_uuid A UUID string identifying this Permission check.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'rbac_permission_checks_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_list
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedPermissionCheckList]
+  describe 'rbac_permission_checks_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_partial_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param check_uuid A UUID string identifying this Permission check.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedPermissionCheckRequest] :patched_permission_check_request 
+  # @return [PermissionCheck]
+  describe 'rbac_permission_checks_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_retrieve
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param check_uuid A UUID string identifying this Permission check.
+  # @param [Hash] opts the optional parameters
+  # @return [PermissionCheck]
+  describe 'rbac_permission_checks_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param check_uuid A UUID string identifying this Permission check.
+  # @param permission_check_request 
+  # @param [Hash] opts the optional parameters
+  # @return [PermissionCheck]
+  describe 'rbac_permission_checks_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for rbac_permission_checks_used_by_list
+  # Get a list of all objects that use this object
+  # @param check_uuid A UUID string identifying this Permission check.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'rbac_permission_checks_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

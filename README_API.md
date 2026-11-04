@@ -812,6 +812,13 @@ Class | Method | HTTP request | Description
 *Authentik::Api::RacApi* | [**rac_connection_tokens_update**](docs/RacApi.md#rac_connection_tokens_update) | **PUT** /rac/connection_tokens/{connection_token_uuid}/ | 
 *Authentik::Api::RacApi* | [**rac_connection_tokens_used_by_list**](docs/RacApi.md#rac_connection_tokens_used_by_list) | **GET** /rac/connection_tokens/{connection_token_uuid}/used_by/ | 
 *Authentik::Api::RacApi* | [**rac_devices_list**](docs/RacApi.md#rac_devices_list) | **GET** /rac/devices/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_create**](docs/RbacApi.md#rbac_custom_permissions_create) | **POST** /rbac/custom_permissions/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_destroy**](docs/RbacApi.md#rbac_custom_permissions_destroy) | **DELETE** /rbac/custom_permissions/{id}/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_list**](docs/RbacApi.md#rbac_custom_permissions_list) | **GET** /rbac/custom_permissions/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_partial_update**](docs/RbacApi.md#rbac_custom_permissions_partial_update) | **PATCH** /rbac/custom_permissions/{id}/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_retrieve**](docs/RbacApi.md#rbac_custom_permissions_retrieve) | **GET** /rbac/custom_permissions/{id}/ | 
+*Authentik::Api::RbacApi* | [**rbac_custom_permissions_update**](docs/RbacApi.md#rbac_custom_permissions_update) | **PUT** /rbac/custom_permissions/{id}/ | 
+*Authentik::Api::RbacApi* | [**rbac_endpoints_list**](docs/RbacApi.md#rbac_endpoints_list) | **GET** /rbac/endpoints/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_create**](docs/RbacApi.md#rbac_initial_permissions_create) | **POST** /rbac/initial_permissions/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_destroy**](docs/RbacApi.md#rbac_initial_permissions_destroy) | **DELETE** /rbac/initial_permissions/{id}/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_list**](docs/RbacApi.md#rbac_initial_permissions_list) | **GET** /rbac/initial_permissions/ | 
@@ -819,6 +826,13 @@ Class | Method | HTTP request | Description
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_retrieve**](docs/RbacApi.md#rbac_initial_permissions_retrieve) | **GET** /rbac/initial_permissions/{id}/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_update**](docs/RbacApi.md#rbac_initial_permissions_update) | **PUT** /rbac/initial_permissions/{id}/ | 
 *Authentik::Api::RbacApi* | [**rbac_initial_permissions_used_by_list**](docs/RbacApi.md#rbac_initial_permissions_used_by_list) | **GET** /rbac/initial_permissions/{id}/used_by/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_create**](docs/RbacApi.md#rbac_permission_checks_create) | **POST** /rbac/permission_checks/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_destroy**](docs/RbacApi.md#rbac_permission_checks_destroy) | **DELETE** /rbac/permission_checks/{check_uuid}/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_list**](docs/RbacApi.md#rbac_permission_checks_list) | **GET** /rbac/permission_checks/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_partial_update**](docs/RbacApi.md#rbac_permission_checks_partial_update) | **PATCH** /rbac/permission_checks/{check_uuid}/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_retrieve**](docs/RbacApi.md#rbac_permission_checks_retrieve) | **GET** /rbac/permission_checks/{check_uuid}/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_update**](docs/RbacApi.md#rbac_permission_checks_update) | **PUT** /rbac/permission_checks/{check_uuid}/ | 
+*Authentik::Api::RbacApi* | [**rbac_permission_checks_used_by_list**](docs/RbacApi.md#rbac_permission_checks_used_by_list) | **GET** /rbac/permission_checks/{check_uuid}/used_by/ | 
 *Authentik::Api::RbacApi* | [**rbac_permissions_assigned_by_roles_assign**](docs/RbacApi.md#rbac_permissions_assigned_by_roles_assign) | **POST** /rbac/permissions/assigned_by_roles/{uuid}/assign/ | 
 *Authentik::Api::RbacApi* | [**rbac_permissions_assigned_by_roles_list**](docs/RbacApi.md#rbac_permissions_assigned_by_roles_list) | **GET** /rbac/permissions/assigned_by_roles/ | 
 *Authentik::Api::RbacApi* | [**rbac_permissions_assigned_by_roles_unassign_partial_update**](docs/RbacApi.md#rbac_permissions_assigned_by_roles_unassign_partial_update) | **PATCH** /rbac/permissions/assigned_by_roles/{uuid}/unassign/ | 
@@ -1385,6 +1399,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::CountryCodeEnum](docs/CountryCodeEnum.md)
  - [Authentik::Api::CurrentBrand](docs/CurrentBrand.md)
  - [Authentik::Api::CurrentBrandFlags](docs/CurrentBrandFlags.md)
+ - [Authentik::Api::CustomPermission](docs/CustomPermission.md)
+ - [Authentik::Api::CustomPermissionRequest](docs/CustomPermissionRequest.md)
  - [Authentik::Api::DataExport](docs/DataExport.md)
  - [Authentik::Api::DeliveryMethodEnum](docs/DeliveryMethodEnum.md)
  - [Authentik::Api::DeniedActionEnum](docs/DeniedActionEnum.md)
@@ -1436,6 +1452,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::EmailStage](docs/EmailStage.md)
  - [Authentik::Api::EmailStageRequest](docs/EmailStageRequest.md)
  - [Authentik::Api::EncryptionAlgorithmEnum](docs/EncryptionAlgorithmEnum.md)
+ - [Authentik::Api::Endpoint](docs/Endpoint.md)
  - [Authentik::Api::EndpointAgentChallenge](docs/EndpointAgentChallenge.md)
  - [Authentik::Api::EndpointAgentChallengeResponseRequest](docs/EndpointAgentChallengeResponseRequest.md)
  - [Authentik::Api::EndpointDevice](docs/EndpointDevice.md)
@@ -1665,6 +1682,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedConnectionTokenList](docs/PaginatedConnectionTokenList.md)
  - [Authentik::Api::PaginatedConnectorList](docs/PaginatedConnectorList.md)
  - [Authentik::Api::PaginatedConsentStageList](docs/PaginatedConsentStageList.md)
+ - [Authentik::Api::PaginatedCustomPermissionList](docs/PaginatedCustomPermissionList.md)
  - [Authentik::Api::PaginatedDataExportList](docs/PaginatedDataExportList.md)
  - [Authentik::Api::PaginatedDenyStageList](docs/PaginatedDenyStageList.md)
  - [Authentik::Api::PaginatedDeviceAccessGroupList](docs/PaginatedDeviceAccessGroupList.md)
@@ -1734,6 +1752,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedPasswordExpiryPolicyList](docs/PaginatedPasswordExpiryPolicyList.md)
  - [Authentik::Api::PaginatedPasswordPolicyList](docs/PaginatedPasswordPolicyList.md)
  - [Authentik::Api::PaginatedPasswordStageList](docs/PaginatedPasswordStageList.md)
+ - [Authentik::Api::PaginatedPermissionCheckList](docs/PaginatedPermissionCheckList.md)
  - [Authentik::Api::PaginatedPermissionList](docs/PaginatedPermissionList.md)
  - [Authentik::Api::PaginatedPlexSourceList](docs/PaginatedPlexSourceList.md)
  - [Authentik::Api::PaginatedPlexSourcePropertyMappingList](docs/PaginatedPlexSourcePropertyMappingList.md)
@@ -1837,6 +1856,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedCertificateKeyPairRequest](docs/PatchedCertificateKeyPairRequest.md)
  - [Authentik::Api::PatchedConnectionTokenRequest](docs/PatchedConnectionTokenRequest.md)
  - [Authentik::Api::PatchedConsentStageRequest](docs/PatchedConsentStageRequest.md)
+ - [Authentik::Api::PatchedCustomPermissionRequest](docs/PatchedCustomPermissionRequest.md)
  - [Authentik::Api::PatchedDenyStageRequest](docs/PatchedDenyStageRequest.md)
  - [Authentik::Api::PatchedDeviceAccessGroupRequest](docs/PatchedDeviceAccessGroupRequest.md)
  - [Authentik::Api::PatchedDeviceUserBindingRequest](docs/PatchedDeviceUserBindingRequest.md)
@@ -1898,6 +1918,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedPasswordPolicyRequest](docs/PatchedPasswordPolicyRequest.md)
  - [Authentik::Api::PatchedPasswordStageRequest](docs/PatchedPasswordStageRequest.md)
  - [Authentik::Api::PatchedPermissionAssignRequest](docs/PatchedPermissionAssignRequest.md)
+ - [Authentik::Api::PatchedPermissionCheckRequest](docs/PatchedPermissionCheckRequest.md)
  - [Authentik::Api::PatchedPlexSourcePropertyMappingRequest](docs/PatchedPlexSourcePropertyMappingRequest.md)
  - [Authentik::Api::PatchedPlexSourceRequest](docs/PatchedPlexSourceRequest.md)
  - [Authentik::Api::PatchedPolicyBindingRequest](docs/PatchedPolicyBindingRequest.md)
@@ -1954,6 +1975,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::Permission](docs/Permission.md)
  - [Authentik::Api::PermissionAssignRequest](docs/PermissionAssignRequest.md)
  - [Authentik::Api::PermissionAssignResult](docs/PermissionAssignResult.md)
+ - [Authentik::Api::PermissionCheck](docs/PermissionCheck.md)
+ - [Authentik::Api::PermissionCheckRequest](docs/PermissionCheckRequest.md)
  - [Authentik::Api::PlexAuthenticationChallenge](docs/PlexAuthenticationChallenge.md)
  - [Authentik::Api::PlexAuthenticationChallengeResponseRequest](docs/PlexAuthenticationChallengeResponseRequest.md)
  - [Authentik::Api::PlexSource](docs/PlexSource.md)

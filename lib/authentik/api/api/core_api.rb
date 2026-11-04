@@ -143,7 +143,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
-    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -159,7 +159,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
-    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -290,7 +290,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
-    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -306,7 +306,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
-    # @option opts [String] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
