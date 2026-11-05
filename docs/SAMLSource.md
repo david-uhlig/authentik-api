@@ -32,7 +32,7 @@
 | **slo_url** | **String** | Optional URL if your IDP supports Single-Logout. | [optional] |
 | **allow_idp_initiated** | **Boolean** | Allows authentication flows initiated by the IdP. This can be a security risk, as no validation of the request ID is done. | [optional] |
 | **force_authn** | **Boolean** | When enabled, the IdP will re-authenticate the user even if a session exists. | [optional] |
-| **name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) | NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent. | [optional] |
+| **name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) | Format of the NameID Policy sent to the IdP. Select Unspecified to let the IdP choose the format of the NameID it returns. | [optional] |
 | **binding_type** | [**BindingTypeEnum**](BindingTypeEnum.md) |  | [optional] |
 | **verification_kp** | **String** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] |
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Identity Provider. | [optional] |
