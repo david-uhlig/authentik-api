@@ -77,6 +77,13 @@ All URIs are relative to */api/v3*
 | [**endpoints_google_chrome_connectors_retrieve**](EndpointsApi.md#endpoints_google_chrome_connectors_retrieve) | **GET** /endpoints/google_chrome/connectors/{connector_uuid}/ |  |
 | [**endpoints_google_chrome_connectors_update**](EndpointsApi.md#endpoints_google_chrome_connectors_update) | **PUT** /endpoints/google_chrome/connectors/{connector_uuid}/ |  |
 | [**endpoints_google_chrome_connectors_used_by_list**](EndpointsApi.md#endpoints_google_chrome_connectors_used_by_list) | **GET** /endpoints/google_chrome/connectors/{connector_uuid}/used_by/ |  |
+| [**endpoints_microsoft_intune_connectors_create**](EndpointsApi.md#endpoints_microsoft_intune_connectors_create) | **POST** /endpoints/microsoft_intune/connectors/ |  |
+| [**endpoints_microsoft_intune_connectors_destroy**](EndpointsApi.md#endpoints_microsoft_intune_connectors_destroy) | **DELETE** /endpoints/microsoft_intune/connectors/{connector_uuid}/ |  |
+| [**endpoints_microsoft_intune_connectors_list**](EndpointsApi.md#endpoints_microsoft_intune_connectors_list) | **GET** /endpoints/microsoft_intune/connectors/ |  |
+| [**endpoints_microsoft_intune_connectors_partial_update**](EndpointsApi.md#endpoints_microsoft_intune_connectors_partial_update) | **PATCH** /endpoints/microsoft_intune/connectors/{connector_uuid}/ |  |
+| [**endpoints_microsoft_intune_connectors_retrieve**](EndpointsApi.md#endpoints_microsoft_intune_connectors_retrieve) | **GET** /endpoints/microsoft_intune/connectors/{connector_uuid}/ |  |
+| [**endpoints_microsoft_intune_connectors_update**](EndpointsApi.md#endpoints_microsoft_intune_connectors_update) | **PUT** /endpoints/microsoft_intune/connectors/{connector_uuid}/ |  |
+| [**endpoints_microsoft_intune_connectors_used_by_list**](EndpointsApi.md#endpoints_microsoft_intune_connectors_used_by_list) | **GET** /endpoints/microsoft_intune/connectors/{connector_uuid}/used_by/ |  |
 
 
 ## endpoints_agents_connectors_agent_config_retrieve
@@ -5219,6 +5226,504 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **connector_uuid** | **String** | A UUID string identifying this Google Device Trust Connector. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_create
+
+> <MicrosoftIntuneConnector> endpoints_microsoft_intune_connectors_create(microsoft_intune_connector_request)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+microsoft_intune_connector_request = Authentik::Api::MicrosoftIntuneConnectorRequest.new({name: 'name_example', client_id: 'client_id_example', client_secret: 'client_secret_example', tenant_id: 'tenant_id_example'}) # MicrosoftIntuneConnectorRequest | 
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_create(microsoft_intune_connector_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_create: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MicrosoftIntuneConnector>, Integer, Hash)> endpoints_microsoft_intune_connectors_create_with_http_info(microsoft_intune_connector_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_create_with_http_info(microsoft_intune_connector_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MicrosoftIntuneConnector>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **microsoft_intune_connector_request** | [**MicrosoftIntuneConnectorRequest**](MicrosoftIntuneConnectorRequest.md) |  |  |
+
+### Return type
+
+[**MicrosoftIntuneConnector**](MicrosoftIntuneConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_destroy
+
+> endpoints_microsoft_intune_connectors_destroy(connector_uuid)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+connector_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Microsoft Intune Connector.
+
+begin
+  
+  api_instance.endpoints_microsoft_intune_connectors_destroy(connector_uuid)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_destroy: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> endpoints_microsoft_intune_connectors_destroy_with_http_info(connector_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_destroy_with_http_info(connector_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **connector_uuid** | **String** | A UUID string identifying this Microsoft Intune Connector. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_list
+
+> <PaginatedMicrosoftIntuneConnectorList> endpoints_microsoft_intune_connectors_list(opts)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+opts = {
+  name: 'name_example', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_list: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedMicrosoftIntuneConnectorList>, Integer, Hash)> endpoints_microsoft_intune_connectors_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedMicrosoftIntuneConnectorList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **name** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedMicrosoftIntuneConnectorList**](PaginatedMicrosoftIntuneConnectorList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_partial_update
+
+> <MicrosoftIntuneConnector> endpoints_microsoft_intune_connectors_partial_update(connector_uuid, opts)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+connector_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Microsoft Intune Connector.
+opts = {
+  patched_microsoft_intune_connector_request: Authentik::Api::PatchedMicrosoftIntuneConnectorRequest.new # PatchedMicrosoftIntuneConnectorRequest | 
+}
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_partial_update(connector_uuid, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_partial_update: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MicrosoftIntuneConnector>, Integer, Hash)> endpoints_microsoft_intune_connectors_partial_update_with_http_info(connector_uuid, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_partial_update_with_http_info(connector_uuid, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MicrosoftIntuneConnector>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **connector_uuid** | **String** | A UUID string identifying this Microsoft Intune Connector. |  |
+| **patched_microsoft_intune_connector_request** | [**PatchedMicrosoftIntuneConnectorRequest**](PatchedMicrosoftIntuneConnectorRequest.md) |  | [optional] |
+
+### Return type
+
+[**MicrosoftIntuneConnector**](MicrosoftIntuneConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_retrieve
+
+> <MicrosoftIntuneConnector> endpoints_microsoft_intune_connectors_retrieve(connector_uuid)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+connector_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Microsoft Intune Connector.
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_retrieve(connector_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_retrieve: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MicrosoftIntuneConnector>, Integer, Hash)> endpoints_microsoft_intune_connectors_retrieve_with_http_info(connector_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_retrieve_with_http_info(connector_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MicrosoftIntuneConnector>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **connector_uuid** | **String** | A UUID string identifying this Microsoft Intune Connector. |  |
+
+### Return type
+
+[**MicrosoftIntuneConnector**](MicrosoftIntuneConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_update
+
+> <MicrosoftIntuneConnector> endpoints_microsoft_intune_connectors_update(connector_uuid, microsoft_intune_connector_request)
+
+
+
+MicrosoftIntuneConnector Viewset
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+connector_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Microsoft Intune Connector.
+microsoft_intune_connector_request = Authentik::Api::MicrosoftIntuneConnectorRequest.new({name: 'name_example', client_id: 'client_id_example', client_secret: 'client_secret_example', tenant_id: 'tenant_id_example'}) # MicrosoftIntuneConnectorRequest | 
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_update(connector_uuid, microsoft_intune_connector_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_update: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<MicrosoftIntuneConnector>, Integer, Hash)> endpoints_microsoft_intune_connectors_update_with_http_info(connector_uuid, microsoft_intune_connector_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_update_with_http_info(connector_uuid, microsoft_intune_connector_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <MicrosoftIntuneConnector>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **connector_uuid** | **String** | A UUID string identifying this Microsoft Intune Connector. |  |
+| **microsoft_intune_connector_request** | [**MicrosoftIntuneConnectorRequest**](MicrosoftIntuneConnectorRequest.md) |  |  |
+
+### Return type
+
+[**MicrosoftIntuneConnector**](MicrosoftIntuneConnector.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## endpoints_microsoft_intune_connectors_used_by_list
+
+> <Array<UsedBy>> endpoints_microsoft_intune_connectors_used_by_list(connector_uuid)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::EndpointsApi.new
+connector_uuid = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this Microsoft Intune Connector.
+
+begin
+  
+  result = api_instance.endpoints_microsoft_intune_connectors_used_by_list(connector_uuid)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_used_by_list: #{e}"
+end
+```
+
+#### Using the endpoints_microsoft_intune_connectors_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> endpoints_microsoft_intune_connectors_used_by_list_with_http_info(connector_uuid)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.endpoints_microsoft_intune_connectors_used_by_list_with_http_info(connector_uuid)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling EndpointsApi->endpoints_microsoft_intune_connectors_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **connector_uuid** | **String** | A UUID string identifying this Microsoft Intune Connector. |  |
 
 ### Return type
 
