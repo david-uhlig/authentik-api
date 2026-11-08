@@ -350,6 +350,13 @@ Class | Method | HTTP request | Description
 *Authentik::Api::EndpointsApi* | [**endpoints_google_chrome_connectors_retrieve**](docs/EndpointsApi.md#endpoints_google_chrome_connectors_retrieve) | **GET** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_google_chrome_connectors_update**](docs/EndpointsApi.md#endpoints_google_chrome_connectors_update) | **PUT** /endpoints/google_chrome/connectors/{connector_uuid}/ | 
 *Authentik::Api::EndpointsApi* | [**endpoints_google_chrome_connectors_used_by_list**](docs/EndpointsApi.md#endpoints_google_chrome_connectors_used_by_list) | **GET** /endpoints/google_chrome/connectors/{connector_uuid}/used_by/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_create**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_create) | **POST** /endpoints/microsoft_intune/connectors/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_destroy**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_destroy) | **DELETE** /endpoints/microsoft_intune/connectors/{connector_uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_list**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_list) | **GET** /endpoints/microsoft_intune/connectors/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_partial_update**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_partial_update) | **PATCH** /endpoints/microsoft_intune/connectors/{connector_uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_retrieve**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_retrieve) | **GET** /endpoints/microsoft_intune/connectors/{connector_uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_update**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_update) | **PUT** /endpoints/microsoft_intune/connectors/{connector_uuid}/ | 
+*Authentik::Api::EndpointsApi* | [**endpoints_microsoft_intune_connectors_used_by_list**](docs/EndpointsApi.md#endpoints_microsoft_intune_connectors_used_by_list) | **GET** /endpoints/microsoft_intune/connectors/{connector_uuid}/used_by/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_create**](docs/EnterpriseApi.md#enterprise_license_create) | **POST** /enterprise/license/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_destroy**](docs/EnterpriseApi.md#enterprise_license_destroy) | **DELETE** /enterprise/license/{license_uuid}/ | 
 *Authentik::Api::EnterpriseApi* | [**enterprise_license_install_id_retrieve**](docs/EnterpriseApi.md#enterprise_license_install_id_retrieve) | **GET** /enterprise/license/install_id/ | 
@@ -1609,6 +1616,8 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::MicrosoftEntraProviderRequest](docs/MicrosoftEntraProviderRequest.md)
  - [Authentik::Api::MicrosoftEntraProviderUser](docs/MicrosoftEntraProviderUser.md)
  - [Authentik::Api::MicrosoftEntraProviderUserRequest](docs/MicrosoftEntraProviderUserRequest.md)
+ - [Authentik::Api::MicrosoftIntuneConnector](docs/MicrosoftIntuneConnector.md)
+ - [Authentik::Api::MicrosoftIntuneConnectorRequest](docs/MicrosoftIntuneConnectorRequest.md)
  - [Authentik::Api::ModelEnum](docs/ModelEnum.md)
  - [Authentik::Api::ModelRequest](docs/ModelRequest.md)
  - [Authentik::Api::MutualTLSStage](docs/MutualTLSStage.md)
@@ -1738,6 +1747,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedMicrosoftEntraProviderList](docs/PaginatedMicrosoftEntraProviderList.md)
  - [Authentik::Api::PaginatedMicrosoftEntraProviderMappingList](docs/PaginatedMicrosoftEntraProviderMappingList.md)
  - [Authentik::Api::PaginatedMicrosoftEntraProviderUserList](docs/PaginatedMicrosoftEntraProviderUserList.md)
+ - [Authentik::Api::PaginatedMicrosoftIntuneConnectorList](docs/PaginatedMicrosoftIntuneConnectorList.md)
  - [Authentik::Api::PaginatedMutualTLSStageList](docs/PaginatedMutualTLSStageList.md)
  - [Authentik::Api::PaginatedNotificationList](docs/PaginatedNotificationList.md)
  - [Authentik::Api::PaginatedNotificationRuleList](docs/PaginatedNotificationRuleList.md)
@@ -1903,6 +1913,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedLifecycleRuleRequest](docs/PatchedLifecycleRuleRequest.md)
  - [Authentik::Api::PatchedMicrosoftEntraProviderMappingRequest](docs/PatchedMicrosoftEntraProviderMappingRequest.md)
  - [Authentik::Api::PatchedMicrosoftEntraProviderRequest](docs/PatchedMicrosoftEntraProviderRequest.md)
+ - [Authentik::Api::PatchedMicrosoftIntuneConnectorRequest](docs/PatchedMicrosoftIntuneConnectorRequest.md)
  - [Authentik::Api::PatchedMutualTLSStageRequest](docs/PatchedMutualTLSStageRequest.md)
  - [Authentik::Api::PatchedNotificationRequest](docs/PatchedNotificationRequest.md)
  - [Authentik::Api::PatchedNotificationRuleRequest](docs/PatchedNotificationRuleRequest.md)
