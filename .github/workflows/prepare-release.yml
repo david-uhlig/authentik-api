@@ -165,6 +165,7 @@ jobs:
           title: ${{ matrix.title }}
           body: ${{ matrix.body }}
           labels: release
+          reviewers: david-uhlig
           delete-branch: true
           committer: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
           author: "github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>"
