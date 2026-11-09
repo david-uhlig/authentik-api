@@ -1,0 +1,72 @@
+# Checks whether `ubuntu-latest` has moved past the Ubuntu runner pinned in
+# `release-gem.yaml`.
+#
+# Release lines carry their own copy of `release-gem.yaml`, so they keep a
+# runner that works with their pinned actions until GitHub retires it. The pin
+# on main decides which image new release lines start on. When `ubuntu-latest`
+# is newer than the pin, this workflow bumps the pin and opens a pull request.
+# Release lines are left alone. See `.github/scripts/ubuntu_runner.rb`.
+name: Check Ubuntu runner
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 1 * *" # First of every month at noon Berlin time.
+      timezone: "Europe/Berlin"
+
+# The pull request is created with a GitHub App token, so `GITHUB_TOKEN` only
+# needs read access.
+permissions:
+  contents: read
+
+jobs:
+  check-ubuntu-runner:
+    # Must stay on `ubuntu-latest`: the script reads this image's version.
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Uses the image's preinstalled Ruby (the script needs only the standard
+      # library) instead of `ruby/setup-ruby`, which may not support a new
+      # `ubuntu-latest` yet — exactly when this check matters.
+      - name: Bump Ubuntu runner if outdated
+        id: runner
+        run: ruby .github/scripts/ubuntu_runner.rb
+
+      # Separate token so CI runs on the PR. Changing a workflow file needs
+      # the workflows permission.
+      - name: Create GitHub App token
+        if: steps.runner.outputs.new-version
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+
+      - name: Create pull request
+        if: steps.runner.outputs.new-version
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          commit-message: "Pin release-gem runner to ubuntu-${{ steps.runner.outputs.new-version }}"
+          branch: "ubuntu-runner-bump/${{ steps.runner.outputs.new-version }}"
+          base: main
+          title: "Pin release-gem runner to ubuntu-${{ steps.runner.outputs.new-version }}"
+          body: |
+            `ubuntu-latest` is now Ubuntu ${{ steps.runner.outputs.latest-version }}, but `release-gem.yaml` pins `ubuntu-${{ steps.runner.outputs.pinned-version }}`.
+
+            This PR moves the pin to `ubuntu-${{ steps.runner.outputs.new-version }}`, so new release lines start on the current image. Existing release lines keep their own pin.
+
+            Before merging, check that the actions in `release-gem.yaml` (especially `ruby/setup-ruby`) support the new image. CI on main already runs on `ubuntu-latest`, so a green CI run there is a good sign. `release-gem.yaml` itself only runs from release branches, so the first release from a line cut after this merges is its first run on the new image.
+
+            If actionlint in CI reports the new label as unknown, update the actionlint action first.
+          reviewers: david-uhlig
+          delete-branch: true
