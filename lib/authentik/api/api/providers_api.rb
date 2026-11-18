@@ -5989,6 +5989,7 @@ module Authentik::Api
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
@@ -6033,6 +6034,7 @@ module Authentik::Api
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
@@ -6079,6 +6081,7 @@ module Authentik::Api
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
       query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
+      query_params[:'ignore_force_authn'] = opts[:'ignore_force_authn'] if !opts[:'ignore_force_authn'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
@@ -8385,6 +8388,7 @@ module Authentik::Api
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
@@ -8430,6 +8434,7 @@ module Authentik::Api
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
     # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
@@ -8477,6 +8482,7 @@ module Authentik::Api
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
       query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
+      query_params[:'ignore_force_authn'] = opts[:'ignore_force_authn'] if !opts[:'ignore_force_authn'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
