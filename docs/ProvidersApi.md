@@ -6591,6 +6591,7 @@ opts = {
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
   encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ignore_force_authn: true, # Boolean | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
@@ -6660,6 +6661,7 @@ end
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
+| **ignore_force_authn** | **Boolean** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |
@@ -9159,6 +9161,7 @@ opts = {
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
   encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ignore_force_authn: true, # Boolean | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
@@ -9229,6 +9232,7 @@ end
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
+| **ignore_force_authn** | **Boolean** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |

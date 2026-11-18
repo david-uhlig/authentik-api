@@ -1146,6 +1146,7 @@ describe 'ProvidersApi' do
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
   # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
+  # @option opts [Boolean] :ignore_force_authn 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
@@ -1600,6 +1601,7 @@ describe 'ProvidersApi' do
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
   # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
+  # @option opts [Boolean] :ignore_force_authn 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
