@@ -41,6 +41,9 @@ module Authentik::Api
 
     attr_accessor :hints
 
+    # Additional trusted origins for WebAuthn registration. Matched exactly.
+    attr_accessor :additional_accepted_origins
+
     attr_accessor :device_type_restrictions
 
     attr_accessor :device_type_restrictions_obj
@@ -85,6 +88,7 @@ module Authentik::Api
         :'authenticator_attachment' => :'authenticator_attachment',
         :'resident_key_requirement' => :'resident_key_requirement',
         :'hints' => :'hints',
+        :'additional_accepted_origins' => :'additional_accepted_origins',
         :'device_type_restrictions' => :'device_type_restrictions',
         :'device_type_restrictions_obj' => :'device_type_restrictions_obj',
         :'max_attempts' => :'max_attempts'
@@ -117,6 +121,7 @@ module Authentik::Api
         :'authenticator_attachment' => :'AuthenticatorAttachmentEnum',
         :'resident_key_requirement' => :'UserVerificationEnum',
         :'hints' => :'Array<WebAuthnHintEnum>',
+        :'additional_accepted_origins' => :'Array<String>',
         :'device_type_restrictions' => :'Array<String>',
         :'device_type_restrictions_obj' => :'Array<WebAuthnDeviceType>',
         :'max_attempts' => :'Integer'
@@ -224,6 +229,12 @@ module Authentik::Api
       if attributes.key?(:'hints')
         if (value = attributes[:'hints']).is_a?(Array)
           self.hints = value
+        end
+      end
+
+      if attributes.key?(:'additional_accepted_origins')
+        if (value = attributes[:'additional_accepted_origins']).is_a?(Array)
+          self.additional_accepted_origins = value
         end
       end
 
@@ -427,6 +438,7 @@ module Authentik::Api
           authenticator_attachment == o.authenticator_attachment &&
           resident_key_requirement == o.resident_key_requirement &&
           hints == o.hints &&
+          additional_accepted_origins == o.additional_accepted_origins &&
           device_type_restrictions == o.device_type_restrictions &&
           device_type_restrictions_obj == o.device_type_restrictions_obj &&
           max_attempts == o.max_attempts
@@ -441,7 +453,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, device_type_restrictions, device_type_restrictions_obj, max_attempts].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, additional_accepted_origins, device_type_restrictions, device_type_restrictions_obj, max_attempts].hash
     end
 
     # Builds the object from hash

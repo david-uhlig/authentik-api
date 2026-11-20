@@ -17,6 +17,7 @@
 | **authenticator_attachment** | [**AuthenticatorAttachmentEnum**](AuthenticatorAttachmentEnum.md) |  | [optional] |
 | **resident_key_requirement** | [**UserVerificationEnum**](UserVerificationEnum.md) |  | [optional] |
 | **hints** | [**Array&lt;WebAuthnHintEnum&gt;**](WebAuthnHintEnum.md) |  | [optional] |
+| **additional_accepted_origins** | **Array&lt;String&gt;** | Additional trusted origins for WebAuthn registration. Matched exactly. | [optional] |
 | **device_type_restrictions** | **Array&lt;String&gt;** |  | [optional] |
 | **device_type_restrictions_obj** | [**Array&lt;WebAuthnDeviceType&gt;**](WebAuthnDeviceType.md) |  | [readonly] |
 | **max_attempts** | **Integer** |  | [optional] |
@@ -40,6 +41,7 @@ instance = Authentik::Api::AuthenticatorWebAuthnStage.new(
   authenticator_attachment: null,
   resident_key_requirement: null,
   hints: null,
+  additional_accepted_origins: null,
   device_type_restrictions: null,
   device_type_restrictions_obj: null,
   max_attempts: null
