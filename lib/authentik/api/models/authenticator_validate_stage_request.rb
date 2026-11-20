@@ -28,6 +28,9 @@ module Authentik::Api
 
     attr_accessor :webauthn_hints
 
+    # Additional trusted origins for WebAuthn authentication. Matched exactly.
+    attr_accessor :webauthn_additional_accepted_origins
+
     attr_accessor :webauthn_allowed_device_types
 
     attr_accessor :email_otp_throttling_factor
@@ -70,6 +73,7 @@ module Authentik::Api
         :'last_auth_threshold' => :'last_auth_threshold',
         :'webauthn_user_verification' => :'webauthn_user_verification',
         :'webauthn_hints' => :'webauthn_hints',
+        :'webauthn_additional_accepted_origins' => :'webauthn_additional_accepted_origins',
         :'webauthn_allowed_device_types' => :'webauthn_allowed_device_types',
         :'email_otp_throttling_factor' => :'email_otp_throttling_factor',
         :'sms_otp_throttling_factor' => :'sms_otp_throttling_factor',
@@ -98,6 +102,7 @@ module Authentik::Api
         :'last_auth_threshold' => :'String',
         :'webauthn_user_verification' => :'UserVerificationEnum',
         :'webauthn_hints' => :'Array<WebAuthnHintEnum>',
+        :'webauthn_additional_accepted_origins' => :'Array<String>',
         :'webauthn_allowed_device_types' => :'Array<String>',
         :'email_otp_throttling_factor' => :'Float',
         :'sms_otp_throttling_factor' => :'Float',
@@ -171,6 +176,12 @@ module Authentik::Api
       if attributes.key?(:'webauthn_hints')
         if (value = attributes[:'webauthn_hints']).is_a?(Array)
           self.webauthn_hints = value
+        end
+      end
+
+      if attributes.key?(:'webauthn_additional_accepted_origins')
+        if (value = attributes[:'webauthn_additional_accepted_origins']).is_a?(Array)
+          self.webauthn_additional_accepted_origins = value
         end
       end
 
@@ -267,6 +278,7 @@ module Authentik::Api
           last_auth_threshold == o.last_auth_threshold &&
           webauthn_user_verification == o.webauthn_user_verification &&
           webauthn_hints == o.webauthn_hints &&
+          webauthn_additional_accepted_origins == o.webauthn_additional_accepted_origins &&
           webauthn_allowed_device_types == o.webauthn_allowed_device_types &&
           email_otp_throttling_factor == o.email_otp_throttling_factor &&
           sms_otp_throttling_factor == o.sms_otp_throttling_factor &&
@@ -283,7 +295,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_allowed_device_types, email_otp_throttling_factor, sms_otp_throttling_factor, totp_otp_throttling_factor, static_otp_throttling_factor].hash
+      [name, not_configured_action, device_classes, configuration_stages, last_auth_threshold, webauthn_user_verification, webauthn_hints, webauthn_additional_accepted_origins, webauthn_allowed_device_types, email_otp_throttling_factor, sms_otp_throttling_factor, totp_otp_throttling_factor, static_otp_throttling_factor].hash
     end
 
     # Builds the object from hash
