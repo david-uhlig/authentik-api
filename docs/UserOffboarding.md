@@ -15,6 +15,9 @@
 | **created_by_obj** | [**PartialUser**](PartialUser.md) |  | [readonly] |
 | **created_at** | **Time** |  | [readonly] |
 | **executed_at** | **Time** |  | [readonly] |
+| **rule** | **String** |  | [readonly] |
+| **rule_obj** | [**PartialUserExpirationRule**](PartialUserExpirationRule.md) |  | [readonly] |
+| **generated** | **Boolean** |  | [readonly] |
 
 ## Example
 
@@ -32,7 +35,10 @@ instance = Authentik::Api::UserOffboarding.new(
   status: null,
   created_by_obj: null,
   created_at: null,
-  executed_at: null
+  executed_at: null,
+  rule: null,
+  rule_obj: null,
+  generated: null
 )
 ```
 
