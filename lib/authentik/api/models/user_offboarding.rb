@@ -35,6 +35,12 @@ module Authentik::Api
 
     attr_accessor :executed_at
 
+    attr_accessor :rule
+
+    attr_accessor :rule_obj
+
+    attr_accessor :generated
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -70,7 +76,10 @@ module Authentik::Api
         :'status' => :'status',
         :'created_by_obj' => :'created_by_obj',
         :'created_at' => :'created_at',
-        :'executed_at' => :'executed_at'
+        :'executed_at' => :'executed_at',
+        :'rule' => :'rule',
+        :'rule_obj' => :'rule_obj',
+        :'generated' => :'generated'
       }
     end
 
@@ -97,14 +106,18 @@ module Authentik::Api
         :'status' => :'OffboardingStatusEnum',
         :'created_by_obj' => :'PartialUser',
         :'created_at' => :'Time',
-        :'executed_at' => :'Time'
+        :'executed_at' => :'Time',
+        :'rule' => :'String',
+        :'rule_obj' => :'PartialUserExpirationRule',
+        :'generated' => :'Boolean'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'executed_at'
+        :'executed_at',
+        :'rule',
       ])
     end
 
@@ -193,6 +206,24 @@ module Authentik::Api
       else
         self.executed_at = nil
       end
+
+      if attributes.key?(:'rule')
+        self.rule = attributes[:'rule']
+      else
+        self.rule = nil
+      end
+
+      if attributes.key?(:'rule_obj')
+        self.rule_obj = attributes[:'rule_obj']
+      else
+        self.rule_obj = nil
+      end
+
+      if attributes.key?(:'generated')
+        self.generated = attributes[:'generated']
+      else
+        self.generated = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -228,6 +259,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "created_at", created_at cannot be nil.')
       end
 
+      if @rule_obj.nil?
+        invalid_properties.push('invalid value for "rule_obj", rule_obj cannot be nil.')
+      end
+
+      if @generated.nil?
+        invalid_properties.push('invalid value for "generated", generated cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -242,6 +281,8 @@ module Authentik::Api
       return false if @status.nil?
       return false if @created_by_obj.nil?
       return false if @created_at.nil?
+      return false if @rule_obj.nil?
+      return false if @generated.nil?
       true
     end
 
@@ -315,6 +356,26 @@ module Authentik::Api
       @created_at = created_at
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] rule_obj Value to be assigned
+    def rule_obj=(rule_obj)
+      if rule_obj.nil?
+        fail ArgumentError, 'rule_obj cannot be nil'
+      end
+
+      @rule_obj = rule_obj
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] generated Value to be assigned
+    def generated=(generated)
+      if generated.nil?
+        fail ArgumentError, 'generated cannot be nil'
+      end
+
+      @generated = generated
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -330,7 +391,10 @@ module Authentik::Api
           status == o.status &&
           created_by_obj == o.created_by_obj &&
           created_at == o.created_at &&
-          executed_at == o.executed_at
+          executed_at == o.executed_at &&
+          rule == o.rule &&
+          rule_obj == o.rule_obj &&
+          generated == o.generated
     end
 
     # @see the `==` method
@@ -342,7 +406,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, user, user_obj, scheduled_at, action, revoke_sessions, revoke_tokens, status, created_by_obj, created_at, executed_at].hash
+      [id, user, user_obj, scheduled_at, action, revoke_sessions, revoke_tokens, status, created_by_obj, created_at, executed_at, rule, rule_obj, generated].hash
     end
 
     # Builds the object from hash

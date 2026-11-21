@@ -432,6 +432,15 @@ Class | Method | HTTP request | Description
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_partial_update**](docs/LifecycleApi.md#lifecycle_rules_partial_update) | **PATCH** /lifecycle/rules/{id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_retrieve**](docs/LifecycleApi.md#lifecycle_rules_retrieve) | **GET** /lifecycle/rules/{id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_rules_update**](docs/LifecycleApi.md#lifecycle_rules_update) | **PUT** /lifecycle/rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_create**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_create) | **POST** /lifecycle/user_expiration_rules/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_destroy**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_destroy) | **DELETE** /lifecycle/user_expiration_rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_list**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_list) | **GET** /lifecycle/user_expiration_rules/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_partial_update**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_partial_update) | **PATCH** /lifecycle/user_expiration_rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_preview_create**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_preview_create) | **POST** /lifecycle/user_expiration_rules/{id}/preview/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_preview_retrieve**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_preview_retrieve) | **GET** /lifecycle/user_expiration_rules/{id}/preview/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_retrieve**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_retrieve) | **GET** /lifecycle/user_expiration_rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_update**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_update) | **PUT** /lifecycle/user_expiration_rules/{id}/ | 
+*Authentik::Api::LifecycleApi* | [**lifecycle_user_expiration_rules_used_by_list**](docs/LifecycleApi.md#lifecycle_user_expiration_rules_used_by_list) | **GET** /lifecycle/user_expiration_rules/{id}/used_by/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_create**](docs/LifecycleApi.md#lifecycle_user_offboarding_create) | **POST** /lifecycle/user_offboarding/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_destroy**](docs/LifecycleApi.md#lifecycle_user_offboarding_destroy) | **DELETE** /lifecycle/user_offboarding/{id}/ | 
 *Authentik::Api::LifecycleApi* | [**lifecycle_user_offboarding_list**](docs/LifecycleApi.md#lifecycle_user_offboarding_list) | **GET** /lifecycle/user_offboarding/ | 
@@ -1292,6 +1301,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::AccessDeniedChallenge](docs/AccessDeniedChallenge.md)
  - [Authentik::Api::AccountLockdownStage](docs/AccountLockdownStage.md)
  - [Authentik::Api::AccountLockdownStageRequest](docs/AccountLockdownStageRequest.md)
+ - [Authentik::Api::ActivityBasisEnum](docs/ActivityBasisEnum.md)
  - [Authentik::Api::Agent](docs/Agent.md)
  - [Authentik::Api::AgentAuthenticationResponse](docs/AgentAuthenticationResponse.md)
  - [Authentik::Api::AgentConfig](docs/AgentConfig.md)
@@ -1820,6 +1830,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PaginatedUniquePasswordPolicyList](docs/PaginatedUniquePasswordPolicyList.md)
  - [Authentik::Api::PaginatedUserConsentList](docs/PaginatedUserConsentList.md)
  - [Authentik::Api::PaginatedUserDeleteStageList](docs/PaginatedUserDeleteStageList.md)
+ - [Authentik::Api::PaginatedUserExpirationRuleList](docs/PaginatedUserExpirationRuleList.md)
  - [Authentik::Api::PaginatedUserKerberosSourceConnectionList](docs/PaginatedUserKerberosSourceConnectionList.md)
  - [Authentik::Api::PaginatedUserLDAPSourceConnectionList](docs/PaginatedUserLDAPSourceConnectionList.md)
  - [Authentik::Api::PaginatedUserList](docs/PaginatedUserList.md)
@@ -1838,6 +1849,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::Pagination](docs/Pagination.md)
  - [Authentik::Api::PartialGroup](docs/PartialGroup.md)
  - [Authentik::Api::PartialUser](docs/PartialUser.md)
+ - [Authentik::Api::PartialUserExpirationRule](docs/PartialUserExpirationRule.md)
  - [Authentik::Api::PasswordChallenge](docs/PasswordChallenge.md)
  - [Authentik::Api::PasswordChallengeResponseRequest](docs/PasswordChallengeResponseRequest.md)
  - [Authentik::Api::PasswordExpiryPolicy](docs/PasswordExpiryPolicy.md)
@@ -1970,6 +1982,7 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::PatchedTokenRequest](docs/PatchedTokenRequest.md)
  - [Authentik::Api::PatchedUniquePasswordPolicyRequest](docs/PatchedUniquePasswordPolicyRequest.md)
  - [Authentik::Api::PatchedUserDeleteStageRequest](docs/PatchedUserDeleteStageRequest.md)
+ - [Authentik::Api::PatchedUserExpirationRuleRequest](docs/PatchedUserExpirationRuleRequest.md)
  - [Authentik::Api::PatchedUserKerberosSourceConnectionRequest](docs/PatchedUserKerberosSourceConnectionRequest.md)
  - [Authentik::Api::PatchedUserLDAPSourceConnectionRequest](docs/PatchedUserLDAPSourceConnectionRequest.md)
  - [Authentik::Api::PatchedUserLoginStageRequest](docs/PatchedUserLoginStageRequest.md)
@@ -2183,6 +2196,13 @@ Class | Method | HTTP request | Description
  - [Authentik::Api::UserCreationModeEnum](docs/UserCreationModeEnum.md)
  - [Authentik::Api::UserDeleteStage](docs/UserDeleteStage.md)
  - [Authentik::Api::UserDeleteStageRequest](docs/UserDeleteStageRequest.md)
+ - [Authentik::Api::UserExpirationRule](docs/UserExpirationRule.md)
+ - [Authentik::Api::UserExpirationRuleGroup](docs/UserExpirationRuleGroup.md)
+ - [Authentik::Api::UserExpirationRulePendingPreview](docs/UserExpirationRulePendingPreview.md)
+ - [Authentik::Api::UserExpirationRulePendingPreviewGroup](docs/UserExpirationRulePendingPreviewGroup.md)
+ - [Authentik::Api::UserExpirationRulePreview](docs/UserExpirationRulePreview.md)
+ - [Authentik::Api::UserExpirationRuleRequest](docs/UserExpirationRuleRequest.md)
+ - [Authentik::Api::UserExpirationRuleUser](docs/UserExpirationRuleUser.md)
  - [Authentik::Api::UserFieldsEnum](docs/UserFieldsEnum.md)
  - [Authentik::Api::UserKerberosSourceConnection](docs/UserKerberosSourceConnection.md)
  - [Authentik::Api::UserKerberosSourceConnectionRequest](docs/UserKerberosSourceConnectionRequest.md)
