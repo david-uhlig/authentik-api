@@ -99,6 +99,12 @@ describe Authentik::Api::AuthenticatorWebAuthnStage do
     end
   end
 
+  describe 'test attribute "additional_accepted_origins"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "device_type_restrictions"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/

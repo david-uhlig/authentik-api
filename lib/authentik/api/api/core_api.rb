@@ -143,6 +143,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -158,6 +159,7 @@ module Authentik::Api
     # ApplicationEntitlement Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -175,6 +177,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -287,6 +290,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -302,6 +306,7 @@ module Authentik::Api
     # List application entitlements which the current user can request access to
     # @param [Hash] opts the optional parameters
     # @option opts [String] :app 
+    # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -319,6 +324,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'app'] = opts[:'app'] if !opts[:'app'].nil?
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -554,6 +560,97 @@ module Authentik::Api
       return data, status_code, headers
     end
 
+    # List applications the user passes policies for, regardless of RBAC permissions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :for_user 
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [Boolean] :only_with_launch_url 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [PaginatedApplicationList]
+    def core_applications_accessible_list(opts = {})
+      data, _status_code, _headers = core_applications_accessible_list_with_http_info(opts)
+      data
+    end
+
+    # List applications the user passes policies for, regardless of RBAC permissions
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :for_user 
+    # @option opts [String] :group 
+    # @option opts [String] :meta_description 
+    # @option opts [String] :meta_launch_url 
+    # @option opts [String] :meta_publisher 
+    # @option opts [String] :name 
+    # @option opts [Boolean] :only_with_launch_url 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @option opts [String] :slug 
+    # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
+    def core_applications_accessible_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: CoreApi.core_applications_accessible_list ...'
+      end
+      # resource path
+      local_var_path = '/core/applications/@accessible/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
+      query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
+      query_params[:'meta_description'] = opts[:'meta_description'] if !opts[:'meta_description'].nil?
+      query_params[:'meta_launch_url'] = opts[:'meta_launch_url'] if !opts[:'meta_launch_url'].nil?
+      query_params[:'meta_publisher'] = opts[:'meta_publisher'] if !opts[:'meta_publisher'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'only_with_launch_url'] = opts[:'only_with_launch_url'] if !opts[:'only_with_launch_url'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+      query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedApplicationList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"CoreApi.core_applications_accessible_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: CoreApi#core_applications_accessible_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Check access to a single application by slug
     # @param slug [String] 
     # @param [Hash] opts the optional parameters
@@ -745,42 +842,36 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Custom list method that checks Policy based access instead of guardian
+    # Application Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :for_user 
     # @option opts [String] :group 
     # @option opts [String] :meta_description 
     # @option opts [String] :meta_launch_url 
     # @option opts [String] :meta_publisher 
     # @option opts [String] :name 
-    # @option opts [Boolean] :only_with_launch_url 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [Boolean] :superuser_full_list 
     # @return [PaginatedApplicationList]
     def core_applications_list(opts = {})
       data, _status_code, _headers = core_applications_list_with_http_info(opts)
       data
     end
 
-    # Custom list method that checks Policy based access instead of guardian
+    # Application Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :for_user 
     # @option opts [String] :group 
     # @option opts [String] :meta_description 
     # @option opts [String] :meta_launch_url 
     # @option opts [String] :meta_publisher 
     # @option opts [String] :name 
-    # @option opts [Boolean] :only_with_launch_url 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [String] :search A search term.
     # @option opts [String] :slug 
-    # @option opts [Boolean] :superuser_full_list 
     # @return [Array<(PaginatedApplicationList, Integer, Hash)>] PaginatedApplicationList data, response status code and response headers
     def core_applications_list_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -791,19 +882,16 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'for_user'] = opts[:'for_user'] if !opts[:'for_user'].nil?
       query_params[:'group'] = opts[:'group'] if !opts[:'group'].nil?
       query_params[:'meta_description'] = opts[:'meta_description'] if !opts[:'meta_description'].nil?
       query_params[:'meta_launch_url'] = opts[:'meta_launch_url'] if !opts[:'meta_launch_url'].nil?
       query_params[:'meta_publisher'] = opts[:'meta_publisher'] if !opts[:'meta_publisher'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
-      query_params[:'only_with_launch_url'] = opts[:'only_with_launch_url'] if !opts[:'only_with_launch_url'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
       query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
       query_params[:'slug'] = opts[:'slug'] if !opts[:'slug'].nil?
-      query_params[:'superuser_full_list'] = opts[:'superuser_full_list'] if !opts[:'superuser_full_list'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -2273,7 +2361,6 @@ module Authentik::Api
 
     # Group Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_inherited_roles  (default to false)
     # @option opts [Boolean] :include_parents  (default to false)
@@ -2294,7 +2381,6 @@ module Authentik::Api
 
     # Group Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Boolean] :include_children  (default to false)
     # @option opts [Boolean] :include_inherited_roles  (default to false)
     # @option opts [Boolean] :include_parents  (default to false)
@@ -2317,7 +2403,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'include_children'] = opts[:'include_children'] if !opts[:'include_children'].nil?
       query_params[:'include_inherited_roles'] = opts[:'include_inherited_roles'] if !opts[:'include_inherited_roles'].nil?
       query_params[:'include_parents'] = opts[:'include_parents'] if !opts[:'include_parents'].nil?
@@ -4226,7 +4311,6 @@ module Authentik::Api
 
     # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a `DataExport` object that will initially have `completed=false` as well as the permanent URL to that object in the `Location` header. You can poll that URL until `completed=true`, at which point the `file_url` property will contain a URL to download
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4260,7 +4344,6 @@ module Authentik::Api
 
     # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4296,7 +4379,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
       query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
       query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?
@@ -4486,7 +4568,6 @@ module Authentik::Api
 
     # User Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4524,7 +4605,6 @@ module Authentik::Api
 
     # User Viewset
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :attributes Attributes
     # @option opts [Time] :date_joined 
     # @option opts [Time] :date_joined__gt 
     # @option opts [Time] :date_joined__lt 
@@ -4564,7 +4644,6 @@ module Authentik::Api
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'attributes'] = opts[:'attributes'] if !opts[:'attributes'].nil?
       query_params[:'date_joined'] = opts[:'date_joined'] if !opts[:'date_joined'].nil?
       query_params[:'date_joined__gt'] = opts[:'date_joined__gt'] if !opts[:'date_joined__gt'].nil?
       query_params[:'date_joined__lt'] = opts[:'date_joined__lt'] if !opts[:'date_joined__lt'].nil?

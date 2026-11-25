@@ -144,6 +144,115 @@ describe 'LifecycleApi' do
     end
   end
 
+  # unit tests for lifecycle_user_expiration_rules_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param user_expiration_rule_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserExpirationRule]
+  describe 'lifecycle_user_expiration_rules_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_destroy
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'lifecycle_user_expiration_rules_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_list
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param [Hash] opts the optional parameters
+  # @option opts [OffboardingActionEnum] :action 
+  # @option opts [Boolean] :enabled 
+  # @option opts [String] :group 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :pbm_uuid 
+  # @option opts [String] :search A search term.
+  # @return [PaginatedUserExpirationRuleList]
+  describe 'lifecycle_user_expiration_rules_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_partial_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedUserExpirationRuleRequest] :patched_user_expiration_rule_request 
+  # @return [UserExpirationRule]
+  describe 'lifecycle_user_expiration_rules_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_preview_create
+  # Preview new offboardings and changes to pending rows if this rule is enabled.  POST accepts unsaved edits to the rule. Neither method saves the rule, changes offboardings, or sends warnings. Existing policy bindings still apply.
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param user_expiration_rule_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserExpirationRulePreview]
+  describe 'lifecycle_user_expiration_rules_preview_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_preview_retrieve
+  # Preview new offboardings and changes to pending rows if this rule is enabled.  POST accepts unsaved edits to the rule. Neither method saves the rule, changes offboardings, or sends warnings. Existing policy bindings still apply.
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param [Hash] opts the optional parameters
+  # @return [UserExpirationRulePreview]
+  describe 'lifecycle_user_expiration_rules_preview_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_retrieve
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param [Hash] opts the optional parameters
+  # @return [UserExpirationRule]
+  describe 'lifecycle_user_expiration_rules_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_update
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param user_expiration_rule_request 
+  # @param [Hash] opts the optional parameters
+  # @return [UserExpirationRule]
+  describe 'lifecycle_user_expiration_rules_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for lifecycle_user_expiration_rules_used_by_list
+  # Get a list of all objects that use this object
+  # @param id A UUID string identifying this User Expiration Rule.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'lifecycle_user_expiration_rules_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for lifecycle_user_offboarding_create
   # @param user_offboarding_request 
   # @param [Hash] opts the optional parameters
@@ -168,9 +277,12 @@ describe 'LifecycleApi' do
   # unit tests for lifecycle_user_offboarding_list
   # @param [Hash] opts the optional parameters
   # @option opts [OffboardingActionEnum] :action 
+  # @option opts [Boolean] :generated 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :rule 
+  # @option opts [Boolean] :rule__isnull 
   # @option opts [String] :search A search term.
   # @option opts [OffboardingStatusEnum] :status 
   # @option opts [String] :user__uuid 

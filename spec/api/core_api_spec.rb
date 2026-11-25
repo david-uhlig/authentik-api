@@ -52,6 +52,7 @@ describe 'CoreApi' do
   # ApplicationEntitlement Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [String] :app 
+  # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -81,6 +82,7 @@ describe 'CoreApi' do
   # List application entitlements which the current user can request access to
   # @param [Hash] opts the optional parameters
   # @option opts [String] :app 
+  # @option opts [Integer] :for_user Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application.
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -128,6 +130,28 @@ describe 'CoreApi' do
     end
   end
 
+  # unit tests for core_applications_accessible_list
+  # List applications the user passes policies for, regardless of RBAC permissions
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :for_user 
+  # @option opts [String] :group 
+  # @option opts [String] :meta_description 
+  # @option opts [String] :meta_launch_url 
+  # @option opts [String] :meta_publisher 
+  # @option opts [String] :name 
+  # @option opts [Boolean] :only_with_launch_url 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @option opts [String] :slug 
+  # @return [PaginatedApplicationList]
+  describe 'core_applications_accessible_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for core_applications_check_access_retrieve
   # Check access to a single application by slug
   # @param slug 
@@ -163,21 +187,18 @@ describe 'CoreApi' do
   end
 
   # unit tests for core_applications_list
-  # Custom list method that checks Policy based access instead of guardian
+  # Application Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [Integer] :for_user 
   # @option opts [String] :group 
   # @option opts [String] :meta_description 
   # @option opts [String] :meta_launch_url 
   # @option opts [String] :meta_publisher 
   # @option opts [String] :name 
-  # @option opts [Boolean] :only_with_launch_url 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [String] :search A search term.
   # @option opts [String] :slug 
-  # @option opts [Boolean] :superuser_full_list 
   # @return [PaginatedApplicationList]
   describe 'core_applications_list test' do
     it 'should work' do
@@ -459,7 +480,6 @@ describe 'CoreApi' do
   # unit tests for core_groups_list
   # Group Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :attributes Attributes
   # @option opts [Boolean] :include_children 
   # @option opts [Boolean] :include_inherited_roles 
   # @option opts [Boolean] :include_parents 
@@ -817,7 +837,6 @@ describe 'CoreApi' do
   # unit tests for core_users_export_create
   # Create a data export for this data type. Note that the export is generated asynchronously: this method returns a &#x60;DataExport&#x60; object that will initially have &#x60;completed&#x3D;false&#x60; as well as the permanent URL to that object in the &#x60;Location&#x60; header. You can poll that URL until &#x60;completed&#x3D;true&#x60;, at which point the &#x60;file_url&#x60; property will contain a URL to download
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :attributes Attributes
   # @option opts [Time] :date_joined 
   # @option opts [Time] :date_joined__gt 
   # @option opts [Time] :date_joined__lt 
@@ -875,7 +894,6 @@ describe 'CoreApi' do
   # unit tests for core_users_list
   # User Viewset
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :attributes Attributes
   # @option opts [Time] :date_joined 
   # @option opts [Time] :date_joined__gt 
   # @option opts [Time] :date_joined__lt 

@@ -18,8 +18,17 @@ module Authentik::Api
     # Flow used by an authenticated user to configure this Stage. If empty, user will not be able to configure this stage.
     attr_accessor :configure_flow
 
-    # How many attempts a user has before the flow is canceled. To lock the user out, use a reputation policy and a user_write stage.
+    # How many attempts a user has before the flow is canceled. This only cancels the flow, it does not lock the user's password.
     attr_accessor :failed_attempts_before_cancel
+
+    # How many consecutive failed attempts lock the user's password until an administrator unlocks it. Set to 0 to never lock.
+    attr_accessor :failed_attempts_before_lockout
+
+    # Warning shown when the user has one password attempt remaining. Leave blank to show no warning.
+    attr_accessor :last_attempt_warning_message
+
+    # Message shown when the user's password has been locked. Leave blank to show a generic authentication error.
+    attr_accessor :lockout_message
 
     # When enabled, provides a 'show password' button with the password input field.
     attr_accessor :allow_show_password
@@ -31,6 +40,9 @@ module Authentik::Api
         :'backends' => :'backends',
         :'configure_flow' => :'configure_flow',
         :'failed_attempts_before_cancel' => :'failed_attempts_before_cancel',
+        :'failed_attempts_before_lockout' => :'failed_attempts_before_lockout',
+        :'last_attempt_warning_message' => :'last_attempt_warning_message',
+        :'lockout_message' => :'lockout_message',
         :'allow_show_password' => :'allow_show_password'
       }
     end
@@ -52,6 +64,9 @@ module Authentik::Api
         :'backends' => :'Array<BackendsEnum>',
         :'configure_flow' => :'String',
         :'failed_attempts_before_cancel' => :'Integer',
+        :'failed_attempts_before_lockout' => :'Integer',
+        :'last_attempt_warning_message' => :'String',
+        :'lockout_message' => :'String',
         :'allow_show_password' => :'Boolean'
       }
     end
@@ -61,6 +76,16 @@ module Authentik::Api
       Set.new([
         :'configure_flow',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -97,6 +122,18 @@ module Authentik::Api
         self.failed_attempts_before_cancel = attributes[:'failed_attempts_before_cancel']
       end
 
+      if attributes.key?(:'failed_attempts_before_lockout')
+        self.failed_attempts_before_lockout = attributes[:'failed_attempts_before_lockout']
+      end
+
+      if attributes.key?(:'last_attempt_warning_message')
+        self.last_attempt_warning_message = attributes[:'last_attempt_warning_message']
+      end
+
+      if attributes.key?(:'lockout_message')
+        self.lockout_message = attributes[:'lockout_message']
+      end
+
       if attributes.key?(:'allow_show_password')
         self.allow_show_password = attributes[:'allow_show_password']
       end
@@ -119,6 +156,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "failed_attempts_before_cancel", must be greater than or equal to -2147483648.')
       end
 
+      if !@failed_attempts_before_lockout.nil? && @failed_attempts_before_lockout > 2147483647
+        invalid_properties.push('invalid value for "failed_attempts_before_lockout", must be smaller than or equal to 2147483647.')
+      end
+
+      if !@failed_attempts_before_lockout.nil? && @failed_attempts_before_lockout < 0
+        invalid_properties.push('invalid value for "failed_attempts_before_lockout", must be greater than or equal to 0.')
+      end
+
       invalid_properties
     end
 
@@ -129,6 +174,8 @@ module Authentik::Api
       return false if !@name.nil? && @name.to_s.length < 1
       return false if !@failed_attempts_before_cancel.nil? && @failed_attempts_before_cancel > 2147483647
       return false if !@failed_attempts_before_cancel.nil? && @failed_attempts_before_cancel < -2147483648
+      return false if !@failed_attempts_before_lockout.nil? && @failed_attempts_before_lockout > 2147483647
+      return false if !@failed_attempts_before_lockout.nil? && @failed_attempts_before_lockout < 0
       true
     end
 
@@ -164,6 +211,24 @@ module Authentik::Api
       @failed_attempts_before_cancel = failed_attempts_before_cancel
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] failed_attempts_before_lockout Value to be assigned
+    def failed_attempts_before_lockout=(failed_attempts_before_lockout)
+      if failed_attempts_before_lockout.nil?
+        fail ArgumentError, 'failed_attempts_before_lockout cannot be nil'
+      end
+
+      if failed_attempts_before_lockout > 2147483647
+        fail ArgumentError, 'invalid value for "failed_attempts_before_lockout", must be smaller than or equal to 2147483647.'
+      end
+
+      if failed_attempts_before_lockout < 0
+        fail ArgumentError, 'invalid value for "failed_attempts_before_lockout", must be greater than or equal to 0.'
+      end
+
+      @failed_attempts_before_lockout = failed_attempts_before_lockout
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -173,6 +238,9 @@ module Authentik::Api
           backends == o.backends &&
           configure_flow == o.configure_flow &&
           failed_attempts_before_cancel == o.failed_attempts_before_cancel &&
+          failed_attempts_before_lockout == o.failed_attempts_before_lockout &&
+          last_attempt_warning_message == o.last_attempt_warning_message &&
+          lockout_message == o.lockout_message &&
           allow_show_password == o.allow_show_password
     end
 
@@ -185,7 +253,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, backends, configure_flow, failed_attempts_before_cancel, allow_show_password].hash
+      [name, backends, configure_flow, failed_attempts_before_cancel, failed_attempts_before_lockout, last_attempt_warning_message, lockout_message, allow_show_password].hash
     end
 
     # Builds the object from hash
@@ -194,18 +262,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -215,10 +285,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

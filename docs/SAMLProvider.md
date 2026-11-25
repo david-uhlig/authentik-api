@@ -32,15 +32,18 @@
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] |
 | **verification_kp** | **String** | When selected, incoming assertion&#39;s Signatures will be validated against this certificate. To allow unsigned Requests, leave on default. | [optional] |
 | **encryption_kp** | **String** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](EncryptionAlgorithmEnum.md) | Block cipher used to encrypt the assertion. | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_response** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
 | **sign_logout_response** | **Boolean** |  | [optional] |
+| **ignore_force_authn** | **Boolean** | When enabled, the ForceAuthn attribute set by the Service Provider on an AuthnRequest is ignored and an existing session is used. When disabled, ForceAuthn requires the user to re-authenticate. | [optional] |
 | **sp_binding** | [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the response back to the Service Provider. | [optional] |
 | **sls_binding** | [**SAMLBindingsEnum**](SAMLBindingsEnum.md) | This determines how authentik sends the logout response back to the Service Provider. | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](SAMLLogoutMethods.md) | Method to use for logout. Front-channel iframe loads all logout URLs simultaneously in hidden iframes. Front-channel native uses your active browser tab to send post requests and redirect to providers. Back-channel sends logout requests directly from the server without user interaction (requires POST SLS binding). | [optional] |
 | **default_relay_state** | **String** | Default relay_state value for IDP-initiated logins | [optional] |
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] |
+| **jwt_federation_providers** | **Array&lt;Integer&gt;** | OAuth2 providers which can exchange their JWTs for a SAML Response of this provider via token exchange. | [optional] |
 | **url_download_metadata** | **String** | Get metadata download URL | [readonly] |
 | **url_issuer** | **String** | Get Issuer/EntityID URL | [readonly] |
 | **url_unified** | **String** | Get unified SAML endpoint URL (handles SSO and SLO) | [readonly] |
@@ -85,15 +88,18 @@ instance = Authentik::Api::SAMLProvider.new(
   signing_kp: null,
   verification_kp: null,
   encryption_kp: null,
+  encryption_algorithm: null,
   sign_assertion: null,
   sign_response: null,
   sign_logout_request: null,
   sign_logout_response: null,
+  ignore_force_authn: null,
   sp_binding: null,
   sls_binding: null,
   logout_method: null,
   default_relay_state: null,
   default_name_id_policy: null,
+  jwt_federation_providers: null,
   url_download_metadata: null,
   url_issuer: null,
   url_unified: null,

@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **logs** | [**Array&lt;LogEvent&gt;**](LogEvent.md) |  | [readonly] |
 | **success** | **Boolean** |  | [readonly] |
+| **imported** | **Boolean** |  | [readonly] |
 
 ## Example
 
@@ -14,7 +15,8 @@ require 'authentik-api'
 
 instance = Authentik::Api::BlueprintImportResult.new(
   logs: null,
-  success: null
+  success: null,
+  imported: null
 )
 ```
 

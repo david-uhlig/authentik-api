@@ -14,6 +14,7 @@ All URIs are relative to */api/v3*
 | [**managed_blueprints_retrieve**](ManagedApi.md#managed_blueprints_retrieve) | **GET** /managed/blueprints/{instance_uuid}/ |  |
 | [**managed_blueprints_update**](ManagedApi.md#managed_blueprints_update) | **PUT** /managed/blueprints/{instance_uuid}/ |  |
 | [**managed_blueprints_used_by_list**](ManagedApi.md#managed_blueprints_used_by_list) | **GET** /managed/blueprints/{instance_uuid}/used_by/ |  |
+| [**managed_blueprints_validate_create**](ManagedApi.md#managed_blueprints_validate_create) | **POST** /managed/blueprints/validate/ |  |
 
 
 ## managed_blueprints_apply_create
@@ -723,5 +724,80 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## managed_blueprints_validate_create
+
+> <BlueprintImportResult> managed_blueprints_validate_create(opts)
+
+
+
+Validate blueprint from .yaml file and return any errors
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::ManagedApi.new
+opts = {
+  file: File.new('/path/to/some/file'), # File | 
+  path: 'path_example', # String | 
+  context: 'context_example' # String | 
+}
+
+begin
+  
+  result = api_instance.managed_blueprints_validate_create(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ManagedApi->managed_blueprints_validate_create: #{e}"
+end
+```
+
+#### Using the managed_blueprints_validate_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<BlueprintImportResult>, Integer, Hash)> managed_blueprints_validate_create_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.managed_blueprints_validate_create_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <BlueprintImportResult>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling ManagedApi->managed_blueprints_validate_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **file** | **File** |  | [optional] |
+| **path** | **String** |  | [optional] |
+| **context** | **String** |  | [optional] |
+
+### Return type
+
+[**BlueprintImportResult**](BlueprintImportResult.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: multipart/form-data
 - **Accept**: application/json
 

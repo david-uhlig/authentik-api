@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -27,7 +29,8 @@ module Authentik::Api
         :'component' => :'component',
         :'title' => :'title',
         :'configure_url' => :'configure_url',
-        :'icon_url' => :'icon_url'
+        :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls'
       }
     end
 
@@ -48,14 +51,26 @@ module Authentik::Api
         :'component' => :'String',
         :'title' => :'String',
         :'configure_url' => :'String',
-        :'icon_url' => :'String'
+        :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'icon_themed_urls'
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -98,6 +113,10 @@ module Authentik::Api
 
       if attributes.key?(:'icon_url')
         self.icon_url = attributes[:'icon_url']
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
       end
     end
 
@@ -170,7 +189,8 @@ module Authentik::Api
           component == o.component &&
           title == o.title &&
           configure_url == o.configure_url &&
-          icon_url == o.icon_url
+          icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls
     end
 
     # @see the `==` method
@@ -182,7 +202,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [object_uid, component, title, configure_url, icon_url].hash
+      [object_uid, component, title, configure_url, icon_url, icon_themed_urls].hash
     end
 
     # Builds the object from hash
@@ -191,18 +211,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -212,10 +234,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

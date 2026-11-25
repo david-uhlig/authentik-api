@@ -81,6 +81,9 @@ module Authentik::Api
     # When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
     attr_accessor :encryption_kp
 
+    # Block cipher used to encrypt the assertion.
+    attr_accessor :encryption_algorithm
+
     attr_accessor :sign_assertion
 
     attr_accessor :sign_logout_request
@@ -147,6 +150,7 @@ module Authentik::Api
         :'signature_algorithm' => :'signature_algorithm',
         :'signing_kp' => :'signing_kp',
         :'encryption_kp' => :'encryption_kp',
+        :'encryption_algorithm' => :'encryption_algorithm',
         :'sign_assertion' => :'sign_assertion',
         :'sign_logout_request' => :'sign_logout_request',
         :'default_name_id_policy' => :'default_name_id_policy',
@@ -190,11 +194,12 @@ module Authentik::Api
         :'session_valid_not_on_or_after' => :'String',
         :'name_id_mapping' => :'String',
         :'authn_context_class_ref_mapping' => :'String',
-        :'saml_version' => :'SamlVersionEnum',
+        :'saml_version' => :'WSFedSAMLVersionEnum',
         :'digest_algorithm' => :'DigestAlgorithmEnum',
         :'signature_algorithm' => :'SignatureAlgorithmEnum',
         :'signing_kp' => :'String',
         :'encryption_kp' => :'String',
+        :'encryption_algorithm' => :'EncryptionAlgorithmEnum',
         :'sign_assertion' => :'Boolean',
         :'sign_logout_request' => :'Boolean',
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
@@ -217,6 +222,16 @@ module Authentik::Api
         :'signing_kp',
         :'encryption_kp',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -367,6 +382,10 @@ module Authentik::Api
 
       if attributes.key?(:'encryption_kp')
         self.encryption_kp = attributes[:'encryption_kp']
+      end
+
+      if attributes.key?(:'encryption_algorithm')
+        self.encryption_algorithm = attributes[:'encryption_algorithm']
       end
 
       if attributes.key?(:'sign_assertion')
@@ -641,6 +660,7 @@ module Authentik::Api
           signature_algorithm == o.signature_algorithm &&
           signing_kp == o.signing_kp &&
           encryption_kp == o.encryption_kp &&
+          encryption_algorithm == o.encryption_algorithm &&
           sign_assertion == o.sign_assertion &&
           sign_logout_request == o.sign_logout_request &&
           default_name_id_policy == o.default_name_id_policy &&
@@ -658,7 +678,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, saml_version, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, sign_assertion, sign_logout_request, default_name_id_policy, url_download_metadata, url_wsfed, url_issuer].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, reply_url, wtrealm, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, saml_version, digest_algorithm, signature_algorithm, signing_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_logout_request, default_name_id_policy, url_download_metadata, url_wsfed, url_issuer].hash
     end
 
     # Builds the object from hash
@@ -667,18 +687,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -688,10 +710,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

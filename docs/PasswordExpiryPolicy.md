@@ -12,6 +12,8 @@
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **bound_to** | **Integer** | Return objects policy is bound to | [readonly] |
+| **last_updated** | **Time** |  | [readonly] |
+| **created** | **Time** |  | [readonly] |
 | **days** | **Integer** |  |  |
 | **deny_only** | **Boolean** |  | [optional] |
 
@@ -29,6 +31,8 @@ instance = Authentik::Api::PasswordExpiryPolicy.new(
   verbose_name_plural: null,
   meta_model_name: null,
   bound_to: null,
+  last_updated: null,
+  created: null,
   days: null,
   deny_only: null
 )

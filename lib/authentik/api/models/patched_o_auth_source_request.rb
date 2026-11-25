@@ -182,6 +182,16 @@ module Authentik::Api
       ])
     end
 
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
+    end
+
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
@@ -335,10 +345,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "consumer_key", the character length must be greater than or equal to 1.')
       end
 
-      if !@consumer_secret.nil? && @consumer_secret.to_s.length < 1
-        invalid_properties.push('invalid value for "consumer_secret", the character length must be greater than or equal to 1.')
-      end
-
       invalid_properties
     end
 
@@ -351,7 +357,6 @@ module Authentik::Api
       return false if !@slug.nil? && @slug !~ Regexp.new(/^[-a-zA-Z0-9_]+$/)
       return false if !@user_path_template.nil? && @user_path_template.to_s.length < 1
       return false if !@consumer_key.nil? && @consumer_key.to_s.length < 1
-      return false if !@consumer_secret.nil? && @consumer_secret.to_s.length < 1
       true
     end
 
@@ -416,20 +421,6 @@ module Authentik::Api
       @consumer_key = consumer_key
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] consumer_secret Value to be assigned
-    def consumer_secret=(consumer_secret)
-      if consumer_secret.nil?
-        fail ArgumentError, 'consumer_secret cannot be nil'
-      end
-
-      if consumer_secret.to_s.length < 1
-        fail ArgumentError, 'invalid value for "consumer_secret", the character length must be greater than or equal to 1.'
-      end
-
-      @consumer_secret = consumer_secret
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -481,18 +472,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -502,10 +495,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

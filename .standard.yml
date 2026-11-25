@@ -1,0 +1,17 @@
+parallel: true
+ruby_version: 3.3
+ignore:
+  - 'authentik-api.gemspec':
+      - Style/BlockComments
+  - 'lib/authentik/api.rb':
+      - Style/BlockComments
+  - 'lib/authentik/api/api_client.rb'
+  - 'lib/authentik/api/api_error.rb'
+  - 'lib/authentik/api/api_model_base.rb'
+  - 'lib/authentik/api/configuration.rb'
+  - 'lib/authentik/api/version.rb'
+  - 'lib/authentik/api/api/**/*'
+  - 'lib/authentik/api/models/**/*'
+  - 'spec/spec_helper.rb'
+  - 'spec/api/**/*'
+  - 'spec/models/**/*'

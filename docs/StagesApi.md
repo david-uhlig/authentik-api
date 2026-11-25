@@ -10933,6 +10933,7 @@ opts = {
   allow_show_password: true, # Boolean | 
   configure_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   failed_attempts_before_cancel: 56, # Integer | 
+  failed_attempts_before_lockout: 56, # Integer | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -10974,6 +10975,7 @@ end
 | **allow_show_password** | **Boolean** |  | [optional] |
 | **configure_flow** | **String** |  | [optional] |
 | **failed_attempts_before_cancel** | **Integer** |  | [optional] |
+| **failed_attempts_before_lockout** | **Integer** |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |

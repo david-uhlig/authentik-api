@@ -6589,10 +6589,13 @@ opts = {
   default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   default_relay_state: 'default_relay_state_example', # String | 
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ignore_force_authn: true, # Boolean | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
+  jwt_federation_providers: [37], # Array<Integer> | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -6656,10 +6659,13 @@ end
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
+| **ignore_force_authn** | **Boolean** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |
+| **jwt_federation_providers** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
@@ -9153,10 +9159,13 @@ opts = {
   default_name_id_policy: Authentik::Api::SAMLNameIDPolicyEnum::URN_OASIS_NAMES_TC_SAML_1_1_NAMEID_FORMAT_EMAIL_ADDRESS, # SAMLNameIDPolicyEnum | 
   default_relay_state: 'default_relay_state_example', # String | 
   digest_algorithm: Authentik::Api::DigestAlgorithmEnum::HTTP___WWW_W3_ORG_2000_09_XMLDSIGSHA1, # DigestAlgorithmEnum | 
+  encryption_algorithm: Authentik::Api::EncryptionAlgorithmEnum::HTTP___WWW_W3_ORG_2001_04_XMLENCAES128_CBC, # EncryptionAlgorithmEnum | 
   encryption_kp: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ignore_force_authn: true, # Boolean | 
   invalidation_flow: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
   is_backchannel: true, # Boolean | 
   issuer_override: 'issuer_override_example', # String | 
+  jwt_federation_providers: [37], # Array<Integer> | 
   logout_method: Authentik::Api::SAMLLogoutMethods::FRONTCHANNEL_IFRAME, # SAMLLogoutMethods | 
   name: 'name_example', # String | 
   name_id_mapping: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
@@ -9164,7 +9173,7 @@ opts = {
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   property_mappings: ['inner_example'], # Array<String> | 
-  saml_version: Authentik::Api::SamlVersionEnum::N1_1, # SamlVersionEnum | 
+  saml_version: Authentik::Api::WSFedSAMLVersionEnum::N1_1, # WSFedSAMLVersionEnum | 
   search: 'search_example', # String | A search term.
   session_valid_not_on_or_after: 'session_valid_not_on_or_after_example', # String | 
   sign_assertion: true, # Boolean | 
@@ -9221,10 +9230,13 @@ end
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](.md) |  | [optional] |
 | **default_relay_state** | **String** |  | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](.md) |  | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](.md) |  | [optional] |
 | **encryption_kp** | **String** |  | [optional] |
+| **ignore_force_authn** | **Boolean** |  | [optional] |
 | **invalidation_flow** | **String** |  | [optional] |
 | **is_backchannel** | **Boolean** |  | [optional] |
 | **issuer_override** | **String** |  | [optional] |
+| **jwt_federation_providers** | [**Array&lt;Integer&gt;**](Integer.md) |  | [optional] |
 | **logout_method** | [**SAMLLogoutMethods**](.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **name_id_mapping** | **String** |  | [optional] |
@@ -9232,7 +9244,7 @@ end
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **property_mappings** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
-| **saml_version** | [**SamlVersionEnum**](.md) |  | [optional] |
+| **saml_version** | [**WSFedSAMLVersionEnum**](.md) |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **session_valid_not_on_or_after** | **String** |  | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |

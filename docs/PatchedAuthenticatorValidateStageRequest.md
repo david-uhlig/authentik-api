@@ -11,6 +11,7 @@
 | **last_auth_threshold** | **String** | If any of the user&#39;s device has been used within this threshold, this stage will be skipped | [optional] |
 | **webauthn_user_verification** | [**UserVerificationEnum**](UserVerificationEnum.md) | Enforce user verification for WebAuthn devices. | [optional] |
 | **webauthn_hints** | [**Array&lt;WebAuthnHintEnum&gt;**](WebAuthnHintEnum.md) |  | [optional] |
+| **webauthn_additional_accepted_origins** | **Array&lt;String&gt;** | Additional trusted origins for WebAuthn authentication. Matched exactly. | [optional] |
 | **webauthn_allowed_device_types** | **Array&lt;String&gt;** |  | [optional] |
 | **email_otp_throttling_factor** | **Float** |  | [optional] |
 | **sms_otp_throttling_factor** | **Float** |  | [optional] |
@@ -30,6 +31,7 @@ instance = Authentik::Api::PatchedAuthenticatorValidateStageRequest.new(
   last_auth_threshold: null,
   webauthn_user_verification: null,
   webauthn_hints: null,
+  webauthn_additional_accepted_origins: null,
   webauthn_allowed_device_types: null,
   email_otp_throttling_factor: null,
   sms_otp_throttling_factor: null,

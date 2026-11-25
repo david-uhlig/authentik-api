@@ -63,6 +63,8 @@ All URIs are relative to */api/v3*
 | [**authenticators_endpoint_list**](AuthenticatorsApi.md#authenticators_endpoint_list) | **GET** /authenticators/endpoint/ |  |
 | [**authenticators_endpoint_retrieve**](AuthenticatorsApi.md#authenticators_endpoint_retrieve) | **GET** /authenticators/endpoint/{uuid}/ |  |
 | [**authenticators_endpoint_used_by_list**](AuthenticatorsApi.md#authenticators_endpoint_used_by_list) | **GET** /authenticators/endpoint/{uuid}/used_by/ |  |
+| [**authenticators_password_lock_create**](AuthenticatorsApi.md#authenticators_password_lock_create) | **POST** /authenticators/password/{id}/lock/ |  |
+| [**authenticators_password_unlock_create**](AuthenticatorsApi.md#authenticators_password_unlock_create) | **POST** /authenticators/password/{id}/unlock/ |  |
 | [**authenticators_sms_destroy**](AuthenticatorsApi.md#authenticators_sms_destroy) | **DELETE** /authenticators/sms/{id}/ |  |
 | [**authenticators_sms_list**](AuthenticatorsApi.md#authenticators_sms_list) | **GET** /authenticators/sms/ |  |
 | [**authenticators_sms_partial_update**](AuthenticatorsApi.md#authenticators_sms_partial_update) | **PATCH** /authenticators/sms/{id}/ |  |
@@ -4293,6 +4295,142 @@ end
 ### Return type
 
 [**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## authenticators_password_lock_create
+
+> authenticators_password_lock_create(id)
+
+
+
+Prevent a password authenticator from authenticating.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AuthenticatorsApi.new
+id = 56 # Integer | A unique integer value identifying this Password Device.
+
+begin
+  
+  api_instance.authenticators_password_lock_create(id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AuthenticatorsApi->authenticators_password_lock_create: #{e}"
+end
+```
+
+#### Using the authenticators_password_lock_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> authenticators_password_lock_create_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.authenticators_password_lock_create_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AuthenticatorsApi->authenticators_password_lock_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this Password Device. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## authenticators_password_unlock_create
+
+> authenticators_password_unlock_create(id)
+
+
+
+Allow a locked password authenticator to authenticate again.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::AuthenticatorsApi.new
+id = 56 # Integer | A unique integer value identifying this Password Device.
+
+begin
+  
+  api_instance.authenticators_password_unlock_create(id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AuthenticatorsApi->authenticators_password_unlock_create: #{e}"
+end
+```
+
+#### Using the authenticators_password_unlock_create_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> authenticators_password_unlock_create_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.authenticators_password_unlock_create_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling AuthenticatorsApi->authenticators_password_unlock_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **Integer** | A unique integer value identifying this Password Device. |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 

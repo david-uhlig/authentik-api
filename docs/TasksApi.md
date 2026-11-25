@@ -399,6 +399,8 @@ api_instance = Authentik::Api::TasksApi.new
 opts = {
   actor_name: 'actor_name_example', # String | 
   aggregated_status: [Authentik::Api::TaskAggregatedStatusEnum::WAITING_FOR_DEPENDENCIES], # Array<TaskAggregatedStatusEnum> | 
+  message_id: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  message_id__in: ['inner_example'], # Array<String> | Multiple values may be separated by commas.
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
@@ -444,6 +446,8 @@ end
 | ---- | ---- | ----------- | ----- |
 | **actor_name** | **String** |  | [optional] |
 | **aggregated_status** | [**Array&lt;TaskAggregatedStatusEnum&gt;**](TaskAggregatedStatusEnum.md) |  | [optional] |
+| **message_id** | **String** |  | [optional] |
+| **message_id__in** | [**Array&lt;String&gt;**](String.md) | Multiple values may be separated by commas. | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |

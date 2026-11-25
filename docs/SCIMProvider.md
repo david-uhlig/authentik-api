@@ -17,6 +17,7 @@
 | **url** | **String** | Base URL to SCIM requests, usually ends in /v2 |  |
 | **verify_certificates** | **Boolean** |  | [optional] |
 | **auth_mode** | [**SCIMAuthenticationModeEnum**](SCIMAuthenticationModeEnum.md) |  | [optional] |
+| **auth_basic_user** | **String** | Username used for Basic authentication | [optional] |
 | **auth_oauth** | **String** | OAuth Source used for authentication | [optional] |
 | **auth_oauth_params** | **Hash&lt;String, Object&gt;** | Additional OAuth parameters, such as grant_type | [optional] |
 | **auth_oauth_token_last_updated** | **Time** |  | [readonly] |
@@ -51,6 +52,7 @@ instance = Authentik::Api::SCIMProvider.new(
   url: null,
   verify_certificates: null,
   auth_mode: null,
+  auth_basic_user: null,
   auth_oauth: null,
   auth_oauth_params: null,
   auth_oauth_token_last_updated: null,

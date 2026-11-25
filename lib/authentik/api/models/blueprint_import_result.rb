@@ -14,11 +14,14 @@ module Authentik::Api
 
     attr_accessor :success
 
+    attr_accessor :imported
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'logs' => :'logs',
-        :'success' => :'success'
+        :'success' => :'success',
+        :'imported' => :'imported'
       }
     end
 
@@ -36,7 +39,8 @@ module Authentik::Api
     def self.openapi_types
       {
         :'logs' => :'Array<LogEvent>',
-        :'success' => :'Boolean'
+        :'success' => :'Boolean',
+        :'imported' => :'Boolean'
       }
     end
 
@@ -44,6 +48,16 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -75,6 +89,12 @@ module Authentik::Api
       else
         self.success = nil
       end
+
+      if attributes.key?(:'imported')
+        self.imported = attributes[:'imported']
+      else
+        self.imported = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -90,6 +110,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "success", success cannot be nil.')
       end
 
+      if @imported.nil?
+        invalid_properties.push('invalid value for "imported", imported cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -99,6 +123,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @logs.nil?
       return false if @success.nil?
+      return false if @imported.nil?
       true
     end
 
@@ -122,13 +147,24 @@ module Authentik::Api
       @success = success
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] imported Value to be assigned
+    def imported=(imported)
+      if imported.nil?
+        fail ArgumentError, 'imported cannot be nil'
+      end
+
+      @imported = imported
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           logs == o.logs &&
-          success == o.success
+          success == o.success &&
+          imported == o.imported
     end
 
     # @see the `==` method
@@ -140,7 +176,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [logs, success].hash
+      [logs, success, imported].hash
     end
 
     # Builds the object from hash
@@ -149,18 +185,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -170,10 +208,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

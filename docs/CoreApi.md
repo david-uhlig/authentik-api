@@ -12,6 +12,7 @@ All URIs are relative to */api/v3*
 | [**core_application_entitlements_retrieve**](CoreApi.md#core_application_entitlements_retrieve) | **GET** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_update**](CoreApi.md#core_application_entitlements_update) | **PUT** /core/application_entitlements/{pbm_uuid}/ |  |
 | [**core_application_entitlements_used_by_list**](CoreApi.md#core_application_entitlements_used_by_list) | **GET** /core/application_entitlements/{pbm_uuid}/used_by/ |  |
+| [**core_applications_accessible_list**](CoreApi.md#core_applications_accessible_list) | **GET** /core/applications/@accessible/ |  |
 | [**core_applications_check_access_retrieve**](CoreApi.md#core_applications_check_access_retrieve) | **GET** /core/applications/{slug}/check_access/ |  |
 | [**core_applications_create**](CoreApi.md#core_applications_create) | **POST** /core/applications/ |  |
 | [**core_applications_destroy**](CoreApi.md#core_applications_destroy) | **DELETE** /core/applications/{slug}/ |  |
@@ -243,6 +244,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  for_user: 56, # Integer | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -283,6 +285,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
+| **for_user** | **Integer** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -399,6 +402,7 @@ end
 api_instance = Authentik::Api::CoreApi.new
 opts = {
   app: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  for_user: 56, # Integer | Entitlements assigned to this user, directly or through a group, regardless of the user's access to the application.
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -439,6 +443,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app** | **String** |  | [optional] |
+| **for_user** | **Integer** | Entitlements assigned to this user, directly or through a group, regardless of the user&#39;s access to the application. | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -669,6 +674,99 @@ end
 - **Accept**: application/json
 
 
+## core_applications_accessible_list
+
+> <PaginatedApplicationList> core_applications_accessible_list(opts)
+
+
+
+List applications the user passes policies for, regardless of RBAC permissions
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::CoreApi.new
+opts = {
+  for_user: 56, # Integer | 
+  group: 'group_example', # String | 
+  meta_description: 'meta_description_example', # String | 
+  meta_launch_url: 'meta_launch_url_example', # String | 
+  meta_publisher: 'meta_publisher_example', # String | 
+  name: 'name_example', # String | 
+  only_with_launch_url: true, # Boolean | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  search: 'search_example', # String | A search term.
+  slug: 'slug_example' # String | 
+}
+
+begin
+  
+  result = api_instance.core_applications_accessible_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_accessible_list: #{e}"
+end
+```
+
+#### Using the core_applications_accessible_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedApplicationList>, Integer, Hash)> core_applications_accessible_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.core_applications_accessible_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedApplicationList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling CoreApi->core_applications_accessible_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **for_user** | **Integer** |  | [optional] |
+| **group** | **String** |  | [optional] |
+| **meta_description** | **String** |  | [optional] |
+| **meta_launch_url** | **String** |  | [optional] |
+| **meta_publisher** | **String** |  | [optional] |
+| **name** | **String** |  | [optional] |
+| **only_with_launch_url** | **Boolean** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **search** | **String** | A search term. | [optional] |
+| **slug** | **String** |  | [optional] |
+
+### Return type
+
+[**PaginatedApplicationList**](PaginatedApplicationList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## core_applications_check_access_retrieve
 
 > <PolicyTestResult> core_applications_check_access_retrieve(slug, opts)
@@ -885,7 +983,7 @@ nil (empty response body)
 
 
 
-Custom list method that checks Policy based access instead of guardian
+Application Viewset
 
 ### Examples
 
@@ -900,19 +998,16 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  for_user: 56, # Integer | 
   group: 'group_example', # String | 
   meta_description: 'meta_description_example', # String | 
   meta_launch_url: 'meta_launch_url_example', # String | 
   meta_publisher: 'meta_publisher_example', # String | 
   name: 'name_example', # String | 
-  only_with_launch_url: true, # Boolean | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
   search: 'search_example', # String | A search term.
-  slug: 'slug_example', # String | 
-  superuser_full_list: true # Boolean | 
+  slug: 'slug_example' # String | 
 }
 
 begin
@@ -946,19 +1041,16 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **for_user** | **Integer** |  | [optional] |
 | **group** | **String** |  | [optional] |
 | **meta_description** | **String** |  | [optional] |
 | **meta_launch_url** | **String** |  | [optional] |
 | **meta_publisher** | **String** |  | [optional] |
 | **name** | **String** |  | [optional] |
-| **only_with_launch_url** | **Boolean** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **slug** | **String** |  | [optional] |
-| **superuser_full_list** | **Boolean** |  | [optional] |
 
 ### Return type
 
@@ -2533,7 +2625,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   include_children: true, # Boolean | 
   include_inherited_roles: true, # Boolean | 
   include_parents: true, # Boolean | 
@@ -2579,7 +2670,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **include_children** | **Boolean** |  | [optional][default to false] |
 | **include_inherited_roles** | **Boolean** |  | [optional][default to false] |
 | **include_parents** | **Boolean** |  | [optional][default to false] |
@@ -4633,7 +4723,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -4692,7 +4781,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **date_joined** | **Time** |  | [optional] |
 | **date_joined__gt** | **Time** |  | [optional] |
 | **date_joined__lt** | **Time** |  | [optional] |
@@ -4892,7 +4980,6 @@ end
 
 api_instance = Authentik::Api::CoreApi.new
 opts = {
-  attributes: 'attributes_example', # String | Attributes
   date_joined: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__gt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
   date_joined__lt: Time.parse('2013-10-20T19:20:30+01:00'), # Time | 
@@ -4955,7 +5042,6 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **attributes** | **String** | Attributes | [optional] |
 | **date_joined** | **Time** |  | [optional] |
 | **date_joined__gt** | **Time** |  | [optional] |
 | **date_joined__lt** | **Time** |  | [optional] |

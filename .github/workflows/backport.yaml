@@ -1,0 +1,67 @@
+# Backports merged pull requests to release lines.
+#
+# Label a pull request with `backport <release line>`, e.g., `backport 2026.8`,
+# before or after merging it. Once it is merged, this workflow cherry-picks its
+# commits onto the release line and opens a pull request there. The labels are
+# created together with the release line by `prepare-release.yml`.
+#
+# Backport fixes only: anything that would break users pinned to, e.g.,
+# `~> 2026.8.0` (like a minimum Ruby version bump) waits for the next minor
+# version. See RELEASING.md.
+name: Backport
+
+on:
+  # Runs in the context of the base repository and never checks out or runs
+  # code from the pull request, so it is safe to use with secrets.
+  pull_request_target: # zizmor: ignore[dangerous-triggers]
+    types: [closed, labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  backport:
+    if: >
+      github.event.pull_request.merged == true &&
+      (github.event.action == 'closed' || startsWith(github.event.label.name, 'backport '))
+    runs-on: ubuntu-latest
+    steps:
+      # The app token pushes the cherry-picked commits, which may touch
+      # workflow files, and opens the pull request so that CI runs on it.
+      - name: Create GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }} # zizmor: ignore[secrets-outside-env]
+          permission-contents: write
+          permission-pull-requests: write
+          permission-workflows: write
+
+      - name: Checkout code  # zizmor: ignore[artipacked]
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - id: backport
+        name: Create backport pull requests
+        uses: korthout/backport-action@0ebd44f9c79a4a0a171200dcdcceec3ed9ca732f # v4.7.1
+        with:
+          github_token: ${{ steps.app-token.outputs.token }}
+          label_pattern: ^backport ([0-9]{4}\.[0-9]+)$
+          pull_title: "[${target_branch}] ${pull_title}"
+          pull_description: |-
+            Backport of #${pull_number} to the `${target_branch}` release line.
+
+            Merging this does not publish a gem. Run the "Prepare release" workflow with the release line as `target` afterwards, or wait for the next authentik release of this line.
+
+      # The action only comments on the pull request when a cherry-pick
+      # conflicts. Fail the run as well, so the failed backport is noticed.
+      - name: Check backport result
+        if: steps.backport.outputs.was_successful == 'false'
+        env:
+          RESULTS: ${{ steps.backport.outputs.was_successful_by_target }}
+        run: |
+          echo "::error::Backport failed for: $(grep '=false$' <<< "$RESULTS" | sed 's/=false$//' | paste -sd ' ')"
+          echo "See the comment on the pull request for how to backport it manually."
+          exit 1

@@ -31,6 +31,9 @@ module Authentik::Api
 
     attr_accessor :enabled
 
+    # Execute the policy but ignore its result.
+    attr_accessor :dry_run
+
     attr_accessor :order
 
     # Timeout after which Policy execution is terminated.
@@ -56,6 +59,7 @@ module Authentik::Api
         :'target' => :'target',
         :'negate' => :'negate',
         :'enabled' => :'enabled',
+        :'dry_run' => :'dry_run',
         :'order' => :'order',
         :'timeout' => :'timeout',
         :'failure_result' => :'failure_result',
@@ -87,6 +91,7 @@ module Authentik::Api
         :'target' => :'String',
         :'negate' => :'Boolean',
         :'enabled' => :'Boolean',
+        :'dry_run' => :'Boolean',
         :'order' => :'Integer',
         :'timeout' => :'Integer',
         :'failure_result' => :'Boolean',
@@ -106,6 +111,16 @@ module Authentik::Api
         :'user_obj',
         :'expires',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -172,6 +187,10 @@ module Authentik::Api
 
       if attributes.key?(:'enabled')
         self.enabled = attributes[:'enabled']
+      end
+
+      if attributes.key?(:'dry_run')
+        self.dry_run = attributes[:'dry_run']
       end
 
       if attributes.key?(:'order')
@@ -337,6 +356,7 @@ module Authentik::Api
           target == o.target &&
           negate == o.negate &&
           enabled == o.enabled &&
+          dry_run == o.dry_run &&
           order == o.order &&
           timeout == o.timeout &&
           failure_result == o.failure_result &&
@@ -353,7 +373,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, order, timeout, failure_result, expires, expiring].hash
+      [pk, policy, group, user, policy_obj, group_obj, user_obj, target, negate, enabled, dry_run, order, timeout, failure_result, expires, expiring].hash
     end
 
     # Builds the object from hash
@@ -362,18 +382,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -383,10 +405,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

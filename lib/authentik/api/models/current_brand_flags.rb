@@ -12,14 +12,10 @@ module Authentik::Api
     # Upon successful authentication, re-start authentication in other open tabs.
     attr_accessor :flows_continuous_login
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'flows_continuous_login' => :'flows_continuous_login'
       }
     end
 
@@ -36,8 +32,7 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'flows_continuous_login' => :'Boolean'
       }
     end
 
@@ -45,6 +40,16 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -68,12 +73,6 @@ module Authentik::Api
       else
         self.flows_continuous_login = nil
       end
-
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
-      else
-        self.flows_refresh_others = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -85,10 +84,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -97,7 +92,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
       true
     end
 
@@ -111,23 +105,12 @@ module Authentik::Api
       @flows_continuous_login = flows_continuous_login
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
-      end
-
-      @flows_refresh_others = flows_refresh_others
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          flows_continuous_login == o.flows_continuous_login
     end
 
     # @see the `==` method
@@ -139,7 +122,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flows_continuous_login, flows_refresh_others].hash
+      [flows_continuous_login].hash
     end
 
     # Builds the object from hash
@@ -148,18 +131,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -169,10 +154,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

@@ -92,6 +92,8 @@ describe 'TasksApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :actor_name 
   # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+  # @option opts [String] :message_id 
+  # @option opts [Array<String>] :message_id__in Multiple values may be separated by commas.
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.

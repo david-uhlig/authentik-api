@@ -16,11 +16,12 @@
 | **session_valid_not_on_or_after** | **String** | Session not valid on or after current time + this value (Format: hours&#x3D;1;minutes&#x3D;2;seconds&#x3D;3). | [optional] |
 | **name_id_mapping** | **String** | Configure how the NameID value will be created. When left empty, the NameIDPolicy of the incoming request will be considered | [optional] |
 | **authn_context_class_ref_mapping** | **String** | Configure how the AuthnContextClassRef value will be created. When left empty, the AuthnContextClassRef will be set based on which authentication methods the user used to authenticate. | [optional] |
-| **saml_version** | [**SamlVersionEnum**](SamlVersionEnum.md) | SAML assertion version to issue in the security token. Microsoft Entra ID and classic ADFS-style relying parties typically require SAML 1.1. | [optional] |
+| **saml_version** | [**WSFedSAMLVersionEnum**](WSFedSAMLVersionEnum.md) | SAML assertion version to issue in the security token. Microsoft Entra ID and classic ADFS-style relying parties typically require SAML 1.1. | [optional] |
 | **digest_algorithm** | [**DigestAlgorithmEnum**](DigestAlgorithmEnum.md) |  | [optional] |
 | **signature_algorithm** | [**SignatureAlgorithmEnum**](SignatureAlgorithmEnum.md) |  | [optional] |
 | **signing_kp** | **String** | Keypair used to sign outgoing Responses going to the Service Provider. | [optional] |
 | **encryption_kp** | **String** | When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key. | [optional] |
+| **encryption_algorithm** | [**EncryptionAlgorithmEnum**](EncryptionAlgorithmEnum.md) | Block cipher used to encrypt the assertion. | [optional] |
 | **sign_assertion** | **Boolean** |  | [optional] |
 | **sign_logout_request** | **Boolean** |  | [optional] |
 | **default_name_id_policy** | [**SAMLNameIDPolicyEnum**](SAMLNameIDPolicyEnum.md) |  | [optional] |
@@ -48,6 +49,7 @@ instance = Authentik::Api::WSFederationProviderRequest.new(
   signature_algorithm: null,
   signing_kp: null,
   encryption_kp: null,
+  encryption_algorithm: null,
   sign_assertion: null,
   sign_logout_request: null,
   default_name_id_policy: null

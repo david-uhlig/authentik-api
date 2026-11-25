@@ -13,11 +13,7 @@ module Authentik::Api
     # Get current version
     attr_accessor :version_current
 
-    # Get latest version from cache
     attr_accessor :version_latest
-
-    # Check if latest version is valid
-    attr_accessor :version_latest_valid
 
     # Get build hash, if version is not latest or released
     attr_accessor :build_hash
@@ -33,7 +29,6 @@ module Authentik::Api
       {
         :'version_current' => :'version_current',
         :'version_latest' => :'version_latest',
-        :'version_latest_valid' => :'version_latest_valid',
         :'build_hash' => :'build_hash',
         :'outdated' => :'outdated',
         :'outpost_outdated' => :'outpost_outdated'
@@ -54,8 +49,7 @@ module Authentik::Api
     def self.openapi_types
       {
         :'version_current' => :'String',
-        :'version_latest' => :'String',
-        :'version_latest_valid' => :'Boolean',
+        :'version_latest' => :'UpdateVersionInfo',
         :'build_hash' => :'String',
         :'outdated' => :'Boolean',
         :'outpost_outdated' => :'Boolean'
@@ -66,6 +60,16 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -94,12 +98,6 @@ module Authentik::Api
         self.version_latest = attributes[:'version_latest']
       else
         self.version_latest = nil
-      end
-
-      if attributes.key?(:'version_latest_valid')
-        self.version_latest_valid = attributes[:'version_latest_valid']
-      else
-        self.version_latest_valid = nil
       end
 
       if attributes.key?(:'build_hash')
@@ -134,10 +132,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "version_latest", version_latest cannot be nil.')
       end
 
-      if @version_latest_valid.nil?
-        invalid_properties.push('invalid value for "version_latest_valid", version_latest_valid cannot be nil.')
-      end
-
       if @build_hash.nil?
         invalid_properties.push('invalid value for "build_hash", build_hash cannot be nil.')
       end
@@ -159,7 +153,6 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @version_current.nil?
       return false if @version_latest.nil?
-      return false if @version_latest_valid.nil?
       return false if @build_hash.nil?
       return false if @outdated.nil?
       return false if @outpost_outdated.nil?
@@ -184,16 +177,6 @@ module Authentik::Api
       end
 
       @version_latest = version_latest
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] version_latest_valid Value to be assigned
-    def version_latest_valid=(version_latest_valid)
-      if version_latest_valid.nil?
-        fail ArgumentError, 'version_latest_valid cannot be nil'
-      end
-
-      @version_latest_valid = version_latest_valid
     end
 
     # Custom attribute writer method with validation
@@ -233,7 +216,6 @@ module Authentik::Api
       self.class == o.class &&
           version_current == o.version_current &&
           version_latest == o.version_latest &&
-          version_latest_valid == o.version_latest_valid &&
           build_hash == o.build_hash &&
           outdated == o.outdated &&
           outpost_outdated == o.outpost_outdated
@@ -248,7 +230,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [version_current, version_latest, version_latest_valid, build_hash, outdated, outpost_outdated].hash
+      [version_current, version_latest, build_hash, outdated, outpost_outdated].hash
     end
 
     # Builds the object from hash
@@ -257,18 +239,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -278,10 +262,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

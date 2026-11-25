@@ -88,6 +88,9 @@ module Authentik::Api
     # When selected, incoming assertions are encrypted by the IdP using the public key of the encryption keypair. The assertion is decrypted by the SP using the the private key.
     attr_accessor :encryption_kp
 
+    # Block cipher used to encrypt the assertion.
+    attr_accessor :encryption_algorithm
+
     attr_accessor :sign_assertion
 
     attr_accessor :sign_response
@@ -95,6 +98,9 @@ module Authentik::Api
     attr_accessor :sign_logout_request
 
     attr_accessor :sign_logout_response
+
+    # When enabled, the ForceAuthn attribute set by the Service Provider on an AuthnRequest is ignored and an existing session is used. When disabled, ForceAuthn requires the user to re-authenticate.
+    attr_accessor :ignore_force_authn
 
     # This determines how authentik sends the response back to the Service Provider.
     attr_accessor :sp_binding
@@ -109,6 +115,9 @@ module Authentik::Api
     attr_accessor :default_relay_state
 
     attr_accessor :default_name_id_policy
+
+    # OAuth2 providers which can exchange their JWTs for a SAML Response of this provider via token exchange.
+    attr_accessor :jwt_federation_providers
 
     # Get metadata download URL
     attr_accessor :url_download_metadata
@@ -190,15 +199,18 @@ module Authentik::Api
         :'signing_kp' => :'signing_kp',
         :'verification_kp' => :'verification_kp',
         :'encryption_kp' => :'encryption_kp',
+        :'encryption_algorithm' => :'encryption_algorithm',
         :'sign_assertion' => :'sign_assertion',
         :'sign_response' => :'sign_response',
         :'sign_logout_request' => :'sign_logout_request',
         :'sign_logout_response' => :'sign_logout_response',
+        :'ignore_force_authn' => :'ignore_force_authn',
         :'sp_binding' => :'sp_binding',
         :'sls_binding' => :'sls_binding',
         :'logout_method' => :'logout_method',
         :'default_relay_state' => :'default_relay_state',
         :'default_name_id_policy' => :'default_name_id_policy',
+        :'jwt_federation_providers' => :'jwt_federation_providers',
         :'url_download_metadata' => :'url_download_metadata',
         :'url_issuer' => :'url_issuer',
         :'url_unified' => :'url_unified',
@@ -252,15 +264,18 @@ module Authentik::Api
         :'signing_kp' => :'String',
         :'verification_kp' => :'String',
         :'encryption_kp' => :'String',
+        :'encryption_algorithm' => :'EncryptionAlgorithmEnum',
         :'sign_assertion' => :'Boolean',
         :'sign_response' => :'Boolean',
         :'sign_logout_request' => :'Boolean',
         :'sign_logout_response' => :'Boolean',
+        :'ignore_force_authn' => :'Boolean',
         :'sp_binding' => :'SAMLBindingsEnum',
         :'sls_binding' => :'SAMLBindingsEnum',
         :'logout_method' => :'SAMLLogoutMethods',
         :'default_relay_state' => :'String',
         :'default_name_id_policy' => :'SAMLNameIDPolicyEnum',
+        :'jwt_federation_providers' => :'Array<Integer>',
         :'url_download_metadata' => :'String',
         :'url_issuer' => :'String',
         :'url_unified' => :'String',
@@ -287,6 +302,16 @@ module Authentik::Api
         :'verification_kp',
         :'encryption_kp',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -445,6 +470,10 @@ module Authentik::Api
         self.encryption_kp = attributes[:'encryption_kp']
       end
 
+      if attributes.key?(:'encryption_algorithm')
+        self.encryption_algorithm = attributes[:'encryption_algorithm']
+      end
+
       if attributes.key?(:'sign_assertion')
         self.sign_assertion = attributes[:'sign_assertion']
       end
@@ -459,6 +488,10 @@ module Authentik::Api
 
       if attributes.key?(:'sign_logout_response')
         self.sign_logout_response = attributes[:'sign_logout_response']
+      end
+
+      if attributes.key?(:'ignore_force_authn')
+        self.ignore_force_authn = attributes[:'ignore_force_authn']
       end
 
       if attributes.key?(:'sp_binding')
@@ -479,6 +512,12 @@ module Authentik::Api
 
       if attributes.key?(:'default_name_id_policy')
         self.default_name_id_policy = attributes[:'default_name_id_policy']
+      end
+
+      if attributes.key?(:'jwt_federation_providers')
+        if (value = attributes[:'jwt_federation_providers']).is_a?(Array)
+          self.jwt_federation_providers = value
+        end
       end
 
       if attributes.key?(:'url_download_metadata')
@@ -854,15 +893,18 @@ module Authentik::Api
           signing_kp == o.signing_kp &&
           verification_kp == o.verification_kp &&
           encryption_kp == o.encryption_kp &&
+          encryption_algorithm == o.encryption_algorithm &&
           sign_assertion == o.sign_assertion &&
           sign_response == o.sign_response &&
           sign_logout_request == o.sign_logout_request &&
           sign_logout_response == o.sign_logout_response &&
+          ignore_force_authn == o.ignore_force_authn &&
           sp_binding == o.sp_binding &&
           sls_binding == o.sls_binding &&
           logout_method == o.logout_method &&
           default_relay_state == o.default_relay_state &&
           default_name_id_policy == o.default_name_id_policy &&
+          jwt_federation_providers == o.jwt_federation_providers &&
           url_download_metadata == o.url_download_metadata &&
           url_issuer == o.url_issuer &&
           url_unified == o.url_unified &&
@@ -883,7 +925,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, sign_assertion, sign_response, sign_logout_request, sign_logout_response, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
+      [pk, name, authentication_flow, authorization_flow, invalidation_flow, property_mappings, component, assigned_application_slug, assigned_application_name, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, acs_url, sls_url, audience, issuer_override, assertion_valid_not_before, assertion_valid_not_on_or_after, session_valid_not_on_or_after, name_id_mapping, authn_context_class_ref_mapping, digest_algorithm, signature_algorithm, signing_kp, verification_kp, encryption_kp, encryption_algorithm, sign_assertion, sign_response, sign_logout_request, sign_logout_response, ignore_force_authn, sp_binding, sls_binding, logout_method, default_relay_state, default_name_id_policy, jwt_federation_providers, url_download_metadata, url_issuer, url_unified, url_unified_init, url_sso_post, url_sso_redirect, url_sso_init, url_slo_post, url_slo_redirect].hash
     end
 
     # Builds the object from hash
@@ -892,18 +934,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -913,10 +957,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

@@ -71,6 +71,9 @@ module Authentik::Api
 
     attr_accessor :bind_cn
 
+    # Authentication method used for LDAP synchronization and writeback.
+    attr_accessor :service_bind_method
+
     attr_accessor :start_tls
 
     attr_accessor :sni
@@ -174,6 +177,7 @@ module Authentik::Api
         :'peer_certificate' => :'peer_certificate',
         :'client_certificate' => :'client_certificate',
         :'bind_cn' => :'bind_cn',
+        :'service_bind_method' => :'service_bind_method',
         :'start_tls' => :'start_tls',
         :'sni' => :'sni',
         :'base_dn' => :'base_dn',
@@ -234,6 +238,7 @@ module Authentik::Api
         :'peer_certificate' => :'String',
         :'client_certificate' => :'String',
         :'bind_cn' => :'String',
+        :'service_bind_method' => :'ServiceBindMethodEnum',
         :'start_tls' => :'Boolean',
         :'sni' => :'Boolean',
         :'base_dn' => :'String',
@@ -269,6 +274,16 @@ module Authentik::Api
         :'sync_parent_group',
         :'connectivity',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -407,6 +422,10 @@ module Authentik::Api
 
       if attributes.key?(:'bind_cn')
         self.bind_cn = attributes[:'bind_cn']
+      end
+
+      if attributes.key?(:'service_bind_method')
+        self.service_bind_method = attributes[:'service_bind_method']
       end
 
       if attributes.key?(:'start_tls')
@@ -701,6 +720,7 @@ module Authentik::Api
           peer_certificate == o.peer_certificate &&
           client_certificate == o.client_certificate &&
           bind_cn == o.bind_cn &&
+          service_bind_method == o.service_bind_method &&
           start_tls == o.start_tls &&
           sni == o.sni &&
           base_dn == o.base_dn &&
@@ -732,7 +752,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, server_uri, peer_certificate, client_certificate, bind_cn, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode, sync_group_hierarchy].hash
+      [pk, name, slug, enabled, promoted, authentication_flow, enrollment_flow, user_property_mappings, group_property_mappings, component, verbose_name, verbose_name_plural, meta_model_name, policy_engine_mode, user_matching_mode, managed, user_path_template, icon, icon_url, icon_themed_urls, server_uri, peer_certificate, client_certificate, bind_cn, service_bind_method, start_tls, sni, base_dn, additional_user_dn, additional_group_dn, user_object_filter, group_object_filter, group_membership_field, user_membership_attribute, object_uniqueness_field, password_login_update_internal_password, sync_users, sync_users_password, sync_groups, sync_parent_group, connectivity, lookup_groups_from_user, delete_not_found_objects, sync_outgoing_trigger_mode, sync_group_hierarchy].hash
     end
 
     # Builds the object from hash
@@ -741,18 +761,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -762,10 +784,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

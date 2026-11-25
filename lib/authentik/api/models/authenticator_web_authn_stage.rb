@@ -41,6 +41,9 @@ module Authentik::Api
 
     attr_accessor :hints
 
+    # Additional trusted origins for WebAuthn registration. Matched exactly.
+    attr_accessor :additional_accepted_origins
+
     attr_accessor :device_type_restrictions
 
     attr_accessor :device_type_restrictions_obj
@@ -85,6 +88,7 @@ module Authentik::Api
         :'authenticator_attachment' => :'authenticator_attachment',
         :'resident_key_requirement' => :'resident_key_requirement',
         :'hints' => :'hints',
+        :'additional_accepted_origins' => :'additional_accepted_origins',
         :'device_type_restrictions' => :'device_type_restrictions',
         :'device_type_restrictions_obj' => :'device_type_restrictions_obj',
         :'max_attempts' => :'max_attempts'
@@ -117,6 +121,7 @@ module Authentik::Api
         :'authenticator_attachment' => :'AuthenticatorAttachmentEnum',
         :'resident_key_requirement' => :'UserVerificationEnum',
         :'hints' => :'Array<WebAuthnHintEnum>',
+        :'additional_accepted_origins' => :'Array<String>',
         :'device_type_restrictions' => :'Array<String>',
         :'device_type_restrictions_obj' => :'Array<WebAuthnDeviceType>',
         :'max_attempts' => :'Integer'
@@ -129,6 +134,16 @@ module Authentik::Api
         :'configure_flow',
         :'authenticator_attachment',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -214,6 +229,12 @@ module Authentik::Api
       if attributes.key?(:'hints')
         if (value = attributes[:'hints']).is_a?(Array)
           self.hints = value
+        end
+      end
+
+      if attributes.key?(:'additional_accepted_origins')
+        if (value = attributes[:'additional_accepted_origins']).is_a?(Array)
+          self.additional_accepted_origins = value
         end
       end
 
@@ -417,6 +438,7 @@ module Authentik::Api
           authenticator_attachment == o.authenticator_attachment &&
           resident_key_requirement == o.resident_key_requirement &&
           hints == o.hints &&
+          additional_accepted_origins == o.additional_accepted_origins &&
           device_type_restrictions == o.device_type_restrictions &&
           device_type_restrictions_obj == o.device_type_restrictions_obj &&
           max_attempts == o.max_attempts
@@ -431,7 +453,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, device_type_restrictions, device_type_restrictions_obj, max_attempts].hash
+      [pk, name, component, verbose_name, verbose_name_plural, meta_model_name, flow_set, configure_flow, friendly_name, user_verification, authenticator_attachment, resident_key_requirement, hints, additional_accepted_origins, device_type_restrictions, device_type_restrictions_obj, max_attempts].hash
     end
 
     # Builds the object from hash
@@ -440,18 +462,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -461,10 +485,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

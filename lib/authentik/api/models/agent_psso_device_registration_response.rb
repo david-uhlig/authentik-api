@@ -22,6 +22,8 @@ module Authentik::Api
 
     attr_accessor :nonce_endpoint
 
+    attr_accessor :authorization_endpoint
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -30,7 +32,8 @@ module Authentik::Api
         :'token_endpoint' => :'token_endpoint',
         :'jwks_endpoint' => :'jwks_endpoint',
         :'audience' => :'audience',
-        :'nonce_endpoint' => :'nonce_endpoint'
+        :'nonce_endpoint' => :'nonce_endpoint',
+        :'authorization_endpoint' => :'authorization_endpoint'
       }
     end
 
@@ -52,7 +55,8 @@ module Authentik::Api
         :'token_endpoint' => :'String',
         :'jwks_endpoint' => :'String',
         :'audience' => :'String',
-        :'nonce_endpoint' => :'String'
+        :'nonce_endpoint' => :'String',
+        :'authorization_endpoint' => :'String'
       }
     end
 
@@ -60,6 +64,16 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -113,6 +127,12 @@ module Authentik::Api
       else
         self.nonce_endpoint = nil
       end
+
+      if attributes.key?(:'authorization_endpoint')
+        self.authorization_endpoint = attributes[:'authorization_endpoint']
+      else
+        self.authorization_endpoint = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -144,6 +164,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "nonce_endpoint", nonce_endpoint cannot be nil.')
       end
 
+      if @authorization_endpoint.nil?
+        invalid_properties.push('invalid value for "authorization_endpoint", authorization_endpoint cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -157,6 +181,7 @@ module Authentik::Api
       return false if @jwks_endpoint.nil?
       return false if @audience.nil?
       return false if @nonce_endpoint.nil?
+      return false if @authorization_endpoint.nil?
       true
     end
 
@@ -220,6 +245,16 @@ module Authentik::Api
       @nonce_endpoint = nonce_endpoint
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] authorization_endpoint Value to be assigned
+    def authorization_endpoint=(authorization_endpoint)
+      if authorization_endpoint.nil?
+        fail ArgumentError, 'authorization_endpoint cannot be nil'
+      end
+
+      @authorization_endpoint = authorization_endpoint
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -230,7 +265,8 @@ module Authentik::Api
           token_endpoint == o.token_endpoint &&
           jwks_endpoint == o.jwks_endpoint &&
           audience == o.audience &&
-          nonce_endpoint == o.nonce_endpoint
+          nonce_endpoint == o.nonce_endpoint &&
+          authorization_endpoint == o.authorization_endpoint
     end
 
     # @see the `==` method
@@ -242,7 +278,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [client_id, issuer, token_endpoint, jwks_endpoint, audience, nonce_endpoint].hash
+      [client_id, issuer, token_endpoint, jwks_endpoint, audience, nonce_endpoint, authorization_endpoint].hash
     end
 
     # Builds the object from hash
@@ -251,18 +287,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -272,10 +310,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

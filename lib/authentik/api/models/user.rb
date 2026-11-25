@@ -51,6 +51,11 @@ module Authentik::Api
 
     attr_accessor :password_change_date
 
+    # Whether the user's password currently refuses authentication.
+    attr_accessor :password_locked
+
+    attr_accessor :password_device
+
     attr_accessor :last_updated
 
     class EnumAttributeValidator
@@ -97,6 +102,8 @@ module Authentik::Api
         :'type' => :'type',
         :'uuid' => :'uuid',
         :'password_change_date' => :'password_change_date',
+        :'password_locked' => :'password_locked',
+        :'password_device' => :'password_device',
         :'last_updated' => :'last_updated'
       }
     end
@@ -133,6 +140,8 @@ module Authentik::Api
         :'type' => :'UserTypeEnum',
         :'uuid' => :'String',
         :'password_change_date' => :'Time',
+        :'password_locked' => :'Boolean',
+        :'password_device' => :'Integer',
         :'last_updated' => :'Time'
       }
     end
@@ -143,7 +152,18 @@ module Authentik::Api
         :'last_login',
         :'groups_obj',
         :'roles_obj',
+        :'password_device',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -270,6 +290,18 @@ module Authentik::Api
         self.password_change_date = nil
       end
 
+      if attributes.key?(:'password_locked')
+        self.password_locked = attributes[:'password_locked']
+      else
+        self.password_locked = nil
+      end
+
+      if attributes.key?(:'password_device')
+        self.password_device = attributes[:'password_device']
+      else
+        self.password_device = nil
+      end
+
       if attributes.key?(:'last_updated')
         self.last_updated = attributes[:'last_updated']
       else
@@ -326,6 +358,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "password_change_date", password_change_date cannot be nil.')
       end
 
+      if @password_locked.nil?
+        invalid_properties.push('invalid value for "password_locked", password_locked cannot be nil.')
+      end
+
       if @last_updated.nil?
         invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
       end
@@ -348,6 +384,7 @@ module Authentik::Api
       return false if @uid.nil?
       return false if @uuid.nil?
       return false if @password_change_date.nil?
+      return false if @password_locked.nil?
       return false if @last_updated.nil?
       true
     end
@@ -461,6 +498,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] password_locked Value to be assigned
+    def password_locked=(password_locked)
+      if password_locked.nil?
+        fail ArgumentError, 'password_locked cannot be nil'
+      end
+
+      @password_locked = password_locked
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] last_updated Value to be assigned
     def last_updated=(last_updated)
       if last_updated.nil?
@@ -494,6 +541,8 @@ module Authentik::Api
           type == o.type &&
           uuid == o.uuid &&
           password_change_date == o.password_change_date &&
+          password_locked == o.password_locked &&
+          password_device == o.password_device &&
           last_updated == o.last_updated
     end
 
@@ -506,7 +555,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, roles, roles_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, last_updated].hash
+      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, roles, roles_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, password_locked, password_device, last_updated].hash
     end
 
     # Builds the object from hash
@@ -515,18 +564,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -536,10 +587,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

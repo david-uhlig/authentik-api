@@ -16,9 +16,9 @@ module Authentik::Api
 
     attr_accessor :provider_obj
 
-    attr_accessor :endpoint
+    attr_accessor :device
 
-    attr_accessor :endpoint_obj
+    attr_accessor :device_name
 
     attr_accessor :user
 
@@ -28,8 +28,8 @@ module Authentik::Api
         :'pk' => :'pk',
         :'provider' => :'provider',
         :'provider_obj' => :'provider_obj',
-        :'endpoint' => :'endpoint',
-        :'endpoint_obj' => :'endpoint_obj',
+        :'device' => :'device',
+        :'device_name' => :'device_name',
         :'user' => :'user'
       }
     end
@@ -50,8 +50,8 @@ module Authentik::Api
         :'pk' => :'String',
         :'provider' => :'Integer',
         :'provider_obj' => :'RACProvider',
-        :'endpoint' => :'String',
-        :'endpoint_obj' => :'Endpoint',
+        :'device' => :'String',
+        :'device_name' => :'String',
         :'user' => :'PartialUser'
       }
     end
@@ -60,6 +60,16 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -94,16 +104,16 @@ module Authentik::Api
         self.provider_obj = nil
       end
 
-      if attributes.key?(:'endpoint')
-        self.endpoint = attributes[:'endpoint']
+      if attributes.key?(:'device')
+        self.device = attributes[:'device']
       else
-        self.endpoint = nil
+        self.device = nil
       end
 
-      if attributes.key?(:'endpoint_obj')
-        self.endpoint_obj = attributes[:'endpoint_obj']
+      if attributes.key?(:'device_name')
+        self.device_name = attributes[:'device_name']
       else
-        self.endpoint_obj = nil
+        self.device_name = nil
       end
 
       if attributes.key?(:'user')
@@ -126,12 +136,12 @@ module Authentik::Api
         invalid_properties.push('invalid value for "provider_obj", provider_obj cannot be nil.')
       end
 
-      if @endpoint.nil?
-        invalid_properties.push('invalid value for "endpoint", endpoint cannot be nil.')
+      if @device.nil?
+        invalid_properties.push('invalid value for "device", device cannot be nil.')
       end
 
-      if @endpoint_obj.nil?
-        invalid_properties.push('invalid value for "endpoint_obj", endpoint_obj cannot be nil.')
+      if @device_name.nil?
+        invalid_properties.push('invalid value for "device_name", device_name cannot be nil.')
       end
 
       if @user.nil?
@@ -147,8 +157,8 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @provider.nil?
       return false if @provider_obj.nil?
-      return false if @endpoint.nil?
-      return false if @endpoint_obj.nil?
+      return false if @device.nil?
+      return false if @device_name.nil?
       return false if @user.nil?
       true
     end
@@ -174,23 +184,23 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] endpoint Value to be assigned
-    def endpoint=(endpoint)
-      if endpoint.nil?
-        fail ArgumentError, 'endpoint cannot be nil'
+    # @param [Object] device Value to be assigned
+    def device=(device)
+      if device.nil?
+        fail ArgumentError, 'device cannot be nil'
       end
 
-      @endpoint = endpoint
+      @device = device
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] endpoint_obj Value to be assigned
-    def endpoint_obj=(endpoint_obj)
-      if endpoint_obj.nil?
-        fail ArgumentError, 'endpoint_obj cannot be nil'
+    # @param [Object] device_name Value to be assigned
+    def device_name=(device_name)
+      if device_name.nil?
+        fail ArgumentError, 'device_name cannot be nil'
       end
 
-      @endpoint_obj = endpoint_obj
+      @device_name = device_name
     end
 
     # Custom attribute writer method with validation
@@ -211,8 +221,8 @@ module Authentik::Api
           pk == o.pk &&
           provider == o.provider &&
           provider_obj == o.provider_obj &&
-          endpoint == o.endpoint &&
-          endpoint_obj == o.endpoint_obj &&
+          device == o.device &&
+          device_name == o.device_name &&
           user == o.user
     end
 
@@ -225,7 +235,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, provider, provider_obj, endpoint, endpoint_obj, user].hash
+      [pk, provider, provider_obj, device, device_name, user].hash
     end
 
     # Builds the object from hash
@@ -234,18 +244,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -255,10 +267,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 

@@ -13,9 +13,10 @@ module Authentik::Api
     GOAUTHENTIK_IO_PLATFORM = "goauthentik.io/platform".freeze
     FLEETDM_COM = "fleetdm.com".freeze
     CHROME_GOOGLE_COM = "chrome.google.com".freeze
+    INTUNE_MICROSOFT_COM = "intune.microsoft.com".freeze
 
     def self.all_vars
-      @all_vars ||= [GOAUTHENTIK_IO_MERGED, GOAUTHENTIK_IO_PLATFORM, FLEETDM_COM, CHROME_GOOGLE_COM].freeze
+      @all_vars ||= [GOAUTHENTIK_IO_MERGED, GOAUTHENTIK_IO_PLATFORM, FLEETDM_COM, CHROME_GOOGLE_COM, INTUNE_MICROSOFT_COM].freeze
     end
 
     # Builds the enum from string

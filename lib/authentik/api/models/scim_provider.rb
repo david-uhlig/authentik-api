@@ -44,6 +44,9 @@ module Authentik::Api
 
     attr_accessor :auth_mode
 
+    # Username used for Basic authentication
+    attr_accessor :auth_basic_user
+
     # OAuth Source used for authentication
     attr_accessor :auth_oauth
 
@@ -119,6 +122,7 @@ module Authentik::Api
         :'url' => :'url',
         :'verify_certificates' => :'verify_certificates',
         :'auth_mode' => :'auth_mode',
+        :'auth_basic_user' => :'auth_basic_user',
         :'auth_oauth' => :'auth_oauth',
         :'auth_oauth_params' => :'auth_oauth_params',
         :'auth_oauth_token_last_updated' => :'auth_oauth_token_last_updated',
@@ -162,6 +166,7 @@ module Authentik::Api
         :'url' => :'String',
         :'verify_certificates' => :'Boolean',
         :'auth_mode' => :'SCIMAuthenticationModeEnum',
+        :'auth_basic_user' => :'String',
         :'auth_oauth' => :'String',
         :'auth_oauth_params' => :'Hash<String, Object>',
         :'auth_oauth_token_last_updated' => :'Time',
@@ -190,6 +195,16 @@ module Authentik::Api
         :'auth_oauth_url_callback',
         :'auth_oauth_url_start',
       ])
+    end
+
+    # Returns attribute type mapping
+    def self.acceptable_openapi_types
+      openapi_types
+    end
+
+    # Returns the nullable attributes
+    def self.acceptable_openapi_nullable
+      openapi_nullable
     end
 
     # Initializes the object
@@ -280,6 +295,10 @@ module Authentik::Api
 
       if attributes.key?(:'auth_mode')
         self.auth_mode = attributes[:'auth_mode']
+      end
+
+      if attributes.key?(:'auth_basic_user')
+        self.auth_basic_user = attributes[:'auth_basic_user']
       end
 
       if attributes.key?(:'auth_oauth')
@@ -517,6 +536,7 @@ module Authentik::Api
           url == o.url &&
           verify_certificates == o.verify_certificates &&
           auth_mode == o.auth_mode &&
+          auth_basic_user == o.auth_basic_user &&
           auth_oauth == o.auth_oauth &&
           auth_oauth_params == o.auth_oauth_params &&
           auth_oauth_token_last_updated == o.auth_oauth_token_last_updated &&
@@ -542,7 +562,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, auth_mode, auth_oauth, auth_oauth_params, auth_oauth_token_last_updated, auth_oauth_token_expires, auth_oauth_url_callback, auth_oauth_url_start, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, discovery_enabled, group_filters, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, url, verify_certificates, auth_mode, auth_basic_user, auth_oauth, auth_oauth_params, auth_oauth_token_last_updated, auth_oauth_token_expires, auth_oauth_url_callback, auth_oauth_url_start, compatibility_mode, service_provider_config_cache_timeout, exclude_users_service_account, sync_page_size, sync_page_timeout, discovery_enabled, group_filters, dry_run].hash
     end
 
     # Builds the object from hash
@@ -551,18 +571,20 @@ module Authentik::Api
     def self.build_from_hash(attributes)
       return nil unless attributes.is_a?(Hash)
       attributes = attributes.transform_keys(&:to_sym)
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      map = acceptable_attribute_map
       transformed_hash = {}
-      openapi_types.each_pair do |key, type|
-        if attributes.key?(attribute_map[key]) && attributes[attribute_map[key]].nil?
+      acceptable_openapi_types.each_pair do |key, type|
+        if attributes.key?(map[key]) && attributes[map[key]].nil?
           transformed_hash["#{key}"] = nil
         elsif type =~ /\AArray<(.*)>/i
           # check to ensure the input is an array given that the attribute
           # is documented as an array but the input is not
-          if attributes[attribute_map[key]].is_a?(Array)
-            transformed_hash["#{key}"] = attributes[attribute_map[key]].map { |v| _deserialize($1, v) }
+          if attributes[map[key]].is_a?(Array)
+            transformed_hash["#{key}"] = attributes[map[key]].map { |v| _deserialize($1, v) }
           end
-        elsif !attributes[attribute_map[key]].nil?
-          transformed_hash["#{key}"] = _deserialize(type, attributes[attribute_map[key]])
+        elsif !attributes[map[key]].nil?
+          transformed_hash["#{key}"] = _deserialize(type, attributes[map[key]])
         end
       end
       new(transformed_hash)
@@ -572,10 +594,11 @@ module Authentik::Api
     # @return [Hash] Returns the object in the form of hash
     def to_hash
       hash = {}
-      self.class.attribute_map.each_pair do |attr, param|
+      # include attributes inherited from allOf parents (the nearest declaration wins)
+      self.class.acceptable_attribute_map.each_pair do |attr, param|
         value = self.send(attr)
         if value.nil?
-          is_nullable = self.class.openapi_nullable.include?(attr)
+          is_nullable = self.class.acceptable_openapi_nullable.include?(attr)
           next if !is_nullable || (is_nullable && !instance_variable_defined?(:"@#{attr}"))
         end
 
