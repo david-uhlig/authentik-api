@@ -12,14 +12,10 @@ module Authentik::Api
     # Upon successful authentication, re-start authentication in other open tabs.
     attr_accessor :flows_continuous_login
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
-
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'flows_continuous_login' => :'flows_continuous_login'
       }
     end
 
@@ -36,8 +32,7 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'flows_continuous_login' => :'Boolean'
       }
     end
 
@@ -78,12 +73,6 @@ module Authentik::Api
       else
         self.flows_continuous_login = nil
       end
-
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
-      else
-        self.flows_refresh_others = nil
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -95,10 +84,6 @@ module Authentik::Api
         invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -107,7 +92,6 @@ module Authentik::Api
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
       true
     end
 
@@ -121,23 +105,12 @@ module Authentik::Api
       @flows_continuous_login = flows_continuous_login
     end
 
-    # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
-      end
-
-      @flows_refresh_others = flows_refresh_others
-    end
-
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          flows_continuous_login == o.flows_continuous_login
     end
 
     # @see the `==` method
@@ -149,7 +122,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [flows_continuous_login, flows_refresh_others].hash
+      [flows_continuous_login].hash
     end
 
     # Builds the object from hash

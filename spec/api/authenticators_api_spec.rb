@@ -732,6 +732,28 @@ describe 'AuthenticatorsApi' do
     end
   end
 
+  # unit tests for authenticators_password_lock_create
+  # Prevent a password authenticator from authenticating.
+  # @param id A unique integer value identifying this Password Device.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'authenticators_password_lock_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for authenticators_password_unlock_create
+  # Allow a locked password authenticator to authenticate again.
+  # @param id A unique integer value identifying this Password Device.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'authenticators_password_unlock_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for authenticators_sms_destroy
   # Viewset for sms authenticator devices
   # @param id A unique integer value identifying this SMS Device.

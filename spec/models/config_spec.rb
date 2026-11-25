@@ -51,4 +51,16 @@ describe Authentik::Api::Config do
     end
   end
 
+  describe 'test attribute "cache_timeout_brands"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "cache_timeout_system_settings"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
 end

@@ -8,67 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # Endpoint Serializer
+  # Base serializer class which doesn't implement create/update methods
   class Endpoint < ApiModelBase
-    attr_accessor :pk
+    attr_accessor :id
 
-    attr_accessor :name
-
-    attr_accessor :provider
-
-    attr_accessor :provider_obj
-
-    attr_accessor :protocol
-
-    attr_accessor :host
-
-    attr_accessor :settings
-
-    attr_accessor :property_mappings
-
-    attr_accessor :auth_mode
-
-    # Build actual launch URL (the provider itself does not have one, just individual endpoints)
-    attr_accessor :launch_url
-
-    attr_accessor :maximum_connections
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
+    attr_accessor :functions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'pk' => :'pk',
-        :'name' => :'name',
-        :'provider' => :'provider',
-        :'provider_obj' => :'provider_obj',
-        :'protocol' => :'protocol',
-        :'host' => :'host',
-        :'settings' => :'settings',
-        :'property_mappings' => :'property_mappings',
-        :'auth_mode' => :'auth_mode',
-        :'launch_url' => :'launch_url',
-        :'maximum_connections' => :'maximum_connections'
+        :'id' => :'id',
+        :'functions' => :'functions'
       }
     end
 
@@ -85,24 +35,14 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'pk' => :'String',
-        :'name' => :'String',
-        :'provider' => :'Integer',
-        :'provider_obj' => :'RACProvider',
-        :'protocol' => :'ProtocolEnum',
-        :'host' => :'String',
-        :'settings' => :'Hash<String, Object>',
-        :'property_mappings' => :'Array<String>',
-        :'auth_mode' => :'EndpointAuthModeEnum',
-        :'launch_url' => :'String',
-        :'maximum_connections' => :'Integer'
+        :'id' => :'String',
+        :'functions' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'launch_url',
       ])
     end
 
@@ -132,68 +72,18 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'pk')
-        self.pk = attributes[:'pk']
+      if attributes.key?(:'id')
+        self.id = attributes[:'id']
       else
-        self.pk = nil
+        self.id = nil
       end
 
-      if attributes.key?(:'name')
-        self.name = attributes[:'name']
-      else
-        self.name = nil
-      end
-
-      if attributes.key?(:'provider')
-        self.provider = attributes[:'provider']
-      else
-        self.provider = nil
-      end
-
-      if attributes.key?(:'provider_obj')
-        self.provider_obj = attributes[:'provider_obj']
-      else
-        self.provider_obj = nil
-      end
-
-      if attributes.key?(:'protocol')
-        self.protocol = attributes[:'protocol']
-      else
-        self.protocol = nil
-      end
-
-      if attributes.key?(:'host')
-        self.host = attributes[:'host']
-      else
-        self.host = nil
-      end
-
-      if attributes.key?(:'settings')
-        if (value = attributes[:'settings']).is_a?(Hash)
-          self.settings = value
+      if attributes.key?(:'functions')
+        if (value = attributes[:'functions']).is_a?(Array)
+          self.functions = value
         end
-      end
-
-      if attributes.key?(:'property_mappings')
-        if (value = attributes[:'property_mappings']).is_a?(Array)
-          self.property_mappings = value
-        end
-      end
-
-      if attributes.key?(:'auth_mode')
-        self.auth_mode = attributes[:'auth_mode']
       else
-        self.auth_mode = nil
-      end
-
-      if attributes.key?(:'launch_url')
-        self.launch_url = attributes[:'launch_url']
-      else
-        self.launch_url = nil
-      end
-
-      if attributes.key?(:'maximum_connections')
-        self.maximum_connections = attributes[:'maximum_connections']
+        self.functions = nil
       end
     end
 
@@ -202,40 +92,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @pk.nil?
-        invalid_properties.push('invalid value for "pk", pk cannot be nil.')
+      if @id.nil?
+        invalid_properties.push('invalid value for "id", id cannot be nil.')
       end
 
-      if @name.nil?
-        invalid_properties.push('invalid value for "name", name cannot be nil.')
-      end
-
-      if @provider.nil?
-        invalid_properties.push('invalid value for "provider", provider cannot be nil.')
-      end
-
-      if @provider_obj.nil?
-        invalid_properties.push('invalid value for "provider_obj", provider_obj cannot be nil.')
-      end
-
-      if @protocol.nil?
-        invalid_properties.push('invalid value for "protocol", protocol cannot be nil.')
-      end
-
-      if @host.nil?
-        invalid_properties.push('invalid value for "host", host cannot be nil.')
-      end
-
-      if @auth_mode.nil?
-        invalid_properties.push('invalid value for "auth_mode", auth_mode cannot be nil.')
-      end
-
-      if !@maximum_connections.nil? && @maximum_connections > 2147483647
-        invalid_properties.push('invalid value for "maximum_connections", must be smaller than or equal to 2147483647.')
-      end
-
-      if !@maximum_connections.nil? && @maximum_connections < -2147483648
-        invalid_properties.push('invalid value for "maximum_connections", must be greater than or equal to -2147483648.')
+      if @functions.nil?
+        invalid_properties.push('invalid value for "functions", functions cannot be nil.')
       end
 
       invalid_properties
@@ -245,104 +107,29 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @pk.nil?
-      return false if @name.nil?
-      return false if @provider.nil?
-      return false if @provider_obj.nil?
-      return false if @protocol.nil?
-      return false if @host.nil?
-      return false if @auth_mode.nil?
-      return false if !@maximum_connections.nil? && @maximum_connections > 2147483647
-      return false if !@maximum_connections.nil? && @maximum_connections < -2147483648
+      return false if @id.nil?
+      return false if @functions.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] pk Value to be assigned
-    def pk=(pk)
-      if pk.nil?
-        fail ArgumentError, 'pk cannot be nil'
+    # @param [Object] id Value to be assigned
+    def id=(id)
+      if id.nil?
+        fail ArgumentError, 'id cannot be nil'
       end
 
-      @pk = pk
+      @id = id
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] name Value to be assigned
-    def name=(name)
-      if name.nil?
-        fail ArgumentError, 'name cannot be nil'
+    # @param [Object] functions Value to be assigned
+    def functions=(functions)
+      if functions.nil?
+        fail ArgumentError, 'functions cannot be nil'
       end
 
-      @name = name
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] provider Value to be assigned
-    def provider=(provider)
-      if provider.nil?
-        fail ArgumentError, 'provider cannot be nil'
-      end
-
-      @provider = provider
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] provider_obj Value to be assigned
-    def provider_obj=(provider_obj)
-      if provider_obj.nil?
-        fail ArgumentError, 'provider_obj cannot be nil'
-      end
-
-      @provider_obj = provider_obj
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] protocol Value to be assigned
-    def protocol=(protocol)
-      if protocol.nil?
-        fail ArgumentError, 'protocol cannot be nil'
-      end
-
-      @protocol = protocol
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] host Value to be assigned
-    def host=(host)
-      if host.nil?
-        fail ArgumentError, 'host cannot be nil'
-      end
-
-      @host = host
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] auth_mode Value to be assigned
-    def auth_mode=(auth_mode)
-      if auth_mode.nil?
-        fail ArgumentError, 'auth_mode cannot be nil'
-      end
-
-      @auth_mode = auth_mode
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] maximum_connections Value to be assigned
-    def maximum_connections=(maximum_connections)
-      if maximum_connections.nil?
-        fail ArgumentError, 'maximum_connections cannot be nil'
-      end
-
-      if maximum_connections > 2147483647
-        fail ArgumentError, 'invalid value for "maximum_connections", must be smaller than or equal to 2147483647.'
-      end
-
-      if maximum_connections < -2147483648
-        fail ArgumentError, 'invalid value for "maximum_connections", must be greater than or equal to -2147483648.'
-      end
-
-      @maximum_connections = maximum_connections
+      @functions = functions
     end
 
     # Checks equality by comparing each attribute.
@@ -350,17 +137,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          pk == o.pk &&
-          name == o.name &&
-          provider == o.provider &&
-          provider_obj == o.provider_obj &&
-          protocol == o.protocol &&
-          host == o.host &&
-          settings == o.settings &&
-          property_mappings == o.property_mappings &&
-          auth_mode == o.auth_mode &&
-          launch_url == o.launch_url &&
-          maximum_connections == o.maximum_connections
+          id == o.id &&
+          functions == o.functions
     end
 
     # @see the `==` method
@@ -372,7 +150,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, provider, provider_obj, protocol, host, settings, property_mappings, auth_mode, launch_url, maximum_connections].hash
+      [id, functions].hash
     end
 
     # Builds the object from hash

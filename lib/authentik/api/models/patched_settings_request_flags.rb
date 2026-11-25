@@ -18,8 +18,8 @@ module Authentik::Api
     # Upon successful authentication, re-start authentication in other open tabs.
     attr_accessor :flows_continuous_login
 
-    # Refresh other tabs after successful authentication.
-    attr_accessor :flows_refresh_others
+    # Let permission checks decide API access. While enabled, every API request costs an additional database query.
+    attr_accessor :rbac_custom_permissions
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -27,7 +27,7 @@ module Authentik::Api
         :'core_default_app_access' => :'core_default_app_access',
         :'enterprise_audit_include_expanded_diff' => :'enterprise_audit_include_expanded_diff',
         :'flows_continuous_login' => :'flows_continuous_login',
-        :'flows_refresh_others' => :'flows_refresh_others'
+        :'rbac_custom_permissions' => :'rbac_custom_permissions'
       }
     end
 
@@ -47,7 +47,7 @@ module Authentik::Api
         :'core_default_app_access' => :'Boolean',
         :'enterprise_audit_include_expanded_diff' => :'Boolean',
         :'flows_continuous_login' => :'Boolean',
-        :'flows_refresh_others' => :'Boolean'
+        :'rbac_custom_permissions' => :'Boolean'
       }
     end
 
@@ -101,10 +101,10 @@ module Authentik::Api
         self.flows_continuous_login = nil
       end
 
-      if attributes.key?(:'flows_refresh_others')
-        self.flows_refresh_others = attributes[:'flows_refresh_others']
+      if attributes.key?(:'rbac_custom_permissions')
+        self.rbac_custom_permissions = attributes[:'rbac_custom_permissions']
       else
-        self.flows_refresh_others = nil
+        self.rbac_custom_permissions = nil
       end
     end
 
@@ -125,8 +125,8 @@ module Authentik::Api
         invalid_properties.push('invalid value for "flows_continuous_login", flows_continuous_login cannot be nil.')
       end
 
-      if @flows_refresh_others.nil?
-        invalid_properties.push('invalid value for "flows_refresh_others", flows_refresh_others cannot be nil.')
+      if @rbac_custom_permissions.nil?
+        invalid_properties.push('invalid value for "rbac_custom_permissions", rbac_custom_permissions cannot be nil.')
       end
 
       invalid_properties
@@ -139,7 +139,7 @@ module Authentik::Api
       return false if @core_default_app_access.nil?
       return false if @enterprise_audit_include_expanded_diff.nil?
       return false if @flows_continuous_login.nil?
-      return false if @flows_refresh_others.nil?
+      return false if @rbac_custom_permissions.nil?
       true
     end
 
@@ -174,13 +174,13 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] flows_refresh_others Value to be assigned
-    def flows_refresh_others=(flows_refresh_others)
-      if flows_refresh_others.nil?
-        fail ArgumentError, 'flows_refresh_others cannot be nil'
+    # @param [Object] rbac_custom_permissions Value to be assigned
+    def rbac_custom_permissions=(rbac_custom_permissions)
+      if rbac_custom_permissions.nil?
+        fail ArgumentError, 'rbac_custom_permissions cannot be nil'
       end
 
-      @flows_refresh_others = flows_refresh_others
+      @rbac_custom_permissions = rbac_custom_permissions
     end
 
     # Checks equality by comparing each attribute.
@@ -191,7 +191,7 @@ module Authentik::Api
           core_default_app_access == o.core_default_app_access &&
           enterprise_audit_include_expanded_diff == o.enterprise_audit_include_expanded_diff &&
           flows_continuous_login == o.flows_continuous_login &&
-          flows_refresh_others == o.flows_refresh_others
+          rbac_custom_permissions == o.rbac_custom_permissions
     end
 
     # @see the `==` method
@@ -203,7 +203,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [core_default_app_access, enterprise_audit_include_expanded_diff, flows_continuous_login, flows_refresh_others].hash
+      [core_default_app_access, enterprise_audit_include_expanded_diff, flows_continuous_login, rbac_custom_permissions].hash
     end
 
     # Builds the object from hash

@@ -51,6 +51,11 @@ module Authentik::Api
 
     attr_accessor :password_change_date
 
+    # Whether the user's password currently refuses authentication.
+    attr_accessor :password_locked
+
+    attr_accessor :password_device
+
     attr_accessor :last_updated
 
     class EnumAttributeValidator
@@ -97,6 +102,8 @@ module Authentik::Api
         :'type' => :'type',
         :'uuid' => :'uuid',
         :'password_change_date' => :'password_change_date',
+        :'password_locked' => :'password_locked',
+        :'password_device' => :'password_device',
         :'last_updated' => :'last_updated'
       }
     end
@@ -133,6 +140,8 @@ module Authentik::Api
         :'type' => :'UserTypeEnum',
         :'uuid' => :'String',
         :'password_change_date' => :'Time',
+        :'password_locked' => :'Boolean',
+        :'password_device' => :'Integer',
         :'last_updated' => :'Time'
       }
     end
@@ -143,6 +152,7 @@ module Authentik::Api
         :'last_login',
         :'groups_obj',
         :'roles_obj',
+        :'password_device',
       ])
     end
 
@@ -280,6 +290,18 @@ module Authentik::Api
         self.password_change_date = nil
       end
 
+      if attributes.key?(:'password_locked')
+        self.password_locked = attributes[:'password_locked']
+      else
+        self.password_locked = nil
+      end
+
+      if attributes.key?(:'password_device')
+        self.password_device = attributes[:'password_device']
+      else
+        self.password_device = nil
+      end
+
       if attributes.key?(:'last_updated')
         self.last_updated = attributes[:'last_updated']
       else
@@ -336,6 +358,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "password_change_date", password_change_date cannot be nil.')
       end
 
+      if @password_locked.nil?
+        invalid_properties.push('invalid value for "password_locked", password_locked cannot be nil.')
+      end
+
       if @last_updated.nil?
         invalid_properties.push('invalid value for "last_updated", last_updated cannot be nil.')
       end
@@ -358,6 +384,7 @@ module Authentik::Api
       return false if @uid.nil?
       return false if @uuid.nil?
       return false if @password_change_date.nil?
+      return false if @password_locked.nil?
       return false if @last_updated.nil?
       true
     end
@@ -471,6 +498,16 @@ module Authentik::Api
     end
 
     # Custom attribute writer method with validation
+    # @param [Object] password_locked Value to be assigned
+    def password_locked=(password_locked)
+      if password_locked.nil?
+        fail ArgumentError, 'password_locked cannot be nil'
+      end
+
+      @password_locked = password_locked
+    end
+
+    # Custom attribute writer method with validation
     # @param [Object] last_updated Value to be assigned
     def last_updated=(last_updated)
       if last_updated.nil?
@@ -504,6 +541,8 @@ module Authentik::Api
           type == o.type &&
           uuid == o.uuid &&
           password_change_date == o.password_change_date &&
+          password_locked == o.password_locked &&
+          password_device == o.password_device &&
           last_updated == o.last_updated
     end
 
@@ -516,7 +555,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, roles, roles_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, last_updated].hash
+      [pk, username, name, is_active, last_login, date_joined, is_superuser, groups, groups_obj, roles, roles_obj, email, avatar, attributes, uid, path, type, uuid, password_change_date, password_locked, password_device, last_updated].hash
     end
 
     # Builds the object from hash

@@ -135,6 +135,12 @@ describe Authentik::Api::SAMLProviderRequest do
     end
   end
 
+  describe 'test attribute "encryption_algorithm"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   describe 'test attribute "sign_assertion"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
@@ -154,6 +160,12 @@ describe Authentik::Api::SAMLProviderRequest do
   end
 
   describe 'test attribute "sign_logout_response"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "ignore_force_authn"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -184,6 +196,12 @@ describe Authentik::Api::SAMLProviderRequest do
   end
 
   describe 'test attribute "default_name_id_policy"' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  describe 'test attribute "jwt_federation_providers"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

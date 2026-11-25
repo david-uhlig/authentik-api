@@ -355,6 +355,8 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :actor_name 
     # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+    # @option opts [String] :message_id 
+    # @option opts [Array<String>] :message_id__in Multiple values may be separated by commas.
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -374,6 +376,8 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :actor_name 
     # @option opts [Array<TaskAggregatedStatusEnum>] :aggregated_status 
+    # @option opts [String] :message_id 
+    # @option opts [Array<String>] :message_id__in Multiple values may be separated by commas.
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
@@ -396,6 +400,8 @@ module Authentik::Api
       query_params = opts[:query_params] || {}
       query_params[:'actor_name'] = opts[:'actor_name'] if !opts[:'actor_name'].nil?
       query_params[:'aggregated_status'] = @api_client.build_collection_param(opts[:'aggregated_status'], :multi) if !opts[:'aggregated_status'].nil?
+      query_params[:'message_id'] = opts[:'message_id'] if !opts[:'message_id'].nil?
+      query_params[:'message_id__in'] = @api_client.build_collection_param(opts[:'message_id__in'], :csv) if !opts[:'message_id__in'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?

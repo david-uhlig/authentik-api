@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -27,7 +29,8 @@ module Authentik::Api
         :'component' => :'component',
         :'title' => :'title',
         :'configure_url' => :'configure_url',
-        :'icon_url' => :'icon_url'
+        :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls'
       }
     end
 
@@ -48,13 +51,15 @@ module Authentik::Api
         :'component' => :'String',
         :'title' => :'String',
         :'configure_url' => :'String',
-        :'icon_url' => :'String'
+        :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'icon_themed_urls'
       ])
     end
 
@@ -108,6 +113,10 @@ module Authentik::Api
 
       if attributes.key?(:'icon_url')
         self.icon_url = attributes[:'icon_url']
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
       end
     end
 
@@ -180,7 +189,8 @@ module Authentik::Api
           component == o.component &&
           title == o.title &&
           configure_url == o.configure_url &&
-          icon_url == o.icon_url
+          icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls
     end
 
     # @see the `==` method
@@ -192,7 +202,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [object_uid, component, title, configure_url, icon_url].hash
+      [object_uid, component, title, configure_url, icon_url, icon_themed_urls].hash
     end
 
     # Builds the object from hash

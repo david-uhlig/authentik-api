@@ -113,6 +113,17 @@ describe 'OutpostsApi' do
     end
   end
 
+  # unit tests for outposts_instances_rebuild_permissions_create
+  # Delete and recreate all permissions of the outpost&#39;s service account
+  # @param uuid A UUID string identifying this Outpost.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'outposts_instances_rebuild_permissions_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for outposts_instances_retrieve
   # Outpost Viewset
   # @param uuid A UUID string identifying this Outpost.

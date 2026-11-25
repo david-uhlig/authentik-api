@@ -5987,10 +5987,13 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -6029,10 +6032,13 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -6073,10 +6079,13 @@ module Authentik::Api
       query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
       query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
+      query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
+      query_params[:'ignore_force_authn'] = opts[:'ignore_force_authn'] if !opts[:'ignore_force_authn'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
+      query_params[:'jwt_federation_providers'] = @api_client.build_collection_param(opts[:'jwt_federation_providers'], :multi) if !opts[:'jwt_federation_providers'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?
@@ -8377,10 +8386,13 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8388,7 +8400,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
-    # @option opts [SamlVersionEnum] :saml_version 
+    # @option opts [WSFedSAMLVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
@@ -8420,10 +8432,13 @@ module Authentik::Api
     # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
     # @option opts [String] :default_relay_state 
     # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+    # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
     # @option opts [String] :encryption_kp 
+    # @option opts [Boolean] :ignore_force_authn 
     # @option opts [String] :invalidation_flow 
     # @option opts [Boolean] :is_backchannel 
     # @option opts [String] :issuer_override 
+    # @option opts [Array<Integer>] :jwt_federation_providers 
     # @option opts [SAMLLogoutMethods] :logout_method 
     # @option opts [String] :name 
     # @option opts [String] :name_id_mapping 
@@ -8431,7 +8446,7 @@ module Authentik::Api
     # @option opts [Integer] :page A page number within the paginated result set.
     # @option opts [Integer] :page_size Number of results to return per page.
     # @option opts [Array<String>] :property_mappings 
-    # @option opts [SamlVersionEnum] :saml_version 
+    # @option opts [WSFedSAMLVersionEnum] :saml_version 
     # @option opts [String] :search A search term.
     # @option opts [String] :session_valid_not_on_or_after 
     # @option opts [Boolean] :sign_assertion 
@@ -8465,10 +8480,13 @@ module Authentik::Api
       query_params[:'default_name_id_policy'] = opts[:'default_name_id_policy'] if !opts[:'default_name_id_policy'].nil?
       query_params[:'default_relay_state'] = opts[:'default_relay_state'] if !opts[:'default_relay_state'].nil?
       query_params[:'digest_algorithm'] = opts[:'digest_algorithm'] if !opts[:'digest_algorithm'].nil?
+      query_params[:'encryption_algorithm'] = opts[:'encryption_algorithm'] if !opts[:'encryption_algorithm'].nil?
       query_params[:'encryption_kp'] = opts[:'encryption_kp'] if !opts[:'encryption_kp'].nil?
+      query_params[:'ignore_force_authn'] = opts[:'ignore_force_authn'] if !opts[:'ignore_force_authn'].nil?
       query_params[:'invalidation_flow'] = opts[:'invalidation_flow'] if !opts[:'invalidation_flow'].nil?
       query_params[:'is_backchannel'] = opts[:'is_backchannel'] if !opts[:'is_backchannel'].nil?
       query_params[:'issuer_override'] = opts[:'issuer_override'] if !opts[:'issuer_override'].nil?
+      query_params[:'jwt_federation_providers'] = @api_client.build_collection_param(opts[:'jwt_federation_providers'], :multi) if !opts[:'jwt_federation_providers'].nil?
       query_params[:'logout_method'] = opts[:'logout_method'] if !opts[:'logout_method'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'name_id_mapping'] = opts[:'name_id_mapping'] if !opts[:'name_id_mapping'].nil?

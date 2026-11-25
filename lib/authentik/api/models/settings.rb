@@ -224,10 +224,6 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if !@base_url.nil? && @base_url.to_s.length > 200
-        invalid_properties.push('invalid value for "base_url", the character length must be smaller than or equal to 200.')
-      end
-
       if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
         invalid_properties.push('invalid value for "reputation_lower_limit", must be smaller than or equal to 0.')
       end
@@ -279,7 +275,6 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if !@base_url.nil? && @base_url.to_s.length > 200
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit > 0
       return false if !@reputation_lower_limit.nil? && @reputation_lower_limit < -2147483648
       return false if !@reputation_upper_limit.nil? && @reputation_upper_limit > 2147483647
@@ -292,20 +287,6 @@ module Authentik::Api
       return false if !@pagination_max_page_size.nil? && @pagination_max_page_size < 0
       return false if @flags.nil?
       true
-    end
-
-    # Custom attribute writer method with validation
-    # @param [Object] base_url Value to be assigned
-    def base_url=(base_url)
-      if base_url.nil?
-        fail ArgumentError, 'base_url cannot be nil'
-      end
-
-      if base_url.to_s.length > 200
-        fail ArgumentError, 'invalid value for "base_url", the character length must be smaller than or equal to 200.'
-      end
-
-      @base_url = base_url
     end
 
     # Custom attribute writer method with validation

@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     attr_accessor :requires_enterprise
 
     attr_accessor :deprecated
@@ -32,6 +34,7 @@ module Authentik::Api
         :'component' => :'component',
         :'model_name' => :'model_name',
         :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls',
         :'requires_enterprise' => :'requires_enterprise',
         :'deprecated' => :'deprecated'
       }
@@ -55,6 +58,7 @@ module Authentik::Api
         :'component' => :'String',
         :'model_name' => :'String',
         :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls',
         :'requires_enterprise' => :'Boolean',
         :'deprecated' => :'Boolean'
       }
@@ -63,6 +67,7 @@ module Authentik::Api
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'icon_themed_urls',
       ])
     end
 
@@ -118,6 +123,10 @@ module Authentik::Api
 
       if attributes.key?(:'icon_url')
         self.icon_url = attributes[:'icon_url']
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
       end
 
       if attributes.key?(:'requires_enterprise')
@@ -218,6 +227,7 @@ module Authentik::Api
           component == o.component &&
           model_name == o.model_name &&
           icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls &&
           requires_enterprise == o.requires_enterprise &&
           deprecated == o.deprecated
     end
@@ -231,7 +241,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, description, component, model_name, icon_url, requires_enterprise, deprecated].hash
+      [name, description, component, model_name, icon_url, icon_themed_urls, requires_enterprise, deprecated].hash
     end
 
     # Builds the object from hash

@@ -23,6 +23,8 @@
 | **type** | [**UserTypeEnum**](UserTypeEnum.md) |  | [optional] |
 | **uuid** | **String** |  | [readonly] |
 | **password_change_date** | **Time** |  | [readonly] |
+| **password_locked** | **Boolean** | Whether the user&#39;s password currently refuses authentication. | [readonly] |
+| **password_device** | **Integer** |  | [readonly] |
 | **last_updated** | **Time** |  | [readonly] |
 
 ## Example
@@ -50,6 +52,8 @@ instance = Authentik::Api::User.new(
   type: null,
   uuid: null,
   password_change_date: null,
+  password_locked: null,
+  password_device: null,
   last_updated: null
 )
 ```

@@ -28,7 +28,7 @@ module Authentik::Api
 
     attr_accessor :backchannel_providers_obj
 
-    # Allow formatting of launch URL
+    # Format the launch URL for the user given as `for_user` in the context, or else the requesting user
     attr_accessor :launch_url
 
     # Open launch URL in a new browser tab or window.

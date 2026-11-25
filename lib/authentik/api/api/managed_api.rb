@@ -663,5 +663,78 @@ module Authentik::Api
       end
       return data, status_code, headers
     end
+
+    # Validate blueprint from .yaml file and return any errors
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @option opts [String] :path 
+    # @option opts [String] :context 
+    # @return [BlueprintImportResult]
+    def managed_blueprints_validate_create(opts = {})
+      data, _status_code, _headers = managed_blueprints_validate_create_with_http_info(opts)
+      data
+    end
+
+    # Validate blueprint from .yaml file and return any errors
+    # @param [Hash] opts the optional parameters
+    # @option opts [File] :file 
+    # @option opts [String] :path 
+    # @option opts [String] :context 
+    # @return [Array<(BlueprintImportResult, Integer, Hash)>] BlueprintImportResult data, response status code and response headers
+    def managed_blueprints_validate_create_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ManagedApi.managed_blueprints_validate_create ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'path'].nil? && opts[:'path'].to_s.length < 1
+        fail ArgumentError, 'invalid value for "opts[:"path"]" when calling ManagedApi.managed_blueprints_validate_create, the character length must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/managed/blueprints/validate/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['multipart/form-data'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+      form_params['file'] = opts[:'file'] if !opts[:'file'].nil?
+      form_params['path'] = opts[:'path'] if !opts[:'path'].nil?
+      form_params['context'] = opts[:'context'] if !opts[:'context'].nil?
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'BlueprintImportResult'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"ManagedApi.managed_blueprints_validate_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ManagedApi#managed_blueprints_validate_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

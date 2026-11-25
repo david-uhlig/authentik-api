@@ -140,61 +140,6 @@ module Authentik::Api
       return data, status_code, headers
     end
 
-    # Forecast how many users will be required in a year
-    # @param [Hash] opts the optional parameters
-    # @return [LicenseForecast]
-    def enterprise_license_forecast_retrieve(opts = {})
-      data, _status_code, _headers = enterprise_license_forecast_retrieve_with_http_info(opts)
-      data
-    end
-
-    # Forecast how many users will be required in a year
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(LicenseForecast, Integer, Hash)>] LicenseForecast data, response status code and response headers
-    def enterprise_license_forecast_retrieve_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: EnterpriseApi.enterprise_license_forecast_retrieve ...'
-      end
-      # resource path
-      local_var_path = '/enterprise/license/forecast/'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:debug_body]
-
-      # return_type
-      return_type = opts[:debug_return_type] || 'LicenseForecast'
-
-      # auth_names
-      auth_names = opts[:debug_auth_names] || ['authentik']
-
-      new_options = opts.merge(
-        :operation => :"EnterpriseApi.enterprise_license_forecast_retrieve",
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type
-      )
-
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: EnterpriseApi#enterprise_license_forecast_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
     # Get install_id
     # @param [Hash] opts the optional parameters
     # @return [InstallID]
@@ -636,6 +581,74 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: EnterpriseApi#enterprise_license_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get active user totals and counts for relative or absolute date ranges.  At least one positive relative count step or a complete absolute range is required. Relative and absolute ranges may be combined. Range starts are inclusive and ends are exclusive. Counts include currently active, non-anonymous accounts.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :count_steps Positive relative periods, such as &#39;days&#x3D;30&#39; or &#39;weeks&#x3D;3;days&#x3D;2&#39;.
+    # @option opts [Time] :_end Exclusive end of an absolute range; must be provided with start.
+    # @option opts [Time] :start Inclusive start of an absolute range; must be provided with end.
+    # @return [LicenseUserCounts]
+    def enterprise_license_user_counts_retrieve(opts = {})
+      data, _status_code, _headers = enterprise_license_user_counts_retrieve_with_http_info(opts)
+      data
+    end
+
+    # Get active user totals and counts for relative or absolute date ranges.  At least one positive relative count step or a complete absolute range is required. Relative and absolute ranges may be combined. Range starts are inclusive and ends are exclusive. Counts include currently active, non-anonymous accounts.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :count_steps Positive relative periods, such as &#39;days&#x3D;30&#39; or &#39;weeks&#x3D;3;days&#x3D;2&#39;.
+    # @option opts [Time] :_end Exclusive end of an absolute range; must be provided with start.
+    # @option opts [Time] :start Inclusive start of an absolute range; must be provided with end.
+    # @return [Array<(LicenseUserCounts, Integer, Hash)>] LicenseUserCounts data, response status code and response headers
+    def enterprise_license_user_counts_retrieve_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: EnterpriseApi.enterprise_license_user_counts_retrieve ...'
+      end
+      if @api_client.config.client_side_validation && !opts[:'count_steps'].nil? && opts[:'count_steps'].length > 20
+        fail ArgumentError, 'invalid value for "opts[:"count_steps"]" when calling EnterpriseApi.enterprise_license_user_counts_retrieve, number of items must be less than or equal to 20.'
+      end
+
+      # resource path
+      local_var_path = '/enterprise/license/user_counts/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'count_steps'] = @api_client.build_collection_param(opts[:'count_steps'], :multi) if !opts[:'count_steps'].nil?
+      query_params[:'end'] = opts[:'_end'] if !opts[:'_end'].nil?
+      query_params[:'start'] = opts[:'start'] if !opts[:'start'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'LicenseUserCounts'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"EnterpriseApi.enterprise_license_user_counts_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: EnterpriseApi#enterprise_license_user_counts_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -1876,6 +1876,7 @@ describe 'StagesApi' do
   # @option opts [Boolean] :allow_show_password 
   # @option opts [String] :configure_flow 
   # @option opts [Integer] :failed_attempts_before_cancel 
+  # @option opts [Integer] :failed_attempts_before_lockout 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.

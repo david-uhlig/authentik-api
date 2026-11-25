@@ -16,6 +16,12 @@ module Authentik::Api
 
     attr_accessor :app
 
+    # Application's display Name.
+    attr_accessor :app_name
+
+    # Internal application name, used in URLs.
+    attr_accessor :app_slug
+
     attr_accessor :attributes
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -24,6 +30,8 @@ module Authentik::Api
         :'pbm_uuid' => :'pbm_uuid',
         :'name' => :'name',
         :'app' => :'app',
+        :'app_name' => :'app_name',
+        :'app_slug' => :'app_slug',
         :'attributes' => :'attributes'
       }
     end
@@ -44,6 +52,8 @@ module Authentik::Api
         :'pbm_uuid' => :'String',
         :'name' => :'String',
         :'app' => :'String',
+        :'app_name' => :'String',
+        :'app_slug' => :'String',
         :'attributes' => :'Hash<String, Object>'
       }
     end
@@ -98,6 +108,18 @@ module Authentik::Api
         self.app = nil
       end
 
+      if attributes.key?(:'app_name')
+        self.app_name = attributes[:'app_name']
+      else
+        self.app_name = nil
+      end
+
+      if attributes.key?(:'app_slug')
+        self.app_slug = attributes[:'app_slug']
+      else
+        self.app_slug = nil
+      end
+
       if attributes.key?(:'attributes')
         if (value = attributes[:'attributes']).is_a?(Hash)
           self.attributes = value
@@ -122,6 +144,14 @@ module Authentik::Api
         invalid_properties.push('invalid value for "app", app cannot be nil.')
       end
 
+      if @app_name.nil?
+        invalid_properties.push('invalid value for "app_name", app_name cannot be nil.')
+      end
+
+      if @app_slug.nil?
+        invalid_properties.push('invalid value for "app_slug", app_slug cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -132,6 +162,8 @@ module Authentik::Api
       return false if @pbm_uuid.nil?
       return false if @name.nil?
       return false if @app.nil?
+      return false if @app_name.nil?
+      return false if @app_slug.nil?
       true
     end
 
@@ -165,6 +197,26 @@ module Authentik::Api
       @app = app
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] app_name Value to be assigned
+    def app_name=(app_name)
+      if app_name.nil?
+        fail ArgumentError, 'app_name cannot be nil'
+      end
+
+      @app_name = app_name
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] app_slug Value to be assigned
+    def app_slug=(app_slug)
+      if app_slug.nil?
+        fail ArgumentError, 'app_slug cannot be nil'
+      end
+
+      @app_slug = app_slug
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
@@ -173,6 +225,8 @@ module Authentik::Api
           pbm_uuid == o.pbm_uuid &&
           name == o.name &&
           app == o.app &&
+          app_name == o.app_name &&
+          app_slug == o.app_slug &&
           attributes == o.attributes
     end
 
@@ -185,7 +239,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pbm_uuid, name, app, attributes].hash
+      [pbm_uuid, name, app, app_name, app_slug, attributes].hash
     end
 
     # Builds the object from hash

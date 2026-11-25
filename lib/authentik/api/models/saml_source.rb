@@ -85,7 +85,7 @@ module Authentik::Api
     # When enabled, the IdP will re-authenticate the user even if a session exists.
     attr_accessor :force_authn
 
-    # NameID Policy sent to the IdP. Can be unset, in which case no Policy is sent.
+    # Format of the NameID Policy sent to the IdP. Select Unspecified to let the IdP choose the format of the NameID it returns.
     attr_accessor :name_id_policy
 
     attr_accessor :binding_type

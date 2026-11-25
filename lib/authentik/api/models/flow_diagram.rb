@@ -8,14 +8,17 @@ require 'date'
 require 'time'
 
 module Authentik::Api
-  # response of the flow's diagram action
+  # Base serializer class which doesn't implement create/update methods
   class FlowDiagram < ApiModelBase
-    attr_accessor :diagram
+    attr_accessor :nodes
+
+    attr_accessor :edges
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'diagram' => :'diagram'
+        :'nodes' => :'nodes',
+        :'edges' => :'edges'
       }
     end
 
@@ -32,7 +35,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'diagram' => :'String'
+        :'nodes' => :'Array<DiagramNode>',
+        :'edges' => :'Array<DiagramEdge>'
       }
     end
 
@@ -68,10 +72,20 @@ module Authentik::Api
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'diagram')
-        self.diagram = attributes[:'diagram']
+      if attributes.key?(:'nodes')
+        if (value = attributes[:'nodes']).is_a?(Array)
+          self.nodes = value
+        end
       else
-        self.diagram = nil
+        self.nodes = nil
+      end
+
+      if attributes.key?(:'edges')
+        if (value = attributes[:'edges']).is_a?(Array)
+          self.edges = value
+        end
+      else
+        self.edges = nil
       end
     end
 
@@ -80,8 +94,12 @@ module Authentik::Api
     def list_invalid_properties
       warn '[DEPRECATED] the `list_invalid_properties` method is obsolete'
       invalid_properties = Array.new
-      if @diagram.nil?
-        invalid_properties.push('invalid value for "diagram", diagram cannot be nil.')
+      if @nodes.nil?
+        invalid_properties.push('invalid value for "nodes", nodes cannot be nil.')
+      end
+
+      if @edges.nil?
+        invalid_properties.push('invalid value for "edges", edges cannot be nil.')
       end
 
       invalid_properties
@@ -91,18 +109,29 @@ module Authentik::Api
     # @return true if the model is valid
     def valid?
       warn '[DEPRECATED] the `valid?` method is obsolete'
-      return false if @diagram.nil?
+      return false if @nodes.nil?
+      return false if @edges.nil?
       true
     end
 
     # Custom attribute writer method with validation
-    # @param [Object] diagram Value to be assigned
-    def diagram=(diagram)
-      if diagram.nil?
-        fail ArgumentError, 'diagram cannot be nil'
+    # @param [Object] nodes Value to be assigned
+    def nodes=(nodes)
+      if nodes.nil?
+        fail ArgumentError, 'nodes cannot be nil'
       end
 
-      @diagram = diagram
+      @nodes = nodes
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] edges Value to be assigned
+    def edges=(edges)
+      if edges.nil?
+        fail ArgumentError, 'edges cannot be nil'
+      end
+
+      @edges = edges
     end
 
     # Checks equality by comparing each attribute.
@@ -110,7 +139,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          diagram == o.diagram
+          nodes == o.nodes &&
+          edges == o.edges
     end
 
     # @see the `==` method
@@ -122,7 +152,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [diagram].hash
+      [nodes, edges].hash
     end
 
     # Builds the object from hash

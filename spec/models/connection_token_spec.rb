@@ -39,13 +39,13 @@ describe Authentik::Api::ConnectionToken do
     end
   end
 
-  describe 'test attribute "endpoint"' do
+  describe 'test attribute "device"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
   end
 
-  describe 'test attribute "endpoint_obj"' do
+  describe 'test attribute "device_name"' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

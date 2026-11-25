@@ -365,6 +365,25 @@ describe 'EndpointsApi' do
     end
   end
 
+  # unit tests for endpoints_agents_psso_register_device_destroy
+  # Clear this device&#39;s Platform SSO registration, used when the configuration profile is removed from the device. The device stays enrolled otherwise.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'endpoints_agents_psso_register_device_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_agents_psso_register_device_retrieve
+  # @param [Hash] opts the optional parameters
+  # @return [AgentPSSODeviceState]
+  describe 'endpoints_agents_psso_register_device_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
   # unit tests for endpoints_agents_psso_register_user_create
   # @param agent_psso_user_registration_request 
   # @param [Hash] opts the optional parameters
@@ -600,6 +619,17 @@ describe 'EndpointsApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'endpoints_device_bindings_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_devices_create
+  # Mixin to add a used_by endpoint to return a list of all objects using this object
+  # @param endpoint_device_request 
+  # @param [Hash] opts the optional parameters
+  # @return [EndpointDevice]
+  describe 'endpoints_devices_create test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end
@@ -849,6 +879,89 @@ describe 'EndpointsApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'endpoints_google_chrome_connectors_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_create
+  # MicrosoftIntuneConnector Viewset
+  # @param microsoft_intune_connector_request 
+  # @param [Hash] opts the optional parameters
+  # @return [MicrosoftIntuneConnector]
+  describe 'endpoints_microsoft_intune_connectors_create test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_destroy
+  # MicrosoftIntuneConnector Viewset
+  # @param connector_uuid A UUID string identifying this Microsoft Intune Connector.
+  # @param [Hash] opts the optional parameters
+  # @return [nil]
+  describe 'endpoints_microsoft_intune_connectors_destroy test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_list
+  # MicrosoftIntuneConnector Viewset
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :name 
+  # @option opts [String] :ordering Which field to use when ordering the results.
+  # @option opts [Integer] :page A page number within the paginated result set.
+  # @option opts [Integer] :page_size Number of results to return per page.
+  # @option opts [String] :search A search term.
+  # @return [PaginatedMicrosoftIntuneConnectorList]
+  describe 'endpoints_microsoft_intune_connectors_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_partial_update
+  # MicrosoftIntuneConnector Viewset
+  # @param connector_uuid A UUID string identifying this Microsoft Intune Connector.
+  # @param [Hash] opts the optional parameters
+  # @option opts [PatchedMicrosoftIntuneConnectorRequest] :patched_microsoft_intune_connector_request 
+  # @return [MicrosoftIntuneConnector]
+  describe 'endpoints_microsoft_intune_connectors_partial_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_retrieve
+  # MicrosoftIntuneConnector Viewset
+  # @param connector_uuid A UUID string identifying this Microsoft Intune Connector.
+  # @param [Hash] opts the optional parameters
+  # @return [MicrosoftIntuneConnector]
+  describe 'endpoints_microsoft_intune_connectors_retrieve test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_update
+  # MicrosoftIntuneConnector Viewset
+  # @param connector_uuid A UUID string identifying this Microsoft Intune Connector.
+  # @param microsoft_intune_connector_request 
+  # @param [Hash] opts the optional parameters
+  # @return [MicrosoftIntuneConnector]
+  describe 'endpoints_microsoft_intune_connectors_update test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for endpoints_microsoft_intune_connectors_used_by_list
+  # Get a list of all objects that use this object
+  # @param connector_uuid A UUID string identifying this Microsoft Intune Connector.
+  # @param [Hash] opts the optional parameters
+  # @return [Array<UsedBy>]
+  describe 'endpoints_microsoft_intune_connectors_used_by_list test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

@@ -12,7 +12,7 @@
 | **provider_obj** | [**Provider**](Provider.md) |  | [readonly] |
 | **backchannel_providers** | **Array&lt;Integer&gt;** |  | [optional] |
 | **backchannel_providers_obj** | [**Array&lt;Provider&gt;**](Provider.md) |  | [readonly] |
-| **launch_url** | **String** | Allow formatting of launch URL | [readonly] |
+| **launch_url** | **String** | Format the launch URL for the user given as &#x60;for_user&#x60; in the context, or else the requesting user | [readonly] |
 | **open_in_new_tab** | **Boolean** | Open launch URL in a new browser tab or window. | [optional] |
 | **meta_launch_url** | **String** |  | [optional] |
 | **meta_icon** | **String** |  | [optional] |

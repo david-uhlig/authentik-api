@@ -13,6 +13,457 @@ module Authentik::Api
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Custom permissions
+    # @param custom_permission_request [CustomPermissionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomPermission]
+    def rbac_custom_permissions_create(custom_permission_request, opts = {})
+      data, _status_code, _headers = rbac_custom_permissions_create_with_http_info(custom_permission_request, opts)
+      data
+    end
+
+    # Custom permissions
+    # @param custom_permission_request [CustomPermissionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomPermission, Integer, Hash)>] CustomPermission data, response status code and response headers
+    def rbac_custom_permissions_create_with_http_info(custom_permission_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_create ...'
+      end
+      # verify the required parameter 'custom_permission_request' is set
+      if @api_client.config.client_side_validation && custom_permission_request.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_permission_request' when calling RbacApi.rbac_custom_permissions_create"
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(custom_permission_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomPermission'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def rbac_custom_permissions_destroy(id, opts = {})
+      rbac_custom_permissions_destroy_with_http_info(id, opts)
+      nil
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def rbac_custom_permissions_destroy_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_destroy ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_custom_permissions_destroy"
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Custom permissions
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :codename 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [PaginatedCustomPermissionList]
+    def rbac_custom_permissions_list(opts = {})
+      data, _status_code, _headers = rbac_custom_permissions_list_with_http_info(opts)
+      data
+    end
+
+    # Custom permissions
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :codename 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedCustomPermissionList, Integer, Hash)>] PaginatedCustomPermissionList data, response status code and response headers
+    def rbac_custom_permissions_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_list ...'
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'codename'] = opts[:'codename'] if !opts[:'codename'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedCustomPermissionList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedCustomPermissionRequest] :patched_custom_permission_request 
+    # @return [CustomPermission]
+    def rbac_custom_permissions_partial_update(id, opts = {})
+      data, _status_code, _headers = rbac_custom_permissions_partial_update_with_http_info(id, opts)
+      data
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedCustomPermissionRequest] :patched_custom_permission_request 
+    # @return [Array<(CustomPermission, Integer, Hash)>] CustomPermission data, response status code and response headers
+    def rbac_custom_permissions_partial_update_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_partial_update ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_custom_permissions_partial_update"
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_custom_permission_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomPermission'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @return [CustomPermission]
+    def rbac_custom_permissions_retrieve(id, opts = {})
+      data, _status_code, _headers = rbac_custom_permissions_retrieve_with_http_info(id, opts)
+      data
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomPermission, Integer, Hash)>] CustomPermission data, response status code and response headers
+    def rbac_custom_permissions_retrieve_with_http_info(id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_retrieve ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_custom_permissions_retrieve"
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomPermission'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param custom_permission_request [CustomPermissionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [CustomPermission]
+    def rbac_custom_permissions_update(id, custom_permission_request, opts = {})
+      data, _status_code, _headers = rbac_custom_permissions_update_with_http_info(id, custom_permission_request, opts)
+      data
+    end
+
+    # Custom permissions
+    # @param id [Integer] A unique integer value identifying this Custom permission.
+    # @param custom_permission_request [CustomPermissionRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CustomPermission, Integer, Hash)>] CustomPermission data, response status code and response headers
+    def rbac_custom_permissions_update_with_http_info(id, custom_permission_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_custom_permissions_update ...'
+      end
+      # verify the required parameter 'id' is set
+      if @api_client.config.client_side_validation && id.nil?
+        fail ArgumentError, "Missing the required parameter 'id' when calling RbacApi.rbac_custom_permissions_update"
+      end
+      # verify the required parameter 'custom_permission_request' is set
+      if @api_client.config.client_side_validation && custom_permission_request.nil?
+        fail ArgumentError, "Missing the required parameter 'custom_permission_request' when calling RbacApi.rbac_custom_permissions_update"
+      end
+      # resource path
+      local_var_path = '/rbac/custom_permissions/{id}/'.sub('{id}', CGI.escape(id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(custom_permission_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'CustomPermission'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_custom_permissions_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_custom_permissions_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @return [Array<Endpoint>]
+    def rbac_endpoints_list(opts = {})
+      data, _status_code, _headers = rbac_endpoints_list_with_http_info(opts)
+      data
+    end
+
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<Endpoint>, Integer, Hash)>] Array<Endpoint> data, response status code and response headers
+    def rbac_endpoints_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_endpoints_list ...'
+      end
+      # resource path
+      local_var_path = '/rbac/endpoints/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<Endpoint>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_endpoints_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_endpoints_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # InitialPermissions viewset
     # @param initial_permissions_request [InitialPermissionsRequest] 
     # @param [Hash] opts the optional parameters
@@ -468,6 +919,465 @@ module Authentik::Api
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: RbacApi#rbac_initial_permissions_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param permission_check_request [PermissionCheckRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PermissionCheck]
+    def rbac_permission_checks_create(permission_check_request, opts = {})
+      data, _status_code, _headers = rbac_permission_checks_create_with_http_info(permission_check_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param permission_check_request [PermissionCheckRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PermissionCheck, Integer, Hash)>] PermissionCheck data, response status code and response headers
+    def rbac_permission_checks_create_with_http_info(permission_check_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_create ...'
+      end
+      # verify the required parameter 'permission_check_request' is set
+      if @api_client.config.client_side_validation && permission_check_request.nil?
+        fail ArgumentError, "Missing the required parameter 'permission_check_request' when calling RbacApi.rbac_permission_checks_create"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(permission_check_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PermissionCheck'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_create",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_create\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [nil]
+    def rbac_permission_checks_destroy(check_uuid, opts = {})
+      rbac_permission_checks_destroy_with_http_info(check_uuid, opts)
+      nil
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(nil, Integer, Hash)>] nil, response status code and response headers
+    def rbac_permission_checks_destroy_with_http_info(check_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_destroy ...'
+      end
+      # verify the required parameter 'check_uuid' is set
+      if @api_client.config.client_side_validation && check_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'check_uuid' when calling RbacApi.rbac_permission_checks_destroy"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/{check_uuid}/'.sub('{check_uuid}', CGI.escape(check_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type]
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_destroy",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_destroy\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [PaginatedPermissionCheckList]
+    def rbac_permission_checks_list(opts = {})
+      data, _status_code, _headers = rbac_permission_checks_list_with_http_info(opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name 
+    # @option opts [String] :ordering Which field to use when ordering the results.
+    # @option opts [Integer] :page A page number within the paginated result set.
+    # @option opts [Integer] :page_size Number of results to return per page.
+    # @option opts [String] :search A search term.
+    # @return [Array<(PaginatedPermissionCheckList, Integer, Hash)>] PaginatedPermissionCheckList data, response status code and response headers
+    def rbac_permission_checks_list_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_list ...'
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'page_size'] = opts[:'page_size'] if !opts[:'page_size'].nil?
+      query_params[:'search'] = opts[:'search'] if !opts[:'search'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PaginatedPermissionCheckList'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedPermissionCheckRequest] :patched_permission_check_request 
+    # @return [PermissionCheck]
+    def rbac_permission_checks_partial_update(check_uuid, opts = {})
+      data, _status_code, _headers = rbac_permission_checks_partial_update_with_http_info(check_uuid, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @option opts [PatchedPermissionCheckRequest] :patched_permission_check_request 
+    # @return [Array<(PermissionCheck, Integer, Hash)>] PermissionCheck data, response status code and response headers
+    def rbac_permission_checks_partial_update_with_http_info(check_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_partial_update ...'
+      end
+      # verify the required parameter 'check_uuid' is set
+      if @api_client.config.client_side_validation && check_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'check_uuid' when calling RbacApi.rbac_permission_checks_partial_update"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/{check_uuid}/'.sub('{check_uuid}', CGI.escape(check_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patched_permission_check_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PermissionCheck'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_partial_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_partial_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [PermissionCheck]
+    def rbac_permission_checks_retrieve(check_uuid, opts = {})
+      data, _status_code, _headers = rbac_permission_checks_retrieve_with_http_info(check_uuid, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PermissionCheck, Integer, Hash)>] PermissionCheck data, response status code and response headers
+    def rbac_permission_checks_retrieve_with_http_info(check_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_retrieve ...'
+      end
+      # verify the required parameter 'check_uuid' is set
+      if @api_client.config.client_side_validation && check_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'check_uuid' when calling RbacApi.rbac_permission_checks_retrieve"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/{check_uuid}/'.sub('{check_uuid}', CGI.escape(check_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PermissionCheck'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_retrieve",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_retrieve\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param permission_check_request [PermissionCheckRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [PermissionCheck]
+    def rbac_permission_checks_update(check_uuid, permission_check_request, opts = {})
+      data, _status_code, _headers = rbac_permission_checks_update_with_http_info(check_uuid, permission_check_request, opts)
+      data
+    end
+
+    # Mixin to add a used_by endpoint to return a list of all objects using this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param permission_check_request [PermissionCheckRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(PermissionCheck, Integer, Hash)>] PermissionCheck data, response status code and response headers
+    def rbac_permission_checks_update_with_http_info(check_uuid, permission_check_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_update ...'
+      end
+      # verify the required parameter 'check_uuid' is set
+      if @api_client.config.client_side_validation && check_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'check_uuid' when calling RbacApi.rbac_permission_checks_update"
+      end
+      # verify the required parameter 'permission_check_request' is set
+      if @api_client.config.client_side_validation && permission_check_request.nil?
+        fail ArgumentError, "Missing the required parameter 'permission_check_request' when calling RbacApi.rbac_permission_checks_update"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/{check_uuid}/'.sub('{check_uuid}', CGI.escape(check_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(permission_check_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PermissionCheck'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_update",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_update\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get a list of all objects that use this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<UsedBy>]
+    def rbac_permission_checks_used_by_list(check_uuid, opts = {})
+      data, _status_code, _headers = rbac_permission_checks_used_by_list_with_http_info(check_uuid, opts)
+      data
+    end
+
+    # Get a list of all objects that use this object
+    # @param check_uuid [String] A UUID string identifying this Permission check.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Array<UsedBy>, Integer, Hash)>] Array<UsedBy> data, response status code and response headers
+    def rbac_permission_checks_used_by_list_with_http_info(check_uuid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: RbacApi.rbac_permission_checks_used_by_list ...'
+      end
+      # verify the required parameter 'check_uuid' is set
+      if @api_client.config.client_side_validation && check_uuid.nil?
+        fail ArgumentError, "Missing the required parameter 'check_uuid' when calling RbacApi.rbac_permission_checks_used_by_list"
+      end
+      # resource path
+      local_var_path = '/rbac/permission_checks/{check_uuid}/used_by/'.sub('{check_uuid}', CGI.escape(check_uuid.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json']) unless header_params['Accept']
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Array<UsedBy>'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['authentik']
+
+      new_options = opts.merge(
+        :operation => :"RbacApi.rbac_permission_checks_used_by_list",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: RbacApi#rbac_permission_checks_used_by_list\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -14,14 +14,14 @@ module Authentik::Api
 
     attr_accessor :provider
 
-    attr_accessor :endpoint
+    attr_accessor :device
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'pk' => :'pk',
         :'provider' => :'provider',
-        :'endpoint' => :'endpoint'
+        :'device' => :'device'
       }
     end
 
@@ -40,7 +40,7 @@ module Authentik::Api
       {
         :'pk' => :'String',
         :'provider' => :'Integer',
-        :'endpoint' => :'String'
+        :'device' => :'String'
       }
     end
 
@@ -84,8 +84,8 @@ module Authentik::Api
         self.provider = attributes[:'provider']
       end
 
-      if attributes.key?(:'endpoint')
-        self.endpoint = attributes[:'endpoint']
+      if attributes.key?(:'device')
+        self.device = attributes[:'device']
       end
     end
 
@@ -111,7 +111,7 @@ module Authentik::Api
       self.class == o.class &&
           pk == o.pk &&
           provider == o.provider &&
-          endpoint == o.endpoint
+          device == o.device
     end
 
     # @see the `==` method
@@ -123,7 +123,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, provider, endpoint].hash
+      [pk, provider, device].hash
     end
 
     # Builds the object from hash

@@ -9,6 +9,7 @@
 | **user** | **Integer** |  | [optional] |
 | **negate** | **Boolean** | Negates the outcome of the policy. Messages are unaffected. | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
+| **dry_run** | **Boolean** | Execute the policy but ignore its result. | [optional] |
 | **order** | **Integer** |  |  |
 | **timeout** | **Integer** | Timeout after which Policy execution is terminated. | [optional] |
 | **failure_result** | **Boolean** | Result if the Policy execution fails. | [optional] |
@@ -24,6 +25,7 @@ instance = Authentik::Api::TransactionPolicyBindingRequest.new(
   user: null,
   negate: null,
   enabled: null,
+  dry_run: null,
   order: null,
   timeout: null,
   failure_result: null

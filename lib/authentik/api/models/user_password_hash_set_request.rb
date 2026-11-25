@@ -12,10 +12,14 @@ module Authentik::Api
   class UserPasswordHashSetRequest < ApiModelBase
     attr_accessor :password
 
+    # Import a valid password hash even when its parameters do not match authentik's current password hashing settings.
+    attr_accessor :override
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'password' => :'password'
+        :'password' => :'password',
+        :'override' => :'override'
       }
     end
 
@@ -32,7 +36,8 @@ module Authentik::Api
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'password' => :'String'
+        :'password' => :'String',
+        :'override' => :'Boolean'
       }
     end
 
@@ -72,6 +77,12 @@ module Authentik::Api
         self.password = attributes[:'password']
       else
         self.password = nil
+      end
+
+      if attributes.key?(:'override')
+        self.override = attributes[:'override']
+      else
+        self.override = false
       end
     end
 
@@ -119,7 +130,8 @@ module Authentik::Api
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          password == o.password
+          password == o.password &&
+          override == o.override
     end
 
     # @see the `==` method
@@ -131,7 +143,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [password].hash
+      [password, override].hash
     end
 
     # Builds the object from hash

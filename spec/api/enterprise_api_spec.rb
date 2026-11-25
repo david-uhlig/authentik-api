@@ -48,16 +48,6 @@ describe 'EnterpriseApi' do
     end
   end
 
-  # unit tests for enterprise_license_forecast_retrieve
-  # Forecast how many users will be required in a year
-  # @param [Hash] opts the optional parameters
-  # @return [LicenseForecast]
-  describe 'enterprise_license_forecast_retrieve test' do
-    it 'should work' do
-      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
-    end
-  end
-
   # unit tests for enterprise_license_install_id_retrieve
   # Get install_id
   # @param [Hash] opts the optional parameters
@@ -135,6 +125,19 @@ describe 'EnterpriseApi' do
   # @param [Hash] opts the optional parameters
   # @return [Array<UsedBy>]
   describe 'enterprise_license_used_by_list test' do
+    it 'should work' do
+      # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
+    end
+  end
+
+  # unit tests for enterprise_license_user_counts_retrieve
+  # Get active user totals and counts for relative or absolute date ranges.  At least one positive relative count step or a complete absolute range is required. Relative and absolute ranges may be combined. Range starts are inclusive and ends are exclusive. Counts include currently active, non-anonymous accounts.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<String>] :count_steps Positive relative periods, such as &#39;days&#x3D;30&#39; or &#39;weeks&#x3D;3;days&#x3D;2&#39;.
+  # @option opts [Time] :_end Exclusive end of an absolute range; must be provided with start.
+  # @option opts [Time] :start Inclusive start of an absolute range; must be provided with end.
+  # @return [LicenseUserCounts]
+  describe 'enterprise_license_user_counts_retrieve test' do
     it 'should work' do
       # assertion here. ref: https://rspec.info/features/3-12/rspec-expectations/built-in-matchers/
     end

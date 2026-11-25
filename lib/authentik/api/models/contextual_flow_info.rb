@@ -20,6 +20,8 @@ module Authentik::Api
 
     attr_accessor :layout
 
+    attr_accessor :messages
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -49,7 +51,8 @@ module Authentik::Api
         :'background' => :'background',
         :'background_themed_urls' => :'background_themed_urls',
         :'cancel_url' => :'cancel_url',
-        :'layout' => :'layout'
+        :'layout' => :'layout',
+        :'messages' => :'messages'
       }
     end
 
@@ -70,7 +73,8 @@ module Authentik::Api
         :'background' => :'String',
         :'background_themed_urls' => :'ThemedUrls',
         :'cancel_url' => :'String',
-        :'layout' => :'ContextualFlowInfoLayoutEnum'
+        :'layout' => :'ContextualFlowInfoLayoutEnum',
+        :'messages' => :'Array<FlowMessage>'
       }
     end
 
@@ -130,6 +134,12 @@ module Authentik::Api
       else
         self.layout = nil
       end
+
+      if attributes.key?(:'messages')
+        if (value = attributes[:'messages']).is_a?(Array)
+          self.messages = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -186,7 +196,8 @@ module Authentik::Api
           background == o.background &&
           background_themed_urls == o.background_themed_urls &&
           cancel_url == o.cancel_url &&
-          layout == o.layout
+          layout == o.layout &&
+          messages == o.messages
     end
 
     # @see the `==` method
@@ -198,7 +209,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [title, background, background_themed_urls, cancel_url, layout].hash
+      [title, background, background_themed_urls, cancel_url, layout, messages].hash
     end
 
     # Builds the object from hash

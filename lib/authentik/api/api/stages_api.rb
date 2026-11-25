@@ -9966,6 +9966,7 @@ module Authentik::Api
     # @option opts [Boolean] :allow_show_password 
     # @option opts [String] :configure_flow 
     # @option opts [Integer] :failed_attempts_before_cancel 
+    # @option opts [Integer] :failed_attempts_before_lockout 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -9982,6 +9983,7 @@ module Authentik::Api
     # @option opts [Boolean] :allow_show_password 
     # @option opts [String] :configure_flow 
     # @option opts [Integer] :failed_attempts_before_cancel 
+    # @option opts [Integer] :failed_attempts_before_lockout 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -10000,6 +10002,7 @@ module Authentik::Api
       query_params[:'allow_show_password'] = opts[:'allow_show_password'] if !opts[:'allow_show_password'].nil?
       query_params[:'configure_flow'] = opts[:'configure_flow'] if !opts[:'configure_flow'].nil?
       query_params[:'failed_attempts_before_cancel'] = opts[:'failed_attempts_before_cancel'] if !opts[:'failed_attempts_before_cancel'].nil?
+      query_params[:'failed_attempts_before_lockout'] = opts[:'failed_attempts_before_lockout'] if !opts[:'failed_attempts_before_lockout'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

@@ -14,6 +14,15 @@ All URIs are relative to */api/v3*
 | [**lifecycle_rules_partial_update**](LifecycleApi.md#lifecycle_rules_partial_update) | **PATCH** /lifecycle/rules/{id}/ |  |
 | [**lifecycle_rules_retrieve**](LifecycleApi.md#lifecycle_rules_retrieve) | **GET** /lifecycle/rules/{id}/ |  |
 | [**lifecycle_rules_update**](LifecycleApi.md#lifecycle_rules_update) | **PUT** /lifecycle/rules/{id}/ |  |
+| [**lifecycle_user_expiration_rules_create**](LifecycleApi.md#lifecycle_user_expiration_rules_create) | **POST** /lifecycle/user_expiration_rules/ |  |
+| [**lifecycle_user_expiration_rules_destroy**](LifecycleApi.md#lifecycle_user_expiration_rules_destroy) | **DELETE** /lifecycle/user_expiration_rules/{id}/ |  |
+| [**lifecycle_user_expiration_rules_list**](LifecycleApi.md#lifecycle_user_expiration_rules_list) | **GET** /lifecycle/user_expiration_rules/ |  |
+| [**lifecycle_user_expiration_rules_partial_update**](LifecycleApi.md#lifecycle_user_expiration_rules_partial_update) | **PATCH** /lifecycle/user_expiration_rules/{id}/ |  |
+| [**lifecycle_user_expiration_rules_preview_create**](LifecycleApi.md#lifecycle_user_expiration_rules_preview_create) | **POST** /lifecycle/user_expiration_rules/{id}/preview/ |  |
+| [**lifecycle_user_expiration_rules_preview_retrieve**](LifecycleApi.md#lifecycle_user_expiration_rules_preview_retrieve) | **GET** /lifecycle/user_expiration_rules/{id}/preview/ |  |
+| [**lifecycle_user_expiration_rules_retrieve**](LifecycleApi.md#lifecycle_user_expiration_rules_retrieve) | **GET** /lifecycle/user_expiration_rules/{id}/ |  |
+| [**lifecycle_user_expiration_rules_update**](LifecycleApi.md#lifecycle_user_expiration_rules_update) | **PUT** /lifecycle/user_expiration_rules/{id}/ |  |
+| [**lifecycle_user_expiration_rules_used_by_list**](LifecycleApi.md#lifecycle_user_expiration_rules_used_by_list) | **GET** /lifecycle/user_expiration_rules/{id}/used_by/ |  |
 | [**lifecycle_user_offboarding_create**](LifecycleApi.md#lifecycle_user_offboarding_create) | **POST** /lifecycle/user_offboarding/ |  |
 | [**lifecycle_user_offboarding_destroy**](LifecycleApi.md#lifecycle_user_offboarding_destroy) | **DELETE** /lifecycle/user_offboarding/{id}/ |  |
 | [**lifecycle_user_offboarding_list**](LifecycleApi.md#lifecycle_user_offboarding_list) | **GET** /lifecycle/user_offboarding/ |  |
@@ -733,6 +742,650 @@ end
 - **Accept**: application/json
 
 
+## lifecycle_user_expiration_rules_create
+
+> <UserExpirationRule> lifecycle_user_expiration_rules_create(user_expiration_rule_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+user_expiration_rule_request = Authentik::Api::UserExpirationRuleRequest.new({name: 'name_example'}) # UserExpirationRuleRequest | 
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_create(user_expiration_rule_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_create: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRule>, Integer, Hash)> lifecycle_user_expiration_rules_create_with_http_info(user_expiration_rule_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_create_with_http_info(user_expiration_rule_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRule>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **user_expiration_rule_request** | [**UserExpirationRuleRequest**](UserExpirationRuleRequest.md) |  |  |
+
+### Return type
+
+[**UserExpirationRule**](UserExpirationRule.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_destroy
+
+> lifecycle_user_expiration_rules_destroy(id)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+
+begin
+  
+  api_instance.lifecycle_user_expiration_rules_destroy(id)
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_destroy: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_destroy_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> lifecycle_user_expiration_rules_destroy_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_destroy_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_destroy_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_list
+
+> <PaginatedUserExpirationRuleList> lifecycle_user_expiration_rules_list(opts)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+opts = {
+  action: Authentik::Api::OffboardingActionEnum::DEACTIVATE, # OffboardingActionEnum | 
+  enabled: true, # Boolean | 
+  group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  ordering: 'ordering_example', # String | Which field to use when ordering the results.
+  page: 56, # Integer | A page number within the paginated result set.
+  page_size: 56, # Integer | Number of results to return per page.
+  pbm_uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  search: 'search_example' # String | A search term.
+}
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_list(opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_list: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PaginatedUserExpirationRuleList>, Integer, Hash)> lifecycle_user_expiration_rules_list_with_http_info(opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_list_with_http_info(opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PaginatedUserExpirationRuleList>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **action** | [**OffboardingActionEnum**](.md) |  | [optional] |
+| **enabled** | **Boolean** |  | [optional] |
+| **group** | **String** |  | [optional] |
+| **ordering** | **String** | Which field to use when ordering the results. | [optional] |
+| **page** | **Integer** | A page number within the paginated result set. | [optional] |
+| **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **pbm_uuid** | **String** |  | [optional] |
+| **search** | **String** | A search term. | [optional] |
+
+### Return type
+
+[**PaginatedUserExpirationRuleList**](PaginatedUserExpirationRuleList.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_partial_update
+
+> <UserExpirationRule> lifecycle_user_expiration_rules_partial_update(id, opts)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+opts = {
+  patched_user_expiration_rule_request: Authentik::Api::PatchedUserExpirationRuleRequest.new # PatchedUserExpirationRuleRequest | 
+}
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_partial_update(id, opts)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_partial_update: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_partial_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRule>, Integer, Hash)> lifecycle_user_expiration_rules_partial_update_with_http_info(id, opts)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_partial_update_with_http_info(id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRule>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_partial_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+| **patched_user_expiration_rule_request** | [**PatchedUserExpirationRuleRequest**](PatchedUserExpirationRuleRequest.md) |  | [optional] |
+
+### Return type
+
+[**UserExpirationRule**](UserExpirationRule.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_preview_create
+
+> <UserExpirationRulePreview> lifecycle_user_expiration_rules_preview_create(id, user_expiration_rule_request)
+
+
+
+Preview new offboardings and changes to pending rows if this rule is enabled.  POST accepts unsaved edits to the rule. Neither method saves the rule, changes offboardings, or sends warnings. Existing policy bindings still apply.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+user_expiration_rule_request = Authentik::Api::UserExpirationRuleRequest.new({name: 'name_example'}) # UserExpirationRuleRequest | 
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_preview_create(id, user_expiration_rule_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_preview_create: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_preview_create_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRulePreview>, Integer, Hash)> lifecycle_user_expiration_rules_preview_create_with_http_info(id, user_expiration_rule_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_preview_create_with_http_info(id, user_expiration_rule_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRulePreview>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_preview_create_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+| **user_expiration_rule_request** | [**UserExpirationRuleRequest**](UserExpirationRuleRequest.md) |  |  |
+
+### Return type
+
+[**UserExpirationRulePreview**](UserExpirationRulePreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_preview_retrieve
+
+> <UserExpirationRulePreview> lifecycle_user_expiration_rules_preview_retrieve(id)
+
+
+
+Preview new offboardings and changes to pending rows if this rule is enabled.  POST accepts unsaved edits to the rule. Neither method saves the rule, changes offboardings, or sends warnings. Existing policy bindings still apply.
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_preview_retrieve(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_preview_retrieve: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_preview_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRulePreview>, Integer, Hash)> lifecycle_user_expiration_rules_preview_retrieve_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_preview_retrieve_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRulePreview>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_preview_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+
+### Return type
+
+[**UserExpirationRulePreview**](UserExpirationRulePreview.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_retrieve
+
+> <UserExpirationRule> lifecycle_user_expiration_rules_retrieve(id)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_retrieve(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_retrieve: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_retrieve_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRule>, Integer, Hash)> lifecycle_user_expiration_rules_retrieve_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_retrieve_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRule>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_retrieve_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+
+### Return type
+
+[**UserExpirationRule**](UserExpirationRule.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_update
+
+> <UserExpirationRule> lifecycle_user_expiration_rules_update(id, user_expiration_rule_request)
+
+
+
+Mixin to add a used_by endpoint to return a list of all objects using this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+user_expiration_rule_request = Authentik::Api::UserExpirationRuleRequest.new({name: 'name_example'}) # UserExpirationRuleRequest | 
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_update(id, user_expiration_rule_request)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_update: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_update_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserExpirationRule>, Integer, Hash)> lifecycle_user_expiration_rules_update_with_http_info(id, user_expiration_rule_request)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_update_with_http_info(id, user_expiration_rule_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserExpirationRule>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_update_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+| **user_expiration_rule_request** | [**UserExpirationRuleRequest**](UserExpirationRuleRequest.md) |  |  |
+
+### Return type
+
+[**UserExpirationRule**](UserExpirationRule.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## lifecycle_user_expiration_rules_used_by_list
+
+> <Array<UsedBy>> lifecycle_user_expiration_rules_used_by_list(id)
+
+
+
+Get a list of all objects that use this object
+
+### Examples
+
+```ruby
+require 'time'
+require 'authentik-api'
+# setup authorization
+Authentik::Api.configure do |config|
+  # Configure Bearer authorization: authentik
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = Authentik::Api::LifecycleApi.new
+id = '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | A UUID string identifying this User Expiration Rule.
+
+begin
+  
+  result = api_instance.lifecycle_user_expiration_rules_used_by_list(id)
+  p result
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_used_by_list: #{e}"
+end
+```
+
+#### Using the lifecycle_user_expiration_rules_used_by_list_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Array<UsedBy>>, Integer, Hash)> lifecycle_user_expiration_rules_used_by_list_with_http_info(id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.lifecycle_user_expiration_rules_used_by_list_with_http_info(id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Array<UsedBy>>
+rescue Authentik::Api::ApiError => e
+  puts "Error when calling LifecycleApi->lifecycle_user_expiration_rules_used_by_list_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **id** | **String** | A UUID string identifying this User Expiration Rule. |  |
+
+### Return type
+
+[**Array&lt;UsedBy&gt;**](UsedBy.md)
+
+### Authorization
+
+[authentik](../README.md#authentik)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## lifecycle_user_offboarding_create
 
 > <UserOffboarding> lifecycle_user_offboarding_create(user_offboarding_request)
@@ -888,9 +1541,12 @@ end
 api_instance = Authentik::Api::LifecycleApi.new
 opts = {
   action: Authentik::Api::OffboardingActionEnum::DEACTIVATE, # OffboardingActionEnum | 
+  generated: true, # Boolean | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
   page_size: 56, # Integer | Number of results to return per page.
+  rule: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  rule__isnull: true, # Boolean | 
   search: 'search_example', # String | A search term.
   status: Authentik::Api::OffboardingStatusEnum::PENDING, # OffboardingStatusEnum | 
   user__uuid: '38400000-8cf0-11bd-b23e-10b96e4ef00d' # String | 
@@ -928,9 +1584,12 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **action** | [**OffboardingActionEnum**](.md) |  | [optional] |
+| **generated** | **Boolean** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
 | **page_size** | **Integer** | Number of results to return per page. | [optional] |
+| **rule** | **String** |  | [optional] |
+| **rule__isnull** | **Boolean** |  | [optional] |
 | **search** | **String** | A search term. | [optional] |
 | **status** | [**OffboardingStatusEnum**](.md) |  | [optional] |
 | **user__uuid** | **String** |  | [optional] |

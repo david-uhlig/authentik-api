@@ -14,11 +14,14 @@ module Authentik::Api
 
     attr_accessor :success
 
+    attr_accessor :imported
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'logs' => :'logs',
-        :'success' => :'success'
+        :'success' => :'success',
+        :'imported' => :'imported'
       }
     end
 
@@ -36,7 +39,8 @@ module Authentik::Api
     def self.openapi_types
       {
         :'logs' => :'Array<LogEvent>',
-        :'success' => :'Boolean'
+        :'success' => :'Boolean',
+        :'imported' => :'Boolean'
       }
     end
 
@@ -85,6 +89,12 @@ module Authentik::Api
       else
         self.success = nil
       end
+
+      if attributes.key?(:'imported')
+        self.imported = attributes[:'imported']
+      else
+        self.imported = nil
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -100,6 +110,10 @@ module Authentik::Api
         invalid_properties.push('invalid value for "success", success cannot be nil.')
       end
 
+      if @imported.nil?
+        invalid_properties.push('invalid value for "imported", imported cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -109,6 +123,7 @@ module Authentik::Api
       warn '[DEPRECATED] the `valid?` method is obsolete'
       return false if @logs.nil?
       return false if @success.nil?
+      return false if @imported.nil?
       true
     end
 
@@ -132,13 +147,24 @@ module Authentik::Api
       @success = success
     end
 
+    # Custom attribute writer method with validation
+    # @param [Object] imported Value to be assigned
+    def imported=(imported)
+      if imported.nil?
+        fail ArgumentError, 'imported cannot be nil'
+      end
+
+      @imported = imported
+    end
+
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
           logs == o.logs &&
-          success == o.success
+          success == o.success &&
+          imported == o.imported
     end
 
     # @see the `==` method
@@ -150,7 +176,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [logs, success].hash
+      [logs, success, imported].hash
     end
 
     # Builds the object from hash

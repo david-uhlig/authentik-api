@@ -10,11 +10,12 @@ require 'time'
 module Authentik::Api
   class SCIMAuthenticationModeEnum
     TOKEN = "token".freeze
+    BASIC = "basic".freeze
     OAUTH = "oauth".freeze
     OAUTH_INTERACTIVE = "oauth_interactive".freeze
 
     def self.all_vars
-      @all_vars ||= [TOKEN, OAUTH, OAUTH_INTERACTIVE].freeze
+      @all_vars ||= [TOKEN, BASIC, OAUTH, OAUTH_INTERACTIVE].freeze
     end
 
     # Builds the enum from string

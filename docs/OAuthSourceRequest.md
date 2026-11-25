@@ -24,7 +24,7 @@
 | **profile_url** | **String** | URL used by authentik to get user information. | [optional] |
 | **pkce** | [**PKCEMethodEnum**](PKCEMethodEnum.md) |  | [optional] |
 | **consumer_key** | **String** |  |  |
-| **consumer_secret** | **String** |  |  |
+| **consumer_secret** | **String** |  | [optional] |
 | **additional_scopes** | **String** |  | [optional] |
 | **oidc_well_known_url** | **String** |  | [optional] |
 | **oidc_jwks_url** | **String** |  | [optional] |

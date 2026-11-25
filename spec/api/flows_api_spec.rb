@@ -197,7 +197,7 @@ describe 'FlowsApi' do
   end
 
   # unit tests for flows_instances_diagram_retrieve
-  # Return diagram for flow with slug &#x60;slug&#x60;, in the format used by flowchart.js
+  # Return the graph of flow with slug &#x60;slug&#x60;, for the client to render
   # @param slug 
   # @param [Hash] opts the optional parameters
   # @return [FlowDiagram]

@@ -14,6 +14,8 @@ module Authentik::Api
 
     attr_accessor :icon_url
 
+    attr_accessor :icon_themed_urls
+
     attr_accessor :promoted
 
     attr_accessor :challenge
@@ -23,6 +25,7 @@ module Authentik::Api
       {
         :'name' => :'name',
         :'icon_url' => :'icon_url',
+        :'icon_themed_urls' => :'icon_themed_urls',
         :'promoted' => :'promoted',
         :'challenge' => :'challenge'
       }
@@ -43,6 +46,7 @@ module Authentik::Api
       {
         :'name' => :'String',
         :'icon_url' => :'String',
+        :'icon_themed_urls' => :'ThemedUrls',
         :'promoted' => :'Boolean',
         :'challenge' => :'LoginChallengeTypes'
       }
@@ -52,6 +56,7 @@ module Authentik::Api
     def self.openapi_nullable
       Set.new([
         :'icon_url',
+        :'icon_themed_urls',
       ])
     end
 
@@ -89,6 +94,10 @@ module Authentik::Api
 
       if attributes.key?(:'icon_url')
         self.icon_url = attributes[:'icon_url']
+      end
+
+      if attributes.key?(:'icon_themed_urls')
+        self.icon_themed_urls = attributes[:'icon_themed_urls']
       end
 
       if attributes.key?(:'promoted')
@@ -156,6 +165,7 @@ module Authentik::Api
       self.class == o.class &&
           name == o.name &&
           icon_url == o.icon_url &&
+          icon_themed_urls == o.icon_themed_urls &&
           promoted == o.promoted &&
           challenge == o.challenge
     end
@@ -169,7 +179,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, icon_url, promoted, challenge].hash
+      [name, icon_url, icon_themed_urls, promoted, challenge].hash
     end
 
     # Builds the object from hash

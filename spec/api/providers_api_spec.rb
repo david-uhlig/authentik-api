@@ -1144,10 +1144,13 @@ describe 'ProvidersApi' do
   # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
+  # @option opts [Boolean] :ignore_force_authn 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
+  # @option opts [Array<Integer>] :jwt_federation_providers 
   # @option opts [SAMLLogoutMethods] :logout_method 
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
@@ -1596,10 +1599,13 @@ describe 'ProvidersApi' do
   # @option opts [SAMLNameIDPolicyEnum] :default_name_id_policy 
   # @option opts [String] :default_relay_state 
   # @option opts [DigestAlgorithmEnum] :digest_algorithm 
+  # @option opts [EncryptionAlgorithmEnum] :encryption_algorithm 
   # @option opts [String] :encryption_kp 
+  # @option opts [Boolean] :ignore_force_authn 
   # @option opts [String] :invalidation_flow 
   # @option opts [Boolean] :is_backchannel 
   # @option opts [String] :issuer_override 
+  # @option opts [Array<Integer>] :jwt_federation_providers 
   # @option opts [SAMLLogoutMethods] :logout_method 
   # @option opts [String] :name 
   # @option opts [String] :name_id_mapping 
@@ -1607,7 +1613,7 @@ describe 'ProvidersApi' do
   # @option opts [Integer] :page A page number within the paginated result set.
   # @option opts [Integer] :page_size Number of results to return per page.
   # @option opts [Array<String>] :property_mappings 
-  # @option opts [SamlVersionEnum] :saml_version 
+  # @option opts [WSFedSAMLVersionEnum] :saml_version 
   # @option opts [String] :search A search term.
   # @option opts [String] :session_valid_not_on_or_after 
   # @option opts [Boolean] :sign_assertion 

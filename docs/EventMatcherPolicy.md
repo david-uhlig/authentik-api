@@ -12,6 +12,8 @@
 | **verbose_name_plural** | **String** | Return object&#39;s plural verbose_name | [readonly] |
 | **meta_model_name** | **String** | Return internal model name | [readonly] |
 | **bound_to** | **Integer** | Return objects policy is bound to | [readonly] |
+| **last_updated** | **Time** |  | [readonly] |
+| **created** | **Time** |  | [readonly] |
 | **action** | [**EventActions**](EventActions.md) | Match created events with this action type. When left empty, all action types will be matched. | [optional] |
 | **client_ip** | **String** | Matches Event&#39;s Client IP (strict matching, for network matching use an Expression Policy) | [optional] |
 | **app** | [**AppEnum**](AppEnum.md) | Match events created by selected application. When left empty, all applications are matched. | [optional] |
@@ -32,6 +34,8 @@ instance = Authentik::Api::EventMatcherPolicy.new(
   verbose_name_plural: null,
   meta_model_name: null,
   bound_to: null,
+  last_updated: null,
+  created: null,
   action: null,
   client_ip: null,
   app: null,
