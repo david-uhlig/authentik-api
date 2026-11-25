@@ -1,9 +1,15 @@
 # Releases the gem to RubyGems.
 #
 # Automatically triggered when a PR labeled `release` merges into a release
-# branch. When manually triggered, it releases the branch specified in the
-# `branch-name` input.
-name: Release to RubyGems
+# branch. These PRs are opened by `prepare-release.yml`, which also runs again
+# after each release to open the next queued release PR. Release lines run
+# their own copy of this workflow. When manually triggered, it releases the branch specified in the
+# `branch-name` input. Fails if the branch is not a release branch (e.g.,
+# `main`).
+#
+# Publishes the version in `lib/authentik/api/version.rb` and tags it as
+# `v<version>`.
+name: Release gem to RubyGems
 
 on:
   pull_request:
@@ -22,21 +28,30 @@ permissions:
 jobs:
   tag-release:
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'release'))
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     env:
       RELEASE_BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.branch-name || github.event.pull_request.base.ref }}
     steps:
+      # Only release branches (e.g., `2026.2`) may be published, never `main`
+      # or feature branches.
+      - name: Validate release branch
+        run: |
+          if [[ ! "$RELEASE_BRANCH" =~ ^[0-9]{4}\.[0-9]+$ ]]; then
+            echo "::error::'$RELEASE_BRANCH' is not a release branch (expected e.g. 2026.2)."
+            exit 1
+          fi
+
       - name: Checkout release branch  # zizmor: ignore[artipacked]
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ env.RELEASE_BRANCH }}
           persist-credentials: false
 
       - name: Set up Ruby
-        uses: ruby/setup-ruby@c4e5b1316158f92e3d49443a9d58b31d25ac0f8f # v1.306.0
+        uses: ruby/setup-ruby@b3aaceaef7e0ee231b499e7b5f49c03fc1d32199 # v1.338.0
         with:
           bundler-cache: true # zizmor: ignore[cache-poisoning]
           ruby-version: ruby
 
       - name: Release to RubyGems
-        uses: rubygems/release-gem@6317d8d1f7e28c24d28f6eff169ea854948bd9f7 # v1.2.0
+        uses: rubygems/release-gem@7f9650160c1a4e7989fdc9855807bdbd421d8b6b # v1.4.1

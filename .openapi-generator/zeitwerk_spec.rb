@@ -1,6 +1,6 @@
-=begin
-This file is automatically copied into the gem’s spec path from the `.openapi-generator` directory. Modifications should be made in the latter directory.
-=end
+# This file is automatically copied into the gem’s spec path from the
+# `.openapi-generator` directory. Modifications should be made in the latter
+# directory.
 # frozen_string_literal: true
 
 require "zeitwerk"

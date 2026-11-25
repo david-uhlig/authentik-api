@@ -12,6 +12,10 @@ additionalProperties:
   gemName: authentik-api
   gemRequiredRubyVersion: ">= 3.3.0"
   gemSummary: "API client to talk to authentik's API."
+  gemMetadata: |-
+    {
+        "rubygems_mfa_required" => "true"
+      }
   # It doesn't generate the `Authentik` top-level module, which requires a workaround in the builder scripts.
   moduleName: "Authentik::Api"
 nameMappings:
