@@ -16,6 +16,7 @@ module Authentik::Api
     USERNAME = "username".freeze
     EMAIL = "email".freeze
     PASSWORD = "password".freeze
+    PASSWORD_VIEWABLE = "password_viewable".freeze
     NUMBER = "number".freeze
     CHECKBOX = "checkbox".freeze
     RADIO_BUTTON_GROUP = "radio-button-group".freeze
@@ -32,7 +33,7 @@ module Authentik::Api
     AK_LOCALE = "ak-locale".freeze
 
     def self.all_vars
-      @all_vars ||= [TEXT, TEXT_AREA, TEXT_READ_ONLY, TEXT_AREA_READ_ONLY, USERNAME, EMAIL, PASSWORD, NUMBER, CHECKBOX, RADIO_BUTTON_GROUP, DROPDOWN, DATE, DATE_TIME, FILE, SEPARATOR, HIDDEN, STATIC, ALERT_INFO, ALERT_WARNING, ALERT_DANGER, AK_LOCALE].freeze
+      @all_vars ||= [TEXT, TEXT_AREA, TEXT_READ_ONLY, TEXT_AREA_READ_ONLY, USERNAME, EMAIL, PASSWORD, PASSWORD_VIEWABLE, NUMBER, CHECKBOX, RADIO_BUTTON_GROUP, DROPDOWN, DATE, DATE_TIME, FILE, SEPARATOR, HIDDEN, STATIC, ALERT_INFO, ALERT_WARNING, ALERT_DANGER, AK_LOCALE].freeze
     end
 
     # Builds the enum from string
