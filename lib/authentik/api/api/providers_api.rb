@@ -780,7 +780,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :delegated_subject 
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -796,7 +796,7 @@ module Authentik::Api
     # @param [Hash] opts the optional parameters
     # @option opts [String] :delegated_subject 
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -814,7 +814,7 @@ module Authentik::Api
       query_params = opts[:query_params] || {}
       query_params[:'delegated_subject'] = opts[:'delegated_subject'] if !opts[:'delegated_subject'].nil?
       query_params[:'exclude_users_service_account'] = opts[:'exclude_users_service_account'] if !opts[:'exclude_users_service_account'].nil?
-      query_params[:'filter_group'] = opts[:'filter_group'] if !opts[:'filter_group'].nil?
+      query_params[:'group_filters'] = @api_client.build_collection_param(opts[:'group_filters'], :multi) if !opts[:'group_filters'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
@@ -2513,7 +2513,7 @@ module Authentik::Api
     # MicrosoftEntraProvider Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2528,7 +2528,7 @@ module Authentik::Api
     # MicrosoftEntraProvider Viewset
     # @param [Hash] opts the optional parameters
     # @option opts [Boolean] :exclude_users_service_account 
-    # @option opts [String] :filter_group 
+    # @option opts [Array<String>] :group_filters 
     # @option opts [String] :name 
     # @option opts [String] :ordering Which field to use when ordering the results.
     # @option opts [Integer] :page A page number within the paginated result set.
@@ -2545,7 +2545,7 @@ module Authentik::Api
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'exclude_users_service_account'] = opts[:'exclude_users_service_account'] if !opts[:'exclude_users_service_account'].nil?
-      query_params[:'filter_group'] = opts[:'filter_group'] if !opts[:'filter_group'].nil?
+      query_params[:'group_filters'] = @api_client.build_collection_param(opts[:'group_filters'], :multi) if !opts[:'group_filters'].nil?
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'ordering'] = opts[:'ordering'] if !opts[:'ordering'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?

@@ -43,7 +43,8 @@ module Authentik::Api
 
     attr_accessor :exclude_users_service_account
 
-    attr_accessor :filter_group
+    # Group filters used to define sync-scope for groups.
+    attr_accessor :group_filters
 
     attr_accessor :user_delete_action
 
@@ -99,7 +100,7 @@ module Authentik::Api
         :'client_id' => :'client_id',
         :'tenant_id' => :'tenant_id',
         :'exclude_users_service_account' => :'exclude_users_service_account',
-        :'filter_group' => :'filter_group',
+        :'group_filters' => :'group_filters',
         :'user_delete_action' => :'user_delete_action',
         :'group_delete_action' => :'group_delete_action',
         :'sync_page_size' => :'sync_page_size',
@@ -135,7 +136,7 @@ module Authentik::Api
         :'client_id' => :'String',
         :'tenant_id' => :'String',
         :'exclude_users_service_account' => :'Boolean',
-        :'filter_group' => :'String',
+        :'group_filters' => :'Array<String>',
         :'user_delete_action' => :'OutgoingSyncDeleteAction',
         :'group_delete_action' => :'OutgoingSyncDeleteAction',
         :'sync_page_size' => :'Integer',
@@ -150,7 +151,6 @@ module Authentik::Api
       Set.new([
         :'assigned_backchannel_application_slug',
         :'assigned_backchannel_application_name',
-        :'filter_group',
       ])
     end
 
@@ -256,8 +256,10 @@ module Authentik::Api
         self.exclude_users_service_account = attributes[:'exclude_users_service_account']
       end
 
-      if attributes.key?(:'filter_group')
-        self.filter_group = attributes[:'filter_group']
+      if attributes.key?(:'group_filters')
+        if (value = attributes[:'group_filters']).is_a?(Array)
+          self.group_filters = value
+        end
       end
 
       if attributes.key?(:'user_delete_action')
@@ -466,7 +468,7 @@ module Authentik::Api
           client_id == o.client_id &&
           tenant_id == o.tenant_id &&
           exclude_users_service_account == o.exclude_users_service_account &&
-          filter_group == o.filter_group &&
+          group_filters == o.group_filters &&
           user_delete_action == o.user_delete_action &&
           group_delete_action == o.group_delete_action &&
           sync_page_size == o.sync_page_size &&
@@ -484,7 +486,7 @@ module Authentik::Api
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, tenant_id, exclude_users_service_account, filter_group, user_delete_action, group_delete_action, sync_page_size, discovery_enabled, sync_page_timeout, dry_run].hash
+      [pk, name, property_mappings, property_mappings_group, component, assigned_backchannel_application_slug, assigned_backchannel_application_name, verbose_name, verbose_name_plural, meta_model_name, client_id, tenant_id, exclude_users_service_account, group_filters, user_delete_action, group_delete_action, sync_page_size, discovery_enabled, sync_page_timeout, dry_run].hash
     end
 
     # Builds the object from hash

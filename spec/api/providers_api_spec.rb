@@ -173,7 +173,7 @@ describe 'ProvidersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :delegated_subject 
   # @option opts [Boolean] :exclude_users_service_account 
-  # @option opts [String] :filter_group 
+  # @option opts [Array<String>] :group_filters 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.
@@ -494,7 +494,7 @@ describe 'ProvidersApi' do
   # MicrosoftEntraProvider Viewset
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :exclude_users_service_account 
-  # @option opts [String] :filter_group 
+  # @option opts [Array<String>] :group_filters 
   # @option opts [String] :name 
   # @option opts [String] :ordering Which field to use when ordering the results.
   # @option opts [Integer] :page A page number within the paginated result set.

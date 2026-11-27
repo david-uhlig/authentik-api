@@ -18,7 +18,7 @@
 | **credentials** | **Hash&lt;String, Object&gt;** |  |  |
 | **scopes** | **String** |  | [optional] |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
-| **filter_group** | **String** |  | [optional] |
+| **group_filters** | **Array&lt;String&gt;** | Group filters used to define sync-scope for groups. | [optional] |
 | **user_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **group_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **default_group_email_domain** | **String** |  |  |
@@ -47,7 +47,7 @@ instance = Authentik::Api::GoogleWorkspaceProvider.new(
   credentials: null,
   scopes: null,
   exclude_users_service_account: null,
-  filter_group: null,
+  group_filters: null,
   user_delete_action: null,
   group_delete_action: null,
   default_group_email_domain: null,
