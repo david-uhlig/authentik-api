@@ -1008,7 +1008,7 @@ api_instance = Authentik::Api::ProvidersApi.new
 opts = {
   delegated_subject: 'delegated_subject_example', # String | 
   exclude_users_service_account: true, # Boolean | 
-  filter_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  group_filters: ['inner_example'], # Array<String> | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -1049,7 +1049,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **delegated_subject** | **String** |  | [optional] |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
-| **filter_group** | **String** |  | [optional] |
+| **group_filters** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |
@@ -2881,7 +2881,7 @@ end
 api_instance = Authentik::Api::ProvidersApi.new
 opts = {
   exclude_users_service_account: true, # Boolean | 
-  filter_group: '38400000-8cf0-11bd-b23e-10b96e4ef00d', # String | 
+  group_filters: ['inner_example'], # Array<String> | 
   name: 'name_example', # String | 
   ordering: 'ordering_example', # String | Which field to use when ordering the results.
   page: 56, # Integer | A page number within the paginated result set.
@@ -2921,7 +2921,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
-| **filter_group** | **String** |  | [optional] |
+| **group_filters** | [**Array&lt;String&gt;**](String.md) |  | [optional] |
 | **name** | **String** |  | [optional] |
 | **ordering** | **String** | Which field to use when ordering the results. | [optional] |
 | **page** | **Integer** | A page number within the paginated result set. | [optional] |

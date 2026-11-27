@@ -17,7 +17,7 @@
 | **client_id** | **String** |  |  |
 | **tenant_id** | **String** |  |  |
 | **exclude_users_service_account** | **Boolean** |  | [optional] |
-| **filter_group** | **String** |  | [optional] |
+| **group_filters** | **Array&lt;String&gt;** | Group filters used to define sync-scope for groups. | [optional] |
 | **user_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **group_delete_action** | [**OutgoingSyncDeleteAction**](OutgoingSyncDeleteAction.md) |  | [optional] |
 | **sync_page_size** | **Integer** | Controls the number of objects synced in a single task | [optional] |
@@ -44,7 +44,7 @@ instance = Authentik::Api::MicrosoftEntraProvider.new(
   client_id: null,
   tenant_id: null,
   exclude_users_service_account: null,
-  filter_group: null,
+  group_filters: null,
   user_delete_action: null,
   group_delete_action: null,
   sync_page_size: null,
